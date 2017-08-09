@@ -1,0 +1,7 @@
+﻿2017-08-08 13:26:58.113 -0700	START		Running US-Gear-05.script
+2017-08-08 13:26:58.566 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	2	on_m3_login	M3/Login.script
+2017-08-08 13:27:01.964 -0700	click	M3/Login/InforPasswordField	at (472, 447)	3	on_m3_login	M3/Login.script
+2017-08-08 13:27:02.784 -0700	typetext		SERVICE$08	4	on_m3_login	M3/Login.script
+2017-08-08 13:27:03.583 -0700	click	M3/Login/InforPasswordSubmitButton	at (563, 447)	5	on_m3_login	M3/Login.script
+2017-08-08 13:27:18.403 -0700	EndTestCase		(Duration:"20.286", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 13:26:58 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 13:27:18.406 -0700	ABORTED		Execution Time 0:00:20 US-Gear-05.script

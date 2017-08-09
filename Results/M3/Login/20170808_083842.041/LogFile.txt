@@ -1,0 +1,4 @@
+﻿2017-08-08 08:38:42.046 -0700	START		Running Test.script
+2017-08-08 08:39:19.470 -0700	Exception	Processes/Login/InforShortcut	No Image Found On Screen: "Processes/Login/InforShortcut"	2	on_test	Test.script
+2017-08-08 08:39:19.577 -0700	EndTestCase		(Duration:"37.524", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 08:38:42 -0700", Successes:"0", TestCase:"Test.script", Warnings:"0")
+2017-08-08 08:39:19.580 -0700	ABORTED		Execution Time 0:00:37 Test.script

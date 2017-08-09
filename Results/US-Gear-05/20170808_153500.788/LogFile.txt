@@ -1,0 +1,8 @@
+﻿2017-08-08 15:35:00.790 -0700	START		Running US-Gear-05.script
+2017-08-08 15:35:00.890 -0700	Log		Logging in as ajenkins	2	on_login	M3/Login.script
+2017-08-08 15:35:01.097 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	3	on_login	M3/Login.script
+2017-08-08 15:35:02.265 -0700	click	M3/Login/UsernameField	at (301, 445)	4	on_login	M3/Login.script
+2017-08-08 15:35:02.988 -0700	typetext		[controlKey]a	5	on_login	M3/Login.script
+2017-08-08 15:35:03.700 -0700	typetext		[deleteKey]	6	on_login	M3/Login.script
+2017-08-08 15:35:12.822 -0700	EndTestCase		(Duration:"12.019", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 15:35:00 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 15:35:12.823 -0700	ABORTED		Execution Time 0:00:12 US-Gear-05.script

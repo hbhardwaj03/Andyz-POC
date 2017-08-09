@@ -1,0 +1,8 @@
+﻿2017-08-08 10:46:57.763 -0700	START		Running Web/KPack.script
+2017-08-08 10:46:57.988 -0700	click	IELink	at (89, 749)	1	on_web_kpack	Web/KPack.script
+2017-08-08 10:46:58.800 -0700	click	KPackLink	at (64, 118)	2	on_web_kpack	Web/KPack.script
+2017-08-08 10:47:00.992 -0700	click	LoginLocationDropdown	at (353, 288)	3	on_web_kpack	Web/KPack.script
+2017-08-08 10:47:01.797 -0700	click	LocationDropdownVista	at (341, 447)	4	on_web_kpack	Web/KPack.script
+2017-08-08 10:47:17.264 -0700	Exception	UsernameField	No Image Found On Screen: "UsernameField"	5	on_web_kpack	Web/KPack.script
+2017-08-08 10:47:17.411 -0700	EndTestCase		(Duration:"19.642", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 10:46:57 -0700", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
+2017-08-08 10:47:17.565 -0700	FAILURE	Screen_Error.png	Image Not Found click Error - No Image Found On Screen: "UsernameField" -- Execution Time 0:00:20 Web/KPack.script

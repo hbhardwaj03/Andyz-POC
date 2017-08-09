@@ -1,0 +1,34 @@
+﻿(* 
+Name: US-Gear-06
+Description: Enter a basic custom CC Players 5 stand bag with one each color, one personalization, use level 2 bag (UST7782) program account #, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
+Author: Andy jenkins
+ *)
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+
+Log "Enter new order"
+"M3/CustomerOrder".openOIS300
+"M3/CustomerOrder".startNewOrder
+"M3/CustomerOrder".enterCustomerNumber
+"M3/CustomerOrder".submitOIS100A
+"M3/CustomerOrder".enterCustomersPO "US-Gear-06"
+"M3/CustomerOrder".submitOIS100G
+"M3/CustomerOrder".acceptPOWarning
+"M3/CustomerOrder".submitOIS100F
+"M3/CustomerOrder".submitOIS100H
+"M3/CustomerOrder".submitOIS100E
+"M3/CustomerOrder".submitOIS102H
+
+Log "Enter order line"
+"M3/ItemOrderLine".enterItemCode "TB7SX6CC"
+"M3/ItemOrderLine".enterItemColor
+"M3/ItemOrderLine".configuratorA
+
+Log "Record validation data - not yet implemented"
+Log "Exit AGS"
+"M3/ItemOrderLine".closeFromOrderLines
+"M3/Application".close
+
+

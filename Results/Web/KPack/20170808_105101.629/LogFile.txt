@@ -1,0 +1,7 @@
+﻿2017-08-08 10:51:01.633 -0700	START		Running Web/KPack.script
+2017-08-08 10:51:01.824 -0700	click	IELink	at (89, 749)	1	on_web_kpack	Web/KPack.script
+2017-08-08 10:51:02.633 -0700	click	KPackLink	at (64, 118)	2	on_web_kpack	Web/KPack.script
+2017-08-08 10:51:04.128 -0700	click	LoginLocationDropdown	at (353, 288)	3	on_web_kpack	Web/KPack.script
+2017-08-08 10:51:04.940 -0700	click	LocationDropdownVista	at (341, 447)	4	on_web_kpack	Web/KPack.script
+2017-08-08 10:51:05.077 -0700	EndTestCase		(Duration:"3.442", Errors:"0", Exceptions:"0", StartTime:"2017-08-08 10:51:01 -0700", Successes:"1", TestCase:"Web/KPack.script", Warnings:"0")
+2017-08-08 10:51:05.112 -0700	SUCCESS		Execution Time 0:00:04 Web/KPack.script

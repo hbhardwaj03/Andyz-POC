@@ -1,0 +1,66 @@
+{
+    commandList = "[{captureRect:[155, 535, 225, 565], command:@\"Click\", eventNum:2, hotSpot:[190, 218], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0002\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0002.png\"}, {command:@\"TypeText\", eventNum:4, screenShotFile:@\"Screen0004.png\", text:@\"\\\"ajenkins\\\"\"}, {captureRect:[158, 499, 228, 529], command:@\"Click\", eventNum:20, hotSpot:[193, 254], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0004\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0020.png\"}, {command:@\"TypeText\", eventNum:23, screenShotFile:@\"Screen0023.png\", text:@\"\\\"A\\\"\"}, {captureRect:[158, 499, 228, 529], command:@\"MoveTo\", eventNum:25, hotSpot:[193, 254], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0003\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0025.png\"}, {command:@\"KeyUp\", eventNum:26, screenShotFile:@\"Screen0026.png\", text:@\"\\\"a\\\"\"}, {command:@\"TypeText\", eventNum:27, screenShotFile:@\"Screen0026.png\", text:@\"\\\"cushnet#\\\"\"}, {captureRect:[158, 499, 228, 529], command:@\"MoveTo\", eventNum:45, hotSpot:[193, 254], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0005\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0045.png\"}, {command:@\"TypeText\", eventNum:46, screenShotFile:@\"Screen0046.png\", text:@\"\\\"1\\\"\"}, {captureRect:[52, 474, 649, 496], command:@\"Click\", eventNum:48, hotSpot:[248, 286], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"LocationI500AcushnetCanada500H\", searchType:@\"Smooth\", waitFor:@\"\"}, OCRText:@\"Location: I (500) Acushnet Canada 500 Harry Walker Parkway North East Gwillimbury ON L9N0K v*\", screenShotFile:@\"Screen0048.png\", useOCR:@\"NO\"}, {captureRect:[134, 314, 547, 331], command:@\"Click\", eventNum:50, hotSpot:[252, 448], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"10062USVistaCustomBag1335Sycam\", searchType:@\"Smooth\", waitFor:@\"\"}, OCRText:@\"(10062) US Vista Custom Bag 1335 Sycamore Avenue Vista CA 92083\", screenShotFile:@\"Screen0050.png\", useOCR:@\"NO\"}, {captureRect:[184, 424, 217, 441], command:@\"Click\", eventNum:52, hotSpot:[205, 332], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"Login\", searchType:@\"Smooth\", waitFor:@\"\"}, screenShotFile:@\"Screen0052.png\"}, {captureRect:[614, 308, 690, 333], command:@\"Click\", eventNum:54, hotSpot:[641, 447], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0006\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0054.png\"}, {captureRect:[209, 501, 279, 531], command:@\"Click\", eventNum:56, hotSpot:[244, 252], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0007\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0056.png\"}, {command:@\"TypeText\", eventNum:59, screenShotFile:@\"Screen0059.png\", text:@\"\\\"A\\\"\"}, {captureRect:[209, 501, 279, 531], command:@\"MoveTo\", eventNum:61, hotSpot:[244, 252], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0008\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0061.png\"}, {command:@\"KeyUp\", eventNum:62, screenShotFile:@\"Screen0062.png\", text:@\"\\\"a\\\"\"}, {command:@\"TypeText\", eventNum:63, screenShotFile:@\"Screen0062.png\", text:@\"\\\"j\\\",Backspace,Backspace\"}, {captureRect:[209, 501, 279, 531], command:@\"MoveTo\", eventNum:71, hotSpot:[244, 252], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0009\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0071.png\"}, {command:@\"TypeText\", eventNum:73, screenShotFile:@\"Screen0073.png\", text:@\"\\\"A\\\"\"}, {captureRect:[209, 501, 279, 531], command:@\"MoveTo\", eventNum:75, hotSpot:[244, 252], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0010\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0075.png\"}, {command:@\"KeyUp\", eventNum:76, screenShotFile:@\"Screen0076.png\", text:@\"\\\"a\\\"\"}, {command:@\"TypeText\", eventNum:77, screenShotFile:@\"Screen0076.png\", text:@\"\\\"cushnet#\\\"\"}, {captureRect:[209, 501, 279, 531], command:@\"MoveTo\", eventNum:94, hotSpot:[244, 252], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0011\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0094.png\"}, {command:@\"KeyUp\", eventNum:95, screenShotFile:@\"Screen0095.png\", text:@\"\\\"3\\\"\"}, {command:@\"TypeText\", eventNum:96, screenShotFile:@\"Screen0095.png\", text:@\"\\\"1\\\",Return\"}, {captureRect:[611, 306, 681, 336], command:@\"Click\", eventNum:100, hotSpot:[646, 447], imageName:@\"\", infoDict:{folderPath:@\"/\", imageName:@\"image0012\", searchType:@\"Tolerant\", waitFor:@\"\"}, screenShotFile:@\"Screen0100.png\"}]";
+    generatedCommands = (
+	"Click \"image0002\"",
+	"TypeText \"ajenkins\"",
+	"Click \"image0004\"",
+	"TypeText \"A\"",
+	"MoveTo \"image0003\"",
+	"KeyUp \"a\"",
+	"TypeText \"cushnet#\"",
+	"MoveTo \"image0005\"",
+	"TypeText \"1\"",
+	"Click \"LocationI500AcushnetCanada500H\"",
+	"Click \"10062USVistaCustomBag1335Sycam\"",
+	"Click \"Login\"",
+	"Click \"image0006\"",
+	"Click \"image0007\"",
+	"TypeText \"A\"",
+	"MoveTo \"image0008\"",
+	"KeyUp \"a\"",
+	"TypeText \"j\",Backspace,Backspace",
+	"MoveTo \"image0009\"",
+	"TypeText \"A\"",
+	"MoveTo \"image0010\"",
+	"KeyUp \"a\"",
+	"TypeText \"cushnet#\"",
+	"MoveTo \"image0011\"",
+	"KeyUp \"3\"",
+	"TypeText \"1\",Return",
+	"Click \"image0012\""
+    );
+    locallyAddedFiles = {
+	"" = (
+	    "image0002.png",
+	    "image0003.png",
+	    "image0002.png",
+	    "image0004.png",
+	    "image0004.png",
+	    "image0003.png",
+	    "image0005.png",
+	    "image0005.png",
+	    "LocationI500AcushnetCanada500H.png",
+	    "LocationI500AcushnetCanada500H.png",
+	    "10062USVistaCustomBag1335Sycam.png",
+	    "10062USVistaCustomBag1335Sycam.png",
+	    "Login.png",
+	    "Login.png",
+	    "image0006.png",
+	    "image0006.png",
+	    "image0007.png",
+	    "image0007.png",
+	    "image0008.png",
+	    "image0008.png",
+	    "image0009.png",
+	    "image0009.png",
+	    "image0010.png",
+	    "image0010.png",
+	    "image0011.png",
+	    "image0011.png",
+	    "image0012.png",
+	    "image0012.png"
+	);
+    };
+    sessionType = turboSession;
+    unnamedImageCount = <*I0>;
+}

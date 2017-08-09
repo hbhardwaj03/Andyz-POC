@@ -1,0 +1,9 @@
+﻿2017-08-08 08:32:27.947 -0700	START		Running Test.script
+2017-08-08 08:32:28.203 -0700	doubleclick	InforShortcut	at (40, 465)	2	on_test	Test.script
+2017-08-08 08:32:30.294 -0700	click	InforPasswordField	at (472, 447)	3	on_test	Test.script
+2017-08-08 08:32:31.184 -0700	typetext		SERVICE$08	4	on_test	Test.script
+2017-08-08 08:32:31.979 -0700	click	InforPasswordSubmitButton	at (563, 447)	5	on_test	Test.script
+2017-08-08 08:32:39.512 -0700	click	SearchField	at (688, 33)	6	on_test	Test.script
+2017-08-08 08:32:40.317 -0700	typetext		OIS300	7	on_test	Test.script
+2017-08-08 08:32:40.392 -0700	EndTestCase		(Duration:"12.435", Errors:"0", Exceptions:"0", StartTime:"2017-08-08 08:32:27 -0700", Successes:"1", TestCase:"Test.script", Warnings:"0")
+2017-08-08 08:32:40.412 -0700	SUCCESS		Execution Time 0:00:13 Test.script

@@ -1,0 +1,23 @@
+﻿2017-08-08 14:36:59.316 -0700	START		Running US-Gear-05.script
+2017-08-08 14:36:59.590 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	2	on_m3_login	M3/Login.script
+2017-08-08 14:37:02.314 -0700	click	M3/Login/InforPasswordField	at (472, 447)	3	on_m3_login	M3/Login.script
+2017-08-08 14:37:03.144 -0700	typetext		Acushnet#1	4	on_m3_login	M3/Login.script
+2017-08-08 14:37:03.942 -0700	click	M3/Login/InforPasswordSubmitButton	at (563, 447)	5	on_m3_login	M3/Login.script
+2017-08-08 14:37:10.776 -0700	click	M3/Home/SearchField	at (688, 33)	2	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:11.561 -0700	typetext		OIS300	3	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:12.346 -0700	click	SearchSubmit	at (746, 35)	4	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:16.710 -0700	click	NewOrderButton	at (200, 176)	5	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:17.529 -0700	click	CustomerNumberField	at (320, 190)	6	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:18.359 -0700	typetext		US00025065	7	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:19.071 -0700	typetext		[return]	8	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:19.876 -0700	click	NextButton	at (832, 679)	9	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:20.746 -0700	click	CustomersPOField	at (295, 389)	10	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:21.579 -0700	typetext		US-Gear-06	11	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:22.386 -0700	click	NextButton	at (832, 679)	12	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:23.181 -0700	click	OkButton	at (429, 396)	13	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:23.986 -0700	click	NextButton	at (832, 679)	14	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:24.791 -0700	click	NextButton	at (832, 679)	15	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:25.596 -0700	click	NextButton	at (832, 679)	16	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:26.401 -0700	click	NextButton	at (832, 679)	17	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 14:37:26.611 -0700	EndTestCase		(Duration:"27.287", Errors:"0", Exceptions:"0", StartTime:"2017-08-08 14:36:59 -0700", Successes:"1", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 14:37:26.643 -0700	SUCCESS		Execution Time 0:00:27 US-Gear-05.script

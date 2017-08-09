@@ -1,0 +1,56 @@
+﻿//Requires M3/Login
+to openOIS300
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "OIS300"
+	Click "M3/Home/SearchSubmit"
+end openOIS300
+
+to startNewOrder
+	Click (Image:"M3/OIS300/NewOrderButton", WaitFor:10)
+end startNewOrder
+
+to enterCustomerNumber
+	Click "M3/OIS300/CustomerNumberField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText US00025065
+	TypeText Return
+end enterCustomerNumber
+
+to submitOIS100A
+	Click "M3/OIS300/NextButton"
+end submitOIS100A
+
+to enterCustomersPO PO
+	Click "M3/OIS300/CustomersPOField"
+	TypeText PO
+end enterCustomersPO
+
+to submitOIS100G
+	Click "M3/OIS300/NextButton"
+end submitOIS100G
+
+to acceptPOWarning
+	Click "M3/OIS300/OkButton"
+end acceptPOWarning
+
+to submitOIS100F
+	WaitFor 8.0, "M3/OIS300/OIS100FTitle"
+	Click "M3/OIS300/NextButton"
+end submitOIS100F
+
+to submitOIS100H
+	WaitFor 8.0, "M3/OIS300/OIS100HTitle"
+	Click "M3/OIS300/NextButton"
+end submitOIS100H
+
+to submitOIS100E
+	WaitFor 8.0, "M3/OIS300/OIS100ETitle"
+	Click "M3/OIS300/NextButton"
+end submitOIS100E
+
+to submitOIS102H
+	WaitFor 8.0, "M3/OIS300/OIS102HTitle"
+	Click "M3/OIS300/NextButton"
+end submitOIS102H
+

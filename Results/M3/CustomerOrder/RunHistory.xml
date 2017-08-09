@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<runHistory script="M3/CustomerOrder">
+ <run>
+  <RunDate>2017-08-08 13:35:29.113 -0700</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors></Errors>
+  <Warnings></Warnings>
+  <Exceptions></Exceptions>
+  <Successes></Successes>
+  <LogFile>20170808_133529.113/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-08-08 13:37:02.190 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>8.628000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170808_133702.190/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+</runHistory>

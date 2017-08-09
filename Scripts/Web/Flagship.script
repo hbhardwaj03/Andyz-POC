@@ -1,0 +1,10 @@
+﻿//Flagship login
+Click "IELink"
+Click (Image:"FlagshipLink", WaitFor:68)
+DoubleClick "UserNameField"
+TypeText "QUALTEST1"
+Click "PasswordField"
+TypeText "QUALTEST1"
+Click "LogInButton"
+Click "ShipLink"
+Click "WarehouseLink"

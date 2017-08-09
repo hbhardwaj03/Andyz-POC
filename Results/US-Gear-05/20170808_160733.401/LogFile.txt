@@ -1,0 +1,35 @@
+﻿2017-08-08 16:07:33.403 -0700	START		Running US-Gear-05.script
+2017-08-08 16:07:33.704 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	2	on_openapplication	M3/Login.script
+2017-08-08 16:07:33.716 -0700	Log		Logging in as ajenkins	2	on_login	M3/Login.script
+2017-08-08 16:07:36.465 -0700	waitfor	M3/Login/InforPasswordSubmitButton	found at (563, 447)	3	on_login	M3/Login.script
+2017-08-08 16:07:36.580 -0700	click	M3/Login/UsernameField	at (301, 445)	4	on_login	M3/Login.script
+2017-08-08 16:07:37.303 -0700	typetext		[controlKey]a	5	on_login	M3/Login.script
+2017-08-08 16:07:38.015 -0700	typetext		[deleteKey]	6	on_login	M3/Login.script
+2017-08-08 16:07:38.816 -0700	typetext		ajenkins	7	on_login	M3/Login.script
+2017-08-08 16:07:39.606 -0700	click	M3/Login/PasswordField	at (441, 445)	8	on_login	M3/Login.script
+2017-08-08 16:07:40.436 -0700	typetext		Acushnet#1	9	on_login	M3/Login.script
+2017-08-08 16:07:41.233 -0700	click	M3/Login/InforPasswordSubmitButton	at (563, 447)	10	on_login	M3/Login.script
+2017-08-08 16:07:47.392 -0700	click	M3/Home/SearchField	at (688, 33)	2	on_openois300	M3/CustomerOrder.script
+2017-08-08 16:07:48.175 -0700	typetext		OIS300	3	on_openois300	M3/CustomerOrder.script
+2017-08-08 16:07:48.960 -0700	click	SearchSubmit	at (746, 35)	4	on_openois300	M3/CustomerOrder.script
+2017-08-08 16:07:51.602 -0700	click	NewOrderButton	at (200, 176)	2	on_startneworder	M3/CustomerOrder.script
+2017-08-08 16:07:52.420 -0700	click	CustomerNumberField	at (320, 190)	2	on_entercustomernumber	M3/CustomerOrder.script
+2017-08-08 16:07:53.142 -0700	typetext		[controlKey]a	3	on_entercustomernumber	M3/CustomerOrder.script
+2017-08-08 16:07:53.855 -0700	typetext		[deleteKey]	4	on_entercustomernumber	M3/CustomerOrder.script
+2017-08-08 16:07:54.685 -0700	typetext		US00025065	5	on_entercustomernumber	M3/CustomerOrder.script
+2017-08-08 16:07:55.397 -0700	typetext		[return]	6	on_entercustomernumber	M3/CustomerOrder.script
+2017-08-08 16:07:56.203 -0700	click	NextButton	at (832, 679)	2	on_submitois100a	M3/CustomerOrder.script
+2017-08-08 16:07:57.070 -0700	click	CustomersPOField	at (295, 389)	2	on_entercustomerspo	M3/CustomerOrder.script
+2017-08-08 16:07:57.903 -0700	typetext		US-Gear-06	3	on_entercustomerspo	M3/CustomerOrder.script
+2017-08-08 16:07:58.710 -0700	click	NextButton	at (832, 679)	2	on_submitois100g	M3/CustomerOrder.script
+2017-08-08 16:07:59.503 -0700	click	OkButton	at (329, 296)	2	on_acceptpowarning	M3/CustomerOrder.script
+2017-08-08 16:08:00.308 -0700	click	NextButton	at (832, 679)	2	on_submitois100f	M3/CustomerOrder.script
+2017-08-08 16:08:01.114 -0700	click	NextButton	at (832, 679)	2	on_submitois100h	M3/CustomerOrder.script
+2017-08-08 16:08:01.919 -0700	click	NextButton	at (832, 679)	2	on_submitois100e	M3/CustomerOrder.script
+2017-08-08 16:08:02.728 -0700	click	NextButton	at (832, 679)	2	on_submitois102h	M3/CustomerOrder.script
+2017-08-08 16:08:05.102 -0700	click	ItemField	at (252, 633)	2	on_enteritemcode	M3/ItemOrderLine.script
+2017-08-08 16:08:05.917 -0700	typetext		TB7SX6CC	3	on_enteritemcode	M3/ItemOrderLine.script
+2017-08-08 16:08:06.762 -0700	click	ItemField	at (252, 633)	2	on_submititemcode	M3/ItemOrderLine.script
+2017-08-08 16:08:06.774 -0700	Exception		Could Not Open Image: 	3	on_submititemcode	M3/ItemOrderLine.script
+2017-08-08 16:08:12.475 -0700	EndTestCase		(Duration:"39.062", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 16:07:33 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 16:08:12.623 -0700	FAILURE	Screen_Error.png	File Not Found click Error - Could Not Open Image:  -- Execution Time 0:00:39 US-Gear-05.script

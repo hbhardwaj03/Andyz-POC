@@ -1,0 +1,16 @@
+﻿//KPack Login
+Click "KPack/Login/IELink"
+Click (Image:"KPack/Login/KPackLink", WaitFor:74)
+Click "KPack/Login/LocationDropdown"
+Click "KPack/Login/LocationDropdownVista"
+
+// Enter username and password
+Click "KPack/Login/UserField"
+TypeText "ajenkins"
+Click "KPack/Login/PasswordField"
+TypeText "Acushnet#1"
+
+// Click submit
+Click "KPack/Login/LoginButton"
+
+

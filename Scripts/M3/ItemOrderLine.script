@@ -1,0 +1,41 @@
+﻿to enterItemCode ItemCode
+	Click "M3/OIS101/ItemField"
+	TypeText itemCode
+	(*Click "ItemField"*)
+	TypeText Return
+end enterItemCode
+
+to enterItemColor
+	Click "M3/OIS101/ItemColorField"
+	TypeText "1"
+	Click "M3/OIS101/ConfiqStyleButton"
+end enterItemColor
+
+to configuratorA
+	Click "M3/OIS101/NumApplicationsButton"
+	Click "M3/OIS101/LocationButton"
+	Click "M3/OIS101/PersonalizationButton"
+	Click "M3/OIS101/PersonalizationTextButton"
+	TypeText Return
+	Click "M3/OIS101/PersonalizationField"
+	TypeText "My Automated Personalization"
+	Click "M3/OIS101/PersonalizationNextButton"
+	Click "M3/OIS101/LetteringButton"
+	Click "M3/OIS101/ColorButton"
+	Click "M3/OIS101/OrderNotesButton"
+	Click "M3/OIS101/DoubleStrapButton"
+end configuratorA
+
+to closeFromOrderLines
+	//Close OIS101B1
+	WaitFor 60, "M3/OIS101/OIS101B1Title"
+	Click "M3/OIS101/XCloseButton"
+	//Close OIS110E
+	WaitFor 8.0, "M3/OIS101/OIS110ETitle"
+	Click "M3/OIS101/XCloseButton"
+	//Close OIS100A
+	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	Click "M3/OIS101/XCloseButton"
+	WaitFor 8.0, "M3/OIS101/OIS300BTitle"
+	Click "M3/OIS101/XCloseButton"
+end closeFromOrderLines

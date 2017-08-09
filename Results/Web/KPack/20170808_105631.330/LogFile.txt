@@ -1,0 +1,4 @@
+﻿2017-08-08 10:56:31.334 -0700	START		Running Web/KPack.script
+2017-08-08 10:56:31.400 -0700	Exception	IELink	Could Not Open Image: IELink	1	on_web_kpack	Web/KPack.script
+2017-08-08 10:56:31.555 -0700	EndTestCase		(Duration:"0.216", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 10:56:31 -0700", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
+2017-08-08 10:56:31.804 -0700	FAILURE	Screen_Error.png	File Not Found click Error - Could Not Open Image: IELink -- Execution Time 0:00:00 Web/KPack.script

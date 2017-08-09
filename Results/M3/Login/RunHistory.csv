@@ -1,0 +1,17 @@
+﻿Date Run,Status,Time,# of Errors,# of Warnings,# of Exceptions,Log File,Return Value,Error Message,# of Successes
+2017-08-08 08:22:23.366 -0700,"Success",0:00:00,0,0,0,"20170808_082223.366/LogFile.txt","","",1
+2017-08-08 08:22:40.066 -0700,"Success",0:00:00,0,0,0,"20170808_082240.066/LogFile.txt","","",1
+2017-08-08 08:27:41.851 -0700,"Failure",0:00:00,1,0,0,"20170808_082741.851/LogFile.txt","","SenseTalk Compiler Exception -- in test:\nSyntax Error at line 4: Syntax Error - can't understand ""8"" at or near character 138",0
+2017-08-08 08:28:00.164 -0700,"Failure",0:00:40,1,0,1,"20170808_082800.164/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""InforShortcut""",0
+2017-08-08 08:28:50.934 -0700,"Failure",0:00:29,1,0,1,"20170808_082850.934/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""InforShortcut""",0
+2017-08-08 08:29:32.161 -0700,"Success",0:00:03,0,0,0,"20170808_082932.161/LogFile.txt","","",1
+2017-08-08 08:30:07.024 -0700,"Success",0:00:03,0,0,0,"20170808_083007.024/LogFile.txt","","",1
+2017-08-08 08:32:27.942 -0700,"Success",0:00:12,0,0,0,"20170808_083227.942/LogFile.txt","","",1
+2017-08-08 08:38:42.041 -0700,"Running",0:00:00,0,0,0,"20170808_083842.041/LogFile.txt","","",0
+2017-08-08 08:39:21.706 -0700,"Failure",0:00:00,1,0,1,"20170808_083921.706/LogFile.txt","","File Not Found -- click Error - Could Not Open Image: InforPasswordField",0
+2017-08-08 08:40:16.521 -0700,"Success",0:00:11,0,0,0,"20170808_084016.521/LogFile.txt","","",1
+2017-08-08 09:27:48.200 -0700,"Success",0:00:04,0,0,0,"20170808_092748.200/LogFile.txt","","",1
+2017-08-08 14:58:12.459 -0700,"Success",0:00:00,0,0,0,"20170808_145812.459/LogFile.txt","","",1
+2017-08-08 15:03:57.558 -0700,"Success",0:00:00,0,0,0,"20170808_150357.558/LogFile.txt","","",1
+2017-08-08 15:34:51.946 -0700,"Success",0:00:00,0,0,0,"20170808_153451.946/LogFile.txt","","",1
+2017-08-08 15:34:52.900 -0700,"Success",0:00:00,0,0,0,"20170808_153452.900/LogFile.txt","","",1

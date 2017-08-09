@@ -1,0 +1,15 @@
+﻿2017-08-08 15:29:00.150 -0700	START		Running US-Gear-05.script
+2017-08-08 15:29:00.277 -0700	Log		Logging in as ajenkins	2	on_login	M3/Login.script
+2017-08-08 15:29:08.182 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	3	on_login	M3/Login.script
+2017-08-08 15:29:13.237 -0700	click	M3/Login/UsernameField	at (301, 445)	4	on_login	M3/Login.script
+2017-08-08 15:29:14.168 -0700	typetext		[controlKey]a	5	on_login	M3/Login.script
+2017-08-08 15:29:16.591 -0700	typetext		[deleteKey]	6	on_login	M3/Login.script
+2017-08-08 15:29:18.813 -0700	typetext		ajenkins	7	on_login	M3/Login.script
+2017-08-08 15:29:20.401 -0700	click	M3/Login/PasswordField	at (441, 445)	8	on_login	M3/Login.script
+2017-08-08 15:29:25.610 -0700	typetext		Acushnet#1	9	on_login	M3/Login.script
+2017-08-08 15:29:28.500 -0700	click	M3/Login/InforPasswordSubmitButton	at (563, 447)	10	on_login	M3/Login.script
+2017-08-08 15:29:51.082 -0700	click	M3/Home/SearchField	at (688, 33)	2	on_openois300	M3/CustomerOrder.script
+2017-08-08 15:29:51.912 -0700	typetext		OIS300	3	on_openois300	M3/CustomerOrder.script
+2017-08-08 15:29:53.181 -0700	click	SearchSubmit	at (746, 35)	4	on_openois300	M3/CustomerOrder.script
+2017-08-08 15:30:32.689 -0700	EndTestCase		(Duration:"92.534", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 15:29:00 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 15:30:32.691 -0700	ABORTED		Execution Time 0:01:32 US-Gear-05.script

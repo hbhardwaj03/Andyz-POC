@@ -1,0 +1,9 @@
+﻿to open
+	DoubleClick "M3/Application/InforShortcut"
+end open
+
+to close
+	WaitFor 8.0, "M3/Application/inforSmartOfficeTitle"
+	Click "M3/Application/ExitAGSButton"
+	Click "M3/Application/ExitConfirmationButton"
+end close

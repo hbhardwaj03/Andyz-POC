@@ -1,0 +1,9 @@
+﻿2017-08-08 13:28:29.355 -0700	START		Running US-Gear-05.script
+2017-08-08 13:28:29.692 -0700	doubleclick	M3/Login/InforShortcut	at (39, 464)	2	on_m3_login	M3/Login.script
+2017-08-08 13:28:32.087 -0700	click	M3/Login/InforPasswordField	at (472, 447)	3	on_m3_login	M3/Login.script
+2017-08-08 13:28:32.899 -0700	typetext		Acushnet#1	4	on_m3_login	M3/Login.script
+2017-08-08 13:28:33.696 -0700	click	M3/Login/InforPasswordSubmitButton	at (563, 447)	5	on_m3_login	M3/Login.script
+2017-08-08 13:28:41.446 -0700	click	M3/Home/SearchField	at (688, 33)	2	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 13:28:42.214 -0700	typetext		OIS300	3	on_m3_customerorder	M3/CustomerOrder.script
+2017-08-08 13:28:42.398 -0700	EndTestCase		(Duration:"13.039", Errors:"0", Exceptions:"0", StartTime:"2017-08-08 13:28:29 -0700", Successes:"1", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 13:28:42.431 -0700	SUCCESS		Execution Time 0:00:13 US-Gear-05.script

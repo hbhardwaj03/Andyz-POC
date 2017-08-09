@@ -1,0 +1,4 @@
+﻿2017-08-08 20:06:05.134 -0700	START		Running US-Gear-05.script
+2017-08-08 20:06:12.520 -0700	Exception	M3/Login/InforShortcut	No Image Found On Screen: "M3/Login/InforShortcut"	2	on_openapplication	M3/Login.script
+2017-08-08 20:06:12.762 -0700	EndTestCase		(Duration:"7.618", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 20:06:05 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
+2017-08-08 20:06:12.762 -0700	ABORTED		Execution Time 0:00:07 US-Gear-05.script

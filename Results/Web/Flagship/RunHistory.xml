@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<runHistory script="Web/Flagship">
+ <run>
+  <RunDate>2017-08-08 11:26:55.950 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>5.993000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170808_112655.950/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+< <run>
+  <RunDate>2017-08-08 11:27:31.310 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>5.994000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170808_112731.310/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+< <run>
+  <RunDate>2017-08-08 11:28:33.168 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>6.022000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170808_112833.168/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+</runHistory>

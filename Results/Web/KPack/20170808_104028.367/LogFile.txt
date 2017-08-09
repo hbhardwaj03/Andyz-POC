@@ -1,0 +1,4 @@
+﻿2017-08-08 10:40:28.372 -0700	START		Running Web/KPack.script
+2017-08-08 10:40:28.458 -0700	Exception	image0001	Could Not Open Image: image0001	1	on_web_kpack	Web/KPack.script
+2017-08-08 10:40:28.592 -0700	EndTestCase		(Duration:"0.215", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 10:40:28 -0700", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
+2017-08-08 10:40:28.864 -0700	FAILURE	Screen_Error.png	File Not Found click Error - Could Not Open Image: image0001 -- Execution Time 0:00:00 Web/KPack.script

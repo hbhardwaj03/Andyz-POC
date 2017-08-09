@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<testsuites>
+ <testsuite name="M3/Login.script" package="Eggplant-test.suite" timestamp="2017-08-08 15:34:52.900 -0700"
+ tests="1" successes="1" errors="0" time="0.010000">
+  <properties>
+   <property name="RunDate" value="2017-08-08 15:34:52.900 -0700"/>
+   <property name="Status" value="Success"/>
+  </properties>
+  <testcase name="M3/Login.script" assertions="1" successes="1" errors="0" time="0.002">
+  </testcase>
+ </testsuite>
+</testsuites>
