@@ -519,14 +519,14 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 09:34:56.435 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170809_093456.435/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -534,7 +534,7 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  <run>
   <RunDate>2017-08-09 09:39:37.185 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>83.720000</Duration>
+  <Duration>83.000000</Duration>
   <Errors>0</Errors>
   <Warnings>1</Warnings>
   <Exceptions>0</Exceptions>
@@ -543,14 +543,14 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 10:33:14.987 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170809_103314.987/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -559,10 +559,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-09 10:35:52.818 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170809_103552.818/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -570,7 +570,7 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  <run>
   <RunDate>2017-08-09 10:37:20.270 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>586.127000</Duration>
+  <Duration>586.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -579,10 +579,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 10:47:23.095 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>67.559000</Duration>
+  <Duration>67.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -591,10 +591,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 10:51:59.281 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>63.133000</Duration>
+  <Duration>63.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -603,10 +603,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 11:35:52.708 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>63.504000</Duration>
+  <Duration>63.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>

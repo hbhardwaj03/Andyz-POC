@@ -3,7 +3,7 @@
  <run>
   <RunDate>2017-08-08 11:26:55.950 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>5.993000</Duration>
+  <Duration>5.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -12,10 +12,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 11:27:31.310 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>5.994000</Duration>
+  <Duration>5.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -24,10 +24,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 11:28:33.168 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>6.022000</Duration>
+  <Duration>6.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
