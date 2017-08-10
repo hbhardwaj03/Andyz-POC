@@ -38,15 +38,28 @@ Log "Do scheduling"
 "M3/PMS100".open
 "M3/PMS100".lookupSchedule "10108092017"
 "M3/PMS100".pick
+"M3/PMS100".close
+
+Log "Exit AGS"
+"M3/Application".close
 
 Log "Do manufacturing"
 DCA.open
 DCA.manufacture manufacturingOrder
 DCA.close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusPacked
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
 
 
-
-Log "Exit AGS"
-"M3/Application".close
 
 
