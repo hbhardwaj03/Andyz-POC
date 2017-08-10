@@ -1,0 +1,6 @@
+﻿2017-08-09 17:33:48.717 -0700	START		Running Validation.script
+2017-08-09 17:33:48.770 -0700	Log		Order No	11	on_validation	Validation.script
+2017-08-09 17:33:48.781 -0700	Log		Customer PO	11	on_validation	Validation.script
+2017-08-09 17:33:48.788 -0700	Log		Invoice No	11	on_validation	Validation.script
+2017-08-09 17:33:48.841 -0700	EndTestCase		(Duration:"0.111", Errors:"0", Exceptions:"0", StartTime:"2017-08-09 17:33:48 -0700", Successes:"1", TestCase:"Validation.script", Warnings:"0")
+2017-08-09 17:33:48.916 -0700	SUCCESS		Execution Time 0:00:00 Validation.script

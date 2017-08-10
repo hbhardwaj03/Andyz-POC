@@ -1,0 +1,22 @@
+﻿###Sets the Resource Path to the Validation excel file located in the Suite folder
+set caseBook to Workbook(ResourcePath("Validation.xlsx"))
+
+###Identifies that we will be using Sheet 1 of the excel file
+set worksheet1 to caseBook.Worksheet("Sheet1")
+
+put Cell(worksheet1, "A1") into cellValue1
+put Cell(worksheet1, "B1") into cellValue2
+put Cell(worksheet1, "C1") into cellValue3
+put the date  into Cell(worksheet1, (1,4))
+
+log (cellValue1, cellValue2, cellValue3)
+
+add 1 to worksheet1's Cell("A2")
+add 2 to worksheet1's Cell("B2")
+add 5 to worksheet1's Cell("C2")
+
+
+put worksheet1.CellRange("A2", "C2") into results
+log results
+
+

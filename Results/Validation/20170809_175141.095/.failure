@@ -1,0 +1,1 @@
+2017-08-09 17:51:41.095 -0700,Failure,0:00:00,1,0,0,20170809_175141.095/LogFile.txt,"","SenseTalk Runtime Exception -- Invalid operands for addition: expected numbers, dates and/or lists; got 'cat' and ''",0
