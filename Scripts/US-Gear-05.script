@@ -9,26 +9,44 @@ Log "Logging in"
 "M3/Login".login "ajenkins", "Acushnet#1"
 
 Log "Enter new order"
-"M3/CustomerOrder".openOIS300
-"M3/CustomerOrder".startNewOrder
-"M3/CustomerOrder".enterCustomerNumber
-"M3/CustomerOrder".submitOIS100A
-"M3/CustomerOrder".enterCustomersPO "US-Gear-06"
-"M3/CustomerOrder".submitOIS100G
-"M3/CustomerOrder".acceptPOWarning
-"M3/CustomerOrder".submitOIS100F
-"M3/CustomerOrder".submitOIS100H
-"M3/CustomerOrder".submitOIS100E
-"M3/CustomerOrder".submitOIS102H
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+"M3/OIS300".enterCustomerNumber
+"M3/OIS300".submitOIS100A
+"M3/OIS300".enterCustomersPO "US-Gear-06"
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E
+"M3/OIS300".submitOIS102H
 
 Log "Enter order line"
-"M3/ItemOrderLine".enterItemCode "TB7SX6CC"
-"M3/ItemOrderLine".enterItemColor
-"M3/ItemOrderLine".configuratorA
+put "M3/OIS101".recordCONumber() into coNumber
+Log coNumber
+"M3/OIS101".enterItemCode("TB7SX6CC")
+"M3/OIS101".enterItemColor
+"M3/OIS101".configuratorA
+"M3/OIS101".closeFromOrderLines
 
-Log "Record validation data - not yet implemented"
+Log "Do scheduling"
+"M3/PMS170".open
+"M3/PMS170".lookUp(coNumber)
+"M3/PMS170".scheduleNew "10108102017"
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/PMS100".open
+"M3/PMS100".lookupSchedule "10108092017"
+"M3/PMS100".pick
+
+Log "Do manufacturing"
+DCA.open
+DCA.manufacture manufacturingOrder
+DCA.close
+
+
+
 Log "Exit AGS"
-"M3/ItemOrderLine".closeFromOrderLines
 "M3/Application".close
 
 
