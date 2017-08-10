@@ -55,3 +55,44 @@ to submitOIS102H
 	Click "M3/OIS300/NextButton"
 end submitOIS102H
 
+to lookupCO coNumber
+	TypeText "3013690225"
+	TypeText Return
+end lookupCO
+
+to openDeliveryToolbox
+	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/DeliveryToolboxLink"
+end openDeliveryToolbox
+
+to confirmStatusPacked
+	assert "M3/OIS300".checkPackingStatus is SUCCESS, "Packing status update in delivery toolbox"
+end confirmStatusPacked
+
+function checkPackingStatus
+	repeat 2 minutes
+		if imageFound(3,"M3/OIS300/PackingStatusPacked") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkPackingStatus
+
+to closeFromDeliveryToolbox
+	Click "M3/OIS300/CloseButton"
+	Click "M3/OIS300/CloseButton"
+end closeFromDeliveryToolbox
+
+to recordDeliveryNumber
+	set deliveryNumber to ReadText((imageLocation("M3/OIS300/DeliveryNumberA"), imageLocation("M3/OIS300/DeliveryNumberB")))
+	Log deliveryNumber
+	return deliveryNumber
+end recordDeliveryNumber
+
+to recordOrderData
+	set orderDate to ReadText((imageLocation("M3/OIS300/OrderDateA"), imageLocation("M3/OIS300/DeliveryNumberB")))
+	Log orderDate
+end recordOrderData

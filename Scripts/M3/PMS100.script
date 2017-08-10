@@ -1,15 +1,76 @@
 ﻿to open
-
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "PMS100"
+	Click "M3/Home/SearchSubmit"
 end open
 
 to lookupSchedule scheduleNumber
-
+	Click "M3/PMS100/FacilityField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	TypeText Return
+	(*	Click "ViewDropdown"
+	repeat 8 times
+		TypeText upArrow
+	end repeat
+	Click "View04002"*)
+	TypeText "10108102017"
+	TypeText Return
+	Click (Image:"M3/PMS100/COMOOrderLine", WaitFor:3.3)	
+	(*Click (Image:"CloseButton", WaitFor:344)*)	
 end lookupSchedule
 
 to pick
-
+	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
+	Click "M3/PMS100/DeliveryToolboxLink"
+	set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
+	Click "M3/PMS100/ReleaseforPickLink"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status failed to update in delivery toolbox"
+	Click "M3/PMS100/50PickingListsCreated"
+	Click "M3/PMS100/PickingListsLink"
+	RightClick "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/RelatedOptionsLink"
+	Click "M3/PMS100/ConfirmIssuesLink"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status failed to update in picking lists"
 end pick
 
-to close
+function checkPickingStatusImage
+	repeat 2 minutes
+		if imageFound(3,"M3/PMS100/PickingStatus90") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkPickingStatusImage
 
+function checkPickingListsImage
+	repeat 2 minutes
+		if imageFound(3,"M3/PMS100/50PickingListsCreated") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkPickingListsImage
+
+to recordMO
+	Click "M3/PMS100/SupplyChainLink"
+	WaitFor 8.0, "M3/PMS100/MWS150B1Title"
+	set moNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
+	Log moNumber
+	Click "M3/PMS100/BackButton"
+	return moNumber
+end recordMO
+
+to close
+	Click "M3/PMS100/CloseButton"
+	Click "M3/PMS100/CloseButton"
+	Click "M3/PMS100/CloseButton"
 end close

@@ -43,3 +43,5 @@
 2017-08-09 17:51:41.095 -0700,"Failure",0:00:00,1,0,0,"20170809_175141.095/LogFile.txt","","SenseTalk Runtime Exception -- Invalid operands for addition: expected numbers, dates and/or lists; got 'cat' and ''",0
 2017-08-09 17:51:46.773 -0700,"Success",0:00:00,0,0,0,"20170809_175146.773/LogFile.txt","","",1
 2017-08-09 17:51:50.779 -0700,"Success",0:00:00,0,0,0,"20170809_175150.779/LogFile.txt","","",1
+2017-08-10 09:11:48.038 -0700,"Success",0:00:00,0,0,0,"20170810_091148.038/LogFile.txt","","",1
+2017-08-10 09:12:10.909 -0700,"Success",0:00:00,0,0,0,"20170810_091210.909/LogFile.txt","","",1

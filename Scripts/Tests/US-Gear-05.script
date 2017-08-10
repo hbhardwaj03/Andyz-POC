@@ -27,6 +27,7 @@ Log coNumber
 "M3/OIS101".enterItemCode("TB7SX6CC")
 "M3/OIS101".enterItemColor
 "M3/OIS101".configuratorA
+"M3/OIS101"
 "M3/OIS101".closeFromOrderLines
 
 Log "Do scheduling"
@@ -37,6 +38,7 @@ Log "Do scheduling"
 "M3/PMS170".close
 "M3/PMS100".open
 "M3/PMS100".lookupSchedule "10108092017"
+put "M3/PMS100".recordMO() into moNumber
 "M3/PMS100".pick
 "M3/PMS100".close
 
@@ -45,21 +47,44 @@ Log "Exit AGS"
 
 Log "Do manufacturing"
 DCA.open
-DCA.manufacture manufacturingOrder
+DCA.manufacture moNumber
 DCA.close
 "M3/Application".open
 "M3/Login".login "ajenkins", "Acushnet#1"
 "M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
 "M3/OIS300".openDeliveryToolbox
+put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 "M3/OIS300".confirmStatusPacked
 "M3/OIS300".closeFromDeliveryToolbox
 
-Log "Shipping with Flagship"
+Log "Exit AGS"
+"M3/Application".close
+
+Log "Shipping with Flagship - Not Yet Implemented"
 "Web/Flagship".open
 "Web/Flagship".login
 "Web/Flagship".ship deliveryNumber
 "Web/Flagship".close
 
+Log "Recording validation data"
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".recordOrderData
+"M3/OIS300".recordInvoiceData
+"M3/OIS300".recordDeliveryToolboxData
+"M3/OIS300".recordOrderLineData
+"M3/OIS300".recordSupplyChainData
+"M3/OIS300".closeFromOIS300
+"M3/Application".close
 
+Log "Validating Invoice with MetaViewer"
+MetaViewer.open
+MetaViewer.login
+MetaViewer.lookup "some invoice number"
+MetaViewer.validateInvoice
+MetaViewer.close
 
 

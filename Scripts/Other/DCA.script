@@ -1,0 +1,31 @@
+﻿to open
+	WaitFor 20, "WindowsDesktopImage"
+	Click (Image:"DCAIcon", WaitFor:3.2)
+end open
+
+to login
+	TypeText "ajenkins"
+	TypeText Return
+	TypeText "Acushnet#1"
+	TypeText Return
+end login
+
+to manufacture moNumber
+	TypeText 1
+	TypeText Return
+	TypeText  1000003542 (*moNumber*)
+	TypeText Return
+	WaitFor 11.1, "TransactionComplete"
+	TypeText f1
+	TypeText 2
+	TypeText Return
+	TypeText  1000003542 (*moNumber*)
+	TypeText Return
+	WaitFor 10, "TransactionComplete"
+end manufacture
+
+to close
+	RightClick "DCAScreen"
+	Click "DCAExitLink"
+	WaitFor 20, "WindowsDesktopImage"
+end close

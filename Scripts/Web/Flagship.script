@@ -1,10 +1,10 @@
 ﻿//Flagship login
-Click "IELink"
-Click (Image:"FlagshipLink", WaitFor:68)
-DoubleClick "UserNameField"
+Click "Flagship/Login/IELink"
+Click (Image:"Flagship/Login/FlagshipLink", WaitFor:68)
+DoubleClick "Flagship/Login/UserNameField"
 TypeText "QUALTEST1"
-Click "PasswordField"
+Click "Flagship/Login/PasswordField"
 TypeText "QUALTEST1"
-Click "LogInButton"
-Click "ShipLink"
-Click "WarehouseLink"
+Click "Flagship/Login/LogInButton"
+Click "Flagship/Login/ShipLink"
+Click "Flagship/Login/WarehouseLink"

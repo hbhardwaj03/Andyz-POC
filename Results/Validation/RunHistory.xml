@@ -145,10 +145,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:26:30.012 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.156000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -157,10 +157,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:29:37.061 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.086000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -169,10 +169,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:29:45.912 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.090000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -181,10 +181,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:29:57.771 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.081000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -193,10 +193,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:30:44.066 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.108000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -205,10 +205,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:30:52.424 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.080000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -217,10 +217,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>Worksheet Error -- Cell() requires a worksheet to read from (got: (null))</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:33:48.714 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.125000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -229,10 +229,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:35:06.192 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.282000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -241,10 +241,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>STInvalidParameters -- Function cell was called with invalid parameters</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:35:19.809 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.213000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -253,10 +253,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>STInvalidParameters -- Function cell was called with invalid parameters</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:42:22.309 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.156000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -265,10 +265,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:42:41.457 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.106000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -277,10 +277,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>WorkbookWriteError -- Error (Permission denied.) saving workbook to file C:/Users/X1/Documents/Acushnet/eggplant-poc.suite/Resources/Validation.xlsx</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:42:50.957 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.112000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -289,10 +289,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>WorkbookWriteError -- Error (Permission denied.) saving workbook to file C:/Users/X1/Documents/Acushnet/eggplant-poc.suite/Resources/Validation.xlsx</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:43:02.308 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.106000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -301,10 +301,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>WorkbookWriteError -- Error (Permission denied.) saving workbook to file C:/Users/X1/Documents/Acushnet/eggplant-poc.suite/Resources/Validation.xlsx</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:43:13.090 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.134000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -313,10 +313,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:43:16.757 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.132000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -325,10 +325,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:45:07.497 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.148000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -337,10 +337,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>STInvalidParameters -- Function cellrange should be called with no more than 3 parameters</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:45:25.919 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.139000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -349,10 +349,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:45:36.350 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.152000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -361,10 +361,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:45:58.938 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.128000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -373,10 +373,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:46:38.869 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.111000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -385,10 +385,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>SenseTalk Runtime Exception -- Invalid operands for addition: expected numbers, dates and/or lists; got &#x27;cat&#x27; and &#x27;&#x27;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:46:53.223 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.141000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -397,10 +397,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:48:03.906 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.100000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -409,10 +409,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>STUnknownMessage -- ERROR: No Such Function: &#x27;worksheet1&#x27;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:48:29.951 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.086000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -421,10 +421,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>STUnknownMessage -- ERROR: No Such Function: &#x27;worksheet1&#x27;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:48:47.171 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.150000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -433,10 +433,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:49:04.595 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.141000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -445,10 +445,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:49:22.371 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.158000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -457,10 +457,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:49:34.246 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.156000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -469,10 +469,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:51:21.636 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.090000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -481,10 +481,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>Worksheet Error -- Cell() requires a worksheet to read from (got: (null))</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:51:31.064 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.082000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -493,10 +493,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>Worksheet Error -- Cell() requires a worksheet to read from (got: (null))</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:51:41.095 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.109000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -505,10 +505,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage>SenseTalk Runtime Exception -- Invalid operands for addition: expected numbers, dates and/or lists; got &#x27;cat&#x27; and &#x27;&#x27;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:51:46.773 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.147000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -517,15 +517,39 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-09 17:51:50.779 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.135000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>1</Successes>
   <LogFile>20170809_175150.779/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+< <run>
+  <RunDate>2017-08-10 09:11:48.038 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>0.412000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170810_091148.038/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+< <run>
+  <RunDate>2017-08-10 09:12:10.909 -0700</RunDate>
+  <Status>Success</Status>
+  <Duration>0.247000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170810_091210.909/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>

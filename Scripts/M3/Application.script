@@ -3,7 +3,7 @@
 end open
 
 to close
-	WaitFor 8.0, "M3/Application/inforSmartOfficeTitle"
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
 	Click "M3/Application/ExitAGSButton"
 	Click "M3/Application/ExitConfirmationButton"
 end close
