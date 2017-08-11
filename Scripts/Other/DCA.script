@@ -10,18 +10,53 @@ to login
 end login
 
 to manufacture moNumber
+TypeText f1
 	TypeText 1
 	TypeText Return
 	TypeText moNumber
 	TypeText Return
-	WaitFor 11.1, "DCA/TransactionComplete"
+	(*WaitFor 11.1, "DCA/TransactionComplete"*)
+	assert "Other/DCA".checkTransactionStatusA is SUCCESS, "MO start in DCA"
 	TypeText f1
 	TypeText 2
 	TypeText Return
 	TypeText moNumber
 	TypeText Return
-	WaitFor 10, "DCA/TransactionComplete"
+	(*WaitFor 10, "DCA/TransactionComplete"*)
+	assert "Other/DCA".checkTransactionStatusB is SUCCESS, "MO finish in DCA"
 end manufacture
+
+function checkTransactionStatusA
+	repeat 3 minutes
+		if imageFound(10,"DCA/TransactionComplete") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		TypeText f1
+		TypeText 1
+		TypeText Return
+		TypeText moNumber
+		TypeText Return
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkTransactionStatusA
+
+function checkTransactionStatusB
+	repeat 3 minutes
+		if imageFound(10,"DCA/TransactionComplete") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		TypeText f1
+		TypeText 2
+		TypeText Return
+		TypeText moNumber
+		TypeText Return
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkTransactionStatusB
 
 to close
 	RightClick "DCA/DCAScreen"
