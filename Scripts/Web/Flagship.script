@@ -1,10 +1,37 @@
 ﻿//Flagship login
-Click "Flagship/Login/IELink"
-Click (Image:"Flagship/Login/FlagshipLink", WaitFor:68)
-DoubleClick "Flagship/Login/UserNameField"
-TypeText "QUALTEST1"
-Click "Flagship/Login/PasswordField"
-TypeText "QUALTEST1"
-Click "Flagship/Login/LogInButton"
-Click "Flagship/Login/ShipLink"
-Click "Flagship/Login/WarehouseLink"
+to open
+	Click "Flagship/Login/IELink"
+	Click (Image:"Flagship/Login/FlagshipLink", WaitFor:68)
+end open
+
+to login
+	DoubleClick "Flagship/Login/UserNameField"
+	TypeText "QUALTEST1"
+	Click "Flagship/Login/PasswordField"
+	TypeText "QUALTEST1"
+	Click "Flagship/Login/LogInButton"
+end login
+
+to ship deliveryNumber
+	Click "Flagship/Login/ShipLink"
+	Click "Flagship/Login/WarehouseLink"
+	TypeText "00" & deliveryNumber & "001"
+	TypeText Return
+	Click (Image:"Flagship/Ship/ProNumber", WaitFor:2.9)
+	TypeText "US-Gear-06"
+	Click "Flagship/Ship/ShipButton"
+	Wait 5
+	Click (Image:"Flagship/Ship/ExitPackingLabelButton", WaitFor:3.5)
+	Click "Flagship/Login/ShipLink"
+	Click "Flagship/Close/CloseLink"
+	Click "Flagship/Close/SearchButton"
+	Click "Flagship/Close/SHIPCheckbox"
+	Click "Flagship/Close/CloseOrderButton"
+	Wait 5
+end ship
+
+to close
+	Click (Image:"Flagship/Close/LogOut", WaitFor:6.9)
+	Click "Flagship/Close/ExitIE"
+end close
+

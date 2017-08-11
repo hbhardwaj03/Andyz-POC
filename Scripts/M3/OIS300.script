@@ -56,6 +56,9 @@ to submitOIS102H
 end submitOIS102H
 
 to lookupCO coNumber
+	Click "CoField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	TypeText coNumber
 	TypeText Return
 	Click "M3/OIS300/HighlightCO"
@@ -81,6 +84,22 @@ function checkPackingStatus
 	Log "Image not found"
 	return FAIL
 end checkPackingStatus
+
+to confirmStatusShipped
+	assert "M3/OIS300".checkShippingStatus is SUCCESS, "Shipping status update in delivery toolbox"
+end confirmStatusShipped
+
+to checkShippingStatus
+	repeat 20 minutes
+		if imageFound(20, "M3/OIS300/ShippingStatusPacked") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkShippingStatus
 
 to closeFromDeliveryToolbox
 	Click "M3/OIS300/CloseButton"

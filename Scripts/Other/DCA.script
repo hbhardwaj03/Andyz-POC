@@ -1,5 +1,5 @@
 ﻿to open
-	Wait 60
+	Wait 30
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
 end open
 
@@ -45,7 +45,7 @@ end checkTransactionStatusA
 
 function checkTransactionStatusB
 	repeat 3 minutes
-		if imageFound(10,"DCA/TransactionComplete") then
+		if imageFound(60,"DCA/TransactionComplete") then
 			Log "Image found"
 			return SUCCESS
 		end if

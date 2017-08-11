@@ -61,11 +61,18 @@ put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 Log "Exit AGS"
 "M3/Application".close
 
-Log "Shipping with Flagship - Not Yet Implemented"
+Log "Shipping with Flagship"
 "Web/Flagship".open
 "Web/Flagship".login
 "Web/Flagship".ship deliveryNumber
 "Web/Flagship".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
 
 Log "Recording validation data"
 "M3/Application".open
@@ -81,13 +88,13 @@ Log "Recording validation data"
 "M3/Application".close
 
 Log "Validating Invoice with MetaViewer"
-"Other/MetaViewer".openMV
-"Other/MetaViewer".loginMV ("ajenkins", "ajenkins")
-"Other/MetaViewer".lookupMV "904492469"
-put "Other/MetaViewer".validateInvoice into test
-log test
-"Other/MetaViewer".close
+MetaViewer.open
+MetaViewer.login
+MetaViewer.lookup "some invoice number"
+MetaViewer.validateInvoice
+MetaViewer.close
 
+<<<<<<< HEAD
 Log "Validating Invoice with Box"
 "Other/Box".loginBox "andy_jenkins@acushnetgolf.com", "Acushnet12#$"
 "Other/Box".SearchBox  "9115448"
@@ -95,3 +102,6 @@ Log "Validating Invoice with Box"
 put "Other/Box".validateInvoice into test
 log test
 "Other/Box".closeBox
+=======
+
+>>>>>>> finish Flagship script
