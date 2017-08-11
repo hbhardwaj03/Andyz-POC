@@ -28,6 +28,12 @@ to enterItemColor
 	Click "M3/OIS101/ConfiqStyleButton"
 end enterItemColor
 
+to enterItemColorNewEra
+	Click "M3/OIS101/NewEraColorField"
+	TypeText "12"
+	Click "M3/OIS101/ConfiqStyleButton"
+end enterItemColorNewEra
+
 to configuratorA
 	Click "M3/OIS101/NumApplicationsButton"
 	Click "M3/OIS101/LocationButton"
@@ -42,6 +48,32 @@ to configuratorA
 	Click "M3/OIS101/OrderNotesButton"
 	Click "M3/OIS101/DoubleStrapButton"
 end configuratorA
+
+to configuratorNewEra
+	Click "M3/OIS101/NewEra/ProofRequiredButton"
+	Click "M3/OIS101/NewEra/TitleistButton"
+	Click "M3/OIS101/NewEra/ColorButton"
+	Click "M3/OIS101/NewEra/OutlineYesButton"
+	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
+	Click "M3/OIS101/NewEra/2Customizations"
+	Click "M3/OIS101/NewEra/Location1Button"
+	Click "M3/OIS101/NewEra/Customization1Button"
+	TypeText Return
+	TypeText "My Automated Personalization 1"
+	Click "M3/OIS101/PersonalizationNextButton"
+	Click "M3/OIS101/NewEra/LetteringButton"
+	Click "M3/OIS101/NewEra/ShapeButton"
+	Click "M3/OIS101/NewEra/ColorButton2"
+	Click "M3/OIS101/NewEra/Location2"
+	Click "M3/OIS101/NewEra/Customization2"
+	TypeText Return
+	TypeText "My Automated Personalization 2"
+	Click "M3/OIS101/PersonalizationNextButton"
+	Click "M3/OIS101/NewEra/LetteringButton"
+	Click "M3/OIS101/NewEra/ShapeButton"
+	Click "M3/OIS101/NewEra/ColorButton2"
+	Click "M3/OIS101/OrderNotesButton"
+end configuratorNewEra
 
 to closeFromOrderLines
 	//Close OIS101B1

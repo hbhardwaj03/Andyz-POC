@@ -14,6 +14,7 @@ to manufacture moNumber
 	TypeText f1
 	TypeText 1
 	TypeText Return
+	Log "Starting MO: " & moNmber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 11.1, "DCA/TransactionComplete"*)
@@ -21,6 +22,7 @@ to manufacture moNumber
 	TypeText f1
 	TypeText 2
 	TypeText Return
+	Log "Finishing MO: " & moNmber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 10, "DCA/TransactionComplete"*)

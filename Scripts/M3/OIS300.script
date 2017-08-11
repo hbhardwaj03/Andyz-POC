@@ -10,11 +10,13 @@ to startNewOrder
 	Click (Image:"M3/OIS300/NewOrderButton", WaitFor:40)
 end startNewOrder
 
-to enterCustomerNumber
+to enterCustomerNumber customerNumber, coType
 	Click "M3/OIS300/CustomerNumberField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText US00025065
+	TypeText customerNumber
+	TypeText Return
+	TypeText coType
 	TypeText Return
 end enterCustomerNumber
 
@@ -50,13 +52,21 @@ to submitOIS100E
 	Click "M3/OIS300/NextButton"
 end submitOIS100E
 
+to enterOIS100E deliveryDate
+	Click "M3/OIS300/RequestedDelyDateField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText 101117
+	TypeText Return
+end enterOIS100E
+
 to submitOIS102H
 	WaitFor 8.0, "M3/OIS300/OIS102HTitle"
 	Click "M3/OIS300/NextButton"
 end submitOIS102H
 
 to lookupCO coNumber
-	Click "CoField"
+	Click "M3/OIS300/CoField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText coNumber

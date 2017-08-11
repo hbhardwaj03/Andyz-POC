@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0"?>
 <statistics>
- <script name="M3/OIS300">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-08-11 13:11:33 -0700</FirstRun>
-  <LastRun>2017-08-11 13:11:33 -0700</LastRun>
-  <TotalTimeOnSuccess>0.303000</TotalTimeOnSuccess>
- </script>
  <script name="Other/MetaViewer">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>7</NumberOfRuns>
@@ -15,6 +7,14 @@
   <FirstRun>2017-08-10 15:13:53 -0700</FirstRun>
   <LastRun>2017-08-10 15:20:54 -0700</LastRun>
   <TotalTimeOnSuccess>44.148000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/OIS300">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-08-11 13:11:33 -0700</FirstRun>
+  <LastRun>2017-08-11 13:11:33 -0700</LastRun>
+  <TotalTimeOnSuccess>0.303000</TotalTimeOnSuccess>
  </script>
  <script name="Validation">
   <LastStatus>Success</LastStatus>

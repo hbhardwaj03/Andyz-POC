@@ -15,6 +15,7 @@ end login
 to ship deliveryNumber
 	Click "Flagship/Login/ShipLink"
 	Click "Flagship/Login/WarehouseLink"
+	Wait 5
 	TypeText "00" & deliveryNumber & "001"
 	TypeText Return
 	Click (Image:"Flagship/Ship/ProNumber", WaitFor:2.9)

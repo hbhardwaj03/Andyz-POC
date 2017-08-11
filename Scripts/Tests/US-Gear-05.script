@@ -11,7 +11,7 @@ Log "Logging in"
 Log "Enter new order"
 "M3/OIS300".open
 "M3/OIS300".startNewOrder
-"M3/OIS300".enterCustomerNumber
+"M3/OIS300".enterCustomerNumber "US00025065", "USA"
 "M3/OIS300".submitOIS100A
 "M3/OIS300".enterCustomersPO "US-Gear-06"
 "M3/OIS300".submitOIS100G
@@ -94,14 +94,4 @@ MetaViewer.lookup "some invoice number"
 MetaViewer.validateInvoice
 MetaViewer.close
 
-<<<<<<< HEAD
-Log "Validating Invoice with Box"
-"Other/Box".loginBox "andy_jenkins@acushnetgolf.com", "Acushnet12#$"
-"Other/Box".SearchBox  "9115448"
-"Other/Box".ShipDirectPurchaseOrder "ShipDirectPurchaseOrder"
-put "Other/Box".validateInvoice into test
-log test
-"Other/Box".closeBox
-=======
 
->>>>>>> finish Flagship script

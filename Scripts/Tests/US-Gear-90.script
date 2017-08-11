@@ -1,0 +1,31 @@
+﻿(* 
+Name: US-Gear-90
+Description: Enter USO prebook order for New Era headwear with 2 customizations, with outline, use Personal Use Discount (USTPU20), priority 4, reschedule for at once, ship
+Author: Andy jenkins
+ *)
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+
+Log "Enter new order"
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+"M3/OIS300".enterCustomerNumber "US00040645", "USO"
+"M3/OIS300".submitOIS100A
+"M3/OIS300".enterCustomersPO "US-Gear-90"
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".enterOIS100E "101117"
+"M3/OIS300".submitOIS102H
+
+Log "Enter order line"
+put "M3/OIS101".recordCONumber() into coNumber
+Log coNumber
+
+"M3/OIS101".enterItemCode("TH7AGWOC")
+"M3/OIS101".enterItemColorNewEra
+"M3/OIS101".configuratorNewEra
+"M3/OIS101".closeFromOrderLines
