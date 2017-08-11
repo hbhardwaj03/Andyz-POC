@@ -81,10 +81,13 @@ Log "Recording validation data"
 "M3/Application".close
 
 Log "Validating Invoice with MetaViewer"
-MetaViewer.open
-MetaViewer.login
-MetaViewer.lookup "some invoice number"
-MetaViewer.validateInvoice
-MetaViewer.close
+"Other/MetaViewer".openMV
+"Other/MetaViewer".loginMV
+"Other/MetaViewer".lookupMV "904492469"
+"Other/MetaViewer".validateInvoice
+"Other/MetaViewer".close
 
 
+## Search for the Refernce Number
+TypeText "904492469"
+TypeText ReturnKey

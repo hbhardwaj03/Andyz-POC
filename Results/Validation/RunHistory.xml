@@ -529,10 +529,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-10 09:11:48.038 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.412000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -541,10 +541,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand &quot;caseBook&quot
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-10 09:12:10.909 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>0.247000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>

@@ -1,0 +1,70 @@
+﻿## Click and open the desktop application for MetaViewer
+To openMV
+	doubleclick "MetaViewer/DesktopIcon"
+end openMV
+
+
+## Login
+To loginMV
+	click "MetaViewer/MVUsername"
+	TypeText "ajenkins"
+	click "MetaViewer/MVPasswrod"
+	TypeText "ajenkins"
+	TypeText ReturnKey
+End loginMV
+
+
+## Search for the Refernce Number and open up the pdf
+To lookupMV NumberMV
+	TypeText NumberMV
+	TypeText ReturnKey
+	put WaitUntilObjectExist("MetaViewer/MVErrorMessage", 30)
+	
+	Repeat 30 seconds
+		if ImageFound (2, "MetaViewer/MVErrorMessage") then
+			TypeText ReturnKey
+		else
+			exit repeat
+		end if
+	end repeat
+	
+	DoubleClick "MetaViewer/MetaViewerTree/MVAGUSTESTM3"
+	DoubleClick "MetaViewer/MetaViewerTree/AGSUS13"
+	DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
+	DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
+	
+	wait 3
+	
+	Repeat 30 seconds
+		if ImageFound (2, "MetaViewer/MVErrorMessage") then
+			TypeText ReturnKey
+		else
+			exit repeat
+		end if
+	end repeat
+	
+End lookupMV
+
+
+## Waits for an object to appear and then the user can specify how long it should wait for
+function WaitUntilObjectExist (myObject, timeout)
+	wait 1
+	log myObject
+	log timeout
+	put "0" into x
+	
+	repeat timeout times            
+		if ImageFound(2, myObject) then
+			add "1" to x
+			exit repeat
+		end if                    
+	end repeat
+	
+	if x is "1" then
+		Log "Successfully found Error Message"
+	else if x is "0" then
+		Log "error occured while searching for object["&myObject&"]"
+	end if
+end WaitUntilObjectExist
+
+
