@@ -27,17 +27,17 @@ Log coNumber
 "M3/OIS101".enterItemCode("TB7SX6CC")
 "M3/OIS101".enterItemColor
 "M3/OIS101".configuratorA
-"M3/OIS101"
 "M3/OIS101".closeFromOrderLines
 
 Log "Do scheduling"
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
-"M3/PMS170".scheduleNew "10108102017"
+put "M3/PMS170".createScheduleNumber() into scheduleNumber
+"M3/PMS170".scheduleNew scheduleNumber
 "M3/PMS170".releaseMO
 "M3/PMS170".close
 "M3/PMS100".open
-"M3/PMS100".lookupSchedule "10108092017"
+"M3/PMS100".lookupSchedule scheduleNumber
 put "M3/PMS100".recordMO() into moNumber
 "M3/PMS100".pick
 "M3/PMS100".close
@@ -46,9 +46,9 @@ Log "Exit AGS"
 "M3/Application".close
 
 Log "Do manufacturing"
-DCA.open
-DCA.manufacture moNumber
-DCA.close
+"Other/DCA".open
+"Other/DCA".manufacture moNumber
+"Other/DCA".close
 "M3/Application".open
 "M3/Login".login "ajenkins", "Acushnet#1"
 "M3/OIS300".open

@@ -1,22 +1,22 @@
 ﻿to recordCONumber
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
-	DoubleClick "CONumberField"
+	DoubleClick "M3/OIS101/CONumberField"
 	TypeText controlKey, "c"
-	Click "WindowsButton"
-	Click "WindowsSearchField"
+	Click "M3/OIS101/WindowsButton"
+	Click "M3/OIS101/WindowsSearchField"
 	TypeText controlKey, "v"
 	repeat 5 times
 		TypeText spacebar
 	end repeat
-	set coNumber to ReadText((imageLocation("WindowPasteA")+(-237,1), imageLocation("WindowPasteB") + (-167,16)))
+	set coNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
 	Log coNumber
-	Click "WindowsButton"
+	Click "M3/OIS101/WindowsButton"
 	return coNumber
 end recordCONumber
 
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
-Click "M3/OIS101/ItemField"
+	Click "M3/OIS101/ItemField"
 	TypeText itemCode
 	(*Click "ItemField"*)
 	TypeText Return

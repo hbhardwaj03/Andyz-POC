@@ -19,13 +19,25 @@ to lookup coNumber
 	TypeText Return
 end lookup
 
+to createScheduleNumber
+	set caseBook to Workbook(ResourcePath("Validation.xlsx"))
+	set worksheet2 to caseBook.Worksheet("Sheet2")
+	put Cell(worksheet2, "A1") into count
+	put count + 1 into count
+	put 10008102017+(100000000*count) into scheduleNumber
+	log "New schedule number: " & scheduleNumber
+	put count into Cell(worksheet2, "A1")
+	log "Cell value: " & Cell(worksheet2, "A1")
+	return scheduleNumber
+end createScheduleNumber
+
 to scheduleNew scheduleNumber
 	RightClick "M3/PMS170/OrderLine"
 	Click "M3/PMS170/RelatedOptions"
 	Click "M3/PMS170/AddScheduleNumber"
 	Click "M3/PMS170/SchednoField"
 	TypeText f4
-	TypeText "10108102017"
+	TypeText scheduleNumber
 	(*TypeText scheduleNumber*)
 	Click "M3/PMS170/CreateLink"
 	TypeText "US-Gear-06"
@@ -34,7 +46,7 @@ to scheduleNew scheduleNumber
 	RightClick "M3/PMS170/OrderLine"
 	Click "M3/PMS170/RelatedOptions"
 	Click "M3/PMS170/AddScheduleNumber"
-	TypeText "10108102017"
+	TypeText scheduleNumber
 	TypeText Return
 	Click "M3/PMS170/ScheduleLine"
 	Click "M3/PMS170/SelectScheduleButton"

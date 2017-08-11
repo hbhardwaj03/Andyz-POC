@@ -56,8 +56,9 @@ to submitOIS102H
 end submitOIS102H
 
 to lookupCO coNumber
-	TypeText "3013690225"
+	TypeText coNumber
 	TypeText Return
+	Click "M3/OIS300/HighlightCO"
 end lookupCO
 
 to openDeliveryToolbox

@@ -1,6 +1,5 @@
 ﻿to open
-	WaitFor 20, "WindowsDesktopImage"
-	Click (Image:"DCAIcon", WaitFor:3.2)
+	Click (Image:"DCA/DCAIcon", WaitFor:30)
 end open
 
 to login
@@ -13,19 +12,18 @@ end login
 to manufacture moNumber
 	TypeText 1
 	TypeText Return
-	TypeText  1000003542 (*moNumber*)
+	TypeText moNumber
 	TypeText Return
-	WaitFor 11.1, "TransactionComplete"
+	WaitFor 11.1, "DCA/TransactionComplete"
 	TypeText f1
 	TypeText 2
 	TypeText Return
-	TypeText  1000003542 (*moNumber*)
+	TypeText moNumber
 	TypeText Return
-	WaitFor 10, "TransactionComplete"
+	WaitFor 10, "DCA/TransactionComplete"
 end manufacture
 
 to close
-	RightClick "DCAScreen"
-	Click "DCAExitLink"
-	WaitFor 20, "WindowsDesktopImage"
+	RightClick "DCA/DCAScreen"
+	Click "DCA/DCAExitLink"
 end close

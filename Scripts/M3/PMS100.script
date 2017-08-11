@@ -16,29 +16,42 @@ to lookupSchedule scheduleNumber
 		TypeText upArrow
 	end repeat
 	Click "View04002"*)
-	TypeText "10108102017"
+	TypeText scheduleNumber
 	TypeText Return
-	Click (Image:"M3/PMS100/COMOOrderLine", WaitFor:3.3)	
+	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
+	(*Click (Image:"M3/PMS100/COMOOrderLine", WaitFor:3.3)*)	
 	(*Click (Image:"CloseButton", WaitFor:344)*)	
 end lookupSchedule
+
+function checkAllocationStatus
+	repeat 2 minutes
+		if imageFound(3,"M3/PMS100/COMOOrderLine") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkAllocationStatus
 
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
 	Click "M3/PMS100/DeliveryToolboxLink"
 	set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
 	Click "M3/PMS100/ReleaseforPickLink"
-	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status failed to update in delivery toolbox"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
 	Click "M3/PMS100/50PickingListsCreated"
 	Click "M3/PMS100/PickingListsLink"
 	RightClick "M3/PMS100/MWS420B1OrderLine"
 	Click "M3/PMS100/RelatedOptionsLink"
 	Click "M3/PMS100/ConfirmIssuesLink"
-	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status failed to update in picking lists"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
 end pick
 
 function checkPickingStatusImage
 	repeat 2 minutes
-		if imageFound(3,"M3/PMS100/PickingStatus90") then
+		if imageFound(5,"M3/PMS100/PickingStatus90") then
 			Log "Image found"
 			return SUCCESS
 		end if
@@ -50,10 +63,13 @@ end checkPickingStatusImage
 
 function checkPickingListsImage
 	repeat 2 minutes
-		if imageFound(3,"M3/PMS100/50PickingListsCreated") then
+		if imageFound(5,"M3/PMS100/50PickingListsCreated") then
 			Log "Image found"
 			return SUCCESS
 		end if
+		Click "DeliveryOrderLine"
+		
+		Click "M3/PMS100/ReleaseforPickLink"
 		Click "M3/PMS100/Refresh"
 	end repeat
 	Log "Image not found"
@@ -61,6 +77,7 @@ function checkPickingListsImage
 end checkPickingListsImage
 
 to recordMO
+	Click "M3/PMS100/COMOOrderLine"
 	Click "M3/PMS100/SupplyChainLink"
 	WaitFor 8.0, "M3/PMS100/MWS150B1Title"
 	set moNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
@@ -70,7 +87,5 @@ to recordMO
 end recordMO
 
 to close
-	Click "M3/PMS100/CloseButton"
-	Click "M3/PMS100/CloseButton"
 	Click "M3/PMS100/CloseButton"
 end close
