@@ -1,0 +1,88 @@
+﻿## Logs in to box
+to loginBox Username, Password
+
+	DoubleClick "Box/IE"
+	DoubleClick"Box/EnterUrl"
+	TypeText DeleteKey
+	TypeText "https://acushnetgolf.app.box.com/files/0/f/0"
+	TypeText returnKey
+	WaitFor 7, "Box/Login/Username"
+	wait 2
+	TypeText UserName
+	TypeText tabKey
+	TypeText Password
+	TypeText returnKey
+	
+	if ImageFound (5, "Box/Login/LoggedIn") then
+		Log "User is logged in"
+	else
+		LogError "User is not logged in"
+	end if
+	
+end loginBox
+
+##Searches for the right number
+to searchBox Number
+
+	Click "Box/SearchFiles"
+	wait 1
+	TypeText Number
+	TypeText returnKey
+	waitfor 7, "Box/OpenBoxPDF"
+	click "Box/OpenBoxPDF"
+	wait 5
+	
+end searchBox
+
+## Validating the puchase order for the ship direct purchase
+to ShipDirectPurchaseOrder
+
+	put "Box/ShipPDF/" into path
+	
+	MoveTo path&"GoFullscreen/MoveMouse"
+	Click path&"GoFullscreen/Fullscreen"
+	
+	set PurchaseOrder to ReadText((imageLocation (path&"PurchaseOrder/PurchaseOrder") +(35,48), imageLocation (path&"PurchaseOrder/PurchaseOrder_1") +(108,60)))
+	Log (PurchaseOrder  & " is the PurchaseOrder")
+	
+	set POPrintDate to ReadText((imageLocation (path&"POPrintDate/POPrintDate") +(80,0), imageLocation (path&"POPrintDate/POPrintDate_1") +(160,15)))
+	Log (POPrintDate  & " is the POPrintDate")
+	
+	set Priority to ReadText((imageLocation (path&"Priority/Priority") +(90,0), imageLocation (path&"Priority/Priority_1") +(160,15)))
+	Log (Priority  & " is the Priority")
+	
+	set CustomerOrder to ReadText((imageLocation (path&"CustomerOrder/CustomerOrder") +(90,0), imageLocation (path&"CustomerOrder/CustomerOrder_1") +(160,15)))
+	Log (CustomerOrder & " is the CustomerOrder")
+	
+	set ConfDelDate to ReadText((imageLocation (path&"ConfDelDate/ConfDelDate") +(90,0), imageLocation (path&"ConfDelDate/ConfDelDate_1") +(160,15)))
+	Log (ConfDelDate & " is the ConfDelDate")
+	
+	set ShipDate to ReadText((imageLocation (path&"ShipDate/ShipDate") +(90,0), imageLocation (path&"ShipDate/ShipDate_1") +(160,15)))
+	Log (ShipDate & " is the ShipDate")
+	
+	set CustomersPhoneno to ReadText((imageLocation (path&"CustomersPhoneno/CustomersPhoneno") +(135,0), imageLocation (path&"CustomersPhoneno/CustomersPhoneno_1") +(245,15)))
+	Log (CustomersPhoneno & " is the CustomersPhoneno")	
+	
+	set CustomersPOno to ReadText((imageLocation (path&"CustomersPOno/CustomersPOno") +(135,0), imageLocation (path&"CustomersPOno/CustomersPOno_1") +(245,15)))
+	if CustomersPOno is "US-GEAR-SOC" then
+		put "US-GEAR-90C" into CustomersPOno
+	end if
+	Log (CustomersPOno & " is the CustomersPOno")
+	
+	set TagFor to ReadText((imageLocation (path&"TagFor/TagFor") +(135,0), imageLocation (path&"TagFor/TagFor_1") +(245,15)))
+	Log (TagFor & " is the TagFor")
+	
+	set DeliveryMethod to ReadText((imageLocation (path&"DeliveryMethod/DeliveryMethod") +(135,0), imageLocation (path&"DeliveryMethod/DeliveryMethod_1") +(245,15)))
+	Log (DeliveryMethod & " is the DeliveryMethod")
+	
+	return (PurchaseOrder, POPrintDate, Priority, CustomerOrder, ShipDate, CustomersPhoneno, CustomerPOno, TagFor, DeliveryMethod)
+	
+end ShipDirectPurchaseOrder
+
+to closeBox
+
+	wait 2
+	Typetext escapeKey
+	Click (Image:"Box/CloseBrowser", WaitFor:5.0)
+	
+end closeBox

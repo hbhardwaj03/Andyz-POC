@@ -88,7 +88,10 @@ put "Other/MetaViewer".validateInvoice into test
 log test
 "Other/MetaViewer".close
 
-
-## Search for the Refernce Number
-TypeText "904492469"
-TypeText ReturnKey
+Log "Validating Invoice with Box"
+"Other/Box".loginBox "andy_jenkins@acushnetgolf.com", "Acushnet12#$"
+"Other/Box".SearchBox  "9115448"
+"Other/Box".ShipDirectPurchaseOrder "ShipDirectPurchaseOrder"
+put "Other/Box".validateInvoice into test
+log test
+"Other/Box".closeBox
