@@ -84,7 +84,8 @@ Log "Validating Invoice with MetaViewer"
 "Other/MetaViewer".openMV
 "Other/MetaViewer".loginMV ("ajenkins", "ajenkins")
 "Other/MetaViewer".lookupMV "904492469"
-"Other/MetaViewer".validateInvoice
+put "Other/MetaViewer".validateInvoice into test
+log test
 "Other/MetaViewer".close
 
 

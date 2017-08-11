@@ -3,7 +3,7 @@
  <run>
   <RunDate>2017-08-08 09:37:20.626 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>1.237000</Duration>
+  <Duration>1.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -12,10 +12,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage>STInvalidNumber -- Value is not a number: &#x27;ushqkptst&#x27;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:40:28.367 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.224000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
@@ -24,10 +24,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage>File Not Found -- click Error - Could Not Open Image: image0001</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:46:57.761 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>19.647000</Duration>
+  <Duration>19.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
@@ -36,10 +36,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;UsernameField&quot;</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:51:01.629 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>3.448000</Duration>
+  <Duration>3.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -48,10 +48,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:53:11.521 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>7.148000</Duration>
+  <Duration>7.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -60,10 +60,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:56:31.330 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.223000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
@@ -72,10 +72,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage>File Not Found -- click Error - Could Not Open Image: IELink</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:56:49.357 -0700</RunDate>
   <Status>Failure</Status>
-  <Duration>0.374000</Duration>
+  <Duration>0.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
@@ -84,10 +84,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage>File Not Found -- click Error - Could Not Open Image: KPackLink</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 10:57:21.376 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>7.159000</Duration>
+  <Duration>7.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -96,10 +96,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-08 11:13:03.922 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>7.195000</Duration>
+  <Duration>7.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>

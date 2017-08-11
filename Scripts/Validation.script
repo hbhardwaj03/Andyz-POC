@@ -18,5 +18,3 @@ add 5 to worksheet1's Cell("C2")
 
 put worksheet1.CellRange("A2", "C2") into results
 log results
-
-
