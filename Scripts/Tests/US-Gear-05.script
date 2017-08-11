@@ -82,7 +82,7 @@ Log "Recording validation data"
 
 Log "Validating Invoice with MetaViewer"
 "Other/MetaViewer".openMV
-"Other/MetaViewer".loginMV
+"Other/MetaViewer".loginMV ("ajenkins", "ajenkins")
 "Other/MetaViewer".lookupMV "904492469"
 "Other/MetaViewer".validateInvoice
 "Other/MetaViewer".close
