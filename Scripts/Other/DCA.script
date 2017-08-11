@@ -1,4 +1,5 @@
 ﻿to open
+	Wait 60
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
 end open
 
@@ -10,7 +11,7 @@ to login
 end login
 
 to manufacture moNumber
-TypeText f1
+	TypeText f1
 	TypeText 1
 	TypeText Return
 	TypeText moNumber

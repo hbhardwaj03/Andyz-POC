@@ -67,7 +67,7 @@ function checkPickingListsImage
 			Log "Image found"
 			return SUCCESS
 		end if
-		Click "DeliveryOrderLine"
+		Click "M3/PMS100/DeliveryOrderLine"
 		
 		Click "M3/PMS100/ReleaseforPickLink"
 		Click "M3/PMS100/Refresh"
@@ -78,10 +78,18 @@ end checkPickingListsImage
 
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
-	Click "M3/PMS100/SupplyChainLink"
-	WaitFor 8.0, "M3/PMS100/MWS150B1Title"
-	set moNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
+	DoubleClick "M3/PMS100/MONumberOrderLine"
+	DoubleClick "M3/PMS100/MONumber"
+	TypeText controlKey, "c"
+	Click "M3/OIS101/WindowsButton"
+	Click "M3/OIS101/WindowsSearchField"
+	TypeText controlKey, "v"
+	repeat 5 times
+		TypeText spacebar
+	end repeat
+	set moNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
 	Log moNumber
+	Click "M3/OIS101/WindowsButton"
 	Click "M3/PMS100/BackButton"
 	return moNumber
 end recordMO
