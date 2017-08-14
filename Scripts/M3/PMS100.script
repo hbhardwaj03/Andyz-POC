@@ -23,16 +23,36 @@ to lookupSchedule scheduleNumber
 	(*Click (Image:"CloseButton", WaitFor:344)*)	
 end lookupSchedule
 
+to printShopTraveler scheduleNumber
+	Click (Image:"M3/PMS100/MinimizePanel", WaitFor:103)
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "Mforms://PMZ440"
+	Click "M3/Home/SearchSubmit"
+	Click "M3/PMS100/Scheduleno440"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText scheduleNumber
+	Click "M3/PMS100/Scheduleno440B"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText scheduleNumber
+	Click "M3/OIS300/NextButton"
+	Click "M3/PMS100/ConfirmOutput"
+	Click "M3/PMS100/ExitButton"
+	Click "M3/PMS100/ReOpenLink"
+	
+end printShopTraveler
+
 function checkAllocationStatus
-	repeat 2 minutes
-		if imageFound(3,"M3/PMS100/COMOOrderLine") then
+	repeat 4 minutes
+		if imageFound(5,"M3/PMS100/COMOOrderLine") then
 			Log "Image found"
 			return SUCCESS
 		end if
 		Click "M3/PMS100/Refresh"
-	end repeat
-	Log "Image not found"
-	return FAIL
+end repeat
+Log "Image not found"
+return FAIL
 end checkAllocationStatus
 
 to pick
@@ -46,6 +66,9 @@ to pick
 	RightClick "M3/PMS100/MWS420B1OrderLine"
 	Click "M3/PMS100/RelatedOptionsLink"
 	Click "M3/PMS100/ConfirmIssuesLink"
+	RightClick "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/RelatedOptionsLink"
+	Click "M3/PMS100/ConfirmIssuesLink"
 	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
 end pick
 
@@ -55,6 +78,9 @@ function checkPickingStatusImage
 			Log "Image found"
 			return SUCCESS
 		end if
+		RightClick "M3/PMS100/MWS420B1OrderLine"
+		Click "M3/PMS100/RelatedOptionsLink"
+		Click "M3/PMS100/ConfirmIssuesLink"
 		Click "M3/PMS100/Refresh"
 	end repeat
 	Log "Image not found"
@@ -79,6 +105,7 @@ end checkPickingListsImage
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
 	DoubleClick "M3/PMS100/MONumberOrderLine"
+	Wait 3
 	DoubleClick "M3/PMS100/MONumber"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"

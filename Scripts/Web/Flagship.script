@@ -18,15 +18,22 @@ to ship deliveryNumber
 	Wait 5
 	TypeText "00" & deliveryNumber & "001"
 	TypeText Return
-	Click (Image:"Flagship/Ship/ProNumber", WaitFor:2.9)
+	Wait 7
+	Click "Flagship/Ship/ProNumber"
 	TypeText "US-Gear-06"
-	Click "Flagship/Ship/ShipButton"
 	Wait 5
-	Click (Image:"Flagship/Ship/ExitPackingLabelButton", WaitFor:3.5)
+	Click "Flagship/Ship/ShipButton"
+	Wait 30
+	Click "Flagship/Ship/ExitPackingLabelButton"
+	Wait 3
 	Click "Flagship/Login/ShipLink"
+	Wait 3
 	Click "Flagship/Close/CloseLink"
+	Wait 3
 	Click "Flagship/Close/SearchButton"
+	Wait 3
 	Click "Flagship/Close/SHIPCheckbox"
+	Wait 3
 	Click "Flagship/Close/CloseOrderButton"
 	Wait 5
 end ship

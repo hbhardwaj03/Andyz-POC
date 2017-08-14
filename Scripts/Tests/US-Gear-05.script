@@ -38,6 +38,7 @@ put "M3/PMS170".createScheduleNumber() into scheduleNumber
 "M3/PMS170".close
 "M3/PMS100".open
 "M3/PMS100".lookupSchedule scheduleNumber
+"M3/PMS100".printShopTraveler scheduleNumber
 put "M3/PMS100".recordMO() into moNumber
 "M3/PMS100".pick
 "M3/PMS100".close
@@ -73,6 +74,9 @@ Log "Shipping with Flagship"
 "M3/OIS300".openDeliveryToolbox
 "M3/OIS300".confirmStatusShipped
 "M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
 
 Log "Recording validation data"
 "M3/Application".open

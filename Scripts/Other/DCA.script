@@ -1,5 +1,5 @@
 ﻿to open
-	Wait 30
+	Wait 10
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
 end open
 
@@ -18,7 +18,7 @@ to manufacture moNumber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 11.1, "DCA/TransactionComplete"*)
-	assert "Other/DCA".checkTransactionStatusA is SUCCESS, "MO start in DCA"
+	assert "Other/DCA".checkTransactionStatusA(moNumber) is SUCCESS, "MO start in DCA"
 	TypeText f1
 	TypeText 2
 	TypeText Return
@@ -26,10 +26,10 @@ to manufacture moNumber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 10, "DCA/TransactionComplete"*)
-	assert "Other/DCA".checkTransactionStatusB is SUCCESS, "MO finish in DCA"
+	assert "Other/DCA".checkTransactionStatusB(moNumber) is SUCCESS, "MO finish in DCA"
 end manufacture
 
-function checkTransactionStatusA
+function checkTransactionStatusA moNumber
 	repeat 3 minutes
 		if imageFound(10,"DCA/TransactionComplete") then
 			Log "Image found"
@@ -45,7 +45,7 @@ function checkTransactionStatusA
 	return FAIL
 end checkTransactionStatusA
 
-function checkTransactionStatusB
+function checkTransactionStatusB moNumber
 	repeat 3 minutes
 		if imageFound(60,"DCA/TransactionComplete") then
 			Log "Image found"

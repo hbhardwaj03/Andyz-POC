@@ -17,11 +17,12 @@ to enterCustomerNumber customerNumber, coType
 	TypeText customerNumber
 	TypeText Return
 	TypeText coType
-	TypeText Return
+	(*TypeText Return*)
 end enterCustomerNumber
 
 to submitOIS100A
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS100A
 
 to enterCustomersPO PO
@@ -31,25 +32,33 @@ end enterCustomersPO
 
 to submitOIS100G
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS100G
 
 to acceptPOWarning
 	Click "M3/OIS300/OkButton"
+	MoveTo "Corner"
 end acceptPOWarning
 
 to submitOIS100F
-	WaitFor 8.0, "M3/OIS300/OIS100FTitle"
+	Wait 3
+	(*WaitFor 8.0, "M3/OIS300/OIS100FTitle"*)
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS100F
 
 to submitOIS100H
-	WaitFor 8.0, "M3/OIS300/OIS100HTitle"
+	Wait 3
+	(*WaitFor 8.0, "M3/OIS300/OIS100HTitle"*)
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS100H
 
 to submitOIS100E
-	WaitFor 8.0, "M3/OIS300/OIS100ETitle"
+	Wait 3
+	(*WaitFor 8.0, "M3/OIS300/OIS100ETitle"*)
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS100E
 
 to enterOIS100E deliveryDate
@@ -58,11 +67,14 @@ to enterOIS100E deliveryDate
 	TypeText deleteKey
 	TypeText 101117
 	TypeText Return
+	MoveTo "Corner"
 end enterOIS100E
 
 to submitOIS102H
-	WaitFor 8.0, "M3/OIS300/OIS102HTitle"
+	Wait 5
+	(*WaitFor 8.0, "M3/OIS300/OIS102HTitle"*)
 	Click "M3/OIS300/NextButton"
+	MoveTo "Corner"
 end submitOIS102H
 
 to lookupCO coNumber
@@ -100,7 +112,7 @@ to confirmStatusShipped
 end confirmStatusShipped
 
 to checkShippingStatus
-	repeat 20 minutes
+	repeat 45 minutes
 		if imageFound(20, "M3/OIS300/ShippingStatusPacked") then
 			Log "Image found"
 			return SUCCESS
@@ -113,7 +125,9 @@ end checkShippingStatus
 
 to closeFromDeliveryToolbox
 	Click "M3/OIS300/CloseButton"
+	MoveTo "Corner"
 	Click "M3/OIS300/CloseButton"
+	MoveTo "Corner"
 end closeFromDeliveryToolbox
 
 to recordDeliveryNumber

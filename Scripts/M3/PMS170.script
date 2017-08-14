@@ -42,7 +42,9 @@ to scheduleNew scheduleNumber
 	Click "M3/PMS170/CreateLink"
 	TypeText "US-Gear-06"
 	Click "M3/PMS170/NextButton"
+	Wait 3
 	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
+	Wait 3
 	RightClick "M3/PMS170/OrderLine"
 	Click "M3/PMS170/RelatedOptions"
 	Click "M3/PMS170/AddScheduleNumber"
