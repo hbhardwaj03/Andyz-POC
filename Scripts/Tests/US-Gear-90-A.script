@@ -1,6 +1,6 @@
 ﻿(* 
-Name: US-Gear-90
-Description: Enter USO prebook order for New Era headwear with 2 customizations, with outline, use Personal Use Discount (USTPU20), priority 4, reschedule for at once, ship
+Name: US-Gear-90-A
+Description: Enters the order for USO prebook order for New Era headwear with 2 customizations, with outline, use Personal Use Discount (USTPU20), priority 4, reschedule for at once, ship
 Author: Andy jenkins
  *)
 
@@ -8,6 +8,9 @@ Log "Logging in"
 "M3/Application".open
 "M3/Login".login "ajenkins", "Acushnet#1"
 
+(* 
+Description: Completes the CO generation portion of the test
+ *)
 Log "Enter new order"
 "M3/OIS300".open
 "M3/OIS300".startNewOrder
@@ -21,11 +24,18 @@ Log "Enter new order"
 "M3/OIS300".enterOIS100E "101117"
 "M3/OIS300".submitOIS102H
 
+(*
+Completes the order entry portion of the test
+*)
 Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
-
 "M3/OIS101".enterItemCode("TH7AGWOC")
 "M3/OIS101".enterItemColorNewEra
 "M3/OIS101".configuratorNewEra
+"M3/OIS101".closeOrderLines
+"M3/OIS300".reschedule
 "M3/OIS101".closeFromOrderLines
+
+Log "Exit AGS"
+"M3/Application".close

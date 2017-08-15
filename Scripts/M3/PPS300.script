@@ -1,0 +1,22 @@
+﻿to open poNumber
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "PPS300"
+	Click "M3/Home/SearchSubmit"
+end open
+
+to poReceipt
+	Click "M3/PPS300/WarehouseField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PPS300/ResponsibleField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PPS300/PONumberField"
+	TypeText poNumber
+	TypeText Return
+end poReceipt
+
+to close
+
+end close

@@ -17,6 +17,10 @@ to enterCustomerNumber customerNumber, coType
 	TypeText customerNumber
 	TypeText Return
 	TypeText coType
+	Wait 2
+	if coType is "USO" then
+		Click "M3/OIS300/NextButton"
+	end if
 	(*TypeText Return*)
 end enterCustomerNumber
 

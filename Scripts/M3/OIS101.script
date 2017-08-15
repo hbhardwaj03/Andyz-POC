@@ -14,6 +14,30 @@
 	return coNumber
 end recordCONumber
 
+to recordPONumber
+	"M3/OIS101".supplyChain
+	Drag "M3/OIS101/OrderDrag"
+	MoveTo (250,221)
+	Drop
+	TypeText controlKey, "c"
+	Click "M3/OIS101/WindowsButton"
+	Click "M3/OIS101/WindowsSearchField"
+	TypeText controlKey, "v"
+	repeat 5 times
+		TypeText spacebar
+	end repeat
+	set poNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	Log poNumber
+	Click "M3/OIS101/WindowsButton"
+	Click "M3/OIS300/CloseButton"
+	return poNumber
+end recordPONumber
+
+to supplyChain
+	Click (Image:"M3/OIS101/OrderLineLine", WaitFor:6.1)
+	Click "M3/OIS101/SupplyChainLink"
+end supplyChain
+
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/ItemField"
@@ -88,3 +112,15 @@ to closeFromOrderLines
 	WaitFor 8.0, "M3/OIS101/OIS300BTitle"
 	Click "M3/OIS101/XCloseButton"
 end closeFromOrderLines
+
+to closeOrderLines
+	//Close OIS101B1
+	WaitFor 60, "M3/OIS101/OIS101B1Title"
+	Click "M3/OIS101/XCloseButton"
+	//Close OIS110E
+	WaitFor 8.0, "M3/OIS101/OIS110ETitle"
+	Click "M3/OIS101/XCloseButton"
+	//Close OIS100A
+	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	Click "M3/OIS101/XCloseButton"
+end closeOrderLines
