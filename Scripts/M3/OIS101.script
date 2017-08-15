@@ -59,6 +59,7 @@ to enterItemColorNewEra
 end enterItemColorNewEra
 
 to configuratorA
+	Wait 5
 	Click "M3/OIS101/NumApplicationsButton"
 	Click "M3/OIS101/LocationButton"
 	Click "M3/OIS101/PersonalizationButton"
@@ -74,6 +75,7 @@ to configuratorA
 end configuratorA
 
 to configuratorNewEra
+	Wait 5
 	Click "M3/OIS101/NewEra/ProofRequiredButton"
 	Click "M3/OIS101/NewEra/TitleistButton"
 	Click "M3/OIS101/NewEra/ColorButton"

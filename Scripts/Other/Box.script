@@ -28,7 +28,8 @@ to searchBox Number
 	wait 1
 	TypeText Number
 	TypeText returnKey
-	waitfor 7, "Box/OpenBoxPDF"
+	wait 3
+	waitfor 10, "Box/OpenBoxPDF"
 	click "Box/OpenBoxPDF"
 	wait 5
 	

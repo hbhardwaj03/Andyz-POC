@@ -144,3 +144,17 @@ to recordOrderData
 	set orderDate to ReadText((imageLocation("M3/OIS300/OrderDateA"), imageLocation("M3/OIS300/DeliveryNumberB")))
 	Log orderDate
 end recordOrderData
+
+to reschedule
+	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/RescheduleLink"
+	Wait 5
+	TypeText "081617"
+	TypeText Return
+	Click (Image:"M3/OIS300/UpdateButton", WaitFor:3.3)
+	Click "M3/OIS300/CloseButton"
+end reschedule
+
+to close
+	Click "M3/OIS300/CloseButton"
+end close

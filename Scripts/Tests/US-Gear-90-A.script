@@ -35,7 +35,7 @@ Log coNumber
 "M3/OIS101".configuratorNewEra
 "M3/OIS101".closeOrderLines
 "M3/OIS300".reschedule
-"M3/OIS101".closeFromOrderLines
+"M3/OIS300".close
 
 Log "Exit AGS"
 "M3/Application".close
