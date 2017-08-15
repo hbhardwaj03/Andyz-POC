@@ -1,5 +1,11 @@
 ﻿Script,Last Status,Runs,Fails,First Run,Last Run,Avg Time(Success)
 Other/MetaViewer,Success,7,0,2017-08-10 15:13:53 -0700,2017-08-10 15:20:54 -0700,0:00:06
 M3/OIS300,Success,1,0,2017-08-11 13:11:33 -0700,2017-08-11 13:11:33 -0700,0:00:00
+<<<<<<< HEAD
 Tests/US-Gear-90-A,Success,3,0,2017-08-14 14:35:00 -0700,2017-08-14 16:11:50 -0700,0:03:00
+=======
+Tests/US-Gear-90-Validation,Success,8,1,2017-08-14 15:29:01 -0700,2017-08-14 16:52:38 -0700,0:00:36
+Tests/US-Gear-06-Validation,Failure,3,2,2017-08-14 15:12:43 -0700,2017-08-14 16:38:20 -0700,0:06:06
+Tests/US-Gear-05,Failure,2,2,2017-08-14 13:33:21 -0700,2017-08-14 13:45:15 -0700,0:00:00
+>>>>>>> Edited both box and metaviewer scripts
 Validation,Success,2,0,2017-08-10 09:11:48 -0700,2017-08-10 09:12:10 -0700,0:00:00

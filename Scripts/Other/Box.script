@@ -41,6 +41,9 @@ to ShipDirectPurchaseOrder
 	
 	MoveTo path&"GoFullscreen/MoveMouse"
 	Click path&"GoFullscreen/Fullscreen"
+	click path&"PurchaseOrder/PurchaseOrder"
+	Typetext pageDown
+	Typetext pageDown
 	
 	set PurchaseOrder to ReadText((imageLocation (path&"PurchaseOrder/PurchaseOrder") +(35,48), imageLocation (path&"PurchaseOrder/PurchaseOrder_1") +(108,60)))
 	Log (PurchaseOrder  & " is the PurchaseOrder")

@@ -90,12 +90,3 @@ Log "Recording validation data"
 "M3/OIS300".recordSupplyChainData
 "M3/OIS300".closeFromOIS300
 "M3/Application".close
-
-Log "Validating Invoice with MetaViewer"
-MetaViewer.open
-MetaViewer.login
-MetaViewer.lookup "some invoice number"
-MetaViewer.validateInvoice
-MetaViewer.close
-
-

@@ -1,0 +1,9 @@
+﻿## Uses the invoice inside of MetaViewer and grabs the data to be used for validation
+
+Log "Validating Invoice with MetaViewer"
+"Other/MetaViewer".openMV
+"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
+"Other/MetaViewer".lookupMV "904492469"
+put "Other/MetaViewer".validateInvoice() into test
+log test
+"Other/MetaViewer".closeMV

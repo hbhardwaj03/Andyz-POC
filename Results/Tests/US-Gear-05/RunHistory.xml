@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<runHistory script="US-Gear-05">
+<runHistory script="Tests/US-Gear-05">
  <run>
   <RunDate>2017-08-08 09:02:07.556 -0700</RunDate>
   <Status>Failure</Status>
@@ -614,5 +614,53 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <LogFile>20170809_113552.708/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-08-11 11:47:16.046 -0700</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170811_114716.046/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-08-14 13:33:21.749 -0700</RunDate>
+  <Status>Failure</Status>
+  <Duration>23.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170814_133321.749/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-08-14 13:39:40.760 -0700</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170814_133940.760/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-08-14 13:45:15.353 -0700</RunDate>
+  <Status>Failure</Status>
+  <Duration>85.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170814_134515.353/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/NewOrderButton&quot;</ErrorMessage>
  </run>
 </runHistory>

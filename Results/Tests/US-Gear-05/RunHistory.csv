@@ -50,3 +50,7 @@
 2017-08-09 10:47:23.095 -0700,"Success",0:01:07,0,0,0,"20170809_104723.095/LogFile.txt","","",1
 2017-08-09 10:51:59.281 -0700,"Success",0:01:03,0,0,0,"20170809_105159.281/LogFile.txt","","",1
 2017-08-09 11:35:52.708 -0700,"Success",0:01:03,0,0,0,"20170809_113552.708/LogFile.txt","","",1
+2017-08-11 11:47:16.046 -0700,"Running",0:00:00,0,0,0,"20170811_114716.046/LogFile.txt","","",0
+2017-08-14 13:33:21.749 -0700,"Failure",0:00:23,1,0,1,"20170814_133321.749/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
+2017-08-14 13:39:40.760 -0700,"Running",0:00:00,0,0,0,"20170814_133940.760/LogFile.txt","","",0
+2017-08-14 13:45:15.353 -0700,"Failure",0:01:25,1,0,1,"20170814_134515.353/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/NewOrderButton""",0

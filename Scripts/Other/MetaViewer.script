@@ -16,32 +16,15 @@ End loginMV
 
 ## Search for the Refernce Number and open up the pdf
 To lookupMV NumberMV
+	
 	TypeText NumberMV
 	TypeText ReturnKey
-	put WaitUntilObjectExist("MetaViewer/MVErrorMessage", 30)
-	
-	Repeat 30 seconds
-		if ImageFound (2, "MetaViewer/MVErrorMessage") then
-			TypeText ReturnKey
-		else
-			exit repeat
-		end if
-	end repeat
-	
-	DoubleClick "MetaViewer/MetaViewerTree/MVAGUSTESTM3"
+	wait 10
+	DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/MVAGUSTESTM3")+(0,0))
 	DoubleClick "MetaViewer/MetaViewerTree/AGSUS13"
 	DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
 	DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-	
 	wait 3
-	
-	Repeat 30 seconds
-		if ImageFound (2, "MetaViewer/MVErrorMessage") then
-			TypeText ReturnKey
-		else
-			exit repeat
-		end if
-	end repeat
 	
 End lookupMV
 
@@ -69,6 +52,13 @@ end WaitUntilObjectExist
 
 ## Puts in the data from the PDF into variables for us to use for comparing against the Excel
 to validateInvoice
+	
+	wait 3
+	click "MetaViewer/PDF/MVFullscreen"
+	wait 1
+	click "MetaViewer/PDF/Titleist"
+	TypeText controlKey, KeypadMinus
+	TypeText controlKey, KeypadMinus
 	
 	put "MetaViewer/PDF/" into path
 	
@@ -99,12 +89,18 @@ to validateInvoice
 	set AccountNoPayPDF to ReadText((imageLocation (path&"AccountNo/AccountNo") +(-4,10), imageLocation (path&"AccountNo/AccountNo_1") +(74,21)))
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
 	
-	set AccountNoShipPDF to ReadText((imageLocation (path&"AccountNo/AccountNo") +(120,10), imageLocation (path&"AccountNo/AccountNo_1") +(226,21)))
+	set AccountNoShipPDF to ReadText((imageLocation (path&"AccountNo/AccountNo") +(115,10), imageLocation (path&"AccountNo/AccountNo_1") +(226,21)))
 	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
 	
-	set BagSandHPDF to ReadText((imageLocation (path&"BagSandH/BagSandH") +(8,160), imageLocation (path&"BagSandH/BagSandH_1") +(170,173)))
+	set BagSandHPDF to ReadText((imageLocation (path&"BagSandH/BagSandH") +(5,150), imageLocation (path&"BagSandH/BagSandH_1") +(170,163)))
 	Log ( "There is a Shipping handling charge because this text was found on the PDF: _" & BagSandHPDF & "_")
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, InvoiceDatePDF, DeliveryNoPDF, ShipmentDatePDF, CustomerPOPDF, OrderDatePDF, AccountNoPayPDF, AccountNoShipPDF, BagSandHPDF)
 	
 end validateInvoice
+
+to CloseMV
+
+	Click "MetaViewer/PDF/MVClose"
+	
+end CloseMV

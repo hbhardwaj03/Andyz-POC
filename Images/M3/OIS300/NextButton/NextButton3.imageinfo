@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{CaptureDate = "2017-08-14 14:25:36 -0700"; CaptureHost = USHQV043; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 17; HotSpotY = 6; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 836; OriginalLocationY = 679; Precise = 0; Pulsing = 0; Scale = 1; }
+=======
+﻿{CaptureDate = "2017-08-14 13:49:36 -0700"; CaptureHost = ushqv044; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 17; HotSpotY = 5; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 936; OriginalLocationY = 680; Precise = 0; Pulsing = 0; Scale = 1; }
+>>>>>>> Edited both box and metaviewer scripts
