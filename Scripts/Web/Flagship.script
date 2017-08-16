@@ -17,13 +17,14 @@ to ship deliveryNumber
 	Click "Flagship/Login/WarehouseLink"
 	Wait 5
 	TypeText "00" & deliveryNumber & "001"
+	(*TypeText "0013140395001"*)
 	TypeText Return
 	Wait 7
 	Click "Flagship/Ship/ProNumber"
 	TypeText "US-Gear-06"
 	Wait 5
 	Click "Flagship/Ship/ShipButton"
-	Wait 30
+	Wait 10
 	Click "Flagship/Ship/ExitPackingLabelButton"
 	Wait 3
 	Click "Flagship/Login/ShipLink"

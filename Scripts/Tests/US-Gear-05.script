@@ -1,6 +1,6 @@
 ﻿(* 
 Name: US-Gear-06
-Description: Enter a basic custom CC Players 5 stand bag with one each color, one personalization, use level 2 bag (UST7782) program account #, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
+Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
 Author: Andy jenkins
  *)
 
@@ -76,17 +76,4 @@ Log "Shipping with Flagship"
 "M3/OIS300".closeFromDeliveryToolbox
 
 Log "Exit AGS"
-"M3/Application".close
-
-Log "Recording validation data"
-"M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".recordOrderData
-"M3/OIS300".recordInvoiceData
-"M3/OIS300".recordDeliveryToolboxData
-"M3/OIS300".recordOrderLineData
-"M3/OIS300".recordSupplyChainData
-"M3/OIS300".closeFromOIS300
 "M3/Application".close

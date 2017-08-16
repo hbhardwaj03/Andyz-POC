@@ -1,27 +1,35 @@
 ﻿<?xml version="1.0"?>
 <statistics>
- <script name="Tests/US-Gear-06-Validation">
+ <script name="Other/MetaViewer">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>1</NumberOfRuns>
   <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-08-14 17:31:02 -0700</FirstRun>
-  <LastRun>2017-08-14 17:31:02 -0700</LastRun>
-  <TotalTimeOnSuccess>30.084000</TotalTimeOnSuccess>
- </script>
- <script name="Tests/US-Gear-90-A">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>4</NumberOfRuns>
-  <NumberOfFails>2</NumberOfFails>
-  <FirstRun>2017-08-14 18:09:37 -0700</FirstRun>
-  <LastRun>2017-08-15 08:53:36 -0700</LastRun>
-  <TotalTimeOnSuccess>233.572000</TotalTimeOnSuccess>
+  <FirstRun>2017-08-15 10:34:14 -0700</FirstRun>
+  <LastRun>2017-08-15 10:34:14 -0700</LastRun>
+  <TotalTimeOnSuccess>0.197000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-90-Validation">
   <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
+  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
   <FirstRun>2017-08-14 17:36:52 -0700</FirstRun>
-  <LastRun>2017-08-14 17:36:52 -0700</LastRun>
-  <TotalTimeOnSuccess>32.477000</TotalTimeOnSuccess>
+  <LastRun>2017-08-16 10:43:51 -0700</LastRun>
+  <TotalTimeOnSuccess>101.191000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/US-Gear-06-Validation">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-08-14 17:31:02 -0700</FirstRun>
+  <LastRun>2017-08-16 10:42:12 -0700</LastRun>
+  <TotalTimeOnSuccess>89.616000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/US-Gear-90-A">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>7</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2017-08-14 18:09:37 -0700</FirstRun>
+  <LastRun>2017-08-16 10:26:08 -0700</LastRun>
+  <TotalTimeOnSuccess>580.334000</TotalTimeOnSuccess>
  </script>
 </statistics>

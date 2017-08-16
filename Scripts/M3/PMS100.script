@@ -6,6 +6,7 @@
 end open
 
 to lookupSchedule scheduleNumber
+	WaitFor 20, "M3/PMS100/FacilityField"
 	Click "M3/PMS100/FacilityField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -50,9 +51,9 @@ function checkAllocationStatus
 			return SUCCESS
 		end if
 		Click "M3/PMS100/Refresh"
-end repeat
-Log "Image not found"
-return FAIL
+	end repeat
+	Log "Image not found"
+	return FAIL
 end checkAllocationStatus
 
 to pick
