@@ -57,12 +57,32 @@ Log "Do manufacturing"
 "M3/OIS300".openDeliveryToolbox
 put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 "M3/OIS300".confirmStatusPacked
+(*
+"M3/OIS300".updatePickList
+*)
 "M3/OIS300".closeFromDeliveryToolbox
 
 Log "Exit AGS"
 "M3/Application".close
 
+Log "CO: " & coNumber
+Log "MO: " & moNumber
+Log "Schedule: " & scheduleNumber
+Log "Delivery: " & deliveryNumber
+DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+
+(*put 10 into count
+repeat 10 times
+	Wait 60
+	put count-1 into count
+	Log count & " minutes left"
+end repeat*)
+
 Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".halfShip deliveryNumber
+"Web/Flagship".close
 "Web/Flagship".open
 "Web/Flagship".login
 "Web/Flagship".ship deliveryNumber

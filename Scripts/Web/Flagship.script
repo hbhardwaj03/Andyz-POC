@@ -12,12 +12,16 @@ to login
 	Click "Flagship/Login/LogInButton"
 end login
 
+to halfShip deliveryNumber
+
+end halfShip
+
 to ship deliveryNumber
 	Click "Flagship/Login/ShipLink"
 	Click "Flagship/Login/WarehouseLink"
 	Wait 5
 	TypeText "00" & deliveryNumber & "001"
-	(*TypeText "0013140395001"*)
+	(*TypeText "0013140417001"*)
 	TypeText Return
 	Wait 7
 	Click "Flagship/Ship/ProNumber"

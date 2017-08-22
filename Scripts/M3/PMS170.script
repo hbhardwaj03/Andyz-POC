@@ -20,14 +20,9 @@ to lookup coNumber
 end lookup
 
 to createScheduleNumber
-	set caseBook to Workbook(ResourcePath("Validation.xlsx"))
-	set worksheet2 to caseBook.Worksheet("Sheet2")
-	put Cell(worksheet2, "A1") into count
-	put count + 1 into count
+	put DataStore.getAndIncrementScheduleCounter into count
 	put 10008102017+(100000000*count) into scheduleNumber
 	log "New schedule number: " & scheduleNumber
-	put count into Cell(worksheet2, "A1")
-	log "Cell value: " & Cell(worksheet2, "A1")
 	return scheduleNumber
 end createScheduleNumber
 

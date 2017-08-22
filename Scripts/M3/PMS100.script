@@ -41,7 +41,6 @@ to printShopTraveler scheduleNumber
 	Click "M3/PMS100/ConfirmOutput"
 	Click "M3/PMS100/ExitButton"
 	Click "M3/PMS100/ReOpenLink"
-	
 end printShopTraveler
 
 function checkAllocationStatus
@@ -64,13 +63,19 @@ to pick
 	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
 	Click "M3/PMS100/50PickingListsCreated"
 	Click "M3/PMS100/PickingListsLink"
-	RightClick "M3/PMS100/MWS420B1OrderLine"
-	Click "M3/PMS100/RelatedOptionsLink"
-	Click "M3/PMS100/ConfirmIssuesLink"
-	RightClick "M3/PMS100/MWS420B1OrderLine"
-	Click "M3/PMS100/RelatedOptionsLink"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "="
+	end repeat
+	KeyUp ControlKey
+	Click "M3/PMS100/MWS420B1OrderLine"
 	Click "M3/PMS100/ConfirmIssuesLink"
 	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "-"
+	end repeat
+	KeyUp ControlKey
 end pick
 
 function checkPickingStatusImage
@@ -80,7 +85,6 @@ function checkPickingStatusImage
 			return SUCCESS
 		end if
 		RightClick "M3/PMS100/MWS420B1OrderLine"
-		Click "M3/PMS100/RelatedOptionsLink"
 		Click "M3/PMS100/ConfirmIssuesLink"
 		Click "M3/PMS100/Refresh"
 	end repeat

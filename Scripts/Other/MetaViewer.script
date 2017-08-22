@@ -16,10 +16,10 @@ End loginMV
 
 ## Search for the Refernce Number and open up the pdf
 To lookupMV NumberMV
-	
+	Wait 5
 	TypeText NumberMV
 	TypeText ReturnKey
-	wait 10
+	wait 15
 	DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/MVAGUSTESTM3")+(0,0))
 	DoubleClick "MetaViewer/MetaViewerTree/AGSUS13"
 	DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"

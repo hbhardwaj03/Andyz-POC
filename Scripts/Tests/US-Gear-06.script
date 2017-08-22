@@ -1,0 +1,3 @@
+﻿put "1" into testSerialNumber
+log testSerialNumber
+put getData(testSerialNumber) into testData

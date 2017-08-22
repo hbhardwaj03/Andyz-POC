@@ -1,0 +1,21 @@
+﻿to getAndIncrementScheduleCounter
+	set caseBook to Workbook(ResourcePath("Validation.xlsx"))
+	set worksheet2 to caseBook.Worksheet("Sheet2")
+	put Cell(worksheet2, "B1") into count
+	put count + 1 into count
+	put count into Cell(worksheet2, "B1")
+	log "Cell value: " & Cell(worksheet2, "B1")
+	return count
+end getAndIncrementScheduleCounter
+
+to recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+	set caseBook to Workbook(ResourcePath("Validation.xlsx"))
+	set worksheet2 to caseBook.Worksheet("Sheet2")
+	set worksheet3 to caseBook.Worksheet("Sheet3")
+	put Cell(worksheet2, "B2") into index
+	put coNumber into Cell(worksheet3, "A" & index)
+	put moNumber into Cell(worksheet3, "B" & index)
+	put scheduleNumber into Cell(worksheet3, "C" & index)
+	put deliveryNumber into Cell(worksheet3, "D" & index)
+	put index+1 into Cell(worksheet2, "B2")
+end recordRun
