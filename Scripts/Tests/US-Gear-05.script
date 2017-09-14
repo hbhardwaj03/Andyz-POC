@@ -1,7 +1,8 @@
 ﻿(* 
 Name: US-Gear-06
-Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
-Author: Andy Jenkins
+Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bg shows on Invoice
+Author: Andy Jenkins 
+testing
  *)
 
 Log "Logging in"
