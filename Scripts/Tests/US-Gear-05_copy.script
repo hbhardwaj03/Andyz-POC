@@ -1,0 +1,85 @@
+﻿(* 
+Name: US-Gear-06
+Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
+Author: Andy Jenkins
+ *)
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+
+Log "Enter new order"
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+"M3/OIS300".enterCustomerNumber "US00025065", "USA"
+"M3/OIS300".submitOIS100A
+"M3/OIS300".enterCustomersPO "US-Gear-06"
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E
+"M3/OIS300".submitOIS102H
+
+Log "Enter order line"
+put "M3/OIS101".recordCONumber() into coNumber
+Log coNumber
+"M3/OIS101".enterItemCode("TB7SX6CC")
+"M3/OIS101".enterItemColor
+"M3/OIS101".configuratorA
+"M3/OIS101".closeFromOrderLines
+
+Log "Do scheduling"
+"M3/PMS170".open
+"M3/PMS170".lookUp(coNumber)
+put "M3/PMS170".createScheduleNumber() into scheduleNumber
+"M3/PMS170".scheduleNew scheduleNumber
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/PMS100".open
+"M3/PMS100".lookupSchedule scheduleNumber
+"M3/PMS100".printShopTraveler scheduleNumber
+put "M3/PMS100".recordMO() into moNumber
+"M3/PMS100".pick
+"M3/PMS100".close
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "Do manufacturing"
+"Other/DCA".open
+"Other/DCA".manufacture moNumber
+"Other/DCA".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+"M3/OIS300".confirmStatusPacked
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "CO: " & coNumber
+Log "MO: " & moNumber
+Log "Schedule: " & scheduleNumber
+Log "Delivery: " & deliveryNumber
+DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
