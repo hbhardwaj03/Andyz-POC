@@ -1,0 +1,60 @@
+﻿to open
+	WaitFor 8.0, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "PMS170"
+	Click "M3/Home/SearchSubmit"
+end open
+
+to lookup coNumber
+	Click "M3/PMS170/SortingOrderDropdown"
+	Click "M3/PMS170/RefOrderDropdown"
+	Click "M3/PMS170/ViewDropdown"
+	TypeText endKey
+	Click "M3/PMS170/View51Dropdown"
+	Click "M3/PMS170/ResponsibleField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS170/RefOrderNoField"
+	TypeText coNumber
+	TypeText Return
+end lookup
+
+to createScheduleNumber
+	put DataStore.getAndIncrementScheduleCounter into count
+	put 10008102017+(100000000*count) into scheduleNumber
+	log "New schedule number: " & scheduleNumber
+	return scheduleNumber
+end createScheduleNumber
+
+to scheduleNew scheduleNumber
+	RightClick "M3/PMS170/OrderLine"
+	Click "M3/PMS170/RelatedOptions"
+	Click "M3/PMS170/AddScheduleNumber"
+	Click "M3/PMS170/SchednoField"
+	TypeText f4
+	TypeText scheduleNumber
+	(*TypeText scheduleNumber*)
+	Click "M3/PMS170/CreateLink"
+	TypeText "US-Gear-06"
+	Click "M3/PMS170/NextButton"
+	Wait 3
+	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
+	Wait 3
+	RightClick "M3/PMS170/OrderLine"
+	Click "M3/PMS170/RelatedOptions"
+	Click "M3/PMS170/AddScheduleNumber"
+	TypeText scheduleNumber
+	TypeText Return
+	Click "M3/PMS170/ScheduleLine"
+	Click "M3/PMS170/SelectScheduleButton"
+end scheduleNew
+
+to releaseMO
+	RightClick "M3/PMS170/OrderLine"
+	Click "M3/PMS170/RelatedOptions"
+	Click "M3/PMS170/ReleaseButton"
+end releaseMO
+
+to close
+	Click (Image:"M3/PMS170/ClosePMS170Button", WaitFor:117)
+end close
