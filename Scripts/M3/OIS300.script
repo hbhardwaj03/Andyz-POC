@@ -34,6 +34,7 @@ to enterCustomersPO PO
 	TypeText PO
 end enterCustomersPO
 
+
 to submitOIS100G
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"

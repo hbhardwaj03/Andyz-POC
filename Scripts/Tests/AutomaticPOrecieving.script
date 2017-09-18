@@ -1,0 +1,92 @@
+﻿(* 
+Name: Automatic PO receiving
+Description: Read input from Cognos Report 
+Author: PR
+
+ *)
+
+
+
+set ExcelFile to workbook(ResourcePath("Validation.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet4")
+
+Put Cell(worksheet,A2) into poNumber
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/PPS300".open
+"M3/PPS300".open poNumber
+"M3/PPS300".poReceipt
+click "M3/PPS300/Delynoteno"
+typetext controlkey,("POnumber,1198965")
+click "M3/PPS300/Next"
+typetext controlkey, ("M3/PPS300/received qty,5")
+click "M3/PPS300/Actions"
+click  "M3/PPS300/XClose"
+
+
+"M3/PPS310".open
+"M3/PPS310".poReceipt
+click "M3/PPS300/Receivingnum"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext "14001"
+
+cliclick "M3/PPS300/PPS310/NextPPS310"
+
+click  "M3/PPS300/ConfirmUpdateF14"
+
+
+
+
+
+
+
+
+
+
+(*
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "Do manufacturing"
+"Other/DCA".open
+"Other/DCA".manufacture moNumber
+"Other/DCA".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+"M3/OIS300".confirmStatusPacked
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "CO: " & coNumber
+Log "MO: " & moNumber
+Log "Schedule: " & scheduleNumber
+Log "Delivery: " & deliveryNumber
+DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
+
+*)
