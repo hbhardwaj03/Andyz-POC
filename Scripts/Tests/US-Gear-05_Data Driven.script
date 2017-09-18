@@ -6,14 +6,32 @@ Author: Andy Jenkins
 
 Log "Logging in"
 "M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
+// read user Name and Password for M3 Application from Login sheet of Datastore excel File
+//"DataStore".ConfigValues
+
+set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
+set worksheet to ExcelFile.Worksheet("Login")
+Put Cell(worksheet,A2) into username
+Put Cell(worksheet,B2) into password
+
+// call Login function 
+"M3/Login".login username, password
 
 Log "Enter new order"
 "M3/OIS300".open
+wait while "M3/OIS300/NewOrderButton" is visible
 "M3/OIS300".startNewOrder
-"M3/OIS300".enterCustomerNumber "US00025065", "USA"
+Wait while "M3/OIS300/CustomerNumberField/CustomerNumberField" is visible
+
+Put Cell(worksheet,C2) into customerNumber
+Put Cell(worksheet,D2) into coType
+
+"M3/OIS300".enterCustomerNumber customerNumber, coType
 "M3/OIS300".submitOIS100A
-"M3/OIS300".enterCustomersPO "US-Gear-06"
+
+Put Cell(worksheet,E2) into PO
+"M3/OIS300".enterCustomersPO PO
+//"M3/OIS300".enterCustomersPO "US-Gear-06"
 "M3/OIS300".submitOIS100G
 "M3/OIS300".acceptPOWarning
 "M3/OIS300".submitOIS100F
@@ -24,7 +42,10 @@ Log "Enter new order"
 Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
-"M3/OIS101".enterItemCode("TB7SX6CC")
+
+Put Cell(worksheet,F2) into ItemCode
+"M3/OIS101".enterItemCode ItemCode
+//"M3/OIS101".enterItemCode("TB7SX6CC")
 "M3/OIS101".enterItemColor
 "M3/OIS101".configuratorA
 "M3/OIS101".closeFromOrderLines
@@ -51,7 +72,8 @@ Log "Do manufacturing"
 "Other/DCA".manufacture moNumber
 "Other/DCA".close
 "M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/Login".login username, password
+//"M3/Login".login "ajenkins", "Acushnet#1"
 "M3/OIS300".open
 "M3/OIS300".lookupCO coNumber
 "M3/OIS300".openDeliveryToolbox
@@ -74,6 +96,7 @@ Log "Shipping with Flagship"
 "Web/Flagship".ship deliveryNumber
 "Web/Flagship".close
 "M3/Application".open
+
 "M3/Login".login "ajenkins", "Acushnet#1"
 "M3/OIS300".open
 "M3/OIS300".lookupCO coNumber

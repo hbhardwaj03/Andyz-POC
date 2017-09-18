@@ -19,3 +19,15 @@ to recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
 	put deliveryNumber into Cell(worksheet3, "D" & index)
 	put index+1 into Cell(worksheet2, "B2")
 end recordRun
+
+
+(*
+to ConfigValues 
+set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
+set worksheet to ExcelFile.Worksheet("Login")
+Put Cell(worksheet,A2) into UserName
+Put Cell(worksheet,B2) into Password
+Put Cell(worksheetC2) into  customerNumber 
+Put Cell(worksheet,D2) into  coType
+end ConfigValues
+*)
