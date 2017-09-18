@@ -1,11 +1,12 @@
 ﻿to open
-	WaitFor 8.0, "M3/Application/inforSmartOfficeTitle"
+	WaitFor 10, "M3/Application/inforSmartOfficeTitle"
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
 	TypeText "PMS170"
 	Click "M3/Home/SearchSubmit"
 end open
 
 to lookup coNumber
+	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
 	Click "M3/PMS170/SortingOrderDropdown"
 	Click "M3/PMS170/RefOrderDropdown"
 	Click "M3/PMS170/ViewDropdown"
@@ -18,6 +19,67 @@ to lookup coNumber
 	TypeText coNumber
 	TypeText Return
 end lookup
+
+
+to lookup_2 coNumber
+	WaitFor 10, "M3/PMS170/Sortingorder_2"
+	Click "M3/PMS170/Sortingorder_2"
+	Click  "M3/PMS170/3RefOrderCO"
+	Click "M3/PMS170/View51_2"
+	TypeText endKey
+	Click "M3/PMS170/View51Dropdown" 
+	Click "M3/PMS170/ResponsibleField" 
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS170/RefOrderNoField"
+	TypeText coNumber
+	TypeText Return
+end lookup_2
+
+
+To select_Product product
+	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine"
+	Click "M3/PMS170/OrderLine/Product_OrderLine"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText product
+	TypeText Return
+	click "M3/PMS170/OrderLine/IApply"
+	If Imagefound("M3/PMS170/OrderLine/COnumber_select") then
+		click "M3/PMS170/OrderLine/COnumber_select"
+		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
+		logSuccess "Product are displayed"
+	else
+		Logerror "Products are not displayed"
+	End If
+End select_Product
+
+To change_line_status
+	If Imagefound("M3/PMS170/OrderLine/Change_Line") then
+		click "M3/PMS170/OrderLine/Change_Line"
+		If imagefound("M3/PMS170/OrderLine/Structuretype") then
+			click "M3/PMS170/OrderLine/Structuretype"
+			TypeText controlKe, "a"
+			TypeText deleteKey
+			TypeText Status_Line
+			LogSuccess "Line Status Has Changed"
+			click "M3/PMS170/OrderLine/Refresh"
+		else
+			
+			LogError "Line Status has Not changed"
+		End If        
+	else
+		LogError "Edit button is Disabled"
+		
+	End If
+	
+	
+End change_line_status
+
+
+
+
+
 
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
