@@ -25,12 +25,14 @@ Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 
 Put Cell(worksheet,C2) into customerNumber
 Put Cell(worksheet,D2) into coType
+Put Cell(worksheet,E2) into PO
+Put Cell(worksheet,F2) into ItemCode
 Put Cell(worksheet,G2) into productQuantity
 
 "M3/OIS300".enterCustomerNumber customerNumber, coType
 "M3/OIS300".submitOIS100A
 
-Put Cell(worksheet,E2) into PO
+
 "M3/OIS300".enterCustomersPO PO
 "M3/OIS300".submitOIS100G
 "M3/OIS300".acceptPOWarning
@@ -43,7 +45,7 @@ Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
-Put Cell(worksheet,"F2") into ItemCode
+
 "M3/OIS101".enterItemCode ItemCode
 "M3/OIS101".enterItemQuantity productQuantity
 "M3/OIS101".enterItemColor
