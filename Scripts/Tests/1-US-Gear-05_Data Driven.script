@@ -47,9 +47,15 @@ Log coNumber
 
 
 "M3/OIS101".enterItemCode ItemCode
-"M3/OIS101".enterItemQuantity productQuantity
-"M3/OIS101".enterItemColor
-"M3/OIS101".configuratorA
+
+if ItemCode = "TB7SX6CC" then 
+	"M3/OIS101".enterItemQuantity productQuantity
+	"M3/Configurations".configuration001
+else
+	"M3/OIS101".enterItemColor
+	"M3/OIS101".configuratorA
+end if
+
 "M3/OIS101".closeFromOrderLines
 
 Log "Do scheduling"
