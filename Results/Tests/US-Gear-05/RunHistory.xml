@@ -903,14 +903,14 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage>AssertionFailed -- Picking status update in picking lists (assertion: &quot;M3/PMS100&quot;.checkPickingStatusImage is SUCCESS; actually: FAIL IS NOT equal to SUCCESS)</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-22 07:49:31.808 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_074931.808/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -919,10 +919,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 10:46:58.771 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_104658.771/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -931,10 +931,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:01:45.110 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_110145.110/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -943,10 +943,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:28:41.754 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_112841.754/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -954,7 +954,7 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  <run>
   <RunDate>2017-08-22 11:38:39.192 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>1693.666000</Duration>
+  <Duration>1693.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -962,5 +962,317 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <LogFile>20170822_113839.192/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-13 19:51:03.384 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170913_195103.384/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-13 19:54:28.288 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>33.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170913_195428.288/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 13:44:53.819 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>3.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_134453.819/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>No Remote Connection -- doubleclick Error - Remote Connection Unavailable</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 13:50:35.951 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>26.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_135035.951/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:09:14.819 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>29.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_140914.819/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:10:40.073 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>26.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_141040.073/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:14:23.867 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_141423.867/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:37:10.917 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_143710.917/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:40:20.778 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_144020.778/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:44:43.209 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_144443.209/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 14:47:21.486 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_144721.486/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 15:10:00.732 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>63.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_151000.732/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Error Running Script Command -- readtext Error - Parameter Error - readtext called with absolute point (-239, 696) and other parameters</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 15:13:23.700 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>127.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_151323.700/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Error Running Script Command -- readtext Error - Parameter Error - readtext called with absolute point (-239, 696) and other parameters</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 15:24:18.042 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>1295.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_152418.042/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 15:56:53.763 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>111.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_155653.763/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 16:45:23.273 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>154.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_164523.273/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 16:58:25.570 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_165825.570/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:01:37.809 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_170137.809/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:09:54.154 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_170954.154/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:11:32.838 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_171132.838/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:12:16.691 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_171216.691/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:13:56.463 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_171356.463/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:23:03.195 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>106.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_172303.195/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:31:26.921 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>112.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_173126.921/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:42:04.007 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_174204.007/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 17:43:23.742 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>109.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_174323.742/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
  </run>
 </runHistory>
