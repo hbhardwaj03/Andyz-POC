@@ -903,14 +903,14 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage>AssertionFailed -- Picking status update in picking lists (assertion: &quot;M3/PMS100&quot;.checkPickingStatusImage is SUCCESS; actually: FAIL IS NOT equal to SUCCESS)</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-22 07:49:31.808 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_074931.808/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -919,10 +919,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 10:46:58.771 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_104658.771/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -931,10 +931,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:01:45.110 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_110145.110/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -943,10 +943,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:28:41.754 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_112841.754/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -954,7 +954,7 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  <run>
   <RunDate>2017-08-22 11:38:39.192 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>1693.666000</Duration>
+  <Duration>1693.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
