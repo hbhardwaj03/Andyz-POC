@@ -7,7 +7,7 @@ to open
 end open
 
 to startNewOrder
-	Click (Image:"M3/OIS300/NewOrderButton", WaitFor:60)
+	Click (Image:"M3/OIS300/NewOrderButton_new", WaitFor:60), 
 end startNewOrder
 
 to enterCustomerNumber customerNumber, coType
