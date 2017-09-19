@@ -42,9 +42,14 @@ to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
 	Click (187,595)
 	TypeText itemCode
-	(*Click "ItemField"*)
 	TypeText Return
 end enterItemCode
+
+to enterItemQuantity productQuantity
+	Click (303,595)
+	TypeText productQuantity
+	TypeText Return
+end enterItemQuantity
 
 to enterItemColor
 	Click "M3/OIS101/ItemColorField"

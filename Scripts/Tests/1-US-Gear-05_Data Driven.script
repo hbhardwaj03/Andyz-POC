@@ -26,6 +26,7 @@ Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 
 Put Cell(worksheet,C2) into customerNumber
 Put Cell(worksheet,D2) into coType
+Put Cell(worksheet,G2) into productQuantity
 
 "M3/OIS300".enterCustomerNumber customerNumber, coType
 "M3/OIS300".submitOIS100A
@@ -46,6 +47,7 @@ Log coNumber
 
 Put Cell(worksheet,"F2") into ItemCode
 "M3/OIS101".enterItemCode ItemCode
+"M3/OIS101".enterItemQuantity productQuantity
 //"M3/OIS101".enterItemCode("TB7SX6CC")
 "M3/OIS101".enterItemColor
 "M3/OIS101".configuratorA
