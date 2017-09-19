@@ -40,7 +40,7 @@ end supplyChain
 
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
-	Click "M3/OIS101/ItemField"
+	Click (187,595)
 	TypeText itemCode
 	(*Click "ItemField"*)
 	TypeText Return
