@@ -1,32 +1,5 @@
 ﻿<?xml version="1.0"?>
 <statistics>
-<<<<<<< HEAD
- <script name="Tests/1-US-Gear-05_Data Driven">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>2</NumberOfRuns>
-  <NumberOfFails>2</NumberOfFails>
-  <FirstRun>2017-09-19 12:56:37 -0700</FirstRun>
-  <LastRun>2017-09-19 13:02:02 -0700</LastRun>
-  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
- </script>
- <script name="Web/KPack">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-19 14:52:44 -0700</FirstRun>
-  <LastRun>2017-09-19 14:52:44 -0700</LastRun>
-  <TotalTimeOnSuccess>679.146000</TotalTimeOnSuccess>
- </script>
- <script name="M3/OIS101">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>2</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-19 12:04:56 -0700</FirstRun>
-  <LastRun>2017-09-19 12:34:49 -0700</LastRun>
-  <TotalTimeOnSuccess>0.020000</TotalTimeOnSuccess>
- </script>
-=======
-<<<<<<< HEAD
  <script name="Other/MetaViewer">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>2</NumberOfRuns>
@@ -34,38 +7,6 @@
   <FirstRun>2017-08-15 10:34:14 -0700</FirstRun>
   <LastRun>2017-08-16 13:55:27 -0700</LastRun>
   <TotalTimeOnSuccess>0.477000</TotalTimeOnSuccess>
- </script>
- <script name="Tests/1-CustomGear">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>4</NumberOfRuns>
-  <NumberOfFails>4</NumberOfFails>
-  <FirstRun>2017-09-14 16:15:16 -0400</FirstRun>
-  <LastRun>2017-09-18 15:47:23 -0400</LastRun>
-  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
- </script>
- <script name="M3/OIS300">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-08-21 09:20:37 -0700</FirstRun>
-  <LastRun>2017-09-18 15:32:01 -0400</LastRun>
-  <TotalTimeOnSuccess>0.616000</TotalTimeOnSuccess>
- </script>
- <script name="Tests/US-Gear-90-Validation">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>7</NumberOfRuns>
-  <NumberOfFails>1</NumberOfFails>
-  <FirstRun>2017-08-14 17:36:52 -0700</FirstRun>
-  <LastRun>2017-08-16 14:59:34 -0700</LastRun>
-  <TotalTimeOnSuccess>204.546000</TotalTimeOnSuccess>
- </script>
- <script name="Tests/US-Gear-06-Validation">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>6</NumberOfRuns>
-  <NumberOfFails>1</NumberOfFails>
-  <FirstRun>2017-08-14 17:31:02 -0700</FirstRun>
-  <LastRun>2017-08-16 13:55:47 -0700</LastRun>
-  <TotalTimeOnSuccess>160.594000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-05">
   <LastStatus>Failure</LastStatus>
@@ -75,45 +16,21 @@
   <LastRun>2017-09-14 17:43:23 -0400</LastRun>
   <TotalTimeOnSuccess>1693.666000</TotalTimeOnSuccess>
  </script>
- <script name="Tests/US-Gear-90-A">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>11</NumberOfRuns>
+ <script name="Tests/2-BulkMO">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>2</NumberOfRuns>
   <NumberOfFails>2</NumberOfFails>
-  <FirstRun>2017-08-14 18:09:37 -0700</FirstRun>
-  <LastRun>2017-08-22 13:34:54 -0700</LastRun>
-  <TotalTimeOnSuccess>1156.028000</TotalTimeOnSuccess>
+  <FirstRun>2017-09-19 19:08:13 -0400</FirstRun>
+  <LastRun>2017-09-19 19:15:08 -0400</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
- <script name="M3/OIS101">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-14 14:22:12 -0400</FirstRun>
-  <LastRun>2017-09-14 15:09:33 -0400</LastRun>
-  <TotalTimeOnSuccess>0.030000</TotalTimeOnSuccess>
- </script>
- <script name="M3/Login">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-13 19:59:01 -0400</FirstRun>
-  <LastRun>2017-09-14 20:09:44 -0400</LastRun>
-  <TotalTimeOnSuccess>0.031000</TotalTimeOnSuccess>
- </script>
- <script name="M3/Application">
-  <LastStatus>Success</LastStatus>
+ <script name="Tests/1-CustomGear">
+  <LastStatus>Failure</LastStatus>
   <NumberOfRuns>4</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-13 19:58:38 -0400</FirstRun>
-  <LastRun>2017-09-18 15:30:57 -0400</LastRun>
-  <TotalTimeOnSuccess>0.035000</TotalTimeOnSuccess>
- </script>
- <script name="M3/PMS100">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-08-21 12:04:58 -0700</FirstRun>
-  <LastRun>2017-09-14 15:56:23 -0400</LastRun>
-  <TotalTimeOnSuccess>0.085000</TotalTimeOnSuccess>
+  <NumberOfFails>4</NumberOfFails>
+  <FirstRun>2017-09-14 16:15:16 -0400</FirstRun>
+  <LastRun>2017-09-18 15:47:23 -0400</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
  <script name="M3/PMS170">
   <LastStatus>Success</LastStatus>
@@ -123,7 +40,76 @@
   <LastRun>2017-09-14 17:50:47 -0400</LastRun>
   <TotalTimeOnSuccess>0.044000</TotalTimeOnSuccess>
  </script>
-=======
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
->>>>>>> 8a93476edc5cb0a4bf395e8ca7d1269019e25378
+ <script name="Tests/US-Gear-90-Validation">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>7</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-08-14 17:36:52 -0700</FirstRun>
+  <LastRun>2017-08-16 14:59:34 -0700</LastRun>
+  <TotalTimeOnSuccess>204.546000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/OIS101">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-09-14 14:22:12 -0400</FirstRun>
+  <LastRun>2017-09-14 15:09:33 -0400</LastRun>
+  <TotalTimeOnSuccess>0.030000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/Application">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-09-13 19:58:38 -0400</FirstRun>
+  <LastRun>2017-09-18 15:30:57 -0400</LastRun>
+  <TotalTimeOnSuccess>0.035000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/Login">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-09-13 19:59:01 -0400</FirstRun>
+  <LastRun>2017-09-14 20:09:44 -0400</LastRun>
+  <TotalTimeOnSuccess>0.031000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/OIS300">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-08-21 09:20:37 -0700</FirstRun>
+  <LastRun>2017-09-18 15:32:01 -0400</LastRun>
+  <TotalTimeOnSuccess>0.616000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/3-ZC-Customization-Process">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-09-19 18:33:21 -0400</FirstRun>
+  <LastRun>2017-09-19 18:33:21 -0400</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/US-Gear-06-Validation">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>6</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-08-14 17:31:02 -0700</FirstRun>
+  <LastRun>2017-08-16 13:55:47 -0700</LastRun>
+  <TotalTimeOnSuccess>160.594000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/US-Gear-90-A">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>11</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2017-08-14 18:09:37 -0700</FirstRun>
+  <LastRun>2017-08-22 13:34:54 -0700</LastRun>
+  <TotalTimeOnSuccess>1156.028000</TotalTimeOnSuccess>
+ </script>
+ <script name="M3/PMS100">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-08-21 12:04:58 -0700</FirstRun>
+  <LastRun>2017-09-14 15:56:23 -0400</LastRun>
+  <TotalTimeOnSuccess>0.085000</TotalTimeOnSuccess>
+ </script>
 </statistics>

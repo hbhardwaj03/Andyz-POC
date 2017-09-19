@@ -79,7 +79,6 @@
 2017-08-22 11:01:45.110 -0700,"Running",0:00:00,0,0,0,"20170822_110145.110/LogFile.txt","","",0
 2017-08-22 11:28:41.754 -0700,"Running",0:00:00,0,0,0,"20170822_112841.754/LogFile.txt","","",0
 2017-08-22 11:38:39.192 -0700,"Success",0:28:13,0,0,0,"20170822_113839.192/LogFile.txt","","",7
-<<<<<<< HEAD
 2017-09-13 19:51:03.384 -0400,"Running",0:00:00,0,0,0,"20170913_195103.384/LogFile.txt","","",0
 2017-09-13 19:54:28.288 -0400,"Failure",0:00:33,1,0,1,"20170913_195428.288/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
 2017-09-14 13:44:53.819 -0400,"Failure",0:00:03,1,0,1,"20170914_134453.819/LogFile.txt","","No Remote Connection -- doubleclick Error - Remote Connection Unavailable",0
@@ -106,14 +105,11 @@
 2017-09-14 17:31:26.921 -0400,"Failure",0:01:52,1,0,1,"20170914_173126.921/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
 2017-09-14 17:42:04.007 -0400,"Running",0:00:00,0,0,0,"20170914_174204.007/LogFile.txt","","",0
 2017-09-14 17:43:23.742 -0400,"Failure",0:01:49,1,0,1,"20170914_174323.742/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
-=======
-<<<<<<< HEAD
 2017-09-14 02:13:33.715 -0400,"Running",0:00:00,0,0,0,"20170914_021333.715/LogFile.txt","","",0
 2017-09-14 02:17:31.905 -0400,"Failure",0:01:30,1,0,1,"20170914_021731.905/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/NewOrderButton""",0
 2017-09-14 02:27:33.148 -0400,"Failure",0:01:23,1,0,1,"20170914_022733.148/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS101/WindowsButton""",0
 2017-09-14 08:36:39.629 -0400,"Running",0:00:00,0,0,0,"20170914_083639.629/LogFile.txt","","",0
 2017-09-14 09:29:48.724 -0400,"Failure",0:02:03,1,0,1,"20170914_092948.724/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/CustomerNumberField""",0
-=======
 2017-09-14 06:56:20.075 -0400,"Running",0:00:00,0,0,0,"20170914_065620.075/LogFile.txt","","",0
 2017-09-14 06:58:54.706 -0400,"Failure",0:01:46,1,0,1,"20170914_065854.706/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
 2017-09-14 07:02:05.299 -0400,"Running",0:00:00,0,0,0,"20170914_070205.299/LogFile.txt","","",0
@@ -127,5 +123,3 @@
 2017-09-14 09:26:36.056 -0400,"Failure",0:02:52,1,0,1,"20170914_092636.056/LogFile.txt","","Image Not Found -- moveto Error - No Image Found On Screen: ""Corner""",0
 2017-09-14 09:39:42.292 -0400,"Failure",0:00:19,1,0,1,"20170914_093942.292/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
 2017-09-14 09:41:14.851 -0400,"Failure",0:00:44,1,0,1,"20170914_094114.851/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c

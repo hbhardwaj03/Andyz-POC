@@ -964,35 +964,18 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-13 19:51:03.384 -0400</RunDate>
-=======
-<<<<<<< HEAD
-  <RunDate>2017-09-14 02:13:33.715 -0400</RunDate>
-=======
-  <RunDate>2017-09-14 06:56:20.075 -0400</RunDate>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170913_195103.384/LogFile.txt</LogFile>
-=======
-<<<<<<< HEAD
-  <LogFile>20170914_021333.715/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_065620.075/LogFile.txt</LogFile>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-13 19:54:28.288 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>33.000000</Duration>
@@ -1032,22 +1015,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 14:09:14.819 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>29.000000</Duration>
-=======
-<<<<<<< HEAD
-  <RunDate>2017-09-14 02:17:31.905 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>90.000000</Duration>
-=======
-  <RunDate>2017-09-14 06:58:54.706 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>106.000000</Duration>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_140914.819/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
@@ -1061,44 +1032,22 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
   <LogFile>20170914_141040.073/LogFile.txt</LogFile>
-=======
-<<<<<<< HEAD
-  <LogFile>20170914_021731.905/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/NewOrderButton&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 02:27:33.148 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>83.000000</Duration>
-=======
-  <LogFile>20170914_065854.706/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 14:14:23.867 -0400</RunDate>
-=======
-  <RunDate>2017-09-14 07:02:05.299 -0400</RunDate>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_141423.867/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_070205.299/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 14:37:10.917 -0400</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
@@ -1150,17 +1099,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 15:10:00.732 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>63.000000</Duration>
-=======
-  <RunDate>2017-09-14 07:07:44.376 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>62.000000</Duration>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_151000.732/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Error Running Script Command -- readtext Error - Parameter Error - readtext called with absolute point (-239, 696) and other parameters</ErrorMessage>
@@ -1205,109 +1147,51 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 16:45:23.273 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>154.000000</Duration>
-=======
-<<<<<<< HEAD
-  <LogFile>20170914_022733.148/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS101/WindowsButton&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 08:36:39.629 -0400</RunDate>
-=======
-  <LogFile>20170914_070744.376/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 07:11:39.277 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>234.000000</Duration>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_164523.273/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
  </run>
  <run>
   <RunDate>2017-09-14 16:58:25.570 -0400</RunDate>
-=======
-  <LogFile>20170914_071139.277/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 08:33:38.008 -0400</RunDate>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_165825.570/LogFile.txt</LogFile>
-=======
-<<<<<<< HEAD
-  <LogFile>20170914_083639.629/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_083338.008/LogFile.txt</LogFile>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 17:01:37.809 -0400</RunDate>
-=======
-<<<<<<< HEAD
-  <RunDate>2017-09-14 09:29:48.724 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>123.000000</Duration>
-=======
-  <RunDate>2017-09-14 08:50:13.372 -0400</RunDate>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_170137.809/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_085013.372/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 17:09:54.154 -0400</RunDate>
-=======
-  <RunDate>2017-09-14 08:58:00.065 -0400</RunDate>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_170954.154/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_085800.065/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 17:11:32.838 -0400</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
@@ -1333,57 +1217,24 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  </run>
  <run>
   <RunDate>2017-09-14 17:13:56.463 -0400</RunDate>
-=======
-  <RunDate>2017-09-14 08:59:01.670 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>862.000000</Duration>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
-  <Errors>1</Errors>
-  <Warnings>0</Warnings>
-  <Exceptions>1</Exceptions>
-  <Successes>0</Successes>
-<<<<<<< HEAD
-  <LogFile>20170914_092948.724/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
- </run>
-=======
-  <LogFile>20170914_085901.670/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 09:20:14.418 -0400</RunDate>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Running</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_171356.463/LogFile.txt</LogFile>
-=======
-  <LogFile>20170914_092014.418/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-14 17:23:03.195 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>106.000000</Duration>
-=======
-  <RunDate>2017-09-14 09:26:36.056 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>172.000000</Duration>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_172303.195/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
@@ -1392,21 +1243,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 17:31:26.921 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>112.000000</Duration>
-=======
-  <LogFile>20170914_092636.056/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- moveto Error - No Image Found On Screen: &quot;Corner&quot;</ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-14 09:39:42.292 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>19.000000</Duration>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
   <LogFile>20170914_173126.921/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
@@ -1427,7 +1267,214 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 17:43:23.742 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>109.000000</Duration>
-=======
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_174323.742/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:13:33.715 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_021333.715/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:17:31.905 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>90.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_021731.905/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/NewOrderButton&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:27:33.148 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>83.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_022733.148/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS101/WindowsButton&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:36:39.629 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_083639.629/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 09:29:48.724 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>123.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_092948.724/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 06:56:20.075 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_065620.075/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 06:58:54.706 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>106.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_065854.706/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 07:02:05.299 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_070205.299/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 07:07:44.376 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>62.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_070744.376/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 07:11:39.277 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>234.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_071139.277/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:33:38.008 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_083338.008/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:50:13.372 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_085013.372/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:58:00.065 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_085800.065/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:59:01.670 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>862.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_085901.670/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 09:20:14.418 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_092014.418/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 09:26:36.056 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>172.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_092636.056/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- moveto Error - No Image Found On Screen: &quot;Corner&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 09:39:42.292 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>19.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170914_093942.292/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
@@ -1436,21 +1483,12 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-09-14 09:41:14.851 -0400</RunDate>
   <Status>Failure</Status>
   <Duration>44.000000</Duration>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
   <Successes>0</Successes>
-<<<<<<< HEAD
-  <LogFile>20170914_174323.742/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image &quot;M3/PMS170/SortingOrderDropdown&quot;</ErrorMessage>
- </run>
-=======
   <LogFile>20170914_094114.851/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
  </run>
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
 </runHistory>
