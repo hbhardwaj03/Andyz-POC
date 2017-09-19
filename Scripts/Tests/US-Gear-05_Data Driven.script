@@ -7,21 +7,22 @@ Author: Andy Jenkins
 Log "Logging in"
 "M3/Application".open
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
-//"DataStore".ConfigValues
+//run DataStore.ConfigValues UserName, Password, customerNumber, coType
 
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,A2) into username
-Put Cell(worksheet,B2) into password
+Put Cell(worksheet,A2) into UserName
+Put Cell(worksheet,B2) into Password
+
 
 // call Login function 
-"M3/Login".login username, password
+"M3/Login".login UserName, Password
 
 Log "Enter new order"
 "M3/OIS300".open
-wait while "M3/OIS300/NewOrderButton" is visible
+//wait while "M3/OIS300/NewOrderButton" is visible"
 "M3/OIS300".startNewOrder
-Wait while "M3/OIS300/CustomerNumberField/CustomerNumberField" is visible
+Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 
 Put Cell(worksheet,C2) into customerNumber
 Put Cell(worksheet,D2) into coType
@@ -43,7 +44,7 @@ Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
-Put Cell(worksheet,F2) into ItemCode
+Put Cell(worksheet,"F2") into ItemCode
 "M3/OIS101".enterItemCode ItemCode
 //"M3/OIS101".enterItemCode("TB7SX6CC")
 "M3/OIS101".enterItemColor
