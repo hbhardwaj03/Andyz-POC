@@ -79,3 +79,8 @@
 2017-08-22 11:01:45.110 -0700,"Running",0:00:00,0,0,0,"20170822_110145.110/LogFile.txt","","",0
 2017-08-22 11:28:41.754 -0700,"Running",0:00:00,0,0,0,"20170822_112841.754/LogFile.txt","","",0
 2017-08-22 11:38:39.192 -0700,"Success",0:28:13,0,0,0,"20170822_113839.192/LogFile.txt","","",7
+2017-09-14 02:13:33.715 -0400,"Running",0:00:00,0,0,0,"20170914_021333.715/LogFile.txt","","",0
+2017-09-14 02:17:31.905 -0400,"Failure",0:01:30,1,0,1,"20170914_021731.905/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/NewOrderButton""",0
+2017-09-14 02:27:33.148 -0400,"Failure",0:01:23,1,0,1,"20170914_022733.148/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS101/WindowsButton""",0
+2017-09-14 08:36:39.629 -0400,"Running",0:00:00,0,0,0,"20170914_083639.629/LogFile.txt","","",0
+2017-09-14 09:29:48.724 -0400,"Failure",0:02:03,1,0,1,"20170914_092948.724/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/CustomerNumberField""",0

@@ -903,14 +903,14 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage>AssertionFailed -- Picking status update in picking lists (assertion: &quot;M3/PMS100&quot;.checkPickingStatusImage is SUCCESS; actually: FAIL IS NOT equal to SUCCESS)</ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-08-22 07:49:31.808 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_074931.808/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -919,10 +919,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 10:46:58.771 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_104658.771/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -931,10 +931,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:01:45.110 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_110145.110/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -943,10 +943,10 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <RunDate>2017-08-22 11:28:41.754 -0700</RunDate>
   <Status>Running</Status>
   <Duration>0.000000</Duration>
-  <Errors></Errors>
-  <Warnings></Warnings>
-  <Exceptions></Exceptions>
-  <Successes></Successes>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
   <LogFile>20170822_112841.754/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -954,7 +954,7 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
  <run>
   <RunDate>2017-08-22 11:38:39.192 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>1693.666000</Duration>
+  <Duration>1693.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
@@ -962,5 +962,65 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <LogFile>20170822_113839.192/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:13:33.715 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_021333.715/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:17:31.905 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>90.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_021731.905/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/NewOrderButton&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 02:27:33.148 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>83.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_022733.148/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS101/WindowsButton&quot;</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 08:36:39.629 -0400</RunDate>
+  <Status>Running</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_083639.629/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-14 09:29:48.724 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>123.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170914_092948.724/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomerNumberField&quot;</ErrorMessage>
  </run>
 </runHistory>

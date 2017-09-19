@@ -49,22 +49,30 @@ To select_Product product
 		click "M3/PMS170/OrderLine/COnumber_select"
 		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
 		logSuccess "Product are displayed"
-	else
+		else
 		Logerror "Products are not displayed"
 	End If
 End select_Product
 
-To change_line_status
+To change_line_status Status_Line
 	If Imagefound("M3/PMS170/OrderLine/Change_Line") then
 		click "M3/PMS170/OrderLine/Change_Line"
 		If imagefound("M3/PMS170/OrderLine/Structuretype") then
 			click "M3/PMS170/OrderLine/Structuretype"
-			TypeText controlKe, "a"
+			wait 5
+			TypeText controlKey, "a"
 			TypeText deleteKey
 			TypeText Status_Line
+			TypeText Return
+			wait 2
 			LogSuccess "Line Status Has Changed"
-			click "M3/PMS170/OrderLine/Refresh"
-		else
+			click "M3/PMS170/Next_Image"
+			if Imagefound("M3/PMS170/Next_Image") then
+				click "M3/PMS170/Next_Image"
+			end if
+			wait 10
+			
+		Else
 			
 			LogError "Line Status has Not changed"
 		End If        
@@ -75,6 +83,17 @@ To change_line_status
 	
 	
 End change_line_status
+
+to create_schedule_number schedulenumberM3
+	
+	Click "M3/PMS170/Related"
+	Click "M3/PMS170/AddScheduleNumber_1"
+	TypeText scheduleNumberM3
+	TypeText Return
+	Click "M3/PMS170/ScheduleLine"
+	Click "M3/PMS170/SelectScheduleButton"
+	
+end create_schedule_number
 
 
 

@@ -7,6 +7,8 @@ Put Cell(worksheet,B2) into password
 Put Cell(worksheet,A6) into coNumber 
 Put Cell(worksheet,D6) into product
 Put Cell(worksheet,E6) into Status_Line
+Put Cell(worksheet,E6) into sh_prifx
+Put Cell(worksheet,G6) into sh_sufix
 
 
 
@@ -33,8 +35,22 @@ else
 	Logerror "Product field is not Appears"
 end if
 "M3/PMS170".change_line_status Status_Line
+if Imagefound("M3/PMS170/Related") then
+	(*put 300 to a1
+	put 1 to a2 
+	add a1,a2
+	
+	Put shprifx + sh_Prifx into shprifx
+	Put sh_prifx & sh_sufix into schedulenumberM3*)
+	Put 30009192017 into schedulenumberM3
+	"M3/PMS170".create_schedule_number schedulenumberM3
+else
+	Logerror "Schedulenumber is not created"
+	
+end if
 
-
+put readtext("M3/PMS170/Getvaluein_sh") into a
+log a
 (*
 Log "Do scheduling"
 "M3/PMS170".open
