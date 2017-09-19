@@ -45,7 +45,7 @@ Log coNumber
 
 if ItemCode = "TB7SX6CC" then 
 	"M3/OIS101".enterItemQuantity productQuantity
-	"M3/Configurations".configuration001
+	"M3/Configurations".config001
 else
 	"M3/OIS101".enterItemColor
 	"M3/OIS101".configuratorA
@@ -76,7 +76,6 @@ Log "Do manufacturing"
 "Other/DCA".close
 "M3/Application".open
 "M3/Login".login username, password
-//"M3/Login".login "ajenkins", "Acushnet#1"
 "M3/OIS300".open
 "M3/OIS300".lookupCO coNumber
 "M3/OIS300".openDeliveryToolbox
