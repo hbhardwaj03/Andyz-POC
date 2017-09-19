@@ -49,11 +49,30 @@
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-13 19:59:16.675 -0400</RunDate>
   <Status>Success</Status>
   <Duration>0.000000</Duration>
-=======
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170913_195916.675/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-18 15:32:01.396 -0400</RunDate>
+  <Status>Success</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20170918_153201.396/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
   <RunDate>2017-09-14 09:19:54.300 -0400</RunDate>
   <Status>Success</Status>
   <Duration>2.000000</Duration>
@@ -69,36 +88,23 @@
   <RunDate>2017-09-14 09:24:56.698 -0400</RunDate>
   <Status>Success</Status>
   <Duration>2.000000</Duration>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>1</Successes>
-<<<<<<< HEAD
-  <LogFile>20170913_195916.675/LogFile.txt</LogFile>
-=======
   <LogFile>20170914_092456.698/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
-  <RunDate>2017-09-18 15:32:01.396 -0400</RunDate>
-=======
   <RunDate>2017-09-14 09:25:11.439 -0400</RunDate>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <Status>Success</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>1</Successes>
-<<<<<<< HEAD
-  <LogFile>20170918_153201.396/LogFile.txt</LogFile>
-=======
   <LogFile>20170914_092511.439/LogFile.txt</LogFile>
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
