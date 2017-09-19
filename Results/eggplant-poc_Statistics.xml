@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0"?>
 <statistics>
+<<<<<<< HEAD
  <script name="Other/MetaViewer">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>2</NumberOfRuns>
@@ -96,4 +97,6 @@
   <LastRun>2017-09-14 17:50:47 -0400</LastRun>
   <TotalTimeOnSuccess>0.044000</TotalTimeOnSuccess>
  </script>
+=======
+>>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
 </statistics>

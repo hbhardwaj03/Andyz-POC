@@ -20,6 +20,7 @@ to recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
 	put index+1 into Cell(worksheet2, "B2")
 end recordRun
 
+<<<<<<< HEAD
 to getCustomerNo 
 	set caseBook to Workbook(ResourcePath("1-CustomGear-Input.xlsx"))
 	set worksheet2 to caseBook.Worksheet("Stock Input")
@@ -28,3 +29,16 @@ to getCustomerNo
 	return customerNumber
 end getCustomerNo
 getCustomerNo
+=======
+
+(*
+to ConfigValues 
+set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
+set worksheet to ExcelFile.Worksheet("Login")
+Put Cell(worksheet,A2) into UserName
+Put Cell(worksheet,B2) into Password
+Put Cell(worksheetC2) into  customerNumber 
+Put Cell(worksheet,D2) into  coType
+end ConfigValues
+*)
+>>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c

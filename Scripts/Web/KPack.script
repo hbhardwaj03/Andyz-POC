@@ -1,6 +1,7 @@
 ﻿//KPack Login
 Click "KPack/Login/IELink"
 Click (Image:"KPack/Login/KPackLink", WaitFor:74)
+
 Click "KPack/Login/LocationDropdown"
 Click "KPack/Login/LocationDropdownVista"
 
@@ -12,5 +13,24 @@ TypeText "Acushnet#1"
 
 // Click submit
 Click "KPack/Login/LoginButton"
+
+// Pack delivery
+Click "KPack/Pack/OrderNoField"
+TypeText "0013127785001"
+Click "KPack/Pack/LoadOrderButton"
+Click "KPack/Pack/FastPackDeselect"
+Click "KPack/Pack/AutoPackSelect"
+Click "KPack/Pack/ProductIDLoad"
+Click "KPack/Pack/PackButton"
+Click "KPack/Pack/BoxTypeDropdown"
+Click "KPack/Pack/1EBDBoxTypeSelect"
+Click "KPack/Pack/ContainerCompleteButton"
+Click "KPack/Pack/OrderCompleteButton"
+
+//Close internet explorer
+Click (Image:"KPack/Pack/CloseIEButton", WaitFor:68)
+
+
+
 
 
