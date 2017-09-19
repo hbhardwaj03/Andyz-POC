@@ -14,9 +14,14 @@ to poReceipt
 	TypeText deleteKey
 	Click "M3/PPS300/PONumberField"
 	TypeText poNumber
-	TypeText Return
+	TypeText Return"M3/Home/SearchSubmit"
 end poReceipt
 
 to close
 
 end close
+
+to delynoteno
+	click "M3/PPS300/Delynoteno"
+	typetext controlkey,"POnumber"
+end delynoteno
