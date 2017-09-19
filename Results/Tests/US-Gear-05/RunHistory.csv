@@ -80,6 +80,34 @@
 2017-08-22 11:28:41.754 -0700,"Running",0:00:00,0,0,0,"20170822_112841.754/LogFile.txt","","",0
 2017-08-22 11:38:39.192 -0700,"Success",0:28:13,0,0,0,"20170822_113839.192/LogFile.txt","","",7
 <<<<<<< HEAD
+2017-09-13 19:51:03.384 -0400,"Running",0:00:00,0,0,0,"20170913_195103.384/LogFile.txt","","",0
+2017-09-13 19:54:28.288 -0400,"Failure",0:00:33,1,0,1,"20170913_195428.288/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
+2017-09-14 13:44:53.819 -0400,"Failure",0:00:03,1,0,1,"20170914_134453.819/LogFile.txt","","No Remote Connection -- doubleclick Error - Remote Connection Unavailable",0
+2017-09-14 13:50:35.951 -0400,"Failure",0:00:26,1,0,1,"20170914_135035.951/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
+2017-09-14 14:09:14.819 -0400,"Failure",0:00:29,1,0,1,"20170914_140914.819/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
+2017-09-14 14:10:40.073 -0400,"Failure",0:00:26,1,0,1,"20170914_141040.073/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
+2017-09-14 14:14:23.867 -0400,"Running",0:00:00,0,0,0,"20170914_141423.867/LogFile.txt","","",0
+2017-09-14 14:37:10.917 -0400,"Running",0:00:00,0,0,0,"20170914_143710.917/LogFile.txt","","",0
+2017-09-14 14:40:20.778 -0400,"Running",0:00:00,0,0,0,"20170914_144020.778/LogFile.txt","","",0
+2017-09-14 14:44:43.209 -0400,"Running",0:00:00,0,0,0,"20170914_144443.209/LogFile.txt","","",0
+2017-09-14 14:47:21.486 -0400,"Running",0:00:00,0,0,0,"20170914_144721.486/LogFile.txt","","",0
+2017-09-14 15:10:00.732 -0400,"Failure",0:01:03,1,0,1,"20170914_151000.732/LogFile.txt","","Error Running Script Command -- readtext Error - Parameter Error - readtext called with absolute point (-239, 696) and other parameters",0
+2017-09-14 15:13:23.700 -0400,"Failure",0:02:07,1,0,1,"20170914_151323.700/LogFile.txt","","Error Running Script Command -- readtext Error - Parameter Error - readtext called with absolute point (-239, 696) and other parameters",0
+2017-09-14 15:24:18.042 -0400,"Failure",0:21:35,1,0,1,"20170914_152418.042/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+2017-09-14 15:56:53.763 -0400,"Failure",0:01:51,1,0,1,"20170914_155653.763/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+2017-09-14 16:45:23.273 -0400,"Failure",0:02:34,1,0,1,"20170914_164523.273/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+2017-09-14 16:58:25.570 -0400,"Running",0:00:00,0,0,0,"20170914_165825.570/LogFile.txt","","",0
+2017-09-14 17:01:37.809 -0400,"Running",0:00:00,0,0,0,"20170914_170137.809/LogFile.txt","","",0
+2017-09-14 17:09:54.154 -0400,"Running",0:00:00,0,0,0,"20170914_170954.154/LogFile.txt","","",0
+2017-09-14 17:11:32.838 -0400,"Running",0:00:00,0,0,0,"20170914_171132.838/LogFile.txt","","",0
+2017-09-14 17:12:16.691 -0400,"Running",0:00:00,0,0,0,"20170914_171216.691/LogFile.txt","","",0
+2017-09-14 17:13:56.463 -0400,"Running",0:00:00,0,0,0,"20170914_171356.463/LogFile.txt","","",0
+2017-09-14 17:23:03.195 -0400,"Failure",0:01:46,1,0,1,"20170914_172303.195/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+2017-09-14 17:31:26.921 -0400,"Failure",0:01:52,1,0,1,"20170914_173126.921/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+2017-09-14 17:42:04.007 -0400,"Running",0:00:00,0,0,0,"20170914_174204.007/LogFile.txt","","",0
+2017-09-14 17:43:23.742 -0400,"Failure",0:01:49,1,0,1,"20170914_174323.742/LogFile.txt","","Hot Spot Off Screen -- click Error - Hot Spot Off Screen For Image ""M3/PMS170/SortingOrderDropdown""",0
+=======
+<<<<<<< HEAD
 2017-09-14 02:13:33.715 -0400,"Running",0:00:00,0,0,0,"20170914_021333.715/LogFile.txt","","",0
 2017-09-14 02:17:31.905 -0400,"Failure",0:01:30,1,0,1,"20170914_021731.905/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS300/NewOrderButton""",0
 2017-09-14 02:27:33.148 -0400,"Failure",0:01:23,1,0,1,"20170914_022733.148/LogFile.txt","","Image Not Found -- click Error - No Image Found On Screen: ""M3/OIS101/WindowsButton""",0
@@ -100,3 +128,4 @@
 2017-09-14 09:39:42.292 -0400,"Failure",0:00:19,1,0,1,"20170914_093942.292/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
 2017-09-14 09:41:14.851 -0400,"Failure",0:00:44,1,0,1,"20170914_094114.851/LogFile.txt","","Image Not Found -- doubleclick Error - No Image Found On Screen: ""M3/Application/InforShortcut""",0
 >>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
+>>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
