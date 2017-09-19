@@ -16,6 +16,14 @@
   <LastRun>2017-09-14 17:43:23 -0400</LastRun>
   <TotalTimeOnSuccess>1693.666000</TotalTimeOnSuccess>
  </script>
+ <script name="Tests/2-BulkMO">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>2</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2017-09-19 19:08:13 -0400</FirstRun>
+  <LastRun>2017-09-19 19:15:08 -0400</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
+ </script>
  <script name="Tests/1-CustomGear">
   <LastStatus>Failure</LastStatus>
   <NumberOfRuns>4</NumberOfRuns>
