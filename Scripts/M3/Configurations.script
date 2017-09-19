@@ -1,3 +1,20 @@
 ﻿to configuration001
-
+	Click (Image:"M3/Configurations/configuration001/BagColorBlack", WaitFor:10)
+	Click "M3/Configurations/configuration001/NumCustomization"
+	Click "M3/Configurations/configuration001/CustomizationLocation"
+	Click (Image:"M3/Configurations/configuration001/Personalization1", WaitFor:10)
+	Click "M3/Configurations/configuration001/PersonalizationText"
+	TypeText Return
+	TypeText "My automated personalization"
+	Click "M3/OIS101/PersonalizationNextButton"
+	Click "M3/Configurations/configuration001/BlockLettering"
+	Click "M3/Configurations/configuration001/VVhiteColor"
+	Click "M3/Configurations/configuration001/NoOrderNotes"
+	Click "M3/Configurations/configuration001/DoubleStrap"
+	if ImageFound(10,"M3/Configurations/configuration001/WARNING") then
+		Click "M3/Configurations/configuration001/OKButton"
+	end if
+	if ImageFound(10,"M3/Configurations/configuration001/WARNING") then
+		Click "M3/Configurations/configuration001/OKButton"
+	end if
 end configuration001

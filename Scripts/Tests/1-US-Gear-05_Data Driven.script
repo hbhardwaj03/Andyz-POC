@@ -29,8 +29,6 @@ Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 
 "M3/OIS300".enterCustomerNumber customerNumber, coType
 "M3/OIS300".submitOIS100A
-
-
 "M3/OIS300".enterCustomersPO PO
 "M3/OIS300".submitOIS100G
 "M3/OIS300".acceptPOWarning
