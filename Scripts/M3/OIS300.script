@@ -42,7 +42,8 @@ end submitOIS100G
 
 to acceptPOWarning
 	Wait 5
-	Click "M3/OIS300/OkButton"
+	Click (Image:"M3/OIS300/WARNINGOkButton", WaitFor:5)
+	(*Click "M3/OIS300/OkButton"*)
 	MoveTo "Corner"
 end acceptPOWarning
 
