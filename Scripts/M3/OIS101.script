@@ -8,12 +8,7 @@
 	repeat 5 times
 		TypeText spacebar
 	end repeat
-	(*
-	set coNumber to ReadText((imageLocation("M3/OIS101/LogoffReferenceA")+(-250,2), imageLocation("M3/OIS101/LogoffReferenceB") + (-182,13)))
-	*)
-	
-	set coNumber to ReadText((imageLocation("M3/OIS101/LogoffReferenceA"), imageLocation("M3/OIS101/LogoffReferenceB") ))
-	
+	set coNumber to ReadText(((12,695),(75,711)))
 	Log coNumber
 	Click "M3/OIS101/WindowsButton"
 	return coNumber
