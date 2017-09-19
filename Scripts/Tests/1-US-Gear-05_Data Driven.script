@@ -13,7 +13,11 @@ set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,A2) into UserName
 Put Cell(worksheet,B2) into Password
-
+Put Cell(worksheet,C2) into customerNumber
+Put Cell(worksheet,D2) into coType
+Put Cell(worksheet,E2) into PO
+Put Cell(worksheet,F2) into ItemCode
+Put Cell(worksheet,G2) into productQuantity
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -22,12 +26,6 @@ Log "Enter new order"
 "M3/OIS300".open
 "M3/OIS300".startNewOrder
 Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-
-Put Cell(worksheet,C2) into customerNumber
-Put Cell(worksheet,D2) into coType
-Put Cell(worksheet,E2) into PO
-Put Cell(worksheet,F2) into ItemCode
-Put Cell(worksheet,G2) into productQuantity
 
 "M3/OIS300".enterCustomerNumber customerNumber, coType
 "M3/OIS300".submitOIS100A
@@ -44,7 +42,6 @@ Put Cell(worksheet,G2) into productQuantity
 Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
-
 
 "M3/OIS101".enterItemCode ItemCode
 
