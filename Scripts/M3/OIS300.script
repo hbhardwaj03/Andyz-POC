@@ -40,11 +40,12 @@ to submitOIS100G
 	MoveTo "Corner"
 end submitOIS100G
 
-to acceptPOWarning
-	Wait 3
-	Click (Image:"M3/OIS300/WARNINGOkButton", WaitFor:5)
-	(*Click "M3/OIS300/OkButton"*)
-	MoveTo "Corner"
+to acceptPOWarning	
+	if ImageFound(ImageName:"M3/OIS300/WARNING", WaitFor:5) then
+		Click "M3/OIS300/WARNINGOkButton"
+		(*Click "M3/OIS300/OkButton"*)
+		MoveTo "Corner"
+	end if
 end acceptPOWarning
 
 to submitOIS100F
