@@ -7,9 +7,9 @@ end open
 
 to lookup coNumber
 	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/RefOrderDropdown"
-	Click "M3/PMS170/ViewDropdown"
+	Click (780, 113)
+	Click (710, 176)
+	Click (961,113)
 	TypeText endKey
 	Click "M3/PMS170/View51Dropdown"
 	Click "M3/PMS170/ResponsibleField"
@@ -49,7 +49,7 @@ To select_Product product
 		click "M3/PMS170/OrderLine/COnumber_select"
 		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
 		logSuccess "Product are displayed"
-		else
+	else
 		Logerror "Products are not displayed"
 	End If
 End select_Product
