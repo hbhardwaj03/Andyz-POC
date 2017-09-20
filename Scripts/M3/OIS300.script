@@ -41,28 +41,25 @@ to submitOIS100G
 end submitOIS100G
 
 to acceptPOWarning
-	Wait 5
+	Wait 3
 	Click (Image:"M3/OIS300/WARNINGOkButton", WaitFor:5)
 	(*Click "M3/OIS300/OkButton"*)
 	MoveTo "Corner"
 end acceptPOWarning
 
 to submitOIS100F
-	Wait 3
 	(*WaitFor 8.0, "M3/OIS300/OIS100FTitle"*)
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
 end submitOIS100F
 
 to submitOIS100H
-	Wait 3
 	(*WaitFor 8.0, "M3/OIS300/OIS100HTitle"*)
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
 end submitOIS100H
 
 to submitOIS100E
-	Wait 3
 	(*WaitFor 8.0, "M3/OIS300/OIS100ETitle"*)
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
@@ -78,7 +75,6 @@ to enterOIS100E deliveryDate
 end enterOIS100E
 
 to submitOIS102H
-	Wait 5
 	(*WaitFor 8.0, "M3/OIS300/OIS102HTitle"*)
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
