@@ -43,9 +43,10 @@ put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
+"M3/OIS101".enterItemCode "TB7SX6CC"
 
 if ItemCode = "TB7SX6CC" then 
-	"M3/OIS101".enterItemQuantity productQuantity
+	(*"M3/OIS101".enterItemQuantity productQuantity*)
 	"M3/Configurations".config001
 else
 	"M3/OIS101".enterItemColor
