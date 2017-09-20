@@ -11,13 +11,17 @@
 	Click "M3/Configurations/configuration001/VVhiteColor"
 	Click "M3/Configurations/configuration001/NoOrderNotes"
 	Click "M3/Configurations/configuration001/DoubleStrap"
+	Wait 3
 	if ImageFound(5,"M3/Configurations/configuration001/WARNING") then
 		Click "M3/Configurations/configuration001/OKButton"
 	end if
+	Wait 3
 	if ImageFound(5,"M3/Configurations/configuration001/WARNING") then
 		Click "M3/Configurations/configuration001/OKButton"
 	end if
+	Wait 3
 	if ImageFound(5,"M3/Configurations/configuration001/WARNING") then
 		Click "M3/Configurations/configuration001/OKButton"
 	end if
+	Click "M3/Configurations/configuration001/WARNING"
 end config001
