@@ -6,6 +6,13 @@
 end open
 
 to lookup coNumber
+	Click "M3/PMS170/Actions"
+	Click "M3/PMS170/Settings"
+	Click "M3/PMS170/Facility"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	TypeText Return
 	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
 	Click (780, 113)
 	Click (710, 176)

@@ -47,7 +47,7 @@ Log coNumber
 if ItemCode = "TB7SX6CC" then 
 	"M3/OIS101".enterItemQuantity productQuantity
 	"M3/Configurations".config001
-	else
+else
 	"M3/OIS101".enterItemColor
 	"M3/OIS101".configuratorA
 end if
