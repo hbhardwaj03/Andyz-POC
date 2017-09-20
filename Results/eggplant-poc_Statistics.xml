@@ -88,6 +88,14 @@
   <LastRun>2017-09-19 18:33:21 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
+ <script name="Tests/ZC-Customization-Process">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>32</NumberOfRuns>
+  <NumberOfFails>21</NumberOfFails>
+  <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
+  <LastRun>2017-09-20 09:25:17 -0400</LastRun>
+  <TotalTimeOnSuccess>1651.464000</TotalTimeOnSuccess>
+ </script>
  <script name="Tests/US-Gear-06-Validation">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>6</NumberOfRuns>

@@ -49,7 +49,7 @@ To select_Product product
 		click "M3/PMS170/OrderLine/COnumber_select"
 		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
 		logSuccess "Product are displayed"
-		else
+	else
 		Logerror "Products are not displayed"
 	End If
 End select_Product
@@ -72,11 +72,11 @@ To change_line_status Status_Line
 			end if
 			wait 10
 			
-		Else
+			Else
 			
 			LogError "Line Status has Not changed"
 		End If        
-	else
+		else
 		LogError "Edit button is Disabled"
 		
 	End If
@@ -84,21 +84,60 @@ To change_line_status Status_Line
 	
 End change_line_status
 
-to create_schedule_number schedulenumberM3
+
+to createScheduleNumber_New
+	set caseBook to Workbook(ResourcePath("ZCustomaization.xlsx"))
+	set worksheet2 to caseBook.Worksheet("Sheet2")
+	put Cell(worksheet2, "B1") into count
+	put count + 1 into count
+	put count into Cell(worksheet2, "B1")
+	log "Cell value: " & Cell(worksheet2, "B1")
+	return count
+	put 20008102017+(100000000*count) into scheduleNumber
+	log "New schedule number: " & scheduleNumber
+	return scheduleNumber
+end createScheduleNumber_New
+
+to create_schedule_number scheduleNumber
 	
 	Click "M3/PMS170/Related"
 	Click "M3/PMS170/AddScheduleNumber_1"
-	TypeText scheduleNumberM3
+	Click "M3/PMS170/SchednoField"
+	click "M3/PMS170/WorkWith_Sh"
+	wait 4
+	click "M3/PMS170/Schedno_Sh"
+	TypeText controlKey, "a" 
+	TypeText deletekey
+	TypeText scheduleNumber
+	TypeText Return
+	click"M3/PMS170/Create_sh"
+	wait 3
+	TypeText "Testing"
+	Click "M3/PMS170/NextButton"
+	Wait 3
+	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
+	Wait 3
+	RightClick "M3/PMS170/OrderLine"
+	Click "M3/PMS170/RelatedOptions"
+	Click "M3/PMS170/AddScheduleNumber"
+	TypeText scheduleNumber
 	TypeText Return
 	Click "M3/PMS170/ScheduleLine"
 	Click "M3/PMS170/SelectScheduleButton"
 	
+	(*click"M3/PMS170/Create_sh"
+	wait 4
+	click "M3/PMS170/Description_Sh"
+	TypeText ControlKey, "a"
+	Typetext deleteKey
+	Typetext "Test1" 
+	click "M3/PMS170/Next_sh"
+	wait 4
+	Click "M3/PMS170/Schedno_Select_Line"
+	wait 2
+	click "M3/PMS170/Next_sh"*)
+	
 end create_schedule_number
-
-
-
-
-
 
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
@@ -109,9 +148,9 @@ end createScheduleNumber
 
 to scheduleNew scheduleNumber
 	RightClick "M3/PMS170/OrderLine"
-	Click "M3/PMS170/RelatedOptions"
-	Click "M3/PMS170/AddScheduleNumber"
-	Click "M3/PMS170/SchednoField"
+	Click  "M3/PMS170/Related"
+	Click  "M3/PMS170/AddScheduleNumber_1"
+	
 	TypeText f4
 	TypeText scheduleNumber
 	(*TypeText scheduleNumber*)

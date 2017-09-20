@@ -1,0 +1,105 @@
+﻿(*ZC Customization Process*)
+
+set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
+set worksheet to ExcelFile.Worksheet("Sheet1")
+Put Cell(worksheet,A2) into username 
+Put Cell(worksheet,B2) into password 
+Put Cell(worksheet,A8) into coNumber 
+Put Cell(worksheet,D6) into product
+Put Cell(worksheet,E6) into Status_Line
+Put Cell(worksheet,E6) into sh_prifx
+Put Cell(worksheet,G6) into sh_sufix
+
+
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login username, password
+waitfor 10, "M3/Login/itLogoff"
+If ImageFound( "M3/Login/itLogoff") then
+	LogSuccess "User Successfully Loggedin"
+else
+	LogError "User Unable login"
+	
+End If
+If ImageFound( "M3/Login/itLogoff") then
+	Log "Open PMS170 Tcode"
+	waitfor 10, "M3/Login/itLogoff"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp_2(coNumber)
+end if
+if ImageFound("M3/PMS170/OrderLine/Product_OrderLine") then
+	Log "search the product"
+	"M3/PMS170".select_Product product
+else
+	Logerror "Product field is not Appears"
+end if
+"M3/PMS170".change_line_status Status_Line
+if Imagefound("M3/PMS170/Related") then
+	
+	"M3/PMS170".createScheduleNumber_New
+	"M3/PMS170".create_schedule_number scheduleNumber
+else
+	Logerror "Schedulenumber is not created"
+	
+end if
+
+//put readtext("M3/PMS170/Getvaluein_sh") into a
+//log a
+(*
+Log "Do scheduling"
+"M3/PMS170".open
+"M3/PMS170".lookUp(coNumber)
+put "M3/PMS170".createScheduleNumber() into scheduleNumber
+"M3/PMS170".scheduleNew scheduleNumber
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/PMS100".open
+"M3/PMS100".lookupSchedule scheduleNumber
+"M3/PMS100".printShopTraveler scheduleNumber
+put "M3/PMS100".recordMO() into moNumber
+"M3/PMS100".pick
+"M3/PMS100".close
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "Do manufacturing"
+"Other/DCA".open
+"Other/DCA".manufacture moNumber
+"Other/DCA".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+"M3/OIS300".confirmStatusPacked
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
+
+Log "CO: " & coNumber
+Log "MO: " & moNumber
+Log "Schedule: " & scheduleNumber
+Log "Delivery: " & deliveryNumber
+DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
+
+*)
