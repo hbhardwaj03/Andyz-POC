@@ -16,7 +16,8 @@ Put Cell(worksheet,"B2") into Password
 Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
-Put Cell(worksheet,"F2") into ItemCode
+//Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"F3") into ItemCode
 Put Cell(worksheet,"G2") into productQuantity
 
 // call Login function 
@@ -43,7 +44,7 @@ put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
-"M3/OIS101".enterItemCode "TB7SX6CC"
+//"M3/OIS101".enterItemCode "TB7SX6CC"
 
 if ItemCode = "TB7SX6CC" then 
 	(*"M3/OIS101".enterItemQuantity productQuantity*)

@@ -63,10 +63,13 @@ to enterItemQuantity productQuantity
 end enterItemQuantity
 
 to enterItemColor
-	Click "M3/OIS101/ItemColorField"
-	TypeText "1"
-	Click "M3/OIS101/ConfiqStyleButton"
-end enterItemColor
+	if      ImageFound(10, "M3/OIS101/ItemColorField")
+		Click "M3/OIS101/ItemColorField"
+	else
+		Click (130,300)     //added location in case image is not found for black/white/red colours field(16)
+		TypeText "1"
+		Click "M3/OIS101/ConfiqStyleButton"
+	end enterItemColor	
 
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"
@@ -80,8 +83,8 @@ to configuratorA
 	Click "M3/OIS101/LocationButton"
 	Click "M3/OIS101/PersonalizationButton"
 	Click "M3/OIS101/PersonalizationTextButton"
-TypeText Return
-Click "M3/OIS101/PersonalizationField"
+	TypeText Return
+	Click "M3/OIS101/PersonalizationField"
 	TypeText "My Automated Personalization"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
