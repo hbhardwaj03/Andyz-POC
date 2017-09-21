@@ -74,7 +74,7 @@ To change_line_status Status_Line
 			click "M3/PMS170/Next_Image"
 			if Imagefound("M3/PMS170/Next_Image") then
 				click "M3/PMS170/Next_Image"
-end if
+			end if
 			wait 10
 		Else
 			LogError "Line Status has Not changed"
