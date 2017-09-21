@@ -11,13 +11,13 @@ Log "Logging in"
 
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A2") into UserName
-Put Cell(worksheet,"B2") into Password
-Put Cell(worksheet,"C2") into customerNumber
-Put Cell(worksheet,"D2") into coType
-Put Cell(worksheet,"E2") into PO
+Put Cell(worksheet,A2) into UserName
+Put Cell(worksheet,B2) into Password
+Put Cell(worksheet,C2) into customerNumber
+Put Cell(worksheet,D2) into coType
+Put Cell(worksheet,E2) into PO
 Put Cell(worksheet,"F2") into ItemCode
-Put Cell(worksheet,"G2") into productQuantity
+Put Cell(worksheet,G2) into productQuantity
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -39,14 +39,12 @@ Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 
 Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
-//"M3/OIS101".storeCONum
 Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
-"M3/OIS101".enterItemCode "TB7SX6CC"
 
 if ItemCode = "TB7SX6CC" then 
-	(*"M3/OIS101".enterItemQuantity productQuantity*)
+	"M3/OIS101".enterItemQuantity productQuantity
 	"M3/Configurations".config001
 else
 	"M3/OIS101".enterItemColor
@@ -55,7 +53,6 @@ end if
 
 "M3/OIS101".closeFromOrderLines
 
-(*******************************Begin Scheduling *****************)
 Log "Do scheduling"
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
@@ -72,9 +69,7 @@ put "M3/PMS100".recordMO() into moNumber
 
 Log "Exit AGS"
 "M3/Application".close
-(*******************************End Scheduling *****************)
 
-(*******************************Begin Manufacturing *****************)
 Log "Do manufacturing"
 "Other/DCA".open
 "Other/DCA".manufacture moNumber
@@ -90,7 +85,6 @@ put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 
 Log "Exit AGS"
 "M3/Application".close
-(***********************************End Manufacturing ***********)
 
 Log "CO: " & coNumber
 Log "MO: " & moNumber
@@ -98,7 +92,32 @@ Log "Schedule: " & scheduleNumber
 Log "Delivery: " & deliveryNumber
 DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
 
-(***********************************Begin Shipping with Flagship *****************)
+
+//////////////////////////////picking//////////////////////////////////////
+
+Log "Do picking"
+"M3/PMS100".open
+
+WaitFor 20, "M3/PMS100/FacilityField"
+Click "M3/PMS100/FacilityField"
+TypeText controlKey, "a"
+TypeText deleteKey
+TypeText "061"
+TypeText Return
+
+"M3/PMS100".lookup_3 coNumber
+
+put "M3/PMS170".createScheduleNumber() into scheduleNumber
+"M3/PMS170".scheduleNew scheduleNumber
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/PMS100".open
+"M3/PMS100".lookupSchedule scheduleNumber
+"M3/PMS100".printShopTraveler scheduleNumber
+put "M3/PMS100".recordMO() into moNumber
+"M3/PMS100".pick
+"M3/PMS100".close
+//
 Log "Shipping with Flagship"
 "Web/Flagship".open
 "Web/Flagship".login
@@ -115,15 +134,3 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
-(***********************************End Shipping  *****************)
-
-(*X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X*)
-
-
-
-
-
-
-
-
-

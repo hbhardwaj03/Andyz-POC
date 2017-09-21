@@ -1,0 +1,45 @@
+﻿
+to openMWS150
+	WaitFor 10, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "MWS150"
+	Click "M3/Home/SearchSubmit"
+end openMWS150
+
+to search_order_in_MWS150 coNumber
+	click "M3/MWS150/Ordercategory"
+	wait 2,
+	click "M3/MWS150/311Customerorder"
+	click "M3/MWS150/Orderline"
+	TypeText ControlKey, "a"
+	TypeText deletekey
+	TypeText coNumber
+	click "M3/MWS150/Apply"
+	wait 2
+end search_order_in_MWS150
+
+to recordReqnumber
+	WaitFor 30,  "M3/MWS150/MWS150B1"
+	DoubleClick "M3/MWS150/Requestion_Order"
+	wait 5
+	DoubleClick "M3/MWS150/GetReqOrderno"
+	wait 3
+	TypeText controlKey, "c"
+	wait 3
+	click "M3/MWS150/Click_Back"
+	Click "M3/OIS101/WindowsButton"
+	Click "M3/OIS101/WindowsSearchField"
+	TypeText controlKey, "v"
+	repeat 5 times
+		TypeText spacebar
+	end repeat
+	set ReqNumber to ReadText(((12,695),(75,711)))
+	Log ReqNumber
+	Click "M3/OIS101/WindowsButton"
+	return ReqNumber
+	
+end recordReqnumber
+
+To closeMWS150
+	click 
+End closeMWS150

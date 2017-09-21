@@ -1,0 +1,6 @@
+﻿to openMMS100
+	WaitFor 10, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "MWS150"
+	Click "M3/Home/SearchSubmit"
+end openMMS100

@@ -5,8 +5,8 @@ set worksheet to ExcelFile.Worksheet("Sheet1")
 Put Cell(worksheet,A2) into username 
 Put Cell(worksheet,B2) into password 
 Put Cell(worksheet,A8) into coNumber 
-Put Cell(worksheet,D6) into product
-Put Cell(worksheet,E6) into Status_Line
+Put Cell(worksheet,B8) into product
+Put Cell(worksheet,C6) into Status_Line
 Put Cell(worksheet,E6) into sh_prifx
 Put Cell(worksheet,G6) into sh_sufix
 
@@ -26,9 +26,9 @@ If ImageFound( "M3/Login/itLogoff") then
 	Log "Open PMS170 Tcode"
 	waitfor 10, "M3/Login/itLogoff"
 	"M3/PMS170".open
-	"M3/PMS170".lookUp_2(coNumber)
+	"M3/PMS170".lookUp(coNumber)
 end if
-if ImageFound("M3/PMS170/OrderLine/Product_OrderLine") then
+if ImageFound("M3/PMS170/Product_OrderLine") then
 	Log "search the product"
 	"M3/PMS170".select_Product product
 else
@@ -37,12 +37,29 @@ end if
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
 	
-	"M3/PMS170".createScheduleNumber_New
+	"M3/PMS170".creatinguniqueScheduleNumber
 	"M3/PMS170".create_schedule_number scheduleNumber
 else
 	Logerror "Schedulenumber is not created"
 	
 end if
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/MWS150".openWMS150
+"M3/MWS150".search_order_in_MWS150 coNumber
+"M3/MWS150".recordReqnumber
+"M3/MMS100".openMMS100
+
+
+
+
+
+
+
+
+
+
+
 
 //put readtext("M3/PMS170/Getvaluein_sh") into a
 //log a
