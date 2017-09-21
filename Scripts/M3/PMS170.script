@@ -6,17 +6,12 @@
 end open
 
 to lookup coNumber
-	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/RefOrderDropdown"
-	Click "M3/PMS170/ViewDropdown"
-	TypeText endKey
-	Click "M3/PMS170/View51Dropdown"
-	Click "M3/PMS170/ResponsibleField"
+	Click "M3/PMS170/Actions"
+	Click "M3/PMS170/Settings"
+	Click "M3/PMS170/Facility"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	Click "M3/PMS170/RefOrderNoField"
-	TypeText coNumber
+	TypeText "061"
 	TypeText Return
 	WaitFor 10, "M3/PMS170/Sortingorder_2"
 	Click (780, 113)
