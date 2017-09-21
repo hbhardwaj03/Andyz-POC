@@ -96,7 +96,7 @@ end create_schedule_number
 
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
-	put 10008102017+(100000000*count) into scheduleNumber
+	put 10009212017+(100000000*count) into scheduleNumber
 	log "New schedule number: " & scheduleNumber
 	return scheduleNumber
 end createScheduleNumber
