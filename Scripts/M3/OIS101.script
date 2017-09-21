@@ -5,7 +5,7 @@
 	Click "M3/OIS101/WindowsButton"
 	Click "M3/OIS101/WindowsSearchField"
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 2 times
 		TypeText spacebar
 	end repeat
 	set coNumber to ReadText(((12,695),(75,711)))
