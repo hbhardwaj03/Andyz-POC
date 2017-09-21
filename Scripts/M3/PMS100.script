@@ -6,23 +6,67 @@
 end open
 
 to lookupSchedule scheduleNumber
+	Click (700,105)
+	TypeText homeKey
+	repeat 6 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
+	Click (882,106)
+	TypeText homeKey
+	repeat 8 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
 	WaitFor 20, "M3/PMS100/FacilityField"
 	Click "M3/PMS100/FacilityField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText "061"
 	TypeText Return
-	(*	Click "ViewDropdown"
-	repeat 8 times
-		TypeText upArrow
-	end repeat
-	Click "View04002"*)
 	TypeText scheduleNumber
 	TypeText Return
 	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
 	(*Click (Image:"M3/PMS100/COMOOrderLine", WaitFor:3.3)*)	
 	(*Click (Image:"CloseButton", WaitFor:344)*)	
 end lookupSchedule
+
+to lookup_3 coNumber
+	WaitFor 10, "M3/PMS100/SortingOrderDropdown"
+	Click "M3/PMS100/Sortingorderoption5"
+	Click "M3/PMS100/5SingleRefOrdI"
+	
+	TypeText endKey
+	Click "M3/PMS100/Viewdrop"
+	Click "M3/PMS100/view05"
+	Click "M3/PMS100/05001RefOrdPr"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/Reforderno"
+	TypeText coNumber
+	TypeText Return
+	
+end lookup_3
+
+
+
+
+
+to openDeliveryToolbox
+	Click "M3/PMS100/HighlightCO"
+	Click "M3/PMS100/DeliveryToolboxLink"
+end openDeliveryToolbox
+
+
+to checkDeliveryStatus
+	repeat 4 minutes
+		if imageFound(5, "M3/PMS100/DeliveryStatus05") then
+			Log "Delivery status is 5"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end checkDeliveryStatus
+
 
 to printShopTraveler scheduleNumber
 	Click (Image:"M3/PMS100/MinimizePanel", WaitFor:103)
@@ -106,6 +150,8 @@ function checkPickingListsImage
 	Log "Image not found"
 	return FAIL
 end checkPickingListsImage
+
+
 
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"

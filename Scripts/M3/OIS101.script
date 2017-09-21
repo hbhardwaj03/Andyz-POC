@@ -14,6 +14,17 @@
 	return coNumber
 end recordCONumber
 
+
+//***************** to store CO no directly into variable ************************
+to storeCONum 
+	put ImageLocation("M3/OIS101/CONumberField/CONumberField_new1") into SR
+	put SR +(-40,-10) into P1
+	put SR +(87,10) into P2
+	put ReadText((P1), (P2)) into CoNumber
+	Log CoNumber
+	Return CoNumber
+end storeCONum
+
 to recordPONumber
 	"M3/OIS101".supplyChain
 	Drag "M3/OIS101/OrderDrag"
@@ -52,10 +63,10 @@ to enterItemQuantity productQuantity
 end enterItemQuantity
 
 to enterItemColor
-	Click "M3/OIS101/ItemColorField"
+	Click (130,300)
 	TypeText "1"
 	Click "M3/OIS101/ConfiqStyleButton"
-end enterItemColor
+end enterItemColor	
 
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"

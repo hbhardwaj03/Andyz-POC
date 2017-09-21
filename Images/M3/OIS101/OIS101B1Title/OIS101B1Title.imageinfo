@@ -1,1 +1,5 @@
-﻿{CaptureDate = "2017-08-21 11:03:45 -0700"; CaptureHost = USHQV043; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 41; HotSpotY = 11; ImageDescription = <>; ImageTolerance = 78; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 261; OriginalLocationY = 19; Precise = 0; Pulsing = 0; Scale = "0.5"; SearchAlgorithm = TextSmoothSquare; }
+<<<<<<< HEAD
+﻿{CaptureDate = "2017-09-20 09:27:34 -0400"; CaptureHost = USHQV044; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 39; HotSpotY = 10; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 246; OriginalLocationY = 19; Precise = 0; Pulsing = 0; Scale = 1; }
+=======
+﻿{CaptureDate = "2017-08-21 11:03:45 -0700"; CaptureHost = USHQV043; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 41; HotSpotY = 11; ImageDescription = <>; ImageTolerance = 78; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 261; OriginalLocationY = 19; Precise = 0; Pulsing = 0; Scale = "0.95"; SearchAlgorithm = TextSmoothSquare; }
+>>>>>>> 20fa320c9dfdfe7bbac2116aef638ab8bc020e58
