@@ -3,7 +3,7 @@
 	DoubleClick "M3/OIS101/CONumberField"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
+	Click (30,700)
 	TypeText controlKey, "v"
 	repeat 2 times
 		TypeText spacebar
@@ -13,7 +13,6 @@
 	Click "M3/OIS101/WindowsButton"
 	return coNumber
 end recordCONumber
-
 
 //***************** to store CO no directly into variable ************************
 to storeCONum 

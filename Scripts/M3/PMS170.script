@@ -13,7 +13,7 @@ to lookup coNumber
 	TypeText deleteKey
 	TypeText "061"
 	TypeText Return
-	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
+	WaitFor 10, "M3/PMS170/Sortingorder_2"
 	Click (780, 113)
 	Click (710, 176)
 	Click (961,113)
@@ -27,32 +27,23 @@ to lookup coNumber
 	TypeText Return
 end lookup
 
-to lookup_2 coNumber
-	WaitFor 10, "M3/PMS170/Sortingorder_2"
-	Click "M3/PMS170/Sortingorder_2"
-	Click  "M3/PMS170/3RefOrderCO"
-	Click "M3/PMS170/View51_2"
-	TypeText endKey
-	Click "M3/PMS170/View51Dropdown" 
-	Click "M3/PMS170/ResponsibleField" 
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	Click "M3/PMS170/RefOrderNoField"
-	TypeText coNumber
-	TypeText Return
-end lookup_2
 
 To select_Product product
+<<<<<<< HEAD
+	WaitFor 10,  "M3/PMS170/Product_OrderLine"
+	Click "M3/PMS170/Product_OrderLine"
+=======
 	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine", "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS170/OrderLine/Product_OrderLine"
+>>>>>>> 6b0916b6db7d6b4f8b6a4bb451a4fbaeda473bb8
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText product
 	TypeText Return
-	click "M3/PMS170/OrderLine/IApply"
-	If Imagefound("M3/PMS170/OrderLine/COnumber_select") then
-		click "M3/PMS170/OrderLine/COnumber_select"
-		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
+	click "M3/PMS170/IApply"
+	If Imagefound("M3/PMS170/COnumber_select") then
+		click "M3/PMS170/COnumber_select"
+		waitfor 05, "M3/PMS170/COnumber_select"
 		logSuccess "Product are displayed"
 	else
 		Logerror "Products are not displayed"
@@ -60,10 +51,10 @@ To select_Product product
 End select_Product
 
 To change_line_status Status_Line
-	If Imagefound("M3/PMS170/OrderLine/Change_Line") then
-		click "M3/PMS170/OrderLine/Change_Line"
-		If imagefound("M3/PMS170/OrderLine/Structuretype") then
-			click "M3/PMS170/OrderLine/Structuretype"
+	If Imagefound("M3/PMS170/Change_Line") then
+		click "M3/PMS170/Change_Line"
+		If imagefound("M3/PMS170/Structuretype") then
+			click "M3/PMS170/Structuretype"
 			wait 5
 			TypeText controlKey, "a"
 			TypeText deleteKey
@@ -76,6 +67,7 @@ To change_line_status Status_Line
 				click "M3/PMS170/Next_Image"
 			end if
 			wait 10
+			
 		Else
 			LogError "Line Status has Not changed"
 		End If        
@@ -85,15 +77,50 @@ To change_line_status Status_Line
 	End If
 End change_line_status
 
-to create_schedule_number schedulenumberM3
-	Click "M3/PMS170/Related"
-	Click "M3/PMS170/AddScheduleNumber_1"
-	TypeText scheduleNumberM3
+
+to creatinguniqueScheduleNumber
+	set Excelfile to Workbook(ResourcePath("ZCustomaization.xlsx"))
+	set worksheet to Excelfile.Worksheet("Sheet2")
+	put Cell(worksheet, B1) into count
+	put count + 1 into count
+	put count into Cell(worksheet, "B1")
+	log "Cell value: " & Cell(worksheet, B1)
+	return count
+	put 30008102017+(100000000*count) into scheduleNumber
+	log "New schedule number: " & scheduleNumber
+	return scheduleNumber
+end creatinguniqueScheduleNumber
+
+to create_schedule_number scheduleNumber
+
+Click "M3/PMS170/Related"
+Click "M3/PMS170/AddScheduleNumber_1"
+Click "M3/PMS170/SchednoField"
+	click "M3/PMS170/WorkWith_Sh"
+	wait 4
+	click "M3/PMS170/Schedno_Sh"
+	TypeText controlKey, "a" 
+	TypeText deletekey
+	TypeText scheduleNumber
+	TypeText Return
+	click"M3/PMS170/Create_sh"
+	wait 3
+	TypeText "Testing"
+	Click "M3/PMS170/NextButton"
+	Wait 3
+	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
+	Wait 3
+	RightClick "M3/PMS170/OrderLine"
+	Click "M3/PMS170/RelatedOptions"
+	Click "M3/PMS170/AddScheduleNumber"
+	TypeText scheduleNumber
 	TypeText Return
 	Click "M3/PMS170/ScheduleLine"
 	Click "M3/PMS170/SelectScheduleButton"
-end create_schedule_number
-
+	
+	end create_schedule_number
+	
+	
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
 	put 10009212017+(100000000*count) into scheduleNumber
@@ -103,9 +130,9 @@ end createScheduleNumber
 
 to scheduleNew scheduleNumber
 	RightClick "M3/PMS170/OrderLine"
-	Click "M3/PMS170/RelatedOptions"
-	Click "M3/PMS170/AddScheduleNumber"
-	Click "M3/PMS170/SchednoField"
+	Click  "M3/PMS170/Related"
+	Click  "M3/PMS170/AddScheduleNumber_1"
+	
 	TypeText f4
 	TypeText scheduleNumber
 	(*TypeText scheduleNumber*)
