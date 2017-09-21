@@ -16,8 +16,7 @@ Put Cell(worksheet,"B2") into Password
 Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
-//Put Cell(worksheet,"F2") into ItemCode
-Put Cell(worksheet,"F3") into ItemCode
+Put Cell(worksheet,"F2") into ItemCode
 Put Cell(worksheet,"G2") into productQuantity
 
 // call Login function 
