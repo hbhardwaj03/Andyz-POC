@@ -9,6 +9,8 @@ Log "Logging in"
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
 
+(*>>>>>>>>>>>>>>>>>>>>>Begin OrderEntry>>>>>>>>>>>>>*)
+
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A12") into UserName
@@ -52,7 +54,10 @@ else
 end if
 
 "M3/OIS101".closeFromOrderLines
+(*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
 
+
+(*>>>>>>>>>>>>>>>>>>>>>>>Start Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
 Log "Do scheduling"
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
@@ -70,10 +75,8 @@ put "M3/PMS100".recordMO() into moNumber
 Log "Exit AGS"
 "M3/Application".close
 
-Log "Do manufacturing"
-"Other/DCA".open
-"Other/DCA".manufacture moNumber
-"Other/DCA".close
+(*>>>>>>>>>>>>>>>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+
 "M3/Application".open
 "M3/Login".login username, password
 "M3/OIS300".open
@@ -117,7 +120,7 @@ Click "M3/PMS100/HPickingLists"
 
 
 
-//
+/////////////////////////////////////////
 Log "Shipping with Flagship"
 "Web/Flagship".open
 "Web/Flagship".login
@@ -134,3 +137,4 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
+//////////////////////////////////////
