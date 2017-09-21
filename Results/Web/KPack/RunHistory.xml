@@ -108,10 +108,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-09-19 14:52:44.654 -0700</RunDate>
   <Status>Success</Status>
-  <Duration>679.146000</Duration>
+  <Duration>679.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>

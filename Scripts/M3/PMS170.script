@@ -37,8 +37,9 @@ to lookup_2 coNumber
 end lookup_2
 
 
+
 To select_Product product
-	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine"
+	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine", "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS170/OrderLine/Product_OrderLine"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -49,7 +50,7 @@ To select_Product product
 		click "M3/PMS170/OrderLine/COnumber_select"
 		waitfor 05, "M3/PMS170/OrderLine/COnumber_select"
 		logSuccess "Product are displayed"
-		else
+	else
 		Logerror "Products are not displayed"
 	End If
 End select_Product
