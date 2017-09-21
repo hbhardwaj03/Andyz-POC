@@ -6,13 +6,13 @@
 end open
 
 to lookupSchedule scheduleNumber
-	Click (700,105)
+	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
 	repeat 6 times
 		TypeText downArrow
 	end repeat
 	TypeText Return
-	Click (882,106)
+	Click "M3/PMS100/ViewDropdown"
 	TypeText homeKey
 	repeat 8 times
 		TypeText downArrow
