@@ -9,13 +9,9 @@ Log "Logging in"
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
 
-<<<<<<< HEAD:Scripts/Tests/Bulk MO.script
-(*>>>>>>>>>>>>>>>>>>>>>Begin OrderEntry>>>>>>>>>>>>>*)
 
-set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
-=======
 set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
->>>>>>> 1488247be449781754441f3f7008005465235ae3:Scripts/Tests/2-Bulk MO.script
+
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A12") into UserName
 Put Cell(worksheet,"B12") into Password
