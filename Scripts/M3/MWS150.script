@@ -22,6 +22,7 @@ to recordReqnumber
 	WaitFor 30,  "M3/MWS150/MWS150B1"
 	DoubleClick "M3/MWS150/Requestion_Order"
 	wait 5
+	Click "M3/MWS150/Scrollup"
 	DoubleClick "M3/MWS150/GetReqOrderno"
 	wait 3
 	TypeText controlKey, "c"

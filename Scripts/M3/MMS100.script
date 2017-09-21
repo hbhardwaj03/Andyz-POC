@@ -4,3 +4,22 @@
 	TypeText "MWS150"
 	Click "M3/Home/SearchSubmit"
 end openMMS100
+
+To searchReqnumber ReqNumber
+	Click"M3/MMS100/Facility"
+	TypeText ControlKey, "a"
+	TypeText deletekey
+	Typetext "061"
+	wait 3
+	Click "M3/MMS100/OrderNumber"
+	TypeText ControlKey, "a"
+	TypeText deletekey
+	Typetext ReqNumber
+	Click "M3/MMS100/Apply"
+	
+End searchReqnumber
+
+To DeliveryToolBox
+	Click "M3/MMS100/OrderNumber_Line"
+	
+End DeliveryToolBox
