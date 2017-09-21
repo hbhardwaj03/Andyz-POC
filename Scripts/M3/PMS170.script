@@ -29,8 +29,13 @@ end lookup
 
 
 To select_Product product
+<<<<<<< HEAD
 	WaitFor 10,  "M3/PMS170/Product_OrderLine"
 	Click "M3/PMS170/Product_OrderLine"
+=======
+	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine", "M3/PMS100/Sortingorderoption5"
+	Click "M3/PMS170/OrderLine/Product_OrderLine"
+>>>>>>> 6b0916b6db7d6b4f8b6a4bb451a4fbaeda473bb8
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText product
@@ -118,7 +123,7 @@ Click "M3/PMS170/SchednoField"
 	
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
-	put 10008102017+(100000000*count) into scheduleNumber
+	put 10009212017+(100000000*count) into scheduleNumber
 	log "New schedule number: " & scheduleNumber
 	return scheduleNumber
 end createScheduleNumber

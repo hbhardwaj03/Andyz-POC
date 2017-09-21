@@ -5,5 +5,5 @@ end open
 to close
 	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
 	Click "M3/Application/ExitAGSButton"
-	Click "M3/Application/ExitConfirmationButton"
+	//Click "M3/Application/ExitConfirmationButton"
 end close

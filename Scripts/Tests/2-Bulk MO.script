@@ -1,7 +1,7 @@
 ﻿(* 
-Name: US-Gear-06
-Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
-Author: Andy Jenkins
+Name: Bulk MO
+Description: 
+Author: Ramya
  *)
 
 Log "Logging in"
@@ -9,15 +9,21 @@ Log "Logging in"
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
 
+<<<<<<< HEAD:Scripts/Tests/Bulk MO.script
+(*>>>>>>>>>>>>>>>>>>>>>Begin OrderEntry>>>>>>>>>>>>>*)
+
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
+=======
+set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
+>>>>>>> 1488247be449781754441f3f7008005465235ae3:Scripts/Tests/2-Bulk MO.script
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,A2) into UserName
-Put Cell(worksheet,B2) into Password
-Put Cell(worksheet,C2) into customerNumber
-Put Cell(worksheet,D2) into coType
-Put Cell(worksheet,E2) into PO
-Put Cell(worksheet,"F2") into ItemCode
-Put Cell(worksheet,G2) into productQuantity
+Put Cell(worksheet,"A12") into UserName
+Put Cell(worksheet,"B12") into Password
+Put Cell(worksheet,"C12") into customerNumber
+Put Cell(worksheet,"D12") into coType
+Put Cell(worksheet,"E12") into PO
+Put Cell(worksheet,"F12") into ItemCode
+Put Cell(worksheet,"G12") into productQuantity
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -52,7 +58,10 @@ else
 end if
 
 "M3/OIS101".closeFromOrderLines
+(*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
 
+
+(*>>>>>>>>>>>>>>>>>>>>>>>Start Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
 Log "Do scheduling"
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
@@ -70,10 +79,8 @@ put "M3/PMS100".recordMO() into moNumber
 Log "Exit AGS"
 "M3/Application".close
 
-Log "Do manufacturing"
-"Other/DCA".open
-"Other/DCA".manufacture moNumber
-"Other/DCA".close
+(*>>>>>>>>>>>>>>>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+
 "M3/Application".open
 "M3/Login".login username, password
 "M3/OIS300".open
@@ -106,18 +113,18 @@ TypeText "061"
 TypeText Return
 
 "M3/PMS100".lookup_3 coNumber
+"M3/PMS100".checkAllocationStatus
+"M3/PMS100".openDeliveryToolbox
+"M3/PMS100".checkDeliveryStatus
+"M3/PMS100".checkPickingListsImage
+Click "M3/PMS100/HPickingLists"
+"M3/PMS100".checkPickingStatusImage
 
-put "M3/PMS170".createScheduleNumber() into scheduleNumber
-"M3/PMS170".scheduleNew scheduleNumber
-"M3/PMS170".releaseMO
-"M3/PMS170".close
-"M3/PMS100".open
-"M3/PMS100".lookupSchedule scheduleNumber
-"M3/PMS100".printShopTraveler scheduleNumber
-put "M3/PMS100".recordMO() into moNumber
-"M3/PMS100".pick
-"M3/PMS100".close
-//
+
+
+
+
+/////////////////////////////////////////
 Log "Shipping with Flagship"
 "Web/Flagship".open
 "Web/Flagship".login
@@ -134,3 +141,4 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
+//////////////////////////////////////

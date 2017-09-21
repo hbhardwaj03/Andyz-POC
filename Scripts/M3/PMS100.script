@@ -6,17 +6,24 @@
 end open
 
 to lookupSchedule scheduleNumber
+	Click (700,105)
+	TypeText homeKey
+	repeat 6 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
+	Click (882,106)
+	TypeText homeKey
+	repeat 8 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
 	WaitFor 20, "M3/PMS100/FacilityField"
 	Click "M3/PMS100/FacilityField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText "061"
 	TypeText Return
-	(*	Click "ViewDropdown"
-	repeat 8 times
-		TypeText upArrow
-	end repeat
-	Click "View04002"*)
 	TypeText scheduleNumber
 	TypeText Return
 	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
@@ -42,24 +49,23 @@ to lookup_3 coNumber
 end lookup_3
 
 
-function checkMOStatus
-
-
-if imageFound( "M3/PMS100/MOStatus20Definitive") then
-Log "Image found"
-return SUCCESS
-end if
-Click "M3/PMS100/Refresh"
-end repeat
-Log "Image not found"
-return FAIL
-end checkMOStatus
 
 
 
+to openDeliveryToolbox
+	Click "M3/PMS100/HighlightCO"
+	Click "M3/PMS100/DeliveryToolboxLink"
+end openDeliveryToolbox
 
 
-
+to checkDeliveryStatus
+	repeat 4 minutes
+		if imageFound(5, "M3/PMS100/DeliveryStatus05") then
+			Log "Delivery status is 5"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end checkDeliveryStatus
 
 
 to printShopTraveler scheduleNumber
@@ -75,6 +81,12 @@ to printShopTraveler scheduleNumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText scheduleNumber
+	Click (300,400)
+	TypeText homeKey
+	repeat 2 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
 	Click "M3/OIS300/NextButton"
 	Click "M3/PMS100/ConfirmOutput"
 	Click "M3/PMS100/ExitButton"
@@ -95,7 +107,7 @@ end checkAllocationStatus
 
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
-Click "M3/PMS100/DeliveryToolboxLink"
+	Click "M3/PMS100/DeliveryToolboxLink"
 	set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
 	Click "M3/PMS100/ReleaseforPickLink"
 	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
@@ -145,6 +157,8 @@ function checkPickingListsImage
 	return FAIL
 end checkPickingListsImage
 
+
+
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
 	DoubleClick "M3/PMS100/MONumberOrderLine"
@@ -157,7 +171,7 @@ to recordMO
 	repeat 5 times
 		TypeText spacebar
 	end repeat
-	set moNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	set moNumber to ReadText(((12,695),(75,711)))
 	Log moNumber
 	Click "M3/OIS101/WindowsButton"
 	Click "M3/PMS100/BackButton"

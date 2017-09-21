@@ -9,7 +9,7 @@ Log "Logging in"
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
 
-set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
+set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A2") into UserName
 Put Cell(worksheet,"B2") into Password
@@ -43,7 +43,7 @@ put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
-"M3/OIS101".enterItemCode "TB7SX6CC"
+//"M3/OIS101".enterItemCode "TB7SX6CC"
 
 if ItemCode = "TB7SX6CC" then 
 	(*"M3/OIS101".enterItemQuantity productQuantity*)
@@ -118,10 +118,6 @@ Log "Exit AGS"
 (***********************************End Shipping  *****************)
 
 (*X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X*)
-
-
-
-
 
 
 
