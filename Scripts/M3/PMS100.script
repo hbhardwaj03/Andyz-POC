@@ -42,24 +42,23 @@ to lookup_3 coNumber
 end lookup_3
 
 
-function checkMOStatus
-
-
-if imageFound( "M3/PMS100/MOStatus20Definitive") then
-Log "Image found"
-return SUCCESS
-end if
-Click "M3/PMS100/Refresh"
-end repeat
-Log "Image not found"
-return FAIL
-end checkMOStatus
 
 
 
+to openDeliveryToolbox
+	Click "M3/PMS100/HighlightCO"
+	Click "M3/PMS100/DeliveryToolboxLink"
+end openDeliveryToolbox
 
 
-
+to checkDeliveryStatus
+	repeat 4 minutes
+		if imageFound(5, "M3/PMS100/DeliveryStatus05") then
+			Log "Delivery status is 5"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end checkDeliveryStatus
 
 
 to printShopTraveler scheduleNumber
@@ -95,7 +94,7 @@ end checkAllocationStatus
 
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
-Click "M3/PMS100/DeliveryToolboxLink"
+	Click "M3/PMS100/DeliveryToolboxLink"
 	set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
 	Click "M3/PMS100/ReleaseforPickLink"
 	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
@@ -144,6 +143,8 @@ function checkPickingListsImage
 	Log "Image not found"
 	return FAIL
 end checkPickingListsImage
+
+
 
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
