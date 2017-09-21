@@ -30,7 +30,7 @@ to lookupSchedule scheduleNumber
 	Click "M3/PMS100/MONumberField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	Click "M3/PMS100/Scheduleno440"
+	Click "M3/PMS100/Scheduleno100"
 	TypeText scheduleNumber
 	TypeText Return
 	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
