@@ -63,14 +63,10 @@ to enterItemQuantity productQuantity
 end enterItemQuantity
 
 to enterItemColor
-	if      ImageFound(10, "M3/OIS101/ItemColorField")
-		Click "M3/OIS101/ItemColorField"
-	else
-		Click (130,300)     //added location in case image is not found for black/white/red colours field(16)
-	end if
-		TypeText "1"
-		Click "M3/OIS101/ConfiqStyleButton"
-	end enterItemColor	
+	Click (130,300)
+	TypeText "1"
+	Click "M3/OIS101/ConfiqStyleButton"
+end enterItemColor	
 
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"
