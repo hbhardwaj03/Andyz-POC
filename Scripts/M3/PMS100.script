@@ -81,6 +81,11 @@ to printShopTraveler scheduleNumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText scheduleNumber
+	Click (300,400)
+	repeat 3 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
 	Click "M3/OIS300/NextButton"
 	Click "M3/PMS100/ConfirmOutput"
 	Click "M3/PMS100/ExitButton"
