@@ -56,7 +56,7 @@ to enterItemCode ItemCode
 end enterItemCode
 
 to enterItemQuantity productQuantity
-	Click (303,595)
+	Click "M3/OIS101/ItemQuantity"
 	TypeText productQuantity
 	TypeText Return
 end enterItemQuantity
