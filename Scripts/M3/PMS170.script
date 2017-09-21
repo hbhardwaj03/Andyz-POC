@@ -6,10 +6,17 @@
 end open
 
 to lookup coNumber
+	Click "M3/PMS170/Actions"
+	Click "M3/PMS170/Settings"
+	Click "M3/PMS170/Facility"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	TypeText Return
 	WaitFor 10, "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/SortingOrderDropdown"
-	Click "M3/PMS170/RefOrderDropdown"
-	Click "M3/PMS170/ViewDropdown"
+	Click (780, 113)
+	Click (710, 176)
+	Click (961,113)
 	TypeText endKey
 	Click "M3/PMS170/View51Dropdown"
 	Click "M3/PMS170/ResponsibleField"
@@ -19,7 +26,6 @@ to lookup coNumber
 	TypeText coNumber
 	TypeText Return
 end lookup
-
 
 to lookup_2 coNumber
 	WaitFor 10, "M3/PMS170/Sortingorder_2"
@@ -36,8 +42,11 @@ to lookup_2 coNumber
 	TypeText Return
 end lookup_2
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 20fa320c9dfdfe7bbac2116aef638ab8bc020e58
 To select_Product product
 	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine", "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS170/OrderLine/Product_OrderLine"
@@ -70,36 +79,25 @@ To change_line_status Status_Line
 			click "M3/PMS170/Next_Image"
 			if Imagefound("M3/PMS170/Next_Image") then
 				click "M3/PMS170/Next_Image"
-			end if
+end if
 			wait 10
-			
 		Else
-			
 			LogError "Line Status has Not changed"
 		End If        
 	else
 		LogError "Edit button is Disabled"
 		
 	End If
-	
-	
 End change_line_status
 
 to create_schedule_number schedulenumberM3
-	
 	Click "M3/PMS170/Related"
 	Click "M3/PMS170/AddScheduleNumber_1"
 	TypeText scheduleNumberM3
 	TypeText Return
 	Click "M3/PMS170/ScheduleLine"
 	Click "M3/PMS170/SelectScheduleButton"
-	
 end create_schedule_number
-
-
-
-
-
 
 to createScheduleNumber
 	put DataStore.getAndIncrementScheduleCounter into count
