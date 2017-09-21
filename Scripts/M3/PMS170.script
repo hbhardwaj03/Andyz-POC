@@ -15,7 +15,11 @@ to lookup coNumber
 	TypeText Return
 	WaitFor 10, "M3/PMS170/Sortingorder_2"
 	Click (780, 113)
-	Click (710, 176)
+	TypeText homeKey
+	repeat 2 times
+		TypeText downArrow
+	end repeat
+	TypeText Return
 	Click (961,113)
 	TypeText endKey
 	Click "M3/PMS170/View51Dropdown"
