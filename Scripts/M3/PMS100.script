@@ -171,7 +171,7 @@ to recordMO
 	repeat 5 times
 		TypeText spacebar
 	end repeat
-	set moNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	set moNumber to ReadText(((12,695),(75,711)))
 	Log moNumber
 	Click "M3/OIS101/WindowsButton"
 	Click "M3/PMS100/BackButton"
