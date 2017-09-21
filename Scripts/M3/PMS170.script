@@ -42,11 +42,6 @@ to lookup_2 coNumber
 	TypeText Return
 end lookup_2
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 20fa320c9dfdfe7bbac2116aef638ab8bc020e58
 To select_Product product
 	WaitFor 10,  "M3/PMS170/OrderLine/Product_OrderLine", "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS170/OrderLine/Product_OrderLine"
