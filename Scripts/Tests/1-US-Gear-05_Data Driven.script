@@ -74,6 +74,8 @@ Log "Exit AGS"
 "M3/Application".close
 (*******************************End Scheduling *****************)
 
+throw "Unsupported", "environment does not currently support DCA"
+
 (*******************************Begin Manufacturing *****************)
 Log "Do manufacturing"
 "Other/DCA".open
