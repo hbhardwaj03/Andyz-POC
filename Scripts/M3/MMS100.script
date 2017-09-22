@@ -21,5 +21,80 @@ End searchReqnumber
 
 To DeliveryToolBox
 	Click "M3/MMS100/OrderNumber_Line"
+	Wait 3
+	Click "M3/MMS100/Related_1"
+	wait 3
+	click "M3/MMS100/DeliveryToolbox"
+	If ImageFound ("M3/MMS100/MWS410E") then
+		LogSuccess "Open Delivery screen appears"
+		Click "M3/MMS100/ReleaseforPick"
+		"M3/PMS100".checkDeliveryStatus
+		wait 3
+		Click "M3/MMS100/PickReporting"
+		wait 3
+		click "M3/MMS100/PickingLists"
+		Click "M3/MMS100/Refresh"
+		Click "M3/MMS100/OrderNumber_Line"
+		wait 3
+		If Imagefound("M3/MMS100/50PickingListsCreated") then
+			LogSuccess "PickingList has Created"
+		Else
+			LogError "Picking List Has Not Created"
+		End If
+		
+	Else
+		LogError "Open Delivery Screen Is not visible"
+	End If
+	
 	
 End DeliveryToolBox
+
+To MPacking
+	Click "M3/MMS100/OrderNumber_Line"
+	wait 2
+	Click "M3/MMS100/PickingLists"
+	Wait 2
+	If ImageFound("M3/MMS100/MWS420B1") then
+		LogSuccess "Picking List Screen Appears"
+		
+	Else
+		LogError "Picking List Screen Not appeard"
+		
+	End If
+	
+	Click "M3/MMS100/ManualPacking"
+	wait 2
+	If Imagefound("M3/MMS100/MMS424B1") then
+		LogSuccess "Picking List Pack Manually Screen Appears"
+	else
+		LogError "Pickinglist Pack Manually screen Not Appears"
+	End If
+	Click "M3/MMS100/Packageno"
+	TypeTex Controlkey, "a"
+	TypeText deletekey
+	Typetext "GENBOX" //PackingNo
+	Click "M3/MMS100/Related_1"
+	Click "M3/MMS100/Pack"
+	wait 5
+	Click "M3/MMS100/BackButton"
+	Wait 3
+	Click "M3/MMS100/BackButton"
+	wait 3
+	If Imagefound("M3/MMS100/30PACKED2") then
+		Logsuccess "Packing status 30 has Displayed"
+	Else
+		LogError "Packing Status has not Displayed"
+	End If
+	Click "M3/MMS100/PickReporting_1"
+	wait 5
+	If ImageFound("M3/MMS100/90SHIPPED") Then
+		LogSuccess "Delivery Satatus as Shipped"
+		Click "M3/MMS100/BackButton"
+		Wait 2
+		click "M3/MMS100/BackButton"
+	Else
+		Logerror"Delivery Status Has Not Appeared"
+	End If
+	
+	
+End MPacking
