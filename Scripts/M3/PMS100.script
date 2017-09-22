@@ -183,7 +183,11 @@ to recordMO
 	DoubleClick "M3/PMS100/MONumber"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
+	if ImageFound(5, "M3/OIS101/WindowsSearchField") 
+		Click "M3/OIS101/WindowsSearchField"
+	else
+		Click (30,700)
+	end if
 	TypeText controlKey, "v"
 	repeat 5 times
 		TypeText spacebar
