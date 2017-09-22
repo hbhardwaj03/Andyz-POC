@@ -19,8 +19,6 @@ Put Cell(worksheet,"B2") into Password
 Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
-Put Cell(worksheet,"F3") into ItemCode
-Put Cell(worksheet,"G2") into productQuantity
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -44,6 +42,8 @@ Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
+//allowing this to be hard-coded because ultimately this script will
+//read from an excel file instead of creating its own MOs
 "M3/OIS101".enterItemCode("TA5TVBPC")
 "M3/OIS101".enterItemQuantity "1"
 "M3/Configurations".config002
