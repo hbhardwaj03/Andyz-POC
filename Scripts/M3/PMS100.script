@@ -74,7 +74,6 @@ to openDeliveryToolbox
 	Click "M3/PMS100/DeliveryToolboxLink"
 end openDeliveryToolbox
 
-
 to checkDeliveryStatus
 	repeat 4 minutes
 		if imageFound(5, "M3/PMS100/DeliveryStatus05") then
@@ -83,7 +82,6 @@ to checkDeliveryStatus
 		end if
 		Click "M3/PMS100/Refresh"
 	end checkDeliveryStatus
-
 
 to printShopTraveler scheduleNumber
 	Click (Image:"M3/PMS100/MinimizePanel", WaitFor:103)
@@ -173,8 +171,6 @@ function checkPickingListsImage
 	Log "Image not found"
 	return FAIL
 end checkPickingListsImage
-
-
 
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
