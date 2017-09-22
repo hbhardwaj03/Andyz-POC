@@ -41,6 +41,27 @@ to recordReqnumber
 	
 end recordReqnumber
 
+to ReqOrderStatus
+	Click "M3/MWS150/Requestion_Order"
+	set ors to readtext(imagelocation("M3/MWS150/99Completed"))
+	if ors = "99 - Completed" then
+		LogSuccess "Order status is"&ors
+	else
+		Logerror "Order status was not appears"
+	end if
+	
+end ReqOrderStatus
+
+To RecordPoNumber
+	click "M3/MWS150/OrderCatagory"
+	wait 2
+	set PoNo to readtext(Imagefound("M3/MWS150/PoNumber"))
+	put PoNo into poNumber
+
+End RecordPoNumber
+
+
+
 To closeMWS150
-	click 
+	click "M3/MWS150/Close_MWS150"
 End closeMWS150

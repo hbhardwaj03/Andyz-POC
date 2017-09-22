@@ -4,11 +4,9 @@ Description: Enter a basic custom CC Players 5 stand bag ,one personalization, F
 Author: Andy Jenkins
  *)
 
-Log "Logging in"
-"M3/Application".open
+Log "Intializing Excel data sheet for This Script"
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
-
 set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A2") into UserName
@@ -18,8 +16,11 @@ Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
 Put Cell(worksheet,"F2") into ItemCode
 Put Cell(worksheet,"G2") into productQuantity
+Put Cell(worksheet,"H2") into DCAUser
+Put Cell(worksheet,"I2") into DCAPswrd
 
-// call Login function 
+Log "Logging in"
+"M3/Application".open
 "M3/Login".login UserName, Password
 
 Log "Enter new order"
@@ -44,7 +45,6 @@ Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
 //"M3/OIS101".enterItemCode "TB7SX6CC"
-
 if ItemCode = "TB7SX6CC" then 
 	(*"M3/OIS101".enterItemQuantity productQuantity*)
 	"M3/Configurations".config001
@@ -52,7 +52,6 @@ else
 	"M3/OIS101".enterItemColor
 	"M3/OIS101".configuratorA
 end if
-
 "M3/OIS101".closeFromOrderLines
 
 (*******************************Begin Scheduling *****************)
@@ -69,18 +68,20 @@ put "M3/PMS170".createScheduleNumber() into scheduleNumber
 put "M3/PMS100".recordMO() into moNumber
 "M3/PMS100".pick
 "M3/PMS100".close
-
 Log "Exit AGS"
 "M3/Application".close
 (*******************************End Scheduling *****************)
 
-throw "Unsupported", "environment does not currently support DCA"
+//throw "Unsupported", "environment does not currently support DCA"
 
 (*******************************Begin Manufacturing *****************)
 Log "Do manufacturing"
+// Open DCA
 "Other/DCA".open
 "Other/DCA".manufacture moNumber
 "Other/DCA".close
+(***********************************End Manufacturing ***********)
+
 "M3/Application".open
 "M3/Login".login username, password
 "M3/OIS300".open
@@ -89,10 +90,9 @@ Log "Do manufacturing"
 put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 "M3/OIS300".confirmStatusPacked
 "M3/OIS300".closeFromDeliveryToolbox
-
 Log "Exit AGS"
 "M3/Application".close
-(***********************************End Manufacturing ***********)
+
 
 Log "CO: " & coNumber
 Log "MO: " & moNumber

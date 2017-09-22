@@ -6,20 +6,19 @@ Author: Ramya
 
 Log "Logging in"
 "M3/Application".open
+
+
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
-
 
 set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A12") into UserName
-Put Cell(worksheet,"B12") into Password
-Put Cell(worksheet,"C12") into customerNumber
-Put Cell(worksheet,"D12") into coType
-Put Cell(worksheet,"E12") into PO
-Put Cell(worksheet,"F12") into ItemCode
-Put Cell(worksheet,"G12") into productQuantity
+Put Cell(worksheet,"A2") into UserName
+Put Cell(worksheet,"B2") into Password
+Put Cell(worksheet,"C2") into customerNumber
+Put Cell(worksheet,"D2") into coType
+Put Cell(worksheet,"E2") into PO
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -43,7 +42,13 @@ Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
-"M3/OIS101".enterItemCode ItemCode
+//allowing this to be hard-coded because ultimately this script will
+//read from an excel file instead of creating its own MOs
+"M3/OIS101".enterItemCode("TA5TVBPC")
+"M3/OIS101".enterItemQuantity "1"
+"M3/Configurations".config002
+
+(*"M3/OIS101".enterItemCode ItemCode
 
 if ItemCode = "TB7SX6CC" then 
 	"M3/OIS101".enterItemQuantity productQuantity
@@ -51,7 +56,7 @@ if ItemCode = "TB7SX6CC" then
 else
 	"M3/OIS101".enterItemColor
 	"M3/OIS101".configuratorA
-end if
+end if*)
 
 "M3/OIS101".closeFromOrderLines
 (*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
@@ -120,7 +125,7 @@ Click "M3/PMS100/HPickingLists"
 
 
 
-/////////////////////////////////////////
+/////////////////////////////////////////flagship////////////////////////////
 Log "Shipping with Flagship"
 "Web/Flagship".open
 "Web/Flagship".login
@@ -137,4 +142,93 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
-//////////////////////////////////////
+//////////////////////////////////////manufacturingin m3 with kpack////
+
+//prerequisite:yet to be handled(CO comes back form order entry)
+
+"M3/PMS100".open
+"M3/PMS100".lookup_4 coNumber
+"M3/PMS100".checkAllocationStatus
+
+
+Log "Do Manufacturing in M3"
+"M3/PMS070".lookupMOnumber
+
+
+Click "M3/PMS070/operation0100"
+TypeText controlKey, "a"
+TypeText deleteKey
+
+TypeText "0100"
+TypeText Return
+
+Click "M3/PMS070/Changeforoperation"
+
+"M3/PMS070".compareOrderandManufQuantity
+
+Click"M3/PMS070/Nextbutton"
+
+//need to capture step for remains and manufacturing qty validation
+
+click "M3/PMS070/close"
+
+"M3/PMS100".open
+click "M3/PMS070/refresh"
+"M3/PMS070".checkMOStatus
+click "M3/PMS070/close100"
+
+"M3/PMS070".lookupMOnumber
+
+Click "M3/PMS070/operation8000"
+TypeText controlKey, "a"
+TypeText deleteKey
+
+TypeText "8000"
+TypeText Return
+Click "M3/PMS070/Changeforoperation"
+"M3/PMS070".compareOrderandManufQuantity
+Click"M3/PMS070/Nextbutton"
+
+/// packing with kpack////
+"Web/KPack".OpenKpackUSVista
+"Web/KPack".LoginToKpackUSVista
+click "M3/KPack/OrderNum"
+TypeText controlKey, "a"
+TypeText deleteKey
+
+TypeText "0013139821001"
+
+Click "M3/KPack/LoadOrderutton"
+Click "M3/KPack/ProductID"
+Click "M3/KPack/FastPackDeselected"
+Click "M3/KPack/Autopackselect"
+Click "M3/KPack/Packbutton"
+Click "M3/KPack/SelectBoxType"
+Click "M3/KPack/SelectBoxtypedropdown"
+Click "M3/KPack/Containercomplete"
+"Web/KPack".compareOrderandPackedQuantity
+Click "M3/KPack/OrderComplete"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

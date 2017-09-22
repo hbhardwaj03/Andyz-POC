@@ -6,13 +6,13 @@
 end open
 
 to lookupSchedule scheduleNumber
-	Click (700,105)
+	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
 	repeat 6 times
 		TypeText downArrow
 	end repeat
 	TypeText Return
-	Click (882,106)
+	Click "M3/PMS100/ViewDropdown"
 	TypeText homeKey
 	repeat 8 times
 		TypeText downArrow
@@ -24,6 +24,13 @@ to lookupSchedule scheduleNumber
 	TypeText deleteKey
 	TypeText "061"
 	TypeText Return
+	Click "M3/PMS100/Product"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/MONumberField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/Scheduleno100"
 	TypeText scheduleNumber
 	TypeText Return
 	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
@@ -49,14 +56,23 @@ to lookup_3 coNumber
 end lookup_3
 
 
-
-
+to lookup_4 coNumber
+	WaitFor 10, "M3/PMS100/Sortingorder04"
+	Click  "M3/PMS100/SortOptionRefOrdProd4"
+	TypeText endKey
+	Click "M3/PMS100/Viewdropdownoption04002"
+	Click "M3/PMS100/04002ActualStartFinishc"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/Reforderno"
+	TypeText coNumber
+	TypeText Return
+end lookup_4	
 
 to openDeliveryToolbox
 	Click "M3/PMS100/HighlightCO"
 	Click "M3/PMS100/DeliveryToolboxLink"
 end openDeliveryToolbox
-
 
 to checkDeliveryStatus
 	repeat 4 minutes
@@ -66,7 +82,6 @@ to checkDeliveryStatus
 		end if
 		Click "M3/PMS100/Refresh"
 	end checkDeliveryStatus
-
 
 to printShopTraveler scheduleNumber
 	Click (Image:"M3/PMS100/MinimizePanel", WaitFor:103)
@@ -157,8 +172,6 @@ function checkPickingListsImage
 	return FAIL
 end checkPickingListsImage
 
-
-
 to recordMO
 	Click "M3/PMS100/COMOOrderLine"
 	DoubleClick "M3/PMS100/MONumberOrderLine"
@@ -166,9 +179,13 @@ to recordMO
 	DoubleClick "M3/PMS100/MONumber"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
+	if ImageFound(5, "M3/OIS101/WindowsSearchField") 
+		Click "M3/OIS101/WindowsSearchField"
+	else
+		Click (30,700)
+	end if
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 2 times
 		TypeText spacebar
 	end repeat
 	set moNumber to ReadText(((12,695),(75,711)))

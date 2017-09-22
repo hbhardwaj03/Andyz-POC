@@ -120,4 +120,16 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
+ <run>
+  <RunDate>2017-09-22 07:41:08.473 -0400</RunDate>
+  <Status>Failure</Status>
+  <Duration>92.000000</Duration>
+  <Errors>1</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>1</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20170922_074108.473/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;KPack/Login/LocationDropdown&quot;</ErrorMessage>
+ </run>
 </runHistory>
