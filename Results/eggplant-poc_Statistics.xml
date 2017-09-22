@@ -18,10 +18,10 @@
  </script>
  <script name="Tests/2-BulkMO">
   <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>2</NumberOfRuns>
-  <NumberOfFails>2</NumberOfFails>
+  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfFails>3</NumberOfFails>
   <FirstRun>2017-09-19 19:08:13 -0400</FirstRun>
-  <LastRun>2017-09-19 19:15:08 -0400</LastRun>
+  <LastRun>2017-09-21 17:46:33 -0700</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/1-CustomGear">
@@ -104,14 +104,6 @@
   <LastRun>2017-09-21 07:51:35 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
- <script name="Tests/3-ZC-Customization-Process">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>1</NumberOfFails>
-  <FirstRun>2017-09-19 18:33:21 -0400</FirstRun>
-  <LastRun>2017-09-19 18:33:21 -0400</LastRun>
-  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
- </script>
  <script name="Tests/ZC-Customization-Process">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>37</NumberOfRuns>
@@ -119,6 +111,14 @@
   <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
   <LastRun>2017-09-21 08:17:52 -0400</LastRun>
   <TotalTimeOnSuccess>2222.866000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/3-ZC-Customization-Process">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-09-19 18:33:21 -0400</FirstRun>
+  <LastRun>2017-09-19 18:33:21 -0400</LastRun>
+  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-06-Validation">
   <LastStatus>Success</LastStatus>
