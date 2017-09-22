@@ -6,20 +6,21 @@ Author: Ramya
 
 Log "Logging in"
 "M3/Application".open
+
+
 // read user Name and Password for M3 Application from Login sheet of Datastore excel File
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
-
 
 set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A12") into UserName
-Put Cell(worksheet,"B12") into Password
-Put Cell(worksheet,"C12") into customerNumber
-Put Cell(worksheet,"D12") into coType
-Put Cell(worksheet,"E12") into PO
-Put Cell(worksheet,"F12") into ItemCode
-Put Cell(worksheet,"G12") into productQuantity
+Put Cell(worksheet,"A2") into UserName
+Put Cell(worksheet,"B2") into Password
+Put Cell(worksheet,"C2") into customerNumber
+Put Cell(worksheet,"D2") into coType
+Put Cell(worksheet,"E2") into PO
+Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"G2") into productQuantity
 
 // call Login function 
 "M3/Login".login UserName, Password
@@ -147,6 +148,7 @@ Log "Exit AGS"
 
 
 Log "Do Manufacturing in M3"
+"M3/PMS070".open
 "M3/PMS070".checkfacility
 // to enter MO number
 Click  "M3/PMS070/MOnumber"
@@ -166,5 +168,24 @@ TypeText Return
 Click "M3/PMS070/Changeforoperation"
 
 Click "M3/PMS070/OrderqtybUM"
+
+set "M3/PMS070/OrderqtybUM"to orderqty 
+
 Click "M3/PMS070/Manufquantity"
-Click"M3/PMS070/Nextbutton" "M3/PMS070/Manufquantity"
+
+set "M3/PMS070/Manufquantity" to manufactqty
+
+if orderqty = manufactqty then
+	logsucces "orderqty"&orderqty&"is Equal to"&"manufactqty"&manufactqty
+else
+	Logerror "Order QTy & Manufatuer Qty are not equal"
+end if
+
+Click"M3/PMS070/Nextbutton"
+
+
+
+
+
+
+
