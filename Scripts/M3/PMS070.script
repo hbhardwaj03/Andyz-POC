@@ -5,7 +5,6 @@
 	Click "M3/Home/SearchSubmit"
 end open
 
-<<<<<<< HEAD
 to checkfacility
 	WaitFor 20, "M3/PMS070/Facility"
 	Click "M3/PMS070/Facility"
@@ -17,20 +16,61 @@ end checkfacility
 
 
 
-=======
-to lookupMO moNumber
-	DoubleClick (142,240)
-	TypeText "061"
-	Click "M3/PMS070/MOnumberLookup"
-	TypeText moNumber
-	TypeText Return
-end lookupMO
+to checkMOStatus
+	repeat 4 minutes
+		if imageFound(60,"M3/PMS070/MOStatus60") then
+			Log "MO status is 60"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+		
+	end checkMOStatus
 
-(*
-to open MoNumber
-	WaitFor 20, "M3/Application/M3"
-	Click (Image:"M3/Home/SearchField", WaitFor:60)
-	TypeText "PPS070"
-	Click "M3/Home/SearchSubmit"
-end open*)
->>>>>>> f24a525beef3f788b478ca048c58489363064368
+to lookupMOnumber
+	"M3/PMS070".open
+	"M3/PMS070".checkfacility
+	// to enter MO number
+	Click  "M3/PMS070/MOnumber"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	//manually entering MO number
+	TypeText "1000004399"
+	TypeText Return
+end lookupMOnumber
+
+
+to compareOrderandManufQuantity
+
+	Click "M3/PMS070/OrderqtybUM"
+	
+	set orderqty to readtext(imageFound("M3/PMS070/OrderqtybUM"))
+	
+	Click "M3/PMS070/Manufquantity"
+	
+	set manufactqty to  readtext(imageFound("M3/PMS070/Manufquantity"))
+	
+	if orderqty = manufactqty then
+		logsucces "orderqty"&orderqty&"is Equal to"&"manufactqty"&manufactqty
+	else
+		Logerror "Order QTy & Manufatuer Qty are not equal"
+	end if
+	
+end compareOrderandManufQuantity
+
+
+
+to compareOrderandPackedQuantity
+
+	Click "M3/KPack/packedqty"
+	
+	set packedqty to readtext(imageFound("M3/KPack/packedqty"))
+	
+	if packedqty <>"" then
+		logsucces "packed quantity"&packedqty&"is Equal to order quantity"
+	else
+		Logerror "packed quantity is not equal to order quantity"
+	end if
+	
+end compareOrderandPackedQuantity
+
+

@@ -3,10 +3,10 @@
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
 end open
 
-to login
-	TypeText "ajenkins"
+to login UserName, Password
+	TypeText UserName
 	TypeText Return
-	TypeText "Acushnet#1"
+	TypeText Password
 	TypeText Return
 end login
 
