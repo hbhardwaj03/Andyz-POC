@@ -182,6 +182,7 @@ to recordMO
 	Wait 3
 	DoubleClick "M3/PMS100/MONumber"
 	TypeText controlKey, "c"
+	Click "M3/OIS101/WindowsButton"
 	if ImageFound(5, "M3/OIS101/WindowsSearchField") 
 		Click "M3/OIS101/WindowsSearchField"
 	else
