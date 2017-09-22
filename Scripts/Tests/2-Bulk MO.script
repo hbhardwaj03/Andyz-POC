@@ -164,7 +164,7 @@ Click "M3/PMS070/Changeforoperation"
 
 Click"M3/PMS070/Nextbutton"
 
-//need to capture step for remains and manuf qty validation
+//need to capture step for remains and manufacturing qty validation
 
 click "M3/PMS070/close"
 
