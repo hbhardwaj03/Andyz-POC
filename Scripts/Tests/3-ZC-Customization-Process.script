@@ -36,75 +36,26 @@ else
 end if
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
-	(*put 300 to a1
-	put 1 to a2 
-	add a1,a2
 	
-	Put shprifx + sh_Prifx into shprifx
-	Put sh_prifx & sh_sufix into schedulenumberM3*)
-	Put 30009192017 into schedulenumberM3
-	"M3/PMS170".create_schedule_number schedulenumberM3
+	"M3/PMS170".creatinguniqueScheduleNumber
+	"M3/PMS170".create_schedule_number scheduleNumber
 else
 	Logerror "Schedulenumber is not created"
 	
 end if
-
-put readtext("M3/PMS170/Getvaluein_sh") into a
-log a
-(*
-Log "Do scheduling"
-"M3/PMS170".open
-"M3/PMS170".lookUp(coNumber)
-put "M3/PMS170".createScheduleNumber() into scheduleNumber
-"M3/PMS170".scheduleNew scheduleNumber
 "M3/PMS170".releaseMO
 "M3/PMS170".close
-"M3/PMS100".open
-"M3/PMS100".lookupSchedule scheduleNumber
-"M3/PMS100".printShopTraveler scheduleNumber
-put "M3/PMS100".recordMO() into moNumber
-"M3/PMS100".pick
-"M3/PMS100".close
-
-Log "Exit AGS"
-"M3/Application".close
-
-Log "Do manufacturing"
-"Other/DCA".open
-"Other/DCA".manufacture moNumber
-"Other/DCA".close
-"M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".openDeliveryToolbox
-put "M3/OIS300".recordDeliveryNumber into deliveryNumber
-"M3/OIS300".confirmStatusPacked
-"M3/OIS300".closeFromDeliveryToolbox
-
-Log "Exit AGS"
-"M3/Application".close
-
-Log "CO: " & coNumber
-Log "MO: " & moNumber
-Log "Schedule: " & scheduleNumber
-Log "Delivery: " & deliveryNumber
-DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
-
-Log "Shipping with Flagship"
-"Web/Flagship".open
-"Web/Flagship".login
-"Web/Flagship".ship deliveryNumber
-"Web/Flagship".close
-"M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".openDeliveryToolbox
-"M3/OIS300".confirmStatusShipped
-"M3/OIS300".closeFromDeliveryToolbox
-
-Log "Exit AGS"
-"M3/Application".close
-
-*)
+"M3/MWS150".openWMS150
+"M3/MWS150".search_order_in_MWS150 coNumber
+"M3/MWS150".recordReqnumber
+"M3/MWS150".closeMWS150
+"M3/MMS100".openMMS100
+"M3/MMS100".searchReqnumber ReqNumber
+"M3/MMS100".DeliveryToolBox
+"M3/MMS100".MPacking
+"M3/MWS150".openWMS150
+"M3/MWS150".search_order_in_MWS150 coNumber
+"M3/MWS150".ReqOrderStatus
+"M3/MWS150".RecordPoNumber
+"Web/KPack".OpenKpack
+"Web/KPack".LoginToKpackZC10041

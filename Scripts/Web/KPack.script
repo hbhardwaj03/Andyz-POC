@@ -30,6 +30,88 @@ Click "KPack/Pack/OrderCompleteButton"
 //Close internet explorer
 Click (Image:"KPack/Pack/CloseIEButton", WaitFor:68)
 
+To OpenKpack
+	Click "KPack/Login/IELink"
+	wait 4
+	Click "KPack/Login/Searchfield"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	Typetext "http://ushqkptst/kewillpack/login.aspx"
+	click "KPack/Login/FindImage"
+	WaitFor 30, "KPack/Login/LocationDropdown"
+	Click "KPack/Login/LocationDropdown"
+	Click "KPack/Login/ZC10041Loc"
+	
+End OpenKpack
+
+To LoginToKpackZC10041
+	set ExcelFile to workbook(ResourcePath("KPack.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,A2) into username 
+	Put Cell(worksheet,B2) into password 
+	
+	Click "KPack/Login/UserField"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	TypeText username
+	Click "KPack/Login/PasswordField"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	TypeText password
+	Click "KPack/Login/LoginButton"
+End LoginToKpackZC10041
+
+/////////////// kpack functions for scirpt 2//////////////////////////////////
+
+
+
+To OpenKpackUSVista
+	Click "KPack/Login/IELink"
+	wait 4
+	Click "KPack/Login/Searchfield"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	Typetext "http://ushqkptst/kewillpack/login.aspx"
+	click "KPack/Login/FindImage"
+	WaitFor 30, "KPack/Login/LocationDropdown"
+	Click "KPack/Login/LocationDropdown"
+	Click "M3/KPack/USVistaCustomBaq1335Sycam"
+	
+End OpenKpackUSVista
+
+
+To LoginToKpackUSVista
+	set ExcelFile to workbook(ResourcePath("KPack.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,A3) into username 
+	Put Cell(worksheet,B3) into password 
+	
+	Click "KPack/Login/UserField"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	TypeText username
+	Click "KPack/Login/PasswordField"
+	TypeText controlkey, "a"
+	TypeText deletekey
+	TypeText password
+	Click "KPack/Login/LoginButton"
+End LoginToKpackUSVista
+
+
+to compareOrderandPackedQuantity
+
+	Click "M3/KPack/packedqty"
+	
+	set packedqty to readtext(imageFound("M3/KPack/packedqty"))
+	
+	if packedqty <>"" then
+		logsucces "packed quantity"&packedqty&"is Equal to order quantity"
+	else
+		Logerror "packed quantity is not equal to order quantity"
+	end if
+	
+end compareOrderandPackedQuantity
+
 
 
 

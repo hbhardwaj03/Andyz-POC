@@ -56,8 +56,18 @@ to lookup_3 coNumber
 end lookup_3
 
 
-
-
+to lookup_4 coNumber
+	WaitFor 10, "M3/PMS100/Sortingorder04"
+	Click  "M3/PMS100/SortOptionRefOrdProd4"
+	TypeText endKey
+	Click "M3/PMS100/Viewdropdownoption04002"
+	Click "M3/PMS100/04002ActualStartFinishc"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/Reforderno"
+	TypeText coNumber
+	TypeText Return
+end lookup_4	
 
 to openDeliveryToolbox
 	Click "M3/PMS100/HighlightCO"
@@ -172,8 +182,11 @@ to recordMO
 	Wait 3
 	DoubleClick "M3/PMS100/MONumber"
 	TypeText controlKey, "c"
-	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
+	if ImageFound(5, "M3/OIS101/WindowsSearchField") 
+		Click "M3/OIS101/WindowsSearchField"
+	else
+		Click (30,700)
+	end if
 	TypeText controlKey, "v"
 	repeat 5 times
 		TypeText spacebar
