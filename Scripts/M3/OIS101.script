@@ -76,14 +76,14 @@ end enterItemColorNewEra
 to configuratorA
 	Wait 5
 	Click "M3/OIS101/NumApplicationsButton"
-	Click "M3/OIS101/LocationButton"
+	Click (Image:"M3/OIS101/LocationButton", WaitFor:10)
 	Click "M3/OIS101/PersonalizationButton"
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "My Automated Personalization"
 	Click "M3/OIS101/PersonalizationNextButton"
-	Click "M3/OIS101/LetteringButton"
+	Click (Image:"M3/OIS101/LetteringButton", WaitFor:10)
 	Click "M3/OIS101/ColorButton"
 	Click "M3/OIS101/OrderNotesButton"
 	Click "M3/OIS101/DoubleStrapButton"
