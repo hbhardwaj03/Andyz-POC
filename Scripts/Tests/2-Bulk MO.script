@@ -144,12 +144,27 @@ Log "Exit AGS"
 "M3/PMS100".open
 "M3/PMS100".lookup_4 coNumber
 "M3/PMS100".checkAllocationStatus
+
+
 Log "Do Manufacturing in M3"
 "M3/PMS070".checkfacility
+// to enter MO number
+Click  "M3/PMS070/MOnumber"
+TypeText controlKey, "a"
+TypeText deleteKey
+//manually entering MO number
+TypeText "1000004399"
+TypeText Return
 
+Click "M3/PMS070/operation0100"
+TypeText controlKey, "a"
+TypeText deleteKey
 
+TypeText "0100"
+TypeText Return
 
+Click "M3/PMS070/Changeforoperation"
 
-
-
-
+Click "M3/PMS070/OrderqtybUM"
+Click "M3/PMS070/Manufquantity"
+Click"M3/PMS070/Nextbutton" "M3/PMS070/Manufquantity"
