@@ -44,7 +44,11 @@ Log "Enter order line"
 put "M3/OIS101".recordCONumber() into coNumber
 Log coNumber
 
-"M3/OIS101".enterItemCode ItemCode
+"M3/OIS101".enterItemCode("TA5TVBPC")
+"M3/OIS101".enterItemQuantity "1"
+"M3/Configurations".config002
+
+(*"M3/OIS101".enterItemCode ItemCode
 
 if ItemCode = "TB7SX6CC" then 
 	"M3/OIS101".enterItemQuantity productQuantity
@@ -52,7 +56,7 @@ if ItemCode = "TB7SX6CC" then
 else
 	"M3/OIS101".enterItemColor
 	"M3/OIS101".configuratorA
-end if
+end if*)
 
 "M3/OIS101".closeFromOrderLines
 (*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
