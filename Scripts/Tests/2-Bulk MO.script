@@ -138,7 +138,7 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
-//////////////////////////////////////packing with kpack////
+//////////////////////////////////////manufacturingin m3 with kpack////
 
 //prerequisite:yet to be handled(CO comes back form order entry)
 
