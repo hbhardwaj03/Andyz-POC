@@ -141,4 +141,19 @@ Log "Shipping with Flagship"
 
 Log "Exit AGS"
 "M3/Application".close
-//////////////////////////////////////
+//////////////////////////////////////packing with kpack////
+
+//prerequisite:yet to be handled(CO comes back form order entry)
+
+"M3/PMS100".open
+"M3/PMS100".lookup_4 coNumber
+"M3/PMS100".checkAllocationStatus
+Log "Do Manufacturing in M3"
+"M3/PMS070".checkfacility
+
+
+
+
+
+
+
