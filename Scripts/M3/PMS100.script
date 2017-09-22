@@ -185,7 +185,7 @@ to recordMO
 		Click (30,700)
 	end if
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 2 times
 		TypeText spacebar
 	end repeat
 	set moNumber to ReadText(((12,695),(75,711)))
