@@ -3,9 +3,9 @@
 	DoubleClick "M3/OIS101/CONumberField"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
+	Click (30,700)
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 2 times
 		TypeText spacebar
 	end repeat
 	set coNumber to ReadText(((12,695),(75,711)))
@@ -13,7 +13,6 @@
 	Click "M3/OIS101/WindowsButton"
 	return coNumber
 end recordCONumber
-
 
 //***************** to store CO no directly into variable ************************
 to storeCONum 
@@ -57,20 +56,16 @@ to enterItemCode ItemCode
 end enterItemCode
 
 to enterItemQuantity productQuantity
-	Click (303,595)
+	Click "M3/OIS101/ItemQuantity"
 	TypeText productQuantity
 	TypeText Return
 end enterItemQuantity
 
 to enterItemColor
-	if      ImageFound(10, "M3/OIS101/ItemColorField")
-		Click "M3/OIS101/ItemColorField"
-	else
-		Click (130,300)     //added location in case image is not found for black/white/red colours field(16)
-	end if
-		TypeText "1"
-		Click "M3/OIS101/ConfiqStyleButton"
-	end enterItemColor	
+	Click (130,300)
+	TypeText "1"
+	Click "M3/OIS101/ConfiqStyleButton"
+end enterItemColor	
 
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"
