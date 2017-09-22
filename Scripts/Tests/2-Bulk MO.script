@@ -19,7 +19,7 @@ Put Cell(worksheet,"B2") into Password
 Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
-Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"F3") into ItemCode
 Put Cell(worksheet,"G2") into productQuantity
 
 // call Login function 
@@ -148,15 +148,8 @@ Log "Exit AGS"
 
 
 Log "Do Manufacturing in M3"
-"M3/PMS070".open
-"M3/PMS070".checkfacility
-// to enter MO number
-Click  "M3/PMS070/MOnumber"
-TypeText controlKey, "a"
-TypeText deleteKey
-//manually entering MO number
-TypeText "1000004399"
-TypeText Return
+"M3/PMS070".lookupMOnumber
+
 
 Click "M3/PMS070/operation0100"
 TypeText controlKey, "a"
@@ -167,21 +160,67 @@ TypeText Return
 
 Click "M3/PMS070/Changeforoperation"
 
-Click "M3/PMS070/OrderqtybUM"
-
-set "M3/PMS070/OrderqtybUM"to orderqty 
-
-Click "M3/PMS070/Manufquantity"
-
-set "M3/PMS070/Manufquantity" to manufactqty
-
-if orderqty = manufactqty then
-	logsucces "orderqty"&orderqty&"is Equal to"&"manufactqty"&manufactqty
-else
-	Logerror "Order QTy & Manufatuer Qty are not equal"
-end if
+"M3/PMS070".compareOrderandManufQuantity
 
 Click"M3/PMS070/Nextbutton"
+
+//need to capture step for remains and manuf qty validation
+
+click "M3/PMS070/close"
+
+"M3/PMS100".open
+click "M3/PMS070/refresh"
+"M3/PMS070".checkMOStatus
+click "M3/PMS070/close100"
+
+"M3/PMS070".lookupMOnumber
+
+Click "M3/PMS070/operation8000"
+TypeText controlKey, "a"
+TypeText deleteKey
+
+TypeText "8000"
+TypeText Return
+Click "M3/PMS070/Changeforoperation"
+"M3/PMS070".compareOrderandManufQuantity
+Click"M3/PMS070/Nextbutton"
+
+/// packing with kpack////
+
+
+click "M3/KPack/OrderNum"
+TypeText controlKey, "a"
+TypeText deleteKey
+
+TypeText "0013139821001"
+
+Click "M3/KPack/LoadOrderutton"
+Click "M3/KPack/ProductID"
+Click "M3/KPack/FastPackDeselected"
+Click "M3/KPack/Autopackselect"
+Click "M3/KPack/Packbutton"
+Click "M3/KPack/SelectBoxType"
+Click "M3/KPack/SelectBoxtypedropdown"
+Click "M3/KPack/Containercomplete"
+"M3/PMS070".compareOrderandPackedQuantity
+Click "M3/KPack/OrderComplete"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
