@@ -186,8 +186,8 @@ Click "M3/PMS070/Changeforoperation"
 Click"M3/PMS070/Nextbutton"
 
 /// packing with kpack////
-
-
+"Web/KPack".OpenKpackUSVista
+"Web/KPack".LoginToKpackUSVista
 click "M3/KPack/OrderNum"
 TypeText controlKey, "a"
 TypeText deleteKey
@@ -202,7 +202,7 @@ Click "M3/KPack/Packbutton"
 Click "M3/KPack/SelectBoxType"
 Click "M3/KPack/SelectBoxtypedropdown"
 Click "M3/KPack/Containercomplete"
-"M3/PMS070".compareOrderandPackedQuantity
+"Web/KPack".compareOrderandPackedQuantity
 Click "M3/KPack/OrderComplete"
 
 
