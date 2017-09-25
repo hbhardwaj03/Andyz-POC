@@ -38,8 +38,8 @@ To OpenKpack
 	TypeText deletekey
 	Typetext "http://ushqkptst/kewillpack/login.aspx"
 	click "KPack/Login/FindImage"
-	WaitFor 30, "KPack/Login/LocationDropdown"
-	Click "KPack/Login/LocationDropdown"
+	WaitFor 30,  "KPack/Login/LocationWeb"
+	Click  "KPack/Login/LocationWeb"
 	Click "KPack/Login/ZC10041Loc"
 	
 End OpenKpack

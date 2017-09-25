@@ -21,7 +21,13 @@ to checkMOStatus
 		if imageFound(60,"M3/PMS070/MOStatus60") then
 			Log "MO status is 60"
 			return SUCCESS
-		end if
+			
+		else If imageFound(99,"M3/PMS070/MOStatus9099") then
+			Log "MO status is 90"		
+		Else
+			Log "Image not found"
+		End if
+		
 		Click "M3/PMS100/Refresh"
 		
 	end checkMOStatus
@@ -58,6 +64,25 @@ to compareOrderandManufQuantity
 end compareOrderandManufQuantity
 
 
+
+
+to compareRemainsandManufQuantity
+
+	Click "M3/PMS070/RemainsField"
+	
+	set remainsvalue to readtext(imageFound("M3/PMS070/RemainsField"))
+	
+	Click "M3/PMS070/Manufquantity"
+	
+	set manufactqty to  readtext(imageFound("M3/PMS070/Manufquantity"))
+	
+	if remainsvalue= null& & manufactqty<>null then
+		logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
+	else
+		Logerror "Remains values hasnt moved to manufactqty"
+	end if
+	
+end compareRemainsandManufQuantity
 
 
 

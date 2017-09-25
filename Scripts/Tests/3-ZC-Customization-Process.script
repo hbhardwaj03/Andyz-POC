@@ -7,8 +7,7 @@ Put Cell(worksheet,B2) into password
 Put Cell(worksheet,A6) into coNumber 
 Put Cell(worksheet,D6) into product
 Put Cell(worksheet,E6) into Status_Line
-Put Cell(worksheet,E6) into sh_prifx
-Put Cell(worksheet,G6) into sh_sufix
+
 
 
 
@@ -26,7 +25,7 @@ If ImageFound( "M3/Login/itLogoff") then
 	Log "Open PMS170 Tcode"
 	waitfor 10, "M3/Login/itLogoff"
 	"M3/PMS170".open
-	"M3/PMS170".lookUp_2(coNumber)
+	"M3/PMS170".lookUp(coNumber)
 end if
 if ImageFound("M3/PMS170/OrderLine/Product_OrderLine") then
 	Log "search the product"
@@ -59,3 +58,28 @@ end if
 "M3/MWS150".RecordPoNumber
 "Web/KPack".OpenKpack
 "Web/KPack".LoginToKpackZC10041
+
+
+
+
+"M3/PMS170".creatinguniqueScheduleNumber
+
+
+set Excelfile1 to Workbook(ResourcePath("ZCustomaization.xlsx"))
+set worksheet1 to Excelfile1.Worksheet("Sheet2")
+put Cell(worksheet1, B1) into count
+put count + 1 into count
+put count into Cell(worksheet1, "B1")
+log "Cell value: " & Cell(worksheet1, B1)
+return count
+put 30008102017+(100000000*count) into scheduleNumber
+set scheduleNumber to scheduleNumber
+log "New schedule number: " & scheduleNumber
+return scheduleNumber
+
+"M3/PMS170".create_schedule_number scheduleNumber
+
+
+
+
+

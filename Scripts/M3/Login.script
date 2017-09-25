@@ -10,6 +10,7 @@
 	Click "M3/Login/InforPasswordSubmitButton"
 end login
 
+<<<<<<< HEAD
 To loginM3 userName, password
 	set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1") 
@@ -25,8 +26,10 @@ To loginM3 userName, password
 	Click "M3/Login/PasswordField"
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
-end loginM3
-
+	
+	
+End loginM3
+=======
 
 
 
