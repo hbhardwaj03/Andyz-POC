@@ -33,6 +33,12 @@ put 2 into dataIndex
 
 repeat forever
 	
+	//skip known bad entries in test data
+	put (3) into badData
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
 	//initialize data variables
 	DataStore.setDataScript1 dataIndex
 	
