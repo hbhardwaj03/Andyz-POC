@@ -120,10 +120,10 @@
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>
-< <run>
+ <run>
   <RunDate>2017-09-22 07:41:08.473 -0400</RunDate>
   <Status>Failure</Status>
-  <Duration>92.166000</Duration>
+  <Duration>92.000000</Duration>
   <Errors>1</Errors>
   <Warnings>0</Warnings>
   <Exceptions>1</Exceptions>
