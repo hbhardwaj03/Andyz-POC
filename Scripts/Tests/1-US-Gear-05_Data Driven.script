@@ -9,9 +9,9 @@ Log "Intializing Excel data sheet for This Script"
 //run DataStore.ConfigValues UserName, Password, customerNumber, coType
 set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A2") into UserName
-Put Cell(worksheet,"B2") into Password
-Put Cell(worksheet,"C5") into customerNumber
+Put Cell(worksheet,"A2") into username
+Put Cell(worksheet,"B2") into password
+Put Cell(worksheet,"C5") into customerNum
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E4") into PO
 Put Cell(worksheet,"F5") into itemCode
@@ -19,60 +19,35 @@ Put Cell(worksheet,"G2") into productQuantity
 Put Cell(worksheet,"H2") into DCAUser
 Put Cell(worksheet,"I2") into DCAPswrd
 
-Log "Logging in"
-"M3/Application".open
-"M3/Login".login UserName, Password
+"Flows/Application".login username, password
 
-"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
-
-put "Flows/OrderEntry".recordCONumber() into coNumber
-
+(************** Order entry ***************)
+"Flows/OrderEntry".enterNewOrder customerNum, coType, PO
+put "Flows/OrderEntry".recordCONumber() into coNum
 "Flows/OrderEntry".enterProduct itemCode
 
-(*********************Begin Scheduling ***************)
-"Flows/Scheduling".doScheduling coNumber
+(************** Scheduling ***************)
+"Flows/Scheduling".doScheduling coNum
+put "M3/PMS100".recordMO() into moNum
 
-put "M3/PMS100".recordMO() into moNumber
-
+(************** Picking ******************)
 "Flows/Picking".doPicking
-(*********************End Scheduling ****************)
 
-throw "Unsupported", "environment does not currently support DCA"
+(************** Manufacturing *************)
+"Flows/ManufacturinPacking".doManufacturing moNum
 
-(*********************Begin Manufacturing *************)
+(************** Packing ******************)
+put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 
-"Flows/ManufacturinPacking".doManufacturing moNumber
+(************** Shipping *****************)
+"Flows/Shipping".doShipping delNum
+"Flows/Shipping".validateShipping coNum
 
-(*********************End Manufacturing **************)
-
-put "Flows/ManufacturingPacking".validatePacking(username,password,coNumber) into deliveryNumber
-
-Log "CO: " & coNumber
-Log "MO: " & moNumber
-Log "Schedule: " & scheduleNumber
-Log "Delivery: " & deliveryNumber
-DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
-
-(***********************************Begin Shipping with Flagship *****************)
-Log "Shipping with Flagship"
-"Web/Flagship".open
-"Web/Flagship".login
-"Web/Flagship".ship deliveryNumber
-"Web/Flagship".close
-"M3/Application".open
-
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".openDeliveryToolbox
-"M3/OIS300".confirmStatusShipped
-"M3/OIS300".closeFromDeliveryToolbox
-
+(************** Exit *********************)
 Log "Exit AGS"
 "M3/Application".close
-(***********************************End Shipping  *****************)
 
-(*X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-XX-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X*)
 
 
 
