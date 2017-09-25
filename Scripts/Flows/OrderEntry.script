@@ -32,4 +32,5 @@ to enterProduct itemCode
 		"M3/OIS101".enterItemColor
 		"M3/OIS101".configuratorA
 	end if
+	"M3/OIS101".closeFromOrderLines
 end enterProduct

@@ -29,47 +29,23 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 
 "Flows/OrderEntry".enterProduct itemCode
 
-"M3/OIS101".closeFromOrderLines
+(*********************Begin Scheduling ***************)
+"Flows/Scheduling".doScheduling coNumber
 
-(*******************************Begin Scheduling *****************)
-Log "Do scheduling"
-"M3/PMS170".open
-"M3/PMS170".lookUp(coNumber)
-put "M3/PMS170".createScheduleNumber() into scheduleNumber
-"M3/PMS170".scheduleNew scheduleNumber
-"M3/PMS170".releaseMO
-"M3/PMS170".close
-"M3/PMS100".open
-"M3/PMS100".lookupSchedule scheduleNumber
-"M3/PMS100".printShopTraveler scheduleNumber
 put "M3/PMS100".recordMO() into moNumber
-"M3/PMS100".pick
-"M3/PMS100".close
-Log "Exit AGS"
-"M3/Application".close
-(*******************************End Scheduling *****************)
+
+"Flows/Picking".doPicking
+(*********************End Scheduling ****************)
 
 throw "Unsupported", "environment does not currently support DCA"
 
-(*******************************Begin Manufacturing *****************)
-Log "Do manufacturing"
-// Open DCA
-"Other/DCA".open
-"Other/DCA".manufacture moNumber
-"Other/DCA".close
-(***********************************End Manufacturing ***********)
+(*********************Begin Manufacturing *************)
 
-"M3/Application".open
-"M3/Login".login username, password
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".openDeliveryToolbox
-put "M3/OIS300".recordDeliveryNumber into deliveryNumber
-"M3/OIS300".confirmStatusPacked
-"M3/OIS300".closeFromDeliveryToolbox
-Log "Exit AGS"
-"M3/Application".close
+"Flows/ManufacturinPacking".doManufacturing moNumber
 
+(*********************End Manufacturing **************)
+
+put "Flows/ManufacturingPacking".validatePacking(username,password,coNumber) into deliveryNumber
 
 Log "CO: " & coNumber
 Log "MO: " & moNumber
