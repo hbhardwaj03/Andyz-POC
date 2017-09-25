@@ -4,6 +4,7 @@ Description: Enter a basic custom CC Players 5 stand bag ,one personalization, F
 Author: Andy Jenkins
  *)
 
+//declare test variables
 global username
 global password
 global customerNum
@@ -14,39 +15,76 @@ global productQuantity
 global DCAUser
 global DCAPswrd
 
+//initialize test variables
 "DataStore".setGlobalsScript1
 
-"Flows/Application".login username, password
+//declare data variables
+global dataIndex
+global custNum
+global custPO
+global tag
+global delTerm
+global delMeth
+global style
+global color
 
-(************** Order entry ***************)
-"Flows/OrderEntry".enterNewOrder customerNum, coType, PO
-put "Flows/OrderEntry".recordCONumber() into coNum
-"Flows/OrderEntry".enterProduct itemCode
+//initialize data line counter
+put 2 into dataIndex
 
-(************** Scheduling ***************)
-"Flows/Scheduling".doScheduling coNum
-put "M3/PMS100".recordMO() into moNum
+repeat forever
+	
+	//initialize data variables
+	DataStore.setDataScript1 dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if custNum is empty then exit repeat
+	
+	logData
+	
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".enterNewOrder custNum, coType, PO
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct itemCode
+	
+	(************** Scheduling ***************)
+	"Flows/Scheduling".doScheduling coNum
+	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
+	"Flows/Picking".doPicking
+	
+	(************** Manufacturing *************)
+	"Flows/ManufacturinPacking".doManufacturing moNum
+	
+	(************** Packing ******************)
+	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	
+	(************** Shipping *****************)
+	"Flows/Shipping".doShipping delNum
+	"Flows/Shipping".validateShipping coNum
+	
+	(************** Exit *********************)
+	Log "Exit AGS"
+	"M3/Application".close
+end repeat
 
-(************** Picking ******************)
-"Flows/Picking".doPicking
 
-(************** Manufacturing *************)
-"Flows/ManufacturinPacking".doManufacturing moNum
-
-(************** Packing ******************)
-put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
-"Flows/Other".recordRun coNum, moNum, schedNum, delNum
-
-(************** Shipping *****************)
-"Flows/Shipping".doShipping delNum
-"Flows/Shipping".validateShipping coNum
-
-(************** Exit *********************)
-Log "Exit AGS"
-"M3/Application".close
-
-
-
-
+to logData
+	global dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color
+end logData
 
 

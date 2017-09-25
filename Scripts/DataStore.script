@@ -44,6 +44,25 @@ to setGlobalsScript1
 	Log "test " & username
 end setGlobalsScript1
 
+to setDataScript1 dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Input")
+	put Cell(worksheet, "A" & dataIndex) into custNum
+	put Cell(worksheet, "E" & dataIndex) into custPO
+	put Cell(worksheet, "F" & dataIndex) into tag
+	put Cell(worksheet, "G" & dataIndex) into delTerm
+	put Cell(worksheet, "H" & dataIndex) into delMeth
+	put Cell(worksheet, "J" & dataIndex) into style
+	put Cell(worksheet, "K" & dataIndex) into color
+end setDataScript1
+
 <<<<<<< HEAD
 to getCustomerNo 
 	set caseBook to Workbook(ResourcePath("1-CustomGear-Input.xlsx"))
