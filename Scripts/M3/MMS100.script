@@ -1,7 +1,7 @@
 ﻿to openMMS100
 	WaitFor 10, "M3/Application/inforSmartOfficeTitle"
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
-	TypeText "MWS150"
+	TypeText "MMS100"
 	Click "M3/Home/SearchSubmit"
 end openMMS100
 
@@ -28,15 +28,15 @@ To DeliveryToolBox
 	If ImageFound ("M3/MMS100/MWS410E") then
 		LogSuccess "Open Delivery screen appears"
 		Click "M3/MMS100/ReleaseforPick"
-		"M3/PMS100".checkDeliveryStatus
+		//"M3/PMS100".checkDeliveryStatus
 		wait 3
 		Click "M3/MMS100/PickReporting"
 		wait 3
 		click "M3/MMS100/PickingLists"
 		Click "M3/MMS100/Refresh"
-		Click "M3/MMS100/OrderNumber_Line"
+		//Click "M3/MMS100/OrderNumber_Line"
 		wait 3
-		If Imagefound("M3/MMS100/50PickingListsCreated") then
+		(*If Imagefound("M3/MMS100/50PickingListsCreated") then
 			LogSuccess "PickingList has Created"
 		Else
 			LogError "Picking List Has Not Created"
@@ -44,16 +44,16 @@ To DeliveryToolBox
 		
 	Else
 		LogError "Open Delivery Screen Is not visible"
-	End If
+	End If*)
 	
 	
 End DeliveryToolBox
 
 To MPacking
-	Click "M3/MMS100/OrderNumber_Line"
-	wait 2
-	Click "M3/MMS100/PickingLists"
-	Wait 2
+	//Click "M3/MMS100/OrderNumber_Line"
+	//wait 2
+	//Click "M3/MMS100/PickingLists"
+	//Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
 		LogSuccess "Picking List Screen Appears"
 		
@@ -70,7 +70,7 @@ To MPacking
 		LogError "Pickinglist Pack Manually screen Not Appears"
 	End If
 	Click "M3/MMS100/Packageno"
-	TypeTex Controlkey, "a"
+	TypeText Controlkey, "a"
 	TypeText deletekey
 	Typetext "GENBOX" //PackingNo
 	Click "M3/MMS100/Related_1"

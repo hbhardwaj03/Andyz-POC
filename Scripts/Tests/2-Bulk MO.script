@@ -168,8 +168,8 @@ Click "M3/PMS070/Changeforoperation"
 
 Click"M3/PMS070/Nextbutton"
 
-//need to capture step for remains and manufacturing qty validation
-
+// capture step for remains and manufacturing qty validation
+"M3/PMS070". compareRemainsandManufQuantity
 click "M3/PMS070/close"
 
 "M3/PMS100".open
@@ -180,6 +180,7 @@ click "M3/PMS070/close100"
 "M3/PMS070".lookupMOnumber
 
 Click "M3/PMS070/operation8000"
+
 TypeText controlKey, "a"
 TypeText deleteKey
 
@@ -188,6 +189,17 @@ TypeText Return
 Click "M3/PMS070/Changeforoperation"
 "M3/PMS070".compareOrderandManufQuantity
 Click"M3/PMS070/Nextbutton"
+// skipped steps related to Man compl flag and location values, as unable to find the fields
+
+"M3/PMS070". compareRemainsandManufQuantity
+click "M3/PMS070/close"
+click "M3/PMS070/close"
+
+
+click "M3/PMS070/BacktoPMS100"
+click "M3/PMS070/RefreshPMS100"
+"M3/PMS070".checkMOStatus
+"M3/PMS070".compareOrderandManufQuantity
 
 /// packing with kpack////
 "Web/KPack".OpenKpackUSVista

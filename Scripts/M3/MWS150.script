@@ -41,9 +41,12 @@ to recordReqnumber
 	
 end recordReqnumber
 
+
 to ReqOrderStatus
 	Click "M3/MWS150/Requestion_Order"
-	set ors to readtext(imagelocation("M3/MWS150/99Completed"))
+	
+	//set ors to readtext(imagelocation("M3/MWS150/99Completed"))
+	set ors to ReadText(("RQstatus_A","RQstatus_B"))
 	if ors = "99 - Completed" then
 		LogSuccess "Order status is"&ors
 	else
@@ -55,9 +58,14 @@ end ReqOrderStatus
 To RecordPoNumber
 	click "M3/MWS150/OrderCatagory"
 	wait 2
-	set PoNo to readtext(Imagefound("M3/MWS150/PoNumber"))
+	//set PoNo to readtext(Imagefound("M3/MWS150/PoNumber"))
+	//Set the SearchRectangle to ("POnumber_A","POnumber_B")
+	set PoNo to ReadText(("POnumber2_A","POnumber2_B"))
+	
 	put PoNo into poNumber
-
+	LogSuccess "PONumber was"&poNumber
+	
+	
 End RecordPoNumber
 
 
