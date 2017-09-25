@@ -60,8 +60,7 @@ repeat forever
 	"Flows/OrderEntry".enterProduct style
 	
 	(************** Exit *********************)
-	Log "Exit AGS"
-	"M3/Application".close
+	"Flows/Application".exitApp
 	
 end repeat	
 (*	
@@ -84,8 +83,7 @@ end repeat
 	"Flows/Shipping".validateShipping coNum
 	
 	(************** Exit *********************)
-	Log "Exit AGS"
-	"M3/Application".close
+"Flows/Application".exitApp
 end repeat
 *)
 

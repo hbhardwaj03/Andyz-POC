@@ -5,5 +5,6 @@
 end login
 
 to exitApp
-
+	Log "Exit AGS"
+	"M3/Application".close
 end exitApp
