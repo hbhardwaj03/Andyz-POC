@@ -11,10 +11,10 @@ set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A2") into UserName
 Put Cell(worksheet,"B2") into Password
-Put Cell(worksheet,"C2") into customerNumber
+Put Cell(worksheet,"C5") into customerNumber
 Put Cell(worksheet,"D2") into coType
-Put Cell(worksheet,"E2") into PO
-Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"E4") into PO
+Put Cell(worksheet,"F5") into ItemCode
 Put Cell(worksheet,"G2") into productQuantity
 Put Cell(worksheet,"H2") into DCAUser
 Put Cell(worksheet,"I2") into DCAPswrd
@@ -45,12 +45,12 @@ Log coNumber
 
 "M3/OIS101".enterItemCode ItemCode
 //"M3/OIS101".enterItemCode "TB7SX6CC"
-if ItemCode = "TB7SX6CC" then 
+if ItemCode = "TB7SX6CC" or if ItemCode = "TB7SX14CC" then 
 	(*"M3/OIS101".enterItemQuantity productQuantity*)
 	"M3/Configurations".config001
 else
 	"M3/OIS101".enterItemColor
-	"M3/OIS101".configuratorA
+"M3/OIS101".configuratorA
 end if
 "M3/OIS101".closeFromOrderLines
 
@@ -72,7 +72,7 @@ Log "Exit AGS"
 "M3/Application".close
 (*******************************End Scheduling *****************)
 
-//throw "Unsupported", "environment does not currently support DCA"
+throw "Unsupported", "environment does not currently support DCA"
 
 (*******************************Begin Manufacturing *****************)
 Log "Do manufacturing"
