@@ -6,13 +6,15 @@
 	TypeText deleteKey
 	TypeText username
 	Click "M3/Login/PasswordField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
 end login
 
 <<<<<<< HEAD
 To loginM3 userName, password
-	set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
+set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1") 
 	Put Cell(worksheet,A2) into username
 	Put Cell(worksheet,B2) into password
