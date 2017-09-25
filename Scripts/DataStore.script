@@ -20,6 +20,30 @@ to recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
 	put index+1 into Cell(worksheet2, "B2")
 end recordRun
 
+to setGlobalsScript1
+	global username
+	global password
+	global customerNum
+	global coType
+	global PO
+	global itemCode
+	global productQuantity
+	global DCAUser
+	global DCAPswrd
+	set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,"A2") into username
+	Put Cell(worksheet,"B2") into password
+	Put Cell(worksheet,"C5") into customerNum
+	Put Cell(worksheet,"D2") into coType
+	Put Cell(worksheet,"E4") into PO
+	Put Cell(worksheet,"F5") into itemCode
+	Put Cell(worksheet,"G2") into productQuantity
+	Put Cell(worksheet,"H2") into DCAUser
+	Put Cell(worksheet,"I2") into DCAPswrd
+	Log "test " & username
+end setGlobalsScript1
+
 <<<<<<< HEAD
 to getCustomerNo 
 	set caseBook to Workbook(ResourcePath("1-CustomGear-Input.xlsx"))

@@ -4,20 +4,17 @@ Description: Enter a basic custom CC Players 5 stand bag ,one personalization, F
 Author: Andy Jenkins
  *)
 
-Log "Intializing Excel data sheet for This Script"
-// read user Name and Password for M3 Application from Login sheet of Datastore excel File
-//run DataStore.ConfigValues UserName, Password, customerNumber, coType
-set ExcelFile to workbook(ResourcePath("1-Datastore.xlsx"))
-set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A2") into username
-Put Cell(worksheet,"B2") into password
-Put Cell(worksheet,"C5") into customerNum
-Put Cell(worksheet,"D2") into coType
-Put Cell(worksheet,"E4") into PO
-Put Cell(worksheet,"F5") into itemCode
-Put Cell(worksheet,"G2") into productQuantity
-Put Cell(worksheet,"H2") into DCAUser
-Put Cell(worksheet,"I2") into DCAPswrd
+global username
+global password
+global customerNum
+global coType
+global PO
+global itemCode
+global productQuantity
+global DCAUser
+global DCAPswrd
+
+"DataStore".setGlobalsScript1
 
 "Flows/Application".login username, password
 
