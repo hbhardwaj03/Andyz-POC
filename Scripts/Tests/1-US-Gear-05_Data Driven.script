@@ -1,7 +1,7 @@
 ﻿(* 
-Name: US-Gear-06
-Description: Enter a basic custom CC Players 5 stand bag ,one personalization, FXG Delivery Method / BPG Delivery Term should apply to validate $5 per bag shows on Invoice
-Author: Andy Jenkins
+Name: Data-driven end to end custom bag processing
+Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end custom bag flow on the scenario. 
+Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
 //declare test variables
@@ -15,9 +15,6 @@ global productQuantity
 global DCAUser
 global DCAPswrd
 
-//initialize test variables
-"DataStore".setGlobalsScript1
-
 //declare data variables
 global dataIndex
 global custNum
@@ -28,19 +25,25 @@ global delMeth
 global style
 global color
 
+//initialize test variables
+"DataStore".setGlobalsScript1
+
 //initialize data line counter
 put 2 into dataIndex
 
+(************** Start Test ***************)
 repeat forever
 	
+	(************** Set up data *************)
 	//skip known bad entries in test data
-	put (3) into badData
+	put (3) into badData //3 currently results in a sales hold
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
 	
-	//initialize data variables
+	//initialize data variables (sets global data variables and logs them)
 	DataStore.setDataScript1 dataIndex
+	logData
 	
 	//increment counter
 	put dataIndex + 1 into dataIndex
@@ -48,19 +51,18 @@ repeat forever
 	//break if no more data
 	if custNum is empty then exit repeat
 	
-	logData
-	
+	(************** Start flow ****************)
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
 	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style
-
+	
 	(************** Exit *********************)
 	Log "Exit AGS"
 	"M3/Application".close
-
+	
 end repeat	
 (*	
       (************** Scheduling ***************)
@@ -86,7 +88,6 @@ end repeat
 	"M3/Application".close
 end repeat
 *)
-
 
 to logData
 	global dataIndex
