@@ -66,19 +66,19 @@
  </script>
  <script name="M3/Application">
   <LastStatus>Success</LastStatus>
-  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfRuns>5</NumberOfRuns>
   <NumberOfFails>0</NumberOfFails>
   <FirstRun>2017-09-13 19:58:38 -0400</FirstRun>
-  <LastRun>2017-09-18 15:30:57 -0400</LastRun>
-  <TotalTimeOnSuccess>0.035000</TotalTimeOnSuccess>
+  <LastRun>2017-09-25 00:32:42 -0400</LastRun>
+  <TotalTimeOnSuccess>0.051000</TotalTimeOnSuccess>
  </script>
  <script name="M3/Login">
   <LastStatus>Success</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
+  <NumberOfRuns>7</NumberOfRuns>
   <NumberOfFails>0</NumberOfFails>
   <FirstRun>2017-09-13 19:59:01 -0400</FirstRun>
-  <LastRun>2017-09-14 20:09:44 -0400</LastRun>
-  <TotalTimeOnSuccess>0.031000</TotalTimeOnSuccess>
+  <LastRun>2017-09-25 00:41:43 -0400</LastRun>
+  <TotalTimeOnSuccess>0.040000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/Bulk MO">
   <LastStatus>Failure</LastStatus>
@@ -112,14 +112,6 @@
   <LastRun>2017-09-22 11:09:26 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
- <script name="Tests/ZC-Customization-Process">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>37</NumberOfRuns>
-  <NumberOfFails>23</NumberOfFails>
-  <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
-  <LastRun>2017-09-21 08:17:52 -0400</LastRun>
-  <TotalTimeOnSuccess>2222.866000</TotalTimeOnSuccess>
- </script>
  <script name="Tests/3-ZC-Customization-Process">
   <LastStatus>Failure</LastStatus>
   <NumberOfRuns>1</NumberOfRuns>
@@ -127,6 +119,14 @@
   <FirstRun>2017-09-19 18:33:21 -0400</FirstRun>
   <LastRun>2017-09-19 18:33:21 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
+ </script>
+ <script name="Tests/ZC-Customization-Process">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>37</NumberOfRuns>
+  <NumberOfFails>23</NumberOfFails>
+  <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
+  <LastRun>2017-09-21 08:17:52 -0400</LastRun>
+  <TotalTimeOnSuccess>2222.866000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-06-Validation">
   <LastStatus>Success</LastStatus>
