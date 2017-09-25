@@ -26,6 +26,9 @@ to lookup coNumber
 	Click "M3/PMS170/ResponsibleField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
+	Click "M3/PMS170/Product"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	Click "M3/PMS170/RefOrderNoField"
 	TypeText coNumber
 	TypeText Return
