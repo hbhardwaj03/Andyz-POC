@@ -47,11 +47,17 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".enterNewOrder custNum, coType, PO
+	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct itemCode
-	
-	(************** Scheduling ***************)
+	"Flows/OrderEntry".enterProduct style
+
+	(************** Exit *********************)
+	Log "Exit AGS"
+	"M3/Application".close
+
+end repeat	
+(*	
+      (************** Scheduling ***************)
 	"Flows/Scheduling".doScheduling coNum
 	put "M3/PMS100".recordMO() into moNum
 	
@@ -73,6 +79,7 @@ repeat forever
 	Log "Exit AGS"
 	"M3/Application".close
 end repeat
+*)
 
 
 to logData
