@@ -6,7 +6,7 @@
 end open
 
 to lookup coNumber
-	Click "M3/PMS170/Actions"
+	Click (Image:"M3/PMS170/Actions", WaitFor:15)
 	Click "M3/PMS170/Settings"
 	Click "M3/PMS170/Facility"
 	TypeText controlKey, "a"
