@@ -77,18 +77,6 @@ To change_line_status Status_Line
 End change_line_status
 
 
-to creatinguniqueScheduleNumber
-	set Excelfile to Workbook(ResourcePath("ZCustomaization.xlsx"))
-	set worksheet to Excelfile.Worksheet("Sheet2")
-	put Cell(worksheet, B1) into count
-	put count + 1 into count
-	put count into Cell(worksheet, "B1")
-	log "Cell value: " & Cell(worksheet, B1)
-	return count
-	put 30008102017+(100000000*count) into scheduleNumber
-	log "New schedule number: " & scheduleNumber
-	return scheduleNumber
-end creatinguniqueScheduleNumber
 
 to create_schedule_number scheduleNumber
 
