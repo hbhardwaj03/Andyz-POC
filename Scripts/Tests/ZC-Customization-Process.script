@@ -14,19 +14,8 @@ Put Cell(worksheet1,B1) into count
 Log "Logging in"
 "M3/Application".open
 "M3/Login".login username, password
-waitfor 10, "M3/Login/itLogoff"
-If ImageFound( "M3/Login/itLogoff") then
-	LogSuccess "User Successfully Loggedin"
-else
-	LogError "User Unable login"
-	
-End If
-If ImageFound( "M3/Login/itLogoff") then
-	Log "Open PMS170 Tcode"
-	waitfor 10, "M3/Login/itLogoff"
-	"M3/PMS170".open
-	"M3/PMS170".lookUp(coNumber)
-end if
+"M3/PMS170".open
+"M3/PMS170".lookUp(coNumber)
 if ImageFound("M3/PMS170/Product_OrderLine") then
 	Log "search the product"
 	"M3/PMS170".select_Product product
@@ -67,6 +56,9 @@ end if
 "M3/MWS150".RecordPoNumber
 "Web/KPack".OpenKpack
 "Web/KPack".LoginToKpackZC10041
+"Web/KPack".searchOrderInKpack poNumber
+
+
 
 
 
