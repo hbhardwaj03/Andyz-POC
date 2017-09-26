@@ -36,7 +36,7 @@ To OpenKpack
 	Click "KPack/Login/Searchfield"
 	TypeText controlkey, "a"
 	TypeText deletekey
-	Typetext "http://ushqkptst/kewillpack/login.aspx"
+	Typetext "http://ushqkpq/kewillpack/login.aspx"
 	click "KPack/Login/FindImage"
 	WaitFor 30,  "KPack/Login/LocationWeb"
 	Click  "KPack/Login/LocationWeb"
@@ -60,6 +60,18 @@ To LoginToKpackZC10041
 	TypeText password
 	Click "KPack/Login/LoginButton"
 End LoginToKpackZC10041
+
+To searchOrderInKpack poNumber
+
+	Click "KPack/Pack/OrderNoField"
+	TypeText Controlkey, "a"
+	TypeText deletekey
+	TypeText poNumber
+	Click "KPack/Pack/LoadOrderButton"
+	Click "KPack/Pack/FastPackDeselect"
+	Click "KPack/Pack/AutoPackSelect"
+	
+End searchOrderInKpack
 
 /////////////// kpack functions for scirpt 2//////////////////////////////////
 

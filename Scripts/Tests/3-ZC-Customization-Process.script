@@ -2,32 +2,21 @@
 
 set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
+set worksheet1 to Excelfile.Worksheet("Sheet2")
 Put Cell(worksheet,A2) into username 
 Put Cell(worksheet,B2) into password 
-Put Cell(worksheet,A6) into coNumber 
-Put Cell(worksheet,D6) into product
-Put Cell(worksheet,E6) into Status_Line
-
-
+Put Cell(worksheet,A7) into coNumber 
+Put Cell(worksheet,B7) into product
+Put Cell(worksheet,C6) into Status_Line
+Put Cell(worksheet1,B1) into count
 
 
 Log "Logging in"
 "M3/Application".open
 "M3/Login".login username, password
-waitfor 10, "M3/Login/itLogoff"
-If ImageFound( "M3/Login/itLogoff") then
-	LogSuccess "User Successfully Loggedin"
-else
-	LogError "User Unable login"
-	
-End If
-If ImageFound( "M3/Login/itLogoff") then
-	Log "Open PMS170 Tcode"
-	waitfor 10, "M3/Login/itLogoff"
-	"M3/PMS170".open
-	"M3/PMS170".lookUp(coNumber)
-end if
-if ImageFound("M3/PMS170/OrderLine/Product_OrderLine") then
+"M3/PMS170".open
+"M3/PMS170".lookUp(coNumber)
+if ImageFound("M3/PMS170/Product_OrderLine") then
 	Log "search the product"
 	"M3/PMS170".select_Product product
 else
@@ -36,7 +25,16 @@ end if
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
 	
-	"M3/PMS170".creatinguniqueScheduleNumber
+	// As per the Script ZCutomization the schedule number should stars with "300".
+	
+	put Cell(worksheet1, B1) into count
+	put count + 1 into count
+	put count into Cell(worksheet1, "B1")
+	log "Cell value: " & Cell(worksheet1, B1)
+	put 30025092017+(100000000*count) into scheduleNumber
+	set scheduleNumber to scheduleNumber
+	log "New schedule number: " & scheduleNumber
+	
 	"M3/PMS170".create_schedule_number scheduleNumber
 else
 	Logerror "Schedulenumber is not created"
@@ -44,7 +42,7 @@ else
 end if
 "M3/PMS170".releaseMO
 "M3/PMS170".close
-"M3/MWS150".openWMS150
+"M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
 "M3/MWS150".recordReqnumber
 "M3/MWS150".closeMWS150
@@ -52,32 +50,24 @@ end if
 "M3/MMS100".searchReqnumber ReqNumber
 "M3/MMS100".DeliveryToolBox
 "M3/MMS100".MPacking
-"M3/MWS150".openWMS150
+"M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
 "M3/MWS150".ReqOrderStatus
 "M3/MWS150".RecordPoNumber
 "Web/KPack".OpenKpack
 "Web/KPack".LoginToKpackZC10041
+"Web/KPack".searchOrderInKpack poNumber
 
 
 
 
-"M3/PMS170".creatinguniqueScheduleNumber
 
 
-set Excelfile1 to Workbook(ResourcePath("ZCustomaization.xlsx"))
-set worksheet1 to Excelfile1.Worksheet("Sheet2")
-put Cell(worksheet1, B1) into count
-put count + 1 into count
-put count into Cell(worksheet1, "B1")
-log "Cell value: " & Cell(worksheet1, B1)
-return count
-put 30008102017+(100000000*count) into scheduleNumber
-set scheduleNumber to scheduleNumber
-log "New schedule number: " & scheduleNumber
-return scheduleNumber
 
-"M3/PMS170".create_schedule_number scheduleNumber
+
+
+
+
 
 
 

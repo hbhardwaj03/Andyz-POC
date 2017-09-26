@@ -10,6 +10,18 @@
 	TypeText deleteKey
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
+<<<<<<< HEAD
+	waitfor 10, "M3/Login/itLogoff"
+	If ImageFound( "M3/Login/itLogoff") then
+		LogSuccess "User Successfully Loggedin"
+	else
+		LogError "User Unable login"
+		
+	end login
+
+
+
+=======
 end login
 
 <<<<<<< HEAD
@@ -32,6 +44,7 @@ set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 	
 End loginM3
 =======
+>>>>>>> ba78548e6a2bb30511290fab53604f95e7ad628c
 
 
 
@@ -42,4 +55,3 @@ End loginM3
 
 
 
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020
