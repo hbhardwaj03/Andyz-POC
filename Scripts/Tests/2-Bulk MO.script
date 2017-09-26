@@ -1,18 +1,17 @@
 ﻿(* 
 Name: Bulk MO
 Description: 
-Author: Ramya
+Author: Ramya & Ofir
  *)
 
-// log in to application
-Log "Logging in"
-"M3/Application".open
+//define global variables
+global username
+global password
 
-//read login values
-set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
-set worksheet to ExcelFile.Worksheet("Login")
-Put Cell(worksheet,"A3") into UserName
-Put Cell(worksheet,"B3") into Password
+"Datastore".setLoginVariables 3
+
+// log in to application
+"Flows/Application".login username, password
 
 (*>>>>>>>>>Start Scheduling>>>>>>>>>>>>*)
 Log "Do scheduling"

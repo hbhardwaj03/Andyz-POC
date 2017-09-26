@@ -70,7 +70,15 @@ to getCustomerNo
 	Log customerNumber 
 	return customerNumber
 end getCustomerNo
-getCustomerNo
+
+to setLoginVariables index
+	global username
+	global password
+	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet,"A" & index) into username
+	Put Cell(worksheet,"B" & index) into password
+end setLoginVariables
 
 (*
 to ConfigValues 
