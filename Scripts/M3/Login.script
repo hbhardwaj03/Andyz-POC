@@ -10,12 +10,12 @@
 	TypeText deleteKey
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
-	waitfor 30, "M3/Login/itLogoff"
+	(*	waitfor 30, "M3/Login/itLogoff"
 	If ImageFound( "M3/Login/itLogoff") then
 		LogSuccess "User Successfully Loggedin"
 	else
 		LogError "User Unable login"
-	end if
+	end if*)
 end login
 
 
