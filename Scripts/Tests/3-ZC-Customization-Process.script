@@ -10,15 +10,29 @@ global password
 set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 set worksheet1 to Excelfile.Worksheet("Sheet2")
+Put Cell(worksheet, A2) into custNum
+Put Cell(worksheet, B2) into coType
+Put Cell(worksheet, C2) into custPO
 Put Cell(worksheet,A7) into coNumber 
 Put Cell(worksheet,B7) into product
 Put Cell(worksheet,C6) into Status_Line
 Put Cell(worksheet1,B1) into count
 
+(************** Start flow ****************)
+"Flows/Application".login username, password
 
-Log "Logging in"
+(************** Order entry ***************)
+"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+put "Flows/OrderEntry".recordCONumber() into coNumber
+"Flows/OrderEntry".enterProductAndQuantity product, "1"
+"M3/OIS101".closeFromOrderLines
+(************** Exit *********************)
+(*"Flows/Application".exitApp*)
+
+(*Log "Logging in"
 "M3/Application".open
-"M3/Login".login username, password
+"M3/Login".login username, password*)
+
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
 if ImageFound("M3/PMS170/Product_OrderLine") then
