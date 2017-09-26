@@ -1,0 +1,17 @@
+﻿to doShipping deliveryNumber
+	Log "Shipping with Flagship"
+	"Web/Flagship".open
+	"Web/Flagship".login
+	"Web/Flagship".ship deliveryNumber
+	"Web/Flagship".close
+	"M3/Application".open
+end doShipping
+
+to validateShipping coNumber
+	"M3/Login".login "ajenkins", "Acushnet#1"
+	"M3/OIS300".open
+	"M3/OIS300".lookupCO coNumber
+	"M3/OIS300".openDeliveryToolbox
+	"M3/OIS300".confirmStatusShipped
+	"M3/OIS300".closeFromDeliveryToolbox
+end validateShipping
