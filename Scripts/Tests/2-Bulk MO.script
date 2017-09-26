@@ -19,7 +19,8 @@ Put Cell(worksheet,"B2") into Password
 Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
-
+Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"G2") into ItemQuantity
 // call Login function 
 "M3/Login".login UserName, Password
 
@@ -44,8 +45,8 @@ Log coNumber
 
 //allowing this to be hard-coded because ultimately this script will
 //read from an excel file instead of creating its own MOs
-"M3/OIS101".enterItemCode("TA5TVBPC")
-"M3/OIS101".enterItemQuantity "1"
+"M3/OIS101".enterItemCode ItemCode
+"M3/OIS101".enterItemQuantity ItemQuantity
 "M3/Configurations".config002
 
 (*"M3/OIS101".enterItemCode ItemCode
@@ -65,7 +66,7 @@ end if*)
 (*>>>>>>>>>>>>>>>>>>>>>>>Start Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
 Log "Do scheduling"
 "M3/PMS170".open
-"M3/PMS170".lookUp(coNumber)
+"M3/PMS170".lookUp coNumber
 put "M3/PMS170".createScheduleNumber() into scheduleNumber
 "M3/PMS170".scheduleNew scheduleNumber
 "M3/PMS170".releaseMO
@@ -125,23 +126,7 @@ Click "M3/PMS100/HPickingLists"
 
 
 
-/////////////////////////////////////////flagship////////////////////////////
-Log "Shipping with Flagship"
-"Web/Flagship".open
-"Web/Flagship".login
-"Web/Flagship".ship deliveryNumber
-"Web/Flagship".close
-"M3/Application".open
 
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/OIS300".open
-"M3/OIS300".lookupCO coNumber
-"M3/OIS300".openDeliveryToolbox
-"M3/OIS300".confirmStatusShipped
-"M3/OIS300".closeFromDeliveryToolbox
-
-Log "Exit AGS"
-"M3/Application".close
 //////////////////////////////////////manufacturingin m3 with kpack////
 
 //prerequisite:yet to be handled(CO comes back form order entry)
@@ -168,7 +153,7 @@ Click "M3/PMS070/Changeforoperation"
 
 Click"M3/PMS070/Nextbutton"
 
-// capture step for remains and manufacturing qty validation
+// captured step for remains and manufacturing qty validation
 "M3/PMS070". compareRemainsandManufQuantity
 click "M3/PMS070/close"
 
@@ -208,7 +193,7 @@ click "M3/KPack/OrderNum"
 TypeText controlKey, "a"
 TypeText deleteKey
 
-TypeText "0013139821001"
+TypeText "0013141386001"
 
 Click "M3/KPack/LoadOrderutton"
 Click "M3/KPack/ProductID"
@@ -217,13 +202,31 @@ Click "M3/KPack/Autopackselect"
 Click "M3/KPack/Packbutton"
 Click "M3/KPack/SelectBoxType"
 Click "M3/KPack/SelectBoxtypedropdown"
-Click "M3/KPack/Containercomplete"
 "Web/KPack".compareOrderandPackedQuantity
+Click "M3/KPack/Containercomplete"
+//"Web/KPack".compareOrderandPackedQuantity
+//Click "M3/KPack/packedqty"
 Click "M3/KPack/OrderComplete"
 
 
 
+/////////////////////////////////////////flagship////////////////////////////
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
 
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
 
 
 

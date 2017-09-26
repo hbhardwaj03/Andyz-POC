@@ -92,6 +92,7 @@ end lookupCO
 
 to openDeliveryToolbox
 	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/relateddropdown"
 	Click "M3/OIS300/DeliveryToolboxLink"
 end openDeliveryToolbox
 
@@ -187,6 +188,9 @@ to reschedule
 	Click (Image:"M3/OIS300/UpdateButton", WaitFor:3.3)
 	Click "M3/OIS300/CloseButton"
 end reschedule
+
+
+
 
 to close
 	Click "M3/OIS300/CloseButton"
