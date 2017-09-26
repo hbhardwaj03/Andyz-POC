@@ -63,7 +63,6 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "K" & dataIndex) into color
 end setDataScript1
 
-<<<<<<< HEAD
 to getCustomerNo 
 	set caseBook to Workbook(ResourcePath("1-CustomGear-Input.xlsx"))
 	set worksheet2 to caseBook.Worksheet("Stock Input")
@@ -72,7 +71,6 @@ to getCustomerNo
 	return customerNumber
 end getCustomerNo
 getCustomerNo
-=======
 
 (*
 to ConfigValues 
@@ -84,4 +82,3 @@ Put Cell(worksheetC2) into  customerNumber
 Put Cell(worksheet,D2) into  coType
 end ConfigValues
 *)
->>>>>>> 3ed24e610c684eb636e83456f56d9f262a3ebe6c
