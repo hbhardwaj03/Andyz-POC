@@ -15,8 +15,8 @@
 		LogSuccess "User Successfully Loggedin"
 	else
 		LogError "User Unable login"
-		
-	end login
+	end if
+end login
 
 
 To loginM3 userName, password
