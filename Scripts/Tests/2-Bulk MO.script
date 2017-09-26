@@ -4,23 +4,42 @@ Description:
 Author: Ramya & Ofir
  *)
 
-//define global variables
+// declare login variables
 global username
 global password
 
+// initialize login variables
 "Datastore".setLoginVariables 3
 
-// log in to application
-"Flows/Application".login username, password
+// declare data variables
+global coNum
 
-Log "Logging in"
-"M3/Application".open
+// initialize data line counter
+put 2 into dataIndex
 
+(************** Start Test ***************)
 repeat forever
+	
+	(************** Set up data *************)
+	//initialize data variables
+	DataStore.setDataScript2 dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if coNum is empty then exit repeat
+	
+	Log "CO# " & coNum
+	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	// log in to application
+	"Flows/Application".login username, password
+	
 	Log "Do scheduling"
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNum)
+	
 	put "M3/PMS170".createScheduleNumber() into scheduleNumber
 	"M3/PMS170".scheduleNew scheduleNumber
 	"M3/PMS170".releaseMO
@@ -31,6 +50,13 @@ repeat forever
 	put "M3/PMS100".recordMO() into moNumber
 	"M3/PMS100".pick
 	"M3/PMS100".close
+	
+	// add M3 manufacturing here by moving working code from function "doFullRun"
+	
+	// add KPack here by moving working code from function "doFullRun"
+	
+	// close application
+	"Flows/Application".exitApp
 end repeat
 
 //post DCA check packed status
@@ -73,10 +99,6 @@ TypeText Return
 Click "M3/PMS100/HPickingLists"
 "M3/PMS100".checkPickingStatusImage*)
 
-
-
-
-
 /////////////////////////////////////////flagship////////////////////////////
 (*Log "Shipping with Flagship"
 "Web/Flagship".open
@@ -105,7 +127,6 @@ Log "Exit AGS"
 
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
-
 
 Click "M3/PMS070/operation0100"
 TypeText controlKey, "a"
@@ -146,7 +167,6 @@ Click"M3/PMS070/Nextbutton"
 "M3/PMS070". compareRemainsandManufQuantity
 click "M3/PMS070/close"
 click "M3/PMS070/close"
-
 
 click "M3/PMS070/BacktoPMS100"
 click "M3/PMS070/RefreshPMS100"
@@ -207,7 +227,7 @@ to generateMOCO
 	throw "Finished!", "some comment"
 end generateMOCO
 
-to doOrderEntryThroughPicking
+to doFullRun
 	//read in necessary data
 	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Login")
@@ -244,7 +264,11 @@ to doOrderEntryThroughPicking
 	put "M3/PMS100".recordMO() into moNumber
 	"M3/PMS100".pick
 	"M3/PMS100".close
-end doOrderEntryThroughPicking
+	
+	// implement manufacturing in M3 here first
+	
+	// implement KPack here first
+end doFullRun
 
 
 

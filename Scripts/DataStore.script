@@ -80,6 +80,13 @@ to setLoginVariables index
 	Put Cell(worksheet,"B" & index) into password
 end setLoginVariables
 
+to setDataScript2 dataIndex
+	global coNum
+	set ExcelFile to workbook(ResourcePath("2-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	put Cell(worksheet, "A" & dataIndex) into coNum
+end setDataScript2
+
 (*
 to ConfigValues 
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
