@@ -1,10 +1,15 @@
 ﻿(*ZC Customization Process*)
 
+// declare login variables
+global username
+global password
+
+// initialize login variables
+"Datastore".setLoginVariables 4
+
 set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 set worksheet1 to Excelfile.Worksheet("Sheet2")
-Put Cell(worksheet,A2) into username 
-Put Cell(worksheet,B2) into password 
 Put Cell(worksheet,A7) into coNumber 
 Put Cell(worksheet,B7) into product
 Put Cell(worksheet,C6) into Status_Line
