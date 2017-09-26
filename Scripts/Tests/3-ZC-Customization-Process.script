@@ -63,6 +63,7 @@ end if
 "M3/PMS170".close
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
+"M3/MWS150".waitForRONum
 "M3/MWS150".recordReqnumber
 "M3/MWS150".closeMWS150
 "M3/MMS100".openMMS100
