@@ -4,42 +4,15 @@ Description:
 Author: Ramya
  *)
 
+// log in to application
 Log "Logging in"
 "M3/Application".open
 
-
-// read user Name and Password for M3 Application from Login sheet of Datastore excel File
-//run DataStore.ConfigValues UserName, Password, customerNumber, coType
-
+//read login values
 set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
-
 set worksheet to ExcelFile.Worksheet("Login")
 Put Cell(worksheet,"A3") into UserName
 Put Cell(worksheet,"B3") into Password
-Put Cell(worksheet,"C2") into customerNumber
-Put Cell(worksheet,"D2") into coType
-Put Cell(worksheet,"E2") into PO
-
-(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-"M3/Login".login UserName, Password
-
-"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
-
-put "Flows/OrderEntry".recordCONumber() into coNum
-
-"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-
-"M3/OIS101".closeFromOrderLines
-
-Log coNum
-
-Log "Exit AGS"
-"M3/Application".close
-
-throw "Finished!", "some comment"
-
-(*>>>>>>>>>End of Order Entry>>>>>>>>>>>*)
-
 
 (*>>>>>>>>>Start Scheduling>>>>>>>>>>>>*)
 Log "Do scheduling"
@@ -200,6 +173,39 @@ Click "M3/KPack/Containercomplete"
 "Web/KPack".compareOrderandPackedQuantity
 Click "M3/KPack/OrderComplete"
 
+to generateMOCO
+	//log in to AGS
+	Log "Logging in"
+	"M3/Application".open
+	
+	//read in necessary data
+	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,"A3") into UserName
+	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"C2") into customerNumber
+	Put Cell(worksheet,"D2") into coType
+	Put Cell(worksheet,"E2") into PO
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"M3/Login".login UserName, Password
+	
+	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	
+	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	
+	"M3/OIS101".closeFromOrderLines
+	
+	Log coNum
+	
+	Log "Exit AGS"
+	"M3/Application".close
+	
+	//don't continue running the script
+	throw "Finished!", "some comment"
+end generateMOCO
 
 
 
