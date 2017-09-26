@@ -20,36 +20,30 @@ Put Cell(worksheet,"C2") into customerNumber
 Put Cell(worksheet,"D2") into coType
 Put Cell(worksheet,"E2") into PO
 
-// call Login function 
+(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 "M3/Login".login UserName, Password
 
 "Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
 
-Log "Enter order line"
-put "M3/OIS101".recordCONumber() into coNumber
-Log coNumber
+put "Flows/OrderEntry".recordCONumber() into coNum
 
-//allowing this to be hard-coded because ultimately this script will
-//read from an excel file instead of creating its own MOs
-"M3/OIS101".enterItemCode("TA5TVBPC")
-"M3/OIS101".enterItemQuantity "1"
-"M3/Configurations".config002
+"Flows/OrderEntry".enterProduct style
 
-(*"M3/OIS101".enterItemCode ItemCode
-
-if ItemCode = "TB7SX6CC" then 
-	"M3/OIS101".enterItemQuantity productQuantity
-	"M3/Configurations".config001
-else
-	"M3/OIS101".enterItemColor
-	"M3/OIS101".configuratorA
-end if*)
+"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 
 "M3/OIS101".closeFromOrderLines
-(*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
+
+Log coNum
+
+Log "Exit AGS"
+"M3/Application".close
+
+throw "Finished!", "some comment"
+
+(*>>>>>>>>>End of Order Entry>>>>>>>>>>>*)
 
 
-(*>>>>>>>>>>>>>>>>>>>>>>>Start Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+(*>>>>>>>>>Start Scheduling>>>>>>>>>>>>*)
 Log "Do scheduling"
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
@@ -67,7 +61,7 @@ put "M3/PMS100".recordMO() into moNumber
 Log "Exit AGS"
 "M3/Application".close
 
-(*>>>>>>>>>>>>>>>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+(*>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>*)
 
 "M3/Application".open
 "M3/Login".login username, password

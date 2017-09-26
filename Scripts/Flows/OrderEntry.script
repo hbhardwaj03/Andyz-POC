@@ -28,9 +28,15 @@ to enterProduct itemCode
 	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
 		"M3/Configurations".config001
-	else
+		else
 		"M3/OIS101".enterItemColor
 		"M3/OIS101".configuratorA
 	end if
 	"M3/OIS101".closeFromOrderLines
 end enterProduct
+
+to enterProductAndQuantity itemCode, quantity
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	"M3/Configurations".config002
+end enterProductAndQuantity
