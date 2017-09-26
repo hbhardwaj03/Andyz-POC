@@ -7,20 +7,21 @@ Author: PR
 
 
 
-set ExcelFile to workbook(ResourcePath("Validation.xlsx")) 
-set worksheet to ExcelFile.Worksheet("Sheet4")
-
-Put Cell(worksheet,A2) into poNumber
+set ExcelFile to workbook(ResourcePath("AutomaticPOReceiving.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet1")
+set worksheet2 to ExcelFile.Worksheet("Sheet2")
+Put Cell(worksheet,A2) into username
+Put Cell(worksheet,B2)into password
+Put Cell(worksheet2,K2) into poNumber
 
 Log "Logging in"
 "M3/Application".open
-"M3/Login".login "ajenkins", "Acushnet#1"
-"M3/PPS300".open
-"M3/PPS300".open poNumber
-"M3/PPS300".poReceipt
-click "M3/PPS300/Delynoteno"
-typetext controlkey,("POnumber,1198965")
+"M3/Login".login username, password
+"M3/PPS300".openpoNumber
+"M3/PPS300".poReceipt poNumber
+"M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
+
 typetext controlkey, ("M3/PPS300/received qty,5")
 click "M3/PPS300/Actions"
 click  "M3/PPS300/XClose"
