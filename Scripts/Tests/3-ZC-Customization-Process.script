@@ -39,7 +39,7 @@ if ImageFound("M3/PMS170/Product_OrderLine") then
 	Log "search the product"
 	"M3/PMS170".select_Product product
 else
-	Logerror "Product field is not Appears"
+	throw "Error","Product field is not Appears"
 end if
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
@@ -56,7 +56,7 @@ if Imagefound("M3/PMS170/Related") then
 	
 	"M3/PMS170".create_schedule_number scheduleNumber
 else
-	Logerror "Schedulenumber is not created"
+	throw "Error","Schedulenumber is not created"
 	
 end if
 "M3/PMS170".releaseMO
