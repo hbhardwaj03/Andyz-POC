@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0"?>
 <statistics>
 <<<<<<< HEAD
+ <script name="Tests/2-Bulk MO">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>2</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2017-09-27 13:39:58 -0700</FirstRun>
+  <LastRun>2017-09-27 13:40:34 -0700</LastRun>
+=======
+<<<<<<< HEAD
  <script name="M3/Login">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>1</NumberOfRuns>
@@ -167,6 +175,7 @@
   <NumberOfFails>3</NumberOfFails>
   <FirstRun>2017-09-25 14:18:56 -0400</FirstRun>
   <LastRun>2017-09-25 15:00:21 -0400</LastRun>
+>>>>>>> e5abbe7e2db7c10eb2fa968d87dab7eb5593f725
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
 </statistics>
