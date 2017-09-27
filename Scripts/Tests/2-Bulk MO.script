@@ -1,7 +1,7 @@
 ﻿(* 
 Name: Bulk MO
 Description: 
-Author: Ramya
+Author: Ramya//
  *)
 
 Log "Logging in"
@@ -193,7 +193,7 @@ click "M3/KPack/OrderNum"
 TypeText controlKey, "a"
 TypeText deleteKey
 
-TypeText "0013141386001"
+TypeText "0013140411001"
 
 Click "M3/KPack/LoadOrderutton"
 Click "M3/KPack/ProductID"
@@ -204,8 +204,6 @@ Click "M3/KPack/SelectBoxType"
 Click "M3/KPack/SelectBoxtypedropdown"
 "Web/KPack".compareOrderandPackedQuantity
 Click "M3/KPack/Containercomplete"
-//"Web/KPack".compareOrderandPackedQuantity
-//Click "M3/KPack/packedqty"
 Click "M3/KPack/OrderComplete"
 
 
