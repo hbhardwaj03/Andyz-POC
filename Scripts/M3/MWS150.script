@@ -24,6 +24,22 @@ to search_order_in_MWS150 coNumber
 	
 end search_order_in_MWS150
 
+to waitForRONum
+	assert "M3/MWS150".checkROStatus is SUCCESS, "RO appears in MWS150?"
+end waitForRONum
+
+function checkROStatus
+	repeat 5 minutes
+		if imageFound(3,"M3/MWS150/ROPresent") then
+			Log "Image found"
+			return SUCCESS
+		end if
+		Click "M3/PMS100/Refresh"
+	end repeat
+	Log "Image not found"
+	return FAIL
+end checkROStatus
+
 to recordReqnumber
 	WaitFor 30,  "M3/MWS150/MWS150B1"
 	DoubleClick "M3/MWS150/Requestion_Order"

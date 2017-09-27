@@ -1491,28 +1491,4 @@ Syntax Error at line 1: Syntax Error - can&#x27;t understand [line continuation 
   <ReturnValue></ReturnValue>
   <ErrorMessage>Image Not Found -- doubleclick Error - No Image Found On Screen: &quot;M3/Application/InforShortcut&quot;</ErrorMessage>
  </run>
- <run>
-  <RunDate>2017-09-26 17:34:33.195 -0400</RunDate>
-  <Status>Running</Status>
-  <Duration>0.000000</Duration>
-  <Errors>0</Errors>
-  <Warnings>0</Warnings>
-  <Exceptions>0</Exceptions>
-  <Successes>0</Successes>
-  <LogFile>20170926_173433.195/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage></ErrorMessage>
- </run>
- <run>
-  <RunDate>2017-09-26 17:41:56.891 -0400</RunDate>
-  <Status>Failure</Status>
-  <Duration>49.000000</Duration>
-  <Errors>1</Errors>
-  <Warnings>0</Warnings>
-  <Exceptions>1</Exceptions>
-  <Successes>0</Successes>
-  <LogFile>20170926_174156.891/LogFile.txt</LogFile>
-  <ReturnValue></ReturnValue>
-  <ErrorMessage>Image Not Found -- click Error - No Image Found On Screen: &quot;M3/OIS300/CustomersPOField&quot;</ErrorMessage>
- </run>
 </runHistory>
