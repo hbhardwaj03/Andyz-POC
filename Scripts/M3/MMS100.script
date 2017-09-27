@@ -15,11 +15,14 @@ To searchReqnumber ReqNumber
 	TypeText ControlKey, "a"
 	TypeText deletekey
 	Typetext ReqNumber
+	Typetext Return
 	Click "M3/MMS100/Apply"
 	
-End searchReqnumber
+end searchReqnumber
 
-To DeliveryToolBox
+
+to DeliveryToolBox
+	
 	Click "M3/MMS100/OrderNumber_Line"
 	Wait 3
 	Click "M3/MMS100/Related_1"
@@ -29,10 +32,10 @@ To DeliveryToolBox
 		LogSuccess "Open Delivery screen appears"
 		Click "M3/MMS100/ReleaseforPick"
 		//"M3/PMS100".checkDeliveryStatus
-		wait 3
 		Click "M3/MMS100/PickReporting"
-		wait 3
+		wait 5
 		click "M3/MMS100/PickingLists"
+		Wait 5
 		Click "M3/MMS100/Refresh"
 		//Click "M3/MMS100/OrderNumber_Line"
 		wait 3
@@ -40,20 +43,28 @@ To DeliveryToolBox
 			LogSuccess "PickingList has Created"
 		Else
 			LogError "Picking List Has Not Created"
-		End If
+		End If*)
 		
 	Else
 		LogError "Open Delivery Screen Is not visible"
+	<<<<<<< HEAD
+	End If		
+end DeliveryToolBox
+=======
 	End If*)
-	
-	
+		
+		
 End DeliveryToolBox
+>>>>>>> 4ae47ce4ccddf79c2d4a9189143e7b098bd95f4c
 
-To MPacking
-	//Click "M3/MMS100/OrderNumber_Line"
-	//wait 2
-	//Click "M3/MMS100/PickingLists"
-	//Wait 2
+
+
+
+To Picking
+	Click "M3/MMS100/OrderNumber_Line"
+	wait 2
+	Click "M3/MMS100/PickingLists"
+	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
 		LogSuccess "Picking List Screen Appears"
 		
@@ -97,4 +108,4 @@ To MPacking
 	End If
 	
 	
-End MPacking
+End Picking
