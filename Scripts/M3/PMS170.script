@@ -26,7 +26,7 @@ to lookup coNumber
 	Click "M3/PMS170/ResponsibleField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	Click "M3/PMS170/Product"
+	Click "M3/PMS170/Product_OrderLine"
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	Click "M3/PMS170/RefOrderNoField"
@@ -64,10 +64,11 @@ To change_line_status Status_Line
 			TypeText Return
 			wait 2
 			LogSuccess "Line Status Has Changed"
-			click "M3/PMS170/Next_Image"
-			if Imagefound("M3/PMS170/Next_Image") then
-				click "M3/PMS170/Next_Image"
-			end if
+			wait 4
+			//click "M3/PMS170/Next_Image"
+			//if Imagefound("M3/PMS170/Next_Image") then
+				//click "M3/PMS170/Next_Image"
+			//end if
 			wait 10
 			
 		Else

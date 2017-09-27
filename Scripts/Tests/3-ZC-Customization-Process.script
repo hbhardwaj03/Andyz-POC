@@ -10,11 +10,13 @@ global password
 set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 set worksheet1 to Excelfile.Worksheet("Sheet2")
-Put Cell(worksheet, A2) into custNum
-Put Cell(worksheet, B2) into coType
-Put Cell(worksheet, C2) into custPO
+Put Cell(worksheet, A2) into customerNumber
+Put Cell(worksheet, B2) into coType 
+Put Cell(worksheet, C2) into PO
+Put Cell(worksheet, D2) into itemCode
+Put Cell(worksheet, E2) into quantity
 Put Cell(worksheet,A7) into coNumber 
-Put Cell(worksheet,B7) into product
+Put Cell(worksheet,D2) into product
 Put Cell(worksheet,C6) into Status_Line
 Put Cell(worksheet1,B1) into count
 
@@ -22,9 +24,9 @@ Put Cell(worksheet1,B1) into count
 "Flows/Application".login username, password
 
 (************** Order entry ***************)
-"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
 put "Flows/OrderEntry".recordCONumber() into coNumber
-"Flows/OrderEntry".enterProductAndQuantity product, "1"
+"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
 "M3/OIS101".closeFromOrderLines
 (************** Exit *********************)
 (*"Flows/Application".exitApp*)
@@ -35,12 +37,7 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
-if ImageFound("M3/PMS170/Product_OrderLine") then
-	Log "search the product"
-	"M3/PMS170".select_Product product
-else
-	Logerror "Product field is not Appears"
-end if
+"M3/PMS170".select_Product product
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
 	
@@ -63,12 +60,13 @@ end if
 "M3/PMS170".close
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
-"M3/MWS150".recordReqnumber
+//"M3/MWS150".recordReqnumber
+put "M3/MWS150".recordReqnumber() into ReqNumber
 "M3/MWS150".closeMWS150
 "M3/MMS100".openMMS100
 "M3/MMS100".searchReqnumber ReqNumber
 "M3/MMS100".DeliveryToolBox
-"M3/MMS100".MPacking
+"M3/MMS100".Picking
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
 "M3/MWS150".ReqOrderStatus
