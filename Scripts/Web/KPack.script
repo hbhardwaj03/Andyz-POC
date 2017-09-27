@@ -114,10 +114,16 @@ to compareOrderandPackedQuantity
 
 	Click "M3/KPack/packedqty"
 	
+	
 	set packedqty to readtext(imageFound("M3/KPack/packedqty"))
 	
-	if packedqty <>"" then
-		logsucces "packed quantity"&packedqty&"is Equal to order quantity"
+	Click "M3/KPack/manuqty"
+	
+	set orderqty to  readtext(imageFound("M3/KPack/manuqty"))
+	
+	if packedqty= orderqty then
+		
+		logsucces "packed quantity"&packedqty&"is Equal to order quantity"&orderqty&""
 	else
 		Logerror "packed quantity is not equal to order quantity"
 	end if

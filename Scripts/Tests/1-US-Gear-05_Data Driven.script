@@ -36,7 +36,7 @@ repeat forever
 	
 	(************** Set up data *************)
 	//skip known bad entries in test data
-	put (3) into badData //3 currently results in a sales hold
+	put (6,9,11,25) into badData //these  are having item code of Accesories
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
