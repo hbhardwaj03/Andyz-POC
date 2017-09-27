@@ -252,7 +252,7 @@ to doFullRun
 	"M3/PMS100".close
 	
 	// implement manufacturing in M3 here first
-	
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum
 	// implement KPack here first
 end doFullRun
 
