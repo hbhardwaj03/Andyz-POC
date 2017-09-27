@@ -211,14 +211,25 @@ to checkMOStatus
 			return SUCCESS
 			
 		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
-		
-		Log "MO status is 90"		
+			
+			Log "MO status is 90"		
 		Else
-		Log "Image not found"
-	End if
-	
-	Click "M3/PMS100/Refresh"
-end checkMOStatus
+			Log "Image not found"
+		End if
+		
+		Click "M3/PMS100/Refresh"
+	end checkMOStatus
+
+to checkfacility
+	WaitFor 20, "M3/PMS070/Facility"
+	Click "M3/PMS070/Facility"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	click "M3/PMS070/capture061"
+	click "M3/PMS070/select61"
+	//TypeText Return
+end checkfacility
 
 to close
 	Click "M3/PMS100/CloseButton"

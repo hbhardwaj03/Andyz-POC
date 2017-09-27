@@ -210,10 +210,11 @@ Log "Exit AGS"
 
 //prerequisite:yet to be handled(CO comes back form order entry)
 
-//"M3/PMS100".open
-//"M3/PMS100".lookup_4 coNumber
-//"M3/PMS100".checkAllocationStatus
-
+"M3/PMS100".open
+"M3/PMS100".checkfacility
+"M3/PMS100".lookup_4 coNumber
+"M3/PMS100".checkAllocationStatus
+click "M3/PMS070/close100"
 
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
