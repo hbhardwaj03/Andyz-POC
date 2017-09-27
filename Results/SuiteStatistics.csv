@@ -1,2 +1,3 @@
 ﻿Script,Last Status,Runs,Fails,First Run,Last Run,Avg Time(Success)
-Tests/3-ZC-Customization-Process,Failure,2,2,2017-09-27 07:00:08 -0400,2017-09-27 08:48:58 -0400,0:00:00
+M3/MWS150,Success,1,0,2017-09-27 11:07:38 -0400,2017-09-27 11:07:38 -0400,0:00:01
+Tests/3-ZC-Customization-Process,Failure,5,5,2017-09-27 07:00:08 -0400,2017-09-27 10:56:34 -0400,0:00:00

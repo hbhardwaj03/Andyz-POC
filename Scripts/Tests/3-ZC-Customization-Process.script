@@ -37,12 +37,7 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
-if ImageFound("M3/PMS170/Product_OrderLine") then
-	Log "search the product"
-	"M3/PMS170".select_Product product
-else
-	Logerror "Product field is not Appears"
-end if
+"M3/PMS170".select_Product product
 "M3/PMS170".change_line_status Status_Line
 if Imagefound("M3/PMS170/Related") then
 	
@@ -65,12 +60,13 @@ end if
 "M3/PMS170".close
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
-"M3/MWS150".recordReqnumber
+//"M3/MWS150".recordReqnumber
+put "M3/MWS150".recordReqnumber() into ReqNumber
 "M3/MWS150".closeMWS150
 "M3/MMS100".openMMS100
 "M3/MMS100".searchReqnumber ReqNumber
 "M3/MMS100".DeliveryToolBox
-"M3/MMS100".MPacking
+"M3/MMS100".Picking
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
 "M3/MWS150".ReqOrderStatus

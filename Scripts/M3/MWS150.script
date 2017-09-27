@@ -15,10 +15,12 @@ to search_order_in_MWS150 coNumber
 	TypeText deletekey
 	TypeText coNumber
 	click "M3/MWS150/Apply"
-	wait 20
+	wait 5
 	Click "M3/MWS150/Refresh"
 	wait 20
-	click "M3/MWS150/Refresh"
+	Click "M3/MWS150/Refresh2"
+	wait 20
+	Click "M3/MWS150/Refresh2"
 	
 end search_order_in_MWS150
 
@@ -42,6 +44,7 @@ to recordReqnumber
 	Log ReqNumber
 	Click "M3/OIS101/WindowsButton"
 	return ReqNumber
+	//Put ReqNumber into ReqNumber
 	
 end recordReqnumber
 
