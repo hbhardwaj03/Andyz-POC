@@ -16,24 +16,19 @@ to checkfacility
 	//TypeText Return
 end checkfacility
 
-
-
 to checkMOStatus
 	repeat 4 minutes
 		if imageFound(60,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
-			
 		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
-			
 			Log "MO status is 90"		
 		Else
 			Log "Image not found"
 		End if
-		
 		Click "M3/PMS100/Refresh"
-		
-	end checkMOStatus
+	end repeat
+end checkMOStatus
 
 to lookupMOnumber
 	"M3/PMS070".open
@@ -98,7 +93,7 @@ to compareRemainsandManufQuantity
 	
 	log hrsused
 	if  manufactqty<>null & hrsused<>null then
-		logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
+	logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
 	else
 		Logerror "Remains values hasnt moved to manufactqty"
 	end if
