@@ -1,0 +1,6 @@
+﻿to doPicking
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	Log "Exit AGS"
+	"M3/Application".close
+end doPicking

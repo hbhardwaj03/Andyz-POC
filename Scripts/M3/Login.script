@@ -6,11 +6,19 @@
 	TypeText deleteKey
 	TypeText username
 	Click "M3/Login/PasswordField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
+	(*	waitfor 30, "M3/Login/itLogoff"
+	If ImageFound( "M3/Login/itLogoff") then
+		LogSuccess "User Successfully Loggedin"
+	else
+		LogError "User Unable login"
+	end if*)
 end login
 
-<<<<<<< HEAD
+
 To loginM3 userName, password
 	set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1") 
@@ -26,10 +34,7 @@ To loginM3 userName, password
 	Click "M3/Login/PasswordField"
 	TypeText password
 	Click "M3/Login/InforPasswordSubmitButton"
-	
-	
 End loginM3
-=======
 
 
 
@@ -40,4 +45,3 @@ End loginM3
 
 
 
->>>>>>> 4dd7379157019e823afdb5a5b4a79efb33cc6020

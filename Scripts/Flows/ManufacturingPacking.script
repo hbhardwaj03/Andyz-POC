@@ -1,0 +1,21 @@
+﻿to doManufacturing moNumber
+	Log "Do manufacturing"
+	// Open DCA
+	"Other/DCA".open
+	"Other/DCA".manufacture moNumber
+	"Other/DCA".close
+end doManufacturing
+
+to validatePacking username, password, coNumber
+	"M3/Application".open
+	"M3/Login".login username, password
+	"M3/OIS300".open
+	"M3/OIS300".lookupCO coNumber
+	"M3/OIS300".openDeliveryToolbox
+	put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+	"M3/OIS300".confirmStatusPacked
+	"M3/OIS300".closeFromDeliveryToolbox
+	Log "Exit AGS"
+	"M3/Application".close
+	return deliveryNumber
+end validatePacking

@@ -1,0 +1,42 @@
+﻿to enterNewOrder customerNumber, coType, PO
+	Log "Enter new order"
+	"M3/OIS300".open
+	"M3/OIS300".startNewOrder
+	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+	"M3/OIS300".enterCustomerNumber customerNumber, coType
+	"M3/OIS300".submitOIS100A
+	"M3/OIS300".enterCustomersPO PO
+	"M3/OIS300".submitOIS100G
+	"M3/OIS300".acceptPOWarning
+	"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100H
+	"M3/OIS300".submitOIS100E
+	"M3/OIS300".submitOIS102H
+end enterNewOrder
+
+to recordCONumber
+	Log "Enter order line"
+	put "M3/OIS101".recordCONumber() into coNumber
+	//"M3/OIS101".storeCONum
+	Log coNumber
+	return coNumber
+end recordCONumber
+
+to enterProduct itemCode
+	"M3/OIS101".enterItemCode itemCode
+	//"M3/OIS101".enterItemCode "TB7SX6CC"
+	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" then 
+		(*"M3/OIS101".enterItemQuantity productQuantity*)
+		"M3/Configurations".config001
+		else
+		"M3/OIS101".enterItemColor
+		"M3/OIS101".configuratorA
+	end if
+	"M3/OIS101".closeFromOrderLines
+end enterProduct
+
+to enterProductAndQuantity itemCode, quantity
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	"M3/Configurations".config002
+end enterProductAndQuantity

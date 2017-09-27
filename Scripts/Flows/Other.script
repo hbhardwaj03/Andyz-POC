@@ -1,0 +1,7 @@
+﻿to recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+	Log "CO: " & coNumber
+	Log "MO: " & moNumber
+	Log "Schedule: " & scheduleNumber
+	Log "Delivery: " & deliveryNumber
+	DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
+end recordRun

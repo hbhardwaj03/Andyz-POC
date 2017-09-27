@@ -1,0 +1,10 @@
+﻿to login username, password
+	Log "Logging in"
+	"M3/Application".open
+	"M3/Login".login username, password
+end login
+
+to exitApp
+	Log "Exit AGS"
+	"M3/Application".close
+end exitApp

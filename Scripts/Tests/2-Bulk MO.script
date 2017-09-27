@@ -1,6 +1,7 @@
 ﻿(* 
 Name: Bulk MO
 Description: 
+<<<<<<< HEAD
 Author: Ramya//
  *)
 
@@ -84,6 +85,68 @@ Log "Exit AGS"
 (*>>>>>>>>>>>>>>>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
 
 "M3/Application".open
+=======
+Author: Ramya & Ofir
+ *)
+
+// declare login variables
+global username
+global password
+
+// initialize login variables
+"Datastore".setLoginVariables 3
+
+// declare data variables
+global coNum
+
+// initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test ***************)
+repeat forever
+	
+	(************** Set up data *************)
+	//initialize data variables
+	DataStore.setDataScript2 dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if coNum is empty then exit repeat
+	
+	Log "CO# " & coNum
+	
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	// log in to application
+	"Flows/Application".login username, password
+	
+	Log "Do scheduling"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp(coNum)
+	
+	put "M3/PMS170".createScheduleNumber() into scheduleNumber
+	"M3/PMS170".scheduleNew scheduleNumber
+	"M3/PMS170".releaseMO
+	"M3/PMS170".close
+	"M3/PMS100".open
+	"M3/PMS100".lookupSchedule scheduleNumber
+	"M3/PMS100".printShopTraveler scheduleNumber
+	put "M3/PMS100".recordMO() into moNumber
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	
+	// add M3 manufacturing here by moving working code from function "doFullRun"
+	
+	// add KPack here by moving working code from function "doFullRun"
+	
+	// close application
+	"Flows/Application".exitApp
+end repeat
+
+//post DCA check packed status
+(*"M3/Application".open
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 "M3/Login".login username, password
 "M3/OIS300".open
 "M3/OIS300".lookupCO coNumber
@@ -100,11 +163,11 @@ Log "MO: " & moNumber
 Log "Schedule: " & scheduleNumber
 Log "Delivery: " & deliveryNumber
 DataStore.recordRun coNumber, moNumber, scheduleNumber, deliveryNumber
-
+*)
 
 //////////////////////////////picking//////////////////////////////////////
 
-Log "Do picking"
+(*Log "Do picking"
 "M3/PMS100".open
 
 WaitFor 20, "M3/PMS100/FacilityField"
@@ -120,25 +183,40 @@ TypeText Return
 "M3/PMS100".checkDeliveryStatus
 "M3/PMS100".checkPickingListsImage
 Click "M3/PMS100/HPickingLists"
-"M3/PMS100".checkPickingStatusImage
+"M3/PMS100".checkPickingStatusImage*)
 
+<<<<<<< HEAD
 
+=======
+/////////////////////////////////////////flagship////////////////////////////
+(*Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
 
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
 
-
-
+Log "Exit AGS"
+"M3/Application".close*)
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 //////////////////////////////////////manufacturingin m3 with kpack////
 
 //prerequisite:yet to be handled(CO comes back form order entry)
 
-"M3/PMS100".open
+(*"M3/PMS100".open
 "M3/PMS100".lookup_4 coNumber
 "M3/PMS100".checkAllocationStatus
 
 
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
-
 
 Click "M3/PMS070/operation0100"
 TypeText controlKey, "a"
@@ -180,7 +258,6 @@ Click"M3/PMS070/Nextbutton"
 click "M3/PMS070/close"
 click "M3/PMS070/close"
 
-
 click "M3/PMS070/BacktoPMS100"
 click "M3/PMS070/RefreshPMS100"
 "M3/PMS070".checkMOStatus
@@ -203,10 +280,91 @@ Click "M3/KPack/Packbutton"
 Click "M3/KPack/SelectBoxType"
 Click "M3/KPack/SelectBoxtypedropdown"
 "Web/KPack".compareOrderandPackedQuantity
+<<<<<<< HEAD
 Click "M3/KPack/Containercomplete"
 Click "M3/KPack/OrderComplete"
 
 
+=======
+Click "M3/KPack/OrderComplete"*)
+
+to generateMOCO
+	//log in to AGS
+	Log "Logging in"
+	"M3/Application".open
+	
+	//read in necessary data
+	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,"A3") into UserName
+	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"C2") into customerNumber
+	Put Cell(worksheet,"D2") into coType
+	Put Cell(worksheet,"E2") into PO
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"M3/Login".login UserName, Password
+	
+	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	
+	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	
+	"M3/OIS101".closeFromOrderLines
+	
+	Log coNum
+	
+	Log "Exit AGS"
+	"M3/Application".close
+	
+	//don't continue running the script
+	throw "Finished!", "some comment"
+end generateMOCO
+
+to doFullRun
+	//read in necessary data
+	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Login")
+	Put Cell(worksheet,"A3") into UserName
+	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"C2") into customerNumber
+	Put Cell(worksheet,"D2") into coType
+	Put Cell(worksheet,"E2") into PO
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"M3/Application".open
+	
+	"M3/Login".login UserName, Password
+	
+	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	
+	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	
+	"M3/OIS101".closeFromOrderLines
+	
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	Log "Do scheduling"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp(coNum)
+	put "M3/PMS170".createScheduleNumber() into scheduleNumber
+	"M3/PMS170".scheduleNew scheduleNumber
+	"M3/PMS170".releaseMO
+	"M3/PMS170".close
+	"M3/PMS100".open
+	"M3/PMS100".lookupSchedule scheduleNumber
+	"M3/PMS100".printShopTraveler scheduleNumber
+	put "M3/PMS100".recordMO() into moNumber
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	
+	// implement manufacturing in M3 here first
+	
+	// implement KPack here first
+end doFullRun
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 
 /////////////////////////////////////////flagship////////////////////////////
 Log "Shipping with Flagship"
