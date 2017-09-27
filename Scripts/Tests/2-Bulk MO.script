@@ -1,8 +1,93 @@
 ﻿(* 
 Name: Bulk MO
 Description: 
-Author: Ramya & Ofir
+<<<<<<< HEAD
+Author: Ramya//
  *)
+
+Log "Logging in"
+"M3/Application".open
+
+
+// read user Name and Password for M3 Application from Login sheet of Datastore excel File
+//run DataStore.ConfigValues UserName, Password, customerNumber, coType
+
+set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
+
+set worksheet to ExcelFile.Worksheet("Login")
+Put Cell(worksheet,"A2") into UserName
+Put Cell(worksheet,"B2") into Password
+Put Cell(worksheet,"C2") into customerNumber
+Put Cell(worksheet,"D2") into coType
+Put Cell(worksheet,"E2") into PO
+Put Cell(worksheet,"F2") into ItemCode
+Put Cell(worksheet,"G2") into ItemQuantity
+// call Login function 
+"M3/Login".login UserName, Password
+
+Log "Enter new order"
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+
+"M3/OIS300".enterCustomerNumber customerNumber, coType
+"M3/OIS300".submitOIS100A
+"M3/OIS300".enterCustomersPO PO
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E
+"M3/OIS300".submitOIS102H
+
+Log "Enter order line"
+put "M3/OIS101".recordCONumber() into coNumber
+Log coNumber
+
+//allowing this to be hard-coded because ultimately this script will
+//read from an excel file instead of creating its own MOs
+"M3/OIS101".enterItemCode ItemCode
+"M3/OIS101".enterItemQuantity ItemQuantity
+"M3/Configurations".config002
+
+(*"M3/OIS101".enterItemCode ItemCode
+
+if ItemCode = "TB7SX6CC" then 
+	"M3/OIS101".enterItemQuantity productQuantity
+	"M3/Configurations".config001
+else
+	"M3/OIS101".enterItemColor
+	"M3/OIS101".configuratorA
+end if*)
+
+"M3/OIS101".closeFromOrderLines
+(*>>>>>>>>>>>>>>>>>>>>>>>End of Order Entry>>>>>>>>>>>>>>>>>>>>>>>>>*)
+
+
+(*>>>>>>>>>>>>>>>>>>>>>>>Start Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+Log "Do scheduling"
+"M3/PMS170".open
+"M3/PMS170".lookUp coNumber
+put "M3/PMS170".createScheduleNumber() into scheduleNumber
+"M3/PMS170".scheduleNew scheduleNumber
+"M3/PMS170".releaseMO
+"M3/PMS170".close
+"M3/PMS100".open
+"M3/PMS100".lookupSchedule scheduleNumber
+"M3/PMS100".printShopTraveler scheduleNumber
+put "M3/PMS100".recordMO() into moNumber
+"M3/PMS100".pick
+"M3/PMS100".close
+
+Log "Exit AGS"
+"M3/Application".close
+
+(*>>>>>>>>>>>>>>>>>>>>>>>Stop Scheduling>>>>>>>>>>>>>>>>>>>>>>>>*)
+
+"M3/Application".open
+=======
+Author: Ramya & Ofir
+*)
 
 // declare login variables
 global username
@@ -61,6 +146,7 @@ end repeat
 
 //post DCA check packed status
 (*"M3/Application".open
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 "M3/Login".login username, password
 "M3/OIS300".open
 "M3/OIS300".lookupCO coNumber
@@ -99,6 +185,9 @@ TypeText Return
 Click "M3/PMS100/HPickingLists"
 "M3/PMS100".checkPickingStatusImage*)
 
+<<<<<<< HEAD
+
+=======
 /////////////////////////////////////////flagship////////////////////////////
 (*Log "Shipping with Flagship"
 "Web/Flagship".open
@@ -116,60 +205,46 @@ Click "M3/PMS100/HPickingLists"
 
 Log "Exit AGS"
 "M3/Application".close*)
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 //////////////////////////////////////manufacturingin m3 with kpack////
 
 //prerequisite:yet to be handled(CO comes back form order entry)
 
-(*"M3/PMS100".open
-"M3/PMS100".lookup_4 coNumber
-"M3/PMS100".checkAllocationStatus
-
+///"M3/PMS100".open
+//"M3/PMS100".checkfacility
+//"M3/PMS100".lookup_4 coNumber
+//"M3/PMS100".checkAllocationStatus
+//click "M3/PMS070/close100"
 
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
-
-Click "M3/PMS070/operation0100"
-TypeText controlKey, "a"
-TypeText deleteKey
-
-TypeText "0100"
-TypeText Return
-
-Click "M3/PMS070/Changeforoperation"
-
+"M3/PMS070".selectoperation
 "M3/PMS070".compareOrderandManufQuantity
 
 Click"M3/PMS070/Nextbutton"
 
-// capture step for remains and manufacturing qty validation
+// captured step for remains and manufacturing qty validation
 "M3/PMS070". compareRemainsandManufQuantity
 click "M3/PMS070/close"
 
 "M3/PMS100".open
-click "M3/PMS070/refresh"
-"M3/PMS070".checkMOStatus
+"M3/PMS100".lookup_4 coNumber
+
+"M3/PMS100".checkMOStatus
 click "M3/PMS070/close100"
 
 "M3/PMS070".lookupMOnumber
-
-Click "M3/PMS070/operation8000"
-
-TypeText controlKey, "a"
-TypeText deleteKey
-
-TypeText "8000"
-TypeText Return
-Click "M3/PMS070/Changeforoperation"
+"M3/PMS070".selectoperation8000
 "M3/PMS070".compareOrderandManufQuantity
 Click"M3/PMS070/Nextbutton"
+
 // skipped steps related to Man compl flag and location values, as unable to find the fields
 
 "M3/PMS070". compareRemainsandManufQuantity
 click "M3/PMS070/close"
-click "M3/PMS070/close"
 
-click "M3/PMS070/BacktoPMS100"
-click "M3/PMS070/RefreshPMS100"
+
+
 "M3/PMS070".checkMOStatus
 "M3/PMS070".compareOrderandManufQuantity
 
@@ -180,7 +255,7 @@ click "M3/KPack/OrderNum"
 TypeText controlKey, "a"
 TypeText deleteKey
 
-TypeText "0013139821001"
+TypeText "0013140411001"
 
 Click "M3/KPack/LoadOrderutton"
 Click "M3/KPack/ProductID"
@@ -189,9 +264,14 @@ Click "M3/KPack/Autopackselect"
 Click "M3/KPack/Packbutton"
 Click "M3/KPack/SelectBoxType"
 Click "M3/KPack/SelectBoxtypedropdown"
-Click "M3/KPack/Containercomplete"
 "Web/KPack".compareOrderandPackedQuantity
-Click "M3/KPack/OrderComplete"*)
+<<<<<<< HEAD
+Click "M3/KPack/Containercomplete"
+Click "M3/KPack/OrderComplete"
+
+
+=======
+Click "M3/KPack/OrderComplete"*
 
 to generateMOCO
 	//log in to AGS
@@ -208,31 +288,31 @@ to generateMOCO
 	Put Cell(worksheet,"E2") into PO
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-	"M3/Login".login UserName, Password
-	
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
-	
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-	
-	"M3/OIS101".closeFromOrderLines
-	
-	Log coNum
-	
-	Log "Exit AGS"
-	"M3/Application".close
-	
-	//don't continue running the script
-	throw "Finished!", "some comment"
+"M3/Login".login UserName, Password
+
+"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+
+put "Flows/OrderEntry".recordCONumber() into coNum
+
+"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+
+"M3/OIS101".closeFromOrderLines
+
+Log coNum
+
+Log "Exit AGS"
+"M3/Application".close
+
+//don't continue running the script
+throw "Finished!", "some comment"
 end generateMOCO
 
 to doFullRun
 	//read in necessary data
 	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A3") into UserName
-	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"A2") into UserName
+	Put Cell(worksheet,"B2") into Password
 	Put Cell(worksheet,"C2") into customerNumber
 	Put Cell(worksheet,"D2") into coType
 	Put Cell(worksheet,"E2") into PO
@@ -269,8 +349,25 @@ to doFullRun
 	
 	// implement KPack here first
 end doFullRun
+>>>>>>> f3d3580a7a653eb20f3ff47931964e16c4407eab
 
+/////////////////////////////////////////flagship////////////////////////////
+Log "Shipping with Flagship"
+"Web/Flagship".open
+"Web/Flagship".login
+"Web/Flagship".ship deliveryNumber
+"Web/Flagship".close
+"M3/Application".open
 
+"M3/Login".login "ajenkins", "Acushnet#1"
+"M3/OIS300".open
+"M3/OIS300".lookupCO coNumber
+"M3/OIS300".openDeliveryToolbox
+"M3/OIS300".confirmStatusShipped
+"M3/OIS300".closeFromDeliveryToolbox
+
+Log "Exit AGS"
+"M3/Application".close
 
 
 

@@ -55,18 +55,22 @@ to lookup_3 coNumber
 	
 end lookup_3
 
-
-to lookup_4 coNumber
+// function used for manufacturing in m3
+to lookup_4 coNumber 
 	WaitFor 10, "M3/PMS100/Sortingorder04"
+	Click "M3/PMS100/Sortingorder04o"
+	//TypeText UpArrow
 	Click  "M3/PMS100/SortOptionRefOrdProd4"
 	TypeText endKey
 	Click "M3/PMS100/Viewdropdownoption04002"
 	Click "M3/PMS100/04002ActualStartFinishc"
+	Click "M3/PMS100/COnumber"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	Click "M3/PMS100/Reforderno"
-	TypeText coNumber
+	
+	TypeText "3013696238"// entering co number manually
 	TypeText Return
+	
 end lookup_4	
 
 to openDeliveryToolbox
@@ -128,7 +132,7 @@ end checkAllocationStatus
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
 	Click "M3/PMS100/DeliveryToolboxLink"
-set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
+	set deliveryNumber to ReadText((imageLocation("M3/PMS100/MONumberA")+(0,42), imageLocation("M3/PMS100/MONumberB") + (59,56)))
 	Click "M3/PMS100/ReleaseforPickLink"
 	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
 	Click "M3/PMS100/50PickingListsCreated"
@@ -199,6 +203,33 @@ to recordMO
 	Click "M3/PMS100/BackButton"
 	return moNumber
 end recordMO
+
+to checkMOStatus
+	repeat 4 minutes
+		if imageFound(60,"M3/PMS070/status60") then
+			Log "MO status is 60"
+			return SUCCESS
+			
+		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
+			
+			Log "MO status is 90"		
+		Else
+			Log "Image not found"
+		End if
+		
+		Click "M3/PMS100/Refresh"
+	end checkMOStatus
+
+to checkfacility
+	WaitFor 20, "M3/PMS070/Facility"
+	Click "M3/PMS070/Facility"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	click "M3/PMS070/capture061"
+	click "M3/PMS070/select61"
+	//TypeText Return
+end checkfacility
 
 to close
 	Click "M3/PMS100/CloseButton"

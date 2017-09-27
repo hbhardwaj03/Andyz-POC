@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0"?>
 <statistics>
+<<<<<<< HEAD
  <script name="M3/MWS150">
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>1</NumberOfRuns>
@@ -14,6 +15,14 @@
   <NumberOfFails>5</NumberOfFails>
   <FirstRun>2017-09-27 07:00:08 -0400</FirstRun>
   <LastRun>2017-09-27 10:56:34 -0400</LastRun>
+=======
+ <script name="Tests/2-Bulk MO">
+  <LastStatus>Failure</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2017-09-27 11:13:49 -0400</FirstRun>
+  <LastRun>2017-09-27 11:13:49 -0400</LastRun>
+>>>>>>> 4ae47ce4ccddf79c2d4a9189143e7b098bd95f4c
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
 </statistics>
