@@ -20,9 +20,9 @@ to validatePacking username, password, coNumber
 	return deliveryNumber
 end validatePacking
 
-to doManufacturingM3 coNumber
+to doManufacturingM3 coNumber, moNum
 	Log "Do Manufacturing in M3"
-	"M3/PMS070".lookupMOnumber
+	"M3/PMS070".lookupMOnumber moNum
 	"M3/PMS070".selectoperation
 	"M3/PMS070".compareOrderandManufQuantity
 	
