@@ -215,20 +215,17 @@ end generateMOCO
 
 to doFullRun
 	//read in necessary data
-	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A2") into UserName
-	Put Cell(worksheet,"B2") into Password
-	Put Cell(worksheet,"C2") into customerNumber
-	Put Cell(worksheet,"D2") into coType
-	Put Cell(worksheet,"E2") into PO
-	
+	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet,"A3") into username
+	Put Cell(worksheet,"B3") into password
+
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"M3/Application".open
 	
 	"M3/Login".login UserName, Password
 	
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "US-Gear-06"
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
