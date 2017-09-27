@@ -42,11 +42,11 @@
  </script>
  <script name="M3/PMS170">
   <LastStatus>Success</LastStatus>
-  <NumberOfRuns>7</NumberOfRuns>
+  <NumberOfRuns>6</NumberOfRuns>
   <NumberOfFails>0</NumberOfFails>
   <FirstRun>2017-09-14 15:46:12 -0400</FirstRun>
-  <LastRun>2017-09-25 07:31:07 -0400</LastRun>
-  <TotalTimeOnSuccess>0.065000</TotalTimeOnSuccess>
+  <LastRun>2017-09-20 14:05:20 -0400</LastRun>
+  <TotalTimeOnSuccess>0.056000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-90-Validation">
   <LastStatus>Success</LastStatus>
@@ -98,43 +98,34 @@
  </script>
  <script name="M3/OIS300">
   <LastStatus>Success</LastStatus>
-  <NumberOfRuns>6</NumberOfRuns>
   <NumberOfRuns>7</NumberOfRuns>
   <NumberOfFails>0</NumberOfFails>
   <FirstRun>2017-08-21 09:20:37 -0700</FirstRun>
-  <LastRun>2017-09-20 07:51:30 -0400</LastRun>
-  <TotalTimeOnSuccess>3.112000</TotalTimeOnSuccess>
+  <LastRun>2017-09-25 09:36:15 -0400</LastRun>
+  <TotalTimeOnSuccess>4.063000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/2-Bulk MO">
   <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>10</NumberOfRuns>
-  <NumberOfFails>10</NumberOfFails>
+  <NumberOfRuns>15</NumberOfRuns>
+  <NumberOfFails>15</NumberOfFails>
   <FirstRun>2017-09-20 05:29:00 -0400</FirstRun>
-  <LastRun>2017-09-22 11:09:26 -0400</LastRun>
+  <LastRun>2017-09-25 09:01:46 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/3-ZC-Customization-Process">
   <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>3</NumberOfRuns>
-  <NumberOfFails>3</NumberOfFails>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
   <FirstRun>2017-09-19 18:33:21 -0400</FirstRun>
-  <LastRun>2017-09-25 06:12:40 -0400</LastRun>
+  <LastRun>2017-09-19 18:33:21 -0400</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/ZC-Customization-Process">
-<<<<<<< HEAD
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>38</NumberOfRuns>
-  <NumberOfFails>24</NumberOfFails>
-  <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
-  <LastRun>2017-09-22 10:52:53 -0400</LastRun>
-=======
   <LastStatus>Success</LastStatus>
   <NumberOfRuns>37</NumberOfRuns>
   <NumberOfFails>23</NumberOfFails>
   <FirstRun>2017-09-15 07:35:17 -0400</FirstRun>
   <LastRun>2017-09-21 08:17:52 -0400</LastRun>
->>>>>>> 5fc07c0935b4fad26ff0dc489170c57003ed7708
   <TotalTimeOnSuccess>2222.866000</TotalTimeOnSuccess>
  </script>
  <script name="Tests/US-Gear-06-Validation">
