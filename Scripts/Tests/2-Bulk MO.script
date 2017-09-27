@@ -227,7 +227,8 @@ Click"M3/PMS070/Nextbutton"
 click "M3/PMS070/close"
 
 "M3/PMS100".open
-click "M3/PMS070/refresh"
+"M3/PMS100".lookup_4 coNumber
+//click "M3/PMS070/refresh"
 "M3/PMS070".checkMOStatus
 click "M3/PMS070/close100"
 

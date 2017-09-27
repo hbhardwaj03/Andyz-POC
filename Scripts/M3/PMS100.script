@@ -55,19 +55,22 @@ to lookup_3 coNumber
 	
 end lookup_3
 
-
-to lookup_4 coNumber
+// function used for manufacturing in m3
+to lookup_4 coNumber 
 	WaitFor 10, "M3/PMS100/Sortingorder04"
-	TypeText UpArrow
+	Click "M3/PMS100/Sortingorder04o"
+	//TypeText UpArrow
 	Click  "M3/PMS100/SortOptionRefOrdProd4"
 	TypeText endKey
 	Click "M3/PMS100/Viewdropdownoption04002"
 	Click "M3/PMS100/04002ActualStartFinishc"
+	Click "M3/PMS100/COnumber"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	Click "M3/PMS100/Reforderno"
-	TypeText coNumber
+	
+	TypeText "3013696238"// entering co number manually
 	TypeText Return
+	
 end lookup_4	
 
 to openDeliveryToolbox
