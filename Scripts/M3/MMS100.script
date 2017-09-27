@@ -47,7 +47,7 @@ to DeliveryToolBox
 		
 	Else
 		LogError "Open Delivery Screen Is not visible"
-<<<<<<< HEAD
+	<<<<<<< HEAD
 	End If		
 end DeliveryToolBox
 =======
