@@ -1,0 +1,33 @@
+﻿(* 
+Name: 1-CustomGear
+Description: Data-driven custom bag end to end script that takes valuse from excel spreadshit and executes on them
+Author - Ofir Madar
+ *)
+
+
+Log "Logging in"
+"M3/Application".open
+"M3/Login".login "omadar", "Password#1"
+
+Log "Enter new order"
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+put "DataStore".getCustomerNo() into customerNumber
+(*"US00025065",*)
+"M3/OIS300".enterCustomerNumber customerNumber ,"USA"
+"M3/OIS300".submitOIS100A
+"M3/OIS300".enterCustomersPO "US-Gear-06"
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E
+"M3/OIS300".submitOIS102H
+
+Log "Enter order line"
+put "M3/OIS101".recordCONumber() into coNumber
+Log coNumber
+"M3/OIS101".enterItemCode("TB7SX6CC")
+"M3/OIS101".enterItemColor
+"M3/OIS101".configuratorA
+"M3/OIS101".closeFromOrderLines
