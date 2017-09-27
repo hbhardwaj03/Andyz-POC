@@ -145,18 +145,13 @@
   <ErrorMessage></ErrorMessage>
  </run>
  <run>
-<<<<<<< HEAD
   <RunDate>2017-09-26 18:04:00.897 -0400</RunDate>
-=======
-  <RunDate>2017-09-25 09:36:15.511 -0400</RunDate>
->>>>>>> 105f6b3b2eac40115731345f8bdd3e87675afee8
   <Status>Success</Status>
   <Duration>0.000000</Duration>
   <Errors>0</Errors>
   <Warnings>0</Warnings>
   <Exceptions>0</Exceptions>
   <Successes>1</Successes>
-<<<<<<< HEAD
   <LogFile>20170926_180400.897/LogFile.txt</LogFile>
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
@@ -206,9 +201,18 @@
   <Exceptions>0</Exceptions>
   <Successes>1</Successes>
   <LogFile>20170927_125854.237/LogFile.txt</LogFile>
-=======
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2017-09-25 09:36:15.511 -0400</RunDate>
+  <Status>Success</Status>
+  <Duration>0.000000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
   <LogFile>20170925_093615.511/LogFile.txt</LogFile>
->>>>>>> 105f6b3b2eac40115731345f8bdd3e87675afee8
   <ReturnValue></ReturnValue>
   <ErrorMessage></ErrorMessage>
  </run>

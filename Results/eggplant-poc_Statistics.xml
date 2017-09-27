@@ -1,70 +1,11 @@
 ﻿<?xml version="1.0"?>
 <statistics>
-<<<<<<< HEAD
- <script name="Tests/US-Gear-05">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>1</NumberOfFails>
-  <FirstRun>2017-09-26 17:41:56 -0400</FirstRun>
-  <LastRun>2017-09-26 17:41:56 -0400</LastRun>
-  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
- </script>
- <script name="M3/PMS170">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-26 15:47:28 -0400</FirstRun>
-  <LastRun>2017-09-26 15:47:28 -0400</LastRun>
-  <TotalTimeOnSuccess>0.009000</TotalTimeOnSuccess>
- </script>
- <script name="M3/OIS300">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>5</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-26 18:04:00 -0400</FirstRun>
-  <LastRun>2017-09-27 12:58:54 -0400</LastRun>
-  <TotalTimeOnSuccess>1.106000</TotalTimeOnSuccess>
- </script>
  <script name="Tests/2-Bulk MO">
   <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>4</NumberOfRuns>
-  <NumberOfFails>4</NumberOfFails>
-  <FirstRun>2017-09-26 14:51:41 -0400</FirstRun>
-  <LastRun>2017-09-26 17:02:42 -0400</LastRun>
+  <NumberOfRuns>2</NumberOfRuns>
+  <NumberOfFails>2</NumberOfFails>
+  <FirstRun>2017-09-27 13:39:58 -0700</FirstRun>
+  <LastRun>2017-09-27 13:40:34 -0700</LastRun>
   <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
- </script>
- <script name="Flows/ManufacturingPacking">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-27 13:55:11 -0400</FirstRun>
-  <LastRun>2017-09-27 13:55:11 -0400</LastRun>
-  <TotalTimeOnSuccess>0.008000</TotalTimeOnSuccess>
-=======
-<<<<<<< HEAD
- <script name="M3/MWS150">
-  <LastStatus>Success</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>0</NumberOfFails>
-  <FirstRun>2017-09-27 11:07:38 -0400</FirstRun>
-  <LastRun>2017-09-27 11:07:38 -0400</LastRun>
-  <TotalTimeOnSuccess>1.592000</TotalTimeOnSuccess>
- </script>
- <script name="Tests/3-ZC-Customization-Process">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>5</NumberOfRuns>
-  <NumberOfFails>5</NumberOfFails>
-  <FirstRun>2017-09-27 07:00:08 -0400</FirstRun>
-  <LastRun>2017-09-27 10:56:34 -0400</LastRun>
-=======
- <script name="Tests/2-Bulk MO">
-  <LastStatus>Failure</LastStatus>
-  <NumberOfRuns>1</NumberOfRuns>
-  <NumberOfFails>1</NumberOfFails>
-  <FirstRun>2017-09-27 11:13:49 -0400</FirstRun>
-  <LastRun>2017-09-27 11:13:49 -0400</LastRun>
->>>>>>> 4ae47ce4ccddf79c2d4a9189143e7b098bd95f4c
-  <TotalTimeOnSuccess>0.000000</TotalTimeOnSuccess>
->>>>>>> 105f6b3b2eac40115731345f8bdd3e87675afee8
  </script>
 </statistics>
