@@ -58,6 +58,7 @@ end lookup_3
 
 to lookup_4 coNumber
 	WaitFor 10, "M3/PMS100/Sortingorder04"
+	TypeText UpArrow
 	Click  "M3/PMS100/SortOptionRefOrdProd4"
 	TypeText endKey
 	Click "M3/PMS100/Viewdropdownoption04002"
