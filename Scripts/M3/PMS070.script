@@ -11,7 +11,9 @@ to checkfacility
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText "061"
-	TypeText Return
+	click "M3/PMS070/capture061"
+	click "M3/PMS070/select61"
+	//TypeText Return
 end checkfacility
 
 
@@ -40,23 +42,29 @@ to lookupMOnumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	//manually entering MO number
-	TypeText "1000004399"
+	TypeText "1000004512"
 	TypeText Return
 end lookupMOnumber
 
+to selectoperation
+	Click "M3/PMS070/operation0100"
+	Click "M3/PMS070/Changeforoperation"	
+end selectoperation
 
 to compareOrderandManufQuantity
 
-	Click "M3/PMS070/OrderqtybUM"
+	DoubleClick "M3/PMS070/OrderqtybUM"
 	
-	set orderqty to readtext(imageFound("M3/PMS070/OrderqtybUM"))
+	set orderqty to  ReadText(("n1_A","n1_B"))  
+	log orderqty 
 	
-	Click "M3/PMS070/Manufquantity"
+	DoubleClick "M3/PMS070/Manufquantity"
 	
-	set manufactqty to  readtext(imageFound("M3/PMS070/Manufquantity"))
+	set manufactqty to  ReadText(("m1_A","m1_B"))
+	log manufactqty
 	
 	if orderqty = manufactqty then
-		logsucces "orderqty"&orderqty&"is Equal to"&"manufactqty"&manufactqty
+		logsuccess "orderqty"&orderqty&"is Equal to"&"manufactqty"&manufactqty
 	else
 		Logerror "Order QTy & Manufatuer Qty are not equal"
 	end if
@@ -68,20 +76,26 @@ end compareOrderandManufQuantity
 
 to compareRemainsandManufQuantity
 
-	Click "M3/PMS070/RemainsField"
+	//DoubleClick "M3/PMS070/RemainsField"
 	
-	set remainsvalue to readtext(imageFound("M3/PMS070/RemainsField"))
+	
+	//set remainsvalue to readtext(imageFound("M3/PMS070/RemainsField"))
 	
 	Click "M3/PMS070/Manufquantity"
 	
-	set manufactqty to  readtext(imageFound("M3/PMS070/Manufquantity"))
+	set manufactqty to ReadText(("maq_A","maq_B"))
+	log manufactqty
+	Click "M3/PMS070/Hrsused"
 	
-	if remainsvalue= null& & manufactqty<>null then
-		logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
-	else
-		Logerror "Remains values hasnt moved to manufactqty"
-	end if
+	set hrsused to ReadText(("hrs1_A","hrs1_B"))
 	
+	log hrsused
+	if  manufactqty<>null & hrsused<>null then
+	logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
+else
+	Logerror "Remains values hasnt moved to manufactqty"
+end if
+
 end compareRemainsandManufQuantity
 
 

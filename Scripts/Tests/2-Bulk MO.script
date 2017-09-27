@@ -87,7 +87,7 @@ Log "Exit AGS"
 "M3/Application".open
 =======
 Author: Ramya & Ofir
- *)
+*)
 
 // declare login variables
 global username
@@ -210,23 +210,14 @@ Log "Exit AGS"
 
 //prerequisite:yet to be handled(CO comes back form order entry)
 
-(*"M3/PMS100".open
-"M3/PMS100".lookup_4 coNumber
-"M3/PMS100".checkAllocationStatus
+//"M3/PMS100".open
+//"M3/PMS100".lookup_4 coNumber
+//"M3/PMS100".checkAllocationStatus
 
 
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
-
-Click "M3/PMS070/operation0100"
-TypeText controlKey, "a"
-TypeText deleteKey
-
-TypeText "0100"
-TypeText Return
-
-Click "M3/PMS070/Changeforoperation"
-
+"M3/PMS070".selectoperation
 "M3/PMS070".compareOrderandManufQuantity
 
 Click"M3/PMS070/Nextbutton"
@@ -286,7 +277,7 @@ Click "M3/KPack/OrderComplete"
 
 
 =======
-Click "M3/KPack/OrderComplete"*)
+Click "M3/KPack/OrderComplete"*
 
 to generateMOCO
 	//log in to AGS
@@ -303,31 +294,31 @@ to generateMOCO
 	Put Cell(worksheet,"E2") into PO
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-	"M3/Login".login UserName, Password
-	
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
-	
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-	
-	"M3/OIS101".closeFromOrderLines
-	
-	Log coNum
-	
-	Log "Exit AGS"
-	"M3/Application".close
-	
-	//don't continue running the script
-	throw "Finished!", "some comment"
+"M3/Login".login UserName, Password
+
+"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+
+put "Flows/OrderEntry".recordCONumber() into coNum
+
+"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+
+"M3/OIS101".closeFromOrderLines
+
+Log coNum
+
+Log "Exit AGS"
+"M3/Application".close
+
+//don't continue running the script
+throw "Finished!", "some comment"
 end generateMOCO
 
 to doFullRun
 	//read in necessary data
 	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A3") into UserName
-	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"A2") into UserName
+	Put Cell(worksheet,"B2") into Password
 	Put Cell(worksheet,"C2") into customerNumber
 	Put Cell(worksheet,"D2") into coType
 	Put Cell(worksheet,"E2") into PO
