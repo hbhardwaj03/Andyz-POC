@@ -56,6 +56,12 @@ to finishManufacturing
 	TypeText Return
 	doubleclick "M3/PMS070/beforechange"
 	Click "M3/PMS070/Changeforoperation"
+	TypeText Return
+	Click "M3/PMS070/LocationField"
+	TypeText "EMB001"
+	Click"M3/PMS070/Nextbutton"
+	Click "M3/PMS070/BackButton"
+	Click "M3/PMS070/BackButton"
 end finishManufacturing
 
 to compareOrderandManufQuantity
