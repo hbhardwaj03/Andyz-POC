@@ -48,7 +48,7 @@ to selectoperation
 	Click "M3/PMS070/Changeforoperation"	
 end selectoperation
 
-to selectoperation8000
+to finishManufacturing
 	Click "M3/PMS070/operation8000"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -56,7 +56,7 @@ to selectoperation8000
 	TypeText Return
 	doubleclick "M3/PMS070/beforechange"
 	Click "M3/PMS070/Changeforoperation"
-end selectoperation8000
+end finishManufacturing
 
 to compareOrderandManufQuantity
 
