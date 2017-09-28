@@ -16,26 +16,21 @@ to checkfacility
 	//TypeText Return
 end checkfacility
 
-
-
 to checkMOStatus
 	repeat 4 minutes
 		if imageFound(60,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
-			
 		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
-			
 			Log "MO status is 90"		
 		Else
 			Log "Image not found"
 		End if
-		
 		Click "M3/PMS100/Refresh"
-		
-	end checkMOStatus
+	end repeat
+end checkMOStatus
 
-to lookupMOnumber
+to lookupMOnumber moNum
 	"M3/PMS070".open
 	"M3/PMS070".checkfacility
 	// to enter MO number
@@ -43,7 +38,8 @@ to lookupMOnumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	//manually entering MO number
-	TypeText "1000004512"
+	Log moNum
+	TypeText moNum
 	TypeText Return
 end lookupMOnumber
 
@@ -52,7 +48,7 @@ to selectoperation
 	Click "M3/PMS070/Changeforoperation"	
 end selectoperation
 
-to selectoperation8000
+to finishManufacturing
 	Click "M3/PMS070/operation8000"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -60,7 +56,13 @@ to selectoperation8000
 	TypeText Return
 	doubleclick "M3/PMS070/beforechange"
 	Click "M3/PMS070/Changeforoperation"
-end selectoperation8000
+	Click"M3/PMS070/Nextbutton"
+	Click "M3/PMS070/LocationField"
+	TypeText "EMB001"
+	Click"M3/PMS070/Nextbutton"
+	Click "M3/PMS070/BackButton"
+	Click "M3/PMS070/BackButton"
+end finishManufacturing
 
 to compareOrderandManufQuantity
 

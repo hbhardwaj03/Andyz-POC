@@ -16,10 +16,7 @@ to lookup coNumber
 	WaitFor 10, "M3/PMS170/Sortingorder_2"
 	Click (780, 113)
 	TypeText homeKey
-	repeat 2 times
-		TypeText downArrow
-	end repeat
-	TypeText Return
+	Click "M3/PMS170/SortingOrder3"
 	Click (961,113)
 	TypeText endKey
 	Click "M3/PMS170/View51Dropdown"
@@ -64,12 +61,11 @@ To change_line_status Status_Line
 			TypeText Return
 			wait 2
 			LogSuccess "Line Status Has Changed"
-			wait 4
-			//click "M3/PMS170/Next_Image"
-			//if Imagefound("M3/PMS170/Next_Image") then
-				//click "M3/PMS170/Next_Image"
-			//end if
-			wait 10
+			(*click "M3/PMS170/Next_Image"
+			if Imagefound("M3/PMS170/Next_Image") then
+				click "M3/PMS170/Next_Image"
+			end if
+			wait 10*)
 			
 		Else
 			LogError "Line Status has Not changed"

@@ -121,7 +121,7 @@ to closeFromOrderLines
 	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 8.0, "M3/OIS101/OIS110ETitle"
+	WaitFor 15.0, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS100A
 	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
