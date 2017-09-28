@@ -22,7 +22,6 @@ end searchReqnumber
 
 
 to DeliveryToolBox
-	
 	Click "M3/MMS100/OrderNumber_Line"
 	Wait 3
 	Click "M3/MMS100/Related_1"
