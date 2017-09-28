@@ -219,7 +219,8 @@ to checkMOStatus
 		End if
 		
 		Click "M3/PMS100/Refresh"
-	end checkMOStatus
+	end repeat
+end checkMOStatus
 
 to checkfacility
 	WaitFor 20, "M3/PMS070/Facility"
