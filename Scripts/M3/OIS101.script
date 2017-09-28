@@ -61,6 +61,16 @@ to enterItemQuantity productQuantity
 	TypeText Return
 end enterItemQuantity
 
+to EnterTransResonCode TranctionResonCode
+	Click "M3/OIS101/TransactionReason"
+	TypeText TranctionResonCode
+end EnterTransResonCode
+
+to BlanketAgreement BlanketAgreement
+	Click "M3/OIS101/BlanketAgreement"
+	TypeText BlanketAgreement
+end BlanketAgreement
+
 to enterItemColor
 	Click (130,300)
 	TypeText "1"
