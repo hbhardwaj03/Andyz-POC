@@ -141,3 +141,14 @@ to closeOrderLines
 	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
 end closeOrderLines
+
+
+
+
+
+
+
+
+
+
+
