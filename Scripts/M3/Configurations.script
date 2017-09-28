@@ -29,7 +29,7 @@ end config001
 
 to config002
 	Click (Image:"M3/Configurations/config2/ProofRequired", WaitFor:136)
-	Click "M3/Configurations/config2/NumCustomizations"
+	Click (Image:"M3/Configurations/config2/NumCustomizations", WaitFor:30)
 	Click "M3/Configurations/config2/Personalization"
 	Click "M3/Configurations/config2/Application1"
 	Click (279,242)
