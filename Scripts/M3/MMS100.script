@@ -62,7 +62,6 @@ To Picking
 	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
 		LogSuccess "Picking List Screen Appears"
-		
 	Else
 		throw "Error","Picking List Screen Not appeard"
 	End If
