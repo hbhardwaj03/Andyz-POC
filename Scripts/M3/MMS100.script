@@ -37,7 +37,7 @@ to DeliveryToolBox
 		click "M3/MMS100/PickingLists"
 		Wait 5
 		Click "M3/MMS100/Refresh"
-		//Click "M3/MMS100/OrderNumber_Line"
+		Click "M3/MMS100/OrderNumber_Line"
 		wait 3
 		(*If Imagefound("M3/MMS100/50PickingListsCreated") then
 			LogSuccess "PickingList has Created"
