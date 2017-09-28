@@ -37,8 +37,9 @@ to DeliveryToolBox
 		click "M3/MMS100/PickingLists"
 		Wait 5
 		Click "M3/MMS100/Refresh"
-		Click "M3/MMS100/OrderNumber_Line"
+		//Click "M3/MMS100/OrderNumber_Line"	
 		wait 3
+		Click "M3/MMS100/DeliveryStatus"
 		(*If Imagefound("M3/MMS100/50PickingListsCreated") then
 			LogSuccess "PickingList has Created"
 		Else
@@ -47,16 +48,16 @@ to DeliveryToolBox
 		
 	Else
 		LogError "Open Delivery Screen Is not visible"
-		End If
-		
-	End DeliveryToolBox
+	End If
+	
+End DeliveryToolBox
 
 
 
 
 
 To Picking
-	Click "M3/MMS100/OrderNumber_Line"
+	Click "M3/MMS100/DeliveryStatus"
 	wait 2
 	Click "M3/MMS100/PickingLists"
 	Wait 2
