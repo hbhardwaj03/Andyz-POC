@@ -47,7 +47,7 @@ to DeliveryToolBox
 		End If*)
 		
 	Else
-		LogError "Open Delivery Screen Is not visible"
+		throw "Error","failed to open delivery toolbox"
 	End If
 	
 End DeliveryToolBox
