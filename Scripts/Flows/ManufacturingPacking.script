@@ -35,12 +35,13 @@ to doManufacturingM3 coNumber, moNum
 	"M3/PMS100".open
 	"M3/PMS100".lookupCO coNumber
 	
-	"M3/PMS100".checkMOStatus
+	"M3/PMS100".checkMOStatusStarted
 	click "M3/PMS070/close100"
 	
 	"M3/PMS070".lookupMOnumber moNum
 	"M3/PMS070".finishManufacturing
 	
-	"M3/PMS070".checkMOStatus
-	"M3/PMS070".compareOrderandManufQuantity
+	"M3/PMS100".open
+	"M3/PMS100".lookupCO coNumber
+	"M3/PMS100".checkMOStatusFinished
 end doManufacturingM3

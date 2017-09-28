@@ -205,11 +205,11 @@ to recordMO
 	return moNumber
 end recordMO
 
-to checkMOStatus
-	assert "M3/PMS100".checkMOStatusImage is SUCCESS, "Manufacturing started status"
-end checkMOStatus
+to checkMOStatusStarted
+	assert "M3/PMS100".checkMOStatusStartedImage is SUCCESS, "Manufacturing started status"
+end checkMOStatusStarted
 
-to checkMOStatusImage
+to checkMOStatusStartedImage
 	repeat 4 minutes
 		if imageFound(10,"M3/PMS070/status60") then
 			Log "MO status is 60"
@@ -221,7 +221,25 @@ to checkMOStatusImage
 		End if
 		Click "M3/PMS100/Refresh"
 	end repeat
-end checkMOStatusImage
+end checkMOStatusStartedImage
+
+to checkMOStatusFinished
+	assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
+end checkMOStatusFinished
+
+to checkMOStatusFinishedImage
+	repeat 4 minutes
+		if imageFound(10,"M3/PMS070/statusFinished") then
+			Log "MO status is 60"
+			return SUCCESS
+		else If  imageFound(5,"M3/PMS070/MOStatus9099") then
+			throw "Error", "manufacturing is already complete!"		
+		Else
+			Log "Image not found"
+		End if
+		Click "M3/PMS100/Refresh"
+	end repeat
+end checkMOStatusFinishedImage
 
 to checkfacility
 	WaitFor 20, "M3/PMS070/Facility"

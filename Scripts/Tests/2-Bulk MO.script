@@ -52,7 +52,7 @@ repeat forever
 	"M3/PMS100".close
 	
 	// add M3 manufacturing here by moving working code from function "doFullRun"
-	
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 	// add KPack here by moving working code from function "doFullRun"
 	
 	// close application
@@ -127,7 +127,7 @@ Log "Exit AGS"
 //"M3/PMS100".lookup_4 coNumber
 //"M3/PMS100".checkAllocationStatus
 //click "M3/PMS070/close100"
-
+(*
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
 "M3/PMS070".selectoperation
@@ -177,7 +177,7 @@ Click "M3/KPack/SelectBoxtypedropdown"
 "Web/KPack".compareOrderandPackedQuantity
 
 Click "M3/KPack/Containercomplete"
-Click "M3/KPack/OrderComplete"
+Click "M3/KPack/OrderComplete"*)
 
 to generateMOCO
 	//log in to AGS
