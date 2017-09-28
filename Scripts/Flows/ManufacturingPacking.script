@@ -19,3 +19,29 @@ to validatePacking username, password, coNumber
 	"M3/Application".close
 	return deliveryNumber
 end validatePacking
+
+to doManufacturingM3 coNumber, moNum
+	Log "Do Manufacturing in M3"
+	"M3/PMS070".lookupMOnumber moNum
+	"M3/PMS070".selectoperation
+	(*"M3/PMS070".compareOrderandManufQuantity*)
+	
+	Click"M3/PMS070/Nextbutton"
+	
+	// captured step for remains and manufacturing qty validation
+	(*"M3/PMS070". compareRemainsandManufQuantity*)
+	click "M3/PMS070/close"
+	
+	"M3/PMS100".open
+	"M3/PMS100".lookupCO coNumber
+	
+	"M3/PMS100".checkMOStatusStarted
+	click "M3/PMS070/close100"
+	
+	"M3/PMS070".lookupMOnumber moNum
+	"M3/PMS070".finishManufacturing
+	
+	"M3/PMS100".open
+	"M3/PMS100".lookupCO coNumber
+	"M3/PMS100".checkMOStatusFinished
+end doManufacturingM3

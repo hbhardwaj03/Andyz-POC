@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿(* 
 Name: Automatic PO receiving
 Description: Read input from Cognos Report 
@@ -52,3 +53,5 @@ click "M3/MWS070/Next"
 
 
 
+=======
+>>>>>>> 32b267cd2319cfe611b320e1019965fa7e95de2e
