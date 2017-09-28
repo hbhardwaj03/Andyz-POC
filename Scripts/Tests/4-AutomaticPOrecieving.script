@@ -46,7 +46,11 @@ TypeText  controlkey, "a"
 TypeText deleteKey
 Typetext receivingnum
 TypeText Return
+
+
 click "M3/PPS300/next310"
+
+//unable to proceed as no data displayed for line items
 
 "M3/MWS070".open
 "M3/MWS070".poReceipt
