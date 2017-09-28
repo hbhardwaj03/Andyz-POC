@@ -47,15 +47,10 @@ to DeliveryToolBox
 		
 	Else
 		LogError "Open Delivery Screen Is not visible"
-	<<<<<<< HEAD
-	End If		
-end DeliveryToolBox
-=======
-	End If*)
+		End If
 		
-		
-End DeliveryToolBox
->>>>>>> 4ae47ce4ccddf79c2d4a9189143e7b098bd95f4c
+	End DeliveryToolBox
+
 
 
 
