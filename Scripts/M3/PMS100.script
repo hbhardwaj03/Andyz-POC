@@ -206,6 +206,10 @@ to recordMO
 end recordMO
 
 to checkMOStatus
+	assert "M3/PMS100".checkMOStatusImage is SUCCESS, "Manufacturing started status"
+end checkMOStatus
+
+to checkMOStatusImage
 	repeat 4 minutes
 		if imageFound(10,"M3/PMS070/status60") then
 			Log "MO status is 60"
@@ -217,7 +221,7 @@ to checkMOStatus
 		End if
 		Click "M3/PMS100/Refresh"
 	end repeat
-end checkMOStatus
+end checkMOStatusImage
 
 to checkfacility
 	WaitFor 20, "M3/PMS070/Facility"
