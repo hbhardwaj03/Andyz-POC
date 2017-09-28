@@ -64,8 +64,7 @@ To Picking
 		LogSuccess "Picking List Screen Appears"
 		
 	Else
-		LogError "Picking List Screen Not appeard"
-		
+		throw "Error","Picking List Screen Not appeard"
 	End If
 	
 	Click "M3/MMS100/ManualPacking"
@@ -73,7 +72,7 @@ To Picking
 	If Imagefound("M3/MMS100/MMS424B1") then
 		LogSuccess "Picking List Pack Manually Screen Appears"
 	else
-		LogError "Pickinglist Pack Manually screen Not Appears"
+		throw "Error","Pickinglist Pack Manually screen Not Appears"
 	End If
 	Click "M3/MMS100/Packageno"
 	TypeText Controlkey, "a"
