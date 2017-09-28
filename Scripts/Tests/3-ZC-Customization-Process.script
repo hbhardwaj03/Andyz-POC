@@ -76,11 +76,10 @@ put "M3/MWS150".recordReqnumber() into ReqNumber
 "M3/MWS150".openMWS150
 "M3/MWS150".search_order_in_MWS150 coNumber
 "M3/MWS150".ReqOrderStatus
-//"M3/MWS150".RecordPoNumber
 Put "M3/MWS150".RecordPoNumber() into poNumber 
-"Web/KPack".OpenKpack
+(*"Web/KPack".OpenKpack
 "Web/KPack".LoginToKpackZC10041
-"Web/KPack".searchOrderInKpack poNumber
+"Web/KPack".searchOrderInKpack poNumber*)
 
 
 
