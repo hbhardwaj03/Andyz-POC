@@ -207,11 +207,11 @@ end recordMO
 
 to checkMOStatus
 	repeat 4 minutes
-		if imageFound(60,"M3/PMS070/status60") then
+		if imageFound(10,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
-		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
 			Log "MO status is 90"		
+		else If  imageFound(5,"M3/PMS070/MOStatus9099") then
 		Else
 			Log "Image not found"
 		End if
