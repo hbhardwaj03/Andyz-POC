@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+﻿
 ﻿(* 
 Name: Automatic PO receiving
 Description: Read input from Cognos Report 
@@ -15,12 +15,16 @@ Put Cell(worksheet,B2)into password
 Put Cell(worksheet2,K2) into poNumber
 
 Log "Logging in"
+
 "M3/Application".open
 "M3/Login".login username, password
+//2.Look up PO number
 "M3/PPS300".openpoNumber
 "M3/PPS300".poReceipt poNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
+
+//3.Enter quantities received
 click "M3/PPS300/recievedquantityfield"
 TypeText controlKey, "a"
 TypeText deleteKey
@@ -28,16 +32,24 @@ TypeText "84"
 TypeText Return
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
+click "M3/PPS300/previousbutton"
+click "M3/PPS300/Receivingno"
+set receivingnum to ReadText(("receivnum_A","receivnum_B"))
+log receivingnum // recording receiving number here
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
+
+//4.Inspection approval
+"M3/PPS310".open
+
 
 "M3/MWS070".open
 "M3/MWS070".poReceipt
 
-(*click "M3/PPS300/Receivingnum"
+click "M3/PPS300/Receivingnum"
 TypeText  controlkey, "a"
 TypeText deleteKey
-Typetext "14001"*)
+Typetext "14001"
 
 
 click "M3/MWS070/Next"
@@ -53,5 +65,4 @@ click "M3/MWS070/Next"
 
 
 
-=======
->>>>>>> 32b267cd2319cfe611b320e1019965fa7e95de2e
+
