@@ -210,8 +210,8 @@ to checkMOStatus
 		if imageFound(10,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
-			Log "MO status is 90"		
 		else If  imageFound(5,"M3/PMS070/MOStatus9099") then
+			throw "Error", "manufacturing is already complete!"		
 		Else
 			Log "Image not found"
 		End if
