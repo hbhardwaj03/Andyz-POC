@@ -1,0 +1,105 @@
+<<<<<<< HEAD
+﻿(* 
+Name: Automatic PO receiving
+Description: Read input from Cognos Report 
+Author: Ramya
+=======
+﻿
+﻿(* 
+Name: Automatic PO receiving
+Description: Read input from Cognos Report 
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+ *)
+
+
+// fetching username,password and po number from excelfile
+set ExcelFile to workbook(ResourcePath("AutomaticPOReceiving.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet1")
+set worksheet2 to ExcelFile.Worksheet("Sheet2")
+Put Cell(worksheet,A2) into username
+Put Cell(worksheet,B2)into password
+Put Cell(worksheet2,K2) into poNumber
+
+Log "Logging in"
+<<<<<<< HEAD
+"M3/Application".open
+"M3/Login".login username, password
+=======
+
+"M3/Application".open
+"M3/Login".login username, password
+//2.Look up PO number
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+"M3/PPS300".openpoNumber
+"M3/PPS300".poReceipt poNumber
+"M3/PPS300".delynoteno poNumber
+click "M3/PPS300/Next"
+
+<<<<<<< HEAD
+typetext controlkey, ("M3/PPS300/received qty,5")
+click "M3/PPS300/Actions"
+click  "M3/PPS300/XClose"
+
+
+"M3/PPS310".open
+"M3/PPS310".poReceipt
+=======
+//3.Enter quantities received
+click "M3/PPS300/recievedquantityfield"
+TypeText controlKey, "a"
+TypeText deleteKey
+TypeText "84"
+TypeText Return
+click "M3/PPS300/Actions"
+click  "M3/PPS300/ConfirmUpdateF"
+click "M3/PPS300/previousbutton"
+click "M3/PPS300/Receivingno"
+set receivingnum to ReadText(("receivnum_A","receivnum_B"))
+put receivingnum into receivingnum
+log receivingnum // recording receiving number here
+click  "M3/PPS300/XClose"
+click "M3/PPS300/Confirmoutput"
+
+//4.Inspection approval
+"M3/PPS310".open
+click "M3/PPS300/Receivingno_1"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext receivingnum
+TypeText Return
+
+
+click "M3/PPS300/next310"
+
+//unable to proceed as no data displayed for line items
+
+"M3/MWS070".open
+"M3/MWS070".poReceipt
+
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+click "M3/PPS300/Receivingnum"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext "14001"
+
+<<<<<<< HEAD
+click "M3/PPS300/PPS310/NextPPS310"
+
+click  "M3/PPS300/ConfirmUpdateF14"
+=======
+
+click "M3/MWS070/Next"
+
+
+
+
+
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+
+
+
+
+
+
+
+

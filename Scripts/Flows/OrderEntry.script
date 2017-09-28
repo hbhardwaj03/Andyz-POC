@@ -14,6 +14,27 @@
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
+to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod
+	Log "Enter new order"
+	"M3/OIS300".open
+	"M3/OIS300".startNewOrder
+	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+	"M3/OIS300".enterCustomerNumber customerNumber, coType
+	
+	"M3/OIS300".enterCustomersPO PO
+	"M3/OIS300".submitOIS100A
+	"M3/OIS300".acceptPOWarning
+	"M3/OIS300".TagField TagField
+	"M3/OIS300".DeliveryTerm DeliveryTerm
+	"M3/OIS300".DeliveryMethod DeliveryMethod
+	"M3/OIS300".submitOIS100G
+	"M3/OIS300".acceptPOWarning
+	"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100H
+	"M3/OIS300".submitOIS100E
+	//"M3/OIS300".submitOIS102H
+end GenericOrderEntry
+
 to recordCONumber
 	Log "Enter order line"
 	put "M3/OIS101".recordCONumber() into coNumber
