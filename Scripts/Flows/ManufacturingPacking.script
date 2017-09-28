@@ -33,7 +33,7 @@ to doManufacturingM3 coNumber, moNum
 	click "M3/PMS070/close"
 	
 	"M3/PMS100".open
-	"M3/PMS100".lookup_4 coNumber
+	"M3/PMS100".lookupCO coNumber
 	
 	"M3/PMS100".checkMOStatus
 	click "M3/PMS070/close100"
