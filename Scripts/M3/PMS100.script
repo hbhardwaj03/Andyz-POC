@@ -8,16 +8,10 @@ end open
 to lookupSchedule scheduleNumber
 	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
-	repeat 6 times
-		TypeText downArrow
-	end repeat
-	TypeText Return
+	Click "M3/PMS100/SortingOrder7"
 	Click "M3/PMS100/ViewDropdown"
 	TypeText homeKey
-	repeat 8 times
-		TypeText downArrow
-	end repeat
-	TypeText Return
+	Click "M3/PMS100/View4-2"
 	WaitFor 20, "M3/PMS100/FacilityField"
 	Click "M3/PMS100/FacilityField"
 	TypeText controlKey, "a"
@@ -56,6 +50,7 @@ end lookup_3
 // function used for manufacturing in m3
 to lookupCO coNumber 
 	WaitFor 10, "M3/PMS100/Sortingorder04"
+	TypeText homeKey
 	Click "M3/PMS100/Sortingorder04o"
 	//TypeText UpArrow
 	Click  "M3/PMS100/SortOptionRefOrdProd4"
