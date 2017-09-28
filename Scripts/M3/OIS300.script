@@ -34,10 +34,30 @@ to submitOIS100A
 end submitOIS100A
 
 to enterCustomersPO PO
-	Click "M3/OIS300/CustomersPOField"
+	Click "M3/OIS300/CustomersPONumber"
 	TypeText PO
 end enterCustomersPO
 
+to TagField TagField
+	Click "M3/OIS300/TagForHeaderLevel"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText TagField
+end TagField
+
+to DeliveryTerm DeliveryTerm
+	Click "M3/OIS300/DeliveryTerms"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText DeliveryTerm
+end DeliveryTerm
+
+To DeliveryMethod DeliveryMethod
+	Click "M3/OIS300/DeliveryMethod"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText DeliveryMethod
+End DeliveryMethod
 
 to submitOIS100G
 	Click "M3/OIS300/NextButton"
