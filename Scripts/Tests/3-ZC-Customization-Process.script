@@ -14,7 +14,6 @@ global itemCode
 global quantity
 global coNumber
 global product
-global Status_Line
 global count
 
 Datastore.setDataScript3
@@ -29,7 +28,6 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 "M3/OIS101".closeFromOrderLines
 
 (************** Scheduling ***************)
-
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
 if ImageFound("M3/PMS170/Product_OrderLine") then
@@ -38,7 +36,7 @@ if ImageFound("M3/PMS170/Product_OrderLine") then
 else
 	throw "Error","Product field is not Appears"
 end if
-"M3/PMS170".change_line_status Status_Line
+"M3/PMS170".change_line_status
 if Imagefound("M3/PMS170/Related") then
 	
 	// As per the Script ZCutomization the schedule number should stars with "300".

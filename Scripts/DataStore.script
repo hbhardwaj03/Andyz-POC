@@ -95,9 +95,7 @@ to setDataScript3
 	global quantity
 	global coNumber
 	global product
-	global Status_Line
 	global count
-	
 	set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
 	set worksheet1 to Excelfile.Worksheet("Sheet2")
@@ -108,7 +106,6 @@ to setDataScript3
 	Put Cell(worksheet, E2) into quantity
 	Put Cell(worksheet, A7) into coNumber 
 	Put Cell(worksheet, D2) into product
-	Put Cell(worksheet, C6) into Status_Line
 	Put Cell(worksheet1, B1) into count
 end setDataScript3
 (*
