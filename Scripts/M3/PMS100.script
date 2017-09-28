@@ -70,7 +70,7 @@ to lookupCO coNumber
 	Click "M3/PMS100/COnumber"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText "3013696275"//coNumber// entering co number manually
+	TypeText coNumber// "3013696275"//entering co number manually
 	TypeText Return
 end lookupCO	
 
