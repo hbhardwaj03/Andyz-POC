@@ -27,12 +27,8 @@ Datastore.setDataScript3
 put "Flows/OrderEntry".recordCONumber() into coNumber
 "Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
 "M3/OIS101".closeFromOrderLines
-(************** Exit *********************)
-(*"Flows/Application".exitApp*)
 
-(*Log "Logging in"
-"M3/Application".open
-"M3/Login".login username, password*)
+(************** Scheduling ***************)
 
 "M3/PMS170".open
 "M3/PMS170".lookUp(coNumber)
