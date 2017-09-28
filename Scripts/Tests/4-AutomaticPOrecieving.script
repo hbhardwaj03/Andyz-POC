@@ -2,7 +2,6 @@
 ﻿(* 
 Name: Automatic PO receiving
 Description: Read input from Cognos Report 
-Author: Ramya
  *)
 
 
@@ -35,13 +34,19 @@ click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
 click "M3/PPS300/Receivingno"
 set receivingnum to ReadText(("receivnum_A","receivnum_B"))
+put receivingnum into receivingnum
 log receivingnum // recording receiving number here
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
 
 //4.Inspection approval
 "M3/PPS310".open
-
+click "M3/PPS300/Receivingno_1"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext receivingnum
+TypeText Return
+click "M3/PPS300/next310"
 
 "M3/MWS070".open
 "M3/MWS070".poReceipt
