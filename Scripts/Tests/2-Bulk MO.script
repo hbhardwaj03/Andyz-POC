@@ -52,7 +52,7 @@ repeat forever
 	"M3/PMS100".close
 	
 	// add M3 manufacturing here by moving working code from function "doFullRun"
-	
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 	// add KPack here by moving working code from function "doFullRun"
 	
 	// close application
@@ -127,7 +127,7 @@ Log "Exit AGS"
 //"M3/PMS100".lookup_4 coNumber
 //"M3/PMS100".checkAllocationStatus
 //click "M3/PMS070/close100"
-
+(*
 Log "Do Manufacturing in M3"
 "M3/PMS070".lookupMOnumber
 "M3/PMS070".selectoperation
@@ -177,7 +177,7 @@ Click "M3/KPack/SelectBoxtypedropdown"
 "Web/KPack".compareOrderandPackedQuantity
 
 Click "M3/KPack/Containercomplete"
-Click "M3/KPack/OrderComplete"
+Click "M3/KPack/OrderComplete"*)
 
 to generateMOCO
 	//log in to AGS
@@ -215,20 +215,17 @@ end generateMOCO
 
 to doFullRun
 	//read in necessary data
-	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A2") into UserName
-	Put Cell(worksheet,"B2") into Password
-	Put Cell(worksheet,"C2") into customerNumber
-	Put Cell(worksheet,"D2") into coType
-	Put Cell(worksheet,"E2") into PO
+	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet,"A3") into username
+	Put Cell(worksheet,"B3") into password
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"M3/Application".open
 	
 	"M3/Login".login UserName, Password
 	
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "US-Gear-06"
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
@@ -247,12 +244,12 @@ to doFullRun
 	"M3/PMS100".open
 	"M3/PMS100".lookupSchedule scheduleNumber
 	"M3/PMS100".printShopTraveler scheduleNumber
-	put "M3/PMS100".recordMO() into moNumber
+	put "M3/PMS100".recordMO() into moNum
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
 	// implement manufacturing in M3 here first
-	"Flows/ManufacturingPacking".doManufacturingM3 coNum
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 	// implement KPack here first
 end doFullRun
 

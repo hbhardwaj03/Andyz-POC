@@ -30,7 +30,7 @@ to checkMOStatus
 	end repeat
 end checkMOStatus
 
-to lookupMOnumber
+to lookupMOnumber moNum
 	"M3/PMS070".open
 	"M3/PMS070".checkfacility
 	// to enter MO number
@@ -38,7 +38,8 @@ to lookupMOnumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	//manually entering MO number
-	TypeText "1000004512"
+	Log moNum
+	TypeText moNum
 	TypeText Return
 end lookupMOnumber
 
@@ -47,7 +48,7 @@ to selectoperation
 	Click "M3/PMS070/Changeforoperation"	
 end selectoperation
 
-to selectoperation8000
+to finishManufacturing
 	Click "M3/PMS070/operation8000"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -55,7 +56,13 @@ to selectoperation8000
 	TypeText Return
 	doubleclick "M3/PMS070/beforechange"
 	Click "M3/PMS070/Changeforoperation"
-end selectoperation8000
+	Click"M3/PMS070/Nextbutton"
+	Click "M3/PMS070/LocationField"
+	TypeText "EMB001"
+	Click"M3/PMS070/Nextbutton"
+	Click "M3/PMS070/BackButton"
+	Click "M3/PMS070/BackButton"
+end finishManufacturing
 
 to compareOrderandManufQuantity
 
@@ -93,7 +100,7 @@ to compareRemainsandManufQuantity
 	
 	log hrsused
 	if  manufactqty<>null & hrsused<>null then
-	logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
+		logsuccess "remainsvalue"&remainsvalue&"moved to"&"manufactqty"&manufactqty
 	else
 		Logerror "Remains values hasnt moved to manufactqty"
 	end if

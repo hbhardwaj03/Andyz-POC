@@ -1,0 +1,32 @@
+﻿to open poNumber
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "MWS070"
+	Click  "M3/Home/SearchSubmit"
+end open
+
+to display recievingnumber
+	WaitFor 10,"M3/MWS070/Sortorderdropdown"
+	Click "M3/PMS100/Sortingorderoption5"
+	Click "M3/PMS100/5SingleRefOrdI"
+	
+	TypeText endKey
+	Click "M3/PMS100/Viewdrop"
+	Click "M3/PMS100/view05"
+	Click "M3/PMS100/05001RefOrdPr"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/Reforderno"
+	TypeText coNumber
+	TypeText Return
+	
+end lookup_3
+
+to poReceipt
+	Click "M3/MWS070/Warehouse"
+	Drop (Image:"M3/MWS070/Recvngno", WaitFor:2.6)
+	TypeText "06Y"
+	Drop "M3/MWS070/Warehouse"
+	Click  "M3/MWS070/Recvngno",,437508001
+	TypeText Return
+end poReceipt

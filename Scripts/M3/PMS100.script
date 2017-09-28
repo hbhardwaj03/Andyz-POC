@@ -8,16 +8,10 @@ end open
 to lookupSchedule scheduleNumber
 	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
-	repeat 6 times
-		TypeText downArrow
-	end repeat
-	TypeText Return
+	Click "M3/PMS100/SortingOrder7"
 	Click "M3/PMS100/ViewDropdown"
 	TypeText homeKey
-	repeat 8 times
-		TypeText downArrow
-	end repeat
-	TypeText Return
+	Click "M3/PMS100/View4-2"
 	WaitFor 20, "M3/PMS100/FacilityField"
 	Click "M3/PMS100/FacilityField"
 	TypeText controlKey, "a"
@@ -42,7 +36,6 @@ to lookup_3 coNumber
 	WaitFor 10, "M3/PMS100/SortingOrderDropdown"
 	Click "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS100/5SingleRefOrdI"
-	
 	TypeText endKey
 	Click "M3/PMS100/Viewdrop"
 	Click "M3/PMS100/view05"
@@ -52,26 +45,34 @@ to lookup_3 coNumber
 	Click "M3/PMS100/Reforderno"
 	TypeText coNumber
 	TypeText Return
-	
 end lookup_3
 
 // function used for manufacturing in m3
-to lookup_4 coNumber 
-	WaitFor 10, "M3/PMS100/Sortingorder04"
-	Click "M3/PMS100/Sortingorder04o"
-	//TypeText UpArrow
-	Click  "M3/PMS100/SortOptionRefOrdProd4"
-	TypeText endKey
-	Click "M3/PMS100/Viewdropdownoption04002"
-	Click "M3/PMS100/04002ActualStartFinishc"
+to lookupCO coNumber 
+	Click (Image:"M3/PMS100/SortingOrderDropdown", WaitFor:20)
+	TypeText homeKey
+	Click "M3/PMS100/SortingOrder4"
+	Click "M3/PMS100/ViewDropdown"
+	TypeText homeKey
+	Click "M3/PMS100/View4-2"
+	WaitFor 20, "M3/PMS100/FacilityField"
+	Click "M3/PMS100/FacilityField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText "061"
+	TypeText Return
+	Click "M3/PMS100/Product"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	Click "M3/PMS100/MONumberField"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	Click "M3/PMS100/COnumber"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	
-	TypeText "3013696238"// entering co number manually
+	TypeText coNumber// "3013696275"//entering co number manually
 	TypeText Return
-	
-end lookup_4	
+end lookupCO	
 
 to openDeliveryToolbox
 	Click "M3/PMS100/HighlightCO"
@@ -204,21 +205,41 @@ to recordMO
 	return moNumber
 end recordMO
 
-to checkMOStatus
+to checkMOStatusStarted
+	assert "M3/PMS100".checkMOStatusStartedImage is SUCCESS, "Manufacturing started status"
+end checkMOStatusStarted
+
+to checkMOStatusStartedImage
 	repeat 4 minutes
-		if imageFound(60,"M3/PMS070/status60") then
+		if imageFound(10,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
-			
-		else If  imageFound(99,"M3/PMS070/MOStatus9099") then
-			
-			Log "MO status is 90"		
+		else If  imageFound(5,"M3/PMS070/MOStatus9099") then
+			throw "Error", "manufacturing is already complete!"		
 		Else
 			Log "Image not found"
 		End if
-		
 		Click "M3/PMS100/Refresh"
-	end checkMOStatus
+	end repeat
+end checkMOStatusStartedImage
+
+to checkMOStatusFinished
+	assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
+end checkMOStatusFinished
+
+to checkMOStatusFinishedImage
+	repeat 4 minutes
+		if imageFound(10,"M3/PMS070/statusFinished") then
+			Log "MO status is 60"
+			return SUCCESS
+		else If  imageFound(5,"M3/PMS070/MOStatus9099") then
+			throw "Error", "manufacturing is already complete!"		
+		Else
+			Log "Image not found"
+		End if
+		Click "M3/PMS100/Refresh"
+	end repeat
+end checkMOStatusFinishedImage
 
 to checkfacility
 	WaitFor 20, "M3/PMS070/Facility"
