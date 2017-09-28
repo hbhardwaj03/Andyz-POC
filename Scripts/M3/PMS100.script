@@ -42,7 +42,6 @@ to lookup_3 coNumber
 	WaitFor 10, "M3/PMS100/SortingOrderDropdown"
 	Click "M3/PMS100/Sortingorderoption5"
 	Click "M3/PMS100/5SingleRefOrdI"
-	
 	TypeText endKey
 	Click "M3/PMS100/Viewdrop"
 	Click "M3/PMS100/view05"
@@ -52,7 +51,6 @@ to lookup_3 coNumber
 	Click "M3/PMS100/Reforderno"
 	TypeText coNumber
 	TypeText Return
-	
 end lookup_3
 
 // function used for manufacturing in m3
