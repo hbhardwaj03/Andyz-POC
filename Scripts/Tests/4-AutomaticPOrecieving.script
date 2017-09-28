@@ -20,22 +20,30 @@ Log "Logging in"
 "M3/PPS300".poReceipt poNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
-
-typetext controlkey, ("M3/PPS300/received qty,5")
+click "M3/PPS300/recievedquantityfield"
+TypeText controlKey, "a"
+TypeText deleteKey
+TypeText "84"
+TypeText Return
 click "M3/PPS300/Actions"
+click  "M3/PPS300/ConfirmUpdateF"
 click  "M3/PPS300/XClose"
+click "M3/PPS300/Confirmoutput"
 
+"M3/MWS070".open
+"M3/MWS070".poReceipt
 
-"M3/PPS310".open
-"M3/PPS310".poReceipt
-click "M3/PPS300/Receivingnum"
+(*click "M3/PPS300/Receivingnum"
 TypeText  controlkey, "a"
 TypeText deleteKey
-Typetext "14001"
+Typetext "14001"*)
 
-click "M3/PPS300/PPS310/NextPPS310"
 
-click  "M3/PPS300/ConfirmUpdateF14"
+click "M3/MWS070/Next"
+
+
+
+
 
 
 

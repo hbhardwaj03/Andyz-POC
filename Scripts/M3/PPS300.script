@@ -10,14 +10,16 @@ to poReceipt poNumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText "06Y"
-	TypeText Return
-	Click "M3/PPS300/ResponsibleField"
+	//TypeText Return
+	//Click "M3/PPS300/ResponsibleField"
+	//TypeText controlKey, "a"
+	//TypeText deleteKey
+	//TypeText Return
+	Click "M3/PPS300/PONumberField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText Return
-	Click "M3/PPS300/PONumberField"
 	TypeText poNumber
-	TypeText Return"M3/Home/SearchSubmit"
+	TypeText Return
 end poReceipt
 
 to close
