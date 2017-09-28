@@ -4,7 +4,7 @@
 	"M3/OIS300".startNewOrder
 	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 	"M3/OIS300".enterCustomerNumber customerNumber, coType
-	"M3/OIS300".submitOIS100A
+	//"M3/OIS300".submitOIS100A  (**Commented as it should not be at this postion in this flow*)
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100G
 	"M3/OIS300".acceptPOWarning
@@ -46,7 +46,7 @@ end recordCONumber
 to enterProduct itemCode
 	"M3/OIS101".enterItemCode itemCode
 	//"M3/OIS101".enterItemCode "TB7SX6CC"
-	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" then 
+	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
 		"M3/Configurations".config001
 	else
