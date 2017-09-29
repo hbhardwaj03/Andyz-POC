@@ -34,10 +34,30 @@ to submitOIS100A
 end submitOIS100A
 
 to enterCustomersPO PO
-	Click "M3/OIS300/CustomersPOField"
+	Click "M3/OIS300/CustomersPONumber"
 	TypeText PO
 end enterCustomersPO
 
+to TagField TagField
+	Click "M3/OIS300/TagForHeaderLevel"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText TagField
+end TagField
+
+to DeliveryTerm DeliveryTerm
+	Click "M3/OIS300/DeliveryTerms"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText DeliveryTerm
+end DeliveryTerm
+
+To DeliveryMethod DeliveryMethod
+	Click "M3/OIS300/DeliveryMethod"
+	TypeText controlKey, "a"
+	TypeText deleteKey
+	TypeText DeliveryMethod
+End DeliveryMethod
 
 to submitOIS100G
 	Click "M3/OIS300/NextButton"
@@ -106,14 +126,18 @@ end confirmStatusPacked
 
 function checkPackingStatus
 	repeat 2 minutes
-		if imageFound(3,"M3/OIS300/PackingStatusPacked") then
-			Log "Image found"
-			return SUCCESS
-		end if
-		Click "M3/PMS100/Refresh"
-	end repeat
-	Log "Image not found"
-	return FAIL
+		Try
+			if imageFound(3,"M3/OIS300/PackingStatusPacked") then
+				Log "Image found"
+				return SUCCESS
+			end if
+			Click "M3/PMS100/Refresh"
+		end repeat		
+
+catch exception
+Log "Image not found"
+end try
+
 end checkPackingStatus
 
 to updatePickList

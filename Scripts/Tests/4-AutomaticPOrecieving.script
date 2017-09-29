@@ -1,4 +1,18 @@
+﻿<<<<<<< HEAD
+﻿(* 
+Name: Automatic PO receiving
+Description: Read input from Cognos Report 
+Author: Ramya
+=======
 ﻿
+<<<<<<< HEAD
+=======
+﻿(* 
+Name: Automatic PO receiving
+Description: Read input from Cognos Report 
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+*)
+>>>>>>> 6b0415e6abc3331f42b535b5b91923bfd7225d77
 
 set index to index
 put "3" into index
@@ -14,15 +28,29 @@ Put Cell(worksheet,B2)into password
 Put Cell(worksheet2, "K" & index) into poNumber
 
 Log "Logging in"
+<<<<<<< HEAD
+"M3/Application".open
+"M3/Login".login username, password
+=======
 
 "M3/Application".open
 "M3/Login".login username, password
 //2.Look up PO number
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
 "M3/PPS300".openpoNumber
 "M3/PPS300".poReceipt poNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
 
+<<<<<<< HEAD
+typetext controlkey, ("M3/PPS300/received qty,5")
+click "M3/PPS300/Actions"
+click  "M3/PPS300/XClose"
+
+
+"M3/PPS310".open
+"M3/PPS310".poReceipt
+=======
 //3.Enter quantities received
 click "M3/PPS300/recievedquantityfield"
 TypeText controlKey, "a"
@@ -53,6 +81,20 @@ click "M3/PPS300/next310"
 //unable to proceed as no data displayed for line items
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
+click "M3/PPS300/Receivingnum"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext "14001"
+>>>>>>> 6b0415e6abc3331f42b535b5b91923bfd7225d77
+
+<<<<<<< HEAD
+click "M3/PPS300/PPS310/NextPPS310"
+
+click  "M3/PPS300/ConfirmUpdateF14"
+=======
 
 
 
@@ -60,7 +102,7 @@ click "M3/PPS300/next310"
 
 
 
-
+>>>>>>> d66f061d02f8d7753606a7094c2aa64e208c8309
 
 
 

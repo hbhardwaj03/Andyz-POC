@@ -73,7 +73,7 @@ to ReqOrderStatus
 	if ors = "99 - Completed" then
 		LogSuccess "Order status is"&ors
 	else
-		Logerror "Order status was not appears"
+		throw "Error","Order status was not appears"
 	end if
 	
 end ReqOrderStatus

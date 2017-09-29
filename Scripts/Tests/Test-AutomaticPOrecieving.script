@@ -1,0 +1,64 @@
+﻿(* Automatic PO recieving 
+Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end Automatic PO recieving 
+Author: Ofir
+ *)
+
+//declare test variables
+global username
+global password
+global customerNum
+global coType
+global PO
+global itemCode
+global productQuantity
+global DCAUser
+global DCAPswrd
+
+//declare data variables
+global dataIndex
+global custNum
+global custPO
+global tag
+global delTerm
+global delMeth
+global style
+global color
+
+//initialize test variables
+"DataStore".setGlobalsScript1
+
+//initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test ***************)
+repeat forever
+	
+	(************** Set up data *************)
+	//skip known bad entries in test data
+	put (6,9,11,25) into badData //these  are having item code of Accesories
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	--logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if custNum is empty then exit repeat
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	
+end repeat
