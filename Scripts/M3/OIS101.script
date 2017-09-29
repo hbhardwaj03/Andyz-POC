@@ -99,6 +99,8 @@ to configuratorA
 	Click "M3/OIS101/DoubleStrapButton"
 end configuratorA
 
+
+
 to configuratorNewEra
 	Wait 5
 	Click "M3/OIS101/NewEra/ProofRequiredButton"

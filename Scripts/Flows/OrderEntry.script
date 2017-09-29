@@ -20,7 +20,6 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".startNewOrder
 	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 	"M3/OIS300".enterCustomerNumber customerNumber, coType
-	
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
@@ -43,12 +42,15 @@ to recordCONumber
 	return coNumber
 end recordCONumber
 
-to enterProduct itemCode
+to enterProduct itemCode,ConfigurationNo
 	"M3/OIS101".enterItemCode itemCode
 	//"M3/OIS101".enterItemCode "TB7SX6CC"
 	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
+		"M3/OIS101".enterItemColor
 		"M3/Configurations".config001
+	else if ConfigCode="ConfigB6"
+		"M3/Configurations".ConfigB4
 	else
 		"M3/OIS101".enterItemColor
 		"M3/OIS101".configuratorA
