@@ -1,7 +1,3 @@
 ﻿Script,Last Status,Runs,Fails,First Run,Last Run,Avg Time(Success)
-<<<<<<< HEAD
-Tests/4-AutomaticPOrecieving,Failure,1,1,2017-09-28 08:08:24 -0400,2017-09-28 08:08:24 -0400,0:00:00
+Tests/4-AutomaticPOrecieving,Failure,8,8,2017-09-28 08:08:24 -0400,2017-09-28 10:54:22 -0400,0:00:00
 Tests/2-Bulk MO,Failure,3,3,2017-09-27 11:13:49 -0400,2017-09-27 12:51:22 -0400,0:00:00
-=======
-Tests/3-ZC-Customization-Process,Failure,3,3,2017-09-28 03:16:54 -0400,2017-09-28 03:43:20 -0400,0:00:00
->>>>>>> 32b267cd2319cfe611b320e1019965fa7e95de2e
