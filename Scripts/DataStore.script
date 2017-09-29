@@ -52,6 +52,7 @@ to setDataScript1 dataIndex
 	global delMeth
 	global style
 	global color
+	global ConfigCode
 	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Input")
 	put Cell(worksheet, "A" & dataIndex) into custNum
@@ -61,6 +62,7 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "H" & dataIndex) into delMeth
 	put Cell(worksheet, "J" & dataIndex) into style
 	put Cell(worksheet, "K" & dataIndex) into color
+	put Cell(worksheet, "W" & dataIndex) into ConfigCode
 end setDataScript1
 
 to getCustomerNo 
