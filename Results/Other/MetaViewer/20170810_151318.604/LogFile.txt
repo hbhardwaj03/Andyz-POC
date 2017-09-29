@@ -1,4 +1,0 @@
-﻿2017-08-10 15:13:18.614 -0700	START		Running Other/MetaViewer.script
-2017-08-10 15:13:24.604 -0700	Exception	MetaViewer/DesktopIcon	No Image Found On Screen: "MetaViewer/DesktopIcon"	2	on_other_metaviewer	Other/MetaViewer.script
-2017-08-10 15:13:24.701 -0700	EndTestCase		(Duration:"6.08", Errors:"1", Exceptions:"1", StartTime:"2017-08-10 15:13:18 -0700", Successes:"0", TestCase:"Other/MetaViewer.script", Warnings:"0")
-2017-08-10 15:13:24.704 -0700	ABORTED		Execution Time 0:00:06 Other/MetaViewer.script

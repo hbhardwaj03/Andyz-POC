@@ -1,3 +1,0 @@
-﻿2017-08-10 15:17:35.720 -0700	START		Running Other/MetaViewer.script
-2017-08-10 15:17:37.515 -0700	EndTestCase		(Duration:"1.789", Errors:"1", Exceptions:"0", StartTime:"2017-08-10 15:17:35 -0700", Successes:"0", TestCase:"Other/MetaViewer.script", Warnings:"0")
-2017-08-10 15:17:37.517 -0700	ABORTED		Execution Time 0:00:02 Other/MetaViewer.script

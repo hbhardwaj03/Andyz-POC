@@ -1,4 +1,0 @@
-﻿2017-08-08 09:10:55.085 -0700	START		Running US-Gear-05.script
-2017-08-08 09:10:55.162 -0700	Exception	Processes/Login/InforShortcut	Could Not Open Image: Processes/Login/InforShortcut	2	on_m3_login	M3/Login.script
-2017-08-08 09:10:55.344 -0700	EndTestCase		(Duration:"0.249", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 09:10:55 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
-2017-08-08 09:10:55.570 -0700	FAILURE	Screen_Error.png	File Not Found doubleclick Error - Could Not Open Image: Processes/Login/InforShortcut -- Execution Time 0:00:00 US-Gear-05.script

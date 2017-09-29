@@ -1,8 +1,0 @@
-﻿2017-08-08 13:35:29.118 -0700	START		Running M3/CustomerOrder.script
-2017-08-08 13:35:29.340 -0700	click	M3/Home/SearchField	at (688, 33)	2	on_m3_customerorder	M3/CustomerOrder.script
-2017-08-08 13:35:30.126 -0700	typetext		OIS300	3	on_m3_customerorder	M3/CustomerOrder.script
-2017-08-08 13:35:30.906 -0700	click	SearchSubmit	at (746, 35)	4	on_m3_customerorder	M3/CustomerOrder.script
-2017-08-08 13:35:32.679 -0700	click	NewOrderButton	at (200, 176)	5	on_m3_customerorder	M3/CustomerOrder.script
-2017-08-08 13:35:59.890 -0700	Exception	CustomerNumberField	No Image Found On Screen: "CustomerNumberField"	6	on_m3_customerorder	M3/CustomerOrder.script
-2017-08-08 13:36:00.124 -0700	EndTestCase		(Duration:"31.004", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 13:35:29 -0700", Successes:"0", TestCase:"M3/CustomerOrder.script", Warnings:"0")
-2017-08-08 13:36:00.129 -0700	ABORTED		Execution Time 0:00:31 M3/CustomerOrder.script

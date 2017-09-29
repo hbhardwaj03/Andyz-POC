@@ -1,4 +1,0 @@
-﻿2017-08-08 08:28:00.169 -0700	START		Running Test.script
-2017-08-08 08:28:40.505 -0700	Exception	InforShortcut	No Image Found On Screen: "InforShortcut"	2	on_test	Test.script
-2017-08-08 08:28:40.605 -0700	EndTestCase		(Duration:"40.421", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 08:28:00 -0700", Successes:"0", TestCase:"Test.script", Warnings:"0")
-2017-08-08 08:28:40.847 -0700	FAILURE	Screen_Error.png	Image Not Found doubleclick Error - No Image Found On Screen: "InforShortcut" -- Execution Time 0:00:40 Test.script
