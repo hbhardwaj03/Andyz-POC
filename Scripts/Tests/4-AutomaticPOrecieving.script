@@ -29,10 +29,6 @@ Log "Logging in"
 click "M3/PPS300/Next"
 
 
-typetext controlkey, ("M3/PPS300/received qty,5")
-click "M3/PPS300/Actions"
-click  "M3/PPS300/XClose"
-
 
 "M3/PPS310".open
 "M3/PPS310".poReceipt

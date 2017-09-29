@@ -133,11 +133,12 @@ function checkPackingStatus
 			end if
 			Click "M3/PMS100/Refresh"
 		end repeat		
-
-catch exception
-Log "Image not found"
-end try
-
+		
+		catch e 
+		LogError ("Image not found,e")
+		
+	end try
+	
 end checkPackingStatus
 
 to updatePickList
