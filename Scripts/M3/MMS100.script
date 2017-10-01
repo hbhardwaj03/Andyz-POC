@@ -22,7 +22,6 @@ end searchReqnumber
 
 
 to DeliveryToolBox
-	
 	Click "M3/MMS100/OrderNumber_Line"
 	Wait 3
 	Click "M3/MMS100/Related_1"
@@ -47,7 +46,7 @@ to DeliveryToolBox
 		End If*)
 		
 	Else
-		LogError "Open Delivery Screen Is not visible"
+		throw "Error","failed to open delivery toolbox"
 	End If
 	
 End DeliveryToolBox
@@ -63,10 +62,8 @@ To Picking
 	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
 		LogSuccess "Picking List Screen Appears"
-		
 	Else
-		LogError "Picking List Screen Not appeard"
-		
+		throw "Error","Picking List Screen Not appeard"
 	End If
 	
 	Click "M3/MMS100/ManualPacking"
@@ -74,7 +71,7 @@ To Picking
 	If Imagefound("M3/MMS100/MMS424B1") then
 		LogSuccess "Picking List Pack Manually Screen Appears"
 	else
-		LogError "Pickinglist Pack Manually screen Not Appears"
+		throw "Error","Pickinglist Pack Manually screen Not Appears"
 	End If
 	Click "M3/MMS100/Packageno"
 	TypeText Controlkey, "a"

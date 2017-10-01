@@ -7,18 +7,16 @@ global password
 // initialize login variables
 "Datastore".setLoginVariables 4
 
-set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
-set worksheet to ExcelFile.Worksheet("Sheet1")
-set worksheet1 to Excelfile.Worksheet("Sheet2")
-Put Cell(worksheet, A2) into customerNumber
-Put Cell(worksheet, B2) into coType 
-Put Cell(worksheet, C2) into PO
-Put Cell(worksheet, D2) into itemCode
-Put Cell(worksheet, E2) into quantity
-Put Cell(worksheet,A7) into coNumber 
-Put Cell(worksheet,D2) into product
-Put Cell(worksheet,C6) into Status_Line
-Put Cell(worksheet1,B1) into count
+global customerNumber
+global coType
+global PO
+global itemCode
+global quantity
+global coNumber
+global product
+global count
+
+Datastore.setDataScript3
 
 (************** Start flow ****************)
 "Flows/Application".login username, password
@@ -28,60 +26,17 @@ Put Cell(worksheet1,B1) into count
 put "Flows/OrderEntry".recordCONumber() into coNumber
 "Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
 "M3/OIS101".closeFromOrderLines
-(************** Exit *********************)
-(*"Flows/Application".exitApp*)
 
-(*Log "Logging in"
-"M3/Application".open
-"M3/Login".login username, password*)
+(************** Scheduling ***************)
+put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
 
-"M3/PMS170".open
-"M3/PMS170".lookUp(coNumber)
-if ImageFound("M3/PMS170/Product_OrderLine") then
-	Log "search the product"
-	"M3/PMS170".select_Product product
-else
-	throw "Error","Product field is not Appears"
-end if
-"M3/PMS170".change_line_status Status_Line
-if Imagefound("M3/PMS170/Related") then
-	
-	// As per the Script ZCutomization the schedule number should stars with "300".
-	
-	put Cell(worksheet1, B1) into count
-	put count + 1 into count
-	put count into Cell(worksheet1, "B1")
-	log "Cell value: " & Cell(worksheet1, B1)
-	put 30025092017+(100000000*count) into scheduleNumber
-	set scheduleNumber to scheduleNumber
-	log "New schedule number: " & scheduleNumber
-	
-	"M3/PMS170".create_schedule_number scheduleNumber
-else
-	throw "Error","Schedulenumber is not created"
-	
-end if
-"M3/PMS170".releaseMO
-"M3/PMS170".close
-"M3/MWS150".openMWS150
-"M3/MWS150".search_order_in_MWS150 coNumber
-"M3/MWS150".waitForRONum
-//"M3/MWS150".recordReqnumber
-put "M3/MWS150".recordReqnumber() into ReqNumber
-"M3/MWS150".closeMWS150
-"M3/MMS100".openMMS100
-"M3/MMS100".searchReqnumber ReqNumber
-"M3/MMS100".DeliveryToolBox
-"M3/MMS100".Picking
-"M3/MWS150".openMWS150
-"M3/MWS150".search_order_in_MWS150 coNumber
-"M3/MWS150".ReqOrderStatus
-//"M3/MWS150".RecordPoNumber
-Put "M3/MWS150".RecordPoNumber() into poNumber 
-"Web/KPack".OpenKpack
+(************** Picking ******************)
+put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
+
+(************** Packing ***************)
+(*"Web/KPack".OpenKpack
 "Web/KPack".LoginToKpackZC10041
-"Web/KPack".searchOrderInKpack poNumber
-
+"Web/KPack".searchOrderInKpack poNumber*)
 
 
 

@@ -49,7 +49,7 @@ To select_Product product
 	End If
 End select_Product
 
-To change_line_status Status_Line
+To change_line_status
 	If Imagefound("M3/PMS170/Change_Line") then
 		click "M3/PMS170/Change_Line"
 		If imagefound("M3/PMS170/Structuretype") then
@@ -57,7 +57,7 @@ To change_line_status Status_Line
 			wait 5
 			TypeText controlKey, "a"
 			TypeText deleteKey
-			TypeText Status_Line
+			TypeText "003"
 			TypeText Return
 			wait 2
 			LogSuccess "Line Status Has Changed"
