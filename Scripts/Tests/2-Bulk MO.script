@@ -187,8 +187,8 @@ to generateMOCO
 	//read in necessary data
 	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A3") into UserName
-	Put Cell(worksheet,"B3") into Password
+	Put Cell(worksheet,"A2") into UserName
+	Put Cell(worksheet,"B") into Password
 	Put Cell(worksheet,"C2") into customerNumber
 	Put Cell(worksheet,"D2") into coType
 	Put Cell(worksheet,"E2") into PO
