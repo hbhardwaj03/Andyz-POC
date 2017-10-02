@@ -59,8 +59,6 @@ repeat forever
 	"Flows/Application".exitApp
 end repeat
 
-//post DCA check packed status
-(*"M3/Application".open
 to generateMOCO
 	//log in to AGS
 	Log "Logging in"
