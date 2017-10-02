@@ -47,7 +47,7 @@ repeat forever
 	"M3/PMS100".open
 	"M3/PMS100".lookupSchedule scheduleNumber
 	"M3/PMS100".printShopTraveler scheduleNumber
-	put "M3/PMS100".recordMO() into moNumber
+	put "M3/PMS100".recordMO() into moNum
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
