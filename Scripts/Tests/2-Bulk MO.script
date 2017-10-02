@@ -255,5 +255,7 @@ to doFullRun
 	// implement manufacturing in M3 here first
 	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 	// implement KPack here first
-end doFullRun
+	
+	// close application
+	"Flows/Application".exitApp
 end doFullRun
