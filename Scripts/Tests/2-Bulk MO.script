@@ -71,15 +71,12 @@ to generateMOCO
 	// initialize login variables
 	"Datastore".setLoginVariables 3
 	
-	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"M3/Login".login username, password
 	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "Automation Script #2"
-	
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	
 	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-	
 	"M3/OIS101".closeFromOrderLines
 	
 	Log coNum
@@ -112,6 +109,7 @@ to doFullRun
 	"M3/OIS101".closeFromOrderLines
 	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	
 	Log "Do scheduling"
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNum)
