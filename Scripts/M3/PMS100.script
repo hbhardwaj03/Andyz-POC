@@ -30,6 +30,7 @@ to lookupSchedule scheduleNumber
 	assert "M3/PMS100".checkAllocationStatus is SUCCESS, "Allocation status in PMS100"
 	(*Click (Image:"M3/PMS100/COMOOrderLine", WaitFor:3.3)*)	
 	(*Click (Image:"CloseButton", WaitFor:344)*)	
+	
 end lookupSchedule
 
 to lookup_3 coNumber
@@ -119,16 +120,25 @@ to printShopTraveler scheduleNumber
 end printShopTraveler
 
 function checkAllocationStatus
-	repeat 4 minutes
-		if imageFound(5,"M3/PMS100/COMOOrderLine") then
-			Log "Image found"
-			return SUCCESS
-		end if
-		Click "M3/PMS100/Refresh"
-	end repeat
-	Log "Image not found"
-	return FAIL
+	
+	try
+		repeat 1 minute
+			if imageFound(5,"M3/PMS100/COMOOrderLine") then
+				Log "Image found"
+				return SUCCESS
+			end if 
+			Click "M3/PMS100/Refresh"
+		end repeat
+		Throw "Image not found,exception caught","timeout"
+	catch timeError 
+		LogError ("In Function checkAllocationStatus", timeError)
+		"M3/PMS100".close 
+	end try
+	return fail
+	
 end checkAllocationStatus
+
+
 
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
@@ -160,7 +170,7 @@ function checkPickingStatusImage
 			return SUCCESS
 		end if
 		RightClick "M3/PMS100/MWS420B1OrderLine"
-		Click "M3/PMS100/ConfirmIssuesLink"
+Click "M3/PMS100/ConfirmIssuesLink"
 		Click "M3/PMS100/Refresh"
 	end repeat
 	Log "Image not found"
