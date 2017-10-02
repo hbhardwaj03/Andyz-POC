@@ -17,7 +17,6 @@ To searchReqnumber ReqNumber
 	Typetext ReqNumber
 	Typetext Return
 	Click "M3/MMS100/Apply"
-	
 end searchReqnumber
 
 
@@ -44,16 +43,10 @@ to DeliveryToolBox
 		Else
 			LogError "Picking List Has Not Created"
 		End If*)
-		
 	Else
 		throw "Error","failed to open delivery toolbox"
 	End If
-	
 End DeliveryToolBox
-
-
-
-
 
 To Picking
 	Click "M3/MMS100/DeliveryStatus"
@@ -65,7 +58,6 @@ To Picking
 	Else
 		throw "Error","Picking List Screen Not appeard"
 	End If
-	
 	Click "M3/MMS100/ManualPacking"
 	wait 2
 	If Imagefound("M3/MMS100/MMS424B1") then
@@ -99,6 +91,4 @@ To Picking
 	Else
 		Logerror"Delivery Status Has Not Appeared"
 	End If
-	
-	
 End Picking
