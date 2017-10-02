@@ -131,12 +131,12 @@ to closeFromOrderLines
 	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 15.0, "M3/OIS101/OIS110ETitle"
+	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS100A
-	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
-	WaitFor 8.0, "M3/OIS101/OIS300BTitle"
+	WaitFor 30, "M3/OIS101/OIS300BTitle"
 	Click "M3/OIS101/XCloseButton"
 end closeFromOrderLines
 
@@ -145,10 +145,10 @@ to closeOrderLines
 	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 8.0, "M3/OIS101/OIS110ETitle"
+	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS100A
-	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
 end closeOrderLines
 
