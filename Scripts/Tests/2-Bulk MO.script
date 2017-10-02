@@ -64,19 +64,17 @@ to generateMOCO
 	Log "Logging in"
 	"M3/Application".open
 	
-	//read in necessary data
-	set ExcelFile to workbook(ResourcePath("2-Datastore.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Login")
-	Put Cell(worksheet,"A2") into UserName
-	Put Cell(worksheet,"B2") into Password
-	Put Cell(worksheet,"C2") into customerNumber
-	Put Cell(worksheet,"D2") into coType
-	Put Cell(worksheet,"E2") into PO
+	// declare login variables
+	global username
+	global password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 3
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-	"M3/Login".login UserName, Password
+	"M3/Login".login username, password
 	
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "Automation Script #2"
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
