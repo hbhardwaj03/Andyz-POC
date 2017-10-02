@@ -120,9 +120,8 @@ to printShopTraveler scheduleNumber
 end printShopTraveler
 
 function checkAllocationStatus
-	
 	try
-		repeat 1 minute
+		repeat 5 minute
 			if imageFound(5,"M3/PMS100/COMOOrderLine") then
 				Log "Image found"
 				return SUCCESS
@@ -135,10 +134,7 @@ function checkAllocationStatus
 		"M3/PMS100".close 
 	end try
 	return fail
-	
 end checkAllocationStatus
-
-
 
 to pick
 	WaitFor 8.0, "M3/PMS100/MaterialSts33Allocated"
@@ -170,7 +166,7 @@ function checkPickingStatusImage
 			return SUCCESS
 		end if
 		RightClick "M3/PMS100/MWS420B1OrderLine"
-Click "M3/PMS100/ConfirmIssuesLink"
+		Click "M3/PMS100/ConfirmIssuesLink"
 		Click "M3/PMS100/Refresh"
 	end repeat
 	Log "Image not found"
