@@ -17,10 +17,7 @@ to checkfacility
 end checkfacility
 
 to checkMOStatus
-	
-	
 	repeat 4 minutes
-		
 		if imageFound(60,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
@@ -62,9 +59,13 @@ to finishManufacturing
 	Click"M3/PMS070/Nextbutton"
 	Click "M3/PMS070/LocationField"
 	TypeText "EMB001"
+	Wait 7
 	Click"M3/PMS070/Nextbutton"
+	Wait 7
 	Click "M3/PMS070/BackButton"
+	Wait 7
 	Click "M3/PMS070/BackButton"
+	Wait 7
 end finishManufacturing
 
 to compareOrderandManufQuantity
