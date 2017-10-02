@@ -46,5 +46,6 @@ to doStatusScheduling coNumber, product
 	"M3/MWS150".waitForRONum
 	//"M3/MWS150".recordReqnumber
 	put "M3/MWS150".recordReqnumber() into ReqNumber
+	"M3/MWS150".closeMWS150
 	return ReqNumber
 end doStatusScheduling

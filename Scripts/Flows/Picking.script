@@ -6,7 +6,6 @@
 end doPicking
 
 to doStatusPicking ReqNumber, coNumber
-	"M3/MWS150".closeMWS150
 	"M3/MMS100".openMMS100
 	"M3/MMS100".searchReqnumber ReqNumber
 	"M3/MMS100".DeliveryToolBox
