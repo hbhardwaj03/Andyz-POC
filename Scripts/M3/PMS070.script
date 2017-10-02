@@ -54,7 +54,7 @@ to finishManufacturing
 	TypeText deleteKey
 	TypeText "8000"
 	TypeText Return
-	doubleclick "M3/PMS070/beforechange"
+	Click "M3/PMS070/beforechange"
 	Click "M3/PMS070/Changeforoperation"
 	Click"M3/PMS070/Nextbutton"
 	Click "M3/PMS070/LocationField"
