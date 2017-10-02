@@ -57,15 +57,17 @@ to finishManufacturing
 	Click (Image:"M3/PMS070/beforechange", WaitFor:10)
 	Click "M3/PMS070/Changeforoperation"
 	Click"M3/PMS070/Nextbutton"
-	Click "M3/PMS070/LocationField"
-	TypeText "EMB001"
-	Wait 7
-	Click"M3/PMS070/Nextbutton"
-	Wait 7
+	if imageFound(10,"M3/PMS070/LocationField") then
+		Click "M3/PMS070/LocationField"
+		TypeText "EMB001"
+		Wait 7
+		Click"M3/PMS070/Nextbutton"
+		Wait 7
+	End if
 	Click "M3/PMS070/BackButton"
-	Wait 7
+	Wait 5
 	Click "M3/PMS070/BackButton"
-	Wait 7
+	Wait 5
 end finishManufacturing
 
 to compareOrderandManufQuantity
