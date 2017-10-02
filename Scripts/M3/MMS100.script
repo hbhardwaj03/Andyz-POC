@@ -19,6 +19,30 @@ To searchReqnumber ReqNumber
 	Click "M3/MMS100/Apply"
 end searchReqnumber
 
+to pickAlt
+	Click "M3/MMS100/OrderNumber_Line"
+	Wait 3
+	Click "M3/MMS100/Related_1"
+	wait 3
+	click "M3/MMS100/DeliveryToolbox"
+	Click "M3/MMS100/ReleaseforPick"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
+	Click "M3/PMS100/50PickingListsCreated"
+	Click "M3/PMS100/PickingListsLink"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "="
+	end repeat
+	KeyUp ControlKey
+	Click "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/ConfirmIssuesLink"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "-"
+	end repeat
+	KeyUp ControlKey
+end pickAlt
 
 to DeliveryToolBox
 	Click "M3/MMS100/OrderNumber_Line"
