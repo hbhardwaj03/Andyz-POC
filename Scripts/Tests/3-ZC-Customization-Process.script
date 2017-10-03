@@ -16,7 +16,7 @@ repeat forever
 	
 	(************** Set up data *******************)
 	//initialize data variables
-	Datastore.setSimpleData "2-data.xlsx", "Sheet1", dataIndex
+	Datastore.setSimpleData "3-data.xlsx", "Sheet1", dataIndex
 	
 	//increment counter
 	put dataIndex + 1 into dataIndex
@@ -31,10 +31,10 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Scheduling *********************)
-	put "Flows/Scheduling".doStatusScheduling(coNum,product) into ReqNumber
+	put "Flows/Scheduling".doStatusScheduling(coNum,product) into reqNum
 	
 	(************** Picking, Packing, Shipping *********)
-	put "Flows/Picking".doStatusPicking(ReqNum,coNumber) into poNumber
+	put "Flows/Picking".doStatusPicking(reqNum,coNum) into poNum
 	
 	(************** Exit ***************************)
 	"Flows/Application".exitApp
