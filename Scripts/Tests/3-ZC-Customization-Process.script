@@ -30,6 +30,38 @@ put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
 "Flows/Application".exitApp
 
 
+to doFullRun
+	// declare login variables
+	global username, password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 4
+	
+	global customerNumber, coType, PO, itemCode
+	global quantity, coNumber, product, count
+	
+	Datastore.setDataScript3
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry *********************)
+	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	put "Flows/OrderEntry".recordCONumber() into coNumber
+	"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
+	"M3/OIS101".closeFromOrderLines
+	
+	(************** Scheduling *********************)
+	put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
+	
+	(************** Picking, Packing, Shipping *********)
+	put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+end doFullRun
+
+
 
 
 
