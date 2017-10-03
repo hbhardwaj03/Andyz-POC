@@ -1,4 +1,4 @@
-﻿to enterNewOrder customerNumber, coType, PO
+﻿to enterNewOrder customerNumber, coType, PO, Priority
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".startNewOrder
@@ -10,7 +10,7 @@
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E
+	"M3/OIS300".submitOIS100E priority
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 

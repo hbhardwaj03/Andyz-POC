@@ -84,8 +84,18 @@ to submitOIS100H
 	MoveTo "Corner"
 end submitOIS100H
 
-to submitOIS100E
-	(*WaitFor 8.0, "M3/OIS300/OIS100ETitle"*)
+to submitOIS100E priority
+	if priority is not empty then
+		if priority is "7" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			TypeText upArrow
+			TypeText upArrow
+			TypeText return
+		else
+			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
+		end if
+	end if
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
 end submitOIS100E
