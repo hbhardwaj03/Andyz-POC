@@ -5,26 +5,13 @@ Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
 //declare test variables
-global username
-global password
-global customerNum
-global coType
-global PO
-global itemCode
-global productQuantity
-global DCAUser
-global DCAPswrd
+global username, password, customerNum, coType, PO
+global itemCode, productQuantity, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex
-global custNum
-global custPO
-global tag
-global delTerm
-global delMeth
-global style
-global color
-global ConfigCode
+global dataIndex, custNum, custPO, tag, delTerm
+global delMeth, style, color, ConfigCode
+
 //initialize test variables
 "DataStore".setGlobalsScript1
 
@@ -40,7 +27,6 @@ repeat forever
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
-	
 	
 	//initialize data variables (sets global data variables and logs them)
 	DataStore.setDataScript1 dataIndex
@@ -105,26 +91,12 @@ end logData
 
 to doFullRun
 	//declare test variables
-	global username
-	global password
-	global customerNum
-	global coType
-	global PO
-	global itemCode
-	global productQuantity
-	global DCAUser
-	global DCAPswrd
+	global username, password, customerNum, coType, PO
+	global itemCode, productQuantity, DCAUser, DCAPswrd
 	
 	//declare data variables
-	global dataIndex
-	global custNum
-	global custPO
-	global tag
-	global delTerm
-	global delMeth
-	global style
-	global color
-	global ConfigCode
+	global dataIndex, custNum, custPO, tag, delTerm
+	global delMeth, style, color, ConfigCode
 	//initialize test variables
 	"DataStore".setGlobalsScript1
 	
@@ -152,7 +124,6 @@ to doFullRun
 	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
-	
 end doFullRun
 
 
