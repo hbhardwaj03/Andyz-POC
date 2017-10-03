@@ -40,8 +40,8 @@ to pickAlt
 	KeyDown ControlKey
 	repeat 6 times
 		TypeText "-"
-	end repeat
-	KeyUp ControlKey
+end repeat
+KeyUp ControlKey
 end pickAlt
 
 to DeliveryToolBox
@@ -75,6 +75,11 @@ End DeliveryToolBox
 To Picking
 	Click "M3/MMS100/DeliveryStatus"
 	wait 2
+	
+	Click "M3/PMS100/ReleaseforPickLink"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
+	Click "M3/PMS100/50PickingListsCreated"
+	
 	Click "M3/MMS100/PickingLists"
 	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
