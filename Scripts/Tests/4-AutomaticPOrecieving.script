@@ -2,7 +2,7 @@
 
 
 set index to index
-put "3" into index
+put "4" into index
 log index
 
 // fetching username,password and po number from excelfile

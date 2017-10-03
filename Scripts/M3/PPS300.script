@@ -9,7 +9,7 @@ to poReceipt poNumber
 	Click "M3/PPS300/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText "06Y"
+	TypeText "06A"
 	//TypeText Return
 	//Click "M3/PPS300/ResponsibleField"
 	//TypeText controlKey, "a"
@@ -22,9 +22,6 @@ to poReceipt poNumber
 	TypeText Return
 end poReceipt
 
-to close
-
-end close
 
 to delynoteno poNumber
 	click "M3/PPS300/Delynoteno"
