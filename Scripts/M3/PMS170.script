@@ -68,13 +68,15 @@ To change_line_status
 			end if
 			wait 10*)
 			
-			Else
+		Else
 			throw "Error","Could not find M3/PMS170/Structuretype image in M3/PMS170 script, function change_line_status"
 		End If        
-		else
+	else
 		throw "Error","Could not find M3/PMS170/Change_Line image in M3/PMS170 script, function change_line_status"
-		
 	End If
+	if ImageFound("M3/PMS170/PMS170ELabel")then
+		click "M3/PMS170/Next_Image"
+	end if
 End change_line_status
 
 
