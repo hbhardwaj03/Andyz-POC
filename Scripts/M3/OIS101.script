@@ -63,11 +63,15 @@ end enterItemQuantity
 
 to EnterTransResonCode TranctionResonCode
 	Click "M3/OIS101/TransactionReason"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	TypeText TranctionResonCode
 end EnterTransResonCode
 
 to BlanketAgreement BlanketAgreement
 	Click "M3/OIS101/BlanketAgreement"
+	TypeText controlKey, "a"
+	TypeText deleteKey
 	TypeText BlanketAgreement
 end BlanketAgreement
 
@@ -98,6 +102,8 @@ to configuratorA
 	Click "M3/OIS101/OrderNotesButton"
 	Click "M3/OIS101/DoubleStrapButton"
 end configuratorA
+
+
 
 to configuratorNewEra
 	Wait 5

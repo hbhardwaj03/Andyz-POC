@@ -178,7 +178,7 @@ to closeFromDeliveryToolbox
 	Click "M3/OIS300/CloseButton"
 	MoveTo "Corner"
 	Click "M3/OIS300/CloseButton"
-MoveTo "Corner"
+	MoveTo "Corner"
 end closeFromDeliveryToolbox
 
 to recordDeliveryNumber
