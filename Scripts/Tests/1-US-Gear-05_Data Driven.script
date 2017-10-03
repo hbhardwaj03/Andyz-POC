@@ -29,7 +29,7 @@ global ConfigCode
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-put 6 into dataIndex
+put 3 into dataIndex
 
 (************** Start Test ***************)
 (*repeat forever
