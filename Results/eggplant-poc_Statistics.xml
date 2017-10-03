@@ -8,4 +8,12 @@
   <LastRun>2017-09-29 12:42:59 -0700</LastRun>
   <TotalTimeOnSuccess>102.945000</TotalTimeOnSuccess>
  </script>
+ <script name="Tests/3-ZC-Customization-Process">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2017-10-03 04:05:14 -0400</FirstRun>
+  <LastRun>2017-10-03 04:05:14 -0400</LastRun>
+  <TotalTimeOnSuccess>601.786000</TotalTimeOnSuccess>
+ </script>
 </statistics>
