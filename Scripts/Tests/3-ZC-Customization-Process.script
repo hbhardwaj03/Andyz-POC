@@ -1,20 +1,13 @@
 ﻿(*ZC Customization Process*)
 
 // declare login variables
-global username
-global password
+global username, password
 
 // initialize login variables
 "Datastore".setLoginVariables 4
 
-global customerNumber
-global coType
-global PO
-global itemCode
-global quantity
-global coNumber
-global product
-global count
+global customerNumber, coType, PO, itemCode
+global quantity, coNumber, product, count
 
 Datastore.setDataScript3
 
