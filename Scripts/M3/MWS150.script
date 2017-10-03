@@ -17,9 +17,11 @@ to search_order_in_MWS150 coNumber
 	click "M3/MWS150/Apply"
 	wait 5
 	Click "M3/MWS150/Refresh"
-	wait 20
+	wait 50
 	Click "M3/MWS150/Refresh2"
-	wait 20
+	wait 40
+	Click "M3/MWS150/Refresh2"
+	wait 30
 	Click "M3/MWS150/Refresh2"
 	
 end search_order_in_MWS150

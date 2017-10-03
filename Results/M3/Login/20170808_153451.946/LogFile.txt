@@ -1,3 +1,0 @@
-﻿2017-08-08 15:34:51.951 -0700	START		Running M3/Login.script
-2017-08-08 15:34:51.956 -0700	EndTestCase		(Duration:"-0", Errors:"0", Exceptions:"0", StartTime:"2017-08-08 15:34:51 -0700", Successes:"1", TestCase:"M3/Login.script", Warnings:"0")
-2017-08-08 15:34:51.997 -0700	SUCCESS		Execution Time 0:00:00 M3/Login.script

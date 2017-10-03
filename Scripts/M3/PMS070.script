@@ -17,10 +17,7 @@ to checkfacility
 end checkfacility
 
 to checkMOStatus
-	
-	
 	repeat 4 minutes
-		
 		if imageFound(60,"M3/PMS070/status60") then
 			Log "MO status is 60"
 			return SUCCESS
@@ -57,14 +54,20 @@ to finishManufacturing
 	TypeText deleteKey
 	TypeText "8000"
 	TypeText Return
-	doubleclick "M3/PMS070/beforechange"
+	Click (Image:"M3/PMS070/beforechange", WaitFor:10)
 	Click "M3/PMS070/Changeforoperation"
 	Click"M3/PMS070/Nextbutton"
-	Click "M3/PMS070/LocationField"
-	TypeText "EMB001"
-	Click"M3/PMS070/Nextbutton"
+	if imageFound(10,"M3/PMS070/LocationField") then
+		Click "M3/PMS070/LocationField"
+		TypeText "EMB001"
+		Wait 7
+		Click"M3/PMS070/Nextbutton"
+		Wait 7
+	End if
 	Click "M3/PMS070/BackButton"
+	Wait 5
 	Click "M3/PMS070/BackButton"
+	Wait 5
 end finishManufacturing
 
 to compareOrderandManufQuantity

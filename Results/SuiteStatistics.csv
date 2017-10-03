@@ -1,3 +1,3 @@
 ﻿Script,Last Status,Runs,Fails,First Run,Last Run,Avg Time(Success)
-M3/PMS170,Success,3,0,2017-09-29 06:27:13 -0400,2017-09-29 06:28:15 -0400,0:00:00
-Tests/2-Bulk MO,Failure,1,1,2017-09-29 06:24:45 -0400,2017-09-29 06:24:45 -0400,0:00:00
+Tests/ResultesTesting,Success,1,0,2017-09-29 12:42:59 -0700,2017-09-29 12:42:59 -0700,0:01:42
+Tests/3-ZC-Customization-Process,Success,1,0,2017-10-03 04:05:14 -0400,2017-10-03 04:05:14 -0400,0:10:01

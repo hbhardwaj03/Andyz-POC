@@ -1,3 +1,0 @@
-﻿2017-08-09 15:17:52.491 -0700	START		Running Validation.script
-2017-08-09 15:17:52.568 -0700	EndTestCase		(Duration:"0.065", Errors:"1", Exceptions:"0", StartTime:"2017-08-09 15:17:52 -0700", Successes:"0", TestCase:"Validation.script", Warnings:"0")
-2017-08-09 15:17:52.665 -0700	FAILURE		Worksheet Error CellRange() requires a worksheet to read from (got: (null)) -- Execution Time 0:00:00 Validation.script

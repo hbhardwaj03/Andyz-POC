@@ -24,7 +24,8 @@ to doStatusScheduling coNumber, product
 	if Imagefound("M3/PMS170/Related") then
 		
 		// As per the Script ZCutomization the schedule number should stars with "300".
-		
+		set ExcelFile to workbook(ResourcePath("ZCustomaization.xlsx"))
+		set worksheet1 to Excelfile.Worksheet("Sheet2")
 		put Cell(worksheet1, B1) into count
 		put count + 1 into count
 		put count into Cell(worksheet1, "B1")
@@ -45,5 +46,6 @@ to doStatusScheduling coNumber, product
 	"M3/MWS150".waitForRONum
 	//"M3/MWS150".recordReqnumber
 	put "M3/MWS150".recordReqnumber() into ReqNumber
+	"M3/MWS150".closeMWS150
 	return ReqNumber
 end doStatusScheduling

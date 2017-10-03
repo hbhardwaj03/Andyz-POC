@@ -12,9 +12,8 @@ Put Cell(worksheet, A2) into customerNumber
 Put Cell(worksheet, B2) into coType
 Put Cell(worksheet, C2) into  PO
 Put Cell(worksheet, D2) into TagField
-Put Cell(worksheet, "F2") into DeliveryMethod
 Put Cell(worksheet, E2) into DeliveryTerm 
-//Put Cell(worksheet, F2) into DeliveryMethod
+Put Cell(worksheet, "F2") into DeliveryMethod
 Put Cell(worksheet, G2) into itemCode
 Put Cell(worksheet, H2) into quantity
 Put Cell(worksheet, I2) into PromoCod
@@ -25,7 +24,7 @@ Put Cell(worksheet, K2) into BlanketAgreement
 "Flows/Application".login username, password
 
 (************** Order entry ***************)
-"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod
+"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
 put "Flows/OrderEntry".recordCONumber() into coNumber
 "Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
 "M3/OIS101".closeFromOrderLines
