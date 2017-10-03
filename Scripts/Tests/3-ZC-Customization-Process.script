@@ -29,6 +29,26 @@ put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
 (************** Exit ***************************)
 "Flows/Application".exitApp
 
+to generateZCOrder
+	// declare login variables
+	global username, password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 4
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry *********************)
+	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
+	put "Flows/OrderEntry".recordCONumber() into coNumber
+	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
+	"M3/OIS101".closeFromOrderLines
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+	Log coNumber
+end generateZCOrder
 
 to doFullRun
 	// declare login variables
@@ -37,18 +57,13 @@ to doFullRun
 	// initialize login variables
 	"Datastore".setLoginVariables 4
 	
-	global customerNumber, coType, PO, itemCode
-	global quantity, coNumber, product, count
-	
-	Datastore.setDataScript3
-	
 	(************** Start flow **********************)
 	"Flows/Application".login username, password
 	
 	(************** Order entry *********************)
-	"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
+	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
 	put "Flows/OrderEntry".recordCONumber() into coNumber
-	"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
+	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
 	"M3/OIS101".closeFromOrderLines
 	
 	(************** Scheduling *********************)
