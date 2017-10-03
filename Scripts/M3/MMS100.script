@@ -17,9 +17,32 @@ To searchReqnumber ReqNumber
 	Typetext ReqNumber
 	Typetext Return
 	Click "M3/MMS100/Apply"
-	
 end searchReqnumber
 
+to pickAlt
+	Click "M3/MMS100/OrderNumber_Line"
+	Wait 3
+	Click "M3/MMS100/Related_1"
+	wait 3
+	click "M3/MMS100/DeliveryToolbox"
+	Click "M3/MMS100/ReleaseforPick"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
+	Click "M3/PMS100/50PickingListsCreated"
+	Click "M3/PMS100/PickingListsLink"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "="
+	end repeat
+	KeyUp ControlKey
+	Click "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/ConfirmIssuesLink"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "-"
+end repeat
+KeyUp ControlKey
+end pickAlt
 
 to DeliveryToolBox
 	Click "M3/MMS100/OrderNumber_Line"
@@ -44,20 +67,19 @@ to DeliveryToolBox
 		Else
 			LogError "Picking List Has Not Created"
 		End If*)
-		
 	Else
 		throw "Error","failed to open delivery toolbox"
 	End If
-	
 End DeliveryToolBox
-
-
-
-
 
 To Picking
 	Click "M3/MMS100/DeliveryStatus"
 	wait 2
+	
+	Click "M3/PMS100/ReleaseforPickLink"
+	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
+	Click "M3/PMS100/50PickingListsCreated"
+	
 	Click "M3/MMS100/PickingLists"
 	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
@@ -65,7 +87,6 @@ To Picking
 	Else
 		throw "Error","Picking List Screen Not appeard"
 	End If
-	
 	Click "M3/MMS100/ManualPacking"
 	wait 2
 	If Imagefound("M3/MMS100/MMS424B1") then
@@ -99,6 +120,4 @@ To Picking
 	Else
 		Logerror"Delivery Status Has Not Appeared"
 	End If
-	
-	
 End Picking

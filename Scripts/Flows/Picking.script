@@ -8,11 +8,12 @@ end doPicking
 to doStatusPicking ReqNumber, coNumber
 	"M3/MMS100".openMMS100
 	"M3/MMS100".searchReqnumber ReqNumber
+	(*"M3/MMS100".pickAlt*)
 	"M3/MMS100".DeliveryToolBox
 	"M3/MMS100".Picking
-	"M3/MWS150".openMWS150
+	(*	"M3/MWS150".openMWS150
 	"M3/MWS150".search_order_in_MWS150 coNumber
 	"M3/MWS150".ReqOrderStatus
-	Put "M3/MWS150".RecordPoNumber() into poNumber
+	Put "M3/MWS150".RecordPoNumber() into poNumber*)
 	return poNumber
 end doStatusPicking

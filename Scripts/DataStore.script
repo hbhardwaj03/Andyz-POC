@@ -89,6 +89,13 @@ to setDataScript2 dataIndex
 	put Cell(worksheet, "A" & dataIndex) into coNum
 end setDataScript2
 
+to setSimpleData fileName, sheetName, dataIndex
+	global data
+	set excelFile to workbook(ResourcePath(fileName))
+	set worksheet to ExcelFile.Worksheet(sheetName)
+	put Cell(worksheet, "A" & dataIndex) into data
+end setSimpleData
+
 to setDataScript3
 	global customerNumber
 	global coType
