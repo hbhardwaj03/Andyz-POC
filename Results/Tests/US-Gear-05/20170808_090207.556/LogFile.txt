@@ -1,3 +1,0 @@
-﻿2017-08-08 09:02:07.561 -0700	START		Running US-Gear-05.script
-2017-08-08 09:02:07.566 -0700	EndTestCase		(Duration:"-0", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 09:02:07 -0700", Successes:"0", TestCase:"US-Gear-05.script", Warnings:"0")
-2017-08-08 09:02:07.830 -0700	FAILURE	Screen_Error.png	SenseTalk Compiler Exception in us_gear_05:\nSyntax Error at line 1: Syntax Error - can't understand "/" at or near character 3 -- Execution Time 0:00:00 US-Gear-05.script

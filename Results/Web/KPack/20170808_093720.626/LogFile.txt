@@ -1,5 +1,0 @@
-﻿2017-08-08 09:37:20.632 -0700	START		Running Web/KPack.script
-2017-08-08 09:37:20.867 -0700	click	image0001	at (89, 749)	1	on_web_kpack	Web/KPack.script
-2017-08-08 09:37:21.761 -0700	doubleclick	httpwwwmsncomocidiet	at (155, 87)	2	on_web_kpack	Web/KPack.script
-2017-08-08 09:37:21.863 -0700	EndTestCase		(Duration:"1.228", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 09:37:20 -0700", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
-2017-08-08 09:37:21.978 -0700	FAILURE	Screen_Error.png	STInvalidNumber Value is not a number: 'ushqkptst' -- Execution Time 0:00:01 Web/KPack.script

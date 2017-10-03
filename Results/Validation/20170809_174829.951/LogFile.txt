@@ -1,3 +1,0 @@
-﻿2017-08-09 17:48:29.954 -0700	START		Running Validation.script
-2017-08-09 17:48:30.039 -0700	EndTestCase		(Duration:"0.073", Errors:"1", Exceptions:"0", StartTime:"2017-08-09 17:48:29 -0700", Successes:"0", TestCase:"Validation.script", Warnings:"0")
-2017-08-09 17:48:30.115 -0700	FAILURE		STUnknownMessage ERROR: No Such Function: 'worksheet1' -- Execution Time 0:00:01 Validation.script

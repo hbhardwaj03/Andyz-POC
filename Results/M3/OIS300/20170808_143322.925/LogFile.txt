@@ -1,3 +1,0 @@
-﻿2017-08-08 14:33:22.928 -0700	START		Running M3/CustomerOrder.script
-2017-08-08 14:33:45.545 -0700	EndTestCase		(Duration:"22.611", Errors:"1", Exceptions:"0", StartTime:"2017-08-08 14:33:22 -0700", Successes:"0", TestCase:"M3/CustomerOrder.script", Warnings:"0")
-2017-08-08 14:33:45.547 -0700	ABORTED		Execution Time 0:00:23 M3/CustomerOrder.script
