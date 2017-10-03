@@ -38,9 +38,8 @@ put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
 "Web/KPack".LoginToKpackZC10041
 "Web/KPack".searchOrderInKpack poNumber*)
 
-
-
-
+(************** Exit *********************)
+"Flows/Application".exitApp
 
 
 
