@@ -14,7 +14,7 @@
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
-to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod
+to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".startNewOrder
@@ -32,6 +32,8 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E
 	//"M3/OIS300".submitOIS102H
+	"M3/OIS101".EnterTransResonCode TranctionResonCode
+	"M3/OIS101".BlanketAgreement BlanketAgreement
 end GenericOrderEntry
 
 to recordCONumber
