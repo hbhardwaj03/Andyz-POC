@@ -14,12 +14,12 @@ end doScheduling
 to doStatusScheduling coNumber, product
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNumber)
-	if ImageFound("M3/PMS170/Product_OrderLine") then
+	(*	if ImageFound("M3/PMS170/Product_OrderLine") then
 		Log "search the product"
 		"M3/PMS170".select_Product product
 	else
 		throw "Error","Product field is not Appears"
-	end if
+	end if*)
 	"M3/PMS170".change_line_status
 	if Imagefound("M3/PMS170/Related") then
 		
