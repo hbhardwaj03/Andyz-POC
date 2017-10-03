@@ -101,4 +101,56 @@ to logData
 	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color
 end logData
 
+to doFullRun
+	//declare test variables
+	global username
+	global password
+	global customerNum
+	global coType
+	global PO
+	global itemCode
+	global productQuantity
+	global DCAUser
+	global DCAPswrd
+	
+	//declare data variables
+	global dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	global ConfigCode
+	//initialize test variables
+	"DataStore".setGlobalsScript1
+	
+	//initialize data line counter
+	put 3 into dataIndex
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	//if custNum is empty then exit repeat
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	
+end doFullRun
+
 
