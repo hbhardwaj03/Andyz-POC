@@ -50,6 +50,7 @@ To select_Product product
 End select_Product
 
 To change_line_status
+	Click "M3/PMS170/OrderLine"
 	If Imagefound("M3/PMS170/Change_Line") then
 		click "M3/PMS170/Change_Line"
 		If imagefound("M3/PMS170/Structuretype") then
@@ -67,11 +68,11 @@ To change_line_status
 			end if
 			wait 10*)
 			
-		Else
-			LogError "Line Status has Not changed"
+			Else
+			throw "Error","Could not find M3/PMS170/Structuretype image in M3/PMS170 script, function change_line_status"
 		End If        
-	else
-		LogError "Edit button is Disabled"
+		else
+		throw "Error","Could not find M3/PMS170/Change_Line image in M3/PMS170 script, function change_line_status"
 		
 	End If
 End change_line_status
