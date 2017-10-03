@@ -6,28 +6,39 @@ global username, password
 // initialize login variables
 "Datastore".setLoginVariables 4
 
-global customerNumber, coType, PO, itemCode
-global quantity, coNumber, product, count
+global data
 
-Datastore.setDataScript3
+// initialize data line counter
+put 2 into dataIndex
 
-(************** Start flow **********************)
-"Flows/Application".login username, password
-
-(************** Order entry *********************)
-"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
-put "Flows/OrderEntry".recordCONumber() into coNumber
-"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
-"M3/OIS101".closeFromOrderLines
-
-(************** Scheduling *********************)
-put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
-
-(************** Picking, Packing, Shipping *********)
-put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
-
-(************** Exit ***************************)
-"Flows/Application".exitApp
+(************** Start Test *********************)
+repeat forever
+	
+	(************** Set up data *******************)
+	//initialize data variables
+	Datastore.setSimpleData "2-data.xlsx", "Sheet1", dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if data is empty then exit repeat
+	
+	put data into coNum
+	Log "CO# " & coNum
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Scheduling *********************)
+	put "Flows/Scheduling".doStatusScheduling(coNum,product) into ReqNumber
+	
+	(************** Picking, Packing, Shipping *********)
+	put "Flows/Picking".doStatusPicking(ReqNum,coNumber) into poNumber
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+end repeat
 
 to generateZCOrder
 	// declare login variables
