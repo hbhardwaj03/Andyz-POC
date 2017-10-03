@@ -18,27 +18,22 @@ global count
 
 Datastore.setDataScript3
 
-(************** Start flow ****************)
+(************** Start flow **********************)
 "Flows/Application".login username, password
 
-(************** Order entry ***************)
+(************** Order entry *********************)
 "Flows/OrderEntry".enterNewOrder customerNumber, coType, PO
 put "Flows/OrderEntry".recordCONumber() into coNumber
 "Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
 "M3/OIS101".closeFromOrderLines
 
-(************** Scheduling ***************)
+(************** Scheduling *********************)
 put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
 
-(************** Picking ******************)
+(************** Picking, Packing, Shipping *********)
 put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
 
-(************** Packing ***************)
-(*"Web/KPack".OpenKpack
-"Web/KPack".LoginToKpackZC10041
-"Web/KPack".searchOrderInKpack poNumber*)
-
-(************** Exit *********************)
+(************** Exit ***************************)
 "Flows/Application".exitApp
 
 
