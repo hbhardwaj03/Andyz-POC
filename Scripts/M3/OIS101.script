@@ -75,6 +75,49 @@ to BlanketAgreement BlanketAgreement
 	TypeText BlanketAgreement
 end BlanketAgreement
 
+To setPromocode
+
+	Click "M3/OIS101/Actions"
+	Wait 2
+	Click "M3/OIS101/Settinqs"
+	wait 2
+	Click "M3/OIS101/InputAlternativePanelB"
+	Click "M3/OIS101/9WhsItpprom"
+	Click "M3/OIS101/Next"
+	Wait 2
+End setPromocode
+
+To EnterPromoCode PromoCod
+	Click "M3/OIS101/Prom"
+	TypeText PromoCod
+End EnterPromoCode
+
+to getPromocodevalue
+	Click "M3/OIS101/SelectItemNum"
+	Click "M3/OIS101/PromoDiscValue"
+	put  ImageLocation ( "M3/OIS101/PromoDiscValue") into loc
+	log loc
+	Put loc+(-56,-10) into L1
+	Put loc+(50,10) into L2
+	put  ReadText((L1), (L2)) into PromoDiscValue
+	
+	Log PromoDiscValue
+	If PromoDiscValue <> "" then
+		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
+		Else
+		LogError "Promo Code was Not Applied to the Item"
+		
+		End If
+		return PromoDiscValue
+		
+	end getPromocodevalue
+	
+To ChangeViewInOis101
+	Click "M3/OIS101/View"
+	Click "M3/OIS101/GBL01004PriceDiscounts"
+End ChangeViewInOis101
+
+
 to enterItemColor
 	Click (130,300)
 	TypeText "1"

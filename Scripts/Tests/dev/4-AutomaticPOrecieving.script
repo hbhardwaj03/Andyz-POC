@@ -2,7 +2,7 @@
 
 
 set index to index
-put "4" into index
+put "5" into index
 log index
 
 // fetching username,password and po number from excelfile
@@ -20,7 +20,6 @@ Log "Logging in"
 "M3/Login".login username, password
 
 
-
 //2.Look up PO number
 
 "M3/PPS300".openpoNumber
@@ -28,27 +27,20 @@ Log "Logging in"
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
 
-
-
-"M3/PPS310".open
-"M3/PPS310".poReceipt
-
 //3.Enter quantities received
 click "M3/PPS300/recievedquantityfield"
 TypeText controlKey, "a"
 TypeText deleteKey
 TypeText "84"
 TypeText Return
+wait 2
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
-click "M3/PPS300/Receivingno"
-set receivingnum to ReadText(("receivnum_A","receivnum_B"))
-put receivingnum into receivingnum
-log receivingnum // recording receiving number here
+"M3/PPS300".recordreceivingno
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
-
+click "M3/PPS300/XClose"
 //4.Inspection approval
 "M3/PPS310".open
 click "M3/PPS300/Receivingno_1"
