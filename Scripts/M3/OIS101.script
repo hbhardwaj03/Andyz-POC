@@ -75,6 +75,23 @@ to BlanketAgreement BlanketAgreement
 	TypeText BlanketAgreement
 end BlanketAgreement
 
+To setPromocode
+
+	Click "M3/OIS101/Actions"
+	Wait 2
+	Click "M3/OIS101/Settinqs"
+	wait 2
+	Click "M3/OIS101/InputAlternativePanelB"
+	Click "M3/OIS101/9WhsItpprom"
+	Click "M3/OIS101/Next"
+	Wait 2
+End setPromocode
+
+To EnterPromoCode PromoCod
+	Click "M3/OIS101/Prom"
+	TypeText PromoCod
+End EnterPromoCode
+
 to enterItemColor
 	Click (130,300)
 	TypeText "1"

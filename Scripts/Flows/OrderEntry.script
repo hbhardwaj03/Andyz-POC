@@ -65,3 +65,15 @@ to enterProductAndQuantity itemCode, quantity
 	"M3/OIS101".enterItemQuantity quantity
 	"M3/Configurations".config002
 end enterProductAndQuantity
+
+TO EnterProductWithPromo itemCode, quantity, PromoCod
+	
+	"M3/OIS101".setPromocode
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	"M3/OIS101".EnterPromoCode PromoCod
+END EnterProductWithPromo
+
+
+
+
