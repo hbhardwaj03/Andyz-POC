@@ -55,17 +55,21 @@ to TagField TagField
 end TagField
 
 to DeliveryTerm deliveryTerm
-	Click "M3/OIS300/DeliveryTerms"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText deliveryTerm
+	if deliveryTerm is not empty then
+		Click "M3/OIS300/DeliveryTerms"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText deliveryTerm
+	end if
 end DeliveryTerm
 
 To DeliveryMethod deliveryMethod
-	Click "M3/OIS300/DeliveryMethod"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText deliveryMethod
+	if deliveryMethod is not empty then
+		Click "M3/OIS300/DeliveryMethod"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText deliveryMethod
+	end if
 End DeliveryMethod
 
 to submitOIS100G
