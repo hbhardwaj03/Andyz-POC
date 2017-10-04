@@ -1,0 +1,99 @@
+﻿(*ZC Customization Process*)
+
+// declare login variables
+global username, password
+
+// initialize login variables
+"Datastore".setLoginVariables 4
+
+global data
+
+// initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test *********************)
+repeat forever
+	
+	(************** Set up data *******************)
+	//initialize data variables
+	Datastore.setSimpleData "3-data.xlsx", "Sheet1", dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if data is empty then exit repeat
+	
+	put data into coNum
+	Log "CO# " & coNum
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Scheduling *********************)
+	put "Flows/Scheduling".doStatusScheduling(coNum,product) into reqNum
+	
+	(************** Picking, Packing, Shipping *********)
+	put "Flows/Picking".doStatusPicking(reqNum,coNum) into poNum
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+end repeat
+
+to generateZCOrder
+	// declare login variables
+	global username, password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 4
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry *********************)
+	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
+	put "Flows/OrderEntry".recordCONumber() into coNumber
+	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
+	"M3/OIS101".closeFromOrderLines
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+	Log coNumber
+end generateZCOrder
+
+to doFullRun
+	// declare login variables
+	global username, password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 4
+	
+	(************** Start flow **********************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry *********************)
+	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
+	put "Flows/OrderEntry".recordCONumber() into coNumber
+	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
+	"M3/OIS101".closeFromOrderLines
+	
+	(************** Scheduling *********************)
+	put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
+	
+	(************** Picking, Packing, Shipping *********)
+	put "Flows/Picking".doStatusPicking(ReqNumber,coNumber) into poNumber
+	
+	(************** Exit ***************************)
+	"Flows/Application".exitApp
+end doFullRun
+
+
+
+
+
+
+
+
+
+
+

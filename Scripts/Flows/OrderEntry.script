@@ -1,4 +1,4 @@
-﻿to enterNewOrder customerNumber, coType, PO
+﻿to enterNewOrder customerNumber, coType, PO, Priority
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".startNewOrder
@@ -10,7 +10,7 @@
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E
+	"M3/OIS300".submitOIS100E priority
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
@@ -46,18 +46,22 @@ end recordCONumber
 
 to enterProduct itemCode,ConfigurationNo
 	"M3/OIS101".enterItemCode itemCode
-	//"M3/OIS101".enterItemCode "TB7SX6CC"
-	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
-		(*"M3/OIS101".enterItemQuantity productQuantity*)
-		"M3/OIS101".enterItemColor
-		"M3/Configurations".config001
-	else if ConfigCode="ConfigB6"
-		"M3/Configurations".ConfigB4
-	else
-		"M3/OIS101".enterItemColor
-		"M3/OIS101".configuratorA
-	end if
-	"M3/OIS101".closeFromOrderLines
+	
+	//
+	//	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+	(*"M3/OIS101".enterItemQuantity productQuantity*)
+	"M3/OIS101".enterItemColor
+	//"M3/Configurations".config001
+"M3/Configurations".& ConfigurationNo
+//// added above line to read config from excel directly
+//else if ConfigurationNo="ConfigB6"
+//"M3/OIS101".enterItemColor
+//"M3/Configurations".ConfigB6
+//else
+//"M3/OIS101".enterItemColor
+//"M3/OIS101".configuratorA
+//end if
+"M3/OIS101".closeFromOrderLines
 end enterProduct
 
 to enterProductAndQuantity itemCode, quantity
