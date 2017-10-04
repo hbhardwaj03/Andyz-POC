@@ -37,4 +37,5 @@ to recordreceivingno
 	Put loc+(100,20) into L2
 	put  ReadText((L1), (L2)) into ReciveNumber
 	Log ReciveNumber
+	return ReciveNumber
 end recordreceivingno

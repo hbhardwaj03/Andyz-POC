@@ -37,7 +37,7 @@ wait 2
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
-"M3/PPS300".recordreceivingno
+Put "M3/PPS300".recordreceivingno() into ReciveNumber
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
 click "M3/PPS300/XClose"
@@ -46,11 +46,8 @@ click "M3/PPS300/XClose"
 click "M3/PPS300/Receivingno_1"
 TypeText  controlkey, "a"
 TypeText deleteKey
-Typetext receivingnum
+Typetext ReciveNumber
 TypeText Return
-
-
-click "M3/PPS300/next310"
 
 //unable to proceed as no data displayed for line items
 
