@@ -23,7 +23,7 @@ repeat forever
 	
 	(************** Set up data *************)
 	//skip known bad entries in test data
-	put (6,9,11,25) into badData //these  are having item code of Accesories
+	put (0) into badData //these  are having item code of Accesories
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
@@ -96,12 +96,12 @@ to doFullRun
 	
 	//declare data variables
 	global dataIndex, custNum, custPO, tag, delTerm
-	global delMeth, style, color, ConfigCode
+	global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
 	//initialize test variables
 	"DataStore".setGlobalsScript1
 	
 	//initialize data line counter
-	put 3 into dataIndex
+	put 11 into dataIndex
 	
 	//initialize data variables (sets global data variables and logs them)
 	DataStore.setDataScript1 dataIndex
@@ -117,8 +117,8 @@ to doFullRun
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth
+	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
