@@ -104,14 +104,14 @@ to getPromocodevalue
 	Log PromoDiscValue
 	If PromoDiscValue <> "" then
 		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
-		Else
+	Else
 		LogError "Promo Code was Not Applied to the Item"
 		
-		End If
-		return PromoDiscValue
-		
-	end getPromocodevalue
+	End If
+	return PromoDiscValue
 	
+end getPromocodevalue
+
 To ChangeViewInOis101
 	Click "M3/OIS101/View"
 	Click "M3/OIS101/GBL01004PriceDiscounts"
