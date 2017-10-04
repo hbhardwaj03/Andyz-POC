@@ -22,7 +22,7 @@ to enterCustomerNumber customerNumber, coType
 	end if
 	Wait 2
 	Click "M3/OIS300/NextButton"
-	if ImageFound(20, "M3/OIS300/promotionOrExpns") then
+	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
 			TypeText Return
 		End repeat
