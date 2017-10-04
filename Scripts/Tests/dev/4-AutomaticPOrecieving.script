@@ -1,8 +1,8 @@
 ﻿
-
+//4.AutomaticPOreceiving
 
 set index to index
-put "5" into index
+put "6" into index
 log index
 
 // fetching username,password and po number from excelfile
@@ -48,7 +48,7 @@ TypeText  controlkey, "a"
 TypeText deleteKey
 Typetext ReciveNumber
 TypeText Return
-
+//need to start scripting from step f of inspection approval
 //unable to proceed as no data displayed for line items
 
 
