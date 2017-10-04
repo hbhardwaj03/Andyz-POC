@@ -4,9 +4,8 @@ Description: Driven by an excel spreadsheet of test scenario values, this script
 Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
-//declare test variables
-global username, password, customerNum, coType, PO
-global itemCode, productQuantity, DCAUser, DCAPswrd
+//declare login variables
+global username, password
 
 //declare data variables
 global dataIndex, custNum, custPO, tag, delTerm
@@ -42,7 +41,7 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	"Flows/OrderEntry".enterNewOrder custNum, "", custPO
 	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
@@ -86,7 +85,7 @@ to logData
 	global delMeth
 	global style
 	global color
-	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color
+	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
 end logData
 
 to doFullRun
