@@ -52,7 +52,7 @@ to enterProduct itemCode,ConfigurationNo
 	(*"M3/OIS101".enterItemQuantity productQuantity*)
 	"M3/OIS101".enterItemColor
 	//"M3/Configurations".config001
-"M3/Configurations".& ConfigurationNo
+//"M3/Configurations".& ConfigurationNo
 //// added above line to read config from excel directly
 //else if ConfigurationNo="ConfigB6"
 //"M3/OIS101".enterItemColor
@@ -76,6 +76,11 @@ TO EnterProductWithPromo itemCode, quantity, PromoCod
 	"M3/OIS101".enterItemCode itemCode
 	"M3/OIS101".enterItemQuantity quantity
 	"M3/OIS101".EnterPromoCode PromoCod
+	click "M3/OIS101/Next"
+	wait 2
+	"M3/OIS101".ChangeViewInOis101
+	"M3/OIS101".getPromocodevalue
+	
 END EnterProductWithPromo
 
 

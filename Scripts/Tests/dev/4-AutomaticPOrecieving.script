@@ -2,7 +2,7 @@
 
 
 set index to index
-put "4" into index
+put "5" into index
 log index
 
 // fetching username,password and po number from excelfile
@@ -18,7 +18,6 @@ Log "Logging in"
 
 "M3/Application".open
 "M3/Login".login username, password
-
 
 
 //2.Look up PO number
