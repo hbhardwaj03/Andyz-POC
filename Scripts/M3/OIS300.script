@@ -16,7 +16,10 @@ to enterCustomerNumber customerNumber, coType
 	TypeText deleteKey
 	TypeText customerNumber
 	TypeText Return
-	TypeText coType
+	log coType
+	if coType is not empty then
+		TypeText coType
+	end if
 	Wait 2
 	Click "M3/OIS300/NextButton"
 	if ImageFound(20, "M3/OIS300/promotionOrExpns") then

@@ -41,13 +41,15 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".enterNewOrder custNum, "", custPO
-	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
+	"Flows/OrderEntry".GenericOrderEntry custNum, "", custPO, tag, delTerm, delMeth, BlnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
+	
+	logData
 	
 end repeat	
 
