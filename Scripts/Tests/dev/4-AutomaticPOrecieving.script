@@ -26,8 +26,6 @@ Log "Logging in"
 "M3/PPS300".poReceipt poNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
-//"M3/PPS310".open
-//"M3/PPS310".poReceipt
 
 //3.Enter quantities received
 click "M3/PPS300/recievedquantityfield"
@@ -39,11 +37,10 @@ wait 2
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
-"M3/PPS330".recordreceivingno
-log receivingnum // recording receiving number here
+"M3/PPS300".recordreceivingno
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
-
+click "M3/PPS300/XClose"
 //4.Inspection approval
 "M3/PPS310".open
 click "M3/PPS300/Receivingno_1"
