@@ -9,28 +9,24 @@ global password
 set ExcelFile to workbook(ResourcePath("7-CustomClubOrderEntry.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 Put Cell(worksheet, A2) into customerNumber
-Put Cell(worksheet, B2) into CustomerPO
-Put Cell(worksheet, C2) into  Tag
-Put Cell(worksheet, D2) into DeliveryTerm 
-Put Cell(worksheet, E2) into DeliveryMethod 
-//Put Cell(worksheet, F2) into ItemLine1
-//Put Cell(worksheet, G2) into OrderQty
-//Put Cell(worksheet, H2) into quantity
-Put Cell(worksheet, R2) into BlanketAgreement
-Put Cell(worksheet, S2) into PromoCod
-Put Cell(worksheet, T2) into TranctionReason
+Put Cell(worksheet, B2) into coType
+Put Cell(worksheet, C2) into  PO
+Put Cell(worksheet, D2) into TagField
+Put Cell(worksheet, E2) into DeliveryTerm 
+Put Cell(worksheet, "F2") into DeliveryMethod
+Put Cell(worksheet, G2) into itemCodePromoCod
+Put Cell(worksheet, H2) into quantity
+Put Cell(worksheet, I2) into PromoCod
+Put Cell(worksheet, J2) into TranctionResonCode
+Put Cell(worksheet, K2) into BlanketAgreement
 
 (************** Start flow ****************)
 "Flows/Application".login username, password
 
 (************** Order entry ***************)
-//"Flows/OrderEntry".GenericOrderEntry customerNumber, CustomerPO, Tag, DeliveryTerm, DeliveryMethod,BlanketAgreement,PromoCod,TranctionReason
-//put "Flows/OrderEntry".recordCONumber() into coNumber
+"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
+put "Flows/OrderEntry".recordCONumber() into coNumber
+"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod
 //"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
-//"M3/OIS101".closeFromOrderLines
-
-//2.Look up Customer number
-
-//"M3/OIS100". openOIS100
-//click "M3/OIS100/NextOIS100"
+"M3/OIS101".closeFromOrderLines
 
