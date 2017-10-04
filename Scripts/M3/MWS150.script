@@ -85,7 +85,6 @@ To RecordPoNumber
 	Put loc+(-0,-20) into L1
 	Put loc+(100,20) into L2
 	put  ReadText((L1), (L2)) into poNumber
-	
 	Log poNumber
 	
 	LogSuccess "PONumber was"&poNumber

@@ -26,11 +26,8 @@ Log "Logging in"
 "M3/PPS300".poReceipt poNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
-
-
-
-"M3/PPS310".open
-"M3/PPS310".poReceipt
+//"M3/PPS310".open
+//"M3/PPS310".poReceipt
 
 //3.Enter quantities received
 click "M3/PPS300/recievedquantityfield"
@@ -38,12 +35,11 @@ TypeText controlKey, "a"
 TypeText deleteKey
 TypeText "84"
 TypeText Return
+wait 2
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
-click "M3/PPS300/Receivingno"
-set receivingnum to ReadText(("receivnum_A","receivnum_B"))
-put receivingnum into receivingnum
+"M3/PPS330".recordreceivingno
 log receivingnum // recording receiving number here
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
