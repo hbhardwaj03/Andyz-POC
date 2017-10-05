@@ -84,8 +84,7 @@ to enterProductAndQuantity itemCode, quantity
 	"M3/Configurations".config002
 end enterProductAndQuantity
 
-TO EnterProductWithPromo itemCode, quantity, PromoCod
-	
+to EnterProductWithPromo itemCode, quantity, PromoCod
 	"M3/OIS101".setPromocode
 	"M3/OIS101".enterItemCode itemCode
 	"M3/OIS101".enterItemQuantity quantity
@@ -94,9 +93,17 @@ TO EnterProductWithPromo itemCode, quantity, PromoCod
 	wait 2
 	"M3/OIS101".ChangeViewInOis101
 	"M3/OIS101".getPromocodevalue
-	
-END EnterProductWithPromo
+end EnterProductWithPromo
 
+//                                                                             *****
+(*>>>>>>>>>Creates New order with or without delivery Terms and Method based on the data >>>>>>> *)
+to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement, Priority
+	if DeliveryTerm <> "" and  DeliveryMethod <> ""
+		"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
+	else 
+		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
+	end if
+end CreateNewOrder
 
 
 
