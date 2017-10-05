@@ -67,7 +67,7 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "J" & dataIndex) into style
 	put Cell(worksheet, "K" & dataIndex) into color
 	put Cell(worksheet, "W" & dataIndex) into ConfigCode
-	put Cell(worksheet, "X" & dataIndex) into BlnktAgrmnt
+	put Cell(worksheet, "X" & dataIndex) into blnktAgrmnt
 	put Cell(worksheet, "Z" & dataIndex) into trnsctnResn
 end setDataScript1
 
