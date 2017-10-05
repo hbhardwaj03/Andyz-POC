@@ -81,7 +81,7 @@ To setPromocode
 	Wait 2
 	Click "M3/OIS101/Settinqs"
 	wait 2
-	Click "M3/OIS101/InputAlternativePanelB"
+	Click "M3/OIS101/InputAlternativePanelB_1"
 	Click "M3/OIS101/9WhsItpprom"
 	Click "M3/OIS101/Next"
 	Wait 2
@@ -104,14 +104,14 @@ to getPromocodevalue
 	Log PromoDiscValue
 	If PromoDiscValue <> "" then
 		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
-		Else
+	Else
 		LogError "Promo Code was Not Applied to the Item"
 		
-		End If
-		return PromoDiscValue
-		
-	end getPromocodevalue
+	End If
+	return PromoDiscValue
 	
+end getPromocodevalue
+
 To ChangeViewInOis101
 	Click "M3/OIS101/View"
 	Click "M3/OIS101/GBL01004PriceDiscounts"
