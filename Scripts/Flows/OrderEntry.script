@@ -48,7 +48,6 @@ end recordCONumber
 to enterProduct itemCode,ConfigurationNo
 	"M3/OIS101".enterItemCode itemCode
 	"M3/OIS101".enterItemColor
-<<<<<<< HEAD
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
 	else if  ConfigurationNo="ConfigA2" then
@@ -76,19 +75,6 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/OIS101".configuratorA
 	end if
 	"M3/OIS101".closeFromOrderLines
-=======
-	//"M3/Configurations".config001
-//"M3/Configurations".& ConfigurationNo
-//// added above line to read config from excel directly
-//else if ConfigurationNo="ConfigB6"
-//"M3/OIS101".enterItemColor
-//"M3/Configurations".ConfigB6
-//else
-//"M3/OIS101".enterItemColor
-//"M3/OIS101".configuratorA
-//end if
-"M3/OIS101".closeFromOrderLines
->>>>>>> 674369c180d0857277e3600196d7db696b695713
 end enterProduct
 
 

@@ -16,10 +16,13 @@ to enterCustomerNumber customerNumber, coType
 	TypeText deleteKey
 	TypeText customerNumber
 	TypeText Return
-	TypeText coType
+	log coType
+	if coType is not empty then
+		TypeText coType
+	end if
 	Wait 2
 	Click "M3/OIS300/NextButton"
-	if ImageFound(20, "M3/OIS300/promotionOrExpns") then
+	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
 			TypeText Return
 		End repeat
@@ -51,18 +54,22 @@ to TagField TagField
 	TypeText TagField
 end TagField
 
-to DeliveryTerm DeliveryTerm
-	Click "M3/OIS300/DeliveryTerms"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText DeliveryTerm
+to DeliveryTerm deliveryTerm
+	if deliveryTerm is not empty then
+		Click "M3/OIS300/DeliveryTerms"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText deliveryTerm
+	end if
 end DeliveryTerm
 
-To DeliveryMethod DeliveryMethod
-	Click "M3/OIS300/DeliveryMethod"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText DeliveryMethod
+To DeliveryMethod deliveryMethod
+	if deliveryMethod is not empty then
+		Click "M3/OIS300/DeliveryMethod"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText deliveryMethod
+	end if
 End DeliveryMethod
 
 to submitOIS100G
