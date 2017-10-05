@@ -61,18 +61,22 @@ to enterItemQuantity productQuantity
 	TypeText Return
 end enterItemQuantity
 
-to EnterTransResonCode TranctionResonCode
-	Click "M3/OIS101/TransactionReason"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText TranctionResonCode
-end EnterTransResonCode
+to enterTransResonCode tranctionResonCode
+	if tranctionResonCode <>"" then
+		Click "M3/OIS101/TransactionReason"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText TranctionResonCode
+	end if
+end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
-	Click "M3/OIS101/BlanketAgreement"
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText BlanketAgreement
+	if BlanketAgreement <> "" then
+		Click "M3/OIS101/BlanketAgreement"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText BlanketAgreement
+	end if
 end BlanketAgreement
 
 To setPromocode
