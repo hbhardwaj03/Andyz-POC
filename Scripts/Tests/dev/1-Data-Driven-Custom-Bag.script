@@ -9,20 +9,20 @@ global username, password
 
 //declare data variables
 global dataIndex, custNum, custPO, tag, delTerm
-global delMeth, style, color, ConfigCode
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 
 //initialize test variables
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-put 2 into dataIndex
+put 14 into dataIndex
 
 (************** Start Test ***************)
 repeat forever
 	
 	(************** Set up data *************)
 	//skip known bad entries in test data
-	put (5,6) into badData //these  are having item code of Accesories
+	put (5,6,12) into badData //these  are having item code of Accesories
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
@@ -42,7 +42,7 @@ repeat forever
 	
 	(************** Order entry ***************)
 	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
-	"Flows/OrderEntry".GenericOrderEntry custNum, "", custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	"Flows/OrderEntry".GenericOrderEntry custNum, "", custPO, tag, delTerm, delMeth, trnsctnResn,blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
@@ -119,7 +119,9 @@ to doFullRun
 	
 	(************** Order entry ***************)
 	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	
+	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt, Priority
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
