@@ -55,6 +55,7 @@ to setDataScript1 dataIndex
 	global ConfigCode
 	global BlnktAgrmnt
 	global Priority
+	global trnsctnResn
 	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Input")
 	put Cell(worksheet, "A" & dataIndex) into custNum
@@ -67,6 +68,7 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "K" & dataIndex) into color
 	put Cell(worksheet, "W" & dataIndex) into ConfigCode
 	put Cell(worksheet, "X" & dataIndex) into BlnktAgrmnt
+	put Cell(worksheet, "Z" & dataIndex) into trnsctnResn
 end setDataScript1
 
 to getCustomerNo 
