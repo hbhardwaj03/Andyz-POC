@@ -49,7 +49,7 @@ to ConfigB1 // similar to B5
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigB1"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
@@ -65,7 +65,7 @@ to ConfigB2 // Similar to B5
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigB2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
@@ -81,7 +81,7 @@ to ConfigB3 // similar to B5
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigB3"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
@@ -97,7 +97,7 @@ to ConfigB4 // similar to B5
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigB4"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
@@ -113,7 +113,7 @@ to ConfigB5
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigB5"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
@@ -137,7 +137,7 @@ to ConfigB6
 	Click "M3/OIS101/DoubleStrapButton"
 end ConfigB6
 
-to ConfigA2
+to ConfigA2 // Needs to be tested
 	Wait 5
 	Click "M3/OIS101/NumApplicationsButton"
 	Click "M3/Configurations/configuration001/CustomizationLocation/LocationButtonSpineL1"
@@ -145,7 +145,7 @@ to ConfigA2
 	Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
-	TypeText "My Automated Personalization"
+	TypeText "Configuration: ConfigA2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/OIS101/LetteringButton"
 	Click "M3/OIS101/ColorButton"
