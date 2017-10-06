@@ -48,7 +48,9 @@ to enterCustomersPO PO
 end enterCustomersPO
 
 to TagField TagField
-	DoubleClick "M3/OIS300/TagForHeaderLevel"
+	//DoubleClick "M3/OIS300/TagForHeaderLevel"
+	DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
+	
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText TagField
