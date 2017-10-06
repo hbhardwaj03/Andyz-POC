@@ -48,7 +48,9 @@ to enterCustomersPO PO
 end enterCustomersPO
 
 to TagField TagField
-	Click "M3/OIS300/TagForHeaderLevel"
+	//DoubleClick "M3/OIS300/TagForHeaderLevel"
+	DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
+	
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText TagField
@@ -56,7 +58,7 @@ end TagField
 
 to DeliveryTerm deliveryTerm
 	if deliveryTerm is not empty then
-		Click "M3/OIS300/DeliveryTerms"
+		DoubleClick "M3/OIS300/DeliveryTerms"
 		TypeText controlKey, "a"
 		TypeText deleteKey
 		TypeText deliveryTerm
@@ -65,7 +67,7 @@ end DeliveryTerm
 
 To DeliveryMethod deliveryMethod
 	if deliveryMethod is not empty then
-		Click "M3/OIS300/DeliveryMethod"
+		DoubleClick "M3/OIS300/DeliveryMethod"
 		TypeText controlKey, "a"
 		TypeText deleteKey
 		TypeText deliveryMethod
