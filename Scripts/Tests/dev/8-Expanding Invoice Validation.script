@@ -1,6 +1,5 @@
-﻿
-//8.Expanding Invoice Validation
-//Author:PR
+﻿//8.Expanding Invoice Validation
+//Author:Preethi
 
 //To capture  variables in window  OIS350
 
@@ -11,16 +10,12 @@ Click "M3/OIS350/Extendedinvno"
 Typetext customerNumber
 return
 
+//To record invoice date
+Put "M3/OIS350".recordinvoicedate() into InvoiceDate
+Click "M3/OIS350/minimize350" //minimize window
 
+"M3/OIS300".open
 
-
-
-
-
-
-//To record invoice number
-
-//Put "M3/OIS350".recordinvoiceno() into InvoiceNumber
 
 
 

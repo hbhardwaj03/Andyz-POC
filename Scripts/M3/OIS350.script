@@ -7,15 +7,15 @@ to open
 end open
 
 
-to recordinvoiceno
-	Click "M3/OIS350/InvoiceNo"
-	put  ImageLocation ("M3/OIS350/InvoiceNo") into loc
-	Put loc+(-55,-30) into L1
-	Put loc+(100,10) into L2
-	put  ReadText((L1), (L2)) into InvoiceNumber
-	Log InvoiceNumber
-	return InvoiceNumber
-end recordinvoiceno
+to recordinvoicedate
+	Click "M3/OIS350/InvoiceDate"
+	put  ImageLocation ("M3/OIS350/InvoiceDate") into loc
+	Put loc+(-70,-20) into L1
+	Put loc+(90,35) into L2
+	put  ReadText((L1), (L2)) into InvoiceDate
+	Log InvoiceDate
+	return InvoiceDate
+end recordinvoicedate
 
 
 to close
