@@ -21,11 +21,13 @@ To lookupMV NumberMV
 	TypeText ReturnKey
 	wait 15
 	DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/MVAGUSTESTM3")+(0,0))
-	DoubleClick "MetaViewer/MetaViewerTree/AGSUS13"
-	DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
-	DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-	wait 3
-	
+	//DoubleClick "MetaViewer/MetaViewerTree/AGSUS13", 
+      Doubleclick   "MetaViewer/MetaViewerTree/MVAGUSTESTM3"
+
+DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
+DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
+wait 3
+
 End lookupMV
 
 
@@ -69,7 +71,7 @@ to validateInvoice
 	Log (OrderNoPDF  & " is the Order Number")
 	
 	set WhsPDF to ReadText((imageLocation (path&"Whs/Whs") +(-4,10), imageLocation (path&"Whs/Whs_1") +(45,23)))
-	Log (WhsPDF  & " is the Whs")
+Log (WhsPDF  & " is the Whs")
 	
 	set InvoiceDatePDF to ReadText((imageLocation (path&"InvoiceDate/InvoiceDate") +(-4,10), imageLocation (path&"InvoiceDate/InvoiceDate_1") +(73,20)))
 	Log (InvoiceDatePDF & " is the Invoice Date")
