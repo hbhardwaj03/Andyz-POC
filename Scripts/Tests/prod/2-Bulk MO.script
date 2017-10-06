@@ -52,9 +52,11 @@ repeat forever
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
-	// add M3 manufacturing here by moving working code from function "doFullRun"
-	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-	// add KPack here by moving working code from function "doFullRun"
+	if isAccessroy(prodNum) then
+		// add M3 manufacturing here by moving working code from function "doFullRun"
+		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		// add KPack here by moving working code from function "doFullRun"
+	end if
 	
 	// close application
 	"Flows/Application".exitApp
@@ -132,3 +134,9 @@ to doFullRun
 	// close application
 	"Flows/Application".exitApp
 end doFullRun
+
+to isAccessory
+	if the second character of prodNum is "A" then
+		return TRUE
+	end if
+end isAccessory
