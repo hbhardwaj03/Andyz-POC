@@ -77,8 +77,8 @@ to generateMOCO
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "Automation Script #2"
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-	"M3/OIS101".closeFromOrderLines
+	"Flows/OrderEntry".enterProduct "TB7SX6TC", "ConfigB1"
+	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	
 	Log coNum
 	
