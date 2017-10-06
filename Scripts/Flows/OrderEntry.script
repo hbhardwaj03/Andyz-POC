@@ -24,8 +24,13 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".TagField TagField
-	"M3/OIS300".DeliveryTerm DeliveryTerm
-	"M3/OIS300".DeliveryMethod DeliveryMethod
+	If DeliveryTerm <> "" then
+		"M3/OIS300".DeliveryTerm DeliveryTerm
+	End If
+	If DeliveryMethod <> "" then
+		"M3/OIS300".DeliveryMethod DeliveryMethod
+	End if
+	
 	"M3/OIS300".submitOIS100G
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
@@ -46,7 +51,7 @@ end recordCONumber
 
 
 to enterProduct itemCode,ConfigurationNo
-	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemCode itemCode	
 	"M3/OIS101".enterItemColor
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
@@ -88,12 +93,47 @@ to EnterProductWithPromo itemCode, quantity, PromoCod
 	"M3/OIS101".setPromocode
 	"M3/OIS101".enterItemCode itemCode
 	"M3/OIS101".enterItemQuantity quantity
-	"M3/OIS101".EnterPromoCode PromoCod
+	if PromoCod <>"" then
+		"M3/OIS101".EnterPromoCode PromoCod
+	End if
+	
 	click "M3/OIS101/Next"
 	wait 2
 	"M3/OIS101".ChangeViewInOis101
 	"M3/OIS101".getPromocodevalue
-end EnterProductWithPromo
+	
+END EnterProductWithPromo
+
+(*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
+	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet, "&IndexColItem& &indexRow) into itemCodeGen
+	Put Cell(worksheet, ndexColQuan&indexRow) into quantityGen
+	Put Cell(worksheet, IndexColPromo&indexRow) into PromoCodGen
+	
+End GenricRowNcolumn
+
+To AddLineItem itemCodeGen, quantityGen, PromocodGen
+	set itemCodeGen to itemCode
+	set quantityGen to quantity
+	set PromoCodGen to PromoCod
+	
+	//"M3/OIS101".setPromocode
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	if PromoCod <>"" then
+		"M3/OIS101".EnterPromoCode PromoCod
+	End if
+	
+	click "M3/OIS101/Next"
+	wait 2
+	"M3/OIS101".ChangeViewInOis101
+	///"M3/OIS101".getPromocodevalue
+	Click "M3/OIS101/ADDButton"
+End AddLineItem*)
+
+
+
 
 //                                                                             *****
 (*>>>>>>>>>Creates New order with or without delivery Terms and Method based on the data >>>>>>> *)
@@ -104,6 +144,7 @@ to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMe
 		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
 	end if
 end CreateNewOrder
+>>>>>>> 329129ff5b001c545a13fd3a4754ee056d07e111
 
 
 

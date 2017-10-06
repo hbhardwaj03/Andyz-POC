@@ -121,7 +121,7 @@ to doFullRun
 	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
 	
-	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt, Priority
+	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	

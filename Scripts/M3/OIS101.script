@@ -71,12 +71,18 @@ to enterTransResonCode tranctionResonCode
 end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
+	click "M3/OIS101/lineItem"
+	wait 2
 	if BlanketAgreement <> "" then
 		Click "M3/OIS101/BlanketAgreement"
 		TypeText controlKey, "a"
 		TypeText deleteKey
 		TypeText BlanketAgreement
 	end if
+	wait 2
+	DoubleClick "M3/OIS101/0ApplyAgreemen"
+	wait 2
+	
 end BlanketAgreement
 
 To setPromocode
@@ -204,6 +210,7 @@ to closeOrderLines
 	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
 end closeOrderLines
+
 
 
 
