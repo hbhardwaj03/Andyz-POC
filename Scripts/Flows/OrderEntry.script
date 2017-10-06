@@ -102,22 +102,22 @@ to EnterProductWithPromo itemCode, quantity, PromoCod
 	wait 2
 	"M3/OIS101".ChangeViewInOis101
 	"M3/OIS101".getPromocodevalue
-<<<<<<< HEAD
+	
 END EnterProductWithPromo
 
-To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
+(*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
 	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
-	Put Cell(worksheet, IndexColItem&indexRow) into itemCodeGen
-	Put Cell(worksheet, IndexColQuan&indexRow) into quantityGen
+	Put Cell(worksheet, "&IndexColItem& &indexRow) into itemCodeGen
+	Put Cell(worksheet, ndexColQuan&indexRow) into quantityGen
 	Put Cell(worksheet, IndexColPromo&indexRow) into PromoCodGen
 	
 End GenricRowNcolumn
 
 To AddLineItem itemCodeGen, quantityGen, PromocodGen
-	Put itemCodeGen into itemCode
-	Put quantityGen into quantity
-	Put PromoCodGen into PromoCod
+	set itemCodeGen to itemCode
+	set quantityGen to quantity
+	set PromoCodGen to PromoCod
 	
 	//"M3/OIS101".setPromocode
 	"M3/OIS101".enterItemCode itemCode
@@ -131,10 +131,10 @@ To AddLineItem itemCodeGen, quantityGen, PromocodGen
 	"M3/OIS101".ChangeViewInOis101
 	///"M3/OIS101".getPromocodevalue
 	Click "M3/OIS101/ADDButton"
-End AddLineItem
+End AddLineItem*)
 
-=======
-end EnterProductWithPromo
+
+
 
 //                                                                             *****
 (*>>>>>>>>>Creates New order with or without delivery Terms and Method based on the data >>>>>>> *)
