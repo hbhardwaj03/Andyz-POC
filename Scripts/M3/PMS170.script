@@ -147,6 +147,12 @@ to releaseMO
 	Click "M3/PMS170/ReleaseButton"
 end releaseMO
 
+to recordProdNum
+	put ReadText(((102,387),(161,399))) into prodNum
+	log prodNum
+	return prodNum
+end recordProdNum
+
 to close
 	Click (Image:"M3/PMS170/ClosePMS170Button", WaitFor:117)
 end close

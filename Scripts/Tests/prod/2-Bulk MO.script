@@ -39,6 +39,7 @@ repeat forever
 	Log "Do scheduling"
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNum)
+	put "M3/PMS170".recordProdNum into prodNum
 	
 	put "M3/PMS170".createScheduleNumber() into scheduleNumber
 	"M3/PMS170".scheduleNew scheduleNumber
