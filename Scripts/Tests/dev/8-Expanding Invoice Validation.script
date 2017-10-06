@@ -1,0 +1,42 @@
+﻿
+//8.Expanding Invoice Validation
+//Author:PR
+
+//To capture  variables in window  OIS350
+
+"M3/OIS350".open
+Click "M3/OIS350/Sortingorder"
+Click "M3/OIS350/3COno"
+Click "M3/OIS350/Extendedinvno"
+Typetext customerNumber
+return
+
+
+
+
+
+
+
+
+//To record invoice number
+
+//Put "M3/OIS350".recordinvoiceno() into InvoiceNumber
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

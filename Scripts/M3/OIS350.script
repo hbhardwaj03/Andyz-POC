@@ -1,0 +1,23 @@
+﻿//Requires M3/Login
+to open
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "OIS350"
+	Click "M3/Home/SearchSubmit"
+end open
+
+
+to recordinvoiceno
+	Click "M3/OIS350/InvoiceNo"
+	put  ImageLocation ("M3/OIS350/InvoiceNo") into loc
+	Put loc+(-55,-30) into L1
+	Put loc+(100,10) into L2
+	put  ReadText((L1), (L2)) into InvoiceNumber
+	Log InvoiceNumber
+	return InvoiceNumber
+end recordinvoiceno
+
+
+to close
+	Click "M3/OIS300/CloseButton"
+end close
