@@ -148,6 +148,7 @@ to releaseMO
 end releaseMO
 
 to recordProdNum
+	wait 5
 	put ReadText(((102,387),(161,399))) into prodNum
 	log prodNum
 	return prodNum
