@@ -53,6 +53,7 @@ repeat forever
 	"M3/PMS100".close
 	
 	if isAccessory(prodNum) then
+		Log "Do manufacturing"
 		// add M3 manufacturing here by moving working code from function "doFullRun"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 		// add KPack here by moving working code from function "doFullRun"
