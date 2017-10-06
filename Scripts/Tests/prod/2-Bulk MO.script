@@ -135,7 +135,7 @@ to doFullRun
 	"Flows/Application".exitApp
 end doFullRun
 
-to isAccessory
+to isAccessory prodNum
 	if the second character of prodNum is "A" then
 		return TRUE
 	end if
