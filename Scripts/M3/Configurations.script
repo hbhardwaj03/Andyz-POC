@@ -41,14 +41,6 @@ to config002
 	Click "M3/Configurations/configuration001/NoOrderNotes"
 end config002
 
-<<<<<<< HEAD
-to ConfigB1 // similar to B5
-	Wait 5
-	Click "M3/OIS101/NumApplicationsButton"
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL023ApparelPocketL1"
-	Click "M3/OIS101/PersonalizationButton"
-	Click "M3/OIS101/PersonalizationTextButton"
-=======
 to ConfigB1 
 	Wait 5// has Tota 5 no. of Customizations.
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_No5"
@@ -57,7 +49,6 @@ to ConfigB1
 	Click "M3/Configurations/configuration001/personalizationType/customization1/JL001Logo1"
 	Click "M3/Configurations/configuration001/logoID/logoField/Logo1ID_Field"
 	TypeText "376309"
->>>>>>> b1bfd06dff80e57e2904a430d04df5aa866c19c1
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
