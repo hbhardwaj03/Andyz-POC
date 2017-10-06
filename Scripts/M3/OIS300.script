@@ -54,23 +54,26 @@ to TagField TagField
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText TagField
+	wait 2
 end TagField
 
-to DeliveryTerm deliveryTerm
-	if deliveryTerm is not empty then
-		DoubleClick "M3/OIS300/DeliveryTerms"
+to DeliveryTerm DeliveryTerm
+	if DeliveryTerm is not empty then
+		//DoubleClick "M3/OIS300/DeliveryTerms"
+		DoubleClick "M3/OIS101/DeliveryTerms"
 		TypeText controlKey, "a"
 		TypeText deleteKey
-		TypeText deliveryTerm
+		TypeText DeliveryTerm
 	end if
 end DeliveryTerm
 
-To DeliveryMethod deliveryMethod
-	if deliveryMethod is not empty then
-		DoubleClick "M3/OIS300/DeliveryMethod"
+To DeliveryMethod DeliveryMethod
+	if DeliveryMethod is not empty then
+		//DoubleClick "M3/OIS300/DeliveryMethod"
+		DoubleClick "M3/OIS101/DeliveryMethod"
 		TypeText controlKey, "a"
 		TypeText deleteKey
-		TypeText deliveryMethod
+		TypeText DeliveryMethod
 	end if
 End DeliveryMethod
 
