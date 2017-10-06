@@ -51,7 +51,7 @@ end recordCONumber
 
 
 to enterProduct itemCode,ConfigurationNo
-	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemCode itemCode	
 	"M3/OIS101".enterItemColor
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
