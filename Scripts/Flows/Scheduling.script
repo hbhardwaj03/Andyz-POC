@@ -11,7 +11,7 @@
 	"M3/PMS100".printShopTraveler scheduleNumber
 end doScheduling
 
-to doStatusScheduling coNumber, product
+to doStatusScheduling coNumber
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNumber)
 	(*	if ImageFound("M3/PMS170/Product_OrderLine") then

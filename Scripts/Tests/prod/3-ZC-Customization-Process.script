@@ -31,7 +31,7 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Scheduling *********************)
-	put "Flows/Scheduling".doStatusScheduling(coNum,product) into reqNum
+	put "Flows/Scheduling".doStatusScheduling(coNum) into reqNum
 	
 	(************** Picking, Packing, Shipping *********)
 	put "Flows/Picking".doStatusPicking(reqNum,coNum) into poNum
