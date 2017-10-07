@@ -39,6 +39,7 @@ repeat forever
 	Log "Do scheduling"
 	"M3/PMS170".open
 	"M3/PMS170".lookUp(coNum)
+	put "M3/PMS170".recordProdNum into prodNum
 	
 	put "M3/PMS170".createScheduleNumber() into scheduleNumber
 	"M3/PMS170".scheduleNew scheduleNumber
@@ -51,9 +52,12 @@ repeat forever
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
-	// add M3 manufacturing here by moving working code from function "doFullRun"
-	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-	// add KPack here by moving working code from function "doFullRun"
+	if isAccessory(prodNum) then
+		Log "Do manufacturing"
+		// add M3 manufacturing here by moving working code from function "doFullRun"
+		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		// add KPack here by moving working code from function "doFullRun"
+	end if
 	
 	// close application
 	"Flows/Application".exitApp
@@ -76,8 +80,8 @@ to generateMOCO
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "Automation Script #2"
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
-	"M3/OIS101".closeFromOrderLines
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	
 	Log coNum
 	
@@ -131,3 +135,9 @@ to doFullRun
 	// close application
 	"Flows/Application".exitApp
 end doFullRun
+
+to isAccessory prodNum
+	if the second character of prodNum is "A" then
+		return TRUE
+	end if
+end isAccessory

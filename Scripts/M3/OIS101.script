@@ -61,6 +61,15 @@ to enterItemQuantity productQuantity
 	TypeText Return
 end enterItemQuantity
 
+To enterWhearhouseNumb WHNumber
+	Click image( "M3/OIS101/whm")
+	TypeText WHNumber
+	TypeText Return
+	
+	
+End enterWhearhouseNumb
+
+
 to enterTransResonCode tranctionResonCode
 	if tranctionResonCode <>"" then
 		Click "M3/OIS101/TransactionReason"
@@ -123,8 +132,19 @@ to getPromocodevalue
 end getPromocodevalue
 
 To ChangeViewInOis101
-	Click "M3/OIS101/View"
+	//Click "M3/OIS101/View"
+	Click "M3/OIS101/View_1"
+	leftSelectButton "M3/OIS101/mouse"
+	ScrollWheelUp 10
+	
+	Click "M3/OIS101/Scrollup"
+	Click "M3/OIS101/Scrollup"
+	Click "M3/OIS101/Scrollup"
+	Click "M3/OIS101/Scrollup"
+	//ScrollWheelUp 5
+	
 	Click "M3/OIS101/GBL01004PriceDiscounts"
+	Drag "M3/OIS101/mouse"
 End ChangeViewInOis101
 
 
@@ -164,7 +184,7 @@ to configuratorNewEra
 	Click "M3/OIS101/NewEra/TitleistButton"
 	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
-	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
+Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
 	Click "M3/OIS101/NewEra/2Customizations"
 	Click "M3/OIS101/NewEra/Location1Button"
 	Click "M3/OIS101/NewEra/Customization1Button"
