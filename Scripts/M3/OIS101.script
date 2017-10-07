@@ -61,6 +61,15 @@ to enterItemQuantity productQuantity
 	TypeText Return
 end enterItemQuantity
 
+To enterWhearhouseNumb WHNumber
+	Click image( "M3/OIS101/whm")
+	TypeText WHNumber
+	TypeText Return
+	
+	
+End enterWhearhouseNumb
+
+
 to enterTransResonCode tranctionResonCode
 	if tranctionResonCode <>"" then
 		Click "M3/OIS101/TransactionReason"
