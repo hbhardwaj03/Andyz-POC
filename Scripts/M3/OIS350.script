@@ -7,7 +7,7 @@ to open
 end open
 
 
-to recordinvoicedate
+to recordInvoiceDate
 	Click "M3/OIS350/InvoiceDate"
 	put  ImageLocation ("M3/OIS350/InvoiceDate") into loc
 	Put loc+(-70,-20) into L1
@@ -15,9 +15,6 @@ to recordinvoicedate
 	put  ReadText((L1), (L2)) into InvoiceDate
 	Log InvoiceDate
 	return InvoiceDate
-end recordinvoicedate
+end recordInvoiceDate
 
 
-to close
-	Click "M3/OIS300/CloseButton"
-end close

@@ -37,7 +37,7 @@ wait 2
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
-Put "M3/PPS300".recordreceivingno() into ReciveNumber
+Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
 click "M3/PPS300/XClose"

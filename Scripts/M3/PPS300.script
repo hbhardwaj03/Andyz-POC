@@ -30,7 +30,7 @@ to delynoteno poNumber
 	typetext PoNumber
 end delynoteno
 
-to recordreceivingno
+to recordReceivingNo
 	Click "M3/PPS300/Receivingno"
 	put  ImageLocation ("M3/PPS300/Receivingno") into loc
 	Put loc+(-5,-20) into L1
@@ -38,4 +38,4 @@ to recordreceivingno
 	put  ReadText((L1), (L2)) into ReciveNumber
 	Log ReciveNumber
 	return ReciveNumber
-end recordreceivingno
+end recordReceivingNo
