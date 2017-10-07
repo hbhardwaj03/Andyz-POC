@@ -36,7 +36,7 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E
-	//"M3/OIS300".submitOIS102H
+	"M3/OIS300".submitOIS102H
 	"M3/OIS101".EnterTransResonCode TranctionResonCode
 	//"M3/OIS101".BlanketAgreement BlanketAgreement
 end GenericOrderEntry
