@@ -37,7 +37,7 @@ to config002
 	TypeText "Acushnet script 2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/BlockLettering"
-	Click "M3/Configurations/configuration001/VVhiteColor"
+	Click "M3/Configurations/configuration001/WhiteColor"
 	Click "M3/Configurations/configuration001/NoOrderNotes"
 end config002
 
@@ -52,7 +52,7 @@ to ConfigB1
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
-		else
+	else
 		Log "Logo ID not accepted"
 		Exit handler
 	end if
