@@ -101,7 +101,8 @@ To setPromocode
 	Click "M3/OIS101/Settinqs"
 	wait 2
 	Click "M3/OIS101/InputAlternativePanelB_1"
-	Click "M3/OIS101/9WhsItpprom"
+	//Click "M3/OIS101/9WhsItpprom"
+	Click "M3/OIS101/9Whslipprom"
 	Click "M3/OIS101/Next"
 	Wait 2
 End setPromocode
