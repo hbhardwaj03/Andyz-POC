@@ -112,6 +112,13 @@ to GetPromoCodevalue
 	"M3/OIS101".getPromocodevalue
 end GetPromoCodevalue
 
+To ApplyBlanketAgreement BlanketAgreement
+	If BlanketAgreement <> "" then
+		"M3/OIS101".BlanketAgreement BlanketAgreement
+	End If
+	
+End ApplyBlanketAgreement
+
 (*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
 	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
