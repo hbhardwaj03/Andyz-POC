@@ -104,10 +104,13 @@ to EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
 	"M3/OIS101".enterItemQuantity quantity
 	click "M3/OIS101/Next"
 	wait 2
-	"M3/OIS101".ChangeViewInOis101
-	"M3/OIS101".getPromocodevalue
 	
 END EnterProductWithPromo
+
+to GetPromoCodevalue
+	"M3/OIS101".ChangeViewInOis101
+	"M3/OIS101".getPromocodevalue
+end GetPromoCodevalue
 
 (*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
 	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))

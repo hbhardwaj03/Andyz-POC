@@ -112,12 +112,14 @@ To EnterPromoCode PromoCod
 End EnterPromoCode
 
 to getPromocodevalue
-	Click "M3/OIS101/SelectItemNum"
-	Click "M3/OIS101/PromoDiscValue"
-	put  ImageLocation ( "M3/OIS101/PromoDiscValue") into loc
+	//Click "M3/OIS101/SelectItemNum"
+	Click "M3/OIS101/selectline"
+	//Click "M3/OIS101/PromoDiscValue"
+	Click "M3/OIS101/PromoDiscprice"
+	put  ImageLocation ("M3/OIS101/PromoDiscprice") into loc
 	log loc
-	Put loc+(-56,-10) into L1
-	Put loc+(50,10) into L2
+	Put loc+(-20,-16) into L1
+	Put loc+(61,15) into L2
 	put  ReadText((L1), (L2)) into PromoDiscValue
 	
 	Log PromoDiscValue
@@ -134,17 +136,12 @@ end getPromocodevalue
 To ChangeViewInOis101
 	//Click "M3/OIS101/View"
 	Click "M3/OIS101/View_1"
-	leftSelectButton "M3/OIS101/mouse"
+	wait 2
+	Click"M3/OIS101/mouse"
 	ScrollWheelUp 10
+	wait 2
+	Click  "M3/OIS101/G5L01004PriceDiscounts"
 	
-	Click "M3/OIS101/Scrollup"
-	Click "M3/OIS101/Scrollup"
-	Click "M3/OIS101/Scrollup"
-	Click "M3/OIS101/Scrollup"
-	//ScrollWheelUp 5
-	
-	Click "M3/OIS101/GBL01004PriceDiscounts"
-	Drag "M3/OIS101/mouse"
 End ChangeViewInOis101
 
 
@@ -184,7 +181,7 @@ to configuratorNewEra
 	Click "M3/OIS101/NewEra/TitleistButton"
 	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
-Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
+	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
 	Click "M3/OIS101/NewEra/2Customizations"
 	Click "M3/OIS101/NewEra/Location1Button"
 	Click "M3/OIS101/NewEra/Customization1Button"
