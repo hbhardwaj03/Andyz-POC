@@ -5,7 +5,7 @@ Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
 //declare login variables
-global username, password
+global username, password, DCAUser, DCAPswrd
 
 //declare data variables
 global dataIndex, custNum, custPO, tag, delTerm,coType
@@ -54,6 +54,7 @@ repeat forever
 	//end repeat	
 	
 	(************** Scheduling ***************)
+	wait 5
 	"Flows/Application".login username, password
 	"Flows/Scheduling".doScheduling coNum
 	put "M3/PMS100".recordMO() into moNum
@@ -63,7 +64,7 @@ repeat forever
 	
 	(************** Manufacturing *************)
 	wait 5
-	"Flows/ManufacturingPacking".doManufacturing moNum
+	"Flows/ManufacturingPacking".doManufacturing DCAUser, DCAPswrd, moNum
 	
 	(************** Packing ******************)
 	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
@@ -129,5 +130,9 @@ to doFullRun
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 end doFullRun
+
+
+
+
 
 
