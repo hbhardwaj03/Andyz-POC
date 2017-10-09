@@ -6,7 +6,7 @@ global password
 // initialize login variables
 "Datastore".setLoginVariables 4
 
-set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
+(*set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 Put Cell(worksheet, A2) into customerNumber
 Put Cell(worksheet, B2) into coType
@@ -19,26 +19,38 @@ Put Cell(worksheet, H2) into itemCode
 Put Cell(worksheet, I2) into quantity
 Put Cell(worksheet, J2) into PromoCod
 Put Cell(worksheet, K2) into TranctionResonCode
-Put Cell(worksheet, L2) into BlanketAgreement
+Put Cell(worksheet, L2) into BlanketAgreement*)
 
-
-(************** Start flow ****************)
-"Flows/Application".login username, password
-
-(************** Order entry ***************)
-"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode
-
-(************* To recod CO Number ******************************)
-put "Flows/OrderEntry".recordCONumber() into coNumber
-
-(**************** To  Enter Line Item Details **************************)
-"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
-
-(************** To Validate Promocode ******************)
-"Flows/OrderEntry".GetPromoCodevalue
-
-(*************** To Apply Blanket  Agreement **********************)
-"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
-
-(**************** To Close Order entry Screen ****************************)
-"M3/OIS101".closeFromOrderLines
+// initialize data line counter
+put 2 into dataIndex
+(************** Start Test *********************)
+repeat forever
+	"Datastore".SetDataScript6 dataIndex
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if customerNumber is empty then exit repeat
+	
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode
+	
+	(************* To recod CO Number ******************************)
+	put "Flows/OrderEntry".recordCONumber() into coNumber
+	
+	(**************** To  Enter Line Item Details **************************)
+	"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
+	
+	(************** To Validate Promocode ******************)
+	"Flows/OrderEntry".GetPromoCodevalue
+	
+	(*************** To Apply Blanket  Agreement **********************)
+	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
+	
+	(**************** To Close Order entry Screen ****************************)
+	"M3/OIS101".closeFromOrderLines
+end repeat
