@@ -2,7 +2,7 @@
 	TypeText 1
 	Click (238,228)
 	(*Click (Image:"M3/Configurations/configuration001/BagColorBlack", WaitFor:10)*)
-	Click "M3/Configurations/configuration001/NumCustomization"
+	Click ("M3/Configurations/configuration001/NumCustomization", waitFor:10)
 	Click "M3/Configurations/configuration001/CustomizationLocation"
 	Click (Image:"M3/Configurations/configuration001/Personalization1", WaitFor:10)
 	Click "M3/Configurations/configuration001/PersonalizationText"
@@ -52,7 +52,7 @@ to ConfigB1
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
-		else
+	else
 		Log "Logo ID not accepted"
 		Exit handler
 	end if
@@ -115,6 +115,7 @@ to ConfigB1
 	TypeText "See Special Color Instruction"
 	Click "M3/OIS101/PersonalizationNextButton"	
 	Click "M3/Configurations/configuration001/StrapType/JST02Double1"
+	wait 5
 end ConfigB1
 
 to ConfigB2 // Similar to B5
@@ -139,7 +140,7 @@ to ConfigB2 // Similar to B5
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "Test Pers 2"
-	Click "M3/OIS101/PersonalizationNextButton"
+Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
 	Click "M3/Configurations/configuration001/PersColor/JP054OtherColor"
 	TypeText Return
