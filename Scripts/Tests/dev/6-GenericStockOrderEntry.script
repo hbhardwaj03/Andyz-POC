@@ -14,16 +14,31 @@ Put Cell(worksheet, C2) into  PO
 Put Cell(worksheet, D2) into TagField
 Put Cell(worksheet, E2) into DeliveryTerm 
 Put Cell(worksheet, "F2") into DeliveryMethod
-Put Cell(worksheet, G2) into itemCode
-Put Cell(worksheet, H2) into quantity
-Put Cell(worksheet, I2) into PromoCod
-Put Cell(worksheet, J2) into TranctionResonCode
-Put Cell(worksheet, K2) into BlanketAgreement
+Put Cell(worksheet, G2) into WHNumber
+Put Cell(worksheet, H2) into itemCode
+Put Cell(worksheet, I2) into quantity
+Put Cell(worksheet, J2) into PromoCod
+Put Cell(worksheet, K2) into TranctionResonCode
+Put Cell(worksheet, L2) into BlanketAgreement
+
 
 (************** Start flow ****************)
 "Flows/Application".login username, password
 
 (************** Order entry ***************)
-"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
+"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode
+
+(************* To recod CO Number ******************************)
 put "Flows/OrderEntry".recordCONumber() into coNumber
-"Flows/OrderEntry".enterProductAndQuantity itemCode, quantity
+
+(**************** To  Enter Line Item Details **************************)
+"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
+
+(************** To Validate Promocode ******************)
+"Flows/OrderEntry".GetPromoCodevalue
+
+(*************** To Apply Blanket  Agreement **********************)
+"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
+
+(**************** To Close Order entry Screen ****************************)
+"M3/OIS101".closeFromOrderLines
