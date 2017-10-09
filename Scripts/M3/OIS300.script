@@ -244,7 +244,80 @@ to reschedule
 	Click "M3/OIS300/CloseButton"
 end reschedule
 
+to setZoom80prcnt
+	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
+		Click "M3/OIS300/ZoomButton/ZoomButton105"
+		Click "M3/OIS300/ZoomButton/slct80frm105"
+		
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton100") then
+		Click "M3/OIS300/ZoomButton/ZoomButton100"
+		Click "M3/OIS300/ZoomButton/slct80frm100"
+		
+	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton95") then
+		Click "M3/OIS300/ZoomButton/ZoomButton95"
+		Click "M3/OIS300/ZoomButton/slct80frm95"
+		
+	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton90") then
+		Click "M3/OIS300/ZoomButton/ZoomButton90"
+		Click "M3/OIS300/ZoomButton/slct80frm90"
+		
+	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton85") then
+		Click "M3/OIS300/ZoomButton/ZoomButton85"
+		Click "M3/OIS300/ZoomButton/slct80frm85","M3/OIS300/slct80frm85hgltd"
+		
+	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton80") then
+		Click "M3/OIS300/ZoomButton/ZoomButton80"
+		Click "M3/OIS300/ZoomButton/slct80frm80"
+		
+	else if ImageFound("M3/OIS300/ZoomButton/ZoomButton75") then
+		Click "M3/OIS300/ZoomButton/ZoomButton75"
+		Click "M3/OIS300/ZoomButton/slct80frm75"
+	end if
+end setZoom80prcnt
 
+to zoom75prcnt
+	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
+	"M3/OIS300".setZoom80prcnt
+	Click (350,170) // click on blank area
+	KeyDown controlKey
+	repeat 2 times
+		TypeText "-"	
+	end repeat
+	KeyUp controlKey
+end zoom75prcnt
+
+to zoom85prcnt
+	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
+	"M3/OIS300".setZoom80prcnt
+	Click (350,170)
+	KeyDown controlKey
+	repeat 2 times
+		TypeText "+"	
+	end repeat
+	KeyUp controlKey
+end zoom85prcnt
+
+to zoom90prcnt
+	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
+	"M3/OIS300".setZoom80prcnt
+	Click (350,170)
+	KeyDown controlKey
+	repeat 3 times
+		TypeText "+"	
+	end repeat
+	KeyUp controlKey
+end zoom90prcnt
+
+to zoom105prcnt
+	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
+	"M3/OIS300".setZoom80prcnt
+	Click (350,170)
+	KeyDown controlKey
+	repeat 6 times
+		TypeText "+"	
+	end repeat
+	KeyUp controlKey
+end zoom90prcnt
 
 
 to close
