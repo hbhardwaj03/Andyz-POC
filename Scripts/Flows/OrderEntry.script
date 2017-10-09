@@ -1,4 +1,4 @@
-﻿to enterNewOrder customerNumber, coType, PO
+﻿to enterNewOrder customerNumber, coType, PO, Priority
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".startNewOrder
@@ -10,29 +10,39 @@
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E
+	"M3/OIS300".submitOIS100E priority
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
-to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod
+to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
+	"M3/OIS300".zoom75prcnt
 	"M3/OIS300".startNewOrder
-	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-	"M3/OIS300".enterCustomerNumber customerNumber, coType
-	
+	if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
+		"M3/OIS300".enterCustomerNumber customerNumber, coType	
+	else
+		LogError "New Order not started" 
+	end if	
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".TagField TagField
-	"M3/OIS300".DeliveryTerm DeliveryTerm
-	"M3/OIS300".DeliveryMethod DeliveryMethod
+	If DeliveryTerm <> "" then
+		"M3/OIS300".DeliveryTerm DeliveryTerm
+	End If
+	If DeliveryMethod <> "" then
+		"M3/OIS300".DeliveryMethod DeliveryMethod
+	End if
+	
 	"M3/OIS300".submitOIS100G
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E
-	//"M3/OIS300".submitOIS102H
+	"M3/OIS300".submitOIS102H
+	"M3/OIS101".EnterTransResonCode TranctionResonCode
+	//"M3/OIS101".BlanketAgreement BlanketAgreement
 end GenericOrderEntry
 
 to recordCONumber
@@ -43,21 +53,117 @@ to recordCONumber
 	return coNumber
 end recordCONumber
 
-to enterProduct itemCode
-	"M3/OIS101".enterItemCode itemCode
-	//"M3/OIS101".enterItemCode "TB7SX6CC"
-	if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+
+to enterProduct itemCode,ConfigurationNo
+	"M3/OIS101".enterItemCode itemCode	
+	"M3/OIS101".enterItemColor
+	if ConfigurationNo="ConfigA1" then
+		"M3/Configurations".ConfigA1
+	else if  ConfigurationNo="ConfigA2" then
+		"M3/Configurations".ConfigA2
+	else if  ConfigurationNo="ConfigA3" then
+		"M3/Configurations".ConfigA3
+else if  ConfigurationNo="ConfigA4" then
+	"M3/Configurations".ConfigA4
+else if ConfigurationNo="ConfigB1" then
+		"M3/Configurations".ConfigB1
+	else if  ConfigurationNo="ConfigB2" then
+		"M3/Configurations".ConfigB2
+	else if  ConfigurationNo="ConfigB3" then
+		"M3/Configurations".ConfigB3
+	else if  ConfigurationNo="ConfigB4" then
+		"M3/Configurations".ConfigB4
+	else if ConfigurationNo="ConfigB5" then
+		"M3/Configurations".ConfigB5
+	else if ConfigurationNo="ConfigB6" then
+		"M3/Configurations".ConfigB6
+	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
 		"M3/Configurations".config001
 	else
-		"M3/OIS101".enterItemColor
 		"M3/OIS101".configuratorA
 	end if
 	"M3/OIS101".closeFromOrderLines
 end enterProduct
 
+
 to enterProductAndQuantity itemCode, quantity
 	"M3/OIS101".enterItemCode itemCode
 	"M3/OIS101".enterItemQuantity quantity
 	"M3/Configurations".config002
+	"M3/OIS101".closeFromOrderLines
 end enterProductAndQuantity
+
+to EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
+	
+	if PromoCod <>"" then
+		"M3/OIS101".setPromocode
+		"M3/OIS101".EnterPromoCode PromoCod
+	End if
+	if WHNumber <> "" then
+		"M3/OIS101". enterWhearhouseNumb WHNumber
+	End if
+	
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	click "M3/OIS101/Next"
+	wait 2
+	
+END EnterProductWithPromo
+
+to GetPromoCodevalue
+	"M3/OIS101".ChangeViewInOis101
+	"M3/OIS101".getPromocodevalue
+end GetPromoCodevalue
+
+To ApplyBlanketAgreement BlanketAgreement
+	If BlanketAgreement <> "" then
+		"M3/OIS101".BlanketAgreement BlanketAgreement
+	End If
+	
+End ApplyBlanketAgreement
+
+(*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
+	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet, "&IndexColItem& &indexRow) into itemCodeGen
+	Put Cell(worksheet, ndexColQuan&indexRow) into quantityGen
+	Put Cell(worksheet, IndexColPromo&indexRow) into PromoCodGen
+	
+End GenricRowNcolumn
+
+To AddLineItem itemCodeGen, quantityGen, PromocodGen
+	set itemCodeGen to itemCode
+	set quantityGen to quantity
+	set PromoCodGen to PromoCod
+	
+	//"M3/OIS101".setPromocode
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	if PromoCod <>"" then
+		"M3/OIS101".EnterPromoCode PromoCod
+	End if
+	
+	click "M3/OIS101/Next"
+	wait 2
+	"M3/OIS101".ChangeViewInOis101
+	///"M3/OIS101".getPromocodevalue
+	Click "M3/OIS101/ADDButton"
+End AddLineItem*)
+
+
+
+
+//                                                                             *****
+(*>>>>>>>>>Creates New order with or without delivery Terms and Method based on the data >>>>>>> *)
+to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement, Priority
+	if DeliveryTerm <> "" and  DeliveryMethod <> ""
+		"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
+	else 
+		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
+	end if
+end CreateNewOrder
+>>>>>>> 329129ff5b001c545a13fd3a4754ee056d07e111
+
+
+

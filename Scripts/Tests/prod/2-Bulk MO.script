@@ -1,0 +1,183 @@
+﻿(* 
+Name: Bulk MO
+Description: 
+Author: Ramya & Ofir
+*)
+
+// declare login variables
+global username
+global password
+
+// initialize login variables
+"Datastore".setLoginVariables 3
+
+// declare data variables
+global coNum
+
+// initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test ***************)
+repeat forever
+	
+	(************** Set up data *************)
+	//initialize data variables
+	DataStore.setDataScript2 dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if coNum is empty then exit repeat
+	
+	Log "CO# " & coNum
+	
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	// log in to application
+	"Flows/Application".login username, password
+	
+	Log "Do scheduling"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp(coNum)
+	put "M3/PMS170".recordProdNum into prodNum
+	
+	put "M3/PMS170".createScheduleNumber() into scheduleNumber
+	"M3/PMS170".scheduleNew scheduleNumber
+	"M3/PMS170".releaseMO
+	"M3/PMS170".close
+	"M3/PMS100".open
+	"M3/PMS100".lookupSchedule scheduleNumber
+	"M3/PMS100".printShopTraveler scheduleNumber
+	put "M3/PMS100".recordMO() into moNum
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	
+	if isAccessory(prodNum) then
+		Log "Do manufacturing"
+		// add M3 manufacturing here by moving working code from function "doFullRun"
+		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		// add KPack here by moving working code from function "doFullRun"
+		// close application
+		"Flows/Application".exitApp
+	else if isBag(prodNum) then
+		// close application
+		"Flows/Application".exitApp
+		Log "Do manufacturing"
+		"Other/DCA".open
+		"Other/DCA".manufacture moNum
+		"Other/DCA".close
+		"M3/Application".open
+		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/OIS300".open
+		"M3/OIS300".lookupCO coNumber
+		"M3/OIS300".openDeliveryToolbox
+		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+		"M3/OIS300".confirmStatusPacked
+		"M3/OIS300".closeFromDeliveryToolbox
+	end if
+end repeat
+
+to generateMOCO
+	//log in to AGS
+	Log "Logging in"
+	"M3/Application".open
+	
+	// declare login variables
+	global username
+	global password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 3
+	
+	"M3/Login".login username, password
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "Automation Script #2"
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	//"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	
+	Log coNum
+	
+	Log "Exit AGS"
+	"M3/Application".close
+	
+	//don't continue running the script
+	throw "Finished!", "some comment"
+end generateMOCO
+
+doFullRun
+
+to doFullRun
+	//read in necessary data
+	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet,"A3") into username
+	Put Cell(worksheet,"B3") into password
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"M3/Application".open
+	
+	"M3/Login".login UserName, Password
+	
+	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "US-Gear-06"
+	
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	
+	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	
+	(*"M3/OIS101".closeFromOrderLines*)
+	
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	
+	Log "Do scheduling"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp(coNum)
+	put "M3/PMS170".createScheduleNumber() into scheduleNumber
+	"M3/PMS170".scheduleNew scheduleNumber
+	"M3/PMS170".releaseMO
+	"M3/PMS170".close
+	"M3/PMS100".open
+	"M3/PMS100".lookupSchedule scheduleNumber
+	"M3/PMS100".printShopTraveler scheduleNumber
+	put "M3/PMS100".recordMO() into moNum
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	
+	if isAccessory(prodNum) then
+		Log "Do manufacturing"
+		// add M3 manufacturing here by moving working code from function "doFullRun"
+		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		// add KPack here by moving working code from function "doFullRun"
+		// close application
+		"Flows/Application".exitApp
+	else if isBag(prodNum) then
+		// close application
+		"Flows/Application".exitApp
+		Log "Do manufacturing"
+		"Other/DCA".open
+		"Other/DCA".manufacture moNum
+		"Other/DCA".close
+		"M3/Application".open
+		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/OIS300".open
+		"M3/OIS300".lookupCO coNum
+		"M3/OIS300".openDeliveryToolbox
+		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+		"M3/OIS300".confirmStatusPacked
+		"M3/OIS300".closeFromDeliveryToolbox
+	end if
+end doFullRun
+
+to isAccessory prodNum
+	if the second character of prodNum is "A" then
+		return TRUE
+end if
+end isAccessory
+
+to isBag prodNum
+	if the second character of prodNum is "B" then
+		return TRUE
+	end if
+end isAccessory

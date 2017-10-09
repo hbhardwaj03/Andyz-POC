@@ -9,7 +9,7 @@ to poReceipt poNumber
 	Click "M3/PPS300/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText "06Y"
+	TypeText "06A"
 	//TypeText Return
 	//Click "M3/PPS300/ResponsibleField"
 	//TypeText controlKey, "a"
@@ -19,12 +19,9 @@ to poReceipt poNumber
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText poNumber
-	TypeText Return
+	//TypeText Return
 end poReceipt
 
-to close
-
-end close
 
 to delynoteno poNumber
 	click "M3/PPS300/Delynoteno"
@@ -32,3 +29,13 @@ to delynoteno poNumber
 	typetext deletekey
 	typetext PoNumber
 end delynoteno
+
+to recordReceivingNo
+	Click "M3/PPS300/Receivingno"
+	put  ImageLocation ("M3/PPS300/Receivingno") into loc
+	Put loc+(-5,-20) into L1
+	Put loc+(100,20) into L2
+	put  ReadText((L1), (L2)) into ReciveNumber
+	Log ReciveNumber
+	return ReciveNumber
+end recordReceivingNo

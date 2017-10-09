@@ -1,0 +1,138 @@
+﻿(* 
+Name: Data-driven end to end custom bag processing
+Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end custom bag flow on the scenario. 
+Author: Himanshu Bhardwaj & Andy Jenkins
+ *)
+
+//declare login variables
+global username, password, DCAUser, DCAPswrd
+
+//declare data variables
+global dataIndex, custNum, custPO, tag, delTerm,coType
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
+
+//initialize test variables
+"DataStore".setGlobalsScript1
+
+//initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test ***************)
+repeat forever
+	
+	(************** Set up data *************)
+	//skip known bad entries in test data
+	put (6) into badData //these  are having item code of Accesories
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if custNum is empty then exit repeat
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
+	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	
+	
+	
+	//end repeat	
+	
+	(************** Scheduling ***************)
+	wait 5
+	"Flows/Application".login username, password
+	"Flows/Scheduling".doScheduling coNum
+	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
+	"Flows/Picking".doPicking
+	
+	(************** Manufacturing *************)
+	wait 5
+	"Flows/ManufacturingPacking".doManufacturing DCAUser, DCAPswrd, moNum
+	
+	(************** Packing ******************)
+	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	
+	(************** Shipping *****************)
+	"Flows/Shipping".doShipping delNum
+	"Flows/Shipping".validateShipping coNum
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	logData
+end repeat
+
+
+to logData
+	global dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+end logData
+
+to doFullRun
+	//declare test variables
+	global username, password, customerNum, coType, PO
+	global itemCode, productQuantity, DCAUser, DCAPswrd
+	
+	//declare data variables
+	global dataIndex, custNum, custPO, tag, delTerm
+	global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
+	//initialize test variables
+	"DataStore".setGlobalsScript1
+	
+	//initialize data line counter
+	put 11 into dataIndex
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	//if custNum is empty then exit repeat
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	
+	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+end doFullRun
+
+
+
+
+
+

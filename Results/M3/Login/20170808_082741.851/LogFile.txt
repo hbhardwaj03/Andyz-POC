@@ -1,2 +1,0 @@
-﻿2017-08-08 08:27:41.879 -0700	START		Running Test.script
-2017-08-08 08:27:42.153 -0700	FAILURE	Screen_Error.png	SenseTalk Compiler Exception in test:\nSyntax Error at line 4: Syntax Error - can't understand "8" at or near character 138 -- Execution Time 0:00:00 Test.script

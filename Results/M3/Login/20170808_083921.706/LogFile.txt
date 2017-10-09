@@ -1,5 +1,0 @@
-﻿2017-08-08 08:39:21.711 -0700	START		Running Test.script
-2017-08-08 08:39:21.923 -0700	doubleclick	Processes/Login/InforShortcut	at (40, 465)	2	on_test	Test.script
-2017-08-08 08:39:21.933 -0700	Exception	InforPasswordField	Could Not Open Image: InforPasswordField	3	on_test	Test.script
-2017-08-08 08:39:22.033 -0700	EndTestCase		(Duration:"0.319", Errors:"1", Exceptions:"1", StartTime:"2017-08-08 08:39:21 -0700", Successes:"0", TestCase:"Test.script", Warnings:"0")
-2017-08-08 08:39:22.265 -0700	FAILURE	Screen_Error.png	File Not Found click Error - Could Not Open Image: InforPasswordField -- Execution Time 0:00:01 Test.script

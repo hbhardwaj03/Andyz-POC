@@ -1,0 +1,73 @@
+﻿
+//4.AutomaticPOreceiving
+
+set index to index
+put "6" into index
+log index
+
+// fetching username,password and po number from excelfile
+set ExcelFile to workbook(ResourcePath("AutomaticPOReceiving.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet1")
+set worksheet2 to ExcelFile.Worksheet("Sheet2")
+
+Put Cell(worksheet,A2) into username
+Put Cell(worksheet,B2)into password
+Put Cell(worksheet2, "K" & index) into poNumber
+
+Log "Logging in"
+
+"M3/Application".open
+"M3/Login".login username, password
+
+
+//2.Look up PO number
+
+"M3/PPS300".openpoNumber
+"M3/PPS300".poReceipt poNumber
+"M3/PPS300".delynoteno poNumber
+click "M3/PPS300/Next"
+
+//3.Enter quantities received
+click "M3/PPS300/recievedquantityfield"
+TypeText controlKey, "a"
+TypeText deleteKey
+TypeText "84"
+TypeText Return
+wait 2
+click "M3/PPS300/Actions"
+click  "M3/PPS300/ConfirmUpdateF"
+click "M3/PPS300/previousbutton"
+Put "M3/PPS300".recordReceivingNo() into ReciveNumber
+click  "M3/PPS300/XClose"
+click "M3/PPS300/Confirmoutput"
+click "M3/PPS300/XClose"
+//4.Inspection approval
+"M3/PPS310".open
+click "M3/PPS300/Receivingno_1"
+TypeText  controlkey, "a"
+TypeText deleteKey
+Typetext ReciveNumber
+TypeText Return
+//need to start scripting from step f of inspection approval
+//unable to proceed as no data displayed for line items
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

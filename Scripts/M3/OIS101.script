@@ -61,15 +61,90 @@ to enterItemQuantity productQuantity
 	TypeText Return
 end enterItemQuantity
 
-to EnterTransResonCode TranctionResonCode
-	Click "M3/OIS101/TransactionReason"
-	TypeText TranctionResonCode
-end EnterTransResonCode
+To enterWhearhouseNumb WHNumber
+	Click image( "M3/OIS101/whm")
+	TypeText WHNumber
+	TypeText Return
+	
+	
+End enterWhearhouseNumb
+
+
+to enterTransResonCode tranctionResonCode
+	if tranctionResonCode <>"" then
+		Click "M3/OIS101/TransactionReason"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText TranctionResonCode
+	end if
+end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
-	Click "M3/OIS101/BlanketAgreement"
-	TypeText BlanketAgreement
+	click "M3/OIS101/lineItem"
+	wait 2
+	if BlanketAgreement <> "" then
+		Click "M3/OIS101/BlanketAgreement"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText BlanketAgreement
+	end if
+	wait 2
+	DoubleClick "M3/OIS101/0ApplyAgreemen"
+	wait 2
+	
 end BlanketAgreement
+
+To setPromocode
+
+	Click "M3/OIS101/Actions"
+	Wait 2
+	Click "M3/OIS101/Settinqs"
+	wait 2
+	Click "M3/OIS101/InputAlternativePanelB_1"
+	//Click "M3/OIS101/9WhsItpprom"
+	Click "M3/OIS101/9Whslipprom"
+	Click "M3/OIS101/Next"
+	Wait 2
+End setPromocode
+
+To EnterPromoCode PromoCod
+	Click "M3/OIS101/Prom"
+	TypeText PromoCod
+End EnterPromoCode
+
+to getPromocodevalue
+	//Click "M3/OIS101/SelectItemNum"
+	Click "M3/OIS101/selectline"
+	//Click "M3/OIS101/PromoDiscValue"
+	Click "M3/OIS101/PromoDiscprice"
+	put  ImageLocation ("M3/OIS101/PromoDiscprice") into loc
+	log loc
+	Put loc+(-20,-16) into L1
+	Put loc+(61,15) into L2
+	put  ReadText((L1), (L2)) into PromoDiscValue
+	
+	Log PromoDiscValue
+	If PromoDiscValue <> "" then
+		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
+	Else
+		LogError "Promo Code was Not Applied to the Item"
+		
+	End If
+	return PromoDiscValue
+	
+end getPromocodevalue
+
+To ChangeViewInOis101
+	//Click "M3/OIS101/View"
+	Click "M3/OIS101/View_1"
+	wait 2
+	Click"M3/OIS101/mouse"
+	ScrollWheelUp 10
+	wait 2
+	Click  "M3/OIS101/G5L01004PriceDiscounts"
+	
+End ChangeViewInOis101
+
 
 to enterItemColor
 	Click (130,300)
@@ -98,6 +173,8 @@ to configuratorA
 	Click "M3/OIS101/OrderNotesButton"
 	Click "M3/OIS101/DoubleStrapButton"
 end configuratorA
+
+
 
 to configuratorNewEra
 	Wait 5
@@ -131,12 +208,12 @@ to closeFromOrderLines
 	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 15.0, "M3/OIS101/OIS110ETitle"
+	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS100A
-	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
-	WaitFor 8.0, "M3/OIS101/OIS300BTitle"
+	WaitFor 30, "M3/OIS101/OIS300BTitle"
 	Click "M3/OIS101/XCloseButton"
 end closeFromOrderLines
 
@@ -145,12 +222,13 @@ to closeOrderLines
 	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 8.0, "M3/OIS101/OIS110ETitle"
+	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS100A
-	WaitFor 8.0, "M3/OIS101/OIS100ATitle"
+	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
 end closeOrderLines
+
 
 
 
