@@ -45,7 +45,7 @@ to pickAlt
 end pickAlt
 
 to DeliveryToolBox
-	Wait 3
+	Wait 5
 	Click "M3/MMS100/OrderNumber_Line"
 	Wait 3
 	Click "M3/MMS100/Related_1"
