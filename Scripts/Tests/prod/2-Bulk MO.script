@@ -67,7 +67,7 @@ repeat forever
 		"M3/Application".open
 		"M3/Login".login username, password
 		"M3/OIS300".open
-		"M3/OIS300".lookupCO coNumber
+		"M3/OIS300".lookupCO coNum
 		"M3/OIS300".openDeliveryToolbox
 		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 		"M3/OIS300".confirmStatusPacked
