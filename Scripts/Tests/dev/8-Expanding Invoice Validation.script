@@ -7,11 +7,32 @@
 Click "M3/OIS350/Sortingorder"
 Click "M3/OIS350/3COno"
 Click "M3/OIS350/Extendedinvno"
-Typetext customerNumber
-return
+
+//to fetch customer order number 
+set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet3")
+Put Cell(worksheet, A2) into CONumber
+
 
 //To record invoice date
 Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
+
+//To capture variables in OIS300
+"M3/OIS300".open
+
+//To record shipment date
+"M3/OIS300".openDeliveryToolboxlink
+Click "M3/OIS300/Previousbutton"
+//To record order date
+Put "M3/OIS300".recordOrderDate() into Orderdate
+
+
+
+
+
+
+
+
 
 
 

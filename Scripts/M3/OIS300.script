@@ -145,7 +145,7 @@ end lookupCO
 to openDeliveryToolbox
 	Click "M3/OIS300/HighlightCO"
 	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/DeliveryToolboxLink"
+	Click "M3/OIS300/Deliverytoolbox"
 end openDeliveryToolbox
 
 to confirmStatusPacked
@@ -250,3 +250,26 @@ end reschedule
 to close
 	Click "M3/OIS300/CloseButton"
 end close
+
+to recordDepartDate
+	Click "M3/OIS300/DepartDate"
+	put  ImageLocation ("M3/OIS300/DepartDate") into loc
+	Put loc+(-60,-10) into L1
+	Put loc+(75,10) into L2
+	put  ReadText((L1), (L2)) into Departdate
+	Log Departdate
+	return Departdate
+end recordDepartdate
+
+to openDeliveryToolboxlink
+	
+	Click "M3/OIS300/HighlightCOnum"
+	Click "M3/OIS300/relateddropdown"
+	Click "M3/OIS300/Relateddropdownlist"
+	Click "M3/OIS300/Deliverytoolbox"
+end openDeliveryToolboxlink
+
+to recordOrderDate 
+set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
+Log orderDate
+end recordOrderDate
