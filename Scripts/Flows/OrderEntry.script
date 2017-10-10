@@ -3,7 +3,7 @@
 	"M3/OIS300".open
 	"M3/OIS300".startNewOrder
 	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-	"M3/OIS300".enterCustomerNumber customerNumber, coType
+	"M3/OIS300".enterCustomerNumber customerNumber, coType, SalesHold
 	//"M3/OIS300".submitOIS100A  (**Commented as it should not be at this postion in this flow*)
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100G
@@ -14,15 +14,23 @@
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
-to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode //BlanketAgreement
+to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".zoom75prcnt
 	"M3/OIS300".startNewOrder
+<<<<<<< HEAD
 	wait 3
 	// ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField"
 	"M3/OIS300".enterCustomerNumber customerNumber, coType	
 	wait 3
+=======
+	//if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
+		"M3/OIS300".enterCustomerNumber customerNumber, coType, SalesHold	
+	//else
+		//LogError "New Order not started" 
+	//end if	
+>>>>>>> d5324f18d7f69ae8736562aa544ce41cbcb367a6
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
@@ -62,9 +70,21 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/Configurations".ConfigA2
 	else if  ConfigurationNo="ConfigA3" then
 		"M3/Configurations".ConfigA3
+<<<<<<< HEAD
 	else if  ConfigurationNo="ConfigA4" then
 	"M3/Configurations".ConfigA4
 	else if ConfigurationNo="ConfigB1" then
+=======
+		
+	else if  ConfigurationNo="ConfigA4" then
+		"M3/Configurations".ConfigA4
+	else if ConfigurationNo="ConfigB1" then
+		
+	else if  ConfigurationNo="ConfigA4" then
+		"M3/Configurations".ConfigA4
+	else if ConfigurationNo="ConfigB1" then
+		
+>>>>>>> d5324f18d7f69ae8736562aa544ce41cbcb367a6
 		"M3/Configurations".ConfigB1
 	else if  ConfigurationNo="ConfigB2" then
 		"M3/Configurations".ConfigB2
@@ -73,6 +93,7 @@ to enterProduct itemCode,ConfigurationNo
 	else if  ConfigurationNo="ConfigB4" then
 		"M3/Configurations".ConfigB4
 	else if ConfigurationNo="ConfigB5" then
+		
 		"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then
 		"M3/Configurations".ConfigB6
@@ -82,7 +103,21 @@ to enterProduct itemCode,ConfigurationNo
 	else
 		"M3/OIS101".configuratorA
 	end if
+	(*
 	"M3/OIS101".closeFromOrderLines
+	"M3/Configurations".ConfigB5
+	else if ConfigurationNo="ConfigB6" then
+	"M3/Configurations".ConfigB6
+	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+	(*"M3/OIS101".enterItemQuantity productQuantity*)
+	"M3/Configurations".config001
+	else
+	"M3/OIS101".configuratorA
+end if
+	
+	"M3/OIS101".closeFromOrderLines*)
+	
+	
 end enterProduct
 
 
@@ -110,9 +145,12 @@ to EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
 	
 END EnterProductWithPromo
 
-to GetPromoCodevalue
-	"M3/OIS101".ChangeViewInOis101
-	"M3/OIS101".getPromocodevalue
+to GetPromoCodevalue PromoCod
+	if PromoCod <>"" then
+		"M3/OIS101".ChangeViewInOis101
+		"M3/OIS101".getPromocodevalue
+	End if
+	
 end GetPromoCodevalue
 
 To ApplyBlanketAgreement BlanketAgreement

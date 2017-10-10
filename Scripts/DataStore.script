@@ -152,6 +152,40 @@ To SetDataScript6 dataIndex
 	Put Cell(worksheet, "K" & dataIndex) into TranctionResonCode
 	Put Cell(worksheet, "L" & dataIndex) into BlanketAgreement
 End SetDataScript6
+
+To SetDataScript7 dataIndex
+	global customerNumber
+	global SalesHold
+	global PO
+	global TagField
+	global DeliveryTerm
+	global DeliveryMethod
+	global WHNumber
+	global itemCode
+	global quantity
+	global PromoCod
+	global TranctionResonCode
+	global BlanketAgreement
+	global priority
+	global ConfigurationNo
+	set ExcelFile to workbook(ResourcePath("7-CustomClubOrderEntry.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet1")
+	Put Cell(worksheet, "A" & dataIndex) into customerNumber
+	Put Cell(worksheet, "B" & dataIndex) into SalesHold
+	Put Cell(worksheet, "C" & dataIndex) into  PO
+	Put Cell(worksheet, "D" & dataIndex) into TagField
+	Put Cell(worksheet, "E" & dataIndex) into DeliveryTerm 
+	Put Cell(worksheet, "F" & dataIndex) into DeliveryMethod
+	Put Cell(worksheet, "G" & dataIndex) into WHNumber
+	Put Cell(worksheet, "H" & dataIndex) into itemCode
+	Put Cell(worksheet, "I" & dataIndex) into quantity
+	Put Cell(worksheet, "J" & dataIndex) into PromoCod
+	Put Cell(worksheet, "K" & dataIndex) into TranctionResonCode
+	Put Cell(worksheet, "L" & dataIndex) into BlanketAgreement
+	Put Cell(worksheet, "M" & dataIndex) into priority
+	Put Cell(worksheet, "N" & dataIndex) into ConfigurationNo
+End SetDataScript7
+
 (*
 to ConfigValues 
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))

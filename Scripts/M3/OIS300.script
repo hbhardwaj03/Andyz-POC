@@ -10,7 +10,7 @@ to startNewOrder
 	Click (Image:"M3/OIS300/NewOrderButton_new", WaitFor:120)
 end startNewOrder
 
-to enterCustomerNumber customerNumber, coType
+to enterCustomerNumber customerNumber, coType, SalesHold
 	Click "M3/OIS300/CustomerNumberField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -21,6 +21,12 @@ to enterCustomerNumber customerNumber, coType
 		TypeText coType
 	end if
 	Wait 2
+	if SalesHold <> "" then
+		wait 2
+		Click "M3/OIS100/SalesHoldCode"
+		TypeText SalesHold
+		TypeText return
+	End If
 	Click "M3/OIS300/NextButton"
 	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
@@ -143,6 +149,7 @@ to lookupCO coNumber
 end lookupCO
 
 to openDeliveryToolbox
+<<<<<<< HEAD
 	RightClick "M3/OIS300/HighlightCO"
 	if ImageFound (3,"M3/OIS300/relateddropdown")
 		Click "M3/OIS300/relateddropdown"
@@ -151,6 +158,11 @@ to openDeliveryToolbox
 		Click "M3/OIS300/HighlightCO"
 		TypeText "controlKey","43"
 	end if
+=======
+	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/relateddropdown"
+	Click "M3/OIS300/Deliverytoolbox"
+>>>>>>> d5324f18d7f69ae8736562aa544ce41cbcb367a6
 end openDeliveryToolbox
 
 
@@ -333,3 +345,26 @@ end zoom90prcnt
 to close
 	Click "M3/OIS300/CloseButton"
 end close
+
+to recordDepartDate
+	Click "M3/OIS300/DepartDate"
+	put  ImageLocation ("M3/OIS300/DepartDate") into loc
+	Put loc+(-60,-10) into L1
+	Put loc+(75,10) into L2
+	put  ReadText((L1), (L2)) into Departdate
+	Log Departdate
+	return Departdate
+end recordDepartdate
+
+to openDeliveryToolboxlink
+	
+	Click "M3/OIS300/HighlightCOnum"
+	Click "M3/OIS300/relateddropdown"
+	Click "M3/OIS300/Relateddropdownlist"
+	Click "M3/OIS300/Deliverytoolbox"
+end openDeliveryToolboxlink
+
+to recordOrderDate 
+	set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
+	Log orderDate
+end recordOrderDate

@@ -36,7 +36,7 @@ repeat forever
 	"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
 	
 	(************** To Validate Promocode ******************)
-	"Flows/OrderEntry".GetPromoCodevalue
+	"Flows/OrderEntry".GetPromoCodevalue PromoCod
 	
 	(*************** To Apply Blanket  Agreement **********************)
 	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
