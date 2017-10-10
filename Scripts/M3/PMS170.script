@@ -4,7 +4,7 @@
 	TypeText "PMS170"
 	Click "M3/Home/SearchSubmit"
 	// set Screen to 90% Zoom
-	"M3/OIS300".zoom90prcnt
+	(*"M3/OIS300".zoom90prcnt*)
 end open
 
 to lookup coNumber
