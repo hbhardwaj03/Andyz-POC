@@ -19,11 +19,11 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".open
 	"M3/OIS300".zoom75prcnt
 	"M3/OIS300".startNewOrder
-	if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
+	//if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
 		"M3/OIS300".enterCustomerNumber customerNumber, coType, SalesHold	
-	else
-		LogError "New Order not started" 
-	end if	
+	//else
+		//LogError "New Order not started" 
+	//end if	
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
