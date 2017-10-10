@@ -28,7 +28,7 @@ to manufacture moNumber
 	TypeText f1
 	TypeText 2
 	TypeText Return
-	Log "Finishing MO: " & moNmber
+	Log "Finishing MO: " & moNumber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 10, "DCA/TransactionComplete"*)
