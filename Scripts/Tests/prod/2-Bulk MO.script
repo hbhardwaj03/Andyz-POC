@@ -57,7 +57,7 @@ repeat forever
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 		// close application
 		"Flows/Application".exitApp
-	else if isBag(prodNum) then
+	else
 		// close application
 		"Flows/Application".exitApp
 		(*Log "Do manufacturing"
