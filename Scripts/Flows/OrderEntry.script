@@ -59,28 +59,39 @@ to enterProduct itemCode,ConfigurationNo
 	"M3/OIS101".enterItemColor
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
-	else if  ConfigurationNo="ConfigA2" then
+		else if  ConfigurationNo="ConfigA2" then
 		"M3/Configurations".ConfigA2
-	else if  ConfigurationNo="ConfigA3" then
+		else if  ConfigurationNo="ConfigA3" then
 		"M3/Configurations".ConfigA3
-<<<<<<< HEAD
-	else if  ConfigurationNo="ConfigA4" then
+		
+		else if  ConfigurationNo="ConfigA4" then
 		"M3/Configurations".ConfigA4
-	else if ConfigurationNo="ConfigB1" then
-=======
-else if  ConfigurationNo="ConfigA4" then
-	"M3/Configurations".ConfigA4
-else if ConfigurationNo="ConfigB1" then
->>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
-"M3/Configurations".ConfigB1
-else if  ConfigurationNo="ConfigB2" then
-"M3/Configurations".ConfigB2
-else if  ConfigurationNo="ConfigB3" then
-"M3/Configurations".ConfigB3
-else if  ConfigurationNo="ConfigB4" then
-"M3/Configurations".ConfigB4
-else if ConfigurationNo="ConfigB5" then
-<<<<<<< HEAD
+		else if ConfigurationNo="ConfigB1" then
+		
+		else if  ConfigurationNo="ConfigA4" then
+		"M3/Configurations".ConfigA4
+		else if ConfigurationNo="ConfigB1" then
+		
+		"M3/Configurations".ConfigB1
+		else if  ConfigurationNo="ConfigB2" then
+		"M3/Configurations".ConfigB2
+		else if  ConfigurationNo="ConfigB3" then
+		"M3/Configurations".ConfigB3
+		else if  ConfigurationNo="ConfigB4" then
+		"M3/Configurations".ConfigB4
+		else if ConfigurationNo="ConfigB5" then
+		
+		"M3/Configurations".ConfigB5
+		else if ConfigurationNo="ConfigB6" then
+		"M3/Configurations".ConfigB6
+		else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+		(*"M3/OIS101".enterItemQuantity productQuantity*)
+		"M3/Configurations".config001
+		else
+		"M3/OIS101".configuratorA
+	end if
+	(*
+	"M3/OIS101".closeFromOrderLines
 	"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then
 	"M3/Configurations".ConfigB6
@@ -90,19 +101,10 @@ else if ConfigurationNo="ConfigB5" then
 	else
 	"M3/OIS101".configuratorA
 end if
-"M3/OIS101".closeFromOrderLines
-=======
-		"M3/Configurations".ConfigB5
-	else if ConfigurationNo="ConfigB6" then
-		"M3/Configurations".ConfigB6
-	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
-		(*"M3/OIS101".enterItemQuantity productQuantity*)
-		"M3/Configurations".config001
-	else
-		"M3/OIS101".configuratorA
-	end if
-	"M3/OIS101".closeFromOrderLines
->>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
+	
+	"M3/OIS101".closeFromOrderLines*)
+	
+	
 end enterProduct
 
 
