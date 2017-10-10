@@ -4,7 +4,7 @@ global username
 global password
 
 // initialize login variables
-"Datastore".setLoginVariables 3
+"Datastore".setLoginVariables 4 
 
 set ExcelFile to workbook(ResourcePath("7-CustomClubOrderEntry.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
