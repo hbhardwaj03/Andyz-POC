@@ -4,7 +4,7 @@
 	TypeText "PMS100"
 	Click "M3/Home/SearchSubmit"
 	// set Screen to 85% Zoom
-	"M3/OIS300".zoom85prcnt
+	(*"M3/OIS300".zoom85prcnt*)
 end open
 
 to lookupSchedule scheduleNumber
