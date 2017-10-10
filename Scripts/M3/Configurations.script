@@ -2,7 +2,7 @@
 	TypeText 1
 	Click (238,228)
 	(*Click (Image:"M3/Configurations/configuration001/BagColorBlack", WaitFor:10)*)
-	Click "M3/Configurations/configuration001/NumCustomization"
+	Click ("M3/Configurations/configuration001/NumCustomization", waitFor:10)
 	Click "M3/Configurations/configuration001/CustomizationLocation"
 	Click (Image:"M3/Configurations/configuration001/Personalization1", WaitFor:10)
 	Click "M3/Configurations/configuration001/PersonalizationText"
@@ -37,7 +37,7 @@ to config002
 	TypeText "Acushnet script 2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/BlockLettering"
-	Click "M3/Configurations/configuration001/VVhiteColor"
+	Click "M3/Configurations/configuration001/WhiteColor"
 	Click "M3/Configurations/configuration001/NoOrderNotes"
 end config002
 
@@ -66,9 +66,9 @@ to ConfigB1
 	TypeText "Test Pers 2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	click "M3/Configurations/configuration001/BlockLettering"
-	click "M3/Configurations/configuration001/VVhiteColor"
+	click  "M3/Configurations/configuration001/PersColor/JP052White"
 	//Customization# 3{Logo}
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL037_SpinePocket_L1"
+	Click "M3/Configurations/configuration001/CustomizationLocation/JL037 _SpinePocket_L1"
 	Click "M3/Configurations/configuration001/personalizationType/Customization3/JL003Loqo3"
 	TypeText "376309"
 	TypeText Return
@@ -86,7 +86,7 @@ to ConfigB1
 		TypeText Return
 	end if
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
-	TypeText "Test Pers 2"
+	TypeText "Test Pers 4"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
 	Click "M3/Configurations/configuration001/PersColor/JP053Gold"
@@ -109,12 +109,13 @@ to ConfigB1
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
 	TypeText "Test Special color instruction textbox"
 	Click "M3/OIS101/PersonalizationNextButton"	
-	Click "M3/Configurations/configuration001/YesOrderNotes/YesJYES"
+	Click "M3/Configurations/configuration001/YesOrderNotes"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
 	TypeText "See Special Color Instruction"
 	Click "M3/OIS101/PersonalizationNextButton"	
-	Click "M3/Configurations/configuration001/StrapType/JST02Double"
+	Click "M3/Configurations/configuration001/StrapType/JST02Double1"
+	wait 5
 end ConfigB1
 
 to ConfigB2 // Similar to B5
@@ -139,7 +140,7 @@ to ConfigB2 // Similar to B5
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "Test Pers 2"
-	Click "M3/OIS101/PersonalizationNextButton"
+Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
 	Click "M3/Configurations/configuration001/PersColor/JP054OtherColor"
 	TypeText Return

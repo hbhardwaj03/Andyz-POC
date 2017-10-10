@@ -7,3 +7,5 @@ to close
 	Click "M3/Application/ExitAGSButton"
 	//Click "M3/Application/ExitConfirmationButton"
 end close
+
+

@@ -17,9 +17,13 @@ end enterNewOrder
 to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
+	"M3/OIS300".zoom75prcnt
 	"M3/OIS300".startNewOrder
-	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-	"M3/OIS300".enterCustomerNumber customerNumber, coType
+	if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
+		"M3/OIS300".enterCustomerNumber customerNumber, coType	
+	else
+		LogError "New Order not started" 
+	end if	
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
@@ -36,7 +40,7 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E
-	//"M3/OIS300".submitOIS102H
+	"M3/OIS300".submitOIS102H
 	"M3/OIS101".EnterTransResonCode TranctionResonCode
 	//"M3/OIS101".BlanketAgreement BlanketAgreement
 end GenericOrderEntry
@@ -59,27 +63,46 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/Configurations".ConfigA2
 	else if  ConfigurationNo="ConfigA3" then
 		"M3/Configurations".ConfigA3
+<<<<<<< HEAD
 	else if  ConfigurationNo="ConfigA4" then
 		"M3/Configurations".ConfigA4
-		else if ConfigurationNo="ConfigB1" then
-		"M3/Configurations".ConfigB1
-		else if  ConfigurationNo="ConfigB2" then
-		"M3/Configurations".ConfigB2
-		else if  ConfigurationNo="ConfigB3" then
-		"M3/Configurations".ConfigB3
-		else if  ConfigurationNo="ConfigB4" then
-		"M3/Configurations".ConfigB4
-		else if ConfigurationNo="ConfigB5" then
+	else if ConfigurationNo="ConfigB1" then
+=======
+else if  ConfigurationNo="ConfigA4" then
+	"M3/Configurations".ConfigA4
+else if ConfigurationNo="ConfigB1" then
+>>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
+"M3/Configurations".ConfigB1
+else if  ConfigurationNo="ConfigB2" then
+"M3/Configurations".ConfigB2
+else if  ConfigurationNo="ConfigB3" then
+"M3/Configurations".ConfigB3
+else if  ConfigurationNo="ConfigB4" then
+"M3/Configurations".ConfigB4
+else if ConfigurationNo="ConfigB5" then
+<<<<<<< HEAD
+	"M3/Configurations".ConfigB5
+	else if ConfigurationNo="ConfigB6" then
+	"M3/Configurations".ConfigB6
+	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+	(*"M3/OIS101".enterItemQuantity productQuantity*)
+	"M3/Configurations".config001
+	else
+	"M3/OIS101".configuratorA
+end if
+"M3/OIS101".closeFromOrderLines
+=======
 		"M3/Configurations".ConfigB5
-		else if ConfigurationNo="ConfigB6" then
+	else if ConfigurationNo="ConfigB6" then
 		"M3/Configurations".ConfigB6
-		else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
 		"M3/Configurations".config001
-		else
+	else
 		"M3/OIS101".configuratorA
 	end if
 	"M3/OIS101".closeFromOrderLines
+>>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
 end enterProduct
 
 
@@ -104,10 +127,23 @@ to EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
 	"M3/OIS101".enterItemQuantity quantity
 	click "M3/OIS101/Next"
 	wait 2
-	"M3/OIS101".ChangeViewInOis101
-	"M3/OIS101".getPromocodevalue
 	
 END EnterProductWithPromo
+
+to GetPromoCodevalue PromoCod
+	if PromoCod <>"" then
+		"M3/OIS101".ChangeViewInOis101
+		"M3/OIS101".getPromocodevalue
+	End if
+	
+end GetPromoCodevalue
+
+To ApplyBlanketAgreement BlanketAgreement
+	If BlanketAgreement <> "" then
+		"M3/OIS101".BlanketAgreement BlanketAgreement
+	End If
+	
+End ApplyBlanketAgreement
 
 (*To GenricRowNcolumn IndexColItem, IndexColQuan,IndexColPromo, indexRow
 	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))

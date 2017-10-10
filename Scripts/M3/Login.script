@@ -1,11 +1,11 @@
 ﻿to login username, password
 	Log "Logging in as " & username
 	WaitFor 10, "M3/Login/InforPasswordSubmitButton"
-	Click (Image:"M3/Login/UsernameField")
+	Click (Image:"M3/Login/UsernameField", waitFor:10)
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText username
-	Click "M3/Login/PasswordField"
+	Click (Image:"M3/Login/PasswordField", waitFor:10)
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText password

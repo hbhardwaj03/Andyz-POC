@@ -1,64 +1,66 @@
-﻿(* Automatic PO recieving 
-Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end Automatic PO recieving 
-Author: Ofir
- *)
+﻿to doManufacturing moNumber
+	Log "Do manufacturing"
+	// Open DCA
+	"Other/DCA".open
+	"Other/DCA".manufacture moNumber
+	"Other/DCA".close
+end doManufacturing
 
-//declare test variables
-global username
-global password
-global customerNum
-global coType
-global PO
-global itemCode
-global productQuantity
-global DCAUser
-global DCAPswrd
 
-//declare data variables
-global dataIndex
-global custNum
-global custPO
-global tag
-global delTerm
-global delMeth
-global style
-global color
+to validatePacking username, password, coNumber
+	"M3/Application".open
+	"M3/Login".login username, password
+	"M3/OIS300".open
+	"M3/OIS300".lookupCO coNumber
+	"M3/OIS300".openDeliveryToolbox
+	put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+	"M3/OIS300".confirmStatusPacked
+	"M3/OIS300".closeFromDeliveryToolbox
+	Log "Exit AGS"
+	"M3/Application".close
+	return deliveryNumber
+end validatePacking
 
-//initialize test variables
-"DataStore".setGlobalsScript1
 
-//initialize data line counter
-put 2 into dataIndex
 
-(************** Start Test ***************)
-repeat forever
+
+to ValidatePacking username, password, coNumber
+	"M3/Application".open
+	"M3/Application".login username, password
+	"M3/Application".open
+	"M3/Application".lookupCO coNumber
+	"M3/Application".openDeliveryToolbox
+	put "M3/Application".recordDeliveryNumber into deliveryNumber
+	"M3/OIS300".confirmStatusPacked
+	"M3/OIS300".closeFromDeliveryToolbox
+	log "Exit AGS"
+	"M3/Application".close
+	return deliveryNumber
+end ValidatePacking
+
+
+to doManufacturingM3 coNumber, moNum
+	Log "Do Manufacturing in M3"
+	"M3/PMS070".lookupMOnumber moNum
+	"M3/PMS070".selectoperation
+	(*"M3/PMS070".compareOrderandManufQuantity*)
 	
-	(************** Set up data *************)
-	//skip known bad entries in test data
-	put (6,9,11,25) into badData //these  are having item code of Accesories
-	repeat while dataIndex is in badData
-		put dataIndex + 1 into dataIndex
-	end repeat
+	Click"M3/PMS070/Nextbutton"
 	
-	//initialize data variables (sets global data variables and logs them)
-	DataStore.setDataScript1 dataIndex
-	--logData
+	// captured step for remains and manufacturing qty validation
+	(*"M3/PMS070". compareRemainsandManufQuantity*)
+	click "M3/PMS070/close"
 	
-	//increment counter
-	put dataIndex + 1 into dataIndex
+	"M3/PMS100".open
+	"M3/PMS100".lookupCO coNumber
 	
-	//break if no more data
-	if custNum is empty then exit repeat
+	"M3/PMS100".checkMOStatusStarted
+	click "M3/PMS070/close100"
 	
-	(************** Start flow ****************)
-	"Flows/Application".login username, password
+	"M3/PMS070".lookupMOnumber moNum
+	"M3/PMS070".finishManufacturing
 	
-	(************** Order entry ***************)
-	"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style
-	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
-	
-end repeat
+	"M3/PMS100".open
+	"M3/PMS100".lookupCO coNumber
+	"M3/PMS100".checkMOStatusFinished
+end doManufacturingM3

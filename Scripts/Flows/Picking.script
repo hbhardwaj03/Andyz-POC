@@ -11,6 +11,7 @@ to doStatusPicking ReqNumber, coNumber
 	(*"M3/MMS100".pickAlt*)
 	"M3/MMS100".DeliveryToolBox
 	"M3/MMS100".Picking
+	"M3/MMS100".close
 	(*	"M3/MWS150".openMWS150
 	"M3/MWS150".search_order_in_MWS150 coNumber
 	"M3/MWS150".ReqOrderStatus

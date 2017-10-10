@@ -5,24 +5,24 @@ Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
 //declare login variables
-global username, password
+global username, password, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex, custNum, custPO, tag, delTerm
+global dataIndex, custNum, custPO, tag, delTerm,coType
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 
 //initialize test variables
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-put 14 into dataIndex
+put 2 into dataIndex
 
 (************** Start Test ***************)
 repeat forever
 	
 	(************** Set up data *************)
 	//skip known bad entries in test data
-	put (5,6,12) into badData //these  are having item code of Accesories
+	put (6) into badData //these  are having item code of Accesories
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
@@ -35,48 +35,50 @@ repeat forever
 	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
-	//if custNum is empty then exit repeat
+	if custNum is empty then exit repeat
 	
 	(************** Start flow ****************)
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
 	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
-	"Flows/OrderEntry".GenericOrderEntry custNum, "", custPO, tag, delTerm, delMeth, trnsctnResn,blnktAgrmnt
+	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 	
-	logData
 	
-end repeat	
-
-(*
-(************** Scheduling ***************)
-"Flows/Scheduling".doScheduling coNum
-put "M3/PMS100".recordMO() into moNum
-
-(************** Picking ******************)
-"Flows/Picking".doPicking
-
-(************** Manufacturing *************)
-"Flows/ManufacturinPacking".doManufacturing moNum
-
-(************** Packing ******************)
-put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
-"Flows/Other".recordRun coNum, moNum, schedNum, delNum
-
-(************** Shipping *****************)
-"Flows/Shipping".doShipping delNum
-"Flows/Shipping".validateShipping coNum
-
-(************** Exit *********************)
-"Flows/Application".exitApp
-
+	
+	//end repeat	
+	
+	(************** Scheduling ***************)
+	wait 5
+	"Flows/Application".login username, password
+	"Flows/Scheduling".doScheduling coNum
+	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
+	"Flows/Picking".doPicking
+	
+	(************** Manufacturing *************)
+	wait 5
+	"Flows/ManufacturingPacking".doManufacturing DCAUser, DCAPswrd, moNum
+	
+	(************** Packing ******************)
+	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	
+	(************** Shipping *****************)
+	"Flows/Shipping".doShipping delNum
+	"Flows/Shipping".validateShipping coNum
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	logData
 end repeat
-*)
+
 
 to logData
 	global dataIndex
@@ -128,5 +130,9 @@ to doFullRun
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 end doFullRun
+
+
+
+
 
 

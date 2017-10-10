@@ -1,7 +1,9 @@
-﻿to doManufacturing moNumber
-	Log "Do manufacturing"
+﻿to doManufacturing DCAUser,DCAPswrd,moNumber
+	Log "Do manufacturing with DCA"
 	// Open DCA
 	"Other/DCA".open
+	Log "DCA Loging in as :" & DCAUser
+	"Other/DCA".login DCAUser,DCAPswrd
 	"Other/DCA".manufacture moNumber
 	"Other/DCA".close
 end doManufacturing
