@@ -116,7 +116,7 @@ to doFullRun
 	
 	"M3/Login".login UserName, Password
 	
-	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "US-Gear-06"
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
