@@ -17,9 +17,13 @@ end enterNewOrder
 to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
+	"M3/OIS300".zoom75prcnt
 	"M3/OIS300".startNewOrder
-	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-	"M3/OIS300".enterCustomerNumber customerNumber, coType
+	if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
+		"M3/OIS300".enterCustomerNumber customerNumber, coType	
+	else
+		LogError "New Order not started" 
+	end if	
 	"M3/OIS300".enterCustomersPO PO
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
@@ -59,9 +63,15 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/Configurations".ConfigA2
 	else if  ConfigurationNo="ConfigA3" then
 		"M3/Configurations".ConfigA3
+<<<<<<< HEAD
 	else if  ConfigurationNo="ConfigA4" then
 		"M3/Configurations".ConfigA4
 	else if ConfigurationNo="ConfigB1" then
+=======
+else if  ConfigurationNo="ConfigA4" then
+	"M3/Configurations".ConfigA4
+else if ConfigurationNo="ConfigB1" then
+>>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
 		"M3/Configurations".ConfigB1
 	else if  ConfigurationNo="ConfigB2" then
 		"M3/Configurations".ConfigB2
@@ -70,6 +80,7 @@ to enterProduct itemCode,ConfigurationNo
 	else if  ConfigurationNo="ConfigB4" then
 		"M3/Configurations".ConfigB4
 	else if ConfigurationNo="ConfigB5" then
+<<<<<<< HEAD
 	"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then
 	"M3/Configurations".ConfigB6
@@ -80,6 +91,18 @@ to enterProduct itemCode,ConfigurationNo
 	"M3/OIS101".configuratorA
 end if
 "M3/OIS101".closeFromOrderLines
+=======
+		"M3/Configurations".ConfigB5
+	else if ConfigurationNo="ConfigB6" then
+		"M3/Configurations".ConfigB6
+	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+		(*"M3/OIS101".enterItemQuantity productQuantity*)
+		"M3/Configurations".config001
+	else
+		"M3/OIS101".configuratorA
+	end if
+	"M3/OIS101".closeFromOrderLines
+>>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
 end enterProduct
 
 

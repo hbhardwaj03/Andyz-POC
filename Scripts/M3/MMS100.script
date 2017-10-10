@@ -40,11 +40,12 @@ to pickAlt
 	KeyDown ControlKey
 	repeat 6 times
 		TypeText "-"
-end repeat
-KeyUp ControlKey
+	end repeat
+	KeyUp ControlKey
 end pickAlt
 
 to DeliveryToolBox
+	Wait 5
 	Click "M3/MMS100/OrderNumber_Line"
 	Wait 3
 	Click "M3/MMS100/Related_1"
@@ -79,14 +80,31 @@ To Picking
 	Click "M3/PMS100/ReleaseforPickLink"
 	assert "M3/PMS100".checkPickingListsImage is SUCCESS, "Delivery status update in delivery toolbox"
 	Click "M3/PMS100/50PickingListsCreated"
-	
-	Click "M3/MMS100/PickingLists"
+	Click (Image:"M3/MMS100/CloseButton", WaitFor:10)
+	(*Click "M3/MMS100/PickingLists"
 	Wait 2
 	If ImageFound("M3/MMS100/MWS420B1") then
 		LogSuccess "Picking List Screen Appears"
-	Else
+		Else
 		throw "Error","Picking List Screen Not appeard"
 	End If
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "="
+	end repeat
+	KeyUp ControlKey
+	Click "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/ConfirmIssuesLink"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "-"
+	end repeat
+	KeyUp ControlKey*)
+	//manualPacking
+End Picking
+
+to manualPacking
 	Click "M3/MMS100/ManualPacking"
 	wait 2
 	If Imagefound("M3/MMS100/MMS424B1") then
@@ -120,4 +138,13 @@ To Picking
 	Else
 		Logerror"Delivery Status Has Not Appeared"
 	End If
-End Picking
+end manualPacking
+
+to close
+	Click "M3/MMS100/CloseButton"
+end close
+
+
+
+
+

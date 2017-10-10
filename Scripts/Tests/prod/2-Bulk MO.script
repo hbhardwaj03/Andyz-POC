@@ -57,10 +57,24 @@ repeat forever
 		// add M3 manufacturing here by moving working code from function "doFullRun"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 		// add KPack here by moving working code from function "doFullRun"
+		// close application
+		"Flows/Application".exitApp
+	else if isBag(prodNum) then
+		// close application
+		"Flows/Application".exitApp
+		Log "Do manufacturing"
+		"Other/DCA".open
+		"Other/DCA".manufacture moNum
+		"Other/DCA".close
+		"M3/Application".open
+		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/OIS300".open
+		"M3/OIS300".lookupCO coNumber
+		"M3/OIS300".openDeliveryToolbox
+		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+		"M3/OIS300".confirmStatusPacked
+		"M3/OIS300".closeFromDeliveryToolbox
 	end if
-	
-	// close application
-	"Flows/Application".exitApp
 end repeat
 
 to generateMOCO
@@ -78,10 +92,10 @@ to generateMOCO
 	"M3/Login".login username, password
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-	"Flows/OrderEntry".enterNewOrder "US00000571", "USA", "Automation Script #2"
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "Automation Script #2"
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
-	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	//"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	
 	Log coNum
 	
@@ -91,6 +105,8 @@ to generateMOCO
 	//don't continue running the script
 	throw "Finished!", "some comment"
 end generateMOCO
+
+doFullRun
 
 to doFullRun
 	//read in necessary data
@@ -108,9 +124,10 @@ to doFullRun
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	
-	"M3/OIS101".closeFromOrderLines
+	(*"M3/OIS101".closeFromOrderLines*)
 	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	
@@ -128,16 +145,39 @@ to doFullRun
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
-	// implement manufacturing in M3 here first
-	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-	// implement KPack here first
-	
-	// close application
-	"Flows/Application".exitApp
+	if isAccessory(prodNum) then
+		Log "Do manufacturing"
+		// add M3 manufacturing here by moving working code from function "doFullRun"
+		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		// add KPack here by moving working code from function "doFullRun"
+		// close application
+		"Flows/Application".exitApp
+	else if isBag(prodNum) then
+		// close application
+		"Flows/Application".exitApp
+		Log "Do manufacturing"
+		"Other/DCA".open
+		"Other/DCA".manufacture moNum
+		"Other/DCA".close
+		"M3/Application".open
+		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/OIS300".open
+		"M3/OIS300".lookupCO coNum
+		"M3/OIS300".openDeliveryToolbox
+		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
+		"M3/OIS300".confirmStatusPacked
+		"M3/OIS300".closeFromDeliveryToolbox
+	end if
 end doFullRun
 
 to isAccessory prodNum
 	if the second character of prodNum is "A" then
+		return TRUE
+end if
+end isAccessory
+
+to isBag prodNum
+	if the second character of prodNum is "B" then
 		return TRUE
 	end if
 end isAccessory

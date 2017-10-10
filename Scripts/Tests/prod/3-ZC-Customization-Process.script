@@ -31,7 +31,7 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Scheduling *********************)
-	put "Flows/Scheduling".doStatusScheduling(coNum,product) into reqNum
+	put "Flows/Scheduling".doStatusScheduling(coNum) into reqNum
 	
 	(************** Picking, Packing, Shipping *********)
 	put "Flows/Picking".doStatusPicking(reqNum,coNum) into poNum
@@ -53,7 +53,7 @@ to generateZCOrder
 	(************** Order entry *********************)
 	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
 	put "Flows/OrderEntry".recordCONumber() into coNumber
-	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
+	"Flows/OrderEntry".enterProductAndQuantity "TA5ACMFTWLC", "1"
 	
 	(************** Exit ***************************)
 	"Flows/Application".exitApp
@@ -73,7 +73,7 @@ to doFullRun
 	(************** Order entry *********************)
 	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
 	put "Flows/OrderEntry".recordCONumber() into coNumber
-	"Flows/OrderEntry".enterProductAndQuantity "TA4ACSCUCC-01", "1"
+	"Flows/OrderEntry".enterProductAndQuantity "TA5ACMFTWLC", "1"
 	
 	(************** Scheduling *********************)
 	put "Flows/Scheduling".doStatusScheduling(coNumber,product) into ReqNumber
@@ -84,14 +84,3 @@ to doFullRun
 	(************** Exit ***************************)
 	"Flows/Application".exitApp
 end doFullRun
-
-
-
-
-
-
-
-
-
-
-
