@@ -76,12 +76,12 @@ to enterProduct itemCode,ConfigurationNo
 	else if ConfigurationNo="ConfigB6" then
 		"M3/Configurations".ConfigB6
 	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
-	(*"M3/OIS101".enterItemQuantity productQuantity*)
-	"M3/Configurations".config001
+		(*"M3/OIS101".enterItemQuantity productQuantity*)
+		"M3/Configurations".config001
 	else
-	"M3/OIS101".configuratorA
-end if
-(*
+		"M3/OIS101".configuratorA
+	end if
+	(*
 	"M3/OIS101".closeFromOrderLines
 	"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then
@@ -91,8 +91,8 @@ end if
 	"M3/Configurations".config001
 	else
 	"M3/OIS101".configuratorA
-end if
-	"M3/OIS101".closeFromOrderLines*)
+end if*)
+	"M3/OIS101".closeFromOrderLines
 end enterProduct
 
 
