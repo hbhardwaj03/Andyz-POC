@@ -149,7 +149,6 @@ to lookupCO coNumber
 end lookupCO
 
 to openDeliveryToolbox
-<<<<<<< HEAD
 	RightClick "M3/OIS300/HighlightCO"
 	if ImageFound (3,"M3/OIS300/relateddropdown")
 		Click "M3/OIS300/relateddropdown"
@@ -158,11 +157,7 @@ to openDeliveryToolbox
 		Click "M3/OIS300/HighlightCO"
 		TypeText "controlKey","43"
 	end if
-=======
-	Click "M3/OIS300/HighlightCO"
-	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/Deliverytoolbox"
->>>>>>> d5324f18d7f69ae8736562aa544ce41cbcb367a6
+	
 end openDeliveryToolbox
 
 
@@ -330,7 +325,7 @@ end zoom90prcnt
 
 to zoom105prcnt
 	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
-"M3/OIS300".setZoom80prcnt
+	"M3/OIS300".setZoom80prcnt
 	if ImageFound (5, "M3/OIS300/ZoomButton/ZoomButton80")
 		Click (350,170)
 		KeyDown controlKey
