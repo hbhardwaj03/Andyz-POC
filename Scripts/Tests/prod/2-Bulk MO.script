@@ -104,8 +104,6 @@ to generateMOCO
 	throw "Finished!", "some comment"
 end generateMOCO
 
-doFullRun
-
 to doFullRun
 	//read in necessary data
 	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
