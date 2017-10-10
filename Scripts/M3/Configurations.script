@@ -239,8 +239,7 @@ to ConfigB5
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
 	else
-		Log "Logo ID not accepted"
-		Exit handler
+		throw "Error","Logo ID not accepted"
 	end if
 	click "M3/Configurations/configuration001/logoID/logoColorUp/JL058ColorCordnat"
 	
