@@ -54,15 +54,13 @@ repeat forever
 	
 	if isAccessory(prodNum) then
 		Log "Do manufacturing"
-		// add M3 manufacturing here by moving working code from function "doFullRun"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-		// add KPack here by moving working code from function "doFullRun"
 		// close application
 		"Flows/Application".exitApp
 	else if isBag(prodNum) then
 		// close application
 		"Flows/Application".exitApp
-		Log "Do manufacturing"
+		(*Log "Do manufacturing"
 		"Other/DCA".open
 		"Other/DCA".manufacture moNum
 		"Other/DCA".close
@@ -73,7 +71,7 @@ repeat forever
 		"M3/OIS300".openDeliveryToolbox
 		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 		"M3/OIS300".confirmStatusPacked
-		"M3/OIS300".closeFromDeliveryToolbox
+		"M3/OIS300".closeFromDeliveryToolbox*)
 	end if
 end repeat
 
