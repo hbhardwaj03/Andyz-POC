@@ -65,7 +65,7 @@ repeat forever
 		"Other/DCA".manufacture moNum
 		"Other/DCA".close
 		"M3/Application".open
-		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/Login".login username, password
 		"M3/OIS300".open
 		"M3/OIS300".lookupCO coNumber
 		"M3/OIS300".openDeliveryToolbox
@@ -156,7 +156,7 @@ to doFullRun
 		"Other/DCA".manufacture moNum
 		"Other/DCA".close
 		"M3/Application".open
-		"M3/Login".login "ajenkins", "Acushnet#1"
+		"M3/Login".login username, password
 		"M3/OIS300".open
 		"M3/OIS300".lookupCO coNum
 		"M3/OIS300".openDeliveryToolbox
