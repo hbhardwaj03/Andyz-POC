@@ -148,7 +148,7 @@ to doFullRun
 		// add KPack here by moving working code from function "doFullRun"
 		// close application
 		"Flows/Application".exitApp
-	else if isBag(prodNum) then
+	else
 		// close application
 		"Flows/Application".exitApp
 		Log "Do manufacturing"
