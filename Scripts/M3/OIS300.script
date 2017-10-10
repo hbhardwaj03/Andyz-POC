@@ -227,20 +227,21 @@ to recordDeliveryNumber
 	(*	set deliveryNumber to ReadText((imageLocation("M3/OIS300/DeliveryNumberA"), imageLocation("M3/OIS300/DeliveryNumberB")))
 	Log deliveryNumber
 	return deliveryNumber*)
+	Click "M3/OIS300/DelyNoMWS410"
 	Drag "M3/OIS300/DelyNoDrag"
 	MoveTo (81,279)
 	Drop
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-	Click "M3/OIS101/WindowsSearchField"
-	TypeText controlKey, "v"
-	repeat 5 times
-		TypeText spacebar
-	end repeat
-	set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
-	Log deliveryNumber
-	Click "M3/OIS101/WindowsButton"
-	return deliveryNumber
+Click "M3/OIS101/WindowsSearchField"
+TypeText controlKey, "v"
+repeat 5 times
+	TypeText spacebar
+end repeat
+set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+Log deliveryNumber
+Click "M3/OIS101/WindowsButton"
+return deliveryNumber
 end recordDeliveryNumber
 
 to recordOrderData
@@ -261,7 +262,7 @@ end reschedule
 to setZoom80prcnt
 	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
 		Click "M3/OIS300/ZoomButton/ZoomButton105"
-		Click "M3/OIS300/ZoomButton/slct80frm105"
+Click "M3/OIS300/ZoomButton/slct80frm105"
 	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton100") then
 		Click "M3/OIS300/ZoomButton/ZoomButton100"
 		Click "M3/OIS300/ZoomButton/slct80frm100"
