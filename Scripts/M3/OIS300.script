@@ -10,7 +10,7 @@ to startNewOrder
 	Click (Image:"M3/OIS300/NewOrderButton_new", WaitFor:120)
 end startNewOrder
 
-to enterCustomerNumber customerNumber, coType
+to enterCustomerNumber customerNumber, coType, SalesHold
 	Click "M3/OIS300/CustomerNumberField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -21,6 +21,12 @@ to enterCustomerNumber customerNumber, coType
 		TypeText coType
 	end if
 	Wait 2
+	if SalesHold <> "" then
+		wait 2
+		Click "M3/OIS100/SalesHoldCode"
+		TypeText SalesHold
+		TypeText return
+	End If
 	Click "M3/OIS300/NextButton"
 	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
@@ -343,6 +349,6 @@ to openDeliveryToolboxlink
 end openDeliveryToolboxlink
 
 to recordOrderDate 
-set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
-Log orderDate
+	set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
+	Log orderDate
 end recordOrderDate

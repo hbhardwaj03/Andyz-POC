@@ -9,7 +9,7 @@ put 2 into dataIndex
 // initialize login variables
 "Datastore".setLoginVariables 4
 global customerNumber,  coType, PO, TagField, DeliveryTerm, DeliveryMethod, WHNumber
-global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement
+global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, SalesHold, priority, ConfigurationNo
 
 //initialize test variables
 "Datastore".SetDataScript7 dataIndex
@@ -18,16 +18,16 @@ global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement
 (************** Login To Application ****************)
 "Flows/Application".login username, password
 (************** Start Test *********************)
-repeat forever
-	"Datastore".SetDataScript6 dataIndex
+//repeat forever
+	"Datastore".SetDataScript7 dataIndex
 	//increment counter
 	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
-	if customerNumber is empty then exit repeat
+	//if customerNumber is empty then exit repeat
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode
+	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold
 	
 	(************* To recod CO Number ******************************)
 	put "Flows/OrderEntry".recordCONumber() into coNumber
@@ -43,4 +43,4 @@ repeat forever
 	
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
-end repeat
+//end repeat

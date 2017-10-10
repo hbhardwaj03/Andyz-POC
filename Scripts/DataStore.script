@@ -168,7 +168,7 @@ To SetDataScript7 dataIndex
 	global BlanketAgreement
 	global priority
 	global ConfigurationNo
-	set ExcelFile to workbook(ResourcePath("6-GenericStockOrder.xlsx"))
+	set ExcelFile to workbook(ResourcePath("7-CustomClubOrderEntry.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
 	Put Cell(worksheet, "A" & dataIndex) into customerNumber
 	Put Cell(worksheet, "B" & dataIndex) into SalesHold
