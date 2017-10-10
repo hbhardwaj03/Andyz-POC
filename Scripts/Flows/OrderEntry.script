@@ -72,14 +72,14 @@ else if  ConfigurationNo="ConfigA4" then
 	"M3/Configurations".ConfigA4
 else if ConfigurationNo="ConfigB1" then
 >>>>>>> c717a6e28dd6674ec5c03b83fae62538953f1e3a
-		"M3/Configurations".ConfigB1
-	else if  ConfigurationNo="ConfigB2" then
-		"M3/Configurations".ConfigB2
-	else if  ConfigurationNo="ConfigB3" then
-		"M3/Configurations".ConfigB3
-	else if  ConfigurationNo="ConfigB4" then
-		"M3/Configurations".ConfigB4
-	else if ConfigurationNo="ConfigB5" then
+"M3/Configurations".ConfigB1
+else if  ConfigurationNo="ConfigB2" then
+"M3/Configurations".ConfigB2
+else if  ConfigurationNo="ConfigB3" then
+"M3/Configurations".ConfigB3
+else if  ConfigurationNo="ConfigB4" then
+"M3/Configurations".ConfigB4
+else if ConfigurationNo="ConfigB5" then
 <<<<<<< HEAD
 	"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then

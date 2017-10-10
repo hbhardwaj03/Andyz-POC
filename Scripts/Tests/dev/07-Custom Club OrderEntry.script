@@ -12,7 +12,7 @@ global customerNumber,  coType, PO, TagField, DeliveryTerm, DeliveryMethod, WHNu
 global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement
 
 //initialize test variables
-"Datastore".SetDataScript6 dataIndex
+"Datastore".SetDataScript7 dataIndex
 
 
 (************** Login To Application ****************)
