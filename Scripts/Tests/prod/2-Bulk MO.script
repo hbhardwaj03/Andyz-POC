@@ -173,7 +173,7 @@ end doFullRun
 to isAccessory prodNum
 	if the second character of prodNum is "A" then
 		return TRUE
-end if
+	end if
 end isAccessory
 
 to isBag prodNum
