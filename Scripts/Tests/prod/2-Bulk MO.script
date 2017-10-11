@@ -137,7 +137,6 @@ to doFullRun
 	
 	if isAccessory(prodNum) then
 		Log "Do manufacturing"
-		// add M3 manufacturing here by moving working code from function "doFullRun"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 		// add KPack here by moving working code from function "doFullRun"
 		// close application
@@ -146,9 +145,8 @@ to doFullRun
 		// close application
 		"Flows/Application".exitApp
 		Log "Do manufacturing"
-		"Other/DCA".open
-		"Other/DCA".manufacture moNum
-		"Other/DCA".close
+		"Flows/ManufacturingPacking".doDCAManufacturing moNum
+		
 		"M3/Application".open
 		"M3/Login".login username, password
 		"M3/OIS300".open
