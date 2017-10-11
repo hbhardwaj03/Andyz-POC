@@ -106,7 +106,6 @@ to generateMOCO
 end generateMOCO
 
 to doFullRun
-	
 	// declare login variables
 	global username
 	global password
@@ -143,7 +142,6 @@ to doFullRun
 		(************** Packing ******************)
 		put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
 		"Flows/Other".recordRun coNum, moNum, schedNum, delNum
-		
 	end if
 end doFullRun
 
