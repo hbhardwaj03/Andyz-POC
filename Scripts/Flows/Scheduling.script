@@ -9,6 +9,7 @@
 	"M3/PMS100".open
 	"M3/PMS100".lookupSchedule scheduleNumber
 	"M3/PMS100".printShopTraveler scheduleNumber
+	return scheduleNumber
 end doScheduling
 
 to doStatusScheduling coNumber
