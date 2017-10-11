@@ -157,10 +157,7 @@ to openDeliveryToolbox
 		Click "M3/OIS300/HighlightCO"
 		TypeText "controlKey","43"
 	end if
-	
 end openDeliveryToolbox
-
-
 
 to confirmStatusPacked
 	assert "M3/OIS300".checkPackingStatus is SUCCESS, "Packing status update in delivery toolbox"
@@ -177,8 +174,6 @@ function checkPackingStatus
 	end repeat		
 else
 Log ("Image not found")
-
-
 end checkPackingStatus
 
 to updatePickList
@@ -233,15 +228,15 @@ to recordDeliveryNumber
 	Drop
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
-Click "M3/OIS101/WindowsSearchField"
-TypeText controlKey, "v"
-repeat 5 times
-	TypeText spacebar
-end repeat
-set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
-Log deliveryNumber
-Click "M3/OIS101/WindowsButton"
-return deliveryNumber
+	Click "M3/OIS101/WindowsSearchField"
+	TypeText controlKey, "v"
+	repeat 5 times
+		TypeText spacebar
+	end repeat
+	set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	Log deliveryNumber
+	Click "M3/OIS101/WindowsButton"
+	return deliveryNumber
 end recordDeliveryNumber
 
 to recordOrderData
@@ -262,7 +257,7 @@ end reschedule
 to setZoom80prcnt
 	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
 		Click "M3/OIS300/ZoomButton/ZoomButton105"
-Click "M3/OIS300/ZoomButton/slct80frm105"
+		Click "M3/OIS300/ZoomButton/slct80frm105"
 	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton100") then
 		Click "M3/OIS300/ZoomButton/ZoomButton100"
 		Click "M3/OIS300/ZoomButton/slct80frm100"

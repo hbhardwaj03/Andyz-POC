@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-﻿{CaptureDate = "2017-10-10 08:57:09 -0700"; CaptureHost = USHQV043; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 57; HotSpotY = 48; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 352; OriginalLocationY = 285; Precise = 0; Pulsing = 0; Scale = 1; }
-=======
-﻿{HasAlpha = 1; HotSpotX = "13.5"; HotSpotY = 6; ImageTolerance = 100; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = "-1"; OriginalLocationY = "-1"; Precise = 0; Pulsing = 0; Scale = 1; }
->>>>>>> d5324f18d7f69ae8736562aa544ce41cbcb367a6
+﻿{CaptureDate = "2017-10-10 16:46:28 -0700"; CaptureHost = USHQV044; CaptureScreenSize = (1024, 768); HasAlpha = 1; HotSpotX = 68; HotSpotY = 48; LastKnownLocationX = 0; LastKnownLocationY = 0; OriginalLocationX = 351; OriginalLocationY = 286; Precise = 0; Pulsing = 0; Scale = 1; }
