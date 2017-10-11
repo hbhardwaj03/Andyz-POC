@@ -49,8 +49,6 @@ repeat forever
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 	
-	
-	
 	//end repeat	
 	
 	(************** Scheduling ***************)
