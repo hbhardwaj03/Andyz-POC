@@ -230,7 +230,7 @@ to recordDeliveryNumber
 	Click "M3/OIS101/WindowsButton"
 	Click "M3/OIS101/WindowsSearchField"
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 3 times
 		TypeText spacebar
 	end repeat
 	set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
