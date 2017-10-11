@@ -26,6 +26,12 @@ Click "M3/OIS300/Previousbutton"
 //To record order date
 Put "M3/OIS300".recordOrderDate() into Orderdate
 
+//to record dellivery number
+Put "M3/OIS300".recordDeliveryNumber() into DeliNo
+Click "M3/OIS300/Previousbutton"
+Click "M3/OIS300/HighlightCO"
+Click "M3/OIS300/CustomersPONumber"
+
 
 
 
