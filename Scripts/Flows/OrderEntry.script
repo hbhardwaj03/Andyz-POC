@@ -53,6 +53,7 @@ to recordCONumber
 end recordCONumber
 
 to enterProduct itemCode,ConfigurationNo
+	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
 	"M3/OIS101".enterItemCode itemCode	
 	"M3/OIS101".enterItemColor
 	if ConfigurationNo="ConfigA1" then
