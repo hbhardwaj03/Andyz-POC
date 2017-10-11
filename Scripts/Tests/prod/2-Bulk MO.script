@@ -5,13 +5,10 @@ Author: Ramya & Ofir
 *)
 
 // declare login variables
-global username, password
+global username, password, coNum, prodNum
 
 // initialize login variables
 "Datastore".setLoginVariables 3
-
-// declare data variables
-global coNum, prodNum
 
 // initialize data line counter
 put 2 into dataIndex
@@ -65,8 +62,7 @@ to generateMOCO
 	"M3/Application".open
 	
 	// declare login variables
-	global username
-	global password
+	global username, password
 	
 	// initialize login variables
 	"Datastore".setLoginVariables 3
