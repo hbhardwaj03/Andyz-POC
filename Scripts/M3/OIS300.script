@@ -219,12 +219,8 @@ to closeFromDeliveryToolbox
 end closeFromDeliveryToolbox
 
 to recordDeliveryNumber
-	(*	set deliveryNumber to ReadText((imageLocation("M3/OIS300/DeliveryNumberA"), imageLocation("M3/OIS300/DeliveryNumberB")))
-	Log deliveryNumber
-	return deliveryNumber*)
-	Click "M3/OIS300/DelyNoMWS410"
 	Drag "M3/OIS300/DelyNoDrag"
-	MoveTo (81,279)
+	MoveTo "M3/OIS300/DelyNoMoveTo"
 	Drop
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
@@ -233,7 +229,7 @@ to recordDeliveryNumber
 	repeat 3 times
 		TypeText spacebar
 	end repeat
-	set deliveryNumber to ReadText(((12,695),(75,711))) //ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	set deliveryNumber to ReadText(((12,695),(64,711))) 
 	Log deliveryNumber
 	Click "M3/OIS101/WindowsButton"
 	return deliveryNumber
