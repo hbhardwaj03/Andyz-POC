@@ -238,7 +238,7 @@ to ConfigB5
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
-	else
+		else
 		throw "Error","Logo ID not accepted"
 	end if
 	click "M3/Configurations/configuration001/logoID/logoColorUp/JL058ColorCordnat"
@@ -278,4 +278,84 @@ to ConfigA2 // Needs to be tested
 	Click "M3/OIS101/OrderNotesButton"
 	Click "M3/OIS101/DoubleStrapButton"
 end ConfigA2
+
+To ConFigD1
+	wait 3
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D1/CARHRightHand"
+	Click "M3/Configurations/DConfig/D1/CBD105D105Driver"
+	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
+	Click "M3/Configurations/DConfig/D1/CJA1RRHLoftStdLieStdA1"
+	Click "M3/Configurations/DConfig/D1/CZN0No"
+	Click "M3/Configurations/DConfig/D1/CDA0SALDRogueSilver00SlkD"
+	Click "M3/Configurations/DConfig/D1/StiffCES"
+	Click "M3/Configurations/DConfig/D1/CI20STDStandardLength"
+	Click "M3/Configurations/DConfig/D1/CFBTV10TTrVei360Sfk917716310"
+	Click "M3/Configurations/DConfig/D1/CG20STDSlardardSize"
+	Click "M3/Configurations/DConfig/D1/CXNNeutral"
+	Click "M3/Configurations/DConfig/D1/CKD3STD12D3STD12GM"
+	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	wait 5
+End ConFigD1
+
+To ConFigD2
+	wait 3
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D1/CARHRightHand"
+	Click "M3/Configurations/DConfig/D2/CBD12D120Driver"
+	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
+	Click "M3/Configurations/DConfig/D2/CJA2RRHLoftStdLie15UpA2"
+	Click "M3/Configurations/DConfig/D1/CZN0No"
+	Click "M3/Configurations/DConfig/D2/CDA6RALDRIPAlpha60"
+	Click "M3/Configurations/DConfig/D2/CEXXStiff"
+	Click "M3/Configurations/DConfig/D1/CI20STDStandardLength"
+	Click "M3/Configurations/DConfig/D1/CFBTV10TTrVei360Sfk917716310"
+	Click "M3/Configurations/DConfig/D1/CG20STDSlardardSize"
+	Click "M3/Configurations/DConfig/D2/CXDDraw"
+	Click "M3/Configurations/DConfig/D2/CKD4STD12D4STD12GM"
+	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	wait 5
+	
+End ConFigD2
+
+To ConFigD3
+	wait 3
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D3/CALHLeftH"
+	Click "M3/Configurations/DConfig/D1/CBD105D105Driver"
+	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
+	Click "M3/Configurations/DConfig/D3/CJB3L"
+	Click "M3/Configurations/DConfig/D1/CZN0No"
+	Click "M3/Configurations/DConfig/D3/CDAB6ALDTourBlue65"
+	Click "M3/Configurations/DConfig/D3/CETXTourX"
+	Click "M3/Configurations/DConfig/D3/CI16L4rLong"
+	Click "M3/Configurations/DConfig/D3/CFCPVVGPCP2Wap"
+	Click "M3/Configurations/DConfig/D3/CG19160110Oversize"
+	Click "M3/Configurations/DConfig/D3/CXFFade"
+	Click "M3/Configurations/DConfig/D3/CKD914D914GM"
+	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+End ConFigD3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
