@@ -51,7 +51,7 @@ to generateZCOrder
 	"Flows/Application".login username, password
 	
 	(************** Order entry *********************)
-	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7"
+	"Flows/OrderEntry".enterNewOrder "US00002181", "USA", "06Y ZC", "7", ""
 	put "Flows/OrderEntry".recordCONumber() into coNumber
 	"Flows/OrderEntry".enterProductAndQuantity "TA5ACMFTWLC", "1"
 	

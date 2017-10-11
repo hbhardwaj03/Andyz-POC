@@ -149,9 +149,14 @@ to lookupCO coNumber
 end lookupCO
 
 to openDeliveryToolbox
-	Click "M3/OIS300/HighlightCO"
-	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/Deliverytoolbox"
+	RightClick "M3/OIS300/HighlightCO"
+	if ImageFound (3,"M3/OIS300/relateddropdown")
+		Click "M3/OIS300/relateddropdown"
+		Click "M3/OIS300/DeliveryToolboxLink"
+	else 
+		Click "M3/OIS300/HighlightCO"
+		TypeText "controlKey","43"
+	end if
 end openDeliveryToolbox
 
 to confirmStatusPacked
@@ -160,17 +165,13 @@ end confirmStatusPacked
 
 function checkPackingStatus
 	repeat 2 minutes
-		
 		if imageFound(3,"M3/OIS300/PackingStatusPacked") then
 			Log "Image found"
 			return SUCCESS
 		end if
 		Click "M3/PMS100/Refresh"
-	end repeat		
-else
-Log ("Image not found")
-
-
+	end repeat
+	Log ("Image not found")
 end checkPackingStatus
 
 to updatePickList
@@ -216,20 +217,17 @@ to closeFromDeliveryToolbox
 end closeFromDeliveryToolbox
 
 to recordDeliveryNumber
-	(*	set deliveryNumber to ReadText((imageLocation("M3/OIS300/DeliveryNumberA"), imageLocation("M3/OIS300/DeliveryNumberB")))
-	Log deliveryNumber
-	return deliveryNumber*)
 	Drag "M3/OIS300/DelyNoDrag"
-	MoveTo (81,279)
+	MoveTo "M3/OIS300/DelyNoMoveTo"
 	Drop
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
 	Click "M3/OIS101/WindowsSearchField"
 	TypeText controlKey, "v"
-	repeat 5 times
+	repeat 3 times
 		TypeText spacebar
 	end repeat
-	set deliveryNumber to ReadText((imageLocation("M3/OIS101/WindowPasteA")+(-237,1), imageLocation("M3/OIS101/WindowPasteB") + (-167,16)))
+	set deliveryNumber to ReadText(((12,695),(64,711))) 
 	Log deliveryNumber
 	Click "M3/OIS101/WindowsButton"
 	return deliveryNumber
@@ -254,36 +252,32 @@ to setZoom80prcnt
 	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
 		Click "M3/OIS300/ZoomButton/ZoomButton105"
 		Click "M3/OIS300/ZoomButton/slct80frm105"
-		
 	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton100") then
 		Click "M3/OIS300/ZoomButton/ZoomButton100"
 		Click "M3/OIS300/ZoomButton/slct80frm100"
-		
-	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton95") then
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton95") then
 		Click "M3/OIS300/ZoomButton/ZoomButton95"
 		Click "M3/OIS300/ZoomButton/slct80frm95"
-		
-	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton90") then
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton90") then
 		Click "M3/OIS300/ZoomButton/ZoomButton90"
 		Click "M3/OIS300/ZoomButton/slct80frm90"
-		
-	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton85") then
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton85") then
 		Click "M3/OIS300/ZoomButton/ZoomButton85"
-		Click "M3/OIS300/ZoomButton/slct80frm85","M3/OIS300/slct80frm85hgltd"
-		
-	else if ImageFound ("M3/OIS300/ZoomButton/ZoomButton80") then
+		Click "M3/OIS300/ZoomButton/slct80frm85"//,"M3/OIS300/slct80frm85hgltd"
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton80") then
 		Click "M3/OIS300/ZoomButton/ZoomButton80"
 		Click "M3/OIS300/ZoomButton/slct80frm80"
-		
-	else if ImageFound("M3/OIS300/ZoomButton/ZoomButton75") then
+	else if ImageFound(3,"M3/OIS300/ZoomButton/ZoomButton75") then
 		Click "M3/OIS300/ZoomButton/ZoomButton75"
 		Click "M3/OIS300/ZoomButton/slct80frm75"
 	end if
+	
 end setZoom80prcnt
 
 to zoom75prcnt
 	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
 	"M3/OIS300".setZoom80prcnt
+	WaitFor 5, "M3/OIS300/ZoomButton/ZoomButton80"
 	Click (350,170) // click on blank area
 	KeyDown controlKey
 	repeat 2 times
@@ -295,34 +289,41 @@ end zoom75prcnt
 to zoom85prcnt
 	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
 	"M3/OIS300".setZoom80prcnt
-	Click (350,170)
-	KeyDown controlKey
-	repeat 2 times
-		TypeText "+"	
-	end repeat
-	KeyUp controlKey
+	if ImageFound (5, "M3/OIS300/ZoomButton/ZoomButton80")
+		
+		Click (350,170)
+		KeyDown controlKey
+		repeat 2 times
+			TypeText "+"	
+		end repeat
+		KeyUp controlKey
+	end if
 end zoom85prcnt
 
 to zoom90prcnt
 	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
 	"M3/OIS300".setZoom80prcnt
-	Click (350,170)
-	KeyDown controlKey
-	repeat 3 times
-		TypeText "+"	
-	end repeat
-	KeyUp controlKey
+	if ImageFound (5, "M3/OIS300/ZoomButton/ZoomButton80")
+		Click (350,170)
+		KeyDown controlKey
+		repeat 3 times
+			TypeText "+"	
+		end repeat
+		KeyUp controlKey
+	end if
 end zoom90prcnt
 
 to zoom105prcnt
 	// set the page to 80 percent zoom from present state using "setZoom80prcnt"
 	"M3/OIS300".setZoom80prcnt
-	Click (350,170)
-	KeyDown controlKey
-	repeat 6 times
-		TypeText "+"	
-	end repeat
-	KeyUp controlKey
+	if ImageFound (5, "M3/OIS300/ZoomButton/ZoomButton80")
+		Click (350,170)
+		KeyDown controlKey
+		repeat 6 times
+			TypeText "+"	
+		end repeat
+		KeyUp controlKey
+	end if
 end zoom90prcnt
 
 

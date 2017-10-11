@@ -1,6 +1,12 @@
 ﻿to open
 	Wait 10
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
+	if (ImageFound(5, "DCA/USERID")) then
+		TypeText ajenkins
+		TypeText Return
+		TypeText "Acushnet#1"
+		TypeText Return
+	end if
 end open
 
 to login UserName, Password
@@ -14,7 +20,7 @@ to manufacture moNumber
 	TypeText f1
 	TypeText 1
 	TypeText Return
-	Log "Starting MO: " & moNmber
+	Log "Starting MO: " & moNumber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 11.1, "DCA/TransactionComplete"*)
@@ -22,7 +28,7 @@ to manufacture moNumber
 	TypeText f1
 	TypeText 2
 	TypeText Return
-	Log "Finishing MO: " & moNmber
+	Log "Finishing MO: " & moNumber
 	TypeText moNumber
 	TypeText Return
 	(*WaitFor 10, "DCA/TransactionComplete"*)
