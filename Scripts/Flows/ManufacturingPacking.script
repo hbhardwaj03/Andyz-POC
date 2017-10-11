@@ -2,11 +2,14 @@
 	Log "Do manufacturing with DCA"
 	// Open DCA
 	"Other/DCA".open
-	Log "DCA Loging in as :" & DCAUser
-	"Other/DCA".login DCAUser,DCAPswrd
-	"Other/DCA".manufacture moNumber
-	"Other/DCA".close
-end doManufacturing
+	if ImageFound(10, "DCA/USERID")then
+		Log "DCA Loging in as :" & DCAUser
+		"Other/DCA".login DCAUser,DCAPswrd
+	else
+		"Other/DCA".manufacture moNumber
+		"Other/DCA".close
+		end if
+	end doManufacturing
 
 to validatePacking username, password, coNumber
 	"M3/Application".open
