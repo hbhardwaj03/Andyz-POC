@@ -114,19 +114,18 @@ to doFullRun
 	// initialize login variables
 	"Datastore".setLoginVariables 3
 	
-	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	
 	"M3/Application".open
 	
 	"M3/Login".login username, password
 	
+	(*>>>>>>>>>>Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
 	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
-	
-	(*"M3/OIS101".closeFromOrderLines*)
 	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	
