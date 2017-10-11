@@ -165,15 +165,13 @@ end confirmStatusPacked
 
 function checkPackingStatus
 	repeat 2 minutes
-		
 		if imageFound(3,"M3/OIS300/PackingStatusPacked") then
 			Log "Image found"
 			return SUCCESS
 		end if
 		Click "M3/PMS100/Refresh"
-	end repeat		
-else
-Log ("Image not found")
+	end repeat
+	Log ("Image not found")
 end checkPackingStatus
 
 to updatePickList
