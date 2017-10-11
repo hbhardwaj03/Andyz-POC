@@ -106,16 +106,18 @@ to generateMOCO
 end generateMOCO
 
 to doFullRun
-	//read in necessary data
-	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet1")
-	Put Cell(worksheet,"A3") into username
-	Put Cell(worksheet,"B3") into password
+	
+	// declare login variables
+	global username
+	global password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 3
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"M3/Application".open
 	
-	"M3/Login".login UserName, Password
+	"M3/Login".login username, password
 	
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
 	
