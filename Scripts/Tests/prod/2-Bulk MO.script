@@ -72,6 +72,7 @@ repeat forever
 		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 		"M3/OIS300".confirmStatusPacked
 		"M3/OIS300".closeFromDeliveryToolbox
+		"Flows/Application".exitApp
 	end if
 end repeat
 
@@ -163,6 +164,7 @@ to doFullRun
 		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
 		"M3/OIS300".confirmStatusPacked
 		"M3/OIS300".closeFromDeliveryToolbox
+		"Flows/Application".exitApp
 	end if
 end doFullRun
 
