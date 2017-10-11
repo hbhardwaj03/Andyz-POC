@@ -110,20 +110,15 @@ to doFullRun
 	// declare login variables
 	global username
 	global password
-	
 	// initialize login variables
 	"Datastore".setLoginVariables 3
 	
-	
 	"M3/Application".open
-	
 	"M3/Login".login username, password
 	
 	(*>>>>>>>>>>Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
-	
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	
 	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	
@@ -135,27 +130,20 @@ to doFullRun
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
+	(************** Manufacturing/Packing ******)
+	Log "Do manufacturing"
 	if isAccessory(prodNum) then
-		Log "Do manufacturing"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		(************** Packing ******************)
 		// add KPack here by moving working code from function "doFullRun"
-		// close application
 		"Flows/Application".exitApp
 	else
-		// close application
 		"Flows/Application".exitApp
-		Log "Do manufacturing"
 		"Flows/ManufacturingPacking".doDCAManufacturing moNum
+		(************** Packing ******************)
+		put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+		"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 		
-		"M3/Application".open
-		"M3/Login".login username, password
-		"M3/OIS300".open
-		"M3/OIS300".lookupCO coNum
-		"M3/OIS300".openDeliveryToolbox
-		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
-		"M3/OIS300".confirmStatusPacked
-		"M3/OIS300".closeFromDeliveryToolbox
-		"Flows/Application".exitApp
 	end if
 end doFullRun
 
