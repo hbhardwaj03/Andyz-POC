@@ -128,18 +128,10 @@ to doFullRun
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
-	
-	Log "Do scheduling"
-	"M3/PMS170".open
-	"M3/PMS170".lookUp(coNum)
-	put "M3/PMS170".createScheduleNumber() into scheduleNumber
-	"M3/PMS170".scheduleNew scheduleNumber
-	"M3/PMS170".releaseMO
-	"M3/PMS170".close
-	"M3/PMS100".open
-	"M3/PMS100".lookupSchedule scheduleNumber
-	"M3/PMS100".printShopTraveler scheduleNumber
+	"Flows/Scheduling".doScheduling coNum
 	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
