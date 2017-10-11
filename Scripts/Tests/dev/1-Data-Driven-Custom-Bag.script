@@ -70,12 +70,14 @@ repeat forever
 	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	
+	(*	
 	(************** Shipping *****************)
 	"Flows/Shipping".doShipping delNum
 	"Flows/Shipping".validateShipping coNum
 	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
+	*)
 	logData
 end repeat
 
