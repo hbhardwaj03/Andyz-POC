@@ -353,3 +353,53 @@ to recordOrderDate
 	set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
 	Log orderDate
 end recordOrderDate
+
+to openaddresses
+	Click "M3/OIS300/HighlightCOnum"
+	Click "M3/OIS300/relateddropdown"
+	Click "M3/OIS300/Relateddropdownlist"
+	Click "M3/OIS300/Addresses"
+end openaddresses
+
+
+to recordwarehousenum
+	Click "M3/OIS300/CoField"
+	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
+	Click "M3/OIS300/Wise"
+	Put ImageLocation ("M3/OIS300/Wise") into loc
+	Put loc+(9,-102) into L1
+	Put loc+(20,-11) into L2
+	put  ReadText((L1), (L2)) into warehousenum
+	Log warehousenum
+end recordwarehousenum
+
+to recordaddresses
+	put  ImageLocation ("M3/OIS300/Customernumber")  into loc
+	Put loc+(27,56) into L1
+	Put loc+(9,-4) into L2
+	put  ReadText((L1), (L2)) into customernumber
+	put  ImageLocation ("M3/OIS300/DelreryAddress")  into loc
+	Put loc+(24,-60) into L1
+	Put loc+(-7,-10) into L2
+	put  ReadText((L1), (L2)) into Deliveryaddress
+	put  ImageLocation ("M3/OIS300/InvoiceAddress")  into loc
+	Put loc+(24,-60) into L1
+	Put loc+(-7,-10) into L2
+	put  ReadText((L1), (L2)) into Invoiceaddress
+	Log customernumber
+	Log deliveryaddress
+	Log Invoiceaddress
+	
+	return addresses
+end recordaddresses
+
+
+
+
+
+
+
+
+
+
+
