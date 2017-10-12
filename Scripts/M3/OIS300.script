@@ -16,9 +16,10 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 	TypeText deleteKey
 	TypeText customerNumber
 	TypeText Return
-	log coType
+	
 	if coType is not empty then
 		TypeText coType
+		log coType
 	end if
 	Wait 2
 	if SalesHold <> "" then
@@ -42,6 +43,10 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 	end if*)
 	(*TypeText Return*)
 end enterCustomerNumber
+
+To ClickNextButton
+	Click "M3/OIS300/NextButton"
+End ClickNextButton
 
 to submitOIS100A
 	Click "M3/OIS300/NextButton"
