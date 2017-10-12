@@ -62,7 +62,7 @@ repeat forever
 	
 	(************** Manufacturing *************)
 	wait 5
-	"Flows/ManufacturingPacking".doManufacturing DCAUser, DCAPswrd, moNum
+	"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
 	
 	(************** Packing ******************)
 	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
