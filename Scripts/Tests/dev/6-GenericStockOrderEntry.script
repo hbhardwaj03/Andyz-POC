@@ -46,3 +46,5 @@ repeat forever
 	
 	log coNumber && customerNumber && coType && PO && TagField && DeliveryTerm && DeliveryMethod && TransactionResonCode && itemCode && quantity && PromoCod && WHNumber
 end repeat
+
+"Flows/Application".exitApp
