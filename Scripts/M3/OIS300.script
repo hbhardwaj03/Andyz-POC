@@ -398,7 +398,16 @@ to recordaddresses
 	return addresses
 end recordaddresses
 
-
+to submitOIS100V
+	if ImageFound(Image:"Corner", WaitFor:3)
+		if ImageFound(Image:"M3/OIS300/OIS100VTitle")
+			TypeText "Test account"
+			TypeText Return
+			TypeText "FDX"
+			TypeText Return
+		end if
+	end if
+end submitOIS100V
 
 
 
