@@ -135,14 +135,11 @@ to getPromocodevalue
 end getPromocodevalue
 
 To ChangeViewInOis101
-	//Click "M3/OIS101/View"
 	Click "M3/OIS101/View_1"
 	wait 2
-	Click"M3/OIS101/mouse"
-	ScrollWheelUp 10
+	TypeText homeKey
 	wait 2
 	Click  "M3/OIS101/G5L01004PriceDiscounts"
-	
 End ChangeViewInOis101
 
 
