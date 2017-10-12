@@ -331,6 +331,26 @@ To ConFigD3
 	Click "M3/Configurations/DConfig/D1/CZN0No_1"
 End ConFigD3
 
+To ConFigD4
+	wait 3
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D1/CARHRightHand"
+	Click "M3/Configurations/DConfig/D4/CBD85D85Driver"
+	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
+	Click "M3/Configurations/DConfig/D4/CJC3RRHLoft75Lie75UpC3"
+	Click "M3/Configurations/DConfig/D4/YesCZYES"
+	Click "M3/Configurations/DConfig/D4/CBD95D95Driver"
+	Click "M3/Configurations/DConfig/D1/CZN0No"
+	Click "M3/Configurations/DConfig/D4/CDA8BALDRogueBlack80StkF"
+	Click "M3/Configurations/DConfig/D1/StiffCES"
+	Click "M3/Configurations/DConfig/D4/CI23S334Short"
+	Click "M3/Configurations/DConfig/D4/CFBTM16GPToorVelvet350Mid"
+	Click "M3/Configurations/DConfig/D4/CG24MIDMidsize"
+	Click "M3/Configurations/DConfig/D1/CXNNeutral"
+	Click "M3/Configurations/DConfig/D4/CKC910C910GM"
+	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+End ConFigD4
+
 
 
 
