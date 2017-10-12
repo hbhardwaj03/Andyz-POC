@@ -26,11 +26,24 @@ Click "M3/OIS300/Previousbutton"
 //To record order date
 Put "M3/OIS300".recordOrderDate() into Orderdate
 
+Put "M3/OIS300".recordwarehousenum() into warehousenum
+Click "M3/OIS300/Previousbutton"
 //to record dellivery number
 Put "M3/OIS300".recordDeliveryNumber() into DeliNo
-Click "M3/OIS300/Previousbutton"
+//*Click "M3/OIS300/Previousbutton"*//
+
+Click "M3/OIS300/Prevbutton"
+//To record customer PO#
 Click "M3/OIS300/HighlightCO"
+Rightclick "M3/OIS300/Display"
+Click "M3/OIS300/References"
 Click "M3/OIS300/CustomersPONumber"
+
+//To record address number,sold to and ship to
+put "M3/OIS300".openaddresses() into openaddresses
+put "M3/OIS300".recordaddresses() into Address
+
+
 
 
 
