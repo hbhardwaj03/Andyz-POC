@@ -65,17 +65,17 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/Configurations".ConfigA3
 	else if  ConfigurationNo="ConfigA4" then
 		"M3/Configurations".ConfigA4
-	else if ConfigurationNo="ConfigB1" then
+		else if ConfigurationNo="ConfigB1" then
 		"M3/Configurations".ConfigB1
-	else if  ConfigurationNo="ConfigB2" then
+		else if  ConfigurationNo="ConfigB2" then
 		"M3/Configurations".ConfigB2
-	else if  ConfigurationNo="ConfigB3" then
+		else if  ConfigurationNo="ConfigB3" then
 		"M3/Configurations".ConfigB3
-	else if  ConfigurationNo="ConfigB4" then
+		else if  ConfigurationNo="ConfigB4" then
 		"M3/Configurations".ConfigB4
-	else if ConfigurationNo="ConfigB5" then
+		else if ConfigurationNo="ConfigB5" then
 		"M3/Configurations".ConfigB5
-	else if ConfigurationNo="ConfigB6" then
+		else if ConfigurationNo="ConfigB6" then
 		"M3/Configurations".ConfigB6
 		//else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
@@ -86,6 +86,37 @@ to enterProduct itemCode,ConfigurationNo
 	wait 15
 	"M3/OIS101".closeFromOrderLines
 end enterProduct
+
+To EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
+	"M3/OIS101".enterItemCode itemCode
+	"M3/OIS101".enterItemQuantity quantity
+	"M3/OIS300".ClickNextButton
+	wait 5
+	if ConfigurationNo="ConfigD1" then
+		"M3/Configurations".ConFigD1
+	else if  ConfigurationNo="ConfigD2" then
+		"M3/Configurations".ConFigD2
+	else if  ConfigurationNo="ConfigD3" then
+		"M3/Configurations".ConFigD3
+	else if  ConfigurationNo="ConfigD4" then
+		"M3/Configurations".ConFigD4
+	else if  ConfigurationNo="ConfigD5" then
+		"M3/Configurations".ConFigD5
+	else if  ConfigurationNo="ConfigD6" then
+		"M3/Configurations".ConFigD6
+	else if  ConfigurationNo="ConfigI1" then
+		"M3/Configurations".ConFigI1
+	else if  ConfigurationNo="Config W1" then
+		"M3/Configurations".ConFigW1
+	else if  ConfigurationNo="ConfigP1" then
+		"M3/Configurations".ConFigP1
+	else
+		LogError "There is no Cofiguration Present"
+		
+	End If
+	wait 5
+	
+End EnterItemProductQuanConfig
 
 
 to enterProductAndQuantity itemCode, quantity
