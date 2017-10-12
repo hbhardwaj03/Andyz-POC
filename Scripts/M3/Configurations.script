@@ -349,8 +349,31 @@ To ConFigD4
 	Click "M3/Configurations/DConfig/D1/CXNNeutral"
 	Click "M3/Configurations/DConfig/D4/CKC910C910GM"
 	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	wait 5
 End ConFigD4
 
+To ConFigD5
+	//Need to update Image in ARB & CK-D6STD12
+	wait 3
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D1/CARHRightHand"
+	Click "M3/Configurations/DConfig/D5/CBD95D95Driver"
+	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
+	Click "M3/Configurations/DConfig/D5/CJD1RRHLoft75LieStdD1"
+	Click "M3/Configurations/DConfig/D4/YesCZYES"
+	Click "M3/Configurations/DConfig/D1/CBD105D105Driver"
+	Click "M3/Configurations/DConfig/D4/YesCZYES"
+	Click "M3/Configurations/DConfig/D4/CBD85D85Driver"
+	Click ARB
+	Click "M3/Configurations/DConfig/D2/CEXXStiff"
+	Click "M3/Configurations/DConfig/D1/CI20STDStandardLength"
+	Click "M3/Configurations/DConfig/D5/CFDMCBBGPDecadeMCBlack"
+	Click "M3/Configurations/DConfig/D5/CG163640384Oversize"
+	Click "M3/Configurations/DConfig/D3/CXFFade"
+	Click CK-D6STD12
+	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	Wait 5
+End ConFigD5
 
 
 
