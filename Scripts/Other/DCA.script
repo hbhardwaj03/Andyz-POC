@@ -1,18 +1,15 @@
-﻿to open
+﻿to open username, password
 	Wait 10
 	Click (Image:"DCA/DCAIcon", WaitFor:30)
 	if (ImageFound(5, "DCA/USERID")) then
-		TypeText ajenkins
-		TypeText Return
-		TypeText "Acushnet#1"
-		TypeText Return
+		login username, password
 	end if
 end open
 
-to login UserName, Password
-	TypeText UserName
+to login username, password
+	TypeText username
 	TypeText Return
-	TypeText Password
+	TypeText password
 	TypeText Return
 end login
 

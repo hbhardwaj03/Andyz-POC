@@ -1,12 +1,9 @@
-﻿to doManufacturing DCAUser,DCAPswrd,moNumber
+﻿to doDCAManufacturing moNumber
 	Log "Do manufacturing with DCA"
-	// Open DCA
-	"Other/DCA".open
-	Log "DCA Loging in as :" & DCAUser
-	"Other/DCA".login DCAUser,DCAPswrd
+	"Other/DCA".open "ajenkins", "Acushnet#1"
 	"Other/DCA".manufacture moNumber
 	"Other/DCA".close
-end doManufacturing
+end doDCAManufacturing
 
 to validatePacking username, password, coNumber
 	"M3/Application".open

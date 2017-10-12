@@ -2,7 +2,7 @@
 //http://ushqfstst/login/login.php
 to open
 	Click "Flagship/Login/IELink"
-	Click (Image:"Flagship/Login/FlagshipLink", WaitFor:68)
+	Click (Image:"Flagship/Login/FlagshipLink/FlagshipLink2", WaitFor:68)
 end open
 
 to login

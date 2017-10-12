@@ -5,14 +5,10 @@ Author: Ramya & Ofir
 *)
 
 // declare login variables
-global username
-global password
+global username, password, coNum, prodNum
 
 // initialize login variables
 "Datastore".setLoginVariables 3
-
-// declare data variables
-global coNum
 
 // initialize data line counter
 put 2 into dataIndex
@@ -36,44 +32,28 @@ repeat forever
 	// log in to application
 	"Flows/Application".login username, password
 	
-	Log "Do scheduling"
-	"M3/PMS170".open
-	"M3/PMS170".lookUp(coNum)
-	put "M3/PMS170".recordProdNum into prodNum
-	
-	put "M3/PMS170".createScheduleNumber() into scheduleNumber
-	"M3/PMS170".scheduleNew scheduleNumber
-	"M3/PMS170".releaseMO
-	"M3/PMS170".close
-	"M3/PMS100".open
-	"M3/PMS100".lookupSchedule scheduleNumber
-	"M3/PMS100".printShopTraveler scheduleNumber
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
+	(************** Manufacturing/Packing ******)
+	Log "Do manufacturing"
 	if isAccessory(prodNum) then
-		Log "Do manufacturing"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-		// close application
+		(************** Packing ******************)
+		// add KPack here by moving working code from function "doFullRun"
 		"Flows/Application".exitApp
 	else
-		// close application
 		"Flows/Application".exitApp
-		Log "Do manufacturing"
-		"Other/DCA".open
-		"Other/DCA".manufacture moNum
-		"Other/DCA".close
-		"M3/Application".open
-		"M3/Login".login username, password
-		"M3/OIS300".open
-		"M3/OIS300".lookupCO coNum
-		"M3/OIS300".openDeliveryToolbox
-		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
-		"M3/OIS300".confirmStatusPacked
-		"M3/OIS300".closeFromDeliveryToolbox
-		"Flows/Application".exitApp
+		"Flows/ManufacturingPacking".doDCAManufacturing moNum
+		(************** Packing ******************)
+		put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
 	end if
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end repeat
 
 to generateMOCO
@@ -82,8 +62,7 @@ to generateMOCO
 	"M3/Application".open
 	
 	// declare login variables
-	global username
-	global password
+	global username, password
 	
 	// initialize login variables
 	"Datastore".setLoginVariables 3
@@ -106,66 +85,42 @@ to generateMOCO
 end generateMOCO
 
 to doFullRun
-	//read in necessary data
-	set ExcelFile to workbook(ResourcePath("Logins.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet1")
-	Put Cell(worksheet,"A3") into username
-	Put Cell(worksheet,"B3") into password
+	// declare login variables
+	global username, password, prodNum
+	// initialize login variables
+	"Datastore".setLoginVariables 3
 	
-	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"M3/Application".open
+	"M3/Login".login username, password
 	
-	"M3/Login".login UserName, Password
-	
+	(*>>>>>>>>>>Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
-	
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	
 	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	
-	(*"M3/OIS101".closeFromOrderLines*)
-	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
-	
-	Log "Do scheduling"
-	"M3/PMS170".open
-	"M3/PMS170".lookUp(coNum)
-	put "M3/PMS170".createScheduleNumber() into scheduleNumber
-	"M3/PMS170".scheduleNew scheduleNumber
-	"M3/PMS170".releaseMO
-	"M3/PMS170".close
-	"M3/PMS100".open
-	"M3/PMS100".lookupSchedule scheduleNumber
-	"M3/PMS100".printShopTraveler scheduleNumber
+	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
 	"M3/PMS100".pick
 	"M3/PMS100".close
 	
+	(************** Manufacturing/Packing ******)
+	Log "Do manufacturing"
 	if isAccessory(prodNum) then
-		Log "Do manufacturing"
-		// add M3 manufacturing here by moving working code from function "doFullRun"
 		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+		(************** Packing ******************)
 		// add KPack here by moving working code from function "doFullRun"
-		// close application
 		"Flows/Application".exitApp
 	else
-		// close application
 		"Flows/Application".exitApp
-		Log "Do manufacturing"
-		"Other/DCA".open
-		"Other/DCA".manufacture moNum
-		"Other/DCA".close
-		"M3/Application".open
-		"M3/Login".login username, password
-		"M3/OIS300".open
-		"M3/OIS300".lookupCO coNum
-		"M3/OIS300".openDeliveryToolbox
-		put "M3/OIS300".recordDeliveryNumber into deliveryNumber
-		"M3/OIS300".confirmStatusPacked
-		"M3/OIS300".closeFromDeliveryToolbox
-		"Flows/Application".exitApp
+		"Flows/ManufacturingPacking".doDCAManufacturing moNum
+		(************** Packing ******************)
+		put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
 	end if
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end doFullRun
 
 to isAccessory prodNum

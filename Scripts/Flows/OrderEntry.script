@@ -56,6 +56,7 @@ to enterProduct itemCode,ConfigurationNo
 	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
 	"M3/OIS101".enterItemCode itemCode	
 	"M3/OIS101".enterItemColor
+	wait 3
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
 	else if  ConfigurationNo="ConfigA2" then
@@ -76,23 +77,13 @@ to enterProduct itemCode,ConfigurationNo
 		"M3/Configurations".ConfigB5
 	else if ConfigurationNo="ConfigB6" then
 		"M3/Configurations".ConfigB6
-	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
+		//else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
 		(*"M3/OIS101".enterItemQuantity productQuantity*)
-		"M3/Configurations".config001
-	else
-		"M3/OIS101".configuratorA
+		//"M3/Configurations".config001
+		//	else
+		//"M3/OIS101".configuratorA
 	end if
-	(*
-	"M3/OIS101".closeFromOrderLines
-	"M3/Configurations".ConfigB5
-	else if ConfigurationNo="ConfigB6" then
-	"M3/Configurations".ConfigB6
-	else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
-	(*"M3/OIS101".enterItemQuantity productQuantity*)
-	"M3/Configurations".config001
-	else
-	"M3/OIS101".configuratorA
-end if*)
+	wait 15
 	"M3/OIS101".closeFromOrderLines
 end enterProduct
 
