@@ -44,9 +44,5 @@ repeat forever
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
 	
-	logInfo
-end repeat
-
-to logInfo
 	log coNumber && customerNumber && coType && PO && TagField && DeliveryTerm && DeliveryMethod && TransactionResonCode && itemCode && quantity && PromoCod && WHNumber
-end logInfo
+end repeat
