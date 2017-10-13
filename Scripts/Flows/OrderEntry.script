@@ -14,7 +14,7 @@
 	"M3/OIS300".submitOIS102H
 end enterNewOrder
 
-to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold //BlanketAgreement
+to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold, priority //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
 	"M3/OIS300".zoom75prcnt
@@ -38,8 +38,8 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100V
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100E  priority
 	"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E
 	"M3/OIS300".submitOIS102H
 	"M3/OIS101".EnterTransResonCode TranctionResonCode
 	//"M3/OIS101".BlanketAgreement BlanketAgreement

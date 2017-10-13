@@ -115,11 +115,68 @@ end submitOIS100H
 
 to submitOIS100E priority
 	if priority is not empty then
-		if priority is "7" then
+		if priority = "9" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			TypeText return
+		else if priority = "8" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			TypeText upArrow
+			TypeText return
+		else if priority is "7" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			TypeText upArrow
 			TypeText upArrow
+			TypeText return
+		else if priority = "6" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 3 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "5" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 4 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "4" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 5 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "3" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 6 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "2" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 7 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "1" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 8 times
+				//TypeText upArrow
+				TypeText upArrow
+			End repeat 
 			TypeText return
 		else
 			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
