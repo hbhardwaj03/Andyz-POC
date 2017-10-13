@@ -18,7 +18,7 @@ global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, Sales
 (************** Login To Application ****************)
 "Flows/Application".login username, password
 (************** Start Test *********************)
-//repeat forever
+repeat forever
 "Datastore".SetDataScript7 dataIndex
 //increment counter
 put dataIndex + 1 into dataIndex
@@ -31,7 +31,7 @@ put dataIndex + 1 into dataIndex
 
 (************* To recod CO Number ******************************)
 put "Flows/OrderEntry".recordCONumber() into coNumber
-
+set coNumber to coNumber
 (**************** To enter Line Details And Configuration ********************)
 "Flows/OrderEntry".EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
 
@@ -42,7 +42,7 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 "M3/OIS101".closeFromOrderLines
 
 log "Order Number Was:-  "& coNumber&", " && "Customer Number Was:-  "& customerNumber&", " &&"Customer Type was:-  "& coType &", "&&"Sales Hold:-  "&SalesHold&", "&&"PO type was:-  "& PO&", " &&"Tag Field Was:-  "& TagField&", " &&"Delivery term was:-  "& DeliveryTerm&", " &&"Delivery Method was:-  "& DeliveryMethod&", "&&"Priority was:-  "&priority&", " &&"Transcation ResonCode was:-  "& TransactionResonCode&", " &&"Item Number was:-  "& itemCode&", " &&"Quantity was:-  "& quantity &", "&&"Promocode:-  "& PromoCod&", " &&"Configration Number:-  "&ConfigurationNo
-//end repeat
+end repeat
 (******************* To Close the Infor Application *************************)
 "Flows/Application".exitApp
 
