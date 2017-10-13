@@ -1,12 +1,15 @@
 ﻿
-// declare login variables
+(************ Declare login variables *****************)
+
 global username
 global password
 
-// initialize data line counter
+(************* Initialize data line counter ***********************) 
+
 put 2 into dataIndex
 
-// initialize login variables
+(************* Initializing variables *****************************) 
+
 "Datastore".setLoginVariables 4
 global customerNumber,  coType, PO, TagField, DeliveryTerm, DeliveryMethod, WHNumber
 global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, SalesHold, priority, ConfigurationNo
@@ -14,33 +17,56 @@ global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, Sales
 //initialize test variables
 "Datastore".SetDataScript7 dataIndex
 
-
 (************** Login To Application ****************)
+
 "Flows/Application".login username, password
+
 (************** Start Test *********************)
-//repeat forever
+
+repeat forever
 	"Datastore".SetDataScript7 dataIndex
-	//increment counter
+	(******* increment counter *********)
 	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
-	//if customerNumber is empty then exit repeat
+	if customerNumber is empty then exit repeat
 	
 	(************** Order entry ***************)
-	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold
+	
+	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold, priority
 	
 	(************* To recod CO Number ******************************)
+	
 	put "Flows/OrderEntry".recordCONumber() into coNumber
+	set coNumber to coNumber
+	(**************** To enter Line Details And Configuration ********************)
 	
-	(**************** To  Enter Line Item Details **************************)
-	"Flows/OrderEntry".EnterProductWithPromo itemCode, quantity, PromoCod, WHNumber
-	
-	(************** To Validate Promocode ******************)
-	"Flows/OrderEntry".GetPromoCodevalue PromoCod
+	"Flows/OrderEntry".EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
 	
 	(*************** To Apply Blanket  Agreement **********************)
+	
 	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
 	
 	(**************** To Close Order entry Screen ****************************)
+	
 	"M3/OIS101".closeFromOrderLines
-//end repeat
+	
+	(************* To Print Variables ************************)
+	
+	log "Order Number Was:-  "& coNumber&", " && "Customer Number Was:-  "& customerNumber&", " &&"Customer Type was:-  "& coType &", "&&"Sales Hold:-  "&SalesHold&", "&&"PO type was:-  "& PO&", " &&"Tag Field Was:-  "& TagField&", " &&"Delivery term was:-  "& DeliveryTerm&", " &&"Delivery Method was:-  "& DeliveryMethod&", "&&"Priority was:-  "&priority&", " &&"Transcation ResonCode was:-  "& TransactionResonCode&", " &&"Item Number was:-  "& itemCode&", " &&"Quantity was:-  "& quantity &", "&&"Promocode:-  "& PromoCod&", " &&"Configration Number:-  "&ConfigurationNo
+end repeat
+
+(******************* To Close the Infor Application *************************)
+
+"Flows/Application".exitApp
+
+
+
+
+
+
+
+
+
+
+

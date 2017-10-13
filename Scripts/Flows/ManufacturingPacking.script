@@ -1,12 +1,12 @@
-﻿to doDCAManufacturing moNumber
+﻿to doDCAManufacturing username, password,moNumber
 	Log "Do manufacturing with DCA"
-	"Other/DCA".open "ajenkins", "Acushnet#1"
+	"Other/DCA".open username, password
 	"Other/DCA".manufacture moNumber
 	"Other/DCA".close
 end doDCAManufacturing
 
 to validatePacking username, password, coNumber
-	"M3/Application".open
+"M3/Application".open
 	"M3/Login".login username, password
 	"M3/OIS300".open
 	"M3/OIS300".lookupCO coNumber

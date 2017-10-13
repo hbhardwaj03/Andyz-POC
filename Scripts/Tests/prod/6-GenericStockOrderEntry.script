@@ -43,4 +43,8 @@ repeat forever
 	
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
+	
+	log coNumber && customerNumber && coType && PO && TagField && DeliveryTerm && DeliveryMethod && TransactionResonCode && itemCode && quantity && PromoCod && WHNumber
 end repeat
+
+"Flows/Application".exitApp
