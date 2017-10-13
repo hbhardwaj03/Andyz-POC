@@ -386,11 +386,15 @@ To ConFigD5
 	Click "M3/Configurations/DConfig/D1/CBD105D105Driver"
 	Click "M3/Configurations/DConfig/D4/YesCZYES"
 	Click "M3/Configurations/DConfig/D4/CBD85D85Driver"
+	Click "M3/Configurations/DConfig/D5/Option"
+	wait 2
 	Typetext pageDown
 	wait 5
 	Click "M3/Configurations/DConfig/D5/CDARBALDRIPBeta70Black"
 	Click "M3/Configurations/DConfig/D2/CEXXStiff"
 	Click "M3/Configurations/DConfig/D1/CI20STDStandardLength"
+	Click "M3/Configurations/DConfig/D5/Option"
+	wait 2
 	TypeText pageDown
 	wait 5
 	Click "M3/Configurations/DConfig/D5/CFDMCPBGPDecadeMCPlatinumSIue"
@@ -413,11 +417,15 @@ To ConFigD6
 	Click "M3/Configurations/DConfig/D1/CCGRPGraphite"
 	Click "M3/Configurations/DConfig/D5/CJD1RRHLoft75LieStdD1"
 	Click "M3/Configurations/DConfig/D1/CZN0No"
+	Click "M3/Configurations/DConfig/D5/Option"
+	wait 2
 	Typetext pageDown
 	wait 5
 	Click "M3/Configurations/DConfig/D5/CDARBALDRIPBeta70Black"
 	Click "M3/Configurations/DConfig/D6/CERRegular"
 	Click "M3/Configurations/DConfig/D1/CI20STDStandardLength"
+	Click "M3/Configurations/DConfig/D5/Option"
+	wait 2
 	TypeText pageDown
 	wait 5
 	Click "M3/Configurations/DConfig/D5/CFDMCPBGPDecadeMCPlatinumSIue"
@@ -429,6 +437,21 @@ To ConFigD6
 	
 End ConFigD6
 
+To ConfigI1
+	wait 3
+	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChngeOption"
+		wait 10
+	End If
+	Click "M3/Configurations/DConfig/D1/czusUnitedStates"
+	Click "M3/Configurations/DConfig/D1/CARHRightHand"
+	Click "M3/Configurations/I1Config/C413PSetof3PW"
+	Click "M3/Configurations/I1Config/CCSTLSteel"
+	Click "M3/Configurations/DConfig/D5/Option"
+	wait 2
+	TypeText pageDown
+	Click 
+End ConfigI1
 
 
 
