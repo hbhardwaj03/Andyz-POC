@@ -40,4 +40,19 @@ put "Flows/OrderEntry".recordCONumber() into coNumber
 
 (**************** To Close Order entry Screen ****************************)
 "M3/OIS101".closeFromOrderLines
+
+log "Order Number Was:-  "& coNumber&", " && "Customer Number Was:-  "& customerNumber&", " &&"Customer Type was:-  "& coType &", "&&"Sales Hold:-  "&SalesHold&", "&&"PO type was:-  "& PO&", " &&"Tag Field Was:-  "& TagField&", " &&"Delivery term was:-  "& DeliveryTerm&", " &&"Delivery Method was:-  "& DeliveryMethod&", "&&"Priority was:-  "&priority&", " &&"Transcation ResonCode was:-  "& TransactionResonCode&", " &&"Item Number was:-  "& itemCode&", " &&"Quantity was:-  "& quantity &", "&&"Promocode:-  "& PromoCod&", " &&"Configration Number:-  "&ConfigurationNo
 //end repeat
+(******************* To Close the Infor Application *************************)
+"Flows/Application".exitApp
+
+
+
+
+
+
+
+
+
+
+

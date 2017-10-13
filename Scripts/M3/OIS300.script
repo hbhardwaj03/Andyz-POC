@@ -26,7 +26,7 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		wait 2
 		Click "M3/OIS100/SalesHoldCode"
 		TypeText SalesHold
-		TypeText return
+		//TypeText return
 	End If
 	Click "M3/OIS300/NextButton"
 	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
