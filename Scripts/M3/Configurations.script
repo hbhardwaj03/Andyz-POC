@@ -42,7 +42,7 @@ to config002
 end config002
 
 to ConfigB1 
-	Wait 5// has Tota 5 no. of Customizations.
+	Wait 5//  5 level of Customizations.
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_No5"
 	//Customization# 1{Logo }
 	Click "M3/Configurations/configuration001/CustomizationLocation/JL023ApparelPocketL1"
@@ -91,8 +91,8 @@ to ConfigB1
 		Click "M3/Configurations/configuration001/SalesType/JP013Personalization"
 	end if
 	//Customization #5 {Logo}
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL038SideSaddlePocket"
-	Click "M3/Configurations/configuration001/personalizationType/Customization5/JL056Logo5"
+	Click Image:"M3/Configurations/configuration001/CustomizationLocation/JL038SideSaddlePocket", WaitFor:5
+	Click Image:"M3/Configurations/configuration001/personalizationType/Customization5/JL056Logo5", WaitFor:5
 	TypeText "376309"
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
@@ -115,7 +115,7 @@ to ConfigB1
 	wait 5
 end ConfigB1
 
-to ConfigB2 // Similar to B5
+to ConfigB2 // 3 Level of Customization
 	Wait 5
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_EA3"
 	//Customization# 1{Pers}
@@ -146,7 +146,7 @@ to ConfigB2 // Similar to B5
 	Click "M3/OIS101/PersonalizationNextButton"
 	// Customization# 3{Pers}
 	wait 2
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL038SideSaddlePocket"
+	Click Image:"M3/Configurations/configuration001/CustomizationLocation/JL038SideSaddlePocket", WaitFor:5
 	Click "M3/Configurations/configuration001/personalizationType/Customization3/JP003Pers3"
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
@@ -167,7 +167,7 @@ to ConfigB2 // Similar to B5
 	wait 5
 end ConfigB2
 
-to ConfigB3 // similar to B5
+to ConfigB3 // 2 level of Customization
 	Wait 5
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_EA2"
 	//Customization# 1{Logo}
@@ -199,11 +199,11 @@ to ConfigB3 // similar to B5
 	Click "M3/OIS101/DoubleStrapButton", "M3/Configurations/configuration001/StrapType/JST02Double"
 end ConfigB3
 
-to ConfigB4 // similar to B5
+to ConfigB4 //2 level of Customizations
 	Wait 5
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_EA2"
 	//Customization# 1{Pers}
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL037 _SpinePocket_L1"
+	Click Image:"M3/Configurations/configuration001/CustomizationLocation/JL037 _SpinePocket_L1", WaitFor:5
 	Click "M3/Configurations/configuration001/personalizationType/customization1/JP001Pers1"
 	//Click "M3/OIS101/PersonalizationTextButton"
 	TypeText Return
@@ -213,8 +213,9 @@ to ConfigB4 // similar to B5
 	Click "M3/OIS101/LetteringButton","M3/Configurations/configuration001/persLettering/JP050Block"
 	Click "M3/OIS101/ColorButton", "M3/Configurations/configuration001/PersColor/JP052White"
 	//Customization# 2{Logo }
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL057SpinePocketL2"
-	Click "M3/Configurations/configuration001/personalizationType/customization2/JL002Logo2"
+	Click Image:"M3/Configurations/configuration001/CustomizationLocation/JL057SpinePocketL2", WaitFor:5
+	Click Image:"M3/Configurations/configuration001/personalizationType/customization2/JL002Logo2", WaitFor:5
+	WaitFor 3,"M3/Configurations/configuration001/logoID/logoField/Logo2ID_Field"
 	TypeText "376309"
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
@@ -224,8 +225,8 @@ to ConfigB4 // similar to B5
 		Exit handler
 	end if
 	Click "M3/Configurations/configuration001/logoID/logoColorUp/JL058ColorCordnat"
-	Click "M3/OIS101/OrderNotesButton","M3/Configurations/configuration001/NoOrderNotes/"
-	Click "M3/OIS101/DoubleStrapButton", "M3/Configurations/configuration001/StrapType/JST02Double"
+	Click "M3/Configurations/configuration001/NoOrderNotes/"
+	Click Image:"M3/Configurations/configuration001/StrapType/JST02Double", WaitFor:3
 end ConfigB4
 
 to ConfigB5
@@ -234,13 +235,14 @@ to ConfigB5
 	//Customization# 1{Logo }
 	Click "M3/Configurations/configuration001/CustomizationLocation/JL023ApparelPocketL1"
 	Click "M3/Configurations/configuration001/personalizationType/customization1/JL001Logo1"
-	Click "M3/Configurations/configuration001/logoID/logoField/Logo1ID_Field"
+	Click Image:"M3/Configurations/configuration001/logoID/logoField/Logo1ID_Field", WaitFor:5
+	wait 2
 	TypeText "376309"
 	TypeText Return
 	click Image:"M3/Configurations/configuration001/logoID/logoID_OkWindow", WaitFor:20
 	click "M3/Configurations/configuration001/logoID/logoColorUp/JL058ColorCordnat"
-	Click "M3/OIS101/OrderNotesButton","M3/Configurations/configuration001/NoOrderNotes/NoOrderNotes2","M3/Configurations/configuration001/NoOrderNotes/NoOrderNotes"
-	Click "M3/OIS101/DoubleStrapButton","M3/Configurations/configuration001/StrapType/DoubleStrap"
+	Click "M3/Configurations/configuration001/NoOrderNotes/"
+	Click "M3/Configurations/configuration001/StrapType/DoubleStrap"
 end ConfigB5
 
 to ConfigB6
@@ -253,9 +255,10 @@ to ConfigB6
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "Test Pers 1"
 	Click "M3/OIS101/PersonalizationNextButton"
-	Click "M3/OIS101/LetteringButton","M3/Configurations/configuration001/persLettering/JP050Block"
-	Click "M3/OIS101/ColorButton", "M3/Configurations/configuration001/PersColor/JP052White"
-	Click "M3/OIS101/OrderNotesButton","M3/Configurations/configuration001/NoOrderNotes/NoOrderNotes", "M3/Configurations/configuration001/NoOrderNotes/NoOrderNotes2"
+	
+	Click Image:"M3/Configurations/configuration001/persLettering/JP050Block", WaitFor:3
+	Click "M3/Configurations/configuration001/PersColor/JP052White"
+	Click "M3/Configurations/configuration001/NoOrderNotes/"
 	Click "M3/OIS101/DoubleStrapButton", "M3/Configurations/configuration001/StrapType/JST02Double"
 end ConfigB6
 
