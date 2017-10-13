@@ -43,6 +43,12 @@ Click "M3/OIS300/CustomersPONumber"
 put "M3/OIS300".openaddresses() into openaddresses
 put "M3/OIS300".recordaddresses() into Address
 
+//to record payment terms and payemnt discount
+Click "M3/OIS300/HighlightCO"
+Rightclick "M3/OIS300/Display"
+Click "M3/OIS300/Paymenttermsanddiscounts"
+ReadText "M3/OIS300/PaymentTerms"
+
 
 
 
