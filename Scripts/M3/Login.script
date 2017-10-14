@@ -1,21 +1,28 @@
 ﻿to login username, password
 	Log "Logging in as " & username
 	WaitFor 10, "M3/Login/InforPasswordSubmitButton"
-	Click (Image:"M3/Login/UsernameField", waitFor:10)
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText username
-	Click (Image:"M3/Login/PasswordField", waitFor:10)
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText password
-	Click "M3/Login/InforPasswordSubmitButton"
-	(*	waitfor 30, "M3/Login/itLogoff"
-	If ImageFound( "M3/Login/itLogoff") then
-		LogSuccess "User Successfully Loggedin"
+	if ImageFound(3, "M3/Login/InforCapsLockNotfctn")then
+		TypeText capsLockKey
+		Click (330,447)
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText username
+		TypeText tabKey                   //using Keyboard shortcut for less dependcy on images.
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText password
+		TypeText returnKey            //using Keyboard shortcut for less dependcy on images.
 	else
-		LogError "User Unable login"
-	end if*)
+		Click (Image:"M3/Login/UsernameField", waitFor:10)
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText username
+		Click (Image:"M3/Login/PasswordField", waitFor:10)
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText password
+		Click "M3/Login/InforPasswordSubmitButton"
+	end if
 end login
 
 
