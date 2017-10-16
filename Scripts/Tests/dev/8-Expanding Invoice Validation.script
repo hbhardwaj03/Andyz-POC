@@ -45,11 +45,28 @@ put "M3/OIS300".recordaddresses() into Address
 
 //to record payment terms and payemnt discount
 Click "M3/OIS300/HighlightCO"
-Rightclick "M3/OIS300/Display"
-Click "M3/OIS300/Paymenttermsanddiscounts"
-ReadText "M3/OIS300/PaymentTerms"
+RightClick "M3/OIS300/HighlightCO"
+click "M3/OIS300/Display_1"
+Click "M3/OIS300/Next"
+put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into Paymentterms
+log paymentterms
+put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
+log CashDiscountterms
 
 
+Click "M3/OIS300/HighlightCO"
+Click "M3/OIS300/COnumber"
+put ReadText(imageLocation("M3/OIS300/Sortingorder")) into Sortingorder
+log Sortingorder
+put ReadText(imageLocation("M3/OIS300/View")) into View
+Log View
+put "M3/OIS300".recordconfigvalues into Configvalues
+put ReadText(imageLocation("M3/OIS300/Text")) into Text
+log  Text
+put ReadText(imageLocation("M3/OIS300/Featuregroup")) into Featuregroup
+log Featuregroup
+put ReadText(imageLocation( "M3/OIS300/Name")) into Name
+log Name
 
 
 
