@@ -51,6 +51,7 @@ end supplyChain
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
 	Click (187,595)
+	wait 1
 	TypeText itemCode
 	TypeText Return
 end enterItemCode
@@ -146,7 +147,7 @@ End ChangeViewInOis101
 to enterItemColor
 	Click (130,300)
 	TypeText "1"
-	Click "M3/OIS101/ConfiqStyleButton"
+	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 end enterItemColor	
 
 to enterItemColorNewEra
@@ -202,7 +203,7 @@ end configuratorNewEra
 
 to closeFromOrderLines
 	//Close OIS101B1
-	WaitFor 60, "M3/OIS101/OIS101B1Title"
+	WaitFor 90, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
 	WaitFor 30, "M3/OIS101/OIS110ETitle"

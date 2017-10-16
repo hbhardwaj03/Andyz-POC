@@ -3,6 +3,7 @@
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
 	TypeText "PMS100"
 	Click "M3/Home/SearchSubmit"
+	"M3/Application".MaximizePanel
 	// set Screen to 85% Zoom
 	(*"M3/OIS300".zoom85prcnt*)
 end open
@@ -101,6 +102,7 @@ to printShopTraveler scheduleNumber
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
 	TypeText "Mforms://PMZ440"
 	Click "M3/Home/SearchSubmit"
+	//"M3/Application".MaximizePanel
 	Click "M3/PMS100/Scheduleno440"
 	TypeText controlKey, "a"
 	TypeText deleteKey
