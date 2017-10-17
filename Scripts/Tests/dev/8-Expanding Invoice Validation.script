@@ -40,7 +40,8 @@ Click "M3/OIS300/Prevbutton"
 Click "M3/OIS300/HighlightCO"
 Rightclick "M3/OIS300/HighlightCO"
 Click "M3/OIS300/Display"
-Click "M3/OIS300/References"
+Click  "M3/OIS300/Next"
+Click "M3/OIS300/Next"
 Click "M3/OIS300/CustomersPONumber"
 
 //To record address number,sold to and ship to
