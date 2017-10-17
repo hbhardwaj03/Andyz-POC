@@ -118,7 +118,7 @@ To EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
 End EnterItemProductQuanConfig
 
 To GetLineStatus
-	Click "M3/OIS101/selectline"
+	Click (Image:"M3/OIS101/selectline", WaitFor:45)
 	Click "M3/OIS101/LineSlat"
 	put  ImageLocation ("M3/OIS101/LineSlat") into loc
 	Put loc+(-10,-5) into L1

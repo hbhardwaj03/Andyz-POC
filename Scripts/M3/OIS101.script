@@ -115,7 +115,7 @@ End EnterPromoCode
 
 to getPromocodevalue
 	//Click "M3/OIS101/SelectItemNum"
-	Click "M3/OIS101/selectline"
+	Click (Image:"M3/OIS101/selectline", WaitFor:45)
 	//Click "M3/OIS101/PromoDiscValue"
 	Click "M3/OIS101/PromoDiscprice"
 	put  ImageLocation ("M3/OIS101/PromoDiscprice") into loc
@@ -177,7 +177,7 @@ to configuratorNewEra
 	Wait 5
 	Click "M3/OIS101/NewEra/ProofRequiredButton"
 	Click "M3/OIS101/NewEra/TitleistButton"
-Click "M3/OIS101/NewEra/ColorButton"
+	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
 	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
 	Click "M3/OIS101/NewEra/2Customizations"
