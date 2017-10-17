@@ -1,6 +1,6 @@
 ﻿//Requires M3/Login
 to open
-	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	WaitFor 60, "M3/Application/inforSmartOfficeTitle"
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
 	TypeText "OIS300"
 	Click "M3/Home/SearchSubmit"
@@ -11,7 +11,7 @@ to startNewOrder
 end startNewOrder
 
 to enterCustomerNumber customerNumber, coType, SalesHold
-	Click "M3/OIS300/CustomerNumberField"
+	Click Image:"M3/OIS300/CustomerNumberField", WaitFor:45
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText customerNumber
@@ -29,12 +29,12 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		//TypeText return
 	End If
 	Click "M3/OIS300/NextButton"
-	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
+	if ImageFound("M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
 			TypeText Return
 		End repeat
-		
 	end if
+	
 	(*if coType is "USO" then
 		Click "M3/OIS300/NextButton"Floc
 
