@@ -358,9 +358,9 @@ to zoom85prcnt
 		KeyDown controlKey
 		repeat 2 times
 			TypeText "+"	
-		end repeat
-		KeyUp controlKey
-	end if
+	end repeat
+	KeyUp controlKey
+end if
 end zoom85prcnt
 
 to zoom90prcnt
@@ -405,11 +405,10 @@ to recordDepartDate
 end recordDepartdate
 
 to openDeliveryToolboxlink
-	
-	Click "M3/OIS300/HighlightCOnum"
-	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/Relateddropdownlist"
-	Click "M3/OIS300/Deliverytoolbox"
+	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/Relateddropdownlist_new"
+	TypeText controlKey, "43"
+	//	Click "M3/OIS300/DeliveryToolboxLink"
 end openDeliveryToolboxlink
 
 to recordOrderDate 
@@ -417,10 +416,16 @@ to recordOrderDate
 	Log orderDate
 end recordOrderDate
 
+to recorddelinumber
+	Click "M3/OIS300/HighlightCO"
+	Click "M3/OIS300/Relateddropdownlist_new"
+	TypeText controlKey, "43"
+end recorddelinumber
+
 to openaddresses
-	Click "M3/OIS300/HighlightCOnum"
+	Click "M3/OIS300/HighlightCO"
 	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/Relateddropdownlist"
+	Click "M3/OIS300/Relateddropdownlist_new"
 	Click "M3/OIS300/Addresses"
 end openaddresses
 
@@ -473,9 +478,15 @@ to recordconfigvalues
 	Click "M3/OIS300/HighlightItemnum"
 	Click "M3/OIS300/Relateddropdownlist_new"
 	TypeText controlKey, "61"
-	Click "M3/OIS300/Optionsconfig"
+	//Click "M3/OIS300/Optionsconfig"
 end recordconfigvalues
 
 
-
+To ChangeView
+	click "M3/OIS300/Viewdropdown"
+	wait 2
+	TypeText homeKey
+	wait 2
+	Click "M3/OIS300/G6L01002PriceATP"
+End ChangeView
 

@@ -15,23 +15,29 @@ global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-<<<<<<< HEAD
-put 3 into dataIndex
-=======
 put 2 into dataIndex
->>>>>>> 52bc589a568bd6026ef248c393017556d163be59
 
 (************** Start Test ***************)
 repeat forever
 	
 	(************** Set up data *************)
 	//skip known bad entries in test data
-<<<<<<< HEAD
-	put (6) into badData //these  are having item code of Accesories
-=======
+	
 	put (0,13) into badData //these  are having item code of Accesories
+<<<<<<< HEAD
 >>>>>>> 52bc589a568bd6026ef248c393017556d163be59
 repeat while dataIndex is in badData
+=======
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	
+	//increment counter
+>>>>>>> 90c3946c36678fca295bd67c6fe9110df4858ab2
 	put dataIndex + 1 into dataIndex
 end repeat
 
