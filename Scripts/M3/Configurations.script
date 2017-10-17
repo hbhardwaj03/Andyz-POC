@@ -282,7 +282,7 @@ To ConFigD1
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
 		Click "M3/Configurations/DConfig/D1/ChangeCountry"
-		wait 3
+		wait 2
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
