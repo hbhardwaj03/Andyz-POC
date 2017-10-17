@@ -281,6 +281,8 @@ end ConfigA2
 To ConFigD1
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -304,6 +306,8 @@ End ConFigD1
 To ConFigD2
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -328,6 +332,8 @@ End ConFigD2
 To ConFigD3
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -351,6 +357,8 @@ End ConFigD3
 To ConFigD4
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -377,6 +385,8 @@ To ConFigD5
 	
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -411,6 +421,8 @@ End ConFigD5
 To ConFigD6
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
@@ -443,6 +455,8 @@ End ConFigD6
 To ConfigI1
 	wait 3
 	If ImageFound( "M3/Configurations/DConfig/D1/CARHRightHand") then
+		Click "M3/Configurations/DConfig/D1/ChangeCountry"
+		wait 3
 		Click "M3/Configurations/DConfig/D1/ChngeOption"
 		wait 10
 	End If
