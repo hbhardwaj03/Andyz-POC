@@ -1,17 +1,19 @@
 ﻿//8.Expanding Invoice Validation
-
+//Author-Ramya
 
 //To capture  variables in window  OIS350
 
 "M3/OIS350".open
-Click "M3/OIS350/Sortingorder"
-Click "M3/OIS350/3COno"
+put "M3/OIS350".ChangeSortingorder() into ChangeSortingorder
 Click "M3/OIS350/Extendedinvno"
 
 //to fetch customer order number 
 set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
 set worksheet to ExcelFile.Worksheet("Sheet3")
 Put Cell(worksheet, A2) into CONumber
+Click "M3/OIS350/Next"
+put ReadText(imageLocation("M3/OIS350/InvoiceNo_1")) into InvoiceNo
+log InvoiceNo
 
 
 //To record invoice date
@@ -22,21 +24,24 @@ Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
 
 //To record shipment date
 "M3/OIS300".openDeliveryToolboxlink
-Click "M3/OIS300/Previousbutton"
+put "M3/OIS300".recordDepartDate() into DepartDate
+Click "M3/OIS300/previousbuttonnew"
 //To record order date
 Put "M3/OIS300".recordOrderDate() into Orderdate
 
 Put "M3/OIS300".recordwarehousenum() into warehousenum
 Click "M3/OIS300/Previousbutton"
 //to record dellivery number
-Put "M3/OIS300".recordDeliveryNumber() into DeliNo
-//*Click "M3/OIS300/Previousbutton"*//
-
+Put "M3/OIS300".recorddelinumber() into DeliNo
+put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into Delyno
+log Delyno
 Click "M3/OIS300/Prevbutton"
 //To record customer PO#
 Click "M3/OIS300/HighlightCO"
-Rightclick "M3/OIS300/Display"
-Click "M3/OIS300/References"
+Rightclick "M3/OIS300/HighlightCO"
+Click "M3/OIS300/Display"
+Click  "M3/OIS300/Next"
+Click "M3/OIS300/Next"
 Click "M3/OIS300/CustomersPONumber"
 
 //To record address number,sold to and ship to
@@ -53,13 +58,19 @@ log paymentterms
 put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
 log CashDiscountterms
 
-
+//to validate pers1 2 and 3 also item number,shiped qty,U/M,sales price(unitprice)
 Click "M3/OIS300/HighlightCO"
 Click "M3/OIS300/COnumber"
 put ReadText(imageLocation("M3/OIS300/Sortingorder")) into Sortingorder
 log Sortingorder
 put ReadText(imageLocation("M3/OIS300/View")) into View
 Log View
+put ReadText(imageLocation("M3/OIS300/OrdQty")) into ordqty
+log ordqty
+put ReadText(imageLocation("M3/OIS300/UM")) into UM
+log UM
+put ReadText(imageLocation("M3/OIS300/SalesPrice")) into Salesprice
+log Salesprice
 put "M3/OIS300".recordconfigvalues into Configvalues
 put ReadText(imageLocation("M3/OIS300/Text")) into Text
 log  Text
@@ -68,6 +79,13 @@ log Featuregroup
 put ReadText(imageLocation( "M3/OIS300/Name")) into Name
 log Name
 
+//to record customcharge,netprice
+Click "M3/OIS300/previousbuttonnew"
+put "M3/OIS300".ChangeView() into ChangeView
+put ReadText(imageLocation("M3/OIS300/CstmCharge")) into Cstmcharge
+log Cstmcharge
+put ReadText(imageLocation("M3/OIS300/NetPrice")) into Netprice
+log Netprice
 
 
 

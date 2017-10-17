@@ -18,3 +18,10 @@ to recordInvoiceDate
 end recordInvoiceDate
 
 
+To ChangeSortingorder
+	click "M3/OIS350/Sortingorder"
+	wait 2
+	TypeText homeKey
+	wait 2
+	Click "M3/OIS350/3-COno/3-COno_new"
+End ChangeSortingorder
