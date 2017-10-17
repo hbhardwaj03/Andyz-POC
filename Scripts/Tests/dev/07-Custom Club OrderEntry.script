@@ -43,6 +43,10 @@ repeat forever
 	
 	"Flows/OrderEntry".EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
 	
+	(*************** To Validate Line Item*******************)
+	
+	Put "Flows/OrderEntry".GetLineStatus() into LineStatus
+	
 	(*************** To Apply Blanket  Agreement **********************)
 	
 	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
@@ -53,7 +57,7 @@ repeat forever
 	
 	(************* To Print Variables ************************)
 	
-	log "Order Number Was:-  "& coNumber&", " && "Customer Number Was:-  "& customerNumber&", " &&"Customer Type was:-  "& coType &", "&&"Sales Hold:-  "&SalesHold&", "&&"PO type was:-  "& PO&", " &&"Tag Field Was:-  "& TagField&", " &&"Delivery term was:-  "& DeliveryTerm&", " &&"Delivery Method was:-  "& DeliveryMethod&", "&&"Priority was:-  "&priority&", " &&"Transcation ResonCode was:-  "& TransactionResonCode&", " &&"Item Number was:-  "& itemCode&", " &&"Quantity was:-  "& quantity &", "&&"Promocode:-  "& PromoCod&", " &&"Configration Number:-  "&ConfigurationNo
+	log "Order Number Was:-  "& coNumber&", " && "Customer Number Was:-  "& customerNumber&", " &&"Customer Type was:-  "& coType &", "&&"Sales Hold:-  "&SalesHold&", "&&"PO type was:-  "& PO&", " &&"Tag Field Was:-  "& TagField&", " &&"Delivery term was:-  "& DeliveryTerm&", " &&"Delivery Method was:-  "& DeliveryMethod&", "&&"Priority was:-  "&priority&", " &&"Transcation ResonCode was:-  "& TransactionResonCode&", " &&"Item Number was:-  "& itemCode&", " &&"Quantity was:-  "& quantity &", "&&"Promocode:-  "& PromoCod&", " &&"Configration Number:-  "&ConfigurationNo&","&"Line Status as:- "&& LineStatus
 end repeat
 
 (******************* To Close the Infor Application *************************)

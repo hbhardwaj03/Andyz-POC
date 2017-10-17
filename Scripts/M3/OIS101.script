@@ -119,7 +119,6 @@ to getPromocodevalue
 	//Click "M3/OIS101/PromoDiscValue"
 	Click "M3/OIS101/PromoDiscprice"
 	put  ImageLocation ("M3/OIS101/PromoDiscprice") into loc
-	log loc
 	Put loc+(-20,-16) into L1
 	Put loc+(61,15) into L2
 	put  ReadText((L1), (L2)) into PromoDiscValue
@@ -178,7 +177,7 @@ to configuratorNewEra
 	Wait 5
 	Click "M3/OIS101/NewEra/ProofRequiredButton"
 	Click "M3/OIS101/NewEra/TitleistButton"
-	Click "M3/OIS101/NewEra/ColorButton"
+Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
 	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
 	Click "M3/OIS101/NewEra/2Customizations"
