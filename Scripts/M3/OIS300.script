@@ -36,7 +36,8 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		
 	end if
 	(*if coType is "USO" then
-		Click "M3/OIS300/NextButton"
+		Click "M3/OIS300/NextButton"Floc
+
 	else if coType is "USA" then
 		Click "M3/OIS300/NextButton"
 		
@@ -425,7 +426,7 @@ end openaddresses
 
 
 to recordwarehousenum
-	Click "M3/OIS300/CoField"
+	Click "M3/OIS300/COnumber"
 	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
 	Click "M3/OIS300/Wise"
 	Put ImageLocation ("M3/OIS300/Wise") into loc
@@ -452,11 +453,11 @@ to recordaddresses
 	Log deliveryaddress
 	Log Invoiceaddress
 	
-	return addresses
+	return addresseswwa
 end recordaddresses
 
 to submitOIS100V
-	if ImageFound(Image:"Corner", WaitFor:3)
+	if ImageFound(Image:"Corner", For:3)
 		if ImageFound(Image:"M3/OIS300/OIS100VTitle")
 			TypeText "Test account"
 			TypeText Return
@@ -467,10 +468,12 @@ to submitOIS100V
 end submitOIS100V
 
 
-
-
-
-
-
+to recordconfigvalues
+	//Click "M3/OIS300/COnumber"
+	Click "M3/OIS300/HighlightItemnum"
+	Click "M3/OIS300/Relateddropdownlist_new"
+	TypeText controlKey, "61"
+	Click "M3/OIS300/Optionsconfig"
+end recordconfigvalues
 
 
