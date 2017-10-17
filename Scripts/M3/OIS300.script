@@ -109,7 +109,7 @@ to submitOIS100F
 end submitOIS100F
 
 to submitOIS100H
-	(*WaitFor 8.0, "M3/OIS300/OIS100HTitle"*)
+	WaitFor 45, "M3/OIS300/OIS100HTitle"
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
 end submitOIS100H
