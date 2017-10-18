@@ -20,14 +20,27 @@ To lookupMV NumberMV
 	TypeText NumberMV
 	TypeText ReturnKey
 	wait 15
-	DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/MVAGUSTESTM3")+(0,0))
+	
+	if ImageFound(10,"MetaViewer/MetaViewerTree/LastFolderIndicator")then
+		DoubleClick ImageLocation("MetaViewer/MetaViewerTree/LastFolderIndicator")-(15,0)
+	end if
+	//DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/Invoice")+(0,12))
+	
 	//DoubleClick "MetaViewer/MetaViewerTree/AGSUS13", 
-      Doubleclick   "MetaViewer/MetaViewerTree/MVAGUSTESTM3"
-
-DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
-DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-wait 3
-
+	//Doubleclick   "MetaViewer/MetaViewerTree/Invoice"
+	if ImageFound("MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST") then
+		set tempLoc= ImageLocation("MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST")
+		repeat until  ImageFound(10,"MetaViewer/MetaViewerTree/LastFolderIndicator") and imageFound("MetaViewer/MetaViewerTree/PDFicon")
+			DoubleClick tempLoc
+			set tempLoc= tempLoc+(12,13)
+		end repeat
+		//Doubleclick "MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST"
+	end if
+	Doubleclick (imageLocation ("MetaViewer/MetaViewerTree/Invoice")+(0,22))
+	//DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
+	//DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
+	wait 3
+	
 End lookupMV
 
 
@@ -57,7 +70,7 @@ to validateInvoice
 	
 	wait 3
 	click "MetaViewer/PDF/MVFullscreen"
-	wait 1
+wait 1
 	click "MetaViewer/PDF/Titleist"
 	TypeText controlKey, KeypadMinus
 	TypeText controlKey, KeypadMinus
@@ -65,13 +78,13 @@ to validateInvoice
 	put "MetaViewer/PDF/" into path
 	
 	set InvoiceNoPDF to ReadText((imageLocation (path&"InvoiceNo/InvoiceNo") +(-4,10), imageLocation (path&"InvoiceNo/InvoiceNo_1") +(73,20)))
-	Log (InvoiceNoPDF  & " is the Invoice Number")
-	
+Log (InvoiceNoPDF  & " is the Invoice Number")
+
 	set OrderNoPDF to ReadText((imageLocation (path&"OrderNo/OrderNo") +(-4,10), imageLocation (path&"OrderNo/OrderNo_1") +(73,20)))
 	Log (OrderNoPDF  & " is the Order Number")
 	
 	set WhsPDF to ReadText((imageLocation (path&"Whs/Whs") +(-4,10), imageLocation (path&"Whs/Whs_1") +(45,23)))
-Log (WhsPDF  & " is the Whs")
+	Log (WhsPDF  & " is the Whs")
 	
 	set InvoiceDatePDF to ReadText((imageLocation (path&"InvoiceDate/InvoiceDate") +(-4,10), imageLocation (path&"InvoiceDate/InvoiceDate_1") +(73,20)))
 	Log (InvoiceDatePDF & " is the Invoice Date")
