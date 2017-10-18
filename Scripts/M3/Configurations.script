@@ -370,7 +370,7 @@ To ConFigD4
 	Click "M3/Configurations/DConfig/D4/YesCZYES"
 	Click "M3/Configurations/DConfig/D4/CBD95D95Driver"
 	Click "M3/Configurations/DConfig/D1/CZN0No"
-	Click "M3/Configurations/DConfig/D4/CDA8BALDRogueBlack80StkF"
+	Click Image:"M3/Configurations/DConfig/D4/CDA8BALDRogueBlack80StkF", WaitFor:45
 	Click "M3/Configurations/DConfig/D1/StiffCES"
 	Click "M3/Configurations/DConfig/D4/CI23S334Short"
 	Click "M3/Configurations/DConfig/D4/CFBTM16GPToorVelvet350Mid"
