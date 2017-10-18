@@ -377,7 +377,7 @@ To ConFigD4
 	Click "M3/Configurations/DConfig/D4/CG24MIDMidsize"
 	Click "M3/Configurations/DConfig/D1/CXNNeutral"
 	Click "M3/Configurations/DConfig/D4/CKC910C910GM"
-	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	Click Image:"M3/Configurations/DConfig/D1/CZN0No_1", WaitFor:45
 	wait 10
 End ConFigD4
 
