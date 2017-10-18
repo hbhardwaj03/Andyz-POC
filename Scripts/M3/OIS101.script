@@ -1,5 +1,5 @@
 ﻿to recordCONumber
-	WaitFor 30, "M3/OIS101/OIS101B1Title"
+	WaitFor 60, "M3/OIS101/OIS101B1Title"
 	DoubleClick "M3/OIS101/CONumberField"
 	TypeText controlKey, "c"
 	Click "M3/OIS101/WindowsButton"
@@ -115,11 +115,10 @@ End EnterPromoCode
 
 to getPromocodevalue
 	//Click "M3/OIS101/SelectItemNum"
-	Click "M3/OIS101/selectline"
+	Click (Image:"M3/OIS101/selectline", WaitFor:45)
 	//Click "M3/OIS101/PromoDiscValue"
 	Click "M3/OIS101/PromoDiscprice"
 	put  ImageLocation ("M3/OIS101/PromoDiscprice") into loc
-	log loc
 	Put loc+(-20,-16) into L1
 	Put loc+(61,15) into L2
 	put  ReadText((L1), (L2)) into PromoDiscValue
@@ -203,7 +202,7 @@ end configuratorNewEra
 
 to closeFromOrderLines
 	//Close OIS101B1
-	WaitFor 90, "M3/OIS101/OIS101B1Title"
+	WaitFor 180, "M3/OIS101/OIS101B1Title"
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
 	WaitFor 30, "M3/OIS101/OIS110ETitle"

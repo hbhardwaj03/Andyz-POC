@@ -1,6 +1,6 @@
 ﻿//Requires M3/Login
 to open
-	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	WaitFor 60, "M3/Application/inforSmartOfficeTitle"
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
 	TypeText "OIS300"
 	Click "M3/Home/SearchSubmit"
@@ -11,7 +11,7 @@ to startNewOrder
 end startNewOrder
 
 to enterCustomerNumber customerNumber, coType, SalesHold
-	Click "M3/OIS300/CustomerNumberField"
+	Click Image:"M3/OIS300/CustomerNumberField", WaitFor:45
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText customerNumber
@@ -29,12 +29,12 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		//TypeText return
 	End If
 	Click "M3/OIS300/NextButton"
-	if ImageFound(3, "M3/OIS300/promotionOrExpns") then
+	if ImageFound("M3/OIS300/promotionOrExpns") then
 		Repeat 2 times
 			TypeText Return
 		End repeat
-		
 	end if
+	
 	(*if coType is "USO" then
 		Click "M3/OIS300/NextButton"Floc
 
@@ -109,7 +109,7 @@ to submitOIS100F
 end submitOIS100F
 
 to submitOIS100H
-	(*WaitFor 8.0, "M3/OIS300/OIS100HTitle"*)
+	WaitFor 45, "M3/OIS300/OIS100HTitle"
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
 end submitOIS100H
@@ -312,9 +312,9 @@ to reschedule
 end reschedule
 
 to setZoom80prcnt
-	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
-		Click "M3/OIS300/ZoomButton/ZoomButton105"
-		Click "M3/OIS300/ZoomButton/slct80frm105"
+	if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton75") then
+		Click "M3/OIS300/ZoomButton/ZoomButton75"
+		Click "M3/OIS300/ZoomButton/slct80frm75"
 	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton100") then
 		Click "M3/OIS300/ZoomButton/ZoomButton100"
 		Click "M3/OIS300/ZoomButton/slct80frm100"
@@ -330,11 +330,10 @@ to setZoom80prcnt
 	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton80") then
 		Click "M3/OIS300/ZoomButton/ZoomButton80"
 		Click "M3/OIS300/ZoomButton/slct80frm80"
-	else if ImageFound(3,"M3/OIS300/ZoomButton/ZoomButton75") then
-		Click "M3/OIS300/ZoomButton/ZoomButton75"
-		Click "M3/OIS300/ZoomButton/slct80frm75"
-	end if
-	
+	else if ImageFound (3,"M3/OIS300/ZoomButton/ZoomButton105") then
+		Click "M3/OIS300/ZoomButton/ZoomButton105"
+		Click "M3/OIS300/ZoomButton/slct80frm105"
+	end if	
 end setZoom80prcnt
 
 to zoom75prcnt
@@ -358,9 +357,9 @@ to zoom85prcnt
 		KeyDown controlKey
 		repeat 2 times
 			TypeText "+"	
-	end repeat
-	KeyUp controlKey
-end if
+		end repeat
+		KeyUp controlKey
+	end if
 end zoom85prcnt
 
 to zoom90prcnt

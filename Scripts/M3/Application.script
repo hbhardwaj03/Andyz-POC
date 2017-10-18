@@ -1,5 +1,6 @@
 ﻿to open
 	DoubleClick "M3/Application/InforShortcut"
+	(*	DoubleClick "M3/Application/InforPRDShortcut"*)
 end open
 
 to close
@@ -12,9 +13,9 @@ To MaximizePanel
 	if ImageFound (20,"M3/Application/ResizePanel") then
 		Log "PMS170 found in Maximize state"
 	else 
-	if ImageFound (3,"M3/Application/MaximizePanel")
-Click "M3/Application/Maximize"
-Log "Panel PMS170 was resized to Maximize"
-end if
-end if
+		if ImageFound (3,"M3/Application/MaximizePanel")
+			Click "M3/Application/Maximize"
+			Log "Panel PMS170 was resized to Maximize"
+		end if
+	end if
 End MaximizePanel

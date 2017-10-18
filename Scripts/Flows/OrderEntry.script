@@ -17,7 +17,7 @@ end enterNewOrder
 to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, SalesHold, priority //BlanketAgreement
 	Log "Enter new order"
 	"M3/OIS300".open
-	"M3/OIS300".zoom75prcnt
+	(*"M3/OIS300".zoom75prcnt*)
 	"M3/OIS300".startNewOrder
 	//if ImageFound(120,"M3/OIS300/CustomerNumberField/CustomerNumberField") then
 	"M3/OIS300".enterCustomerNumber customerNumber, coType, SalesHold	
@@ -116,6 +116,25 @@ To EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
 	wait 5
 	
 End EnterItemProductQuanConfig
+
+To GetLineStatus
+	Click (Image:"M3/OIS101/selectline", WaitFor:45)
+	Click "M3/OIS101/LineSlat"
+	put  ImageLocation ("M3/OIS101/LineSlat") into loc
+	Put loc+(-10,-5) into L1
+	Put loc+(55,10) into L2
+	put  ReadText((L1), (L2)) into LineStatus
+	
+	Log LineStatus
+	If LineStatus<> "" then
+		LogSuccess "Line Item Has Created With Line Status as:  "&"  "& LineStatus
+		Return LineStatus
+	Else
+		LogError "Line Item has Not Created"
+		
+	End If
+	
+End GetLineStatus
 
 
 to enterProductAndQuantity itemCode, quantity

@@ -51,13 +51,13 @@ repeat forever
 	//end repeat	
 	
 	(************** Scheduling ***************)
-	wait 5
+	(*	wait 5
 	"Flows/Application".login username, password
 	"Flows/Scheduling".doScheduling coNum
 	put "M3/PMS100".recordMO() into moNum
 	
 	(************** Picking ******************)
-	"Flows/Picking".doPicking
+	"Flows/Picking".doPicking*)
 	
 	(*
 (************** Manufacturing *************)
