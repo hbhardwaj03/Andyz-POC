@@ -1,5 +1,5 @@
 ﻿//8.Expanding Invoice Validation
-//Author-Ramya
+
 
 //To capture  variables in window  OIS350
 
@@ -9,14 +9,15 @@ Click "M3/OIS350/Extendedinvno"
 
 //to fetch customer order number 
 set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
-set worksheet to ExcelFile.Worksheet("Sheet3")
-Put Cell(worksheet, A2) into CONumber
+set worksheet to ExcelFile.Worksheet("Sheet4")
+Put Cell(worksheet ,"A2") into COnumber
+log COnumber
 Click "M3/OIS350/Next"
 put ReadText(imageLocation("M3/OIS350/InvoiceNo_1")) into InvoiceNo
 log InvoiceNo
 
 
-//To record invoice date
+//to capture invoicedate
 Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
 
 //To capture variables in OIS300
