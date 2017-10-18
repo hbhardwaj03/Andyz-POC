@@ -39,20 +39,32 @@ Click "M3/OIS300/Prevbutton"
 //To record customer PO#
 Click "M3/OIS300/HighlightCO"
 Rightclick "M3/OIS300/HighlightCO"
-Click "M3/OIS300/Display"
-Click  "M3/OIS300/Next"
-Click "M3/OIS300/Next"
-Click "M3/OIS300/CustomersPONumber"
+Click "M3/OIS300/Display_1"
+Click  "M3/OIS300/Next/Next"
+Click "M3/OIS300/Next/Next"
+put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPOnumber
+log CustomersPonumber
 
-//To record address number,sold to and ship to
+//To record address number,sold to(Delivery address) and ship to(Invoice address))
 put "M3/OIS300".openaddresses() into openaddresses
-put "M3/OIS300".recordaddresses() into Address
+put ReadText(imageLocation("M3/OIS300/Customernumber")) into Customernumber
+log Customernumber
+put ReadText(imageLocation("M3/OIS300/DelreryAddress")) into Deliveryaddress
+log Deliveryaddress
+put ReadText(imageLocation("M3/OIS300/DelreryAddress_1")) into Deliveryaddress1
+log Deliveryaddress1
+
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress")) into Invoiceaddress
+log Invoiceaddress
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress_1")) into Invoiceaddress1
+log Invoiceaddress1
+
 
 //to record payment terms and payemnt discount
 Click "M3/OIS300/HighlightCO"
 RightClick "M3/OIS300/HighlightCO"
 click "M3/OIS300/Display_1"
-Click "M3/OIS300/Next"
+Click "M3/OIS300/Next/Next"
 put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into Paymentterms
 log paymentterms
 put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
@@ -71,6 +83,7 @@ put ReadText(imageLocation("M3/OIS300/UM")) into UM
 log UM
 put ReadText(imageLocation("M3/OIS300/SalesPrice")) into Salesprice
 log Salesprice
+Click "M3/OIS300/Previousbutton"
 put "M3/OIS300".recordconfigvalues into Configvalues
 put ReadText(imageLocation("M3/OIS300/Text")) into Text
 log  Text

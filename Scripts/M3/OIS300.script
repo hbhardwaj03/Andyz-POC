@@ -406,7 +406,7 @@ end recordDepartdate
 
 to openDeliveryToolboxlink
 	Click "M3/OIS300/HighlightCO"
-	Click "M3/OIS300/Relateddropdownlist_new"
+	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "43"
 	//	Click "M3/OIS300/DeliveryToolboxLink"
 end openDeliveryToolboxlink
@@ -418,15 +418,16 @@ end recordOrderDate
 
 to recorddelinumber
 	Click "M3/OIS300/HighlightCO"
-	Click "M3/OIS300/Relateddropdownlist_new"
+	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "43"
 end recorddelinumber
 
 to openaddresses
 	Click "M3/OIS300/HighlightCO"
-	Click "M3/OIS300/relateddropdown"
-	Click "M3/OIS300/Relateddropdownlist_new"
-	Click "M3/OIS300/Addresses"
+	//Click "M3/OIS300/relateddropdown"
+	Click "M3/OIS300/Relateddropdownnew"
+	TypeText controlKey, "11"
+	//Click "M3/OIS300/Addresses"
 end openaddresses
 
 
@@ -458,7 +459,7 @@ to recordaddresses
 	Log deliveryaddress
 	Log Invoiceaddress
 	
-	return addresseswwa
+	return addresses
 end recordaddresses
 
 to submitOIS100V
@@ -476,7 +477,7 @@ end submitOIS100V
 to recordconfigvalues
 	//Click "M3/OIS300/COnumber"
 	Click "M3/OIS300/HighlightItemnum"
-	Click "M3/OIS300/Relateddropdownlist_new"
+	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "61"
 	//Click "M3/OIS300/Optionsconfig"
 end recordconfigvalues
