@@ -207,6 +207,9 @@ to closeFromOrderLines
 	//Close OIS110E
 	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
+	if ImageFound("M3/OIS300/CreditLimit") then
+		Click "M3/OIS300/CreditLimit"
+	end if
 	//Close OIS100A
 	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"
