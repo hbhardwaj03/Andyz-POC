@@ -126,9 +126,6 @@ to getPromocodevalue
 	Log PromoDiscValue
 	If PromoDiscValue <> "" then
 		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
-	Else
-		LogError "Promo Code was Not Applied to the Item"
-		
 	End If
 	return PromoDiscValue
 	
