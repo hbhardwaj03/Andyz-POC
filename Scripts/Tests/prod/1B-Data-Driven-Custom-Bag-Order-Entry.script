@@ -40,7 +40,6 @@ repeat forever
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
@@ -48,38 +47,8 @@ repeat forever
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 	
-	//end repeat	
-	
-	(************** Scheduling ***************)
-	(*	wait 5
-	"Flows/Application".login username, password
-	"Flows/Scheduling".doScheduling coNum
-	put "M3/PMS100".recordMO() into moNum
-	
-	(************** Picking ******************)
-	"Flows/Picking".doPicking*)
-	
-	(*
-(************** Manufacturing *************)
-wait 5
-"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
-
-(************** Packing ******************)
-put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
-"Flows/Other".recordRun coNum, moNum, schedNum, delNum
-
-
-(************** Shipping *****************)
-"Flows/Shipping".doShipping delNum
-"Flows/Shipping".validateShipping coNum
-
-(************** Exit *********************)
-"Flows/Application".exitApp
-        *)
-	
 	logData
 end repeat
-
 
 to logData
 	global dataIndex
