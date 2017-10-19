@@ -103,7 +103,7 @@ to printShopTraveler scheduleNumber
 	TypeText "Mforms://PMZ440"
 	Click "M3/Home/SearchSubmit"
 	//"M3/Application".MaximizePanel
-	Click "M3/PMS100/Scheduleno440"
+	Click Image:"M3/PMS100/Scheduleno440", WaitFor:45
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText scheduleNumber
