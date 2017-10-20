@@ -171,7 +171,7 @@ to ConfigB3 // 2 level of Customization
 	Wait 5
 	Click "M3/Configurations/configuration001/NumCustomization/NumCustomization_EA2"
 	//Customization# 1{Logo}
-	Click "M3/Configurations/configuration001/CustomizationLocation/JL037 _SpinePocket_L1"
+	Click Image:"M3/Configurations/configuration001/CustomizationLocation/JL037 _SpinePocket_L1", WaitFor:45
 	Click "M3/Configurations/configuration001/personalizationType/customization1/JL001Logo1"
 	TypeText "376309"
 	TypeText Return
@@ -370,14 +370,14 @@ To ConFigD4
 	Click "M3/Configurations/DConfig/D4/YesCZYES"
 	Click "M3/Configurations/DConfig/D4/CBD95D95Driver"
 	Click "M3/Configurations/DConfig/D1/CZN0No"
-	Click "M3/Configurations/DConfig/D4/CDA8BALDRogueBlack80StkF"
+	Click Image:"M3/Configurations/DConfig/D4/CDA8BALDRogueBlack80StkF", WaitFor:45
 	Click "M3/Configurations/DConfig/D1/StiffCES"
 	Click "M3/Configurations/DConfig/D4/CI23S334Short"
 	Click "M3/Configurations/DConfig/D4/CFBTM16GPToorVelvet350Mid"
 	Click "M3/Configurations/DConfig/D4/CG24MIDMidsize"
 	Click "M3/Configurations/DConfig/D1/CXNNeutral"
 	Click "M3/Configurations/DConfig/D4/CKC910C910GM"
-	Click "M3/Configurations/DConfig/D1/CZN0No_1"
+	Click Image:"M3/Configurations/DConfig/D1/CZN0No_1", WaitFor:45
 	wait 10
 End ConFigD4
 

@@ -126,9 +126,6 @@ to getPromocodevalue
 	Log PromoDiscValue
 	If PromoDiscValue <> "" then
 		LogSuccess "Promo Code was Applied to the Item  with value of"&"  "& PromoDiscValue
-	Else
-		LogError "Promo Code was Not Applied to the Item"
-		
 	End If
 	return PromoDiscValue
 	
@@ -207,6 +204,9 @@ to closeFromOrderLines
 	//Close OIS110E
 	WaitFor 30, "M3/OIS101/OIS110ETitle"
 	Click "M3/OIS101/XCloseButton"
+	if ImageFound("M3/OIS300/CreditLimit") then
+		Click "M3/OIS300/CreditLimit"
+	end if
 	//Close OIS100A
 	WaitFor 30, "M3/OIS101/OIS100ATitle"
 	Click "M3/OIS101/XCloseButton"

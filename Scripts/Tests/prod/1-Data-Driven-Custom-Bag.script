@@ -59,23 +59,21 @@ repeat forever
 	(************** Picking ******************)
 	"Flows/Picking".doPicking
 	
+	
+	(************** Manufacturing *************)
+	wait 5
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
+	
+	(************** Packing ******************)
+	(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	
 	(*
-(************** Manufacturing *************)
-wait 5
-"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
-
-(************** Packing ******************)
-put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
-"Flows/Other".recordRun coNum, moNum, schedNum, delNum
-
-
 (************** Shipping *****************)
 "Flows/Shipping".doShipping delNum
 "Flows/Shipping".validateShipping coNum
-
-(************** Exit *********************)
-"Flows/Application".exitApp
-        *)
+*)	
 	
 	logData
 end repeat
