@@ -69,21 +69,14 @@ Click "M3/OIS300/previousbuttonnew"
 Put "M3/OIS300".recordOrderDate() into Orderdate
 
 Put "M3/OIS300".recordwarehousenum() into warehousenum
-Click "M3/OIS300/Previousbutton"
+Click "M3/OIS300/previousbuttonnew"
 //to record dellivery number
 Put "M3/OIS300".recorddelinumber() into DeliNo
 
 put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into Delyno
 log Delyno
-Click "M3/OIS300/Prevbutton"
-//To record customer PO#
-Click "M3/OIS300/HighlightCO"
-Rightclick "M3/OIS300/HighlightCO"
-Click "M3/OIS300/Display_1"
-Click  "M3/OIS300/Next/Next"
-Click "M3/OIS300/Next/Next"
-put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPOnumber
-log CustomersPonumber
+Click "M3/OIS300/previousbuttonnew"
+
 
 //To record address number,sold to(Delivery address) and ship to(Invoice address))
 put "M3/OIS300".openaddresses() into openaddresses
@@ -98,7 +91,7 @@ put ReadText(imageLocation("M3/OIS300/InvoiceAddress")) into Invoiceaddress
 log Invoiceaddress
 put ReadText(imageLocation("M3/OIS300/InvoiceAddress_1")) into Invoiceaddress1
 log Invoiceaddress1
-
+Click "M3/OIS300/previousbuttonnew"
 
 //to record payment terms and payemnt discount
 
@@ -111,10 +104,18 @@ put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into Paymentterms
 log paymentterms
 put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
 log CashDiscountterms
-Click "M3/OIS300/previousbuttonnew"
+Click "M3/OIS300/Next/Next"
+//To record customer PO#
+put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPOnumber
+log CustomersPonumber
+
+Repeat 3 times
+	Click "M3/OIS300/previousbuttonnew"
+End repeat
+
 //to validate pers1 2 and 3 also item number,shiped qty,U/M,sales price(unitprice)
 Click "M3/OIS300/HighlightCO"
-Click "M3/OIS300/COnumber"
+Click "M3/OIS300/CONUMBERnew"
 put ReadText(imageLocation("M3/OIS300/Sortingorder")) into Sortingorder
 log Sortingorder
 put ReadText(imageLocation("M3/OIS300/View")) into View
@@ -125,7 +126,7 @@ put ReadText(imageLocation("M3/OIS300/UM")) into UM
 log UM
 put ReadText(imageLocation("M3/OIS300/SalesPrice")) into Salesprice
 log Salesprice
-Click "M3/OIS300/Previousbutton"
+Click "M3/OIS300/previousbuttonnew"
 put "M3/OIS300".recordconfigvalues into Configvalues
 put ReadText(imageLocation("M3/OIS300/Text")) into Text
 log  Text
