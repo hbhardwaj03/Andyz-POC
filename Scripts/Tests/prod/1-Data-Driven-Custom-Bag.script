@@ -8,7 +8,7 @@ Author: Himanshu Bhardwaj & Andy Jenkins
 global username, password, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex, custNum, custPO, tag, delTerm,coType
+global coNum, dataIndex, custNum, custPO, tag, delTerm,coType
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 
 //initialize test variables
@@ -23,7 +23,7 @@ repeat forever
 	(************** Set up data *************)
 	
 	//skip known bad entries in test data
-	put (0,13) into badData //these  are having item code of Accesories
+	put (0) into badData //these  are having item code of Accesories
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
@@ -80,6 +80,7 @@ end repeat
 
 
 to logData
+	global coNum
 	global dataIndex
 	global custNum
 	global custPO
@@ -88,7 +89,7 @@ to logData
 	global delMeth
 	global style
 	global color
-	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+	Log dataIndex && coNum && custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
 end logData
 
 to doFullRun
