@@ -24,6 +24,8 @@ repeat forever
 	
 	//skip known bad entries in test data
 	put (0,13) into badData //these  are having item code of Accesories
+	// 13 no straps option in config
+	// 23 extra page in CO creation (OIS100V)
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
