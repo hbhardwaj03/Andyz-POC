@@ -410,13 +410,13 @@ to openDeliveryToolboxlink
 	//	Click "M3/OIS300/DeliveryToolboxLink"
 end openDeliveryToolboxlink
 
-to recordOrderDate 
-	set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
-	Log orderDate
+to recordOrde/rDate 
+set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
+Log orderDate
 end recordOrderDate
 
 to recorddelinumber
-	Click "M3/OIS300/HighlightCO"
+	//Click "M3/OIS300/HighlightCO"
 	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "43"
 end recorddelinumber
@@ -431,12 +431,13 @@ end openaddresses
 
 
 to recordwarehousenum
-	Click "M3/OIS300/COnumber"
+	//Click "M3/OIS300/COnumber"
+	Click "M3/OIS300/ClickCoNumber"
 	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
 	Click "M3/OIS300/Wise"
 	Put ImageLocation ("M3/OIS300/Wise") into loc
-	Put loc+(9,-102) into L1
-	Put loc+(20,-11) into L2
+	Put loc+(-10,-30) into L1
+	Put loc+(30,-11) into L2
 	put  ReadText((L1), (L2)) into warehousenum
 	Log warehousenum
 end recordwarehousenum
@@ -474,12 +475,13 @@ end submitOIS100V
 
 
 to recordconfigvalues
-	//Click "M3/OIS300/COnumber"
+	Click "M3/OIS300/CONUMBERnew"
 	Click "M3/OIS300/HighlightItemnum"
 	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "61"
 	//Click "M3/OIS300/Optionsconfig"
 end recordconfigvalues
+open
 
 
 To ChangeView
@@ -489,4 +491,11 @@ To ChangeView
 	wait 2
 	Click "M3/OIS300/G6L01002PriceATP"
 End ChangeView
+
+to openOIS300
+	//WaitFor 60, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "OIS300"
+	Click "M3/Home/SearchSubmit"
+end openOIS300
 

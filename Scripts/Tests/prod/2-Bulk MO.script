@@ -7,6 +7,7 @@ Author: Ramya & Ofir
 // declare login variables
 global username, password, coNum, prodNum
 
+
 // initialize login variables
 "Datastore".setLoginVariables 3
 
