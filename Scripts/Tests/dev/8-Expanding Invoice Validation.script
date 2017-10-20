@@ -1,39 +1,20 @@
 ﻿//8.Expanding Invoice Validation
 
 
-(************ Declare login variables *****************)
+// Declare login variables
 
 global username
 global password
 
-(************* Initialize data line counter ***********************) 
+// Initialize data line counter 
 
 put 2 into dataIndex
 
 
-(************* Initializing variables *****************************) 
-
+//Initializing variables 
 "Datastore".setLoginVariables 3
-(*global customerNumber,  coType, PO, TagField, DeliveryTerm, DeliveryMethod, WHNumber
-global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, SalesHold, priority, ConfigurationNo*)
-
-
-//initialize test variables
-//"Datastore".SetDataScript7 dataIndex
-
-(************** Login To Application ****************)
-
+"Datastore".SetDataScript7 dataIndex
 "Flows/Application".login username, password
-
-(************** Start Test *********************)
-
-(*repeat forever
-	"Datastore".SetDataScript7 dataIndex
-	(******* increment counter *********)
-	put dataIndex + 1 into dataIndex
-	
-	//break if no more data
-	if customerNumber is empty then exit repeat*)
 
 //To capture  variables in window  OIS350
 
@@ -54,12 +35,11 @@ Put "M3/OIS350".GetInvoiceNumber() into InvoiceNo
 //put ReadText(imageLocation("M3/OIS350/InvoiceNo_1")) into InvoiceNo
 log InvoiceNo
 
-
 //to capture invoicedate
 Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
-
+Click "M3/OIS350/minimize350"
 //To capture variables in OIS300
-"M3/OIS300".open
+"M3/OIS300".openOIS300
 
 //To record shipment date
 "M3/OIS300".openDeliveryToolboxlink
@@ -127,7 +107,8 @@ log UM
 put ReadText(imageLocation("M3/OIS300/SalesPrice")) into Salesprice
 log Salesprice
 Click "M3/OIS300/previousbuttonnew"
-put "M3/OIS300".recordconfigvalues into Configvalues
+Click "M3/OIS300/CONUMBERnew"
+Click "M3/OIS300/HighlightItemnum"
 put ReadText(imageLocation("M3/OIS300/Text")) into Text
 log  Text
 put ReadText(imageLocation("M3/OIS300/Featuregroup")) into Featuregroup

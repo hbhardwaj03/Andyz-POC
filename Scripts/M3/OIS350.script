@@ -16,8 +16,8 @@ to recordInvoiceDate
 	put  ReadText((L1), (L2)) into InvoiceDate
 	Log InvoiceDate
 	//put ReadText("M3/OIS350/ReadINVD") into InvoiceDate
-//Log InvoiceDate
-return InvoiceDate
+	//Log InvoiceDate
+	return InvoiceDate
 end recordInvoiceDate
 
 
