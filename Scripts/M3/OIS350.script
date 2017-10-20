@@ -56,3 +56,15 @@ To GetInvoiceNumber
 	Click "M3/OIS101/WindowsButton"
 	return InvoiceNo
 End GetInvoiceNumber
+
+To closeOIS350
+	Click "M3/OIS350/XClose"
+End closeOIS350
+
+
+
+
+
+
+
+
