@@ -16,8 +16,8 @@ to recordInvoiceDate
 	put  ReadText((L1), (L2)) into InvoiceDate
 	Log InvoiceDate
 	//put ReadText("M3/OIS350/ReadINVD") into InvoiceDate
-//Log InvoiceDate
-return InvoiceDate
+	//Log InvoiceDate
+	return InvoiceDate
 end recordInvoiceDate
 
 
@@ -56,3 +56,15 @@ To GetInvoiceNumber
 	Click "M3/OIS101/WindowsButton"
 	return InvoiceNo
 End GetInvoiceNumber
+
+To closeOIS350
+	Click "M3/OIS350/XClose"
+End closeOIS350
+
+
+
+
+
+
+
+
