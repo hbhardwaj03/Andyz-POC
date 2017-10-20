@@ -1,0 +1,58 @@
+﻿//Requires M3/Login
+to open
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "OIS350"
+	Click "M3/Home/SearchSubmit"
+end open
+
+
+to recordInvoiceDate
+	Click  "M3/OIS350/BackButton"
+	Click "M3/OIS350/InvoiceDale_1"
+	put  ImageLocation ("M3/OIS350/InvoiceDale_1") into loc
+	Put loc+(-60,-10) into L1
+	Put loc+(75,10) into L2
+	put  ReadText((L1), (L2)) into InvoiceDate
+	Log InvoiceDate
+	//put ReadText("M3/OIS350/ReadINVD") into InvoiceDate
+//Log InvoiceDate
+return InvoiceDate
+end recordInvoiceDate
+
+
+To ChangeSortingorder
+	//Click "M3/OIS350/Sortingorder"
+	Click "M3/OIS350/Sortingorder_N"
+	wait 2
+	TypeText homeKey
+	wait 2
+	Click "M3/OIS350/3-COno/3-COno_new"
+End ChangeSortingorder
+
+To SetCoNumber COnumber
+	Click "M3/OIS350/setCoNumber"
+	TypeText ControlKey, "a"
+	TypeText COnumber
+	wait 2
+	Click "M3/OIS350/Apply"
+	Click "M3/OIS350/SelectCoNumber"
+	Click "M3/OIS350/Next"
+	wait 3
+End SetCoNumber
+
+To GetInvoiceNumber
+	Click "M3/OIS350/InvoiceNo_1"
+	TypeText ControlKey, "a"
+	TypeText ControlKey, "c"
+	Click "M3/OIS101/WindowsButton"
+	Click (30,700)
+	TypeText controlKey, "v"
+	repeat 2 times
+		TypeText spacebar
+	end repeat
+	set InvoiceNo to ReadText(((12,695),(75,711)))
+	Log InvoiceNo
+	Click "M3/OIS101/WindowsButton"
+	return InvoiceNo
+End GetInvoiceNumber
