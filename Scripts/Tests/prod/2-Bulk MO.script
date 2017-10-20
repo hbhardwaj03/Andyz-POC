@@ -52,7 +52,7 @@ repeat forever
 		"Flows/Application".exitApp
 		"Flows/ManufacturingPacking".doDCAManufacturing moNum
 		(************** Packing ******************)
-		put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
+		(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
 	end if
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end repeat
