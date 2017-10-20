@@ -32,8 +32,8 @@ To SetCoNumber COnumber
 	TypeText ControlKey, "a"
 	TypeText COnumber
 	wait 2
-	Click "M3/OIS350/setCoNumber"
-	TypeText EnterKey
+	Click "M3/OIS350/Apply"
+	Click "M3/OIS350/SelectCoNumber"
 	Click "M3/OIS350/Next"
 	wait 3
 End SetCoNumber
