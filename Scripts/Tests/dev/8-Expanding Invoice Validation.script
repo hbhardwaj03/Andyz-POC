@@ -111,7 +111,7 @@ put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into Paymentterms
 log paymentterms
 put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
 log CashDiscountterms
-
+Click "M3/OIS300/previousbuttonnew"
 //to validate pers1 2 and 3 also item number,shiped qty,U/M,sales price(unitprice)
 Click "M3/OIS300/HighlightCO"
 Click "M3/OIS300/COnumber"
