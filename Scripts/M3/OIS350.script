@@ -8,13 +8,16 @@ end open
 
 
 to recordInvoiceDate
+	Click  "M3/OIS350/BackButton"
 	Click "M3/OIS350/InvoiceDale_1"
 	put  ImageLocation ("M3/OIS350/InvoiceDale_1") into loc
 	Put loc+(-60,-10) into L1
 	Put loc+(75,10) into L2
 	put  ReadText((L1), (L2)) into InvoiceDate
 	Log InvoiceDate
-	return InvoiceDate
+	//put ReadText("M3/OIS350/ReadINVD") into InvoiceDate
+//Log InvoiceDate
+return InvoiceDate
 end recordInvoiceDate
 
 

@@ -13,7 +13,7 @@ put 2 into dataIndex
 
 (************* Initializing variables *****************************) 
 
-"Datastore".setLoginVariables 3
+"Datastore".setLoginVariables 4
 (*global customerNumber,  coType, PO, TagField, DeliveryTerm, DeliveryMethod, WHNumber
 global itemCode, quantity, PromoCod, TranctionResonCode, BlanketAgreement, SalesHold, priority, ConfigurationNo*)
 
@@ -44,14 +44,12 @@ Click "M3/OIS350/Extendedinvno"
 //to fetch customer order number,invoice number 
 set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
 set worksheet to ExcelFile.Worksheet("Sheet4")
-Put Cell(worksheet ,"A2") into COnumber
+Put Cell(worksheet ,"A" & dataIndex) into COnumber
 log COnumber
 
 "M3/OIS350".SetCoNumber COnumber
-//Click "M3/OIS350/Next"
-Put "M3/OIS350".GetInvoiceNumber() into InvoiceNo
 
-//put ReadText(imageLocation("M3/OIS350/InvoiceNo_1")) into InvoiceNo
+Put "M3/OIS350".GetInvoiceNumber() into InvoiceNo
 log InvoiceNo
 
 
