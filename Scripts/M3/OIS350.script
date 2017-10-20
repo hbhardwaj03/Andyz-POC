@@ -19,15 +19,37 @@ end recordInvoiceDate
 
 
 To ChangeSortingorder
-	click "M3/OIS350/Sortingorder"
+	//Click "M3/OIS350/Sortingorder"
+	Click "M3/OIS350/Sortingorder_N"
 	wait 2
 	TypeText homeKey
 	wait 2
 	Click "M3/OIS350/3-COno/3-COno_new"
 End ChangeSortingorder
 
-To SetCoNumber
+To SetCoNumber COnumber
 	Click "M3/OIS350/setCoNumber"
 	TypeText ControlKey, "a"
-	TypeText 
+	TypeText COnumber
+	wait 2
+	Click "M3/OIS350/setCoNumber"
+	TypeText EnterKey
+	Click "M3/OIS350/Next"
+	wait 3
 End SetCoNumber
+
+To GetInvoiceNumber
+	Click "M3/OIS350/InvoiceNo_1"
+	TypeText ControlKey, "a"
+	TypeText ControlKey, "c"
+	Click "M3/OIS101/WindowsButton"
+	Click (30,700)
+	TypeText controlKey, "v"
+	repeat 2 times
+		TypeText spacebar
+	end repeat
+	set InvoiceNo to ReadText(((12,695),(75,711)))
+	Log InvoiceNo
+	Click "M3/OIS101/WindowsButton"
+	return InvoiceNo
+End GetInvoiceNumber
