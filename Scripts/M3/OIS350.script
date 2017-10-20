@@ -8,8 +8,8 @@ end open
 
 
 to recordInvoiceDate
-	Click "M3/OIS350/InvoiceDate"
-	put  ImageLocation ("M3/OIS350/InvoiceDate") into loc
+	Click "M3/OIS350/InvoiceDale_1"
+	put  ImageLocation ("M3/OIS350/InvoiceDale_1") into loc
 	Put loc+(-60,-10) into L1
 	Put loc+(75,10) into L2
 	put  ReadText((L1), (L2)) into InvoiceDate
@@ -25,3 +25,9 @@ To ChangeSortingorder
 	wait 2
 	Click "M3/OIS350/3-COno/3-COno_new"
 End ChangeSortingorder
+
+To SetCoNumber
+	Click "M3/OIS350/setCoNumber"
+	TypeText ControlKey, "a"
+	TypeText 
+End SetCoNumber
