@@ -231,6 +231,11 @@ to closeOrderLines
 	Click "M3/OIS101/XCloseButton"
 end closeOrderLines
 
+to close
+	WaitFor 180, "M3/OIS101/OIS101B1Title"
+	Wait 3
+	Click "M3/OIS101/XCloseButton"
+end close
 
 
 

@@ -154,5 +154,6 @@ Log "Name" && Name
 Log "CstmCharge" && CstmCharge
 Log "NetPrice" && NetPrice
 
+"M3/OIS101".close
 "M3/OIS300".close
 "Flows/Application".exitApp
