@@ -434,7 +434,7 @@ to recordwarehousenum
 	//Click "M3/OIS300/COnumber"
 	Click "M3/OIS300/ClickCoNumber"
 	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
-	Click "M3/OIS300/Wise"
+	Click Image:"M3/OIS300/Wise", WaitFor:45
 	Put ImageLocation ("M3/OIS300/Wise") into loc
 	Put loc+(-10,-30) into L1
 	Put loc+(30,-11) into L2

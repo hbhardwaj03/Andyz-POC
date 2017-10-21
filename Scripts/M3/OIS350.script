@@ -22,8 +22,7 @@ end recordInvoiceDate
 
 
 To ChangeSortingorder
-	//Click "M3/OIS350/Sortingorder"
-	Click "M3/OIS350/Sortingorder_N"
+	Click Image:"M3/OIS350/Sortingorder_N", WaitFor:60
 	wait 2
 	TypeText homeKey
 	wait 2
