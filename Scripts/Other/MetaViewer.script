@@ -19,8 +19,25 @@ To lookupMV NumberMV
 	Wait 5
 	TypeText NumberMV
 	TypeText ReturnKey
-	wait 15
 	
+	repeat 100 times
+		if ImageFound("MetaViewer/MVErrorMessage")
+			Click "MetaViewer/MVErrorOK"
+			CloseMV
+			throw "Error","MetaViewer search timed out"
+		end if
+		if ImageFound("MetaViewer/MetaViewerTree/PDFicon") then exit repeat
+		Wait 3
+	end repeat
+	
+	Log "Search successful"
+	DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
+	DoubleClick "MetaViewer/MetaViewerTree/SubFolder1"
+	DoubleClick "MetaViewer/MetaViewerTree/SubFolder2"
+	DoubleClick "MetaViewer/MetaViewerTree/SubFolder3"
+	DoubleClick "MetaViewer/MetaViewerTree/PDFicon"
+	
+	(*wait 15
 	if ImageFound(10,"MetaViewer/MetaViewerTree/LastFolderIndicator")then
 		DoubleClick ImageLocation("MetaViewer/MetaViewerTree/LastFolderIndicator")-(15,0)
 	end if
@@ -39,14 +56,14 @@ To lookupMV NumberMV
 	Doubleclick (imageLocation ("MetaViewer/MetaViewerTree/Invoice")+(0,22))
 	//DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
 	//DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-	wait 3
+	wait 3*)
 	
 End lookupMV
 
 
 ## Waits for an object to appear and then the user can specify how long it should wait for
 function WaitUntilObjectExist (myObject, timeout)
-	wait 1
+wait 1
 	log myObject
 	log timeout
 	put 0 into x
@@ -70,7 +87,7 @@ to validateInvoice
 	
 	wait 3
 	click "MetaViewer/PDF/MVFullscreen"
-wait 1
+	wait 1
 	click "MetaViewer/PDF/Titleist"
 	TypeText controlKey, KeypadMinus
 	TypeText controlKey, KeypadMinus
@@ -78,8 +95,8 @@ wait 1
 	put "MetaViewer/PDF/" into path
 	
 	set InvoiceNoPDF to ReadText((imageLocation (path&"InvoiceNo/InvoiceNo") +(-4,10), imageLocation (path&"InvoiceNo/InvoiceNo_1") +(73,20)))
-Log (InvoiceNoPDF  & " is the Invoice Number")
-
+	Log (InvoiceNoPDF  & " is the Invoice Number")
+	
 	set OrderNoPDF to ReadText((imageLocation (path&"OrderNo/OrderNo") +(-4,10), imageLocation (path&"OrderNo/OrderNo_1") +(73,20)))
 	Log (OrderNoPDF  & " is the Order Number")
 	
@@ -115,7 +132,5 @@ Log (InvoiceNoPDF  & " is the Invoice Number")
 end validateInvoice
 
 to CloseMV
-
 	Click "MetaViewer/PDF/MVClose"
-	
 end CloseMV

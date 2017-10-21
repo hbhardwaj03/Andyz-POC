@@ -1,0 +1,7 @@
+﻿Log "Read from Invoice with MetaViewer"
+"Other/MetaViewer".openMV
+"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
+"Other/MetaViewer".lookupMV "904492748"
+put "Other/MetaViewer".validateInvoice() into test
+log test
+"Other/MetaViewer".closeMV
