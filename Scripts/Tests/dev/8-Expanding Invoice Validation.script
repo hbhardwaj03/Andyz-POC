@@ -127,6 +127,10 @@ log CstmCharge
 put ReadText(imageLocation("M3/OIS300/NetPrice")) into NetPrice
 log NetPrice
 
+"M3/OIS101".closeFromOrderLines
+"M3/OIS300".close
+"Flows/Application".exitApp
+
 Log "COnumber" && COnumber
 Log "InvoiceNo" && InvoiceNo
 Log "InvoiceDate" && InvoiceDate
