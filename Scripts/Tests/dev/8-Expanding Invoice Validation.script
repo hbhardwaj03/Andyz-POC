@@ -36,12 +36,14 @@ Put "M3/OIS350".GetInvoiceNumber() into InvoiceNo
 log InvoiceNo
 
 //to capture invoicedate
+(* Need to zoom in to panel before reading date *)
 Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
 Click "M3/OIS350/minimize350"
 //To capture variables in OIS300
 "M3/OIS300".openOIS300
 
 //To record shipment date
+(* Need to lookup CO# first *)
 "M3/OIS300".openDeliveryToolboxlink
 put "M3/OIS300".recordDepartDate() into DepartDate
 Click "M3/OIS300/previousbuttonnew"
