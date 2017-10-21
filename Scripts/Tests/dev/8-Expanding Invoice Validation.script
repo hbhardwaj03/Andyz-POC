@@ -44,6 +44,7 @@ Click "M3/OIS350/minimize350"
 
 //To record shipment date
 (* Need to lookup CO# first *)
+"M3/OIS300".lookupCO COnumber
 "M3/OIS300".openDeliveryToolboxlink
 put "M3/OIS300".recordDepartDate() into DepartDate
 Click "M3/OIS300/previousbuttonnew"
