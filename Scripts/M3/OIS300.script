@@ -391,6 +391,7 @@ end zoom90prcnt
 
 
 to close
+	WaitFor 30,"M3/OIS300/OIS300BTitle"
 	Click "M3/OIS300/CloseButton"
 end close
 
