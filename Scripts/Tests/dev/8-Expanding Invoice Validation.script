@@ -128,31 +128,31 @@ log CstmCharge
 put ReadText(imageLocation("M3/OIS300/NetPrice")) into NetPrice
 log NetPrice
 
-Log "COnumber" && COnumber
-Log "InvoiceNo" && InvoiceNo
-Log "InvoiceDate" && InvoiceDate
-Log "DepartDate" && DepartDate
-Log "OrderDate" && OrderDate
-Log "warehouseNum" && warehouseNum
-Log "DelNo" && DelNo
-Log "DelNo2" && DelNo2
-Log "openAddresses" && openAddresses
-Log "CustomerNumber" && CustomerNumber
-Log "DeliveryAddress" && DeliveryAddress
-Log "DeliveryAddress2" && DeliveryAddress2
-Log "InvoiceAddress" && InvoiceAddress
-Log "InvoiceAddress2" && InvoiceAddress2
-Log "PaymentTerms" && PaymentTerms
-Log "CashDiscountTerms" && CashDiscountTerms
-Log "CustomersPONumber" && CustomersPONumber
-Log "ordQty" && ordQty
-Log "UM" && UM
-Log "SalesPrice" && SalesPrice
-Log "Text" && Text
-Log "FeatureGroup" && FeatureGroup
-Log "Name" && Name
-Log "CstmCharge" && CstmCharge
-Log "NetPrice" && NetPrice
+Log "COnumber:" && COnumber
+Log "InvoiceNo:" && InvoiceNo
+Log "InvoiceDate:" && InvoiceDate
+Log "DepartDate:" && DepartDate
+Log "OrderDate:" && OrderDate
+Log "warehouseNum:" && warehouseNum
+Log "DelNo:" && DelNo
+Log "DelNo2:" && DelNo2
+Log "openAddresses:" && openAddresses
+Log "CustomerNumber:" && CustomerNumber
+Log "DeliveryAddress:" && DeliveryAddress
+Log "DeliveryAddress2:" && DeliveryAddress2
+Log "InvoiceAddress:" && InvoiceAddress
+Log "InvoiceAddress2:" && InvoiceAddress2
+Log "PaymentTerms:" && PaymentTerms
+Log "CashDiscountTerms:" && CashDiscountTerms
+Log "CustomersPONumber:" && CustomersPONumber
+Log "ordQty:" && ordQty
+Log "UM:" && UM
+Log "SalesPrice:" && SalesPrice
+Log "Text:" && Text
+Log "FeatureGroup:" && FeatureGroup
+Log "Name:" && Name
+Log "CstmCharge:" && CstmCharge
+Log "NetPrice:" && NetPrice
 
 "M3/OIS101".close
 "M3/OIS300".close
