@@ -208,6 +208,7 @@ to lookupCO coNumber
 	TypeText deleteKey
 	TypeText coNumber
 	TypeText Return
+	Wait 5
 	Click "M3/OIS300/HighlightCO"
 end lookupCO
 
@@ -432,7 +433,7 @@ end openaddresses
 
 to recordwarehousenum
 	//Click "M3/OIS300/COnumber"
-	Click "M3/OIS300/ClickCoNumber", WaitFor:60
+	Click Image:"M3/OIS300/ClickCoNumber", WaitFor:60
 	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
 	Click Image:"M3/OIS300/Wise", WaitFor:45
 	Put ImageLocation ("M3/OIS300/Wise") into loc
