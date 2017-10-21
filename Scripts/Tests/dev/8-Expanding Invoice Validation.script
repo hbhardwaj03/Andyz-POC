@@ -48,31 +48,31 @@ Click "M3/OIS350/minimize350"
 put "M3/OIS300".recordDepartDate() into DepartDate
 Click "M3/OIS300/previousbuttonnew"
 //To record order date
-Put "M3/OIS300".recordOrderDate() into Orderdate
+Put "M3/OIS300".recordOrderDate() into OrderDate
 
-Put "M3/OIS300".recordwarehousenum() into warehousenum
+Put "M3/OIS300".recordwarehousenum() into warehouseNum
 Click "M3/OIS300/previousbuttonnew"
 //to record dellivery number
-Put "M3/OIS300".recorddelinumber() into DeliNo
+Put "M3/OIS300".recorddelinumber() into DelNo
 
-put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into Delyno
-log Delyno
+put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into DelNo2
+log DelyNo2
 Click "M3/OIS300/previousbuttonnew"
 
 
 //To record address number,sold to(Delivery address) and ship to(Invoice address))
-put "M3/OIS300".openaddresses() into openaddresses
+put "M3/OIS300".openaddresses() into openAddresses
 put ReadText(imageLocation("M3/OIS300/Customernumber")) into Customernumber
-log Customernumber
-put ReadText(imageLocation("M3/OIS300/DelreryAddress")) into Deliveryaddress
+log CustomerNumber
+put ReadText(imageLocation("M3/OIS300/DelreryAddress")) into DeliveryAddress
 log Deliveryaddress
-put ReadText(imageLocation("M3/OIS300/DelreryAddress_1")) into Deliveryaddress1
-log Deliveryaddress1
+put ReadText(imageLocation("M3/OIS300/DelreryAddress_1")) into DeliveryAddress2
+log DeliveryAddress2
 
-put ReadText(imageLocation("M3/OIS300/InvoiceAddress")) into Invoiceaddress
-log Invoiceaddress
-put ReadText(imageLocation("M3/OIS300/InvoiceAddress_1")) into Invoiceaddress1
-log Invoiceaddress1
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress")) into InvoiceAddress
+log InvoiceAddress
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress_1")) into InvoiceAddress2
+log InvoiceAddress2
 Click "M3/OIS300/previousbuttonnew"
 
 //to record payment terms and payemnt discount
@@ -82,14 +82,14 @@ RightClick "M3/OIS300/HighlightCO"
 click "M3/OIS300/Display_1"
 Click "M3/OIS300/Next/Next"
 
-put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into Paymentterms
-log paymentterms
-put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountterms
-log CashDiscountterms
+put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into PaymentTerms
+log PaymentTerms
+put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountTerms
+log CashDiscountTerms
 Click "M3/OIS300/Next/Next"
 //To record customer PO#
-put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPOnumber
-log CustomersPonumber
+put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPONumber
+log CustomersPONumber
 
 Repeat 3 times
 	Click "M3/OIS300/previousbuttonnew"
@@ -98,23 +98,23 @@ End repeat
 //to validate pers1 2 and 3 also item number,shiped qty,U/M,sales price(unitprice)
 Click "M3/OIS300/HighlightCO"
 Click "M3/OIS300/CONUMBERnew"
-put ReadText(imageLocation("M3/OIS300/Sortingorder")) into Sortingorder
-log Sortingorder
+put ReadText(imageLocation("M3/OIS300/Sortingorder")) into SortingOrder
+log SortingOrder
 put ReadText(imageLocation("M3/OIS300/View")) into View
 Log View
-put ReadText(imageLocation("M3/OIS300/OrdQty")) into ordqty
-log ordqty
+put ReadText(imageLocation("M3/OIS300/OrdQty")) into ordQty
+log ordQty
 put ReadText(imageLocation("M3/OIS300/UM")) into UM
 log UM
-put ReadText(imageLocation("M3/OIS300/SalesPrice")) into Salesprice
-log Salesprice
+put ReadText(imageLocation("M3/OIS300/SalesPrice")) into SalesPrice
+log SalesPrice
 Click "M3/OIS300/previousbuttonnew"
 Click "M3/OIS300/CONUMBERnew"
 Click "M3/OIS300/HighlightItemnum"
 put ReadText(imageLocation("M3/OIS300/Text")) into Text
 log  Text
-put ReadText(imageLocation("M3/OIS300/Featuregroup")) into Featuregroup
-log Featuregroup
+put ReadText(imageLocation("M3/OIS300/Featuregroup")) into FeatureGroup
+log FeatureGroup
 put ReadText(imageLocation( "M3/OIS300/Name")) into Name
 log Name
 
@@ -122,20 +122,36 @@ log Name
 
 Click "M3/OIS300/previousbuttonnew"
 put "M3/OIS300".ChangeView() into ChangeView
-put ReadText(imageLocation("M3/OIS300/CstmCharge")) into Cstmcharge
-log Cstmcharge
-put ReadText(imageLocation("M3/OIS300/NetPrice")) into Netprice
-log Netprice
+put ReadText(imageLocation("M3/OIS300/CstmCharge")) into CstmCharge
+log CstmCharge
+put ReadText(imageLocation("M3/OIS300/NetPrice")) into NetPrice
+log NetPrice
 
-
-
-
-
-
-
-
-
-
+Log "COnumber" && COnumber
+Log "InvoiceNo" && InvoiceNo
+Log "InvoiceDate" && InvoiceDate
+Log "DepartDate" && DepartDate
+Log "OrderDate" && OrderDate
+Log "warehouseNum" && warehouseNum
+Log "DelNo" && DelNo
+Log "DelNo2" && DelNo2
+Log "openAddresses" && openAddresses
+Log "CustomerNumber" && CustomerNumber
+Log "DeliveryAddress" && DeliveryAddress
+Log "DeliveryAddress2" && DeliveryAddress2
+Log "InvoiceAddress" && InvoiceAddress
+Log "InvoiceAddress2" && InvoiceAddress2
+Log "PaymentTerms" && PaymentTerms
+Log "CashDiscountTerms" && CashDiscountTerms
+Log "CustomersPONumber" && CustomersPONumber
+Log "ordQty" && ordQty
+Log "UM" && UM
+Log "SalesPrice" && SalesPrice
+Log "Text" && Text
+Log "FeatureGroup" && FeatureGroup
+Log "Name" && Name
+Log "CstmCharge" && CstmCharge
+Log "NetPrice" && NetPrice
 
 
 
