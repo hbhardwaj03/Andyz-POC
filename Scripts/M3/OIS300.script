@@ -203,7 +203,7 @@ to submitOIS102H
 end submitOIS102H
 
 to lookupCO coNumber
-	Click "M3/OIS300/CoField"
+	Click Image:"M3/OIS300/CoField", WaitFor:60
 	TypeText controlKey, "a"
 	TypeText deleteKey
 	TypeText coNumber
@@ -432,7 +432,7 @@ end openaddresses
 
 to recordwarehousenum
 	//Click "M3/OIS300/COnumber"
-	Click "M3/OIS300/ClickCoNumber"
+	Click "M3/OIS300/ClickCoNumber", WaitFor:60
 	//set warehousenum to ReadText(imageLocation ("M3/OIS300/Warehousenum"))
 	Click Image:"M3/OIS300/Wise", WaitFor:45
 	Put ImageLocation ("M3/OIS300/Wise") into loc
