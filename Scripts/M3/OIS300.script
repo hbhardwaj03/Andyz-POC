@@ -404,15 +404,15 @@ to recordDepartDate
 end recordDepartdate
 
 to openDeliveryToolboxlink
-	Click "M3/OIS300/HighlightCO"
+	Click Image:"M3/OIS300/HighlightCO", WaitFor:45
 	Click "M3/OIS300/Relateddropdownnew"
 	TypeText controlKey, "43"
 	//	Click "M3/OIS300/DeliveryToolboxLink"
 end openDeliveryToolboxlink
 
-to recordOrde/rDate 
-set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
-Log orderDate
+to recordOrderDate 
+	set orderDate to ReadText(imageLocation ("M3/OIS300/Orderdate"))
+	Log orderDate
 end recordOrderDate
 
 to recorddelinumber
