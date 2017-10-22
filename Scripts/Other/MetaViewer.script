@@ -1,6 +1,6 @@
 ﻿## Click and open the desktop application for MetaViewer
 To openMV
-	doubleclick "MetaViewer/DesktopIcon"
+	doubleclick Image:"MetaViewer/DesktopIcon", Waitfor:45
 end openMV
 
 
