@@ -167,11 +167,11 @@ repeat forever
 	
 	log test
 	
-	put item 1 of test into COnumberMV
-	put item 2 of test into InvoiceNoMV
+	put item 1 of test into InvoiceNoMV
+	put item 2 of test into COnumberMV
 	
-	log "COnumberMV:" &&COnumberMV
-	log "InvoicenoMV:" && InvoiceNoMV
+	log "COnumberMV:" && InvoiceNoMV
+	log "InvoicenoMV:" && COnumberMV
 	
 	Log "COnumber:" && COnumber
 	Log "InvoiceNo:" && InvoiceNo
@@ -198,4 +198,15 @@ repeat forever
 	Log "Name:" && Name
 	Log "CstmCharge:" && CstmCharge
 	Log "NetPrice:" && NetPrice
+	
+	compare "Invoices", InvoiceNoMV, InvoicNo
+	compare "CO Numbers", COnumberMV, COnumber
 end repeat
+
+to compare type, MV, M3
+	if MV = M3 then
+		logsuccess type && "matched!" && MV && "=" && M3
+	else
+		logerror type && "don't match!" && MV && "!=" && M3
+	end if
+end compare
