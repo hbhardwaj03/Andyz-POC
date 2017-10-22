@@ -44,6 +44,7 @@ to validateInvoice
 	
 	wait 3
 	click "MetaViewer/PDF/MVFullscreen"
+	Wait 5
 	WaitFor 45,"MetaViewer/PDF/Titleist"
 	
 	put "MetaViewer/PDF/" into path
@@ -54,32 +55,11 @@ to validateInvoice
 	set OrderNoPDF to ReadText((90,343))
 	Log (OrderNoPDF  & " is the Order Number")
 	
-	(*set WhsPDF to ReadText((imageLocation (path&"Whs/Whs") +(-4,10), imageLocation (path&"Whs/Whs_1") +(45,23)))
-	Log (WhsPDF  & " is the Whs")
-	
-	set InvoiceDatePDF to ReadText((imageLocation (path&"InvoiceDate/InvoiceDate") +(-4,10), imageLocation (path&"InvoiceDate/InvoiceDate_1") +(73,20)))
-	Log (InvoiceDatePDF & " is the Invoice Date")
-	
-	set DeliveryNoPDF to ReadText((imageLocation (path&"DeliveryNo/DeliveryNo") +(-4,10), imageLocation (path&"DeliveryNo/DeliveryNo_1") +(73,20)))
-	Log (DeliveryNoPDF & " is the Delivery Number")
-	
-	set ShipmentDatePDF to ReadText((imageLocation (path&"ShipmentDate/ShipmentDate") +(-4,10), imageLocation (path&"ShipmentDate/ShipmentDate_1") +(73,20)))
-	Log (ShipmentDatePDF & " is the Shipment Date")	
-	
-	set CustomerPOPDF to ReadText((imageLocation (path&"CustomerPO/CustomerPO") +(-4,10), imageLocation (path&"CustomerPO/CustomerPO_1") +(73,20)))
-	Log (CustomerPOPDF & " is the Customer PO")
-	
-	set OrderDatePDF to ReadText((imageLocation (path&"OrderDate/OrderDate") +(-4,10), imageLocation (path&"OrderDate/OrderDate_1") +(74,21)))
-	Log (OrderDatePDF & " is the Order Date")*)
-	
 	set AccountNoPayPDF to ReadText((745,342))
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
 	
 	set AccountNoShipPDF to ReadText((900,343))
 	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
-	
-	(*set BagSandHPDF to ReadText((imageLocation (path&"BagSandH/BagSandH") +(5,150), imageLocation (path&"BagSandH/BagSandH_1") +(170,163)))
-	Log ( "There is a Shipping handling charge because this text was found on the PDF: _" & BagSandHPDF & "_")*)
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, InvoiceDatePDF, DeliveryNoPDF, ShipmentDatePDF, CustomerPOPDF, OrderDatePDF, AccountNoPayPDF, AccountNoShipPDF, BagSandHPDF)
 	
