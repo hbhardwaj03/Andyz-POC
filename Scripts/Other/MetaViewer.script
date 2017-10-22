@@ -37,27 +37,6 @@ To lookupMV NumberMV
 	DoubleClick "MetaViewer/MetaViewerTree/SubFolder3"
 	DoubleClick "MetaViewer/MetaViewerTree/PDFicon"
 	
-	(*wait 15
-	if ImageFound(10,"MetaViewer/MetaViewerTree/LastFolderIndicator")then
-		DoubleClick ImageLocation("MetaViewer/MetaViewerTree/LastFolderIndicator")-(15,0)
-	end if
-	//DoubleClick (imageLocation ("MetaViewer/MetaViewerTree/Invoice")+(0,12))
-	
-	//DoubleClick "MetaViewer/MetaViewerTree/AGSUS13", 
-	//Doubleclick   "MetaViewer/MetaViewerTree/Invoice"
-	if ImageFound("MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST") then
-		set tempLoc= ImageLocation("MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST")
-		repeat until  ImageFound(10,"MetaViewer/MetaViewerTree/LastFolderIndicator") and imageFound("MetaViewer/MetaViewerTree/PDFicon")
-			DoubleClick tempLoc
-			set tempLoc= tempLoc+(12,13)
-		end repeat
-		//Doubleclick "MetaViewer/MetaViewerTree/AGSUS13/AGSUS13TEST"
-	end if
-	Doubleclick (imageLocation ("MetaViewer/MetaViewerTree/Invoice")+(0,22))
-	//DoubleClick "MetaViewer/MetaViewerTree/Test13.4Invoice"
-	//DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-	wait 3*)
-	
 End lookupMV
 
 ## Puts in the data from the PDF into variables for us to use for comparing against the Excel
