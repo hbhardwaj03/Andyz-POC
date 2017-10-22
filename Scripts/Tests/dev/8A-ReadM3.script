@@ -1,0 +1,159 @@
+﻿//8.Expanding Invoice Validation
+
+
+// Declare login variables
+
+global username
+global password
+
+// Initialize data line counter 
+
+put 2 into dataIndex
+
+
+//Initializing variables 
+"Datastore".setLoginVariables 3
+"Datastore".SetDataScript7 dataIndex
+"Flows/Application".login username, password
+
+//To capture  variables in window  OIS350
+
+"M3/OIS350".open
+put "M3/OIS350".ChangeSortingorder() into ChangeSortingorder
+Click "M3/OIS350/Extendedinvno"
+
+//to fetch customer order number,invoice number 
+set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet4")
+Put Cell(worksheet ,"A2") into COnumber
+log COnumber
+
+"M3/OIS350".SetCoNumber COnumber
+//Click "M3/OIS350/Next"
+Put "M3/OIS350".GetInvoiceNumber() into InvoiceNo
+
+//put ReadText(imageLocation("M3/OIS350/InvoiceNo_1")) into InvoiceNo
+log InvoiceNo
+
+//to capture invoicedate
+(* Need to zoom in to panel before reading date *)
+Put "M3/OIS350".recordInvoiceDate() into InvoiceDate
+Click "M3/OIS350/minimize350"
+//To capture variables in OIS300
+"M3/OIS300".openOIS300
+
+//To record shipment date
+(* Need to lookup CO# first *)
+"M3/OIS300".lookupCO COnumber
+"M3/OIS300".openDeliveryToolboxlink
+put "M3/OIS300".recordDepartDate() into DepartDate
+Click "M3/OIS300/previousbuttonnew"
+//To record order date
+Put "M3/OIS300".recordOrderDate() into OrderDate
+
+Put "M3/OIS300".recordwarehousenum() into warehouseNum
+Click "M3/OIS300/previousbuttonnew"
+//to record dellivery number
+Put "M3/OIS300".recorddelinumber() into DelNo
+
+put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into DelNo2
+log DelyNo2
+Click "M3/OIS300/previousbuttonnew"
+
+
+//To record address number,sold to(Delivery address) and ship to(Invoice address))
+put "M3/OIS300".openaddresses() into openAddresses
+put ReadText(imageLocation("M3/OIS300/Customernumber")) into Customernumber
+log CustomerNumber
+put ReadText(imageLocation("M3/OIS300/DelreryAddress")) into DeliveryAddress
+log Deliveryaddress
+put ReadText(imageLocation("M3/OIS300/DelreryAddress_1")) into DeliveryAddress2
+log DeliveryAddress2
+
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress")) into InvoiceAddress
+log InvoiceAddress
+put ReadText(imageLocation("M3/OIS300/InvoiceAddress_1")) into InvoiceAddress2
+log InvoiceAddress2
+Click "M3/OIS300/previousbuttonnew"
+
+//to record payment terms and payemnt discount
+
+Click "M3/OIS300/HighlightCO"
+RightClick "M3/OIS300/HighlightCO"
+click "M3/OIS300/Display_1"
+Click "M3/OIS300/Next/Next"
+
+put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into PaymentTerms
+log PaymentTerms
+put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountTerms
+log CashDiscountTerms
+Click "M3/OIS300/Next/Next"
+//To record customer PO#
+put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPONumber
+log CustomersPONumber
+
+Repeat 3 times
+	Click "M3/OIS300/previousbuttonnew"
+End repeat
+
+//to validate pers1 2 and 3 also item number,shiped qty,U/M,sales price(unitprice)
+Click "M3/OIS300/HighlightCO"
+Click "M3/OIS300/CONUMBERnew"
+put ReadText(imageLocation("M3/OIS300/Sortingorder")) into SortingOrder
+log SortingOrder
+put ReadText(imageLocation("M3/OIS300/View")) into View
+Log View
+put ReadText(imageLocation("M3/OIS300/OrdQty")) into ordQty
+log ordQty
+put ReadText(imageLocation("M3/OIS300/UM")) into UM
+log UM
+put ReadText(imageLocation("M3/OIS300/SalesPrice")) into SalesPrice
+log SalesPrice
+Click "M3/OIS300/previousbuttonnew"
+Click "M3/OIS300/CONUMBERnew"
+Click "M3/OIS300/HighlightItemnum"
+put ReadText(imageLocation("M3/OIS300/Text")) into Text
+log  Text
+put ReadText(imageLocation("M3/OIS300/Featuregroup")) into FeatureGroup
+log FeatureGroup
+put ReadText(imageLocation( "M3/OIS300/Name")) into Name
+log Name
+
+//to record customcharge,netprice
+
+Click "M3/OIS300/previousbuttonnew"
+put "M3/OIS300".ChangeView() into ChangeView
+put ReadText(imageLocation("M3/OIS300/CstmCharge")) into CstmCharge
+log CstmCharge
+put ReadText(imageLocation("M3/OIS300/NetPrice")) into NetPrice
+log NetPrice
+
+Log "COnumber:" && COnumber
+Log "InvoiceNo:" && InvoiceNo
+Log "InvoiceDate:" && InvoiceDate
+Log "DepartDate:" && DepartDate
+Log "OrderDate:" && OrderDate
+Log "warehouseNum:" && warehouseNum
+Log "DelNo:" && DelNo
+Log "DelNo2:" && DelNo2
+Log "openAddresses:" && openAddresses
+Log "CustomerNumber:" && CustomerNumber
+Log "DeliveryAddress:" && DeliveryAddress
+Log "DeliveryAddress2:" && DeliveryAddress2
+Log "InvoiceAddress:" && InvoiceAddress
+Log "InvoiceAddress2:" && InvoiceAddress2
+Log "PaymentTerms:" && PaymentTerms
+Log "CashDiscountTerms:" && CashDiscountTerms
+Log "CustomersPONumber:" && CustomersPONumber
+Log "ordQty:" && ordQty
+Log "UM:" && UM
+Log "SalesPrice:" && SalesPrice
+Log "Text:" && Text
+Log "FeatureGroup:" && FeatureGroup
+Log "Name:" && Name
+Log "CstmCharge:" && CstmCharge
+Log "NetPrice:" && NetPrice
+
+"M3/OIS101".close
+"M3/OIS300".close
+"Flows/Application".exitApp
