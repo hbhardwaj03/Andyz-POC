@@ -65,6 +65,10 @@ repeat forever
 	put "M3/OIS300".openaddresses() into openAddresses
 	put ReadText(imageLocation("M3/OIS300/Customernumber")) into Customernumber
 	log CustomerNumber
+	
+	put ReadText((453,109)) into PayerNumber
+	log PayerNumber
+	
 	put ReadText(imageLocation("M3/OIS300/DelreryAddress")) into DeliveryAddress
 	log Deliveryaddress
 	put ReadText(imageLocation("M3/OIS300/DelreryAddress_1")) into DeliveryAddress2
@@ -83,15 +87,16 @@ repeat forever
 	click "M3/OIS300/Display_1"
 	Click "M3/OIS300/Next/Next"
 	
-	put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into PaymentTerms
+	put ReadText(imageLocation("M3/OIS300/PaymentTerms")) into whsNum
 	log PaymentTerms
 	put ReadText(imageLocation("M3/OIS300/CashDiscountTerms")) into CashDiscountTerms
 	log CashDiscountTerms
 	Click "M3/OIS300/Next/Next"
 	//To record customer PO#
-	put ReadText(imageLocation("M3/OIS300/CustomersPONumber")) into CustomersPONumber
+	zoomIn 5
+	put ReadText((198,349)) into CustomersPONumber
 	log CustomersPONumber
-	
+	zoomOut 5
 	Repeat 3 times
 		Click "M3/OIS300/previousbuttonnew"
 	End repeat
@@ -142,7 +147,7 @@ repeat forever
 	Log "DeliveryAddress2:" && DeliveryAddress2
 	Log "InvoiceAddress:" && InvoiceAddress
 	Log "InvoiceAddress2:" && InvoiceAddress2
-	Log "PaymentTerms:" && PaymentTerms
+	Log "whwNum:" && whsNum
 	Log "CashDiscountTerms:" && CashDiscountTerms
 	Log "CustomersPONumber:" && CustomersPONumber
 	Log "ordQty:" && ordQty
@@ -169,7 +174,11 @@ repeat forever
 	
 	put item 1 of test into InvoiceNoMV
 	put item 2 of test into COnumberMV
-	put item 10 of test into CustomerNumberMV
+	put item 3 of test into warehouseNumMV
+	put item 4 of test into PayerNumberMV
+	put item 5 of test into CustomerNumberMV
+	put item 6 of test into customersPOMV
+	
 	
 	log "COnumberMV:" && InvoiceNoMV
 	log "InvoicenoMV:" && COnumberMV
@@ -184,11 +193,12 @@ repeat forever
 	Log "DelNo2:" && DelNo2
 	Log "openAddresses:" && openAddresses
 	Log "CustomerNumber:" && CustomerNumber
+	Log "Payer Number:" && PayerNumber
 	Log "DeliveryAddress:" && DeliveryAddress
 	Log "DeliveryAddress2:" && DeliveryAddress2
 	Log "InvoiceAddress:" && InvoiceAddress
 	Log "InvoiceAddress2:" && InvoiceAddress2
-	Log "PaymentTerms:" && PaymentTerms
+	Log "whsNum:" && whsNum
 	Log "CashDiscountTerms:" && CashDiscountTerms
 	Log "CustomersPONumber:" && CustomersPONumber
 	Log "ordQty:" && ordQty
@@ -202,7 +212,10 @@ repeat forever
 	
 	compare "Invoices", InvoiceNoMV, InvoiceNo
 	compare "CO Numbers", COnumberMV, COnumber
+	compare "Warehouse numbers", warehouseNumMV, whsNum
 	compare "Customer numbers", CustomerNumberMV, CustomerNumber
+	compare "Payer numbers", PayerNumberMV, PayerNumber
+	compare "Customer POs", customersPOMV, CustomersPONumber
 	
 end repeat
 
@@ -213,3 +226,19 @@ to compare type, MV, M3
 		logerror type && "don't match!" && MV && "!=" && M3
 	end if
 end compare
+
+to zoomIn x
+	KeyDown controlKey
+	repeat x times
+		TypeText "="
+	end repeat
+	KeyUp controlKey
+end zoomIn
+
+to zoomOut x
+	KeyDown controlKey
+	repeat x times
+		TypeText "-"
+	end repeat
+	KeyUp controlKey
+end zoomOut

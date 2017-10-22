@@ -55,13 +55,21 @@ to validateInvoice
 	set OrderNoPDF to ReadText((90,343))
 	Log (OrderNoPDF  & " is the Order Number")
 	
+	set WhsPDF to ReadText((173,343))
+	if WhsPDF is "06Y" then set WhsPDF to "060"
+	if WhsPDF is "06B" then set WhsPDF to "061"
+	Log WhsPDF && "is the warehouse number"
+	
+	set customersPO to ReadText((437,345))
+	Log customersPO && "is Customers PO"
+
 	set AccountNoPayPDF to ReadText((745,342))
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
 	
 	set AccountNoShipPDF to ReadText((900,343))
 	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
 	
-	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, InvoiceDatePDF, DeliveryNoPDF, ShipmentDatePDF, CustomerPOPDF, OrderDatePDF, AccountNoPayPDF, AccountNoShipPDF, BagSandHPDF)
+	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, AccountNoPayPDF, AccountNoShipPDF, customersPO)
 	
 end validateInvoice
 
