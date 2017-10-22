@@ -169,6 +169,7 @@ repeat forever
 	
 	put item 1 of test into InvoiceNoMV
 	put item 2 of test into COnumberMV
+	put item 10 of test into CustomerNumberMV
 	
 	log "COnumberMV:" && InvoiceNoMV
 	log "InvoicenoMV:" && COnumberMV
@@ -201,6 +202,8 @@ repeat forever
 	
 	compare "Invoices", InvoiceNoMV, InvoicNo
 	compare "CO Numbers", COnumberMV, COnumber
+	compare "Customer numbers", CustomerNumberMV, CustomerNumber
+	
 end repeat
 
 to compare type, MV, M3
