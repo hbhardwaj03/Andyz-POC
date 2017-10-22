@@ -60,28 +60,6 @@ To lookupMV NumberMV
 	
 End lookupMV
 
-
-## Waits for an object to appear and then the user can specify how long it should wait for
-function WaitUntilObjectExist (myObject, timeout)
-	wait 1
-	log myObject
-	log timeout
-	put 0 into x
-	
-	repeat timeout times            
-		if ImageFound (myObject) then
-			add 1 to x
-			exit repeat
-		end if                    
-	end repeat
-	
-	if x is 1 then
-		Log "Successfully found Error Message"
-	else if x is 0 then
-		LogError "error occured while searching for object["&myObject&"]"
-	end if
-end WaitUntilObjectExist
-
 ## Puts in the data from the PDF into variables for us to use for comparing against the Excel
 to validateInvoice
 	
