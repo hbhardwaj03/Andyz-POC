@@ -13,7 +13,6 @@ put 2 into dataIndex
 
 //Initializing variables 
 "Datastore".setLoginVariables 3
-"Datastore".SetDataScript7 dataIndex
 "Flows/Application".login username, password
 
 //To capture  variables in window  OIS350
@@ -23,9 +22,9 @@ put "M3/OIS350".ChangeSortingorder() into ChangeSortingorder
 Click "M3/OIS350/Extendedinvno"
 
 //to fetch customer order number,invoice number 
-set ExcelFile to workbook(ResourcePath("1-Validation.xlsx")) 
-set worksheet to ExcelFile.Worksheet("Sheet4")
-Put Cell(worksheet ,"A2") into COnumber
+set ExcelFile to workbook(ResourcePath("8-data.xlsx")) 
+set worksheet to ExcelFile.Worksheet("Sheet1")
+Put Cell(worksheet ,"A" & dataIndex) into COnumber
 log COnumber
 
 "M3/OIS350".SetCoNumber COnumber
