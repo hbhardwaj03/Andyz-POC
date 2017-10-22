@@ -100,6 +100,7 @@ to setSimpleData fileName, sheetName, dataIndex
 	set excelFile to workbook(ResourcePath(fileName))
 	set worksheet to ExcelFile.Worksheet(sheetName)
 	put Cell(worksheet, "A" & dataIndex) into data
+	return data
 end setSimpleData
 
 to setDataScript3

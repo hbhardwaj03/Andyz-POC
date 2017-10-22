@@ -13,6 +13,7 @@ put 2 into dataIndex
 
 //Initializing variables 
 "Datastore".setLoginVariables 3
+
 "Flows/Application".login username, password
 
 //To capture  variables in window  OIS350
