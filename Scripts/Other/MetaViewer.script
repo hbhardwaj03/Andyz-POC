@@ -87,20 +87,17 @@ to validateInvoice
 	
 	wait 3
 	click "MetaViewer/PDF/MVFullscreen"
-	wait 1
-	click "MetaViewer/PDF/Titleist"
-	TypeText controlKey, KeypadMinus
-	TypeText controlKey, KeypadMinus
+	WaitFor 45,"MetaViewer/PDF/Titleist"
 	
 	put "MetaViewer/PDF/" into path
 	
-	set InvoiceNoPDF to ReadText((209,254))
+	set InvoiceNoPDF to ReadText((86,314))
 	Log (InvoiceNoPDF  & " is the Invoice Number")
 	
-	set OrderNoPDF to ReadText((imageLocation (path&"OrderNo/OrderNo") +(-4,10), imageLocation (path&"OrderNo/OrderNo_1") +(73,20)))
+	set OrderNoPDF to ReadText((90,343))
 	Log (OrderNoPDF  & " is the Order Number")
 	
-	set WhsPDF to ReadText((imageLocation (path&"Whs/Whs") +(-4,10), imageLocation (path&"Whs/Whs_1") +(45,23)))
+	(*set WhsPDF to ReadText((imageLocation (path&"Whs/Whs") +(-4,10), imageLocation (path&"Whs/Whs_1") +(45,23)))
 	Log (WhsPDF  & " is the Whs")
 	
 	set InvoiceDatePDF to ReadText((imageLocation (path&"InvoiceDate/InvoiceDate") +(-4,10), imageLocation (path&"InvoiceDate/InvoiceDate_1") +(73,20)))
@@ -116,16 +113,16 @@ to validateInvoice
 	Log (CustomerPOPDF & " is the Customer PO")
 	
 	set OrderDatePDF to ReadText((imageLocation (path&"OrderDate/OrderDate") +(-4,10), imageLocation (path&"OrderDate/OrderDate_1") +(74,21)))
-	Log (OrderDatePDF & " is the Order Date")
+	Log (OrderDatePDF & " is the Order Date")*)
 	
-	set AccountNoPayPDF to ReadText((imageLocation (path&"AccountNo/AccountNo") +(-4,10), imageLocation (path&"AccountNo/AccountNo_1") +(74,21)))
+	set AccountNoPayPDF to ReadText((745,342))
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
 	
-	set AccountNoShipPDF to ReadText((imageLocation (path&"AccountNo/AccountNo") +(115,10), imageLocation (path&"AccountNo/AccountNo_1") +(226,21)))
+	set AccountNoShipPDF to ReadText((900,343))
 	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
 	
-	set BagSandHPDF to ReadText((imageLocation (path&"BagSandH/BagSandH") +(5,150), imageLocation (path&"BagSandH/BagSandH_1") +(170,163)))
-	Log ( "There is a Shipping handling charge because this text was found on the PDF: _" & BagSandHPDF & "_")
+	(*set BagSandHPDF to ReadText((imageLocation (path&"BagSandH/BagSandH") +(5,150), imageLocation (path&"BagSandH/BagSandH_1") +(170,163)))
+	Log ( "There is a Shipping handling charge because this text was found on the PDF: _" & BagSandHPDF & "_")*)
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, InvoiceDatePDF, DeliveryNoPDF, ShipmentDatePDF, CustomerPOPDF, OrderDatePDF, AccountNoPayPDF, AccountNoShipPDF, BagSandHPDF)
 	
