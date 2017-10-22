@@ -200,7 +200,7 @@ repeat forever
 	Log "CstmCharge:" && CstmCharge
 	Log "NetPrice:" && NetPrice
 	
-	compare "Invoices", InvoiceNoMV, InvoicNo
+	compare "Invoices", InvoiceNoMV, InvoiceNo
 	compare "CO Numbers", COnumberMV, COnumber
 	compare "Customer numbers", CustomerNumberMV, CustomerNumber
 	

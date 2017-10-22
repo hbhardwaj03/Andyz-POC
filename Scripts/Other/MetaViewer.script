@@ -94,7 +94,7 @@ to validateInvoice
 	
 	put "MetaViewer/PDF/" into path
 	
-	set InvoiceNoPDF to ReadText((208,255))
+	set InvoiceNoPDF to ReadText((209,254))
 	Log (InvoiceNoPDF  & " is the Invoice Number")
 	
 	set OrderNoPDF to ReadText((imageLocation (path&"OrderNo/OrderNo") +(-4,10), imageLocation (path&"OrderNo/OrderNo_1") +(73,20)))
