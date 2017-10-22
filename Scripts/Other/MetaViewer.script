@@ -63,7 +63,7 @@ End lookupMV
 
 ## Waits for an object to appear and then the user can specify how long it should wait for
 function WaitUntilObjectExist (myObject, timeout)
-wait 1
+	wait 1
 	log myObject
 	log timeout
 	put 0 into x
@@ -94,7 +94,7 @@ to validateInvoice
 	
 	put "MetaViewer/PDF/" into path
 	
-	set InvoiceNoPDF to ReadText((imageLocation (path&"InvoiceNo/InvoiceNo") +(-4,10), imageLocation (path&"InvoiceNo/InvoiceNo_1") +(73,20)))
+	set InvoiceNoPDF to ReadText((208,255))
 	Log (InvoiceNoPDF  & " is the Invoice Number")
 	
 	set OrderNoPDF to ReadText((imageLocation (path&"OrderNo/OrderNo") +(-4,10), imageLocation (path&"OrderNo/OrderNo_1") +(73,20)))
