@@ -5,3 +5,73 @@
 put "Other/MetaViewer".validateInvoice() into test
 log test
 "Other/MetaViewer".closeMV
+
+
+
+
+
+
+--                                                   -x-x-xx-x-x-xx-xx-x
+--   Sandbox
+-- to workaround before making any changes to the existing function or script
+--****************************************************************************
+
+
+put ReadfromPDF() into Test
+Log Test
+
+to ReadfromPDF -- update to  "Other/MetaViewer".validateInvoice    #Function
+	click "MetaViewer/PDF/MVFullscreen"
+	Wait 5
+	WaitFor 45,"MetaViewer/PDF/Titleist"
+	
+	put "MetaViewer/PDF/" into path
+	
+	set InvoiceNoPDF to ReadText((86,314))
+	Log (InvoiceNoPDF  & " is the Invoice Number")
+	
+	set OrderNoPDF to ReadText((90,343))
+	Log (OrderNoPDF  & " is the Order Number")
+	
+	set WhsPDF to ReadText((173,343))
+	if WhsPDF is "06Y" then set WhsPDF to "060"
+	if WhsPDF is "06B" then set WhsPDF to "061"
+	Log WhsPDF && "is the warehouse number"
+	
+	set deliveryNumber to ReadText((250,343))
+	Log deliveryNumber && "is delivery number"
+	
+	set customersPO to ReadText((437,345))
+	Log customersPO && "is Customers PO"
+	
+	set AccountNoPayPDF to ReadText((745,342))
+	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
+	
+	set AccountNoShipPDF to ReadText((900,343))
+	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
+	
+	## Adding below to the existring validations
+	set SoldToPartyAddress1 to readText((618,399)) -- DeliveryAddress in M3 Line 1
+	set SoldToPartyAddress2 to readText((612,433)) --DeliveryAddress in M3 Line 2
+	Log "Delivery Address in MV :- " &SoldToPartyAddress1
+	Log SoldToPartyAddress2
+	
+	set PaymentDiscount to readText((532,539))
+	Log "Payment Discoun in MV :- " &PaymentDiscount
+	
+	set PaymentTerms to readText((555,505))
+	Log "Payment Terms in MV :- " &PaymentTerms
+	
+	## to scroll page down
+	Click(700,140)
+	Repeat 21 times
+		TypeText "downArrow"
+	end Repeat
+	Set NetOrderTotal to readText((928,630)) --second half of PDF, Y cordinates changes
+	Log "Net Order Total :- " &NetOrderTotal
+	
+	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, AccountNoPayPDF, AccountNoShipPDF, customersPO, deliveryNumber, SoldToPartyAddress1, SoldToPartyAddress2, PaymentDiscount, PaymentTerms)
+end ReadfromPDF
+
+
+
