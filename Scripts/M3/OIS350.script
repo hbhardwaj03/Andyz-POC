@@ -5,7 +5,8 @@ to open
 	TypeText "OIS350"
 	Wait 2
 	TypeText Return
-	WaitFor 60, "M3/OIS350/OIS350B1Title"
+	--WaitFor 60, "M3/OIS350/OIS350B1Title/"
+	--"M3/Application".MaximizePanel
 end open
 
 
@@ -23,14 +24,16 @@ to recordInvoiceDate
 end recordInvoiceDate
 
 
-To ChangeSortingorder
-	WaitFor 60,"M3/OIS350/Sortingorder_N"
-	Wait 3
-	Click "M3/OIS350/Sortingorder_N"
-	wait 2
+To ChangeSortingorder X
+	WaitFor 60,"M3/OIS350/Sortingorder"
+	Click "M3/OIS350/Sortingorder"
+	wait 1
 	TypeText homeKey
-	wait 2
-	Click "M3/OIS350/3-COno/3-COno_new"
+	repeat (X- 1) times
+		TypeText "downArrow"	
+	end repeat
+	TypeText "returnKey"	
+	--Click "M3/OIS350/3-COno/3-COno_new"
 End ChangeSortingorder
 
 To SetCoNumber COnumber
