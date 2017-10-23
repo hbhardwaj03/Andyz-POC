@@ -56,11 +56,16 @@ repeat forever
 	//to record dellivery number
 	Put "M3/OIS300".recorddelinumber() into DelNo
 	
-	put ReadText(imageLocation("M3/OIS300/DelyNoDrag")) into DelNo2
-	log DelyNo2
+	
+	Click ((89,298))
+	zoomIn 5
+	put ReadText((211,219)) into DelNo2
+	delete the last character of DelNo2
+	log DelNo2
+	zoomOut 5
 	Click "M3/OIS300/previousbuttonnew"
 	
-	
+	Click "M3/OIS300/previousbuttonnew"
 	//To record address number,sold to(Delivery address) and ship to(Invoice address))
 	put "M3/OIS300".openaddresses() into openAddresses
 	put ReadText(imageLocation("M3/OIS300/Customernumber")) into Customernumber
@@ -178,7 +183,7 @@ repeat forever
 	put item 4 of test into PayerNumberMV
 	put item 5 of test into CustomerNumberMV
 	put item 6 of test into customersPOMV
-	
+	put item 7 of test into deliveryNumMV
 	
 	log "COnumberMV:" && InvoiceNoMV
 	log "InvoicenoMV:" && COnumberMV
@@ -216,7 +221,7 @@ repeat forever
 	compare "Customer numbers", CustomerNumberMV, CustomerNumber
 	compare "Payer numbers", PayerNumberMV, PayerNumber
 	compare "Customer POs", customersPOMV, CustomersPONumber
-	
+	compare "Delivery numbers", deliveryNumMV, DelNo2
 end repeat
 
 to compare type, MV, M3
