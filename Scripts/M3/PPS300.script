@@ -5,11 +5,13 @@
 	Click "M3/Home/SearchSubmit"
 end openpoNumber
 
-to poReceipt poNumber
+
+
+to poReceipt poNumber, WHNumber
 	Click "M3/PPS300/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
-	TypeText "06A"
+	TypeText WHNumber
 	//TypeText Return
 	//Click "M3/PPS300/ResponsibleField"
 	//TypeText controlKey, "a"
@@ -39,3 +41,52 @@ to recordReceivingNo
 	Log ReciveNumber
 	return ReciveNumber
 end recordReceivingNo
+
+to searchlineitem ItemNumber
+	Click "M3/PPS300/Itemnumber"
+	typetext ItemNumber
+	Click "M3/PPS300/Apply"
+	wait 3
+end searchlineitem
+
+to captureremainingquantity
+	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty
+	put readtext(ImageLocation("M3/PPS300/RMqt")) into RMquanty
+	if RMquanty <> "" then
+		logsuccess "recievedquantity is:- "&RMquanty
+		return RMquanty
+	else
+		logerror "recievedquantity is unable to find"
+	end if
+end captureremainingquantity
+
+To EnterRecivedQuan RMquanty
+	Click "M3/PPS300/Reevedqty"
+	TypeText RMquanty
+	wait 3
+	Click "M3/PPS300/Next"
+End EnterRecivedQuan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
