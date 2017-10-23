@@ -1,4 +1,18 @@
 ﻿
+
+(************ Declare login variables *****************)
+
+global username
+global password
+
+(************* Initialize data line counter ***********************) 
+
+//put 2 into dataIndex
+
+(************** Login To Application ****************)
+"Datastore".setLoginVariables 3
+"Flows/Application".login username, password
+
 //4.AutomaticPOreceiving
 
 set index to index
@@ -7,11 +21,11 @@ log index
 
 // fetching username,password and po number from excelfile
 set ExcelFile to workbook(ResourcePath("AutomaticPOReceiving.xlsx")) 
-set worksheet to ExcelFile.Worksheet("Sheet1")
+//set worksheet to ExcelFile.Worksheet("Sheet1")
 set worksheet2 to ExcelFile.Worksheet("Sheet2")
 
-Put Cell(worksheet,A2) into username
-Put Cell(worksheet,B2)into password
+//Put Cell(worksheet,A2) into username
+//Put Cell(worksheet,B2)into password
 Put Cell(worksheet2, "K" & index) into poNumber
 
 Log "Logging in"
