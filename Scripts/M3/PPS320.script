@@ -4,3 +4,31 @@
 	TypeText "PPS320"
 	Click  "M3/Home/SearchSubmit"
 end openPPS320
+
+to enterrecievingNumber ReciveNumber
+	wait 2
+	Click "M3/PPS320/Receivingno"
+	typetext ReciveNumber
+	Click "M3/PPS320/Apply"
+	wait 5
+end enterrecievingNumber
+
+to enterStoredQty MPF
+	Click "M3/PPS320/Storedqty"
+	typetext "10"
+	Click "M3/PPS320/Location"
+	typetext MPF
+	click "M3/PPS300/Next"
+	click "M3/PPS300/Actions"
+	click  "M3/PPS300/ConfirmUpdateF"
+	click "M3/PPS300/previousbutton"
+	click "M3/PPS300/XClose"
+end enterStoredQty
+
+
+
+
+
+
+
+

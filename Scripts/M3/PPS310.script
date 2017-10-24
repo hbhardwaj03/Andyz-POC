@@ -29,9 +29,14 @@ to captureQuantity
 		TypeText spacebar
 	end repeat
 	set quantity to ReadText(((12,695),(75,711)))
-	Log  quantity
 	Click "M3/OIS101/WindowsButton"
-	return  quantity
+	If quantity <> ""
+		Logsuccess "Recorded Quantity was:- "&  quantity
+		return  quantity
+	else
+		Logerror "Quantity was not Recorded"
+	End If
+	
 end captureQuantity
 
 to enterApprovedQuantity quantity

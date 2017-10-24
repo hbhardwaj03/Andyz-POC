@@ -27,6 +27,47 @@ end enterWHItemLoc
 to captureMPFLocation
 	Click "M3/MWS060/Highlightlocation"
 	put readtext(467,428,526,441) into MPF
-	log MPF
-	return MPF
+	If MPF <> "" then
+		Logsuccess "Location for tyhe item was:- "&MPF
+		return MPF
+	else
+		Logerror "Location was not Captured"
+	End If
+	
 end captureMPFLocation
+
+to CaptureINSPLoc WHNumber,ItemNumber
+	click "M3/MWS060/Whs"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext WHNumber
+	wait 2
+	click "M3/MWS060/Itemnumber"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext ItemNumber
+	wait 2
+	click "M3/MWS060/Location"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext "INSP"
+	Click "M3/PPS300/Next"
+	wait 2
+	
+end CaptureINSPLoc
+
+to ReadINSP
+	put readtext(462,429,530,442) into INSP
+	If INSP <> "" then
+		Logsuccess "Location for tyhe item was:- "&INSP
+		return INSP
+	else
+		Logerror "Location was not Captured"
+	End If
+end ReadINSP
+
+To CloseMWS060
+	Click "M3/PPS300/XClose"
+	wait 5
+End CloseMWS060
+
