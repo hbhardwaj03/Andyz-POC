@@ -6,18 +6,19 @@
 end openMWS060
 
 to enterWHItemLoc WHNumber,ItemNumber
+	wait 5
 	click "M3/MWS060/Whs"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext WHNumber
 	wait 2
 	click "M3/MWS060/Itemnumber"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext ItemNumber
 	wait 2
 	click "M3/MWS060/Location"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext "MPF"
 	Click "M3/PPS300/Next"
@@ -38,17 +39,17 @@ end captureMPFLocation
 
 to CaptureINSPLoc WHNumber,ItemNumber
 	click "M3/MWS060/Whs"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext WHNumber
 	wait 2
 	click "M3/MWS060/Itemnumber"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext ItemNumber
 	wait 2
 	click "M3/MWS060/Location"
-	typetext controkey,"a"
+	typetext controlkey,"a"
 	typetext deletekey
 	typetext "INSP"
 	Click "M3/PPS300/Next"

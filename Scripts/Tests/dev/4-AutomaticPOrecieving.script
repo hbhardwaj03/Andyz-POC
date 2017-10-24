@@ -7,7 +7,7 @@ global password
 
 (************* Initialize data line counter ***********************) 
 
-put 2 into dataIndex
+put 4 into dataIndex
 
 (************** Login To Application ****************)
 "Datastore".setLoginVariables 3
@@ -42,6 +42,7 @@ repeat forever
 	"M3/PPS300".EnterRecivedQuan RMquanty
 	click "M3/PPS300/Actions"
 	click  "M3/PPS300/ConfirmUpdateF"
+	wait 8
 	click "M3/PPS300/previousbutton"
 	
 	(************** To Get Receiving Number ********************************)
@@ -50,8 +51,8 @@ repeat forever
 	click  "M3/PPS300/XClose"
 	click "M3/PPS300/Confirmoutput"
 	click "M3/PPS300/XClose"
-	//4.Inspection approval
-	(*************** To Capture Quantity in PPS310 for the Receving Number ************************************)
+	
+	(*************** To Capture Quantity in PPS310 for the Receving Number ********************)
 	
 	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
 	put "M3/PPS310".captureQuantity() into quantity
