@@ -54,7 +54,7 @@ to captureremainingquantity
 	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty
 	Click "M3/PPS300/SelectItemnumber"
 	//put  ReadText(265,376,313,393)into RMquanty
-	put  ReadText(354,377,382,395)into RMquanty
+	put  ReadText(350,387)into RMquanty
 	if RMquanty <> "" then
 		logsuccess "recievedquantity is:- "&RMquanty
 		return RMquanty
