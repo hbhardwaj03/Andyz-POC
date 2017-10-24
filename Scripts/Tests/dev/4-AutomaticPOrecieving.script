@@ -7,7 +7,7 @@ global password
 
 (************* Initialize data line counter ***********************) 
 
-put 4 into dataIndex
+put 3 into dataIndex
 
 (************** Login To Application ****************)
 "Datastore".setLoginVariables 3
@@ -64,9 +64,11 @@ repeat forever
 	
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
-	put "M3/MWS060".captureMPFLocation() into MPF
+	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF
+	"M3/MWS060".CloseMWS060
+	"M3/MWS060".openMWS060
 	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
-	Put "M3/MWS060".ReadINSP() into INSP
+	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP
 	"M3/MWS060".CloseMWS060
 	//Need to add MWS060 INSP-POST to record recieving number
 	

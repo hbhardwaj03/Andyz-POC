@@ -20,7 +20,7 @@ end poReceipt
 to captureQuantity
 	wait 5
 	Click "M3/PPS300/PPS310/Quantity"
-	typetext controlkey,"a"
+	(*typetext controlkey,"a"
 	typetext controlkey,"c"
 	Click "M3/OIS101/WindowsButton"
 	Click (30,700)
@@ -29,7 +29,9 @@ to captureQuantity
 		TypeText spacebar
 	end repeat
 	set quantity to ReadText(((12,695),(75,711)))
-	Click "M3/OIS101/WindowsButton"
+	log quantity
+	Click "M3/OIS101/WindowsButton"*)
+	set quantity to ReadText(((329,354),(343,363)))
 	If quantity <> ""
 		Logsuccess "Recorded Quantity was:- "&  quantity
 		return  quantity
@@ -54,3 +56,7 @@ to enterApprovedQuantity quantity
 		logerror "quantity is not logged"
 	end if
 end enterApprovedQuantity
+
+
+
+
