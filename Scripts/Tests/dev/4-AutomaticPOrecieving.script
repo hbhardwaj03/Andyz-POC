@@ -32,12 +32,12 @@ repeat forever
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
 	
-	(************ To Get Remaining Quantity from Line Item ********************)
+	(************ To Get Remaining Quantity from Line Item *******************)
 	
 	"M3/PPS300".searchlineitem ItemNumber
 	put "M3/PPS300".captureremainingquantity() into RMquanty
 	
-	(************* To Enter Recived Quantity and Apply ConfirmUpdate *************************)
+	(************* To Enter Recived Quantity and Apply ConfirmUpdate **********)
 	
 	"M3/PPS300".EnterRecivedQuan RMquanty
 	click "M3/PPS300/Actions"
@@ -45,22 +45,22 @@ repeat forever
 	wait 8
 	click "M3/PPS300/previousbutton"
 	
-	(************** To Get Receiving Number ********************************)
+	(************** To Get Receiving Number ******************************)
 	
 	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 	click  "M3/PPS300/XClose"
 	click "M3/PPS300/Confirmoutput"
 	click "M3/PPS300/XClose"
 	
-	(*************** To Capture Quantity in PPS310 for the Receving Number ********************)
+	(*************** To Capture Quantity in PPS310 for the Receving Number ****)
 	
 	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
 	put "M3/PPS310".captureQuantity() into quantity
 	
-	(*************** Enter Capture Quantity into the Approved Quantity **************************)
+	(*************** Enter Capture Quantity into the Approved Quantity *********)
 	
 	"M3/PPS310".enterApprovedQuantity quantity
-	(**************** To Record Location in MWS060 ***********************************)
+	(**************** To Record Location in MWS060 **********************)
 	
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
@@ -72,7 +72,7 @@ repeat forever
 	"M3/MWS060".CloseMWS060
 	//Need to add MWS060 INSP-POST to record recieving number
 	
-	(****************** To Enter Location and Quantity in PPS320 *******************************)
+	(****************** To Enter Location and Quantity in PPS320 ************)
 	If INSP ="INSP-POST" then
 		"M3/PPS320".openPPS320
 		"M3/PPS320".enterrecievingNumber ReciveNumber
