@@ -8,7 +8,7 @@ Author: Himanshu Bhardwaj & Andy Jenkins
 global username, password, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex, custNum, custPO, tag, delTerm,coType
+global coNum, moNum, dataIndex, custNum, custPO, tag, delTerm,coType
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 
 //initialize test variables
@@ -81,6 +81,8 @@ end repeat
 
 to logData
 	global dataIndex
+	global coNum
+	global moNum
 	global custNum
 	global custPO
 	global tag
@@ -88,7 +90,7 @@ to logData
 	global delMeth
 	global style
 	global color
-	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+	Log "1A-Results:" && dataIndex && coNum && moNum && custNum && custPO && tag && delTerm && delMeth && style && color && configCode
 end logData
 
 to doFullRun
