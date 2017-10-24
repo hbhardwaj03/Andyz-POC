@@ -10,7 +10,7 @@ put 2 into dataIndex
 
 
 //Initializing variables 
-"Datastore".setLoginVariables 3
+"Datastore".setLoginVariables 2
 
 repeat forever
 	
@@ -25,7 +25,11 @@ repeat forever
 	//To capture  variables in window  OIS350
 	
 	"M3/OIS350".open
-	put "M3/OIS350".ChangeSortingorder() into ChangeSortingorder
+	checkZoomLevel 75
+	waitFor 60,"M3/OIS350/OIS350B1Title/"
+	--put "M3/OIS350".ChangeSortingorder() into ChangeSortingorder
+	"M3/OIS350".ChangeSortingorder 3 -- commented above line and added this line 
+	
 	Click "M3/OIS350/Extendedinvno"
 	
 	"M3/OIS350".SetCoNumber COnumber
@@ -247,3 +251,39 @@ to zoomOut x
 	end repeat
 	KeyUp controlKey
 end zoomOut
+
+
+## created by Himanshu : to set zoom level to a value irrespective of current zoom percentage
+to checkZoomLevel DesiredZoomLevel
+	click(555,55)
+	KeyDown controlKey
+	TypeText "="
+	waitfor 5, "M3/Application/ZoomLevel"
+	Put ReadText((505,395),(523,410)) into CurrentZoomLevel
+	Put CurrentZoomLevel as integer into CurrentZoomLevel
+	Log "Page at : " &CurrentZoomLevel &"%"
+	if CurrentZoomLevel = DesiredZoomLevel
+		Keyup controlKey
+		Exit handler
+	end if
+	put CurrentZoomLevel - DesiredZoomLevel into differnce
+	put differnce/5 into xTimes
+	Log xTimes
+	put xTimes as integer into y
+	if y is less than 0 then
+		put abs(xTimes) into y
+		Log "Zoom in " &y &"Times"
+		repeat y times
+			TypeText "="
+		end repeat
+		
+	else
+		put abs(xTimes) into y
+		Log "Zoom out " &y &"Times"
+		KeyDown controlKey
+		repeat y times
+			typeText "-"
+		end repeat
+	end if
+	Keyup controlKey
+end checkZoomLevel
