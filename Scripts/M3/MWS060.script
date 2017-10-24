@@ -26,10 +26,12 @@ to enterWHItemLoc WHNumber,ItemNumber
 end enterWHItemLoc
 
 to captureMPFLocation ItemNumber
-	Click "M3/MWS060/Highlightlocation"
-	Put readtext(252,440,305,451) into Item1
+	(*Click "M3/MWS060/Highlightlocation"*)
+	Put readtext(175,435) into Item1
+	Log "Item1" && Item1
 	if Item1 = ItemNumber then
-		put readtext(467,428,526,441) into MPF
+		put readtext(487,428,561,442) into MPF
+		Log "MPF:" && MPF
 		If MPF begins with "MPF" then
 			Logsuccess "Location for tyhe item was:- "&MPF
 			return MPF
