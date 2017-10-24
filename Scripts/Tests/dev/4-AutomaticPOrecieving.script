@@ -7,7 +7,7 @@ global password
 
 (************* Initialize data line counter ***********************) 
 
-put 3 into dataIndex
+put 2 into dataIndex
 
 (************** Login To Application ****************)
 "Datastore".setLoginVariables 3
