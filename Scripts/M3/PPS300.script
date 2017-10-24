@@ -43,6 +43,7 @@ to recordReceivingNo
 end recordReceivingNo
 
 to searchlineitem ItemNumber
+	wait 5
 	Click "M3/PPS300/EnterItemnumber"
 	typetext ItemNumber
 	Click "M3/PPS300/Apply_1"
@@ -68,7 +69,14 @@ To EnterRecivedQuan RMquanty
 	Click "M3/PPS300/Next"
 End EnterRecivedQuan
 
-
+to enterRecievingNumberinPPS310 ReciveNumber
+	"M3/PPS310".open
+	click "M3/PPS300/Receivingno_1"
+	TypeText  controlkey, "a"
+	TypeText deleteKey
+	Typetext ReciveNumber
+	TypeText Return
+end enterRecievingNumberinPPS310
 
 
 

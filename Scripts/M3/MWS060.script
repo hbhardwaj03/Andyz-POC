@@ -1,0 +1,32 @@
+﻿to openMWS060
+	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
+	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	TypeText "MWS060"
+	Click  "M3/Home/SearchSubmit"
+end openMWS060
+
+to enterWHItemLoc WHNumber,ItemNumber
+	click "M3/MWS060/Whs"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext WHNumber
+	wait 2
+	click "M3/MWS060/Itemnumber"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext ItemNumber
+	wait 2
+	click "M3/MWS060/Location"
+	typetext controkey,"a"
+	typetext deletekey
+	typetext "MPF"
+	Click "M3/PPS300/Next"
+	wait 2
+end enterWHItemLoc
+
+to captureMPFLocation
+	Click "M3/MWS060/Highlightlocation"
+	put readtext(467,428,526,441) into MPF
+	log MPF
+	return MPF
+end captureMPFLocation
