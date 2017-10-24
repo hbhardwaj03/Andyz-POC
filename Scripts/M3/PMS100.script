@@ -169,7 +169,7 @@ function checkPickingStatusImage
 			Log "Image found"
 			return SUCCESS
 		end if
-		RightClick "M3/PMS100/MWS420B1OrderLine"
+		Click "M3/PMS100/MWS420B1OrderLine"
 		Click "M3/PMS100/ConfirmIssuesLink"
 		Click "M3/PMS100/Refresh"
 	end repeat

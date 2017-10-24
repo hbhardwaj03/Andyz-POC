@@ -13,12 +13,7 @@ put 2 into dataIndex
 "Datastore".setLoginVariables 3
 "Flows/Application".login username, password
 
-//4.AutomaticPOreceiving
-
-
-// fetching username,password and po number from excelfile
-//set ExcelFile to workbook(ResourcePath("AutomaticPOReceiving.xlsx")) 
-//set worksheet to ExcelFile.Worksheet("Sheet1")
+(************ Initializing Data Sheet *****************)
 set ExcelFile to workbook(ResourcePath("4-Automatic_PO_Rec.xlsx"))
 set worksheet to ExcelFile.Worksheet("Sheet1")
 
@@ -26,30 +21,27 @@ Put Cell(worksheet, "A" & dataIndex) into WHNumber
 Put Cell(worksheet, "B" & dataIndex) into poNumber
 Put Cell(worksheet, "C" & dataIndex) into ItemNumber
 
-
-
-//2.Look up PO number
+(************ To Enter PO Number in SUT *********************)
 
 "M3/PPS300".openpoNumber
 "M3/PPS300".poReceipt poNumber, WHNumber
 "M3/PPS300".delynoteno poNumber
 click "M3/PPS300/Next"
-//2.a
-//need to capture reqired quan from sut"
+
+(************ To Get Remaining Quantity from Line Item ********************)
+
 "M3/PPS300".searchlineitem ItemNumber
 put "M3/PPS300".captureremainingquantity() into RMquanty
-"M3/PPS300".EnterRecivedQuan RMquanty
-(*//3.Enter quantities received
-click "M3/PPS300/recievedquantityfield"
-TypeText controlKey, "a"
-TypeText deleteKey
-TypeText RMquanty
-TypeText Return
-wait 2*)
 
+(************* To Enter Recived Quantity and Apply ConfirmUpdate *************************)
+
+"M3/PPS300".EnterRecivedQuan RMquanty
 click "M3/PPS300/Actions"
 click  "M3/PPS300/ConfirmUpdateF"
 click "M3/PPS300/previousbutton"
+
+(************** To Get Receiving Number ********************************)
+
 Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 click  "M3/PPS300/XClose"
 click "M3/PPS300/Confirmoutput"
