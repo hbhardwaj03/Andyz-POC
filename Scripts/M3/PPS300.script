@@ -53,7 +53,8 @@ end searchlineitem
 to captureremainingquantity
 	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty
 	Click "M3/PPS300/SelectItemnumber"
-	put  ReadText(265,376,313,393)into RMquanty
+	//put  ReadText(265,376,313,393)into RMquanty
+	put  ReadText(354,377,382,395)into RMquanty
 	if RMquanty <> "" then
 		logsuccess "recievedquantity is:- "&RMquanty
 		return RMquanty
@@ -77,7 +78,6 @@ to enterRecievingNumberinPPS310 ReciveNumber
 	Typetext ReciveNumber
 	TypeText Return
 end enterRecievingNumberinPPS310
-
 
 
 
