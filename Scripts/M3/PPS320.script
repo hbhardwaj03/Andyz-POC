@@ -6,23 +6,45 @@
 end openPPS320
 
 to enterrecievingNumber ReciveNumber
-	wait 2
-	Click "M3/PPS320/Receivingno"
-	typetext ReciveNumber
-	Click "M3/PPS320/Apply"
-	wait 5
+	if ImageFound(30, "M3/PPS320/PPS320A")  then
+		wait 2
+		Click "M3/PPS320/Receivingno_1"
+		typetext ReciveNumber
+		Click "M3/PPS320/Next"
+		Logsuccess "Reciveing Number was entered in to the PPS320 screen was :- "&ReciveNumber
+		wait 5
+	else if Imagefound("M3/PPS320/PPS320B1") then
+		
+		Click "M3/PPS300/PPS310/SettingsF13"
+		wait 5
+		Click "M3/PPS300/PPS310/Openingpanel"
+		Typetext upArrow
+		Typetext return
+		Click "M3/PPS300/Next"
+		wait 4
+		Click "M3/PPS320/Receivingno_1"
+		typetext ReciveNumber
+		Click "M3/PPS320/Next"
+		wait 5
+		Logsuccess "Reciveing Number was entered in to the PPS320 screen was :- "&ReciveNumber
+	else
+		Logerror  "Reciveing Number was Not entered in to the PPS320 screen"
+	End if
 end enterrecievingNumber
 
 to enterStoredQty MPF
-	Click "M3/PPS320/Storedqty"
-	typetext "10"
-	Click "M3/PPS320/Location"
+	//Click "M3/PPS320/Storedqty"
+	//typetext "10"
+	Click "M3/PPS320/Location_1"
 	typetext MPF
 	click "M3/PPS300/Next"
-	click "M3/PPS300/Actions"
-	click  "M3/PPS300/ConfirmUpdateF"
+	wait 4
+	//click "M3/PPS300/Actions"
+	//click  "M3/PPS300/ConfirmUpdateF"
 	click "M3/PPS300/previousbutton"
-	click "M3/PPS300/XClose"
+	wait 4
+	click "M3/PPS300/Confirmoutput"
+	//click "M3/PPS300/XClose"
 end enterStoredQty
 
 

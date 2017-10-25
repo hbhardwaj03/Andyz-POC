@@ -6,6 +6,7 @@
 end open
 
 to poReceipt
+
 	Click "M3/PPS310/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -15,48 +16,43 @@ to poReceipt
 	Click  "M3/PPS310/receiving number",240001
 	
 	TypeText Return
+	
 end poReceipt
 
 to captureQuantity
 	wait 5
-	Click "M3/PPS300/PPS310/Quantity"
-	(*typetext controlkey,"a"
-	typetext controlkey,"c"
-	Click "M3/OIS101/WindowsButton"
-	Click (30,700)
-	TypeText controlKey, "v"
-	repeat 2 times
-		TypeText spacebar
-	end repeat
-	set quantity to ReadText(((12,695),(75,711)))
-	log quantity
-	Click "M3/OIS101/WindowsButton"*)
-	set quantity to ReadText(((329,354),(343,363)))
-	If quantity <> ""
-		Logsuccess "Recorded Quantity was:- "&  quantity
-		return  quantity
-	else
-		Logerror "Quantity was not Recorded"
-	End If
-	
+	if imagefound("M3/PPS300/PPS310/PPS310E") then
+		
+		//Click "M3/PPS300/PPS310/Quantity"
+		//set quantity to ReadText(((329,354),(343,363)))
+		put readtext(260,364,283,376) into quantity
+		If quantity <> ""
+			Logsuccess "Received Quantity in PPS310E was:- "&  quantity
+			return  quantity
+		else
+			Logerror " Received Quantity was not Recorded in PPS310 Screen"
+		End If
+	end if
 end captureQuantity
 
 to enterApprovedQuantity quantity
 
 	if quantity<>"" then
-		click "M3/PPS300/PPS310/Approvqty"
+		click "M3/PPS300/PPS310/Approvedqty"
 		typetext  quantity
 		logsuccess "quantity is logged as:- "&quantity
 		click "M3/PPS300/Next"
-		click "M3/PPS300/Actions"
-		click  "M3/PPS300/ConfirmUpdateF"
+		//click "M3/PPS300/Actions"
+		//click  "M3/PPS300/ConfirmUpdateF"
+		wait 5
 		click "M3/PPS300/previousbutton"
-		Click "M3/PPS300/PPS310/XClose"	
+		wait 2
+		click "M3/PPS300/Confirmoutput"
+		//Click "M3/PPS300/PPS310/XClose"	
 	else
+		
 		logerror "quantity is not logged"
 	end if
 end enterApprovedQuantity
-
-
 
 

@@ -1,6 +1,6 @@
 ﻿
 
-(************ Declare login variables *****************)
+(*************** Declare login variables ***********************)
 
 global username
 global password
@@ -9,13 +9,12 @@ global password
 
 put 2 into dataIndex
 
-(************** Login To Application ****************)
+(****************** Login To Application **********************)
 "Datastore".setLoginVariables 3
 "Flows/Application".login username, password
 
 repeat forever
-	
-	(************ Initializing Data Sheet *****************)
+	(************ Initializing Data Sheet ************************)
 	set ExcelFile to workbook(ResourcePath("4-Automatic_PO_Rec.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
 	
@@ -26,59 +25,53 @@ repeat forever
 	put dataIndex + 1 into dataIndex
 	if poNumber is empty then exit repeat
 	(************ To Enter PO Number in SUT *********************)
-	
 	"M3/PPS300".openpoNumber
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
-	
-	(************ To Get Remaining Quantity from Line Item ********************)
-	
+	(************ To Get Remaining Quantity from Line Item **********)
 	"M3/PPS300".searchlineitem ItemNumber
 	put "M3/PPS300".captureremainingquantity() into RMquanty
-	
-	(************* To Enter Recived Quantity and Apply ConfirmUpdate *************************)
-	
+	(********** To Enter Recived Quantity and Apply ConfirmUpdate *****)
 	"M3/PPS300".EnterRecivedQuan RMquanty
 	click "M3/PPS300/Actions"
 	click  "M3/PPS300/ConfirmUpdateF"
 	wait 8
 	click "M3/PPS300/previousbutton"
-	
-	(************** To Get Receiving Number ********************************)
-	
+	(************** To Get Receiving Number **********************)
 	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 	click  "M3/PPS300/XClose"
 	click "M3/PPS300/Confirmoutput"
 	click "M3/PPS300/XClose"
-	
-	(*************** To Capture Quantity in PPS310 for the Receving Number ********************)
-	
+	(******** To Capture Quantity in PPS310 for the Receving Number ****)
 	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
 	put "M3/PPS310".captureQuantity() into quantity
-	
-	(*************** Enter Capture Quantity into the Approved Quantity **************************)
-	
+	(******** Enter Capture Quantity into the Approved Quantity *********)
 	"M3/PPS310".enterApprovedQuantity quantity
-	(**************** To Record Location in MWS060 ***********************************)
-	
+	(******** To Record Location in MWS060 ***********************)
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
-	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF
+	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF 
 	"M3/MWS060".CloseMWS060
 	"M3/MWS060".openMWS060
 	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
-	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP
+	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP 
 	"M3/MWS060".CloseMWS060
-	//Need to add MWS060 INSP-POST to record recieving number
-	
-	(****************** To Enter Location and Quantity in PPS320 *******************************)
-	If INSP ="INSP-POST" then
+	(******** To Enter Location and Quantity in PPS320 ***************)
+	If INSP begins with "INSP-POST" then
 		"M3/PPS320".openPPS320
 		"M3/PPS320".enterrecievingNumber ReciveNumber
 		"M3/PPS320".enterStoredQty MPF
 	End If
-	
+	(**************** To Print Variables ***************************)
+	log "PO number was:- "&poNumber
+	log "Ware house number was:-"&WHNumber
+	Log "Item Number was :-"&ItemNumber
+	Log "Remaining Quantity was:- "&RMquanty
+	Log "Recive number was:- "&ReciveNumber
+	Log "Approved Quantity was :- "&quantity
+	Log "Location was :-"&MPF
+	Log "Location for reciveing Number was:-"&INSP
 end repeat
 
 (******************* To Close the Infor Application *************************)
