@@ -29,57 +29,27 @@ repeat forever
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
-<<<<<<< HEAD
 	
-	(************ To Get Remaining Quantity from Line Item *******************)
-	
-	"M3/PPS300".searchlineitem ItemNumber
-	put "M3/PPS300".captureremainingquantity() into RMquanty
-	
-	(************* To Enter Recived Quantity and Apply ConfirmUpdate **********)
-	
-=======
 	(************ To Get Remaining Quantity from Line Item **********)
 	"M3/PPS300".searchlineitem ItemNumber
 	put "M3/PPS300".captureremainingquantity() into RMquanty
 	(********** To Enter Recived Quantity and Apply ConfirmUpdate *****)
->>>>>>> 5f4f116d7937d46d069c9eaa1870c99de5bf8bf6
 	"M3/PPS300".EnterRecivedQuan RMquanty
 	click "M3/PPS300/Actions"
 	click  "M3/PPS300/ConfirmUpdateF"
 	wait 8
 	click "M3/PPS300/previousbutton"
-<<<<<<< HEAD
-	
-	(************** To Get Receiving Number ******************************)
-	
-=======
 	(************** To Get Receiving Number **********************)
->>>>>>> 5f4f116d7937d46d069c9eaa1870c99de5bf8bf6
 	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 	click  "M3/PPS300/XClose"
 	click "M3/PPS300/Confirmoutput"
 	click "M3/PPS300/XClose"
-<<<<<<< HEAD
-	
-	(*************** To Capture Quantity in PPS310 for the Receving Number ****)
-	
-	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
-	put "M3/PPS310".captureQuantity() into quantity
-	
-	(*************** Enter Capture Quantity into the Approved Quantity *********)
-	
-	"M3/PPS310".enterApprovedQuantity quantity
-	(**************** To Record Location in MWS060 **********************)
-	
-=======
 	(******** To Capture Quantity in PPS310 for the Receving Number ****)
 	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
 	put "M3/PPS310".captureQuantity() into quantity
 	(******** Enter Capture Quantity into the Approved Quantity *********)
 	"M3/PPS310".enterApprovedQuantity quantity
 	(******** To Record Location in MWS060 ***********************)
->>>>>>> 5f4f116d7937d46d069c9eaa1870c99de5bf8bf6
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
 	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF 
@@ -88,15 +58,8 @@ repeat forever
 	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
 	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP 
 	"M3/MWS060".CloseMWS060
-<<<<<<< HEAD
-	//Need to add MWS060 INSP-POST to record recieving number
-	
-	(****************** To Enter Location and Quantity in PPS320 ************)
-	If INSP ="INSP-POST" then
-=======
 	(******** To Enter Location and Quantity in PPS320 ***************)
 	If INSP begins with "INSP-POST" then
->>>>>>> 5f4f116d7937d46d069c9eaa1870c99de5bf8bf6
 		"M3/PPS320".openPPS320
 		"M3/PPS320".enterrecievingNumber ReciveNumber
 		"M3/PPS320".enterStoredQty MPF
@@ -112,7 +75,7 @@ repeat forever
 	Log "Location for reciveing Number was:-"&INSP
 end repeat
 
-(******************* To Close the Infor Application *************************)
+(******************* To Close the Infor Application ******************)
 
 "Flows/Application".exitApp
 
