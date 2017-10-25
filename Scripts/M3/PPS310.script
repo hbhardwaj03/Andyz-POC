@@ -6,6 +6,7 @@
 end open
 
 to poReceipt
+
 	Click "M3/PPS310/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -15,12 +16,14 @@ to poReceipt
 	Click  "M3/PPS310/receiving number",240001
 	
 	TypeText Return
+	
 end poReceipt
 
 to captureQuantity
 	wait 5
-	Click "M3/PPS300/PPS310/Quantity"
-	(*typetext controlkey,"a"
+	if imagefound()
+		Click "M3/PPS300/PPS310/Quantity"
+		(*typetext controlkey,"a"
 	typetext controlkey,"c"
 	Click "M3/OIS101/WindowsButton"
 	Click (30,700)
@@ -31,14 +34,14 @@ to captureQuantity
 	set quantity to ReadText(((12,695),(75,711)))
 	log quantity
 	Click "M3/OIS101/WindowsButton"*)
-	set quantity to ReadText(((329,354),(343,363)))
-	If quantity <> ""
-		Logsuccess "Recorded Quantity was:- "&  quantity
-		return  quantity
-	else
-		Logerror "Quantity was not Recorded"
-	End If
-	
+		set quantity to ReadText(((329,354),(343,363)))
+		If quantity <> ""
+			Logsuccess "Recorded Quantity was:- "&  quantity
+			return  quantity
+		else
+			Logerror "Quantity was not Recorded"
+		End If
+		
 end captureQuantity
 
 to enterApprovedQuantity quantity
@@ -58,5 +61,6 @@ to enterApprovedQuantity quantity
 end enterApprovedQuantity
 
 
-
+put readtext(260,364,282,372) into L1
+Log L1
 
