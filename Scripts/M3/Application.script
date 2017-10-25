@@ -1,6 +1,6 @@
 ﻿to open
 	DoubleClick "M3/Application/InforShortcut"
-	(*	DoubleClick "M3/Application/InforPRDShortcut"*)
+	(*DoubleClick "M3/Application/InforPRDShortcut"*)
 end open
 
 to close
