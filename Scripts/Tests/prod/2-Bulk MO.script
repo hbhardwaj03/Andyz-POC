@@ -50,7 +50,7 @@ repeat forever
 		"Flows/Application".exitApp
 	else
 		"Flows/Application".exitApp
-		"Flows/ManufacturingPacking".doDCAManufacturing moNum
+		"Flows/ManufacturingPacking".doDCAManufacturing "ajenkins", "Acushnet#1", moNum
 		(************** Packing ******************)
 		(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
 	end if
@@ -73,16 +73,16 @@ to generateMOCO
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "Automation Script #2"
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	//"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
-	"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	(*"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"*)
 	
-	Log coNum
+	Log "CONUM:" && coNum
 	
 	Log "Exit AGS"
 	"M3/Application".close
 	
 	//don't continue running the script
-	throw "Finished!", "some comment"
+	(*throw "Finished!", "some comment"*)
 end generateMOCO
 
 to doFullRun
