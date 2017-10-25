@@ -14,7 +14,7 @@ To MaximizePanel
 		Log "PMS170 found in Maximize state"
 	else 
 		if ImageFound (3,"M3/Application/MaximizePanel")
-			Click "M3/Application/Maximize"
+			Click "M3/Application/MaximizePanel"
 			Log "Panel PMS170 was resized to Maximize"
 		end if
 	end if
