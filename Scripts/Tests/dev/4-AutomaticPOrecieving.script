@@ -14,7 +14,6 @@ put 2 into dataIndex
 "Flows/Application".login username, password
 
 repeat forever
-	
 	(************ Initializing Data Sheet ************************)
 	set ExcelFile to workbook(ResourcePath("4-Automatic_PO_Rec.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
@@ -72,6 +71,7 @@ repeat forever
 	Log "Recive number was:- "&ReciveNumber
 	Log "Approved Quantity was :- "&quantity
 	Log "Location was :-"&MPF
+	Log "Location for reciveing Number was:-"&INSP
 end repeat
 
 (******************* To Close the Infor Application *************************)
