@@ -1,0 +1,339 @@
+﻿
+--Declaring variables for which Values to be validated
+global InvoiceNumber
+global InvoiceDate
+global OrderNum
+global WHS
+global DeliveryNum
+global CustomerPO
+global AccountNum
+global ItemNum
+global Description
+global ShippedQty
+global UM
+global UnitPrice
+global Disc1
+global Disc2
+global Disc3
+global CstmChanges
+global NetPrice
+global Extended
+global TotalShippedQty
+global NetOrderTotal
+global ShippingHandlingTotal
+global TotalInvoice
+
+
+put 2 into dataIndex
+repeat Forever
+	
+	ReadDataScript8 dataIndex
+	//	ReadDataScript8MV InvoiceNumber
+	put dataIndex+1 into dataIndex
+	//break if no more data
+	if InvoiceNumber is empty then exit repeat	
+	
+end repeat
+
+
+to ReadDataScript8 dataIndex
+	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet2")
+	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
+	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
+	put Cell(worksheet, "C" & dataIndex) into OrderNum
+	put Cell(worksheet, "D" & dataIndex) into WHS
+	put Cell(worksheet, "E" & dataIndex) into DeliveryNum
+	put Cell(worksheet, "F" & dataIndex) into CustomerPO
+	put Cell(worksheet, "G" & dataIndex) into AccountNum
+	put Cell(worksheet, "H" & dataIndex) into ItemNum
+	put Cell(worksheet, "I" & dataIndex) into Description
+	put Cell(worksheet, "J" & dataIndex) into ShippedQty
+	put Cell(worksheet, "K" & dataIndex) into UM
+	put Cell(worksheet, "L" & dataIndex) into UnitPrice
+	put Cell(worksheet, "M" & dataIndex) into Disc1
+	put Cell(worksheet, "N" & dataIndex) into Disc2
+	put Cell(worksheet, "O" & dataIndex) into Disc3
+	put Cell(worksheet, "P" & dataIndex) into CstmChanges
+	put Cell(worksheet, "Q" & dataIndex) into NetPrice
+	put Cell(worksheet, "R" & dataIndex) into Extended
+	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
+	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
+	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
+	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+	
+	Log "InvoiceNumber:" && InvoiceNumber
+	Log "InvoiceDate:" && InvoiceDate
+	Log "OrderNum:" && OrderNum
+	Log "WHS:" && WHS
+	Log "DeliveryNum:" && DeliveryNum
+	Log "CustomerPO:" && CustomerPO
+	Log "AccountNum:" && AccountNum
+	Log "ItemNum:" && ItemNum
+	Log "Description:" && Description
+	Log "ShippedQty:" && ShippedQty
+	Log "UM:" && UM
+	Log "UnitPrice:" && UnitPrice
+	Log "Disc1:" && Disc1
+	Log "Disc2:" && Disc2
+	Log "Disc3:" && Disc3
+	Log "CstmChanges:" && CstmChanges
+	Log "NetPrice:" && NetPrice
+	Log "Extended:" && Extended
+	Log "TotalShippedQty:" && TotalShippedQty
+	Log "NetOrderTotal:" && NetOrderTotal
+	Log "ShippingHandlingTotal:" && ShippingHandlingTotal
+	Log "TotalInvoice:" && TotalInvoice
+	
+	
+	Log "Read from Invoice with MetaViewer"
+	"Other/MetaViewer".openMV
+	"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
+	wait 10
+	"Other/MetaViewer".lookupMV InvoiceNumber
+	put ReadMVdata() into test
+	log test
+	"Other/MetaViewer".closeMV
+	
+	put item 1 of test into  InvoiceNumberMV
+	put item 2 of test into InvoiceDateMV
+	put item 3 of test into OrderNumMV
+	put item 4 of test into WHSMV
+	put item 5 of test into DeliveryNumMV
+	put item 6 of test into CustomerPOMV
+	put item 7 of test into AccountNumMV
+	put item 8 of test into ItemNumMV
+	put item 9 of test into DescriptionMV
+	put item 10 of test into ShippedQtyMV
+	put item 11 of test into UMMV
+	put item 12 of test into UnitPriceMV
+	put item 13 of test into Disc1MV
+	put item 14 of test into Disc2MV
+	put item 15 of test into Disc3MV
+	put item 16 of test into CstmChangesMV
+	put item 17 of test into NetPriceMV
+	put item 18 of test into ExtendedMV
+	put item 19 of test into TotalShippedQtyMV
+	put item 20 of test into NetOrderTotalMV
+	put item 21 of test into ShippingHandlingTotalMV
+	put item 22 of test into TotalInvoiceMV
+	
+	log "InvoiceNumberMV:" && InvoiceNumberMV
+	log "InvoiceDateMV:" && InvoiceDateMV
+	log "OrderNumMV:" && OrderNumMV
+	log "WHSMV:" && WHSMV
+	log "DeliveryNumMV:" && DeliveryNumMV
+	log "CustomerPOMV:" && CustomerPOMV
+	log "AccountNumMV:" && AccountNumMV
+	log "ItemNumMV:" && ItemNumMV
+	log "DescriptionMV:" && DescriptionMV
+	log "ShippedQtyMV:" && ShippedQtyMV
+	log "UMMV:" && UMMV
+	log "UnitPriceMV:" && UnitPriceMV
+	log "Disc1MV:" && Disc1MV
+	log "Disc2MV:" && Disc2MV
+	log "Disc3MV:" && Disc3MV
+	log "CstmChangesMV:" && CstmChangesMV 
+	log "NetPriceMV:" && NetPriceMV
+	log "ExtendedMV:" && ExtendedMV
+	log "TotalShippedQtyMV:" && TotalShippedQtyMV
+	log "NetOrderTotalMV:" && NetOrderTotalMV
+	log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
+	log "TotalInvoiceMV:" && TotalInvoiceMV
+	
+	compare "Invoices", InvoiceNumberMV, InvoiceNumber
+	--compare "InvoiceDate", InvoiceDateMV, InvoiceDate
+	compare "OrderNum", OrderNumMV, OrderNum
+	compare "WHS", WHSMV, WHS
+	compare "DeliveryNum", DeliveryNumMV, DeliveryNum
+	compare "CustomerPO" ,CustomerPOMV,CustomerPO
+	compare "AccountNum", AccountNumMV, AccountNum
+	compare "ItemNum" , ItemNumMV , ItemNum
+	compare "Description" , DescriptionMV, Description
+	--compare "ShippedQty" , ShippedQtyMV, ShippedQty
+	compare "UM" ,UMMV,UM
+	compare "UnitPrice", UnitPriceMV, UnitPrice
+	compare "Disc1", Disc1MV, Disc1
+	compare "Disc2" ,Disc2MV,Disc2
+	compare "Disc3" ,Disc3MV ,Disc3
+	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
+	compare "NetPrice" ,NetPriceMV,NetPrice
+	compare "Extended" ,ExtendedMV,Extended
+	--compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+	--compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+	--compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
+end ReadDataScript8
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--                                                   -x-x-xx-x-x-xx-xx-x
+To ReadMVdata
+	click "MetaViewer/PDF/MVFullscreen"
+	Wait 5
+	WaitFor 45,"MetaViewer/PDF/Titleist"
+	
+	put "MetaViewer/PDF/" into path
+	
+	--Put ReadValueByX("Invoice No",12)into InvoiceNoPDF
+	set InvoiceNoPDF to ReadText((86,314))
+	Log (InvoiceNoPDF  & " is the Invoice Number")
+	
+	Put ReadValueByX("Invoice Date",12)into InvoiceDatePDF
+	
+	set OrderNoPDF to ReadText((90,343))
+	Log (OrderNoPDF  & " is the Order Number")
+	
+	set WhsPDF to ReadText((173,343))
+	--if WhsPDF is "06Y" then set WhsPDF to "060"
+	--if WhsPDF is "06B" then set WhsPDF to "061"
+	Log WhsPDF && "is the warehouse number"
+	
+	set deliveryNumber to ReadText((250,343))
+	Log deliveryNumber && "is delivery number"
+	
+	set customersPO to ReadText((437,345))
+	Log customersPO && "is Customers PO"
+	
+	set AccountNo to ReadText((900,343))
+	Log (AccountNo & " is the Account No of the Ship Account")
+	
+	--Put ReadAddressDetails ("Ship To") into (ShipToParty, ShipToPartyAddress1, ShipToPartyAddress2, ShipToPartyAddress3)
+	--Put ReadAddressDetails ("Sold To") into(SoldToParty, SoldToAdrsLine1, SoldToAdrsLine2, SoldToAdrsLine3)
+	--put ReadValueByX("Payment Terms",15) into(PaymentTerms)
+	--put ReadValueByX("Payment Discount",15) into(PaymentDiscount)
+	---put ReadValueByX("Delivery Method",15) into(DelMethd)
+	--Put ReadValueByX("Due Date",15)into (DueDate)
+--------------------------------------------------------------------------------------------------------------------------------
+## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
+Click(700,140)
+ScrollWheelDown 10
+if ImageFound(5, (Text: "Total Shipped Qty."))	
+	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
+	set TotlShpdQty to ReadText(Loc+(220,0))
+	set ItemDscrptn to ReadText(Loc -(0,33))
+	set ItemCode to ReadText(Loc- (0,56))
+	put  Loc - (20,52) into ItemLineLoc
+	Log ItemLineLoc
+	set ShipdQty to ReadText(ItemLineLoc+(220,0))
+	set UM to ReadText(ItemLineLoc+(282,0))
+	set UnitPrice to ReadText(ItemLineLoc+ (377,0))
+	set Disc1 to ReadText (ItemLineLoc+(435,0)) --(ItemLineLoc+(470,0)
+	set Disc2 to ReadText(ItemLineLoc+(506,0))
+	set Disc3 to ReadText(ItemLineLoc+(566,0))
+	set CstmChg to ReadText(ItemLineLoc+(629,0))
+	set NetPrice to ReadText(ItemLineLoc+(730,0))
+	set Extended to ReadText(ItemLineLoc+(836,0))
+else
+	Log "No Item Shipped"
+	Exit handler
+end if
+Put ReadValueByY("Net Order Total",264)into NetOrderTotal
+delete  first value From NetOrderTotal
+delete last 2 numbers from NetOrderTotal
+
+Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
+delete  first value From ShipCharge
+delete last 2 values from ShipCharge
+
+Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+delete  first character From TotlInvoiceCost
+delete decimal from TotlInvoiceCost
+
+return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+end ReadMVdata
+
+
+
+to ReadAddressDetails txt
+	put ImageLocation(Text: txt) into Loc
+	set Party to ReadText(Loc +(0,21))
+	Log Party &" : is " &txt &" Party"
+	set AdrsLine1 to ReadText(Loc +(0,37))
+	set AdrsLine2 to ReadText(Loc +(0,53))
+	set AdrsLine3 to ReadText(Loc +(0,69))
+	Log AdrsLine1 &" : is " &txt &"Party Address Line1"
+	Log AdrsLine2 &" : is " &txt &" Party Address Line2"
+Log AdrsLine3 &" : is " &txt &"Party Address Line3"
+	Return (Party, AdrsLine1, AdrsLine2, AdrsLine3)	
+end ReadAddressDetails
+
+
+--Put ReadValueByX()into ()
+to ReadValueByX txt,y
+	put ImageLocation(Text: txt) into Loc
+	set Val to ReadText(Loc +(0,y))
+	Log val &" : is " &txt
+	return Val
+end ReadValueByX
+
+
+--Put ReadValueByY()into ()
+to ReadValueByY txt,x
+	put ImageLocation(Text: txt) into Loc
+	set Val to ReadText(Loc +(x,0))
+	Log val &" : is " &txt
+	return Val
+end ReadValueByY
+
+
+to ReadSingleLineItemDetails
+	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
+	set TotlShpdQty to ReadText(Loc+(220,0))
+	set ItemDscrptn to ReadText(Loc -(0,33))
+	set ItemCode to ReadText(Loc- (0,56))
+	put  Loc - (20,52) into ItemLineLoc
+	Log ItemLineLoc
+	set ShipdQty to ReadText(ItemLineLoc+(220,0))
+	set UM to ReadText(ItemLineLoc+(282,0))
+	set UnitPrice to ReadText(ItemLineLoc+ (377,0))
+	set Disc1 to ReadText (ItemLineLoc+(435,0)) --(ItemLineLoc+(470,0)
+	set Disc2 to ReadText(ItemLineLoc+(506,0))
+	set Disc3 to ReadText(ItemLineLoc+(566,0))
+	set CstmChg to ReadText(ItemLineLoc+(629,0))
+	set NetPrice to ReadText(ItemLineLoc+(730,0))
+	set Extended to ReadText(ItemLineLoc+(836,0))
+	Return(ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended)
+end ReadSingleLineItemDetails
+
+
+
+
+
+
+
+
+
+
+to compare type, MV, Database
+	if MV = Database then
+		logsuccess type && "matched!" && MV && "=" && Database
+	else
+		logerror type && "don't match!" && MV && "!=" && Database
+	end if
+end compare
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

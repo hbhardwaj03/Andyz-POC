@@ -26,6 +26,7 @@ to enterWHItemLoc WHNumber,ItemNumber
 end enterWHItemLoc
 
 to captureMPFLocation ItemNumber
+<<<<<<< HEAD
 	(*Click "M3/MWS060/Highlightlocation"*)
 	Put readtext(175,435) into Item1
 	Log "Item1" && Item1
@@ -38,6 +39,18 @@ to captureMPFLocation ItemNumber
 		else
 			Logerror "Location was not Captured"
 		End If
+=======
+	Click "M3/MWS060/Highlightlocation"
+	Put readtext(149,429,201,443) into Item1
+	if Item1 = ItemNumber then
+	put readtext(483,427,542,441) into MPF
+	If MPF <> "" then
+		Logsuccess "Location for tyhe item was:- "&MPF
+		return MPF
+	else
+		Logwarning "Location was not Captured"
+	End If
+>>>>>>> 5f4f116d7937d46d069c9eaa1870c99de5bf8bf6
 	End If
 end captureMPFLocation
 
@@ -63,14 +76,14 @@ end CaptureINSPLoc
 
 to ReadINSP ItemNumber
 	Click "M3/MWS060/Highlightlocation"
-	Put readtext(252,440,305,451) into Item1
+	Put readtext(149,429,204,442) into Item1
 	if Item1 = ItemNumber then
-		put readtext(462,429,530,442) into INSP
-		If INSP <> "" then
+		put readtext(493,429,562,439) into INSP
+		If INSP begins with "INSP" then
 			Logsuccess "Location for tyhe item was:- "&INSP
 			return INSP
 		else
-			Logerror "Location was not Captured"
+			Logwarning "Location was not Captured"
 		End If
 	End If
 	
@@ -80,4 +93,6 @@ To CloseMWS060
 	Click "M3/PPS300/XClose"
 	wait 5
 End CloseMWS060
+
+
 
