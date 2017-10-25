@@ -1,0 +1,206 @@
+﻿global InvoiceNumber
+global InvoiceDate
+global OrderNum
+global WHS
+global DeliveryNum
+global CustomerPO
+global AccountNum
+global ItemNum
+global Description
+global ShippedQty
+global UM
+global UnitPrice
+global Disc1
+global Disc2
+global Disc3
+global CstmChanges
+global NetPrice
+global Extended
+global TotalShippedQty
+global NetOrderTotal
+global ShippingHandlingTotal
+global TotalInvoice
+
+
+put 2 into dataIndex
+repeat Forever
+	
+	ReadDataScript8 dataIndex
+	//	ReadDataScript8MV InvoiceNumber
+	put dataIndex+1 into dataIndex
+	//break if no more data
+	if InvoiceNumber is empty then exit repeat	
+	
+end repeat
+
+
+to ReadDataScript8 dataIndex
+	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet2")
+	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
+	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
+	put Cell(worksheet, "C" & dataIndex) into OrderNum
+	put Cell(worksheet, "D" & dataIndex) into WHS
+	put Cell(worksheet, "E" & dataIndex) into DeliveryNum
+	put Cell(worksheet, "F" & dataIndex) into CustomerPO
+	put Cell(worksheet, "G" & dataIndex) into AccountNum
+	put Cell(worksheet, "H" & dataIndex) into ItemNum
+	put Cell(worksheet, "I" & dataIndex) into Description
+	put Cell(worksheet, "J" & dataIndex) into ShippedQty
+	put Cell(worksheet, "K" & dataIndex) into UM
+	put Cell(worksheet, "L" & dataIndex) into UnitPrice
+	put Cell(worksheet, "M" & dataIndex) into Disc1
+	put Cell(worksheet, "N" & dataIndex) into Disc2
+	put Cell(worksheet, "O" & dataIndex) into Disc3
+	put Cell(worksheet, "P" & dataIndex) into CstmChanges
+	put Cell(worksheet, "Q" & dataIndex) into NetPrice
+	put Cell(worksheet, "R" & dataIndex) into Extended
+	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
+	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
+	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
+	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+	
+	
+	
+	Log "InvoiceNumber:" && InvoiceNumber
+	Log "InvoiceDate:" && InvoiceDate
+	Log "OrderNum:" && OrderNum
+	Log "WHS:" && WHS
+	Log "DeliveryNum:" && DeliveryNum
+	Log "CustomerPO:" && CustomerPO
+	Log "AccountNum:" && AccountNum
+	Log "ItemNum:" && ItemNum
+	Log "Description:" && Description
+	Log "ShippedQty:" && ShippedQty
+	Log "UM:" && UM
+	Log "UnitPrice:" && UnitPrice
+	Log "Disc1:" && Disc1
+	Log "Disc2:" && Disc2
+	Log "Disc3:" && Disc3
+	Log "CstmChanges:" && CstmChanges
+	Log "NetPrice:" && NetPrice
+	Log "Extended:" && Extended
+	Log "TotalShippedQty:" && TotalShippedQty
+	Log "NetOrderTotal:" && NetOrderTotal
+	Log "ShippingHandlingTotal:" && ShippingHandlingTotal
+	Log "TotalInvoice:" && TotalInvoice
+	
+	
+	
+	//end ReadDataScript8
+	
+	//to ReadDataScript8MV InvoiceNumber
+	Log "Read from Invoice with MetaViewer"
+	"Other/MetaViewer".openMV
+	"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
+	"Other/MetaViewer".lookupMV InvoiceNumber
+	put "Other/MetaViewer".validateInvoice() into test
+	"Other/MetaViewer".closeMV
+	
+	log test
+	
+	put item 1 of test into  InvoiceNumberMV
+	put item 2 of test into InvoiceDateMV
+	put item 3 of test into OrderNumMV
+	put item 4 of test into WHSMV
+	put item 5 of test into DeliveryNumMV
+	put item 6 of test into CustomerPOMV
+	put item 7 of test into AccountNumMV
+	put item 8 of test into ItemNumMV
+	put item 9 of test into DescriptionMV
+	put item 10 of test into ShippedQtyMV
+	put item 11 of test into UMMV
+	put item 12 of test into UnitPriceMV
+	put item 13 of test into Disc1MV
+	put item 14 of test into Disc2MV
+	put item 15 of test into Disc3MV
+	put item 16 of test into CstmChangesMV
+	put item 17 of test into NetPriceMV
+	put item 18 of test into ExtendedMV
+	put item 19 of test into TotalShippedQtyMV
+	put item 20 of test into NetOrderTotalMV
+	put item 21 of test into ShippingHandlingTotalMV
+	put item 22 of test into TotalInvoiceMV
+	
+	log "InvoiceNumberMV:" && InvoiceNumberMV
+	log "InvoiceDateMV:" && InvoiceDateMV
+	log "OrderNumMV:" && OrderNumMV
+	log "WHSMV:" && WHSMV
+	log "DeliveryNumMV:" && DeliveryNumMV
+	log "CustomerPOMV:" && CustomerPOMV
+	log "AccountNumMV:" && AccountNumMV
+	log "ItemNumMV:" && ItemNumMV
+	log "DescriptionMV:" && DescriptionMV
+	log "ShippedQtyMV:" && ShippedQtyMV
+	log "UMMV:" && UMMV
+	log "UnitPriceMV:" && UnitPriceMV
+	log "Disc1MV:" && Disc1MV
+	log "Disc2MV:" && Disc2MV
+	log "Disc3MV:" && Disc3MV
+	log "CstmChangesMV:" && CstmChangesMV 
+	log "NetPriceMV:" && NetPriceMV
+	log "ExtendedMV:" && ExtendedMV
+	log "TotalShippedQtyMV:" && TotalShippedQtyMV
+	log "NetOrderTotalMV:" && NetOrderTotalMV
+	log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
+	log "TotalInvoiceMV:" && TotalInvoiceMV
+	
+	
+	
+	compare "Invoices", InvoiceNumberMV, InvoiceNumber
+	compare "InvoiceDate", InvoiceDateMV, InvoiceDate
+	compare "OrderNum", OrderNumMV, OrderNum
+	compare "WHS", WHSMV, WHS
+	compare "DeliveryNum", DeliveryNumMV, DeliveryNum
+	
+	compare "CustomerPO" ,CustomerPOMV,CustomerPO
+	compare "AccountNum", AccountNumMV, AccountNum
+	compare "ItemNum" , ItemNumMV , ItemNum
+	compare "Description" , DescriptionMV, Description
+	compare "ShippedQty" , ShippedQtyMV, ShippedQty
+	compare "UM" ,UMMV,UM
+	compare "UnitPrice", UnitPriceMV, UnitPrice
+	compare "Disc1", Disc1MV, Disc1
+	compare "Disc2" ,Disc2MV,Disc2
+	compare "Disc3" ,Disc3MV ,Disc3
+	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
+	compare "NetPrice" ,NetPriceMV,NetPrice
+	compare "Extended" ,ExtendedMV,Extended
+	compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+	compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+	compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
+	//end ReadDataScript8MV
+end ReadDataScript8
+
+to compare type, MV, M3
+	if MV = M3 then
+		logsuccess type && "matched!" && MV && "=" && M3
+	else
+logerror type && "don't match!" && MV && "!=" && M3
+	end if
+end compare
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
