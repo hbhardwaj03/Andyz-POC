@@ -64,16 +64,16 @@ repeat forever
 	
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
-	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF
+	put "M3/MWS060".captureMPFLocation("1773202") into MPF //ItemNumber
 	"M3/MWS060".CloseMWS060
 	"M3/MWS060".openMWS060
 	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
-	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP
+	Put "M3/MWS060".ReadINSP("1773202") into INSP //ItemNumber
 	"M3/MWS060".CloseMWS060
 	//Need to add MWS060 INSP-POST to record recieving number
 	
 	(****************** To Enter Location and Quantity in PPS320 *******************************)
-	If INSP ="INSP-POST" then
+	If INSP begins with "INSP-POST" then
 		"M3/PPS320".openPPS320
 		"M3/PPS320".enterrecievingNumber ReciveNumber
 		"M3/PPS320".enterStoredQty MPF

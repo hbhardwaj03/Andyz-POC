@@ -6,11 +6,13 @@
 end openPPS320
 
 to enterrecievingNumber ReciveNumber
-	wait 2
-	Click "M3/PPS320/Receivingno"
-	typetext ReciveNumber
-	Click "M3/PPS320/Apply"
-	wait 5
+	if ImageFound(30, "M3/PPS320/PPS320A") = Tru then
+		wait 2
+		Click "M3/PPS320/Receivingno_1"
+		typetext ReciveNumber
+		Click "M3/PPS320/Next"s
+		wait 5
+	End if
 end enterrecievingNumber
 
 to enterStoredQty MPF
