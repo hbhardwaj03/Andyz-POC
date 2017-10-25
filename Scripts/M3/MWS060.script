@@ -30,7 +30,7 @@ to captureMPFLocation ItemNumber
 	Put readtext(252,440,305,451) into Item1
 	if Item1 = ItemNumber then
 		put readtext(467,428,526,441) into MPF
-		If MPF begins with "MPF" then
+		If MPF <> "" then
 			Logsuccess "Location for tyhe item was:- "&MPF
 			return MPF
 		else
