@@ -64,13 +64,12 @@ repeat forever
 	
 	"M3/MWS060".openMWS060
 	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
-	put "M3/MWS060".captureMPFLocation("1773202") into MPF //ItemNumber
+	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF 
 	"M3/MWS060".CloseMWS060
 	"M3/MWS060".openMWS060
 	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
-	Put "M3/MWS060".ReadINSP("1773202") into INSP //ItemNumber
+	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP 
 	"M3/MWS060".CloseMWS060
-	//Need to add MWS060 INSP-POST to record recieving number
 	
 	(****************** To Enter Location and Quantity in PPS320 *******************************)
 	If INSP begins with "INSP-POST" then
@@ -79,6 +78,13 @@ repeat forever
 		"M3/PPS320".enterStoredQty MPF
 	End If
 	
+	log "PO number was:- "&poNumber
+	log "Ware house number was:-"&WHNumber
+	Log "Item Number was :-"&ItemNumber
+	Log "Remaining Quantity was:- "&RMquanty
+	Log "Recive number was:- "&ReciveNumber
+	Log "Approved Quantity was :- "&quantity
+	Log "Location was :-"&MPF
 end repeat
 
 (******************* To Close the Infor Application *************************)
