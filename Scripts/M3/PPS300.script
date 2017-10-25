@@ -90,6 +90,7 @@ to enterRecievingNumberinPPS310 ReciveNumber
 		Typetext upArrow
 		Typetext return
 		Click "M3/PPS300/Next"
+		wait 4
 		click "M3/PPS300/PPS310/Receivingno"
 		TypeText  controlkey, "a"
 		TypeText deleteKey
@@ -102,8 +103,6 @@ to enterRecievingNumberinPPS310 ReciveNumber
 		Logerror "Reciving Number not entered in PPS310"
 		
 	End if
-	
-	
 	
 end enterRecievingNumberinPPS310
 
