@@ -177,7 +177,7 @@ to ReadSingleLineItemDetails
 	if ImageFound(5, (Text: "Total Shipped Qty."))
 		Put ImageLocation(Text: "Total Shipped Qty.") into Loc
 		set TotlShpdQty to ReadText(Loc+(220,0))
-set ItemDscrptn to ReadText(Loc -(0,33))
+		set ItemDscrptn to ReadText(Loc -(0,33))
 		set ItemCode to ReadText(Loc- (0,56))
 		put  Loc - (20,52) into ItemLineLoc
 		Log ItemLineLoc
