@@ -105,6 +105,7 @@ to ReadValueByY txt,x
 end ReadValueByY
 
 to ReadSingleLineItemDetails
+<<<<<<< HEAD
 	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
 	set TotlShpdQty to ReadText(Loc+(220,0))
 	set ItemDscrptn to ReadText(Loc -(0,33))
@@ -121,6 +122,29 @@ to ReadSingleLineItemDetails
 	set NetPrice to ReadText(ItemLineLoc+(730,0))
 	set Extended to ReadText(ItemLineLoc+(836,0))
 	Return(ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended)
+=======
+	if ImageFound(5, (Text: "Total Shipped Qty."))
+		Put ImageLocation(Text: "Total Shipped Qty.") into Loc
+		set TotlShpdQty to ReadText(Loc+(220,0))
+		set ItemDscrptn to ReadText(Loc -(0,33))
+		set ItemCode to ReadText(Loc- (0,56))
+		put  Loc - (20,52) into ItemLineLoc
+		Log ItemLineLoc
+		set ShipdQty to ReadText(ItemLineLoc+(220,0))
+		set UM to ReadText(ItemLineLoc+(282,0))
+		set UnitPrice to ReadText(ItemLineLoc+ (377,0))
+		set Disc1 to ReadText (ItemLineLoc+(435,0)) --(ItemLineLoc+(470,0)
+		set Disc2 to ReadText(ItemLineLoc+(506,0))
+		set Disc3 to ReadText(ItemLineLoc+(566,0))
+		set CstmChg to ReadText(ItemLineLoc+(629,0))
+		set NetPrice to ReadText(ItemLineLoc+(730,0))
+		set Extended to ReadText(ItemLineLoc+(836,0))
+		Return(ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended)
+	else 
+		Log "No Item Shipped"
+		Exit handler
+	end if
+>>>>>>> c568ca3a241b0f6e03fcf713fbd35c952034f635
 end ReadSingleLineItemDetails
 
 
