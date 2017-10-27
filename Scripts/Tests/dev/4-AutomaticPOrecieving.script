@@ -15,7 +15,7 @@ put 2 into dataIndex
 
 repeat forever
 	(************ Initializing Data Sheet ************************)
-	set ExcelFile to workbook(ResourcePath("4-Automatic_PO_Rec.xlsx"))
+	set ExcelFile to workbook(ResourcePath("4-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
 	
 	Put Cell(worksheet, "A" & dataIndex) into WHNumber
