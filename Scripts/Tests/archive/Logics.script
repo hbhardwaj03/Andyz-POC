@@ -1,0 +1,40 @@
+﻿
+Set Date to "23/04/17"
+Log Date
+put split (Date, "/") into D1
+log D1
+join(D1) using "" 
+Log D1
+put UTCOffset(Date) into D2
+Log D2
+sort D1 in reverse order by the last of each
+Log D1
+Set Date to "26/10/17"
+Put the date(Date) into futureDate
+convert futureDate to dateItems
+log futureDate
+convert(Date) to asDate
+Log asDate
+Put the short Date(Date) into Datem
+Log Datem
+Put asDate(Datem) into DateF
+log DateF
+Put year(DateF) into Y1
+Put Month(DateF) into M1
+Put Day(DateF) into D3
+
+Log Y1& M1& D3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
