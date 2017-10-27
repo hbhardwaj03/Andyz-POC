@@ -43,17 +43,13 @@ repeat forever
 	
 	(************** Manufacturing/Packing ******)
 	Log "Do manufacturing"
-	if isAccessory(prodNum) then
-		"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
-		(************** Packing ******************)
-		// add KPack here by moving working code from function "doFullRun"
-		"Flows/Application".exitApp
-	else
-		"Flows/Application".exitApp
-		"Flows/ManufacturingPacking".doDCAManufacturing "ajenkins", "Acushnet#1", moNum
-		(************** Packing ******************)
-		(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
-	end if
+	
+	"Flows/Application".exitApp
+	
+	"Flows/ManufacturingPacking".doDCAManufacturing "ajenkins", "Acushnet#1", moNum
+	(************** Packing ******************)
+	(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
+	
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end repeat
 
