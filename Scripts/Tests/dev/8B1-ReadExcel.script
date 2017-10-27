@@ -274,7 +274,7 @@ To ReadMVdata
 		
 		set Extended to ReadText(ItemLineLoc+(836,0))
 		put ManipulatePriceFormat(Extended) into Extended
-		else
+	else
 		Log "No Item Shipped"
 		Exit handler
 	end if
@@ -321,7 +321,7 @@ to ReadValueByX txt,y
 	set Val to ReadText(Loc +(0,y)) 
 	--if val contains txt then empty val 
 	Log val &" : is " &txt
-return Val
+	return Val
 end ReadValueByX
 
 
@@ -355,7 +355,7 @@ to ReadSingleLineItemDetails
 	set Disc1 to ReadText (ItemLineLoc+(435,0))
 	set Disc2 to ReadText(ItemLineLoc+(506,0))
 	set Disc3 to ReadText(ItemLineLoc+(566,0))
-set CstmChg to ReadText(ItemLineLoc+(629,0))
+	set CstmChg to ReadText(ItemLineLoc+(629,0))
 	set NetPrice to ReadText(ItemLineLoc+(730,0))
 	set Extended to ReadText(ItemLineLoc+(836,0))
 	Return(ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended)
