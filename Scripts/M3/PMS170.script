@@ -124,25 +124,38 @@ end createScheduleNumber
 
 to scheduleNew scheduleNumber
 	RightClick "M3/PMS170/OrderLine"
+	wait 2
 	Click  "M3/PMS170/Related"
+	wait 2
 	Click  "M3/PMS170/AddScheduleNumber_1"
+	wait 2
 	TypeText f4
 	wait 3
 	TypeText scheduleNumber
 	(*TypeText scheduleNumber*)
+	wait 2
 	Click "M3/PMS170/CreateLink"
+	wait 2
 	TypeText "US-Gear-06"
+	wait 2
 	Click "M3/PMS170/NextButton"
 	Wait 3
 	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
 	Wait 3
 	RightClick "M3/PMS170/OrderLine"
+	wait 2
 	Click "M3/PMS170/RelatedOptions"
+	wait 2
 	Click "M3/PMS170/AddScheduleNumber"
+	wait 2
 	TypeText scheduleNumber
+	wait 2
 	TypeText Return
+	wait 2
 	Click "M3/PMS170/ScheduleLine"
+	wait 2
 	Click "M3/PMS170/SelectScheduleButton"
+	wait 2
 end scheduleNew
 
 to releaseMO
