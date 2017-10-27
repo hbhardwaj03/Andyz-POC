@@ -1,0 +1,25 @@
+﻿
+TO DateFormat Date
+	Set Date to "23/04/17"
+	put split (Date, "/") into date1
+	Put date1 into NumberList
+	put  items 1  of NumberList into Day
+	put  items 2  of NumberList into Month
+	put  items 3  of NumberList into Year
+	put "20"&Year &Month&Day  into DateFromate
+	Log DateFromate
+	Return DateFromate
+END DateFormat
+
+
+
+
+
+
+
+
+
+
+
+
+
