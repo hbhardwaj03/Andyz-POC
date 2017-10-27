@@ -289,7 +289,10 @@ To ReadMVdata
 		Log "Shippment Handling Charge Not Displayed !"
 	end if
 	
-	Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+	if imageFound(text:"Total Invoice") then Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+	
+	if imageFound(text:"CREDIT") then put ReadValueByY("CREDIT",250) into TotlInvoiceCost
+	
 	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
 	
 	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
@@ -318,7 +321,7 @@ to ReadValueByX txt,y
 	set Val to ReadText(Loc +(0,y)) 
 	--if val contains txt then empty val 
 	Log val &" : is " &txt
-	return Val
+return Val
 end ReadValueByX
 
 
