@@ -1,4 +1,4 @@
-﻿
+﻿(*
 --Declaring variables for which Values to be validated
 global InvoiceNumber
 global InvoiceDate
@@ -22,8 +22,7 @@ global TotalShippedQty
 global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
-
-
+*)
 put 2 into dataIndex
 repeat Forever
 	
@@ -86,13 +85,20 @@ to ReadDataScript8 dataIndex
 	Log "TotalInvoice:" && TotalInvoice
 	
 	
-	Log "Read from Invoice with MetaViewer"
+	Log " X_X_X_Read from Invoice with MetaViewer_X_X_X_X"
 	"Other/MetaViewer".openMV
 	"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
 	wait 10
 	"Other/MetaViewer".lookupMV InvoiceNumber
 	put ReadMVdata() into test
 	log test
+	
+	## testing string manipulation
+	--repeat with each item of test
+	--if item of test contains "$" then delete "$" 
+	--if item is empty then put 0 into item
+	--end repeat	
+	
 	"Other/MetaViewer".closeMV
 	
 	put item 1 of test into  InvoiceNumberMV
@@ -173,14 +179,15 @@ To ReadMVdata
 	click "MetaViewer/PDF/MVFullscreen"
 	Wait 5
 	WaitFor 45,"MetaViewer/PDF/Titleist"
-	
 	put "MetaViewer/PDF/" into path
 	
-	--Put ReadValueByX("Invoice No",12)into InvoiceNoPDF
-	set InvoiceNoPDF to ReadText((86,314))
+	if ImageFound(2, path&"statement") then LogError "It is Account of Statement !"
+	Put ReadValueByX("Invoice No",12)into InvoiceNoPDF
+	--set InvoiceNoPDF to ReadText((86,314))
 	Log (InvoiceNoPDF  & " is the Invoice Number")
 	
 	Put ReadValueByX("Invoice Date",12)into InvoiceDatePDF
+	Log InvoiceDatePDF &": is Invoice date in PDF"
 	
 	set OrderNoPDF to ReadText((90,343))
 	Log (OrderNoPDF  & " is the Order Number")
@@ -198,56 +205,93 @@ To ReadMVdata
 	
 	set AccountNo to ReadText((900,343))
 	Log (AccountNo & " is the Account No of the Ship Account")
-	
 	--Put ReadAddressDetails ("Ship To") into (ShipToParty, ShipToPartyAddress1, ShipToPartyAddress2, ShipToPartyAddress3)
 	--Put ReadAddressDetails ("Sold To") into(SoldToParty, SoldToAdrsLine1, SoldToAdrsLine2, SoldToAdrsLine3)
 	--put ReadValueByX("Payment Terms",15) into(PaymentTerms)
 	--put ReadValueByX("Payment Discount",15) into(PaymentDiscount)
 	---put ReadValueByX("Delivery Method",15) into(DelMethd)
 	--Put ReadValueByX("Due Date",15)into (DueDate)
---------------------------------------------------------------------------------------------------------------------------------
-## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
-Click(700,140)
-ScrollWheelDown 10
-if ImageFound(5, (Text: "Total Shipped Qty."))	
-	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
-	set TotlShpdQty to ReadText(Loc+(220,0))
-	set ItemDscrptn to ReadText(Loc -(0,33))
-	set ItemCode to ReadText(Loc- (0,56))
-	put  Loc - (20,52) into ItemLineLoc
-	Log ItemLineLoc
-	set ShipdQty to ReadText(ItemLineLoc+(220,0))
-	set UM to ReadText(ItemLineLoc+(282,0))
-	set UnitPrice to ReadText(ItemLineLoc+ (377,0))
-	set Disc1 to ReadText (ItemLineLoc+(435,0)) --(ItemLineLoc+(470,0)
-	set Disc2 to ReadText(ItemLineLoc+(506,0))
-	set Disc3 to ReadText(ItemLineLoc+(566,0))
-	set CstmChg to ReadText(ItemLineLoc+(629,0))
-	set NetPrice to ReadText(ItemLineLoc+(730,0))
-	set Extended to ReadText(ItemLineLoc+(836,0))
-else
-	Log "No Item Shipped"
-	Exit handler
-end if
-Put ReadValueByY("Net Order Total",264)into NetOrderTotal
-delete  first value From NetOrderTotal
-delete last 2 numbers from NetOrderTotal
+	
+	
+	--------------------------------------------------------------------------------------------------------------------------------
+	## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
+	
+	Click(700,140)
+	ScrollWheelDown 10
+	wait 10
+	if ImageFound (Text: "Shipped Via")
+		Log "Shipped Via Details Present"
+		Exit Handler
+	end if
+	
+	if ImageFound(Text: "Total Shipped Qty")
+		Put ImageLocation(Text: "Total Shipped Qty") into Loc
+		
+		set TotlShpdQty to ReadText(Loc+(220,0))
+		set ItemDscrptn to ReadText(Loc -(0,33))
+		put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
+		
+		set ItemCode to ReadText(Loc- (0,56))
+		
+		put  Loc - (20,52) into ItemLineLoc
+		Log ItemLineLoc
+		
+		set ShipdQty to ReadText(ItemLineLoc+(220,0))
+		
+		set UM to ReadText(ItemLineLoc+(282,0))
+		
+		set UnitPrice to ReadText(ItemLineLoc+ (377,0))
+		put ManipulatePriceFormat(UnitPrice) into UnitPrice
+		
+		set Disc1 to ReadText (ItemLineLoc+(461,0))
+		if Disc1 is empty then put 0 into Disc1
+		else if Disc1 ends with "%" then delete "%" from Disc1
+		
+		set Disc2 to ReadText(ItemLineLoc+(506,0))
+		if Disc2 is empty then put 0 into Disc2
+		else if Disc2 ends with "%" then delete "%" from Disc2
 
-Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
-delete  first value From ShipCharge
-delete last 2 values from ShipCharge
+		set Disc3 to ReadText(ItemLineLoc+(566,0))
+		if Disc3 is empty then put 0 into Disc3
+		else if Disc3 ends with "%" then delete "%" from Disc3
 
-Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
-delete  first character From TotlInvoiceCost
-delete decimal from TotlInvoiceCost
 
-return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+
+		set CstmChg to ReadText(ItemLineLoc+(629,0))
+		if CstmChg is empty then put 0 into CstmChg
+		put ManipulatePriceFormat(CstmChg) into CstmChg
+		
+		set NetPrice to ReadText(ItemLineLoc+(730,0))
+		put ManipulatePriceFormat(NetPrice) into NetPrice
+		
+		set Extended to ReadText(ItemLineLoc+(836,0))
+		put ManipulatePriceFormat(Extended) into Extended
+	else
+		Log "No Item Shipped"
+		Exit handler
+	end if
+	
+	Put ReadValueByY("Net Order Total",264)into NetOrderTotal
+	Set NetOrderTotal to  ManipulatePriceFormat(NetOrderTotal)
+	
+	if ImageFound(text:"Shipping & Handling Total")
+		Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
+		Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
+	else 
+		Log "Shippment Handling Charge Not Displayed !"
+	end if
+	
+	Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
+
+return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+
 end ReadMVdata
 
 
 
 to ReadAddressDetails txt
-	put ImageLocation(Text: txt) into Loc
+	put ImageLocation(Text:txt) into Loc
 	set Party to ReadText(Loc +(0,21))
 	Log Party &" : is " &txt &" Party"
 	set AdrsLine1 to ReadText(Loc +(0,37))
@@ -255,7 +299,7 @@ to ReadAddressDetails txt
 	set AdrsLine3 to ReadText(Loc +(0,69))
 	Log AdrsLine1 &" : is " &txt &"Party Address Line1"
 	Log AdrsLine2 &" : is " &txt &" Party Address Line2"
-Log AdrsLine3 &" : is " &txt &"Party Address Line3"
+	Log AdrsLine3 &" : is " &txt &"Party Address Line3"
 	Return (Party, AdrsLine1, AdrsLine2, AdrsLine3)	
 end ReadAddressDetails
 
@@ -278,17 +322,18 @@ to ReadValueByY txt,x
 end ReadValueByY
 
 
+// This reads only Single Line Item only Based on "Total Shipped Quantity" field. 
 to ReadSingleLineItemDetails
 	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
 	set TotlShpdQty to ReadText(Loc+(220,0))
 	set ItemDscrptn to ReadText(Loc -(0,33))
 	set ItemCode to ReadText(Loc- (0,56))
-	put  Loc - (20,52) into ItemLineLoc
+	put  Loc - (20,60) into ItemLineLoc
 	Log ItemLineLoc
 	set ShipdQty to ReadText(ItemLineLoc+(220,0))
 	set UM to ReadText(ItemLineLoc+(282,0))
 	set UnitPrice to ReadText(ItemLineLoc+ (377,0))
-	set Disc1 to ReadText (ItemLineLoc+(435,0)) --(ItemLineLoc+(470,0)
+	set Disc1 to ReadText (ItemLineLoc+(435,0))
 	set Disc2 to ReadText(ItemLineLoc+(506,0))
 	set Disc3 to ReadText(ItemLineLoc+(566,0))
 	set CstmChg to ReadText(ItemLineLoc+(629,0))
@@ -299,15 +344,8 @@ end ReadSingleLineItemDetails
 
 
 
-
-
-
-
-
-
-
 to compare type, MV, Database
-	if MV = Database then
+	if MV is in Database then
 		logsuccess type && "matched!" && MV && "=" && Database
 	else
 		logerror type && "don't match!" && MV && "!=" && Database
@@ -315,15 +353,23 @@ to compare type, MV, Database
 end compare
 
 
+To ManipulatePriceFormat Price
+	log "Price Before Manipulation: " &Price
+	if Price begins with "$" then delete the first character of Price
+	if Price ends with ".00" then delete ".00" in Price
+	if Price ends with ".0" then delete ".0" from Price
+	log "Price after Manipulation: " &Price
+	return Price
+End ManipulatePriceFormat
 
 
-
-
-
-
-
-
-
+to ManipulateItemDescription
+	if descp contains "Black"then replace"Black"with"blk"in descp
+	if descp contains "white"then replace "White"with"wht"in descp
+	if descp contains "Custom"then replace "Custom"with"CSTM"in descp
+	if descp contains "Stand Bag"then replace "Stand Bag"with"SB"in descp
+	if descp contains "Assorted"then replace "Assorted"with"Asst."in descp
+end ManipulateItemDescription
 
 
 
