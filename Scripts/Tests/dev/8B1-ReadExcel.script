@@ -23,11 +23,11 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
-put 2 into dataIndex
+put 16 into dataIndex
 repeat Forever
 	
 	ReadDataScript8 dataIndex
-	//	ReadDataScript8MV InvoiceNumber
+	ReadDataScript8MV InvoiceNumber
 	put dataIndex+1 into dataIndex
 	//break if no more data
 	if InvoiceNumber is empty then exit repeat	
@@ -223,17 +223,24 @@ To ReadMVdata
 		Log "Shipped Via Details Present"
 		Exit Handler
 	end if
-	
+
 	if ImageFound(Text: "Total Shipped Qty")
 		Put ImageLocation(Text: "Total Shipped Qty") into Loc
 		
-		set TotlShpdQty to ReadText(Loc+(220,0))
+		set TotlShpdQty to ReadText(Loc+(223,4))
+		//checks if Shipment charges are applied at item level
+		set Item to ReadText(Loc-(0,28))
+		Log Item
+		if Item contains "$" or if Item contains "S&H Chg"
+			Log Item &" : Found at Item Level"
+			put Loc-(0,17) into Loc
+		end if
 		set ItemDscrptn to ReadText(Loc -(0,33))
 		put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
 		
 		set ItemCode to ReadText(Loc- (0,56))
 		
-		put  Loc - (20,52) into ItemLineLoc
+		put  Loc - (20,56) into ItemLineLoc
 		Log ItemLineLoc
 		
 		set ShipdQty to ReadText(ItemLineLoc+(220,0))
@@ -250,16 +257,16 @@ To ReadMVdata
 		set Disc2 to ReadText(ItemLineLoc+(506,0))
 		if Disc2 is empty then put 0 into Disc2
 		else if Disc2 ends with "%" then delete "%" from Disc2
-
+		
 		set Disc3 to ReadText(ItemLineLoc+(566,0))
 		if Disc3 is empty then put 0 into Disc3
 		else if Disc3 ends with "%" then delete "%" from Disc3
-
-
-
-		set CstmChg to ReadText(ItemLineLoc+(629,0))
-		if CstmChg is empty then put 0 into CstmChg
-		put ManipulatePriceFormat(CstmChg) into CstmChg
+	
+	
+	
+			set CstmChg to ReadText(ItemLineLoc+(629,0))
+			if CstmChg is empty then put 0 into CstmChg
+			put ManipulatePriceFormat(CstmChg) into CstmChg
 		
 		set NetPrice to ReadText(ItemLineLoc+(730,0))
 		put ManipulatePriceFormat(NetPrice) into NetPrice
@@ -283,9 +290,9 @@ To ReadMVdata
 	
 	Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
 	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
-
-return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
-
+	
+	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+	
 end ReadMVdata
 
 
@@ -321,11 +328,18 @@ to ReadValueByY txt,x
 	return Val
 end ReadValueByY
 
+ReadSingleLineItemDetails
 
 // This reads only Single Line Item only Based on "Total Shipped Quantity" field. 
 to ReadSingleLineItemDetails
 	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
-	set TotlShpdQty to ReadText(Loc+(220,0))
+	set TotlShpdQty to ReadText(Loc+(220,3))
+	set Item to ReadText(Loc-(0,28))
+	Log Item
+	if Item contains "$" or if Item contains "S&H Chg"
+		Log Item &" : Found at Item Level"
+		put Loc-(0,17) into Loc
+	end if
 	set ItemDscrptn to ReadText(Loc -(0,33))
 	set ItemCode to ReadText(Loc- (0,56))
 	put  Loc - (20,60) into ItemLineLoc
@@ -353,14 +367,23 @@ to compare type, MV, Database
 end compare
 
 
-To ManipulatePriceFormat Price
+to ManipulatePriceFormat Price
 	log "Price Before Manipulation: " &Price
-	if Price begins with "$" then delete the first character of Price
-	if Price ends with ".00" then delete ".00" in Price
-	if Price ends with ".0" then delete ".0" from Price
-	log "Price after Manipulation: " &Price
-	return Price
-End ManipulatePriceFormat
+	if Price begins with "$" or if Price begins with "S" then delete the first character of Price
+	put split (Price, ".") into Price1
+	put  items 1  of Price1 into Whole
+	put  items 2  of Price1 into Fraction
+	if Fraction contains "00"
+		put whole into Price
+	else 
+		if Fraction ends with "0"
+			delete"0"from Fraction	
+			put whole&"."&Fraction into Price
+		end if
+	end if
+	Log "Manipulated Price: " &Price
+	Return Price
+end ManipulatePriceFormat
 
 
 to ManipulateItemDescription
@@ -372,6 +395,17 @@ to ManipulateItemDescription
 end ManipulateItemDescription
 
 
+
+to DateManipulate Date
+	Log Date
+	put split (Date, "/") into date1
+	put  items 1  of date1 into Day
+	put  items 2  of date1 into Month
+	put  items 3  of date1 into Year
+	put "20"&Year &Month&Day  into Date
+	Log Date &" : After Manipulation"
+	Return Date
+end DateManipulate
 
 
 
