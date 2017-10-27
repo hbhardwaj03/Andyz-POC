@@ -23,7 +23,7 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
-put 2 into dataIndex
+put 3 into dataIndex
 repeat Forever
 	ReadDataScript8 dataIndex
 	//ReadDataScript8MV InvoiceNumber
@@ -35,7 +35,7 @@ end repeat
 
 to ReadDataScript8 dataIndex
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet2")
+	set worksheet to ExcelFile.Worksheet("Sheet3")
 	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
 	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
 	put Cell(worksheet, "C" & dataIndex) into OrderNum
@@ -154,7 +154,7 @@ to ReadDataScript8 dataIndex
 	compare "AccountNum", AccountNumMV, AccountNum
 	compare "ItemNum" , ItemNumMV , ItemNum
 	--compare "Description" , DescriptionMV, Description
-	--compare "ShippedQty" , ShippedQtyMV, ShippedQty
+	compare "ShippedQty" , ShippedQtyMV, ShippedQty
 	compare "UM" ,UMMV,UM
 	compare "UnitPrice", UnitPriceMV, UnitPrice
 	compare "Disc1", Disc1MV, Disc1
@@ -163,9 +163,9 @@ to ReadDataScript8 dataIndex
 	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
 	compare "NetPrice" ,NetPriceMV,NetPrice
 	compare "Extended" ,ExtendedMV,Extended
-	--compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
-	--compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
-	--compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+	compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+	compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+	compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
 	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
 end ReadDataScript8
 
@@ -208,26 +208,17 @@ To ReadMVdata
 	
 	set AccountNo to ReadText((900,343))
 	Log (AccountNo & " is the Account No of the Ship Account")
-	--Put ReadAddressDetails ("Ship To") into (ShipToParty, ShipToPartyAddress1, ShipToPartyAddress2, ShipToPartyAddress3)
-	--Put ReadAddressDetails ("Sold To") into(SoldToParty, SoldToAdrsLine1, SoldToAdrsLine2, SoldToAdrsLine3)
-	--put ReadValueByX("Payment Terms",15) into(PaymentTerms)
-	--put ReadValueByX("Payment Discount",15) into(PaymentDiscount)
-	---put ReadValueByX("Delivery Method",15) into(DelMethd)
-	--Put ReadValueByX("Due Date",15)into (DueDate)
-	
-	
 	--------------------------------------------------------------------------------------------------------------------------------
 	## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
 	
 	Click(700,140)
 	ScrollWheelDown 10
 	wait 10
-	if ImageFound (2,Text: "Shipped Via")
-		Log "Shipped Via Details Present"
-		Exit Handler
-	end if
-
-	if ImageFound(Text: "Total Shipped Qty")
+	(*if ImageFound (2,Text: "Shipped Via")
+	Log "Shipped Via Details Present"
+	Exit Handler
+end if   *)
+	if ImageFound(5,Text: "Total Shipped Qty")
 		Put ImageLocation(Text: "Total Shipped Qty") into Loc
 		
 		set TotlShpdQty to ReadText(Loc+(223,4))
@@ -282,16 +273,18 @@ To ReadMVdata
 	Put ReadValueByY("Net Order Total",264)into NetOrderTotal
 	Set NetOrderTotal to  ManipulatePriceFormat(NetOrderTotal)
 	
-	if ImageFound(text:"Shipping & Handling Total")
+	if ImageFound(2,text:"Shipping & Handling Total")
 		Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
 		Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
 	else 
 		Log "Shippment Handling Charge Not Displayed !"
 	end if
 	
-	if imageFound(text:"Total Invoice") then Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
-	
-	if imageFound(text:"CREDIT") then put ReadValueByY("CREDIT",250) into TotlInvoiceCost
+	if imageFound(3,text:"Total Invoice") 
+		Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+	else 
+		if imageFound(3,text:"CREDIT") then put ReadValueByY("CREDIT",245) into TotlInvoiceCost
+	end if
 	
 	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
 	
@@ -319,7 +312,7 @@ end ReadAddressDetails
 to ReadValueByX txt,y
 	put ImageLocation(Text: txt) into Loc
 	set Val to ReadText(Loc +(0,y)) 
-	--if val contains txt then empty val 
+--if val contains txt then empty val 
 	Log val &" : is " &txt
 	return Val
 end ReadValueByX
