@@ -1,30 +1,15 @@
 ﻿
-Set Date to "23/04/17"
-Log Date
-put split (Date, "/") into D1
-log D1
-join(D1) using "" 
-Log D1
-put UTCOffset(Date) into D2
-Log D2
-sort D1 in reverse order by the last of each
-Log D1
-Set Date to "26/10/17"
-Put the date(Date) into futureDate
-convert futureDate to dateItems
-log futureDate
-convert(Date) to asDate
-Log asDate
-Put the short Date(Date) into Datem
-Log Datem
-Put asDate(Datem) into DateF
-log DateF
-Put year(DateF) into Y1
-Put Month(DateF) into M1
-Put Day(DateF) into D3
-
-Log Y1& M1& D3
-
+TO DateFormat Date
+	Set Date to "23/04/17"
+	put split (Date, "/") into date1
+	Put date1 into NumberList
+	put  items 1  of NumberList into Day
+	put  items 2  of NumberList into Month
+	put  items 3  of NumberList into Year
+	put "20"&Year &Month&Day  into DateFromate
+	Log DateFromate
+	Return DateFromate
+END DateFormat
 
 
 
