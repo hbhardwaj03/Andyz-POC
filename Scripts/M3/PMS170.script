@@ -1,6 +1,7 @@
 ﻿to open
 	WaitFor 30, "M3/Application/inforSmartOfficeTitle"
 	Click (Image:"M3/Home/SearchField", WaitFor:60)
+	Wait 2
 	TypeText "PMS170"
 	Click "M3/Home/SearchSubmit"
 	"M3/Application".MaximizePanel
