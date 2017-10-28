@@ -58,8 +58,10 @@ To ReadMVdata
 	--set deliveryNumber to ReadText((250,343))
 	Log deliveryNumber && "is delivery number"
 	
-	Put ReadValueByX("Customer P.O.",13)into customersPO 
-	--set customersPO to ReadText((437,345))
+	Put ReadValueByX("Customer P.O.",13)into customersPO
+	if customersPO = "Customer P.0." then 
+		set customersPO to ""
+	end if
 	Log customersPO && "is Customers PO"
 	
 	set AccountNo to ReadText((900,343))
