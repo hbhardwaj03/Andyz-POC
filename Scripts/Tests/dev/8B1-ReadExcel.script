@@ -23,7 +23,7 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
-put 3 into dataIndex
+put 7 into dataIndex
 repeat Forever
 	ReadDataScript8 dataIndex
 	//ReadDataScript8MV InvoiceNumber
@@ -312,7 +312,7 @@ end ReadAddressDetails
 to ReadValueByX txt,y
 	put ImageLocation(Text: txt) into Loc
 	set Val to ReadText(Loc +(0,y)) 
---if val contains txt then empty val 
+	--if val contains txt then empty val 
 	Log val &" : is " &txt
 	return Val
 end ReadValueByX
