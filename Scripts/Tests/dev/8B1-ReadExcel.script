@@ -39,7 +39,7 @@ end repeat
 
 to ReadDataScript8 dataIndex
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet3")
+	set worksheet to ExcelFile.Worksheet("Sheet2")
 	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
 	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
 	put Cell(worksheet, "C" & dataIndex) into OrderNum
