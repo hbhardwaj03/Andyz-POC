@@ -3,7 +3,7 @@ put 3 into dataIndex
 repeat Forever
 	
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet2")
+	set worksheet to ExcelFile.Worksheet("Sheet1")
 	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
 	Log "Read from Invoice with MetaViewer"
 	"Other/MetaViewer".openMV
@@ -26,7 +26,7 @@ end repeat
 -- to workaround before making any changes to the existing function or script
 
 
-
+ReadMVdata
 
 --                                                   -x-x-xx-x-x-xx-xx-x
 To ReadMVdata
@@ -61,7 +61,7 @@ To ReadMVdata
 	Put ReadValueByX("Customer P.O.",13)into customersPO 
 	--set customersPO to ReadText((437,345))
 	Log customersPO && "is Customers PO"
-
+	
 	set AccountNo to ReadText((900,343))
 	Log (AccountNo & " is the Account No of the Ship Account")
 	--------------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +76,6 @@ To ReadMVdata
 end if   *)
 	if ImageFound(5,Text: "Total Shipped Qty")
 		Put ImageLocation(Text: "Total Shipped Qty") into Loc
-		
 		set TotlShpdQty to ReadText(Loc+(223,4))
 		//checks if Shipment charges are applied at item level
 		set Item to ReadText(Loc-(0,28))
@@ -85,12 +84,19 @@ end if   *)
 			Log Item &" : Found at Item Level"
 			put Loc-(0,17) into Loc
 		end if
-		set ItemDscrptn to ReadText(Loc -(0,33))
+		set ItemDscrptn to ReadText(Loc -(0,30))
 		put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
 		
 		set ItemCode to ReadText(Loc- (0,56))
 		
 		put  Loc - (20,56) into ItemLineLoc
+		put ItemLineLoc into test
+		put item 1 of  test into x
+		put item 2 of test into y
+		put x as number into x
+		put y as number into y
+		log x &" is X cordinate of Item Line"
+		log y &" is Y Cordinate of Item Line"
 		Log ItemLineLoc
 		
 		set ShipdQty to ReadText(ItemLineLoc+(220,0))
@@ -100,28 +106,35 @@ end if   *)
 		set UnitPrice to ReadText(ItemLineLoc+ (377,0))
 		put ManipulatePriceFormat(UnitPrice) into UnitPrice
 		
-		set Disc1 to ReadText (ItemLineLoc+(461,0))
+		set Disc1 to ReadText (((525,y),(565,Y)))
 		if Disc1 is empty then put 0 into Disc1
 		else if Disc1 ends with "%" then delete "%" from Disc1
+			else if Disc1 begins with "$" then delete "$" from Disc1
+		Log Disc1 &":is Disc 1"
 		
-		set Disc2 to ReadText(ItemLineLoc+(506,0))
+		set Disc2 to ReadText(((575,y),(634,y)))
 		if Disc2 is empty then put 0 into Disc2
-		else if Disc2 ends with "%" then delete "%" from Disc2
+		else if Disc2 begins with "$" then delete "$" from Disc2
+			else if Disc2 ends with "%" then delete "%" from Disc2
+		Log Disc2 &":is Disc 2"
 		
-		set Disc3 to ReadText(ItemLineLoc+(566,0))
+		set Disc3 to ReadText (((637,y),(692,y)))
 		if Disc3 is empty then put 0 into Disc3
 		else if Disc3 ends with "%" then delete "%" from Disc3
+			else if Disc3 begins with "$" then delete "$" from Disc3
+		Log Dis3 &":is Disc 3"
 		
-		set CstmChg to ReadText(ItemLineLoc+(629,0))
+		set CstmChg to ReadText (((695,y),(765,y)))
 		if CstmChg is empty then put 0 into CstmChg
+		else if CstmChg ends with "%" then delete "%" from CstmChg
 		put ManipulatePriceFormat(CstmChg) into CstmChg
 		
-		set NetPrice to ReadText(ItemLineLoc+(730,0))
+		set NetPrice to ReadText(((782,y),(870,y)))
 		put ManipulatePriceFormat(NetPrice) into NetPrice
-		
-		set Extended to ReadText(ItemLineLoc+(836,0))
+		set Extended to ReadText (((875,y),(960,y)))
 		put ManipulatePriceFormat(Extended) into Extended
-	else
+		
+		else
 		Log "No Item Shipped"
 		Exit handler
 	end if
@@ -133,7 +146,12 @@ end if   *)
 		Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
 		Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
 	else 
-		Log "Shippment Handling Charge Not Displayed !"
+		if ImageFound(2,text:"Handling Fee")
+			Put ReadValueByY("Handling Fee",302) into ShipCharge
+			Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
+		else 
+			Log "Shippment Handling Charge Not Displayed !"
+		end if
 	end if
 	
 	if imageFound(5,text:"Total Invoice") 
@@ -170,9 +188,8 @@ end ReadAddressDetails
 to ReadValueByX txt,y
 	put ImageLocation(Text: txt) into Loc
 	set Val to ReadText(Loc +(0,y)) 
-	--if val contains txt then empty val 
 	Log val &" : is " &txt
-return Val
+	return Val
 end ReadValueByX
 
 
@@ -222,13 +239,13 @@ to compare type, MV, Database
 	end if
 end compare
 
-
 to ManipulatePriceFormat Price
 	log "Price Before Manipulation: " &Price
 	if Price begins with "$" or if Price begins with "S" then delete the first character of Price
 	put split (Price, ".") into Price1
 	put  items 1  of Price1 into Whole
 	put  items 2  of Price1 into Fraction
+	if Whole contains "," then delete "," from whole
 	if Fraction contains "00"
 		put whole into Price
 	else 
