@@ -26,7 +26,7 @@ end repeat
 -- to workaround before making any changes to the existing function or script
 
 
-ReadMVdata
+(*ReadMVdata*)
 
 --                                                   -x-x-xx-x-x-xx-xx-x
 To ReadMVdata
