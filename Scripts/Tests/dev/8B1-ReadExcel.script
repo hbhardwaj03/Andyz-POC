@@ -23,7 +23,7 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
-put 3 into dataIndex
+put 5 into dataIndex
 repeat Forever
 	ReadDataScript8 dataIndex
 	//ReadDataScript8MV InvoiceNumber
@@ -35,7 +35,7 @@ end repeat
 
 to ReadDataScript8 dataIndex
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Sheet1")
+	set worksheet to ExcelFile.Worksheet("Sheet3")
 	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
 	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
 	put Cell(worksheet, "C" & dataIndex) into OrderNum
@@ -204,36 +204,38 @@ To ReadMVdata
 	
 	Put ReadValueByX("Customer P.O.",13)into customersPO 
 	--set customersPO to ReadText((437,345))
-	Log customersPO && "is Customers PO"
-	
-	set AccountNo to ReadText((900,343))
-	Log (AccountNo & " is the Account No of the Ship Account")
-	--------------------------------------------------------------------------------------------------------------------------------
-	## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
-	
-	Click(700,140)
-	ScrollWheelDown 10
-	wait 10
-	(*if ImageFound (2,Text: "Shipped Via")
+	if customersPO Contains "Customer" then empty customersPO
+
+Log customersPO && "is Customers PO"
+
+set AccountNo to ReadText((900,343))
+Log (AccountNo & " is the Account No of the Ship Account")
+--------------------------------------------------------------------------------------------------------------------------------
+## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
+
+Click(700,140)
+ScrollWheelDown 10
+wait 10
+(*if ImageFound (2,Text: "Shipped Via")
 	Log "Shipped Via Details Present"
 	Exit Handler
 end if   *)
-	if ImageFound(5,Text: "Total Shipped Qty")
-		Put ImageLocation(Text: "Total Shipped Qty") into Loc
-		
-		set TotlShpdQty to ReadText(Loc+(223,4))
-		//checks if Shipment charges are applied at item level
-		set Item to ReadText(Loc-(0,28))
-		Log Item
-		if Item contains "$" or if Item contains "S&H Chg"
-			Log Item &" : Found at Item Level"
-			put Loc-(0,17) into Loc
-		end if
-		set ItemDscrptn to ReadText(Loc -(0,33))
-		put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
-		
-		set ItemCode to ReadText(Loc- (0,56))
-		
+if ImageFound(5,Text: "Total Shipped Qty")
+	Put ImageLocation(Text: "Total Shipped Qty") into Loc
+	
+	set TotlShpdQty to ReadText(Loc+(223,4))
+	//checks if Shipment charges are applied at item level
+	set Item to ReadText(Loc-(0,28))
+	Log Item
+	if Item contains "$" or if Item contains "S&H Chg"
+		Log Item &" : Found at Item Level"
+		put Loc-(0,17) into Loc
+	end if
+	set ItemDscrptn to ReadText(Loc -(0,33))
+	put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
+	
+	set ItemCode to ReadText(Loc- (0,56))
+
 		put  Loc - (20,56) into ItemLineLoc
 		Log ItemLineLoc
 		
@@ -277,7 +279,12 @@ end if   *)
 		Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
 		Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
 	else 
-		Log "Shippment Handling Charge Not Displayed !"
+		if ImageFound(2,text:"Handling Fee")
+			Put ReadValueByY("Handling Fee",302) into ShipCharge
+			Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
+		else 
+			Log "Shippment Handling Charge Not Displayed !"
+		end if
 	end if
 	
 	if imageFound(3,text:"Total Invoice") 
