@@ -201,7 +201,7 @@ to ReadValueByY txt,x
 	return Val
 end ReadValueByY
 
-ReadSingleLineItemDetails
+(*ReadSingleLineItemDetails*)
 
 // This reads only Single Line Item only Based on "Total Shipped Quantity" field. 
 to ReadSingleLineItemDetails
