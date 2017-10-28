@@ -1,5 +1,5 @@
 ﻿
-put 3 into dataIndex
+put 2 into dataIndex
 repeat Forever
 	
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
