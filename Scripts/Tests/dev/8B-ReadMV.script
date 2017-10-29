@@ -1,5 +1,5 @@
 ﻿
-put 3 into dataIndex
+put 2 into dataIndex
 repeat Forever
 	
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
@@ -26,7 +26,7 @@ end repeat
 -- to workaround before making any changes to the existing function or script
 
 
-ReadMVdata
+(*ReadMVdata*)
 
 --                                                   -x-x-xx-x-x-xx-xx-x
 To ReadMVdata
@@ -58,8 +58,10 @@ To ReadMVdata
 	--set deliveryNumber to ReadText((250,343))
 	Log deliveryNumber && "is delivery number"
 	
-	Put ReadValueByX("Customer P.O.",13)into customersPO 
-	--set customersPO to ReadText((437,345))
+	Put ReadValueByX("Customer P.O.",13)into customersPO
+	if customersPO = "Customer P.0." then 
+		set customersPO to ""
+	end if
 	Log customersPO && "is Customers PO"
 	
 	set AccountNo to ReadText((900,343))
@@ -106,35 +108,35 @@ end if   *)
 		set UnitPrice to ReadText(ItemLineLoc+ (377,0))
 		put ManipulatePriceFormat(UnitPrice) into UnitPrice
 		
-		set Disc1 to ReadText (((525,y),(565,Y)))
+		set Disc1 to ReadText ((525,y),(565,y+18))
 		if Disc1 is empty then put 0 into Disc1
 		else if Disc1 ends with "%" then delete "%" from Disc1
 			else if Disc1 begins with "$" then delete "$" from Disc1
 		Log Disc1 &":is Disc 1"
 		
-		set Disc2 to ReadText(((575,y),(634,y)))
+		set Disc2 to ReadText(((575,y),(634,y+18)))
 		if Disc2 is empty then put 0 into Disc2
 		else if Disc2 begins with "$" then delete "$" from Disc2
 			else if Disc2 ends with "%" then delete "%" from Disc2
 		Log Disc2 &":is Disc 2"
 		
-		set Disc3 to ReadText (((637,y),(692,y)))
+		set Disc3 to ReadText (((637,y),(692,y+18)))
 		if Disc3 is empty then put 0 into Disc3
 		else if Disc3 ends with "%" then delete "%" from Disc3
 			else if Disc3 begins with "$" then delete "$" from Disc3
 		Log Dis3 &":is Disc 3"
 		
-		set CstmChg to ReadText (((695,y),(765,y)))
+		set CstmChg to ReadText (((695,y),(765,y+18)))
 		if CstmChg is empty then put 0 into CstmChg
 		else if CstmChg ends with "%" then delete "%" from CstmChg
 		put ManipulatePriceFormat(CstmChg) into CstmChg
 		
-		set NetPrice to ReadText(((782,y),(870,y)))
+		set NetPrice to ReadText(((782,y),(870,y+18)))
 		put ManipulatePriceFormat(NetPrice) into NetPrice
-		set Extended to ReadText (((875,y),(960,y)))
+		set Extended to ReadText (((875,y),(960,y+18)))
 		put ManipulatePriceFormat(Extended) into Extended
 		
-		else
+	else
 		Log "No Item Shipped"
 		Exit handler
 	end if
@@ -201,7 +203,7 @@ to ReadValueByY txt,x
 	return Val
 end ReadValueByY
 
-ReadSingleLineItemDetails
+(*ReadSingleLineItemDetails*)
 
 // This reads only Single Line Item only Based on "Total Shipped Quantity" field. 
 to ReadSingleLineItemDetails
