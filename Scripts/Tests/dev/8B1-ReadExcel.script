@@ -23,14 +23,15 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
-<<<<<<< HEAD
-put 7 into dataIndex
-=======
-put 5 into dataIndex
->>>>>>> 229702782f0c9a269448981c814942d68aee7ceb
+put 25 into dataIndex
+
 repeat Forever
+	
+	put (5,6,8,11,12,19,22,24) into badData //these  are having multiple item lines
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
 	ReadDataScript8 dataIndex
-	//ReadDataScript8MV InvoiceNumber
 	put dataIndex+1 into dataIndex
 	//break if no more data
 	if InvoiceNumber is empty then exit repeat		
@@ -61,7 +62,7 @@ to ReadDataScript8 dataIndex
 	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
 	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
 	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
-	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+put Cell(worksheet, "V" & dataIndex) into TotalInvoice
 	
 	Log "InvoiceNumber:" && InvoiceNumber
 	Log "InvoiceDate:" && InvoiceDate
@@ -86,7 +87,6 @@ to ReadDataScript8 dataIndex
 	Log "ShippingHandlingTotal:" && ShippingHandlingTotal
 	Log "TotalInvoice:" && TotalInvoice
 	
-	
 	Log " X_X_X_Read from Invoice with MetaViewer_X_X_X_X"
 	"Other/MetaViewer".openMV
 	"Other/MetaViewer".loginMV "ajenkins", "ajenkins"
@@ -94,12 +94,6 @@ to ReadDataScript8 dataIndex
 	"Other/MetaViewer".lookupMV InvoiceNumber
 	put ReadMVdata() into test
 	log test
-	
-	## testing string manipulation
-	--repeat with each item of test
-	--if item of test contains "$" then delete "$" 
-	--if item is empty then put 0 into item
-	--end repeat	
 	
 	"Other/MetaViewer".closeMV
 	
@@ -149,6 +143,7 @@ to ReadDataScript8 dataIndex
 	log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
 	log "TotalInvoiceMV:" && TotalInvoiceMV
 	
+	
 	compare "Invoices", InvoiceNumberMV, InvoiceNumber
 	compare "InvoiceDate", InvoiceDateMV, InvoiceDate
 	compare "OrderNum", OrderNumMV, OrderNum
@@ -158,7 +153,7 @@ to ReadDataScript8 dataIndex
 	compare "AccountNum", AccountNumMV, AccountNum
 	compare "ItemNum" , ItemNumMV , ItemNum
 	--compare "Description" , DescriptionMV, Description
-	compare "ShippedQty" , ShippedQtyMV, ShippedQty
+	--compare "ShippedQty" , ShippedQtyMV, ShippedQty
 	compare "UM" ,UMMV,UM
 	compare "UnitPrice", UnitPriceMV, UnitPrice
 	compare "Disc1", Disc1MV, Disc1
@@ -167,16 +162,14 @@ to ReadDataScript8 dataIndex
 	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
 	compare "NetPrice" ,NetPriceMV,NetPrice
 	compare "Extended" ,ExtendedMV,Extended
-	compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
-	compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
-	compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+	--compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+	--compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+	--compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
 	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
 end ReadDataScript8
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
---                                                   -x-x-xx-x-x-xx-xx-x
+--                                              -x-x-xx-x-x-xx-xx-x
 To ReadMVdata
 	click "MetaViewer/PDF/MVFullscreen"
 	Wait 5
@@ -206,6 +199,140 @@ To ReadMVdata
 	--set deliveryNumber to ReadText((250,343))
 	Log deliveryNumber && "is delivery number"
 	
+	Put ReadValueByX("Customer P.O.",13)into customersPO
+	if customersPO contains "Customer" then 
+		set customersPO to ""
+	end if
+	Log customersPO && "is Customers PO"
+	
+	set AccountNo to ReadText((850,336),(960,362))
+	Log (AccountNo & " is the Account No of the Ship Account")
+	--------------------------------------------------------------------------------------------------------------------------------
+	## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
+	
+	Click(700,140)
+	ScrollWheelDown 10
+	wait 10
+	if ImageFound(5,Text: "Total Shipped Qty")
+		Put ImageLocation(Text: "Total Shipped Qty") into Loc
+	else
+		throw "Error","No Item Shipped"
+	end if
+	set TotlShpdQty to ReadText(Loc+(223,4))
+	//checks if Shipment charges are applied at item level
+	set Item to ReadText(Loc-(0,28))
+	Log Item
+	if Item contains "$" or if Item contains "S&H Chg"
+		Log Item &" : Found at Item Level"
+		put Loc-(0,17) into Loc
+	end if
+	set ItemDscrptn to ReadText(Loc -(0,30))
+	--put ManipulateItemDescription(ItemDscrptn) into ItemDscrptn
+	
+	set ItemCode to ReadText(Loc- (0,44))
+	
+	put  Loc - (20,56) into ItemLineLoc
+	put ItemLineLoc into test
+	put item 1 of ItemLineLoc  into x
+	put item 2 of ItemLineLoc into y
+	put x as number into x
+	put y as number into y
+	
+	set ShipdQty to ReadText((292,y- 2),(368,y+15))
+	
+	set UM to ReadText((378,y- 2),(430,y+15))
+	
+	set UnitPrice to ReadText((440,y- 2),(515,y+15))
+	put ManipulatePriceFormat(UnitPrice) into UnitPrice
+	
+	set Disc1 to ReadText ((525,y- 1),(565,y+15))
+	if Disc1 is empty then put 0 into Disc1
+	else if Disc1 ends with "%" then delete "%" from Disc1
+		else if Disc1 begins with "$" then delete "$" from Disc1
+	Log Disc1 &":is Disc 1"
+	
+	set Disc2 to ReadText(((575,y- 1),(634,y+16)))
+	if Disc2 is empty then put 0 into Disc2
+	else if Disc2 begins with "$" then delete "$" from Disc2
+		else if Disc2 ends with "%" then delete "%" from Disc2
+	Log Disc2 &":is Disc 2"
+	
+	set Disc3 to ReadText (((637,y- 1),(692,y+16)))
+	if Disc3 is empty then put 0 into Disc3
+	else if Disc3 ends with "%" then delete "%" from Disc3
+		else if Disc3 begins with "$" then delete "$" from Disc3
+	Log Disc3 &":is Disc 3"
+	
+	set CstmChg to ReadText (((695,y- 1),(765,y+16)))
+	if CstmChg is empty then put 0 into CstmChg
+	else if CstmChg ends with "%" then delete "%" from CstmChg
+	put ManipulatePriceFormat(CstmChg) into CstmChg
+	
+	set NetPrice to ReadText(((782,y- 1),(870,y+16)))
+	put ManipulatePriceFormat(NetPrice) into NetPrice
+	set Extended to ReadText (((875,y- 1),(960,y+16)))
+	put ManipulatePriceFormat(Extended) into Extended
+	
+	Put ReadValueByY("Net Order Total",264)into NetOrderTotal
+	Set NetOrderTotal to  ManipulatePriceFormat(NetOrderTotal)
+	
+	if ImageFound(2,text:"Shipping & Handling Total")
+		Put ReadValueByY("Shipping & Handling Total",302) into ShipCharge
+		Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
+	else 
+		if ImageFound(2,text:"Handling Fee")
+			Put ReadValueByY("Handling Fee",302) into ShipCharge
+			Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
+		else 
+			set ShipCharge to 0
+			Log "Shippment Handling Charge Not Displayed !"
+		end if
+	end if
+	
+	if imageFound(5,text:"Total Invoice") 
+		Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
+	else 
+		if imageFound(5,text:"CREDIT")
+			put ReadValueByY("CREDIT",245) into TotlInvoiceCost
+		end if
+	end if
+	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
+	
+		return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+	
+end ReadMVdata
+
+
+(*
+To ReadMVdata
+	click "MetaViewer/PDF/MVFullscreen"
+	Wait 5
+	WaitFor 45,"MetaViewer/PDF/Titleist"
+	put "MetaViewer/PDF/" into path
+	
+	if ImageFound(2, path&"statement") then LogError "It is Account of Statement !"
+	Put ReadValueByX("Invoice No",12)into InvoiceNoPDF
+	--set InvoiceNoPDF to ReadText((86,314))
+	Log (InvoiceNoPDF  & " is the Invoice Number")
+	
+	Put ReadValueByX("Invoice Date",12)into InvoiceDatePDF
+	Log InvoiceDatePDF &": is Invoice date in PDF"
+	Put DateManipulate(InvoiceDatePDF) into InvoiceDatePDF
+	
+	Put ReadValueByX("Order No",11)into OrderNoPDF
+	--set OrderNoPDF to ReadText((90,343))
+	Log (OrderNoPDF  & " is the Order Number")
+	
+	Put ReadValueByX("Whs",11)into WhsPDF
+	--set WhsPDF to ReadText((173,343))
+	--if WhsPDF is "06Y" then set WhsPDF to "060"
+	--if WhsPDF is "06B" then set WhsPDF to "061"
+	Log WhsPDF && "is the warehouse number"
+	
+	Put ReadValueByX("Delivery No",11)into deliveryNumber
+	--set deliveryNumber to ReadText((250,343))
+Log deliveryNumber && "is delivery number"
+	
 	Put ReadValueByX("Customer P.O.",13)into customersPO 
 	--set customersPO to ReadText((437,345))
 	if customersPO Contains "Customer" then empty customersPO
@@ -216,14 +343,9 @@ To ReadMVdata
 	Log (AccountNo & " is the Account No of the Ship Account")
 	--------------------------------------------------------------------------------------------------------------------------------
 	## to scroll page down -------  ******second half of PDF, Y cordinates changes ********
-	
 	Click(700,140)
 	ScrollWheelDown 10
 	wait 10
-	(*if ImageFound (2,Text: "Shipped Via")
-	Log "Shipped Via Details Present"
-	Exit Handler
-end if   *)
 	if ImageFound(5,Text: "Total Shipped Qty")
 		Put ImageLocation(Text: "Total Shipped Qty") into Loc
 		
@@ -302,7 +424,7 @@ end if   *)
 	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
 	
 end ReadMVdata
-
+*)
 
 
 to ReadAddressDetails txt
@@ -337,8 +459,6 @@ to ReadValueByY txt,x
 	return Val
 end ReadValueByY
 
-ReadSingleLineItemDetails
-
 // This reads only Single Line Item only Based on "Total Shipped Quantity" field. 
 to ReadSingleLineItemDetails
 	Put ImageLocation(Text: "Total Shipped Qty.") into Loc
@@ -368,7 +488,8 @@ end ReadSingleLineItemDetails
 
 
 to compare type, MV, Database
-	if MV is in Database then
+	if MV is in Database 
+	--else if MV is "" or MV is "0" and Database is "" 
 		logsuccess type && "matched!" && MV && "=" && Database
 	else
 		logerror type && "don't match!" && MV && "!=" && Database
@@ -401,7 +522,7 @@ to ManipulateItemDescription
 	if descp contains "white"then replace "White"with"wht"in descp
 	if descp contains "Custom"then replace "Custom"with"CSTM"in descp
 	if descp contains "Stand Bag"then replace "Stand Bag"with"SB"in descp
-	if descp contains "Assorted"then replace "Assorted"with"Asst."in descp
+if descp contains "Assorted"then replace "Assorted"with"Asst."in descp
 end ManipulateItemDescription
 
 

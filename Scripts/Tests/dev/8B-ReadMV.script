@@ -25,9 +25,6 @@ end repeat
 --   Sandbox
 -- to workaround before making any changes to the existing function or script
 
-
-(*ReadMVdata*)
-
 --                                                   -x-x-xx-x-x-xx-xx-x
 To ReadMVdata
 	click "MetaViewer/PDF/MVFullscreen"
@@ -124,7 +121,7 @@ end if   *)
 		if Disc3 is empty then put 0 into Disc3
 		else if Disc3 ends with "%" then delete "%" from Disc3
 			else if Disc3 begins with "$" then delete "$" from Disc3
-		Log Dis3 &":is Disc 3"
+		Log Disc3 &":is Disc 3"
 		
 		set CstmChg to ReadText (((695,y),(765,y+18)))
 		if CstmChg is empty then put 0 into CstmChg
@@ -135,8 +132,7 @@ end if   *)
 		put ManipulatePriceFormat(NetPrice) into NetPrice
 		set Extended to ReadText (((875,y),(960,y+18)))
 		put ManipulatePriceFormat(Extended) into Extended
-		
-	else
+		else
 		Log "No Item Shipped"
 		Exit handler
 	end if
@@ -152,6 +148,7 @@ end if   *)
 			Put ReadValueByY("Handling Fee",302) into ShipCharge
 			Set ShipCharge to  ManipulatePriceFormat(ShipCharge)
 		else 
+			set ShipCharge to ""
 			Log "Shippment Handling Charge Not Displayed !"
 		end if
 	end if
@@ -168,10 +165,10 @@ end if   *)
 	
 	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
 	
-end ReadMVdata
-
-
-
+	end ReadMVdata
+	
+	
+	
 to ReadAddressDetails txt
 	put ImageLocation(Text:txt) into Loc
 	set Party to ReadText(Loc +(0,21))
