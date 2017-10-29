@@ -62,7 +62,7 @@ to ReadDataScript8 dataIndex
 	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
 	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
 	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
-put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
 	
 	Log "InvoiceNumber:" && InvoiceNumber
 	Log "InvoiceDate:" && InvoiceDate
@@ -298,7 +298,7 @@ To ReadMVdata
 	end if
 	Set  TotlInvoiceCost to  ManipulatePriceFormat( TotlInvoiceCost)
 	
-		return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
+	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)
 	
 end ReadMVdata
 
@@ -488,8 +488,9 @@ end ReadSingleLineItemDetails
 
 
 to compare type, MV, Database
-	if MV is in Database 
-	--else if MV is "" or MV is "0" and Database is "" 
+	if MV is in Database
+		logsuccess type && "matched!" && MV && "=" && Database
+	else if MV is "" or MV is "0" and Database is "" 
 		logsuccess type && "matched!" && MV && "=" && Database
 	else
 		logerror type && "don't match!" && MV && "!=" && Database
@@ -522,7 +523,7 @@ to ManipulateItemDescription
 	if descp contains "white"then replace "White"with"wht"in descp
 	if descp contains "Custom"then replace "Custom"with"CSTM"in descp
 	if descp contains "Stand Bag"then replace "Stand Bag"with"SB"in descp
-if descp contains "Assorted"then replace "Assorted"with"Asst."in descp
+	if descp contains "Assorted"then replace "Assorted"with"Asst."in descp
 end ManipulateItemDescription
 
 
