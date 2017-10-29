@@ -185,33 +185,33 @@ To ReadMVdata
 	Log InvoiceDatePDF &": is Invoice date in PDF"
 	Put DateManipulate(InvoiceDatePDF) into InvoiceDatePDF
 	
-	put path&"/OrderNo/OrderNo" into point
-	if imageFound(2, point&"TL")
-		put ReadText((point&"TL"),(point&"BR")) into OrderNoPDF
-	else
+	--put path&"/OrderNo/OrderNo" into point
+	--if imageFound(2, point&"TL")
+		--put ReadText((point&"TL"),(point&"BR")) into OrderNoPDF
+	--else
 		Put ReadValueByX("Order No",11)into OrderNoPDF
 		--set OrderNoPDF to ReadText((90,343))
-	end if
+	--end if
 	Log (OrderNoPDF  & " is the Order Number")
 	
-	put path&"/Whs/Whs" into point
-	if imageFound(2, point&"TL")
-		put ReadText((point&"TL"),(point&"BR")) into WhsPDF
-	else
+	--put path&"/Whs/Whs" into point
+	--if imageFound(2, point&"TL")
+		--put ReadText((point&"TL"),(point&"BR")) into WhsPDF
+	--else
 		Put ReadValueByX("Whs",11)into WhsPDF
 		--set WhsPDF to ReadText((173,343))
 		--if WhsPDF is "06Y" then set WhsPDF to "060"
 		--if WhsPDF is "06B" then set WhsPDF to "061"
-	end if
+	--end if
 	Log WhsPDF && "is the warehouse number"
 	
-	put path&"/DeliverNo/DeliveryNo"
-	if imageFound(2, point&"TL")
-		put ReadText((point&"TL"),(point&"BR")) into deliveryNumber
-	else
+	--put path&"/DeliverNo/DeliveryNo"
+	--if imageFound(2, point&"TL")
+		--put ReadText((point&"TL"),(point&"BR")) into deliveryNumber
+	--else
 		Put ReadValueByX("Delivery No",11)into deliveryNumber
 		--set deliveryNumber to ReadText((250,343))
-	end if
+	--end if
 	Log deliveryNumber && "is delivery number"
 	
 	Put ReadValueByX("Customer P.O.",13)into customersPO
