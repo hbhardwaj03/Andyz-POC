@@ -23,10 +23,25 @@ global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
 *)
+<<<<<<< HEAD
 
 
 put 2 into dataIndex
 
+=======
+(*<<<<<<< HEAD
+<<<<<<< HEAD
+(*put 7 into dataIndex
+=======
+put 5 into dataIndex
+>>>>>>> 229702782f0c9a269448981c814942d68aee7ceb
+=======
+*)
+
+
+put 2 into dataIndex
+//)>>>>>>> 2d63b2e58a11448f6b2a34c16792c8199a34af0b
+>>>>>>> b72e959a0cac5f522df321eb4d583f35f9d4e229
 repeat Forever
 	put (5,6,8,11,12,19,22,24,36,41,47) into badData //these  are having multiple item lines
 	repeat while dataIndex is in badData
