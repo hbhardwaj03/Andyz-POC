@@ -16,7 +16,8 @@ End loginMV
 
 ## Search for the Refernce Number and open up the pdf
 To lookupMV NumberMV
-	Wait 10
+	WaitFor 45, "MetaViewer/MetaViewerTree/FinalFolder"
+	wait 5
 	TypeText NumberMV
 	TypeText ReturnKey
 	
