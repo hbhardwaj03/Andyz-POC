@@ -25,21 +25,19 @@ global TotalInvoice
 global UserName,Password,dataIndex
 
 put 2 into dataIndex
+
 repeat Forever
+	(*put (5,6,10,11) into badData*) //these are having multiple item lines from Data sheet 3
+	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
+	(*repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat*)
 	"DataStore".SetDataScript8 dataIndex
 	"Datastore".setLoginVariables 6
 	
-	put (5,6,10,11) into badData
-	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
-	repeat while dataIndex is in badData
-		put dataIndex + 1 into dataIndex
-	end repeat
 	if InvoiceNumber is empty then exit repeat//break if no more data
 	
-	put dataIndex+1 into dataIndex	
-	
-	
-	
+	put dataIndex+1 into dataIndex
 	
 	Log "InvoiceNumber:" && InvoiceNumber
 	Log "InvoiceDate:" && InvoiceDate
@@ -70,132 +68,138 @@ repeat Forever
 	"Other/MetaViewer".openMV
 	"Other/MetaViewer".loginMV UserName,Password
 	wait 10
-	"Other/MetaViewer".lookupMV InvoiceNumber
-	put "Other/MetaViewer".ReadMVdata() into test
-	log test
-	"Other/MetaViewer".closeMV
-	
-	------------------------------------------------------ Close and Exit MetaViewer
-	
-	put item 1 of test into  InvoiceNumberMV
-	
-	put item 2 of test into InvoiceDateMV
-	Put DateManipulate(InvoiceDateMV) into InvoiceDateMV
-	
-	put item 3 of test into OrderNumMV
-	put item 4 of test into WHSMV
-	put item 5 of test into DeliveryNumMV
-	
-	put item 6 of test into CustomerPOMV
-	if customersPO contains "Customer" then set CustomersPOMV to ""
-	
-	put item 7 of test into AccountNumMV
-	put item 8 of test into ItemNumMV
-	put item 9 of test into DescriptionMV
-	put item 10 of test into ShippedQtyMV
-	put item 11 of test into UMMV
-	
-	put item 12 of test into UnitPriceMV
-	put ManipulatePriceFormat(UnitPrice) into UnitPriceMV
-	
-	put item 13 of test into Disc1MV
-	if Disc1MV is empty 
-		put 0 into Disc1MV
+	put "Other/MetaViewer".lookupMV(InvoiceNumber) into invoiceFound
+	if invoiceFound then
+		put "Other/MetaViewer".ReadMVdata() into test
+		log test
+		"Other/MetaViewer".closeMV
+		
+		------------------------------------------------------ Close and Exit MetaViewer
+		
+		put item 1 of test into  InvoiceNumberMV
+		
+		put item 2 of test into InvoiceDateMV
+		Put DateManipulate(InvoiceDateMV) into InvoiceDateMV
+		
+		put item 3 of test into OrderNumMV
+		put item 4 of test into WHSMV
+		put item 5 of test into DeliveryNumMV
+		
+		put item 6 of test into CustomerPOMV
+		if customersPO contains "Customer" then set CustomersPOMV to ""
+		
+		put item 7 of test into AccountNumMV
+		put item 8 of test into ItemNumMV
+		put item 9 of test into DescriptionMV
+		put item 10 of test into ShippedQtyMV
+		put item 11 of test into UMMV
+		
+		put item 12 of test into UnitPriceMV
+		put ManipulatePriceFormat(UnitPrice) into UnitPriceMV
+		
+		put item 13 of test into Disc1MV
+		if Disc1MV is empty 
+			put 0 into Disc1MV
+		else
+			put ManipulatePriceFormat(Disc1MV) into Disc1MV
+		end if
+		
+		put item 14 of test into Disc2MV
+		if Disc2MV is empty 
+			put 0 into Disc2MV
+		else
+			put ManipulatePriceFormat(Disc2MV) into Disc2MV
+		end if
+		
+		put item 15 of test into Disc3MV
+		if Disc3MV is empty 
+			put 0 into Disc3MV
+		else
+			put ManipulatePriceFormat(Disc3MV) into Disc3MV
+		end if
+		
+		put item 16 of test into CstmChangesMV
+		if CstmChangesMV is empty
+			put 0 into CstmChangesMV
+		else
+			put ManipulatePriceFormat(CstmChangesMV) into CstmChangesMV
+		end if
+		
+		put item 17 of test into NetPriceMV
+		if NetPriceMV is empty
+			put 0 into NetPriceMV
+		else
+			put ManipulatePriceFormat(NetPriceMV) into NetPriceMV
+		end if
+		
+		put item 18 of test into ExtendedMV
+		if ExtendedMV is empty
+			put 0 into ExtendedMV
+		else
+			put ManipulatePriceFormat(ExtendedMV) into ExtendedMV
+		end if
+		
+		put item 19 of test into TotalShippedQtyMV
+		
+		put item 20 of test into NetOrderTotalMV
+		Set  NetOrderTotalMV to  ManipulatePriceFormat(NetOrderTotalMV)
+		
+		put item 21 of test into ShippingHandlingTotalMV
+		Set  ShippingHandlingTotalMV to  ManipulatePriceFormat(ShippingHandlingTotalMV)
+		
+		put item 22 of test into TotalInvoiceMV
+		Set  TotalInvoiceMV to  ManipulatePriceFormat(TotalInvoiceMV)
+		if TotalInvoiceMV starts with "-" then delete "-" from TotalInvoiceMV
+		
+		log "InvoiceNumberMV:" && InvoiceNumberMV
+		log "InvoiceDateMV:" && InvoiceDateMV
+		log "OrderNumMV:" && OrderNumMV
+		log "WHSMV:" && WHSMV
+		log "DeliveryNumMV:" && DeliveryNumMV
+		log "CustomerPOMV:" && CustomerPOMV
+		log "AccountNumMV:" && AccountNumMV
+		log "ItemNumMV:" && ItemNumMV
+		log "DescriptionMV:" && DescriptionMV
+		log "ShippedQtyMV:" && ShippedQtyMV
+		log "UMMV:" && UMMV
+		log "UnitPriceMV:" && UnitPriceMV
+		log "Disc1MV:" && Disc1MV
+		log "Disc2MV:" && Disc2MV
+		log "Disc3MV:" && Disc3MV
+		log "CstmChangesMV:" && CstmChangesMV 
+		log "NetPriceMV:" && NetPriceMV
+		log "ExtendedMV:" && ExtendedMV
+		log "TotalShippedQtyMV:" && TotalShippedQtyMV
+		log "NetOrderTotalMV:" && NetOrderTotalMV
+		log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
+		log "TotalInvoiceMV:" && TotalInvoiceMV
+		
+		compare "Invoices", InvoiceNumberMV, InvoiceNumber
+		compare "InvoiceDate", InvoiceDateMV, InvoiceDate
+		compare "OrderNum", OrderNumMV, OrderNum
+		compare "WHS", WHSMV, WHS
+		compare "DeliveryNum", DeliveryNumMV, DeliveryNum
+		compare "CustomerPO" ,CustomerPOMV,CustomerPO
+		compare "AccountNum", AccountNumMV, AccountNum
+		compare "ItemNum" , ItemNumMV , ItemNum
+		compare "Description" , DescriptionMV, Description
+		compare "ShippedQty" , ShippedQtyMV, ShippedQty
+		compare "UM" ,UMMV,UM
+		compare "UnitPrice", UnitPriceMV, UnitPrice
+		compare "Disc1", Disc1MV, Disc1
+		compare "Disc2" ,Disc2MV,Disc2
+		compare "Disc3" ,Disc3MV ,Disc3
+		compare "CstmChanges" ,CstmChangesMV ,CstmChanges
+		compare "NetPrice" ,NetPriceMV,NetPrice
+		compare "Extended" ,ExtendedMV,Extended
+		compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+		compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+		compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+		compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
 	else
-		put ManipulatePriceFormat(Disc1MV) into Disc1MV
+		logerror "Invoice not found"
+		"Other/MetaViewer".closeMV
 	end if
-	
-	put item 14 of test into Disc2MV
-	if Disc2MV is empty 
-		put 0 into Disc2MV
-	else
-		put ManipulatePriceFormat(Disc2MV) into Disc2MV
-	end if
-	
-	put item 15 of test into Disc3MV
-	if Disc3MV is empty 
-		put 0 into Disc3MV
-	else
-		put ManipulatePriceFormat(Disc3MV) into Disc3MV
-	end if
-	
-	put item 16 of test into CstmChangesMV
-	if CstmChangesMV is empty
-		put 0 into CstmChangesMV
-	else
-		put ManipulatePriceFormat(CstmChangesMV) into CstmChangesMV
-	end if
-	
-	put item 17 of test into NetPriceMV
-	if NetPriceMV is empty
-		put 0 into NetPriceMV
-	else
-		put ManipulatePriceFormat(NetPriceMV) into NetPriceMV
-	end if
-	
-	put item 18 of test into ExtendedMV
-	if ExtendedMV is empty
-		put 0 into ExtendedMV
-	else
-		put ManipulatePriceFormat(ExtendedMV) into ExtendedMV
-	end if
-	
-	put item 19 of test into TotalShippedQtyMV
-	
-	put item 20 of test into NetOrderTotalMV
-	Set  NetOrderTotalMV to  ManipulatePriceFormat(NetOrderTotalMV)
-	
-	put item 21 of test into ShippingHandlingTotalMV
-	Set  ShippingHandlingTotalMV to  ManipulatePriceFormat(ShippingHandlingTotalMV)
-	
-	put item 22 of test into TotalInvoiceMV
-	Set  TotalInvoiceMV to  ManipulatePriceFormat(TotalInvoiceMV)
-	
-	log "InvoiceNumberMV:" && InvoiceNumberMV
-	log "InvoiceDateMV:" && InvoiceDateMV
-	log "OrderNumMV:" && OrderNumMV
-	log "WHSMV:" && WHSMV
-	log "DeliveryNumMV:" && DeliveryNumMV
-	log "CustomerPOMV:" && CustomerPOMV
-	log "AccountNumMV:" && AccountNumMV
-	log "ItemNumMV:" && ItemNumMV
-	log "DescriptionMV:" && DescriptionMV
-	log "ShippedQtyMV:" && ShippedQtyMV
-	log "UMMV:" && UMMV
-	log "UnitPriceMV:" && UnitPriceMV
-	log "Disc1MV:" && Disc1MV
-	log "Disc2MV:" && Disc2MV
-	log "Disc3MV:" && Disc3MV
-	log "CstmChangesMV:" && CstmChangesMV 
-	log "NetPriceMV:" && NetPriceMV
-	log "ExtendedMV:" && ExtendedMV
-	log "TotalShippedQtyMV:" && TotalShippedQtyMV
-	log "NetOrderTotalMV:" && NetOrderTotalMV
-	log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
-	log "TotalInvoiceMV:" && TotalInvoiceMV
-	
-	compare "Invoices", InvoiceNumberMV, InvoiceNumber
-	compare "InvoiceDate", InvoiceDateMV, InvoiceDate
-	compare "OrderNum", OrderNumMV, OrderNum
-	compare "WHS", WHSMV, WHS
-	compare "DeliveryNum", DeliveryNumMV, DeliveryNum
-	compare "CustomerPO" ,CustomerPOMV,CustomerPO
-	compare "AccountNum", AccountNumMV, AccountNum
-	compare "ItemNum" , ItemNumMV , ItemNum
-	compare "Description" , DescriptionMV, Description
-	compare "ShippedQty" , ShippedQtyMV, ShippedQty
-	compare "UM" ,UMMV,UM
-	compare "UnitPrice", UnitPriceMV, UnitPrice
-	compare "Disc1", Disc1MV, Disc1
-	compare "Disc2" ,Disc2MV,Disc2
-	compare "Disc3" ,Disc3MV ,Disc3
-	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
-	compare "NetPrice" ,NetPriceMV,NetPrice
-	compare "Extended" ,ExtendedMV,Extended
-	compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
-	compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
-	compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
-	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
 	
 end repeat
 
@@ -209,7 +213,7 @@ to compare type, MV, Database
 	else if MV is "0"  and Database is ""
 		LogWarning type && "Null Value Found" && MV && "in Data" && Database
 	else if MV is ""  and Database is ""
-		LogWarning type && "Null Value Found" && MV && "in Data" && Database
+		logsuccess type && "matched!" && MV && "=" && Database
 	else
 		logerror type && "don't match!" && MV && "!=" && Database
 	end if
