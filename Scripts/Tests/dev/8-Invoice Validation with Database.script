@@ -85,7 +85,7 @@ repeat Forever
 	put item 5 of test into DeliveryNumMV
 	
 	put item 6 of test into CustomerPOMV
-	if customersPO contains "Customer" then set CustomersPOMV to ""
+	if CustomerPOMV contains "Customer" then set CustomerPOMV to ""
 	
 	put item 7 of test into AccountNumMV
 	put item 8 of test into ItemNumMV
