@@ -26,15 +26,15 @@ global UserName,Password,dataIndex
 
 put 2 into dataIndex
 repeat Forever
-	"DataStore".SetDataScript8 dataIndex
-	"Datastore".setLoginVariables 6
-	
-	put (5,6,10,11) into badData
+	put (5,6,10,11) into badData //these are having multiple item lines from Data sheet 3
 	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
+	
 	if InvoiceNumber is empty then exit repeat//break if no more data
+	"DataStore".SetDataScript8 dataIndex
+	"Datastore".setLoginVariables 6
 	
 	put dataIndex+1 into dataIndex	
 	
@@ -150,6 +150,7 @@ repeat Forever
 	
 	put item 22 of test into TotalInvoiceMV
 	Set  TotalInvoiceMV to  ManipulatePriceFormat(TotalInvoiceMV)
+	if TotalInvoiceMV starts with "-" then delete "-" from TotalInvoiceMV
 	
 	log "InvoiceNumberMV:" && InvoiceNumberMV
 	log "InvoiceDateMV:" && InvoiceDateMV
@@ -209,7 +210,7 @@ to compare type, MV, Database
 	else if MV is "0"  and Database is ""
 		LogWarning type && "Null Value Found" && MV && "in Data" && Database
 	else if MV is ""  and Database is ""
-		LogWarning type && "Null Value Found" && MV && "in Data" && Database
+		logsuccess type && "matched!" && MV && "=" && Database
 	else
 		logerror type && "don't match!" && MV && "!=" && Database
 	end if
