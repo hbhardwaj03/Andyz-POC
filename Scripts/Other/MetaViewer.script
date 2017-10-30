@@ -49,27 +49,28 @@ to validateInvoice
 	put "MetaViewer/PDF/" into path
 	
 	set InvoiceNoPDF to ReadText((86,314))
-	Log (InvoiceNoPDF  & " is the Invoice Number")
+	Log (InvoiceNoPDF  & " is the Invoice Number in PDF")
 	
 	set OrderNoPDF to ReadText((90,343))
-	Log (OrderNoPDF  & " is the Order Number")
+	Log (OrderNoPDF  & " is the Order Number in PDF")
 	
 	set WhsPDF to ReadText((173,343))
 	if WhsPDF is "06Y" then set WhsPDF to "060"
 	if WhsPDF is "06B" then set WhsPDF to "061"
-	Log WhsPDF && "is the warehouse number"
+	Log WhsPDF && "is the warehouse numbe in PDF"
 	
 	set deliveryNumber to ReadText((250,343))
 	Log deliveryNumber && "is delivery number"
 	
 	set customersPO to ReadText((437,345))
-	Log customersPO && "is Customers PO"
+	if customersPO contains "Customer" then Set customersPO to ""
+	Log customersPO && "is Customers PO in PDF"
 	
 	set AccountNoPayPDF to ReadText((745,342))
-	Log (AccountNoPayPDF & " is the Account No of the Pay Account")
+	Log (AccountNoPayPDF & " is the Account No of the Pay Account in PDF")
 	
 	set AccountNoShipPDF to ReadText((900,343))
-	Log (AccountNoShipPDF & " is the Account No of the Ship Account")
+	Log (AccountNoShipPDF & " is the Account No of the Ship Account PDF")
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, AccountNoPayPDF, AccountNoShipPDF, customersPO, deliveryNumber)
 end validateInvoice
@@ -249,6 +250,7 @@ To ReadMVdata
 	Log deliveryNumber && "is delivery number in PDF"
 	
 	Put ReadValueByX("Customer P.O.",13)into customersPO
+	if customersPO contains "Customer" then Set customersPO to ""
 	Log customersPO && "is Customers PO is in PDF"
 	
 	set AccountNo to ReadText((850,336),(960,362))
@@ -305,8 +307,7 @@ To ReadMVdata
 	if imageFound(5,text:"Total Invoice") 
 		Put ReadValueByY("Total Invoice",256) into TotlInvoiceCost
 	else if imageFound(5,text:"CREDIT")
-		put ReadValueByY("CREDIT",245) into TotlInvoiceCost
-		set  TotlInvoiceCost to  "(&"-"TotlInvoiceCost)"
+		put ReadValueByY("CREDIT",262) into TotlInvoiceCost
 	end if
 	
 	return (InvoiceNoPDF, InvoiceDatePDF,OrderNoPDF, WhsPDF,deliveryNumber,customersPO, AccountNo,ItemCode, ItemDscrptn, ShipdQty, UM, UnitPrice, Disc1, Disc2, Disc3, CstmChg, NetPrice, Extended,TotlShpdQty,NetOrderTotal,ShipCharge,TotlInvoiceCost)	
