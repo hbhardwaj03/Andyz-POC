@@ -27,11 +27,11 @@ global UserName,Password,dataIndex
 put 2 into dataIndex
 
 repeat Forever
-	put (5,6,10,11) into badData //these are having multiple item lines from Data sheet 3
+	(*put (5,6,10,11) into badData*) //these are having multiple item lines from Data sheet 3
 	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
-	repeat while dataIndex is in badData
+	(*repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
-	end repeat
+	end repeat*)
 	"DataStore".SetDataScript8 dataIndex
 	"Datastore".setLoginVariables 6
 	
