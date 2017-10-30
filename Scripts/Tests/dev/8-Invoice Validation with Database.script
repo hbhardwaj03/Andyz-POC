@@ -1,0 +1,251 @@
+﻿
+--Declaring variables for which Values to be validated
+global InvoiceNumber
+global InvoiceDate
+global OrderNum
+global WHS
+global DeliveryNum
+global CustomerPO
+global AccountNum
+global ItemNum
+global Description
+global ShippedQty
+global UM
+global UnitPrice
+global Disc1
+global Disc2
+global Disc3
+global CstmChanges
+global NetPrice
+global Extended
+global TotalShippedQty
+global NetOrderTotal
+global ShippingHandlingTotal
+global TotalInvoice
+global UserName,Password,dataIndex
+
+put 2 into dataIndex
+repeat Forever
+	"DataStore".SetDataScript8 dataIndex
+	"Datastore".setLoginVariables 6
+	
+	put (5,6,10,11) into badData
+	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	if InvoiceNumber is empty then exit repeat//break if no more data
+	
+	put dataIndex+1 into dataIndex	
+	
+	
+	
+	
+	Log "InvoiceNumber:" && InvoiceNumber
+	Log "InvoiceDate:" && InvoiceDate
+	Log "OrderNum:" && OrderNum
+	Log "WHS:" && WHS
+	Log "DeliveryNum:" && DeliveryNum
+	Log "CustomerPO:" && CustomerPO
+	Log "AccountNum:" && AccountNum
+	Log "ItemNum:" && ItemNum
+	Log "Description:" && Description
+	Log "ShippedQty:" && ShippedQty
+	Log "UM:" && UM
+	Log "UnitPrice:" && UnitPrice
+	Log "Disc1:" && Disc1
+	Log "Disc2:" && Disc2
+	Log "Disc3:" && Disc3
+	Log "CstmChanges:" && CstmChanges
+	Log "NetPrice:" && NetPrice
+	Log "Extended:" && Extended
+	Log "TotalShippedQty:" && TotalShippedQty
+	Log "NetOrderTotal:" && NetOrderTotal
+	Log "ShippingHandlingTotal:" && ShippingHandlingTotal
+	Log "TotalInvoice:" && TotalInvoice
+	
+	-- ------------------------------------------------------Open MetaViewer and read Invoice Field data from Invoice
+	
+	Log " X_X_X_Read from Invoice with MetaViewer_X_X_X_X"
+	"Other/MetaViewer".openMV
+	"Other/MetaViewer".loginMV UserName,Password
+	wait 10
+	"Other/MetaViewer".lookupMV InvoiceNumber
+	put "Other/MetaViewer".ReadMVdata() into test
+	log test
+	"Other/MetaViewer".closeMV
+	
+	------------------------------------------------------ Close and Exit MetaViewer
+	
+	put item 1 of test into  InvoiceNumberMV
+	
+	put item 2 of test into InvoiceDateMV
+	Put DateManipulate(InvoiceDateMV) into InvoiceDateMV
+	
+	put item 3 of test into OrderNumMV
+	put item 4 of test into WHSMV
+	put item 5 of test into DeliveryNumMV
+	
+	put item 6 of test into CustomerPOMV
+	if customersPO contains "Customer" then set CustomersPOMV to ""
+	
+	put item 7 of test into AccountNumMV
+	put item 8 of test into ItemNumMV
+	put item 9 of test into DescriptionMV
+	put item 10 of test into ShippedQtyMV
+	put item 11 of test into UMMV
+	
+	put item 12 of test into UnitPriceMV
+	put ManipulatePriceFormat(UnitPrice) into UnitPriceMV
+	
+	put item 13 of test into Disc1MV
+	if Disc1MV is empty 
+		put 0 into Disc1MV
+	else
+		put ManipulatePriceFormat(Disc1MV) into Disc1MV
+	end if
+	
+	put item 14 of test into Disc2MV
+	if Disc2MV is empty 
+		put 0 into Disc2MV
+	else
+		put ManipulatePriceFormat(Disc2MV) into Disc2MV
+	end if
+	
+	put item 15 of test into Disc3MV
+	if Disc3MV is empty 
+		put 0 into Disc3MV
+	else
+		put ManipulatePriceFormat(Disc3MV) into Disc3MV
+	end if
+	
+	put item 16 of test into CstmChangesMV
+	if CstmChangesMV is empty
+		put 0 into CstmChangesMV
+	else
+		put ManipulatePriceFormat(CstmChangesMV) into CstmChangesMV
+	end if
+	
+	put item 17 of test into NetPriceMV
+	if NetPriceMV is empty
+		put 0 into NetPriceMV
+	else
+		put ManipulatePriceFormat(NetPriceMV) into NetPriceMV
+	end if
+	
+	put item 18 of test into ExtendedMV
+	if ExtendedMV is empty
+		put 0 into ExtendedMV
+	else
+		put ManipulatePriceFormat(ExtendedMV) into ExtendedMV
+	end if
+	
+	put item 19 of test into TotalShippedQtyMV
+	
+	put item 20 of test into NetOrderTotalMV
+	Set  NetOrderTotalMV to  ManipulatePriceFormat(NetOrderTotalMV)
+	
+	put item 21 of test into ShippingHandlingTotalMV
+	Set  ShippingHandlingTotalMV to  ManipulatePriceFormat(ShippingHandlingTotalMV)
+	
+	put item 22 of test into TotalInvoiceMV
+	Set  TotalInvoiceMV to  ManipulatePriceFormat(TotalInvoiceMV)
+	
+	log "InvoiceNumberMV:" && InvoiceNumberMV
+	log "InvoiceDateMV:" && InvoiceDateMV
+	log "OrderNumMV:" && OrderNumMV
+	log "WHSMV:" && WHSMV
+	log "DeliveryNumMV:" && DeliveryNumMV
+	log "CustomerPOMV:" && CustomerPOMV
+	log "AccountNumMV:" && AccountNumMV
+	log "ItemNumMV:" && ItemNumMV
+	log "DescriptionMV:" && DescriptionMV
+	log "ShippedQtyMV:" && ShippedQtyMV
+	log "UMMV:" && UMMV
+	log "UnitPriceMV:" && UnitPriceMV
+	log "Disc1MV:" && Disc1MV
+	log "Disc2MV:" && Disc2MV
+	log "Disc3MV:" && Disc3MV
+	log "CstmChangesMV:" && CstmChangesMV 
+	log "NetPriceMV:" && NetPriceMV
+	log "ExtendedMV:" && ExtendedMV
+	log "TotalShippedQtyMV:" && TotalShippedQtyMV
+	log "NetOrderTotalMV:" && NetOrderTotalMV
+	log "ShippingHandlingTotalMV:" && ShippingHandlingTotalMV
+	log "TotalInvoiceMV:" && TotalInvoiceMV
+	
+	compare "Invoices", InvoiceNumberMV, InvoiceNumber
+	compare "InvoiceDate", InvoiceDateMV, InvoiceDate
+	compare "OrderNum", OrderNumMV, OrderNum
+	compare "WHS", WHSMV, WHS
+	compare "DeliveryNum", DeliveryNumMV, DeliveryNum
+	compare "CustomerPO" ,CustomerPOMV,CustomerPO
+	compare "AccountNum", AccountNumMV, AccountNum
+	compare "ItemNum" , ItemNumMV , ItemNum
+	compare "Description" , DescriptionMV, Description
+	compare "ShippedQty" , ShippedQtyMV, ShippedQty
+	compare "UM" ,UMMV,UM
+	compare "UnitPrice", UnitPriceMV, UnitPrice
+	compare "Disc1", Disc1MV, Disc1
+	compare "Disc2" ,Disc2MV,Disc2
+	compare "Disc3" ,Disc3MV ,Disc3
+	compare "CstmChanges" ,CstmChangesMV ,CstmChanges
+	compare "NetPrice" ,NetPriceMV,NetPrice
+	compare "Extended" ,ExtendedMV,Extended
+	compare "TotalShippedQty" ,TotalShippedQtyMV,TotalShippedQty
+	compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
+	compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
+	compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
+	
+end repeat
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+to compare type, MV, Database
+	if MV is in Database
+		logsuccess type && "matched!" && MV && "=" && Database
+	else if MV is "" and  Database is "0"
+		LogWarning type && "Null Value Found" && MV && "in Data" && Database
+	else if MV is "0"  and Database is ""
+		LogWarning type && "Null Value Found" && MV && "in Data" && Database
+	else if MV is ""  and Database is ""
+		LogWarning type && "Null Value Found" && MV && "in Data" && Database
+	else
+		logerror type && "don't match!" && MV && "!=" && Database
+	end if
+end compare
+
+
+to ManipulatePriceFormat Price
+	log "Price Before Manipulation: " &Price
+	if Price begins with "$" or if Price begins with "S" then delete the first character of Price
+	else if Price ends with "%" then delete "%" from Price
+	put split (Price, ".") into Price1
+	put  items 1  of Price1 into Whole
+	put  items 2  of Price1 into Fraction
+	if Whole contains "," then delete "," from whole
+	if Fraction contains "00"
+		put whole into Price
+	else 
+		if Fraction ends with "0"
+			delete"0"from Fraction	
+			put whole&"."&Fraction into Price
+		end if
+	end if
+	Log "Manipulated Price: " &Price
+	Return Price
+end ManipulatePriceFormat
+
+to DateManipulate Date
+	Log Date
+	put split (Date, "/") into date1
+	put  items 1  of date1 into Month
+	put  items 2  of date1 into Day
+	put  items 3  of date1 into Year
+	put "20"&Year &Month&Day  into Date
+	Log Date &" : After Manipulation"
+	Return Date
+end DateManipulate
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

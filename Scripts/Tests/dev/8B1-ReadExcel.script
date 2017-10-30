@@ -1,5 +1,6 @@
 ﻿
 
+
 put 2 into dataIndex
 
 repeat Forever
@@ -38,7 +39,7 @@ to ReadDataScript8 dataIndex
 	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
 	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
 	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
-	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+put Cell(worksheet, "V" & dataIndex) into TotalInvoice
 	
 	Log "InvoiceNumber:" && InvoiceNumber
 	Log "InvoiceDate:" && InvoiceDate
@@ -163,30 +164,30 @@ To ReadMVdata
 	
 	--put path&"/OrderNo/OrderNo" into point
 	--if imageFound(2, point&"TL")
-	--put ReadText((point&"TL"),(point&"BR")) into OrderNoPDF
+		--put ReadText((point&"TL"),(point&"BR")) into OrderNoPDF
 	--else
-	--Put ReadValueByX("Order No",11)into OrderNoPDF// commented read by function and reads now hard coded location
-	set OrderNoPDF to ReadText((90,343))
+		--Put ReadValueByX("Order No",11)into OrderNoPDF// commented read by function and reads now hard coded location
+		set OrderNoPDF to ReadText((90,343))
 	--end if
 	Log (OrderNoPDF  & " is the Order Number")
 	
 	--put path&"/Whs/Whs" into point
 	--if imageFound(2, point&"TL")
-	--put ReadText((point&"TL"),(point&"BR")) into WhsPDF
-	--else
-	--Put ReadValueByX("Whs",11)into WhsPDF// commented read by function and reads now hard coded location
-	set WhsPDF to ReadText((173,343))
-	--if WhsPDF is "06Y" then set WhsPDF to "060"
-	--if WhsPDF is "06B" then set WhsPDF to "061"
+		--put ReadText((point&"TL"),(point&"BR")) into WhsPDF
+		--else
+		--Put ReadValueByX("Whs",11)into WhsPDF// commented read by function and reads now hard coded location
+		set WhsPDF to ReadText((173,343))
+		--if WhsPDF is "06Y" then set WhsPDF to "060"
+		--if WhsPDF is "06B" then set WhsPDF to "061"
 	--end if
 	Log WhsPDF && "is the warehouse number"
 	
 	--put path&"/DeliverNo/DeliveryNo"
 	--if imageFound(2, point&"TL")
-	--put ReadText((point&"TL"),(point&"BR")) into deliveryNumber
+		--put ReadText((point&"TL"),(point&"BR")) into deliveryNumber
 	--else
-	Put ReadValueByX("Delivery No",11)into deliveryNumber
-	--set deliveryNumber to ReadText((250,343))
+		Put ReadValueByX("Delivery No",11)into deliveryNumber
+		--set deliveryNumber to ReadText((250,343))
 	--end if
 	Log deliveryNumber && "is delivery number"
 	
