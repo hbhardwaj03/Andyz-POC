@@ -1,35 +1,10 @@
-﻿(*
---Declaring variables for which Values to be validated
-global InvoiceNumber
-global InvoiceDate
-global OrderNum
-global WHS
-global DeliveryNum
-global CustomerPO
-global AccountNum
-global ItemNum
-global Description
-global ShippedQty
-global UM
-global UnitPrice
-global Disc1
-global Disc2
-global Disc3
-global CstmChanges
-global NetPrice
-global Extended
-global TotalShippedQty
-global NetOrderTotal
-global ShippingHandlingTotal
-global TotalInvoice
-*)
-
+﻿
 
 
 put 2 into dataIndex
 
 repeat Forever
-	put (5,6,8,11,12,19,22,24,36,41,47) into badData //these  are having multiple item lines
+	put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines
 	repeat while dataIndex is in badData
 		
 		put dataIndex + 1 into dataIndex
