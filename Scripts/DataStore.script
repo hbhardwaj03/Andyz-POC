@@ -187,6 +187,60 @@ To SetDataScript7 dataIndex
 	Put Cell(worksheet, "N" & dataIndex) into ConfigurationNo
 End SetDataScript7
 
+to SetDataScript8 dataIndex
+	global InvoiceNumber
+	global InvoiceDate
+	global OrderNum
+	global WHS
+	global DeliveryNum
+	global CustomerPO
+	global AccountNum
+	global ItemNum
+	global Description
+	global ShippedQty
+	global UM
+	global UnitPrice
+	global Disc1
+	global Disc2
+	global Disc3
+	global CstmChanges
+	global NetPrice
+	global Extended
+	global TotalShippedQty
+	global NetOrderTotal
+	global ShippingHandlingTotal
+	global TotalInvoice
+	
+	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet3")
+	put Cell(worksheet, "A" & dataIndex) into InvoiceNumber
+	put Cell(worksheet, "B" & dataIndex) into InvoiceDate
+	put Cell(worksheet, "C" & dataIndex) into OrderNum
+	put Cell(worksheet, "D" & dataIndex) into WHS
+	put Cell(worksheet, "E" & dataIndex) into DeliveryNum
+	put Cell(worksheet, "F" & dataIndex) into CustomerPO
+	put Cell(worksheet, "G" & dataIndex) into AccountNum
+	put Cell(worksheet, "H" & dataIndex) into ItemNum
+	put Cell(worksheet, "I" & dataIndex) into Description
+	put Cell(worksheet, "J" & dataIndex) into ShippedQty
+	put Cell(worksheet, "K" & dataIndex) into UM
+	put Cell(worksheet, "L" & dataIndex) into UnitPrice
+	put Cell(worksheet, "M" & dataIndex) into Disc1
+	put Cell(worksheet, "N" & dataIndex) into Disc2
+	put Cell(worksheet, "O" & dataIndex) into Disc3
+	put Cell(worksheet, "P" & dataIndex) into CstmChanges
+	put Cell(worksheet, "Q" & dataIndex) into NetPrice
+	put Cell(worksheet, "R" & dataIndex) into Extended
+	put Cell(worksheet, "S" & dataIndex) into TotalShippedQty
+	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
+	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
+	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+	
+end SetDataScript8
+
+
+
+
 (*
 to ConfigValues 
 set ExcelFile to workbook(ResourcePath("Datastore.xlsx"))
