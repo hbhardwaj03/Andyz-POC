@@ -29,9 +29,8 @@ repeat Forever
 	"DataStore".SetDataScript8 dataIndex
 	"Datastore".setLoginVariables 6
 	
-	
 	put (5,6,10,11) into badData
-	--put (5,6,8,11,12,19,22,24,36,41,47) into badData //these  are having multiple item lines
+	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
