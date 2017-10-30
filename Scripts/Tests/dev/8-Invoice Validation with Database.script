@@ -38,9 +38,6 @@ repeat Forever
 	
 	put dataIndex+1 into dataIndex	
 	
-	
-	
-	
 	Log "InvoiceNumber:" && InvoiceNumber
 	Log "InvoiceDate:" && InvoiceDate
 	Log "OrderNum:" && OrderNum
