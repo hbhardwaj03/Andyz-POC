@@ -22,6 +22,8 @@ repeat forever
 	Put Cell(worksheet, "B" & dataIndex) into poNumber
 	Put Cell(worksheet, "C" & dataIndex) into ItemNumber
 	
+	Log "Whs:" && WHNumber && "PO:" && poNumber && "Item:" && ItemNumber
+	
 	put dataIndex + 1 into dataIndex
 	if poNumber is empty then exit repeat
 	(************ To Enter PO Number in SUT *********************)
