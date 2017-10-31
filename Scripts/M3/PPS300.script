@@ -5,7 +5,10 @@
 	Click "M3/Home/SearchSubmit"
 end openpoNumber
 
-
+to setSortingOrder
+	Click "M3/PPS300/Sortingorder"
+	Click "M3/PPS300/5Itemnumber"
+end setSortingOrder
 
 to poReceipt poNumber, WHNumber
 	Click "M3/PPS300/WarehouseField"
@@ -50,9 +53,9 @@ end searchlineitem
 
 to captureremainingquantity
 	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty:-
-	Click "M3/PPS300/SelectItemnumber"
+	(*Click "M3/PPS300/SelectItemnumber"*)
 	//put  ReadText(265,376,313,393)into RMquanty
-	put readtext (("M3/PPS300/Remainingquant/RemainLB"),("M3/PPS300/Remainingquant/RemainRB")) into RMquanty
+	put readtext ((284,379,331,392)) into RMquanty
 	log RMquanty
 	return RMquanty
 end captureremainingquantity
@@ -94,7 +97,7 @@ to enterRecievingNumberinPPS310 ReciveNumber
 		wait 4
 		Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber
 	else
-Logerror "Reciving Number not entered in PPS310"
+		Logerror "Reciving Number not entered in PPS310"
 		
 	End if
 	

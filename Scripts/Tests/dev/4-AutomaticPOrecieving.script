@@ -22,6 +22,8 @@ repeat forever
 	Put Cell(worksheet, "B" & dataIndex) into poNumber
 	Put Cell(worksheet, "C" & dataIndex) into ItemNumber
 	
+	Log "Whs:" && WHNumber && "PO:" && poNumber && "Item:" && ItemNumber
+	
 	put dataIndex + 1 into dataIndex
 	if poNumber is empty then exit repeat
 	(************ To Enter PO Number in SUT *********************)
@@ -29,6 +31,8 @@ repeat forever
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
+	"M3/Application".MaximizePanel
+	"M3/PPS300".setSortingOrder
 	
 	(************ To Get Remaining Quantity from Line Item **********)
 	"M3/PPS300".searchlineitem ItemNumber
@@ -43,7 +47,9 @@ repeat forever
 	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 	click  "M3/PPS300/XClose"
 	wait 5
-	DoubleClick "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
 	wait 4
 	//Click (89,433)
 	(******** To Capture Quantity in PPS310 for the Receving Number ****)
