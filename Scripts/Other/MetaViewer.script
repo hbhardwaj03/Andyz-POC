@@ -37,7 +37,7 @@ To lookupMV NumberMV
 		DoubleClick "MetaViewer/MetaViewerTree/SubFolder1"
 		DoubleClick "MetaViewer/MetaViewerTree/SubFolder2"
 		DoubleClick "MetaViewer/MetaViewerTree/SubFolder3"
-		DoubleClick "MetaViewer/MetaViewerTree/PDFicon"
+		DoubleClick WaitFor:45, Image:"MetaViewer/MetaViewerTree/PDFicon"
 		return true
 	else
 		return false
@@ -75,7 +75,7 @@ to validateInvoice
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account in PDF")
 	
 	set AccountNoShipPDF to ReadText((900,343))
-Log (AccountNoShipPDF & " is the Account No of the Ship Account PDF")
+	Log (AccountNoShipPDF & " is the Account No of the Ship Account PDF")
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, AccountNoPayPDF, AccountNoShipPDF, customersPO, deliveryNumber)
 end validateInvoice
