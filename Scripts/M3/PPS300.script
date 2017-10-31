@@ -49,16 +49,12 @@ to searchlineitem ItemNumber
 end searchlineitem
 
 to captureremainingquantity
-	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty
+	//put readtext(ImageLocation("M3/PPS300/Remainingquant")) into RMquanty:-
 	Click "M3/PPS300/SelectItemnumber"
 	//put  ReadText(265,376,313,393)into RMquanty
-	put  ReadText(350,387)into RMquanty
-	if RMquanty <> "" then
-		logsuccess "recievedquantity is:- "&RMquanty
-		return RMquanty
-	else
-		logerror "recievedquantity is unable to find"
-	end if
+	put readtext (("M3/PPS300/Remainingquant/RemainLB"),("M3/PPS300/Remainingquant/RemainRB")) into RMquanty
+	log RMquanty
+	return RMquanty
 end captureremainingquantity
 
 To EnterRecivedQuan RMquanty
@@ -97,8 +93,8 @@ to enterRecievingNumberinPPS310 ReciveNumber
 		Click "M3/PPS300/Next"
 		wait 4
 		Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber
-		else
-		Logerror "Reciving Number not entered in PPS310"
+	else
+Logerror "Reciving Number not entered in PPS310"
 		
 	End if
 	
