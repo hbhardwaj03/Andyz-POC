@@ -20,15 +20,22 @@ to lookup coNumber
 	TypeText Return
 	//WaitFor 10, "M3/PMS170/Sortingorder_2"
 	WaitFor 10,"M3/PMS170/SortingorderPMS170"
-	Click (780, 113)
+	//Click (Image:"M3/PMS170/SortingorderPMS170")
+	Click (780, 115)
 	TypeText homeKey
-	Click "M3/PMS170/SortingOrder3"
+	TypeText  downArrow
+	TypeText downArrow
+	TypeText return
+	
+	//Click "M3/PMS170/SortingOrder3"
+	
 	Click (961,113)
 	TypeText endKey
 	Click "M3/PMS170/View51Dropdown"
 	Click "M3/PMS170/ResponsibleField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
+	wait 4
 	Click "M3/PMS170/Product_OrderLine"
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -76,7 +83,7 @@ To change_line_status
 			
 		Else
 			throw "Error","Could not find M3/PMS170/Structuretype image in M3/PMS170 script, function change_line_status"
-End If        
+		End If        
 	else
 		throw "Error","Could not find M3/PMS170/Change_Line image in M3/PMS170 script, function change_line_status"
 	End If

@@ -95,10 +95,39 @@ to setDataScript2 dataIndex
 	put Cell(worksheet, "A" & dataIndex) into coNum
 end setDataScript2
 
+To SetDataScript2A dataIndex
+	global customerNumber
+	global coType
+	global PO
+	global TagField
+	global DeliveryTerm
+	global DeliveryMethod
+	global WHNumber
+	global itemCode
+	global quantity
+	global PromoCod
+	global TranctionResonCode
+	global BlanketAgreement
+	set ExcelFile to workbook(ResourcePath("2-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Sheet2")
+	Put Cell(worksheet, "A" & dataIndex) into customerNumber
+	Put Cell(worksheet, "B" & dataIndex) into coType
+	Put Cell(worksheet, "C" & dataIndex) into  PO
+	Put Cell(worksheet, "D" & dataIndex) into TagField
+	Put Cell(worksheet, "E" & dataIndex) into DeliveryTerm 
+	Put Cell(worksheet, "F" & dataIndex) into DeliveryMethod
+	Put Cell(worksheet, "G" & dataIndex) into WHNumber
+	Put Cell(worksheet, "H" & dataIndex) into itemCode
+	Put Cell(worksheet, "I" & dataIndex) into quantity
+	Put Cell(worksheet, "J" & dataIndex) into PromoCod
+	Put Cell(worksheet, "K" & dataIndex) into TranctionResonCode
+	Put Cell(worksheet, "L" & dataIndex) into BlanketAgreement
+End SetDataScript2A
+
 to setSimpleData fileName, sheetName, dataIndex
 	global data
 	set excelFile to workbook(ResourcePath(fileName))
-	set worksheet to ExcelFile.Worksheet(sheetName)
+set worksheet to ExcelFile.Worksheet(sheetName)
 	put Cell(worksheet, "A" & dataIndex) into data
 	return data
 end setSimpleData
@@ -132,7 +161,7 @@ To SetDataScript6 dataIndex
 	global TagField
 	global DeliveryTerm
 	global DeliveryMethod
-	global WHNumber
+     global WHNumber
 	global itemCode
 	global quantity
 	global PromoCod
