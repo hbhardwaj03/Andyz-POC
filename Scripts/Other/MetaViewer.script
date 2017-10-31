@@ -16,7 +16,8 @@ End loginMV
 
 ## Search for the Refernce Number and open up the pdf
 To lookupMV NumberMV
-	Wait 10
+	WaitFor 45, "MetaViewer/MetaViewerTree/FinalFolder"
+	wait 5
 	TypeText NumberMV
 	TypeText ReturnKey
 	
@@ -30,13 +31,17 @@ To lookupMV NumberMV
 		Wait 3
 	end repeat
 	
-	Log "Search successful"
-	DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
-	DoubleClick "MetaViewer/MetaViewerTree/SubFolder1"
-	DoubleClick "MetaViewer/MetaViewerTree/SubFolder2"
-	DoubleClick "MetaViewer/MetaViewerTree/SubFolder3"
-	DoubleClick "MetaViewer/MetaViewerTree/PDFicon"
-	
+	if ImageFound("MetaViewer/MetaViewerTree/FinalFolder") then
+		Log "Search successful"
+		DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
+		DoubleClick "MetaViewer/MetaViewerTree/SubFolder1"
+		DoubleClick "MetaViewer/MetaViewerTree/SubFolder2"
+		DoubleClick "MetaViewer/MetaViewerTree/SubFolder3"
+		DoubleClick "MetaViewer/MetaViewerTree/PDFicon"
+		return true
+	else
+		return false
+	end if
 End lookupMV
 
 ## Puts in the data from the PDF into variables for us to use for comparing against the Excel
@@ -70,7 +75,7 @@ to validateInvoice
 	Log (AccountNoPayPDF & " is the Account No of the Pay Account in PDF")
 	
 	set AccountNoShipPDF to ReadText((900,343))
-	Log (AccountNoShipPDF & " is the Account No of the Ship Account PDF")
+Log (AccountNoShipPDF & " is the Account No of the Ship Account PDF")
 	
 	return (InvoiceNoPDF, OrderNoPDF, WhsPDF, AccountNoPayPDF, AccountNoShipPDF, customersPO, deliveryNumber)
 end validateInvoice

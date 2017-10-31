@@ -21,38 +21,25 @@ end poReceipt
 
 to captureQuantity
 	wait 5
-	if imagefound("M3/PPS300/PPS310/PPS310E") then
-		
-		//Click "M3/PPS300/PPS310/Quantity"
-		//set quantity to ReadText(((329,354),(343,363)))
-		put readtext(260,364,283,376) into quantity
-		If quantity <> ""
-			Logsuccess "Received Quantity in PPS310E was:- "&  quantity
-			return  quantity
-		else
-			Logerror " Received Quantity was not Recorded in PPS310 Screen"
-		End If
-	end if
+	//set quantity to ReadText(((329,354),(343,363)))
+	//put readtext(260,364,283,376) into quantity
+	put  ReadText(350,387)into RMquanty
+	put readtext (("M3/PPS300/PPS310/ReceivedqtyLT"),("M3/PPS300/PPS310/ReceivedqtyRB")) into quantity
+	log quantity
 end captureQuantity
 
 to enterApprovedQuantity quantity
-
-	if quantity<>"" then
-		click "M3/PPS300/PPS310/Approvedqty"
-		typetext  quantity
-		logsuccess "quantity is logged as:- "&quantity
-		click "M3/PPS300/Next"
-		//click "M3/PPS300/Actions"
-		//click  "M3/PPS300/ConfirmUpdateF"
-		wait 5
-		click "M3/PPS300/previousbutton"
-		wait 2
-		click "M3/PPS300/Confirmoutput"
-		//Click "M3/PPS300/PPS310/XClose"	
-	else
-		
-		logerror "quantity is not logged"
-	end if
+	Click "M3/PPS300/PPS310/Approvedqty"
+	typetext  quantity
+	logsuccess "quantity is logged as:- "&quantity
+	click "M3/PPS300/Next"
+	//click "M3/PPS300/Actions"
+	//click  "M3/PPS300/ConfirmUpdateF"
+	wait 5
+	click "M3/PPS300/previousbutton"
+	wait 2
+	click "M3/PPS300/Confirmoutput"
+	//Click "M3/PPS300/PPS310/XClose"	
 end enterApprovedQuantity
 
 
