@@ -47,7 +47,9 @@ repeat forever
 	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
 	click  "M3/PPS300/XClose"
 	wait 5
-	DoubleClick "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
+	Click "M3/PPS300/Confirmoutput"
 	wait 4
 	//Click (89,433)
 	(******** To Capture Quantity in PPS310 for the Receving Number ****)
