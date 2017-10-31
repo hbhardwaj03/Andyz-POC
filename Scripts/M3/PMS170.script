@@ -19,7 +19,7 @@ to lookup coNumber
 	TypeText "061"
 	TypeText Return
 	//WaitFor 10, "M3/PMS170/Sortingorder_2"
-	WaitFor 10,"M3/PMS170/SortingorderPMS170"
+	WaitFor 45,"M3/PMS170/SortingorderPMS170"
 	//Click (Image:"M3/PMS170/SortingorderPMS170")
 	Click (780, 115)
 	TypeText homeKey

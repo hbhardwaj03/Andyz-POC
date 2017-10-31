@@ -137,7 +137,7 @@ to ConfigB2 // 3 Level of Customization
 	TypeText "Test Pers 2"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
-	Click "M3/Configurations/configuration001/PersColor/JP054OtherColor"
+	Click Image:"M3/Configurations/configuration001/PersColor/JP054OtherColor", WaitFor:45
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "Gray"
@@ -151,7 +151,7 @@ to ConfigB2 // 3 Level of Customization
 	TypeText "Test Pers 3"
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
-	Click "M3/Configurations/configuration001/PersColor/JP054OtherColor"
+	Click Image:"M3/Configurations/configuration001/PersColor/JP054OtherColor", WaitFor:45
 	TypeText Return
 	Click "M3/OIS101/PersonalizationField"
 	TypeText "Gray"
