@@ -29,6 +29,8 @@ repeat forever
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
+	"M3/Application".MaximizePanel
+	"M3/PPS300".setSortingOrder
 	
 	(************ To Get Remaining Quantity from Line Item **********)
 	"M3/PPS300".searchlineitem ItemNumber
