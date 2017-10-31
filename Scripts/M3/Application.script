@@ -12,10 +12,45 @@ end close
 To MaximizePanel
 	if ImageFound (20,"M3/Application/ResizePanel") then
 		Log "PMS170 found in Maximize state"
-	else 
+		else 
 		if ImageFound (3,"M3/Application/MaximizePanel")
 			Click "M3/Application/MaximizePanel"
 			Log "Panel PMS170 was resized to Maximize"
 		end if
 	end if
 End MaximizePanel
+
+// Call this function with desired zoom level 90/70/75
+to checkZoomLevel DesiredZoomLevel
+	click(555,55)
+	KeyDown controlKey
+	TypeText "="
+	waitfor 5, "M3/Application/ZoomLevel"
+	Put ReadText((505,395),(523,410)) into CurrentZoomLevel
+	Put CurrentZoomLevel as integer into CurrentZoomLevel
+	Log "Page at : " &CurrentZoomLevel &"%"
+	if CurrentZoomLevel = DesiredZoomLevel
+		Keyup controlKey
+		Exit handler
+	end if
+	put CurrentZoomLevel - DesiredZoomLevel into differnce
+	put differnce/5 into xTimes
+	Log xTimes
+	put xTimes as integer into y
+	if y is less than 0 then
+		put abs(xTimes) into y
+		Log "Zoom in " &y &"Times"
+		repeat y times
+			TypeText "="
+		end repeat
+		
+	else
+		put abs(xTimes) into y
+		Log "Zoom out " &y &"Times"
+		KeyDown controlKey
+		repeat y times
+			typeText "-"
+		end repeat
+	end if
+	Keyup controlKey
+end checkZoomLevel
