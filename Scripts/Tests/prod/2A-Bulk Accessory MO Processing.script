@@ -19,25 +19,20 @@ repeat forever
 	
 	(************** Set up data *************)
 	//initialize data variables
-	DataStore.setDataScript2A dataIndex
+	DataStore.setDataScript2 dataIndex
 	
 	//increment counter
 	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
-	if customerNumber is empty then exit repeat
+	if coNum is empty then exit repeat
 	
 	//Log "CO# " & coNum
 	
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	// log in to application
 	"Flows/Application".login username, password
-	(************** Order entry ***************)
-	"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode
 	
-	(************* To recod CO Number ******************************)
-	put "Flows/OrderEntry".recordCONumber() into coNumber
-	set coNumber to coNum
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	put "M3/PMS100".recordMO() into moNum
