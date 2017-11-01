@@ -142,7 +142,7 @@ end manualPacking
 
 to close
 	wait 5
-	Click "M3/MMS100/CloseButton"
+	Click "M3/MMS100/CloseButton2"
 end close
 
 
