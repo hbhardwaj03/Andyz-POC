@@ -33,6 +33,7 @@ To lookupMV NumberMV
 	
 	if ImageFound("MetaViewer/MetaViewerTree/FinalFolder") then
 		Log "Search successful"
+		wait 3
 		DoubleClick "MetaViewer/MetaViewerTree/FinalFolder"
 		DoubleClick "MetaViewer/MetaViewerTree/SubFolder1"
 		DoubleClick "MetaViewer/MetaViewerTree/SubFolder2"
