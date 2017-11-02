@@ -68,74 +68,6 @@ repeat Forever
 	"Other/MetaViewer".openMV
 	"Other/MetaViewer".loginMV UserName,Password
 	wait 10
-<<<<<<< HEAD
-	"Other/MetaViewer".lookupMV InvoiceNumber
-	put "Other/MetaViewer".ReadMVdata() into test
-	log test
-	"Other/MetaViewer".closeMV
-	
-	------------------------------------------------------ Close and Exit MetaViewer
-	
-	put item 1 of test into  InvoiceNumberMV
-	
-	put item 2 of test into InvoiceDateMV
-	Put DateManipulate(InvoiceDateMV) into InvoiceDateMV
-	
-	put item 3 of test into OrderNumMV
-	put item 4 of test into WHSMV
-	put item 5 of test into DeliveryNumMV
-	
-	put item 6 of test into CustomerPOMV
-	if CustomerPOMV contains "Customer" then set CustomerPOMV to ""
-	
-	put item 7 of test into AccountNumMV
-	put item 8 of test into ItemNumMV
-	put item 9 of test into DescriptionMV
-	put item 10 of test into ShippedQtyMV
-	put item 11 of test into UMMV
-	
-	put item 12 of test into UnitPriceMV
-	put ManipulatePriceFormat(UnitPrice) into UnitPriceMV
-	
-	put item 13 of test into Disc1MV
-	if Disc1MV is empty 
-		put 0 into Disc1MV
-	else
-		put ManipulatePriceFormat(Disc1MV) into Disc1MV
-	end if
-	
-	put item 14 of test into Disc2MV
-	if Disc2MV is empty 
-		put 0 into Disc2MV
-	else
-		put ManipulatePriceFormat(Disc2MV) into Disc2MV
-	end if
-	
-	put item 15 of test into Disc3MV
-	if Disc3MV is empty 
-		put 0 into Disc3MV
-	else
-		put ManipulatePriceFormat(Disc3MV) into Disc3MV
-	end if
-	
-	put item 16 of test into CstmChangesMV
-	if CstmChangesMV is empty
-		put 0 into CstmChangesMV
-	else
-		put ManipulatePriceFormat(CstmChangesMV) into CstmChangesMV
-	end if
-	
-	put item 17 of test into NetPriceMV
-	if NetPriceMV is empty
-		put 0 into NetPriceMV
-	else
-		put ManipulatePriceFormat(NetPriceMV) into NetPriceMV
-	end if
-	
-	put item 18 of test into ExtendedMV
-	if ExtendedMV is empty
-		put 0 into ExtendedMV
-=======
 	put "Other/MetaViewer".lookupMV(InvoiceNumber) into invoiceFound
 	if invoiceFound then
 		put "Other/MetaViewer".ReadMVdata() into test
@@ -264,8 +196,7 @@ repeat Forever
 		compare "NetOrderTotal" , NetOrderTotalMV , NetOrderTotal
 		compare "ShippingHandlingTotal" ,ShippingHandlingTotalMV,ShippingHandlingTotal
 		compare "TotalInvoice", TotalInvoiceMV,TotalInvoice
->>>>>>> 5221b45d6a1edb2602136f04a388dfb6ee007f7f
-	else
+		else
 		logerror "Invoice not found"
 		"Other/MetaViewer".closeMV
 	end if
