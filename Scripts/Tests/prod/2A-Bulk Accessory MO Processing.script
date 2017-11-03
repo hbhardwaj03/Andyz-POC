@@ -12,7 +12,7 @@ global username, password, coNum, prodNum
 "Datastore".setLoginVariables 3
 
 // initialize data line counter
-put 2 into dataIndex
+put 4 into dataIndex
 
 (************** Start Test ***************)
 repeat forever

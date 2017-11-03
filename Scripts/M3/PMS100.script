@@ -9,10 +9,13 @@
 end open
 
 to lookupSchedule scheduleNumber
+	Put "85" into DesiredZoomLevel
+	"M3/Application".checkZoomLevel DesiredZoomLevel
 	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
 	Click "M3/PMS100/SortingOrder7"
 	Click "M3/PMS100/ViewDropdown"
+	//Click "M3/PMS100/ViewPMS100"
 	TypeText homeKey
 	Click "M3/PMS100/View4-2"
 	WaitFor 20, "M3/PMS100/FacilityField"
@@ -151,16 +154,16 @@ to pick
 	KeyDown ControlKey
 	repeat 6 times
 		TypeText "="
-	end repeat
-	KeyUp ControlKey
-	Click "M3/PMS100/MWS420B1OrderLine"
-	Click "M3/PMS100/ConfirmIssuesLink"
-	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
-	KeyDown ControlKey
-	repeat 6 times
-		TypeText "-"
-	end repeat
-	KeyUp ControlKey
+end repeat
+KeyUp ControlKey
+Click "M3/PMS100/MWS420B1OrderLine"
+Click "M3/PMS100/ConfirmIssuesLink"
+assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+KeyDown ControlKey
+repeat 6 times
+	TypeText "-"
+end repeat
+KeyUp ControlKey
 end pick
 
 function checkPickingStatusImage
@@ -193,7 +196,8 @@ function checkPickingListsImage
 end checkPickingListsImage
 
 to recordMO
-	Click "M3/PMS100/COMOOrderLine"
+	//Click "M3/PMS100/COMOOrderLine"
+	Click "M3/PMS100/HighlightCO"
 	DoubleClick "M3/PMS100/MONumberOrderLine"
 	Wait 3
 	DoubleClick "M3/PMS100/MONumber"
@@ -234,7 +238,7 @@ to checkMOStatusStartedImage
 end checkMOStatusStartedImage
 
 to checkMOStatusFinished
-	assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
+assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
 end checkMOStatusFinished
 
 to checkMOStatusFinishedImage
