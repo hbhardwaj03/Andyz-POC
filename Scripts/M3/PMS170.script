@@ -174,9 +174,14 @@ to scheduleNew scheduleNumber
 end scheduleNew
 
 to releaseMO
-	RightClick "M3/PMS170/OrderLine"
+	(*RightClick "M3/PMS170/OrderLine"
 	Click "M3/PMS170/RelatedOptions"
 	Click "M3/PMS170/ReleaseButton"
+*) 
+	wait 2
+	Click "M3/PMS170/Related"
+	Click "M3/PMS170/ReleaseCTRL11"//TypeText controlKey,"11"
+	wait 2
 end releaseMO
 
 to recordProdNum
