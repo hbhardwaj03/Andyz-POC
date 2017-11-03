@@ -9,6 +9,8 @@
 end open
 
 to lookupSchedule scheduleNumber
+	Put "85" into DesiredZoomLevel
+	"M3/Application".checkZoomLevel DesiredZoomLevel
 	Click "M3/PMS100/SortingOrderDropdown"
 	TypeText homeKey
 	Click "M3/PMS100/SortingOrder7"
