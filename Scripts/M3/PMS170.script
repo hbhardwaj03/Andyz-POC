@@ -132,11 +132,15 @@ to createScheduleNumber
 end createScheduleNumber
 
 to scheduleNew scheduleNumber
-	RightClick "M3/PMS170/OrderLine"
+	(*//RightClick "M3/PMS170/OrderLine"
 	wait 2
 	Click  "M3/PMS170/Related"
 	wait 2
-	Click  "M3/PMS170/AddScheduleNumber_1"
+	Click  "M3/PMS170/AddScheduleNumber_1"*)
+	Click "M3/PMS170/OrderLine"
+	wait 2
+	Click "M3/PMS170/Related"
+	Click "M3/PMS170/AddScheduleNumber_1"
 	wait 2
 	TypeText f4
 	wait 3
@@ -151,12 +155,14 @@ to scheduleNew scheduleNumber
 	Wait 3
 	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
 	Wait 3
-	RightClick "M3/PMS170/OrderLine"
+	(*RightClick "M3/PMS170/OrderLine"
 	wait 2
 	Click "M3/PMS170/RelatedOptions"
 	wait 2
 	Click "M3/PMS170/AddScheduleNumber"
-	wait 2
+	wait 2*)
+	Click "M3/PMS170/Related"
+	Click "M3/PMS170/AddScheduleNumber_1"
 	TypeText scheduleNumber
 	wait 2
 	TypeText Return
@@ -175,7 +181,8 @@ end releaseMO
 
 to recordProdNum
 	wait 3
-	put ReadText(((102,387),(161,399))) into prodNum
+	//put ReadText(((102,387),(161,399))) into prodNum
+	put ReadText(((100,387),(179,399))) into prodNum
 	log prodNum
 	return prodNum
 end recordProdNum

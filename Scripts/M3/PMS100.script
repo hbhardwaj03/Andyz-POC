@@ -13,6 +13,7 @@ to lookupSchedule scheduleNumber
 	TypeText homeKey
 	Click "M3/PMS100/SortingOrder7"
 	Click "M3/PMS100/ViewDropdown"
+	//Click "M3/PMS100/ViewPMS100"
 	TypeText homeKey
 	Click "M3/PMS100/View4-2"
 	WaitFor 20, "M3/PMS100/FacilityField"
