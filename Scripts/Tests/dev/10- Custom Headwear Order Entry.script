@@ -1,0 +1,277 @@
+﻿-----------------------------------------------------------  Name:Data-driven end to end custom headwear order entry  ---------------------------------------------------
+(* 
+Description: Script is only order entry. In the excel file and has associated simple configurations.
+These configurations must be data-driven.The configuration options are selected based on the text input of the data file and not hard-coded 
+Building the one logo script is the priority for order entry only at this time. 
+
+Author: Himanshu Bhardwaj
+ *)
+----------------------------------------------------------- >>>>Final Script to be put here>>>> ---------------------------------------------------------------
+(*
+//declare login variables
+global username, password,
+
+//declare data variables
+global dataIndex, custNum, custPO, tag, delTerm,coType
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
+
+//initialize test variables
+"DataStore".setGlobalsScript10
+
+//initialize data line counter
+put 2 into dataIndex
+
+(************** Start Test ***************)
+repeat forever
+	
+	(************** Set up data *************)
+	
+	put (0) into badData --skip known bad entries in test data
+	// 13 no straps option in config
+	// 23 extra page in CO creation (OIS100V)
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	//break if no more data
+	if custNum is empty then exit repeat
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	
+	logData
+end repeat
+
+*)
+
+----------------------------------------------------------->> > >  >  SAND-BOX Area  >  > > >>------------------------------------------------------
+
+//declare test variables
+global username, password
+global itemCode, productQuantity
+
+//declare data variables
+global dataIndex,
+global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
+//initialize test variables
+put 2 into dataIndex
+--to setDataScript10 dataIndex
+global custNum
+global custPO
+global entryStyle
+global colorSku
+global orderQty
+global proofReqd
+global titleRFtype
+global frontTitleColor
+global numOfCustmztn
+global locatn1
+global custmztn1
+global pers1TextBox
+global pers1Letr
+global pers1TextShape
+global pers1Color
+global logo1Style
+global logo1ID
+global logo1ColorInstrctn
+global orderNotesYorN
+
+global tag
+global delTerm
+global delMeth
+global style
+global color
+global ConfigCode
+global BlnktAgrmnt
+global Priority
+global trnsctnResn
+
+
+set ExcelFile to workbook(ResourcePath("10-data.xlsx"))
+set worksheet to ExcelFile.Worksheet("Custom Input")
+put Cell(worksheet, "A" & dataIndex) into custNum
+put Cell(worksheet, "B" & dataIndex) into custPO
+put Cell(worksheet, "C" & dataIndex) into entryStyle
+put Cell(worksheet, "D" & dataIndex) into colorSku
+put Cell(worksheet, "E" & dataIndex) into orderQty
+put Cell(worksheet, "F" & dataIndex) into proofReqd
+put Cell(worksheet, "G" & dataIndex) into titleRFtype
+put Cell(worksheet, "H" & dataIndex) into frontTitleColor
+put Cell(worksheet, "J" & dataIndex) into numOfCustmztn
+put Cell(worksheet, "K" & dataIndex) into locatn1
+put Cell(worksheet, "L" & dataIndex) into custmztn1
+put Cell(worksheet, "M" & dataIndex) into pers1TextBox
+put Cell(worksheet, "N" & dataIndex) into pers1Letr
+put Cell(worksheet, "O" & dataIndex) into pers1TextShape
+put Cell(worksheet, "P" & dataIndex) into pers1Color
+put Cell(worksheet, "Q" & dataIndex) into logo1Style
+put Cell(worksheet, "R" & dataIndex) into logo1ID
+put Cell(worksheet, "S" & dataIndex) into logo1ColorInstrctn
+put Cell(worksheet, "T" & dataIndex) into orderNotesYorN
+
+(*	
+	put Cell(worksheet, "F" & dataIndex) into tag
+	put Cell(worksheet, "G" & dataIndex) into delTerm
+	put Cell(worksheet, "H" & dataIndex) into delMeth
+	put Cell(worksheet, "I" & dataIndex) into Priority
+	put Cell(worksheet, "J" & dataIndex) into style
+	put Cell(worksheet, "K" & dataIndex) into color
+	put Cell(worksheet, "W" & dataIndex) into ConfigCode
+	put Cell(worksheet, "X" & dataIndex) into blnktAgrmnt
+	put Cell(worksheet, "Z" & dataIndex) into trnsctnResn
+	*)
+--end setDataScript10
+
+
+"Datastore".setLoginVariables 2
+"M3/Application".open
+"M3/Login".login userName, password
+
+(*
+to logData
+	global dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+end logData
+*)
+--to doFullRun
+
+global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
+//initialize test variables
+--"DataStore".setGlobalsScript1
+
+
+--DataStore.setDataScript10 dataIndex
+--logData
+
+//increment counter
+--put dataIndex + 1 into dataIndex
+
+//break if no more data
+//if custNum is empty then exit repeat
+
+(************** Start flow ****************)
+--"Flows/Application".login username, password
+
+(************** Order entry ***************)
+//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+
+--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
+Log "Enter new order"
+"M3/OIS300".open
+"M3/OIS300".startNewOrder
+Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+"M3/OIS300".enterCustomerNumber custNum,"",""
+"M3/OIS300".submitOIS100A  (**Commented as it should not be at this postion in this flow*)
+"M3/OIS300".enterCustomersPO custPO
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E ""
+"M3/OIS300".submitOIS102H
+
+put "Flows/OrderEntry".recordCONumber() into coNum
+
+"M3/OIS101".enterItemCode entryStyle --itemCode
+"M3/OIS101".enterItemQuantity orderQty --quantity
+if imageFound(text: "black")
+	put imagelocation (text: "Black") into loc 
+	click (loc +(75,0))
+	typeText orderQty
+end if
+
+set proofReqd to "H-No"
+if imageFound(3,text: proofReqd)
+	put imageLocation(text:proofReqd) into loc
+	click (loc +(216,0))	
+end if
+
+set titleRFtype to "HB03 - Raised"
+if imageFound(3,text: titleRFtype)
+	put imageLocation(text:titleRFtype) into loc
+	click (loc +(216,0))	
+end if
+
+set frontTitleColor to "HA01 - Standard Default"
+if imageFound(3,text: frontTitleColor)
+	put imageLocation(text:frontTitleColor) into loc
+	click (loc +(216,0))	
+end if
+
+(*
+customize "H-NO"
+customize "HB03 - Raised"
+customize "HA01 - Standard Default"
+customize "H-NO"
+customize "1"
+customize "HD01 - Wearer's Right"
+customize "HL01 - Logo 1"
+customize "HS02 - Embroidery"
+customize "358783"
+customize "HE01 - Set"
+*)
+to customize configEntity
+	put split (configEntity, " ") into temp
+	put item 1 of temp into configValueCode
+	if item 2of temp is  "-"
+		put item 3 of temp into configValueText
+	else
+		put item 2 of temp into configValueText
+	end if
+	KeyDown controlKey
+	TypeText "a"
+	KeyUp controlKey
+	TypeText deleteKey
+	TypeText configValueCode
+	wait 1
+	TypeText returnKey
+end customize
+
+
+to ReadAndCustomize configEntity
+	put split (configEntity, " ") into temp
+	put item 1 of temp into configValueCode
+	if item 2of temp is  "-"
+		put item 3 of temp into configValueText
+	else
+		put item 2 of temp into configValueText
+	end if
+	if imageFound(3,text: configValueCode)
+		put imageLocation(text:configValueCode) into loc
+		click (loc +(254,0))
+		Log configEntity &" : is selected"
+	end if
+end ReadAndCustomize
+
+if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
+
+(************** Exit *********************)
+--"Flows/Application".exitApp
+--end doFullRun
+
+
+
+
+
+
