@@ -81,8 +81,9 @@ to enterTransResonCode tranctionResonCode
 end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
-	click "M3/OIS101/lineItem"
-	wait 2
+	//click "M3/OIS101/lineItem"
+	
+	"M3/OIS101".ChangeViewInOis101
 	if BlanketAgreement <> "" then
 		Click "M3/OIS101/BlanketAgreement"
 		TypeText controlKey, "a"
