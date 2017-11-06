@@ -84,7 +84,7 @@ to enterProduct itemCode,ConfigurationNo
 		//	else
 		//"M3/OIS101".configuratorA
 	end if
-	"M3/OIS101".closeFromOrderLines
+	//"M3/OIS101".closeFromOrderLines
 end enterProduct
 
 To EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
