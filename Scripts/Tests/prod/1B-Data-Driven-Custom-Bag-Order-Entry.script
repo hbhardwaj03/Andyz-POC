@@ -46,6 +46,13 @@ repeat forever
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
 	
+	(*************** To Apply Blanket  Agreement **********************)
+	put blnktAgrmnt into BlanketAgreement
+	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
+	
+	(**************** To Close Order entry Screen ****************************)
+	"M3/OIS101".closeFromOrderLines
+	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
 	
