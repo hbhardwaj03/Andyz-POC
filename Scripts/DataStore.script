@@ -127,7 +127,7 @@ End SetDataScript2A
 to setSimpleData fileName, sheetName, dataIndex
 	global data
 	set excelFile to workbook(ResourcePath(fileName))
-set worksheet to ExcelFile.Worksheet(sheetName)
+	set worksheet to ExcelFile.Worksheet(sheetName)
 	put Cell(worksheet, "A" & dataIndex) into data
 	return data
 end setSimpleData
@@ -161,7 +161,7 @@ To SetDataScript6 dataIndex
 	global TagField
 	global DeliveryTerm
 	global DeliveryMethod
-     global WHNumber
+	global WHNumber
 	global itemCode
 	global quantity
 	global PromoCod
@@ -268,6 +268,51 @@ to SetDataScript8 dataIndex
 end SetDataScript8
 
 
+to setDataScript10 dataIndex
+	global custNum
+	global custPO
+	global entryStyle
+	global colorSku
+	global orderQty
+	global proofReqd
+	global titleRFtype
+	global frontTitleColor
+	global frontTitleOutline
+	global numOfCustmztn
+	global locatn1
+	global custmztn1
+	global pers1TextBox
+	global pers1Letr
+	global pers1TextShape
+	global pers1Color
+	global logo1Style
+	global logo1ID
+	global logo1ColorInstrctn
+	global orderNotesYorN
+	
+	set ExcelFile to workbook(ResourcePath("10-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Custom Input")
+	put Cell(worksheet, "A" & dataIndex) into custNum
+	put Cell(worksheet, "B" & dataIndex) into custPO
+	put Cell(worksheet, "C" & dataIndex) into entryStyle
+	put Cell(worksheet, "D" & dataIndex) into colorSku
+	put Cell(worksheet, "E" & dataIndex) into orderQty
+	put Cell(worksheet, "F" & dataIndex) into proofReqd
+	put Cell(worksheet, "G" & dataIndex) into titleRFtype
+	put Cell(worksheet, "H" & dataIndex) into frontTitleColor
+	put Cell(worksheet, "I" & dataIndex) into frontTitleOutline
+	put Cell(worksheet, "J" & dataIndex) into numOfCustmztn
+	put Cell(worksheet, "K" & dataIndex) into locatn1
+	put Cell(worksheet, "L" & dataIndex) into custmztn1
+	put Cell(worksheet, "M" & dataIndex) into pers1TextBox
+	put Cell(worksheet, "N" & dataIndex) into pers1Letr
+	put Cell(worksheet, "O" & dataIndex) into pers1TextShape
+	put Cell(worksheet, "P" & dataIndex) into pers1Color
+	put Cell(worksheet, "Q" & dataIndex) into logo1Style
+	put Cell(worksheet, "R" & dataIndex) into logo1ID
+	put Cell(worksheet, "S" & dataIndex) into logo1ColorInstrctn
+	put Cell(worksheet, "T" & dataIndex) into orderNotesYorN
+end setDataScript10
 
 
 (*
