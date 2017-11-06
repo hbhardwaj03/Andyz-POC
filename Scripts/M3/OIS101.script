@@ -203,7 +203,7 @@ to closeFromOrderLines
 	Wait 3
 	Click "M3/OIS101/XCloseButton"
 	//Close OIS110E
-	WaitFor 30, "M3/OIS101/OIS110ETitle"
+	WaitFor 60, "M3/OIS101/OIS110ETitle"
 	Wait 3
 	Click "M3/OIS101/XCloseButton"
 	Wait 3
