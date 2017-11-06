@@ -81,6 +81,7 @@ to enterTransResonCode tranctionResonCode
 end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
+wait 10
 	//click "M3/OIS101/lineItem"
 	"M3/OIS101".ChangeViewInOis101
 	Click "M3/OIS101/PromoDiscprice"
@@ -95,11 +96,11 @@ to BlanketAgreement BlanketAgreement
 	wait 4
 	If ImageFound("M3/OIS101/BlanketAgr") then
 		Put ReadText((373,291),(424,300)) into BlanketAgreement1
-		Log BlanketAgreement1
 		if BlanketAgreement1 = BlanketAgreement then
 			LogSuccess "BlanketAgreement is Applied to line Item was:-  "&BlanketAgreement1
 		else if BlanketAgreement <>"" then
-			LogWarning  "BlanketAgreement is Applied to line Item was:-  "&BlanketAgreement
+			
+			LogSuccess  "BlanketAgreement is Applied to line Item was:-  "&BlanketAgreement
 			
 		else
 			LogError  "BlanketAgreement Not Applied to lthe ine Item"
@@ -151,7 +152,7 @@ To ChangeViewInOis101
 	Click "M3/OIS101/View_1"
 	wait 2
 	TypeText homeKey
-	wait 2
+	wait 5
 	Click  "M3/OIS101/G5L01004PriceDiscounts"
 End ChangeViewInOis101
 
