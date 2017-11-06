@@ -81,7 +81,7 @@ to enterTransResonCode tranctionResonCode
 end enterTransResonCode
 
 to BlanketAgreement BlanketAgreement
-wait 10
+	wait 10
 	//click "M3/OIS101/lineItem"
 	"M3/OIS101".ChangeViewInOis101
 	Click "M3/OIS101/PromoDiscprice"
