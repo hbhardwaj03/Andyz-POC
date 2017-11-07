@@ -55,12 +55,22 @@ to submitOIS100A
 end submitOIS100A
 
 to enterCustomersPO PO
-	Click "M3/OIS300/CustomersPONumber"
+	if ImageFound("M3/OIS300/Facility") then
+		Click "M3/OIS300/NextButton"
+		wait 4
+	end if
+	if ImageFound( "M3/OIS300/Paymenterms") then
+		//Click (926,682)
+		Click "M3/OIS300/NextButton"
+		wait 4
+	end if
+	Click "M3/OIS300/CustomersPONumber" 
 	TypeText PO
 end enterCustomersPO
 
 to TagField TagField
 	//DoubleClick "M3/OIS300/TagForHeaderLevel"
+	//Click "M3/OIS300/NextButton"
 	DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
 	
 	TypeText controlKey, "a"
@@ -70,6 +80,7 @@ to TagField TagField
 end TagField
 
 to DeliveryTerm DeliveryTerm
+	//Click "M3/OIS300/NextButton"
 	if DeliveryTerm is not empty then
 		//DoubleClick "M3/OIS300/DeliveryTerms"
 		DoubleClick "M3/OIS100/DeliveryTerms"
