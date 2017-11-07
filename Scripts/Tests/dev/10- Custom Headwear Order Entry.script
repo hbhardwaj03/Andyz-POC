@@ -88,26 +88,16 @@ put 2 into dataIndex
 
 repeat 2 times
 	
-	"Datastore".setDataScript10
+	//initialize test variables
+	"Datastore".setDataScript10 dataIndex
 	"Datastore".setLoginVariables 2
+	// Login to M3
 	"M3/Application".open
 	"M3/Login".login userName, password
-	
-	
-	--to doFullRun
-	
-	//initialize test variables
-	--"DataStore".setGlobalsScript1
-	
-	
-	--DataStore.setDataScript10 dataIndex
-	--logData
 	
 	//increment counter
 	put dataIndex + 1 into dataIndex
 	
-	//break if no more data
-	//if custNum is empty then exit repeat
 	
 	(************** Start flow ****************)
 	--"Flows/Application".login username, password
@@ -171,6 +161,7 @@ repeat 2 times
 	
 	"M3/OIS101".closeOrderLines
 	"M3/OIS300".close
+	(************** Exit *********************)
 	"Flows/Application".exitApp
 end repeat
 
@@ -209,7 +200,7 @@ end ReadAndCustomize
 
 --set ImageRectangle((15,722),(862,760))
 
-(************** Exit *********************)
+
 --
 --end doFullRun
 
