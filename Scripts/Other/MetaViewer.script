@@ -295,10 +295,10 @@ To ReadMVdata
 	put x as number into x
 	put y as number into y
 	
-	set ShipdQty to ReadText((292,y- 1),(368,y+15))
-	set UM to ReadText((378,y- 1),(430,y+15))
-	set UnitPrice to ReadText((440,y- 1),(515,y+15))
-	set Disc1 to ReadText ((525,y- 1),(565,y+15))
+	set ShipdQty to ReadText((292,y- 2),(368,y+16))
+	set UM to ReadText((378,y- 2),(430,y+16))
+	set UnitPrice to ReadText((440,y- 2),(515,y+16))
+	set Disc1 to ReadText ((525,y- 1),(565,y+16))
 	set Disc2 to ReadText(((575,y- 1),(634,y+16)))
 	set Disc3 to ReadText (((637,y- 1),(692,y+16)))
 	set CstmChg to ReadText (((695,y- 1),(765,y+16)))

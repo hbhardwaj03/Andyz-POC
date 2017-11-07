@@ -81,33 +81,31 @@ global logo1Style
 global logo1ID
 global logo1ColorInstrctn
 global orderNotesYorN
+global runCounter
+global DocPath
 
 //declare data variables
 
 put 2 into dataIndex
+"Datastore".setDataScript10 dataIndex
+put createDocumentCO (runCounter) into DocPath
 
-repeat 2 times
+repeat 50 times
+	//initialize test variables
+	"Datastore".setDataScript10 dataIndex
+	if custNum is empty
+		put 2 into dataIndex
+		"Datastore".setDataScript10 dataIndex
+	end if
 	
-	"Datastore".setDataScript10
 	"Datastore".setLoginVariables 2
+	// Login to M3
 	"M3/Application".open
 	"M3/Login".login userName, password
-	
-	
-	--to doFullRun
-	
-	//initialize test variables
-	--"DataStore".setGlobalsScript1
-	
-	
-	--DataStore.setDataScript10 dataIndex
-	--logData
 	
 	//increment counter
 	put dataIndex + 1 into dataIndex
 	
-	//break if no more data
-	//if custNum is empty then exit repeat
 	
 	(************** Start flow ****************)
 	--"Flows/Application".login username, password
@@ -118,9 +116,9 @@ repeat 2 times
 	
 	--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 	Log "Enter new order"
-	"M3/OIS300".open
-	"M3/Application".checkZoomLevel 75
+	"M3/OIS300".open 
 	"M3/OIS300".startNewOrder
+	"M3/Application".checkZoomLevel 75
 	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
 	"M3/OIS300".enterCustomerNumber custNum,"",""
 	"M3/OIS300".submitOIS100A 
@@ -133,6 +131,8 @@ repeat 2 times
 	"M3/OIS300".submitOIS102H
 	
 	put "Flows/OrderEntry".recordCONumber() into coNum
+	documentCOgenerated DocPath,coNum
+	set COcounter to COcounter+1
 	
 	"M3/OIS101".enterItemCode entryStyle --itemCode
 	wait 1
@@ -140,8 +140,6 @@ repeat 2 times
 	Click (130,300)
 	TypeText orderQty -- "1"
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
-	
-	
 	
 	customize proofReqd
 	customize titleRFtype
@@ -171,8 +169,19 @@ repeat 2 times
 	
 	"M3/OIS101".closeOrderLines
 	"M3/OIS300".close
+	(************** Exit *********************)
 	"Flows/Application".exitApp
 end repeat
+
+Log "Total CO created :" & COcounter
+documentTotalCO DocPath, COcounter
+
+set runCounter to runCounter+1
+set ExcelFile to workbook(ResourcePath("10-data.xlsx"))
+set worksheet to ExcelFile.Worksheet("Custom Input")
+set  Cell(worksheet, "U2") to runCounter
+
+
 
 to customize configEntity
 	put split (configEntity, " ") into temp
@@ -207,9 +216,88 @@ to ReadAndCustomize configEntity
 	end if
 end ReadAndCustomize
 
---set ImageRectangle((15,722),(862,760))
 
-(************** Exit *********************)
+to getDate
+	put  date into Dt
+	put split (Dt, "/") into temp
+	put item 1 of temp into dd
+	put item 2 of temp into mm
+	put item 3 of temp into yy
+	set yyyy to 20&yy
+	set extnsn to (dd&mm&yyyy)
+	Log extnsn
+end getDate
+
+to createDocumentCO runCounter
+	put ScriptResults() into tst
+	put item 1 of tst into tst2
+	put property "LogFile" of tst2 into tst3
+	put tst3 into flPath
+	delete "LogFile.txt" from flPath
+	set flName to "GeneratedCoNum" &runCounter&".txt" 
+	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
+	set fileResult to flPath &flName
+	create file fileResult
+	return fileResult
+end createDocumentCO
+
+to documentCOgenerated fileResult,CreatedCO
+	open file fileResult for updating --update
+	put crlf into temp
+	write  CreatedCO &temp to file fileResult at eof
+	close file fileResult
+end documentCOgenerated
+
+to documentTotalCO fileResult, COcount
+	open file fileResult for updating --update
+	put crlf into temp
+	write  "Total CO Created in this Run : " &COcount &temp to file fileResult at eof
+close file fileResult
+end documentTotalCO
+
+(*
+put ScriptResults() into tst
+put item 1 of tst into tst2
+put property "LogFile" of tst2 into tst3
+put tst3 into flPath
+delete "LogFile.txt" from flPath
+set flName to "GeneratedCoNum" &runCounter &".xlsx" 
+--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
+set fileResult to flPath &flName
+set ExcelFile to fileResult
+set worksheet to ExcelFile.Worksheet("Sheet1")
+set  Cell(worksheet, "A" & index+1) to CreatedCO
+set  Cell(worksheet, "B2") to COcount
+
+
+
+set runCounter to 2
+
+put ScriptResults() into tst
+put item 1 of tst into tst2
+put property "LogFile" of tst2 into tst3
+put tst3 into flPath
+delete "LogFile.txt" from flPath
+set flName to "GeneratedCoNum" &runCounter&".txt"
+set fileResult to flPath &flName
+create file fileResult
+repeat 5 times
+	open file fileResult for updating --update
+	put crlf into temp
+	write  runCounter &temp to file fileResult at eof
+	
+	close file fileResult
+	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
+	
+	--create file fileResult
+	--create file flName in folder flPath
+	set runCounter to runCounter+1
+end repeat
+
+*)
+
+
+
 --
 --end doFullRun
 

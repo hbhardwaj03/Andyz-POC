@@ -51,9 +51,10 @@ end supplyChain
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
 	Click (187,595)
-	wait 1
+	wait 8
 	TypeText itemCode
 	TypeText Return
+	wait 5
 end enterItemCode
 
 to enterItemQuantity productQuantity

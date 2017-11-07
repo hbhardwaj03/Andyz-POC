@@ -178,9 +178,9 @@ To SetDataScript6 dataIndex
 	Put Cell(worksheet, "G" & dataIndex) into WHNumber
 	Put Cell(worksheet, "H" & dataIndex) into itemCode
 	Put Cell(worksheet, "I" & dataIndex) into quantity
-	Put Cell(worksheet, "J" & dataIndex) into PromoCod
-	Put Cell(worksheet, "K" & dataIndex) into TranctionResonCode
-	Put Cell(worksheet, "L" & dataIndex) into BlanketAgreement
+	Put Cell(worksheet, "S" & dataIndex) into PromoCod
+	Put Cell(worksheet, "T" & dataIndex) into TranctionResonCode
+	Put Cell(worksheet, "R" & dataIndex) into BlanketAgreement
 End SetDataScript6
 
 To SetDataScript7 dataIndex
@@ -289,6 +289,7 @@ to setDataScript10 dataIndex
 	global logo1ID
 	global logo1ColorInstrctn
 	global orderNotesYorN
+	global runCounter
 	
 	set ExcelFile to workbook(ResourcePath("10-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Custom Input")
@@ -312,6 +313,7 @@ to setDataScript10 dataIndex
 	put Cell(worksheet, "R" & dataIndex) into logo1ID
 	put Cell(worksheet, "S" & dataIndex) into logo1ColorInstrctn
 	put Cell(worksheet, "T" & dataIndex) into orderNotesYorN
+	put Cell(worksheet, "U2") into  runCounter
 end setDataScript10
 
 
