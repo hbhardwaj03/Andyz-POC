@@ -289,6 +289,7 @@ to setDataScript10 dataIndex
 	global logo1ID
 	global logo1ColorInstrctn
 	global orderNotesYorN
+	global runCounter
 	
 	set ExcelFile to workbook(ResourcePath("10-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Custom Input")
@@ -312,6 +313,7 @@ to setDataScript10 dataIndex
 	put Cell(worksheet, "R" & dataIndex) into logo1ID
 	put Cell(worksheet, "S" & dataIndex) into logo1ColorInstrctn
 	put Cell(worksheet, "T" & dataIndex) into orderNotesYorN
+	put Cell(worksheet, "U2") into  runCounter
 end setDataScript10
 
 
