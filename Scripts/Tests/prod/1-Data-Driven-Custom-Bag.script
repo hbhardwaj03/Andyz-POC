@@ -15,7 +15,7 @@ global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-put 7 into dataIndex
+put 2 into dataIndex
 
 (************** Start Test ***************)
 repeat forever
