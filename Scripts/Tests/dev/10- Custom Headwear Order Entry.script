@@ -133,15 +133,13 @@ repeat 50 times
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	documentCOgenerated DocPath,coNum
 	set COcounter to COcounter+1
-	(*
+	
 	"M3/OIS101".enterItemCode entryStyle --itemCode
 	wait 1
 	--"M3/OIS101".enterItemQuantity orderQty --quantity
 	Click (130,300)
 	TypeText orderQty -- "1"
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
-	
-	
 	
 	customize proofReqd
 	customize titleRFtype
@@ -168,7 +166,7 @@ repeat 50 times
 	
 	if logo1ColorInstrctn <>empty then customize logo1ColorInstrctn
 	if orderNotesYorN <>empty then customize orderNotesYorN
-	*)
+	
 	"M3/OIS101".closeOrderLines
 	"M3/OIS300".close
 	(************** Exit *********************)
