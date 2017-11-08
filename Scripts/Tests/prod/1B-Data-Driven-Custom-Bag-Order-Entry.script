@@ -11,13 +11,15 @@ global username, password, DCAUser, DCAPswrd
 global dataIndex, custNum, custPO, tag, delTerm,coType
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 
+
 //initialize test variables
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
 put 2 into dataIndex
-
 (************** Start Test ***************)
+
+"Flows/Application".login username, password
 repeat forever
 	
 	(************** Set up data *************)
@@ -38,8 +40,9 @@ repeat forever
 	//break if no more data
 	if custNum is empty then exit repeat
 	
-	(************** Start flow ****************)
-	"Flows/Application".login username, password
+	(************** Start flow ***************
+	"Flows/Application".login username, password*)
+	
 	
 	(************** Order entry ***************)
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
@@ -53,12 +56,16 @@ repeat forever
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
 	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
 	
+	
+	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Input")
+	Put dataIndex - 1 into IndexIn
+	put coNum into Cell(worksheet, "AB" & indexIn)
 	logData
 end repeat
-
+(************** Exit *********************)
+"Flows/Application".exitApp
 to logData
 	global dataIndex
 	global custNum
@@ -99,6 +106,7 @@ to doFullRun
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
+	
 	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
 	
