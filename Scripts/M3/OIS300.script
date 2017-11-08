@@ -16,24 +16,29 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 	TypeText deleteKey
 	TypeText customerNumber
 	TypeText Return
+	if imagefound("M3/OIS300/ChangeAddress") or imagefound ("M3/OIS300/OIS166B") then
+		Click "M3/OIS300/NextButton"
+	else 
+		
+		if coType is not empty then
+			TypeText coType
+			log coType
+		end if
+		Wait 2
+		if SalesHold <> "" then
+			wait 2
+			Click "M3/OIS100/SalesHoldCode"
+			TypeText SalesHold
+			//TypeText return
+		End If
+		Click "M3/OIS300/NextButton"
+		if ImageFound("M3/OIS300/promotionOrExpns") then
+			Repeat 2 times
+				TypeText Return
+			End repeat
+		end if
+	end if
 	
-	if coType is not empty then
-		TypeText coType
-		log coType
-	end if
-	Wait 2
-	if SalesHold <> "" then
-		wait 2
-		Click "M3/OIS100/SalesHoldCode"
-		TypeText SalesHold
-		//TypeText return
-	End If
-	Click "M3/OIS300/NextButton"
-	if ImageFound("M3/OIS300/promotionOrExpns") then
-		Repeat 2 times
-			TypeText Return
-		End repeat
-	end if
 	
 	(*if coType is "USO" then
 		Click "M3/OIS300/NextButton"Floc
@@ -54,51 +59,86 @@ to submitOIS100A
 	MoveTo "Corner"
 end submitOIS100A
 
-to enterCustomersPO PO
-	if ImageFound("M3/OIS300/Facility") then
+to enterCustomersPO PO,TagField,DeliveryTerm,DeliveryMethod
+	if ImageFound("M3/OIS300/PriorityDropdown") then
 		Click "M3/OIS300/NextButton"
 		wait 4
+		
+		if imagefound("M3/OIS300/OIS100FTitle") then
+			"M3/OIS300".TagField TagField
+		End if
+		If DeliveryTerm <> "" then
+			"M3/OIS300".DeliveryTerm DeliveryTerm
+			wait 2
+		End If
+		If DeliveryMethod <> "" then
+			"M3/OIS300".DeliveryMethod DeliveryMethod
+			wait 2
+			
+		End If
+		
+		if ImageFound( "M3/OIS300/Paymenterms") then
+			//Click (926,682)
+			Click "M3/OIS300/NextButton"
+			wait 4
+		end if
+	else
+		
+		Click "M3/OIS300/CustomersPONumber" 
+		TypeText PO
 	end if
-	if ImageFound( "M3/OIS300/Paymenterms") then
-		//Click (926,682)
-		Click "M3/OIS300/NextButton"
-		wait 4
-	end if
-	Click "M3/OIS300/CustomersPONumber" 
-	TypeText PO
+	
 end enterCustomersPO
 
 to TagField TagField
 	//DoubleClick "M3/OIS300/TagForHeaderLevel"
 	//Click "M3/OIS300/NextButton"
-	DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
-	
-	TypeText controlKey, "a"
-	TypeText deleteKey
-	TypeText TagField
-	wait 2
+	if imagefound("M3/OIS300/OIS100HTitle") then
+		Wait 4
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	else
+		DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
+		TypeText controlKey, "a"
+		TypeText deleteKey
+		TypeText TagField
+		wait 2
+	end if
 end TagField
 
 to DeliveryTerm DeliveryTerm
 	//Click "M3/OIS300/NextButton"
-	if DeliveryTerm is not empty then
-		//DoubleClick "M3/OIS300/DeliveryTerms"
-		DoubleClick "M3/OIS100/DeliveryTerms"
-		TypeText controlKey, "a"
-		TypeText deleteKey
-		TypeText DeliveryTerm
+	if imagefound("M3/OIS300/ChangeAddress") or imagefound ("M3/OIS300/OIS166B") then
+		Click "M3/OIS300/NextButton"
+		Click "M3/OIS300/NextButton"
+	else 
+		
+		if DeliveryTerm is not empty then
+			//DoubleClick "M3/OIS300/DeliveryTerms"
+			DoubleClick "M3/OIS100/DeliveryTerms"
+			TypeText controlKey, "a"
+			TypeText deleteKey
+			TypeText DeliveryTerm
+		end if
 	end if
+	
 end DeliveryTerm
 
 To DeliveryMethod DeliveryMethod
-	if DeliveryMethod is not empty then
+	if imagefound("M3/OIS300/OIS103B") then
+		wait 4
+		Click "M3/OIS300/CloseButton"
+	else
+		if DeliveryMethod is not empty then
 		//DoubleClick "M3/OIS300/DeliveryMethod"
-		DoubleClick "M3/OIS100/DeliveryMethod"
-		TypeText controlKey, "a"
-		TypeText deleteKey
-		TypeText DeliveryMethod
+	DoubleClick "M3/OIS100/DeliveryMethod"
+			TypeText controlKey, "a"
+			TypeText deleteKey
+			TypeText DeliveryMethod
+		end if
 	end if
 End DeliveryMethod
+
 
 to submitOIS100G
 	Click "M3/OIS300/NextButton"
@@ -166,7 +206,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "3" then
+			else if priority = "3" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 6 times
@@ -174,7 +214,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "2" then
+			else if priority = "2" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 7 times
@@ -182,7 +222,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "1" then
+			else if priority = "1" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 8 times
@@ -190,7 +230,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else
+			else
 			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
 		end if
 	end if
@@ -209,11 +249,13 @@ end enterOIS100E
 
 to submitOIS102H
 	(*WaitFor 8.0, "M3/OIS300/OIS102HTitle"*)
+	
 	Click "M3/OIS300/NextButton"
 	MoveTo "Corner"
+	
 end submitOIS102H
 
-to lookupCO coNumber
+to lookupCO coNumber1
 	Click Image:"M3/OIS300/CoField", WaitFor:60
 	TypeText controlKey, "a"
 	TypeText deleteKey
@@ -254,7 +296,7 @@ to updatePickList
 	Click "M3/PMS100/PickingListsLink"
 	KeyDown ControlKey
 	repeat 5 times
-		TypeText "="
+TypeText "="
 	end repeat
 	KeyUp ControlKey
 	Click "M3/PMS100/MWS420B1OrderLine"
@@ -415,7 +457,7 @@ to recordDepartDate
 	Log Departdate
 	return Departdate
 end recordDepartdate
-
+1
 to openDeliveryToolboxlink
 	Click Image:"M3/OIS300/HighlightCO", WaitFor:45
 	Click "M3/OIS300/Relateddropdownnew"
