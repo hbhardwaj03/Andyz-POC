@@ -22,18 +22,24 @@ global TotalShippedQty
 global NetOrderTotal
 global ShippingHandlingTotal
 global TotalInvoice
-global UserName,Password,dataIndex
+global UserName,Password,dataIndex, runCounter, compareCount
 
-put 2 into dataIndex
+put 6 into dataIndex
 
-repeat Forever
+"Datastore".setLoginVariables 6
+
+put "Datastore".readXcelData( "Validation.xlsx", "Sheet2", "G9") into runCounter
+set docCount to runCounter
+put createRunDoc(docCount) into docPath
+set compareCount to 0
+
+repeat 10 times--Forever
 	(*put (5,6,10,11) into badData*) //these are having multiple item lines from Data sheet 3
 	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
 	(*repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat*)
 	"DataStore".SetDataScript8 dataIndex
-	"Datastore".setLoginVariables 6
 	
 	if InvoiceNumber is empty then exit repeat//break if no more data
 	
@@ -182,7 +188,7 @@ repeat Forever
 		compare "CustomerPO" ,CustomerPOMV,CustomerPO
 		compare "AccountNum", AccountNumMV, AccountNum
 		compare "ItemNum" , ItemNumMV , ItemNum
-		compare "Description" , DescriptionMV, Description
+		--compare "Description" , DescriptionMV, Description
 		compare "ShippedQty" , ShippedQtyMV, ShippedQty
 		compare "UM" ,UMMV,UM
 		compare "UnitPrice", UnitPriceMV, UnitPrice
@@ -200,8 +206,11 @@ repeat Forever
 		logerror "Invoice not found"
 		"Other/MetaViewer".closeMV
 	end if
-	
+	set compareCount to compareCount+1
 end repeat
+set runCounter to runCounter+1
+"Datastore".updateXcelData "Validation.xlsx", "Sheet2", "G9", runCounter
+documentCompareResult docPath, compareCount
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -250,6 +259,46 @@ to DateManipulate Date
 	Log Date &" : After Manipulation"
 	Return Date
 end DateManipulate
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--                                                                    Generating Compare Report!!
+to createRunDoc docNo
+	put ScriptResults() into tst
+	put item 1 of tst into tst2
+	put property "LogFile" of tst2 into tst3
+	put property "RunDate" of tst2 into ctr
+	put tst3 into flPath
+	delete "LogFile.txt" from flPath
+	set flName to "Compare Results" &docNo &".txt" 
+	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
+	set fileResult to flPath &flName
+	create file fileResult
+	open file fileResult for updating --update
+	put crlf into temp
+	write " Run Deatils : " &ctr &temp to file fileResult at eof
+	close file fileResult
+	return fileResult
+end createRunDoc
+
+to documentCompareResult fileResult, Tcount
+	put ScriptResults() into tst
+	put item 1 of tst into tst2
+	put property "Errors:" of tst2 into Err
+	put property "Successes:" of tst2 into Succs
+	open file fileResult for updating --update
+	put crlf into temp
+	write  Err &temp to file fileResult at eof
+	write  Succs &temp to file fileResult at eof
+	write  "Total Comparisons Done in this Run: " &Tcount &temp to file fileResult at eof
+	close file fileResult
+end documentCompareResult
+
+to documentTotalComparisn fileResult, Tcount
+	open file fileResult for updating --update
+	put crlf into temp
+	write  "Total Comparisons Done in this Run: " &Tcount &temp to file fileResult at eof
+	close file fileResult
+end documentTotalCO
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
