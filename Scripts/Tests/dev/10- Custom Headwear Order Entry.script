@@ -90,7 +90,7 @@ put 2 into dataIndex
 "Datastore".setDataScript10 dataIndex
 put createDocumentCO (runCounter) into DocPath
 
-repeat 50 times
+repeat 30 times
 	//initialize test variables
 	"Datastore".setDataScript10 dataIndex
 	if custNum is empty
@@ -252,7 +252,7 @@ to documentTotalCO fileResult, COcount
 	open file fileResult for updating --update
 	put crlf into temp
 	write  "Total CO Created in this Run : " &COcount &temp to file fileResult at eof
-close file fileResult
+	close file fileResult
 end documentTotalCO
 
 (*
