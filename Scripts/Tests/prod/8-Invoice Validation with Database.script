@@ -24,16 +24,19 @@ global ShippingHandlingTotal
 global TotalInvoice
 global UserName,Password,dataIndex, runCounter, compareCount
 
-put 6 into dataIndex
+put 7 into dataIndex
 
 "Datastore".setLoginVariables 6
 
 put "Datastore".readXcelData( "Validation.xlsx", "Sheet2", "G9") into runCounter
 set docCount to runCounter
+
+set runCounter to runCounter+1
+"Datastore".updateXcelData "Validation.xlsx", "Sheet2", "G9", runCounter
 put createRunDoc(docCount) into docPath
 set compareCount to 0
 
-repeat 10 times--Forever
+repeat Forever
 	(*put (5,6,10,11) into badData*) //these are having multiple item lines from Data sheet 3
 	--put (5,6,8,11,12,22,41,47) into badData //these  are having multiple item lines from Data sheet 2
 	(*repeat while dataIndex is in badData
@@ -208,8 +211,7 @@ repeat 10 times--Forever
 	end if
 	set compareCount to compareCount+1
 end repeat
-set runCounter to runCounter+1
-"Datastore".updateXcelData "Validation.xlsx", "Sheet2", "G9", runCounter
+
 documentCompareResult docPath, compareCount
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
