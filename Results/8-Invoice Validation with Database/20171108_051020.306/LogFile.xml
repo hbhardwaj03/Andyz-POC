@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<testsuites>
+ <testsuite name="Tests/prod/8-Invoice Validation with Database.script" package="eggplant-poc.suite" timestamp="2017-11-08 07:09:40.790 -0800"
+ tests="1" successes="202" errors="3" time="5627.022000">
+  <properties>
+   <property name="RunDate" value="2017-11-08 07:09:40.790 -0800"/>
+   <property name="Status" value="Failure"/>
+  </properties>
+  <testcase name="Tests/prod/8-Invoice Validation with Database.script" assertions="205" successes="202" errors="3" time="5627.007">
+    <failure type="LogError">Disc3 don't match! 5 != 0.00</failure>
+    <failure type="LogError">NetPrice don't match!  138 != 138.00</failure>
+    <failure type="LogError">NetPrice don't match!  138 != 138.00</failure>
+  </testcase>
+ </testsuite>
+</testsuites>
