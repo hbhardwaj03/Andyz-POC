@@ -24,7 +24,7 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	//else
 	//LogError "New Order not started" 
 	//end if	
-	"M3/OIS300".enterCustomersPO PO
+	"M3/OIS300".enterCustomersPO PO,TagField,DeliveryTerm,DeliveryMethod
 	"M3/OIS300".submitOIS100A
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".TagField TagField
@@ -55,6 +55,9 @@ end recordCONumber
 
 to enterProduct itemCode,ConfigurationNo
 	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
+	
+	//If ImageFound(20, "M3/OIS101/OIS101B1Title") or ImageFound(20,"M3/OIS101/OIS101B1" ) then
+	
 	Wait 5
 	"M3/OIS101".enterItemCode itemCode	
 	"M3/OIS101".enterItemColor
@@ -83,7 +86,10 @@ to enterProduct itemCode,ConfigurationNo
 		//"M3/Configurations".config001
 		//	else
 		//"M3/OIS101".configuratorA
+		
 	end if
+	
+	//end if 
 	//"M3/OIS101".closeFromOrderLines
 end enterProduct
 

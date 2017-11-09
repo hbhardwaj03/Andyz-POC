@@ -95,13 +95,22 @@ to BlanketAgreement BlanketAgreement
 	wait 2
 	DoubleClick "M3/OIS101/0ApplyAgreemen"
 	wait 4
+	If  ImageFound(10,"M3/OIS101/iinvalid" ) then
+		LogError "Blanket Agreement Number   "&BlanketAgreement&"Is Invalid"
+	else if ImageFound(10,"M3/OIS101/noteligibleI" ) then
+		LogError "Customer is Not Eligible for Agreement  "&BlanketAgreement
+	end if
+	
 	If ImageFound("M3/OIS101/BlanketAgr") then
-		Put ReadText((373,291),(424,300)) into BlanketAgreement1
+		--Put ReadText((352,291),(399,300)) into BlanketAgreement1 
+		Put ReadText((385,291),(430,300)) into BlanketAgreement1
+		Log BlanketAgreement1
 		if BlanketAgreement1 = BlanketAgreement then
 			LogSuccess "BlanketAgreement is Applied to line Item was:-  "&BlanketAgreement1
-		else if BlanketAgreement <>"" then
 			
-			LogSuccess  "BlanketAgreement is Applied to line Item was:-  "&BlanketAgreement
+		else if BlanketAgreement1 <>"" then
+			
+			LogWarning  "BlanketAgreement Already Applied to line Item was:-  "&BlanketAgreement1
 			
 		else
 			LogError  "BlanketAgreement Not Applied to lthe ine Item"
@@ -109,7 +118,6 @@ to BlanketAgreement BlanketAgreement
 		End If
 		
 	End If
-	
 	
 end BlanketAgreement
 
@@ -123,10 +131,11 @@ To setPromocode
 	//Click "M3/OIS101/9WhsItpprom"
 	Click "M3/OIS101/9Whslipprom"
 	Click "M3/OIS101/Next"
-	Wait 2
+	Wait 5
 End setPromocode
 
 To EnterPromoCode PromoCod
+	wait 5
 	Click "M3/OIS101/Prom"
 	TypeText PromoCod
 End EnterPromoCode

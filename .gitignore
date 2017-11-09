@@ -1,4 +1,8 @@
-Results/
+Results/Tests/
+Results/DataStore/
+Results/Flows/
+Results/Other/
+Results/M3/
 Results/.timestamp
 Results/eggplant-poc_Statistics.xml
 Results/SuiteStatistics.csv

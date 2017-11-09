@@ -57,7 +57,8 @@ to setDataScript1 dataIndex
 	global Priority
 	global trnsctnResn
 	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Input")
+	--set worksheet to ExcelFile.Worksheet("Input")
+	set worksheet to ExcelFile.Worksheet("Issue33Data")
 	put Cell(worksheet, "A" & dataIndex) into custNum
 	put Cell(worksheet, "E" & dataIndex) into custPO
 	put Cell(worksheet, "F" & dataIndex) into tag
@@ -131,6 +132,22 @@ to setSimpleData fileName, sheetName, dataIndex
 	put Cell(worksheet, "A" & dataIndex) into data
 	return data
 end setSimpleData
+
+to readXcelData fileName, sheetName, CellIndex
+	--global data
+	set excelFile to workbook(ResourcePath(fileName))
+	set worksheet to ExcelFile.Worksheet(sheetName) -- Remember not to store anything in F9 cell, might have abnormal behaviour
+	put Cell(worksheet, CellIndex) into data
+	return data
+end readXcelData
+
+to updateXcelData fileName, sheetName, CellIndex, data1
+	--global data1
+	set excelFile to workbook(ResourcePath(fileName))
+	set worksheet to ExcelFile.Worksheet(sheetName) -- Remember not to store anything in F9 cell, might have abnormal behaviour
+	set Cell(worksheet, CellIndex) to data1
+end updateXcelData
+
 
 to setDataScript3
 	global customerNumber
@@ -239,6 +256,7 @@ to SetDataScript8 dataIndex
 	global NetOrderTotal
 	global ShippingHandlingTotal
 	global TotalInvoice
+	global runCounter
 	
 	set ExcelFile to workbook(ResourcePath("8-data.xlsx"))
 	set worksheet to ExcelFile.Worksheet("Sheet1")
@@ -264,6 +282,7 @@ to SetDataScript8 dataIndex
 	put Cell(worksheet, "T" & dataIndex) into NetOrderTotal
 	put Cell(worksheet, "U" & dataIndex) into ShippingHandlingTotal
 	put Cell(worksheet, "V" & dataIndex) into TotalInvoice
+	--put Cell(worksheet, "W2") into runCounter
 	
 end SetDataScript8
 
