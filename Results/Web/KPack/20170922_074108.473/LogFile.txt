@@ -1,0 +1,6 @@
+﻿2017-09-22 07:41:08.477 -0400	START		Running Web/KPack.script
+2017-09-22 07:41:13.435 -0400	click	KPack/Login/IELink	at (87, 748)	2	on_web_kpack	Web/KPack.script
+2017-09-22 07:41:27.573 -0400	click	KPack/Login/KPackLink	at (172, 664)	3	on_web_kpack	Web/KPack.script
+2017-09-22 07:42:40.457 -0400	Exception	KPack/Login/LocationDropdown	No Image Found On Screen: "KPack/Login/LocationDropdown"	5	on_web_kpack	Web/KPack.script
+2017-09-22 07:42:40.641 -0400	EndTestCase		(Duration:"92.16", Errors:"1", Exceptions:"1", StartTime:"2017-09-22 07:41:08 -0400", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
+2017-09-22 07:42:46.948 -0400	FAILURE	Screen_Error.png	Image Not Found click Error - No Image Found On Screen: "KPack/Login/LocationDropdown" -- Execution Time 0:01:32 Web/KPack.script
