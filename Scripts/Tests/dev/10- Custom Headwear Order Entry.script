@@ -6,58 +6,7 @@ Building the one logo script is the priority for order entry only at this time.
 
 Author: Himanshu Bhardwaj
  *)
------------------------------------------------------------ >>>>Final Script to be put here>>>> ---------------------------------------------------------------
-(*
-//declare login variables
-global username, password,
-
-//declare data variables
-global dataIndex, custNum, custPO, tag, delTerm,coType
-global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
-
-//initialize test variables
-"DataStore".setGlobalsScript10
-
-//initialize data line counter
-put 2 into dataIndex
-
-(************** Start Test ***************)
-repeat forever
-	
-	(************** Set up data *************)
-	
-	put (0) into badData --skip known bad entries in test data
-	// 13 no straps option in config
-	// 23 extra page in CO creation (OIS100V)
-	repeat while dataIndex is in badData
-		put dataIndex + 1 into dataIndex
-	end repeat
-	
-	//initialize data variables (sets global data variables and logs them)
-	DataStore.setDataScript1 dataIndex
-	logData
-	//increment counter
-	put dataIndex + 1 into dataIndex
-	//break if no more data
-	if custNum is empty then exit repeat
-	
-	(************** Start flow ****************)
-	"Flows/Application".login username, password
-	
-	(************** Order entry ***************)
-	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style, ConfigCode
-	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
-	
-	logData
-end repeat
-
-*)
-
------------------------------------------------------------>> > >  >  SAND-BOX Area  >  > > >>------------------------------------------------------
+----------------------------------------------------------- >>>>>>>> ---------------------------------------------------------------
 
 //declare test variables
 global username, password, coNum, dataIndex
@@ -141,14 +90,17 @@ repeat 30 times
 	TypeText orderQty -- "1"
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 	
-	customize proofReqd
-	customize titleRFtype
-	customize frontTitleColor
-	customize frontTitleOutline
-	customize numOfCustmztn
-	customize locatn1
-	if custmztn1 <>empty then customize custmztn1
+	--to singlLevelCustomize
+	if proofReqd <>empty then customize proofReqd
+	if titleRFtype <>empty then customize titleRFtype
+	if frontTitleColor <>empty then	customize frontTitleColor
 	
+	if frontTitleOutline <>empty then customize frontTitleOutline
+	if numOfCustmztn <>empty then customize numOfCustmztn
+	if locatn1 <>empty then customize locatn1
+	if custmztn1 <>empty then customize custmztn1 -- choice for Logo or Pers type
+	
+	-- below lines applicable only for pers type customization and depends upon the choice made in above line.
 	if pers1TextBox <>empty then 
 		TypeText Return
 		Click "M3/OIS101/PersonalizationField"
@@ -159,13 +111,21 @@ repeat 30 times
 	if pers1Letr <>empty then customize pers1Letr
 	if pers1TextShape <>empty then customize pers1TextShape
 	if pers1Color <>empty then customize pers1Color
+	-- up till above line for pers type-----------------------------------------
+	
+	-- below lines for Logo typen customization ----------------------------------------
 	if logo1Style <>empty then customize logo1Style
 	
 	if logo1ID <>empty then customize logo1ID
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
 	
 	if logo1ColorInstrctn <>empty then customize logo1ColorInstrctn
+	---up till here for logo type----------------------------------------------
+	
 	if orderNotesYorN <>empty then customize orderNotesYorN
+	wait 3
+	
+	--end singlLevelCustomize
 	
 	"M3/OIS101".closeOrderLines
 	"M3/OIS300".close

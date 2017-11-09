@@ -1,0 +1,198 @@
+﻿(* 
+Name: Data-driven end to end custom bag processing
+Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end custom bag flow on the scenario. 
+Author: Himanshu Bhardwaj & Andy Jenkins
+ *)
+
+
+----------------------------------------------------------- >>>>Main Script >>>> ---------------------------------------------------------------
+(*
+//declare login variables
+global username, password, DCAUser, DCAPswrd
+
+//declare data variables
+global dataIndex, custNum, custPO, tag, delTerm,coType
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
+
+
+//initialize test variables
+"DataStore".setGlobalsScript1
+
+//initialize data line counter
+put 2 into dataIndex
+(************** Start Test ***************)
+
+"Flows/Application".login username, password
+repeat forever
+	
+	(************** Set up data *************)
+	
+	//skip known bad entries in test data
+	put (0) into badData //these  are having item code of Accesories
+	// 13 no straps option in config
+	// 23 extra page in CO creation (OIS100V)
+	repeat while dataIndex is in badData
+		put dataIndex + 1 into dataIndex
+	end repeat
+	
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	logData
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	//break if no more data
+	if custNum is empty then exit repeat
+	
+	(************** Start flow ***************
+	"Flows/Application".login username, password*)
+	
+	
+	(************** Order entry ***************)
+	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
+	(*************** To Apply Blanket  Agreement **********************)
+	put blnktAgrmnt into BlanketAgreement
+	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
+	
+	(**************** To Close Order entry Screen ****************************)
+	"M3/OIS101".closeFromOrderLines
+	
+	
+	
+	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
+	set worksheet to ExcelFile.Worksheet("Input")
+	Put dataIndex - 1 into IndexIn
+	put coNum into Cell(worksheet, "AB" & indexIn)
+	logData
+end repeat
+(************** Exit *********************)
+"Flows/Application".exitApp
+
+
+----------------------------------------------------------- >>>>Sand Box>>>> ---------------------------------------------------------------
+to logData
+	global dataIndex
+	global custNum
+	global custPO
+	global tag
+	global delTerm
+	global delMeth
+	global style
+	global color
+	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+end logData
+
+
+
+*)
+
+--to doFullRun
+
+//declare test variables
+global username, password, customerNum, coType, PO
+global itemCode, productQuantity, DCAUser, DCAPswrd
+global runCounter, COcounter
+//declare data variables
+global dataIndex, custNum, custPO, tag, delTerm
+global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority , payMeth
+//initialize test variables
+
+"Datastore".setLoginVariables 2
+
+put "Datastore".readXcelData( "Validation.xlsx", "Sheet2", "G2") into runCounter
+set docCount to runCounter
+
+set runCounter to runCounter+1
+"Datastore".updateXcelData "Validation.xlsx", "Sheet2", "G2", runCounter
+
+put createDocumentCO(docCount) into docPath
+
+
+"DataStore".setGlobalsScript1
+//initialize data line counter
+put 11 into dataIndex
+
+//initialize data variables (sets global data variables and logs them)
+DataStore.setDataScript1 dataIndex
+--logData
+
+//increment counter
+put dataIndex + 1 into dataIndex
+
+(************** Start flow ****************)
+"Flows/Application".login username, password
+
+(************** Order entry ***************)
+
+//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+
+--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
+
+
+Log "Enter new order"
+"M3/OIS300".open 
+"M3/OIS300".startNewOrder
+"M3/Application".checkZoomLevel 75
+Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+"M3/OIS300".enterCustomerNumber custNum,"",""
+--"M3/OIS300".submitOIS100A 
+"M3/OIS300".enterCustomersPO custPO,TagField,delTem,delMeth
+"M3/OIS300".submitOIS100G
+"M3/OIS300".acceptPOWarning
+"M3/OIS300".submitOIS100F
+"M3/OIS300".submitOIS100H
+"M3/OIS300".submitOIS100E ""
+"M3/OIS300".submitOIS102H
+
+put "Flows/OrderEntry".recordCONumber() into coNum
+
+documentCOgenerated DocPath,coNum
+set COcounter to COcounter+1	
+
+--"Flows/OrderEntry".enterProduct style, ConfigCode
+
+(************** Exit *********************)
+"Flows/Application".exitApp
+
+Log "Total CO created :" & COcounter
+documentTotalCO DocPath, COcounter
+--end doFullRun
+
+
+to createDocumentCO runCounter
+	put ScriptResults() into tst
+	put item 1 of tst into tst2
+	put property "LogFile" of tst2 into tst3
+	put tst3 into flPath
+	delete "LogFile.txt" from flPath
+	set flName to "GeneratedCoNum" &runCounter&".txt" 
+	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
+	set fileResult to flPath &flName
+	create file fileResult
+	open file fileResult for updating 
+	put crlf into temp
+	write " Run Deatils : " &ctr &temp to file fileResult at eof
+	close file fileResult
+	return fileResult
+end createDocumentCO
+
+to documentCOgenerated fileResult,CreatedCO
+	open file fileResult for updating --update
+	put crlf into temp
+	write  CreatedCO &temp to file fileResult at eof
+	close file fileResult
+end documentCOgenerated
+
+to documentTotalCO fileResult, COcount
+	open file fileResult for updating --update
+	put crlf into temp
+	write  "Total CO Created in this Run : " &COcount &temp to file fileResult at eof
+	close file fileResult
+end documentTotalCO
+
+
+
+
