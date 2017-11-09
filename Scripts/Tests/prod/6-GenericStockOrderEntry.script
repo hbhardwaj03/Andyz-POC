@@ -4,7 +4,7 @@ global username
 global password
 
 // initialize data line counter
-put 2 into dataIndex
+put 60 into dataIndex
 
 // initialize login variables
 "Datastore".setLoginVariables 4

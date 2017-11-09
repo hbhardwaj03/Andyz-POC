@@ -92,8 +92,8 @@ to BlanketAgreement BlanketAgreement
 		TypeText deleteKey
 		TypeText BlanketAgreement
 	end if
-	wait 2
-	DoubleClick "M3/OIS101/0ApplyAgreemen"
+	///wait 2
+	//DoubleClick "M3/OIS101/0ApplyAgreemen"
 	wait 4
 	If ImageFound("M3/OIS101/BlanketAgr") then
 		Put ReadText((373,291),(424,300)) into BlanketAgreement1
