@@ -132,6 +132,10 @@ function checkAllocationStatus
 			if imageFound(5,"M3/PMS100/COMOOrderLine") then
 				Log "Image found"
 				return SUCCESS
+			else if ImageFound(5,"M3/PMS100/20Definitive99Done40RdyStar" ) then
+				
+				Logerror " insufficient inventory for an order"
+				Exit repeat
 			end if 
 			Click "M3/PMS100/Refresh"
 		end repeat
@@ -154,16 +158,16 @@ to pick
 	KeyDown ControlKey
 	repeat 6 times
 		TypeText "="
-end repeat
-KeyUp ControlKey
-Click "M3/PMS100/MWS420B1OrderLine"
-Click "M3/PMS100/ConfirmIssuesLink"
-assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
-KeyDown ControlKey
-repeat 6 times
-	TypeText "-"
-end repeat
-KeyUp ControlKey
+	end repeat
+	KeyUp ControlKey
+	Click "M3/PMS100/MWS420B1OrderLine"
+	Click "M3/PMS100/ConfirmIssuesLink"
+	assert "M3/PMS100".checkPickingStatusImage is SUCCESS, "Picking status update in picking lists"
+	KeyDown ControlKey
+	repeat 6 times
+		TypeText "-"
+	end repeat
+	KeyUp ControlKey
 end pick
 
 function checkPickingStatusImage
@@ -238,7 +242,7 @@ to checkMOStatusStartedImage
 end checkMOStatusStartedImage
 
 to checkMOStatusFinished
-assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
+	assert "M3/PMS100".checkMOStatusFinishedImage is SUCCESS, "Manufacturing started status"
 end checkMOStatusFinished
 
 to checkMOStatusFinishedImage
