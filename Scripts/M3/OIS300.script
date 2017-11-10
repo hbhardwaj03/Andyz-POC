@@ -16,62 +16,65 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 	TypeText deleteKey
 	TypeText customerNumber
 	TypeText Return
-	if imagefound("M3/OIS300/ChangeAddress") 
-		Click "M3/OIS300/NextButton"
+	
+	if customerNumber contains "USEK" 
+		typeText returnKey
+		WaitFor 45,"M3/OIS100/OIS100G/OIS100GTitle"
+		Exit handler
 	end if
 	
-	if  imagefound("M3/OIS300/OIS166B") then
-		
-		Click "M3/OIS300/NextButton"
-		if coType is not empty then
-			TypeText coType
-			log coType
-		end if
-		Wait 2
-		if SalesHold <> "" then
-			wait 2
-			Click "M3/OIS100/SalesHoldCode"
-			TypeText SalesHold
-			//TypeText return
-		End If
-		Click "M3/OIS300/NextButton"
-		if ImageFound("M3/OIS300/promotionOrExpns") then
-			Repeat 2 times
-				TypeText Return
-			End repeat
-		end if
-		
-	else
-		
-		if coType is not empty then
-			TypeText coType
-			log coType
-		end if
-		Wait 2
-		if SalesHold <> "" then
-			wait 2
-			Click "M3/OIS100/SalesHoldCode"
-			TypeText SalesHold
-			//TypeText return
-		End If
-		Click "M3/OIS300/NextButton"
-		if ImageFound("M3/OIS300/promotionOrExpns") then
-			Repeat 2 times
-				TypeText Return
-			End repeat
-		end if
+	if imagefound("M3/OIS300/ChangeAddress")then Click "M3/OIS300/NextButton"
+	
+	if  imagefound("M3/OIS300/OIS166B") then Click "M3/OIS300/NextButton"
+	if coType is not empty
+		TypeText coType
+		log coType
 	end if
-
-
-
-(*if coType is "USO" then
-		Click "M3/OIS300/NextButton"Floc
-
-	else if coType is "USA" then
+	if SalesHold <> ""
+		Click "M3/OIS100/SalesHoldCode"
+		TypeText SalesHold
+		//TypeText return
+		wait 2
 		Click "M3/OIS300/NextButton"
+	End If
+	
+	if ImageFound("M3/OIS300/promotionOrExpns")
+		Repeat 2 times
+			TypeText Return
+		End repeat
 		
-	end if*)
-(*TypeText Return*)
+	end if
+	
+	(*	
+	else
+	
+	if coType is not empty then
+		TypeText coType
+		log coType
+	end if
+	Wait 2
+	if SalesHold <> "" then
+		wait 2
+		Click "M3/OIS100/SalesHoldCode"
+		TypeText SalesHold
+		//TypeText return
+	End If
+	Click "M3/OIS300/NextButton"
+	if ImageFound("M3/OIS300/promotionOrExpns") then
+		Repeat 2 times
+			TypeText Return
+		End repeat
+	end if
+end if
+end if
+if coType is "USO" then
+	Click "M3/OIS300/NextButton"Floc
+	
+	else if coType is "USA" then
+	Click "M3/OIS300/NextButton"
+	
+end if*)
+	--TypeText returnKey
 end enterCustomerNumber
 
 To ClickNextButton
@@ -79,44 +82,93 @@ To ClickNextButton
 End ClickNextButton
 
 to submitOIS100A
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
+	if imageFound (3, "M3/OIS100/100Atitle")
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	end if
 end submitOIS100A
 
+
+// Original handler, "enterCustomersPO" has been commented. Acopy has been made and modified to handle delivery term/method
+(*
 to enterCustomersPO PO,TagField,DeliveryTerm,DeliveryMethod
 	if ImageFound("M3/OIS300/PriorityDropdown") then
 		Click "M3/OIS300/NextButton"
 		wait 4
-		
 		if imagefound("M3/OIS300/OIS100FTitle") then
 			"M3/OIS300".TagField TagField
 		End if
 		If DeliveryTerm <> "" then
 			"M3/OIS300".DeliveryTerm DeliveryTerm
-wait 2
+			wait 2
 		End If
 		If DeliveryMethod <> "" then
 			"M3/OIS300".DeliveryMethod DeliveryMethod
-			wait 2
-			
+			wait 2	
 		End If
-		
 		if ImageFound( "M3/OIS300/Paymenterms")  then
 			//Click (926,682)
 			Click "M3/OIS300/NextButton"
 			wait 4
 		end if
 	else
-		
 		Click "M3/OIS300/CustomersPONumber" 
 		TypeText PO
 	end if
-	
 end enterCustomersPO
+*)
+
+
+to enterCustomersPO PO,TagField, DeliveryTerm,DeliveryMethod
+	if ImageFound(5, "M3/OIS100/OIS100G/OIS100GTitle")
+		Click "M3/OIS300/CustomersPONumber" 
+		TypeText PO
+		TypeText returnKey
+	else 
+		if ImageFound(3,"M3/OIS300/PriorityDropdown") then Click "M3/OIS300/NextButton"
+		if ImageFound(3, "M3/OIS300/Paymenterms")  then Click "M3/OIS300/NextButton"  //Click (926,682)
+		if imagefound(3,"M3/OIS100/100F/OIS100FTitle") 
+			if TagField <>""  then"M3/OIS300".TagField TagField
+			If DeliveryTerm <> "" then "M3/OIS300".DeliveryTerm DeliveryTerm
+			If DeliveryMethod <> "" 
+				"M3/OIS300".DeliveryMethod DeliveryMethod
+				typeText returnKey
+				if ImageFound (5, "M3/OIS100/OIS100H/paymntMethd")
+					DoubleClick "M3/OIS100/OIS100H/paymntMethd"
+					TypeText controlKey, "a"
+					TypeText deleteKey
+					TypeText "CSH"
+					TypeText returnKey
+				end if
+			end if
+		end if
+		if ImageFound (3,"M3/OIS300/CustomersPONumber")
+			Click "M3/OIS300/CustomersPONumber" 
+			TypeText PO
+			TypeText returnKey	
+		end if
+	end if
+end enterCustomersPO
+
+to enterDeliveryInfo DeliveryTerm,DeliveryMethod
+	if imagefound(3,"M3/OIS100/100F/OIS100FTitle") and imageFound(3,"M3/OIS100/100F/deliveryInfoArea")
+		"M3/OIS300".DeliveryTerm DeliveryTerm 
+		"M3/OIS300".DeliveryMethod DeliveryMethod
+		typeText returnKey
+		if ImageFound (5, "M3/OIS100/OIS100H/paymntMethd")
+			DoubleClick  "M3/OIS100/OIS100H/paymntMethd"
+			TypeText controlKey, "a"
+			TypeText deleteKey
+			TypeText "CSH"
+			TypeText returnKey
+		end if
+	end if
+end enterDeliveryInfo
+
 
 to TagField TagField
 	//DoubleClick "M3/OIS300/TagForHeaderLevel"
-//Click "M3/OIS300/NextButton"
+	//Click "M3/OIS300/NextButton"
 	if imagefound("M3/OIS300/TaxCode") then
 		Wait 4
 		Click "M3/OIS300/NextButton"
@@ -139,7 +191,6 @@ to DeliveryTerm DeliveryTerm
 		Click "M3/OIS300/NextButton"
 		Click "M3/OIS300/NextButton"
 	else 
-		
 		if DeliveryTerm is not empty then
 			//DoubleClick "M3/OIS300/DeliveryTerms"
 			DoubleClick "M3/OIS100/DeliveryTerms"
@@ -148,7 +199,6 @@ to DeliveryTerm DeliveryTerm
 			TypeText DeliveryTerm
 		end if
 	end if
-	
 end DeliveryTerm
 
 To DeliveryMethod DeliveryMethod
@@ -159,7 +209,7 @@ To DeliveryMethod DeliveryMethod
 		if DeliveryMethod is not empty then
 			//DoubleClick "M3/OIS300/DeliveryMethod"
 			DoubleClick "M3/OIS100/DeliveryMethod"
-TypeText controlKey, "a"
+			TypeText controlKey, "a"
 			TypeText deleteKey
 			TypeText DeliveryMethod
 		end if
@@ -168,101 +218,109 @@ End DeliveryMethod
 
 
 to submitOIS100G
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
+	if imageFound(3,"M3/OIS100/OIS100G/OIS100GTitle")
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	end if
 end submitOIS100G
 
 to acceptPOWarning	
 	if ImageFound(ImageName:"M3/OIS300/WARNING", WaitFor:5) then
 		Click "M3/OIS300/WARNINGOkButton"
-(*Click "M3/OIS300/OkButton"*)
+		(*Click "M3/OIS300/OkButton"*)
 		MoveTo "Corner"
 	end if
 end acceptPOWarning
 
 to submitOIS100F
 	(*WaitFor 8.0, "M3/OIS300/OIS100FTitle"*)
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
+	if imageFound(2, "M3/OIS100/100F/OIS100FTitle") 
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	end if 
 end submitOIS100F
 
 to submitOIS100H
-	WaitFor 45, "M3/OIS300/OIS100HTitle"
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
+	if ImageFound(5, "M3/OIS300/OIS100HTitle")
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	end if
 end submitOIS100H
 
 to submitOIS100E priority
-	if priority is not empty then
-		if priority = "9" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			TypeText return
-		else if priority = "8" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			TypeText upArrow
-			TypeText return
-		else if priority is "7" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			TypeText upArrow
-			TypeText upArrow
-			TypeText return
-		else if priority = "6" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 3 times
-				//TypeText upArrow
+	if imageFound(3,"M3/OIS100/100Etitle")
+		if priority is not empty then
+			if priority = "9" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				TypeText return
+			else if priority = "8" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
 				TypeText upArrow
-			End repeat 
-			TypeText return
-		else if priority = "5" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 4 times
-				//TypeText upArrow
+				TypeText return
+			else if priority is "7" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
 				TypeText upArrow
-			End repeat 
-			TypeText return
-		else if priority = "4" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 5 times
-				//TypeText upArrow
 				TypeText upArrow
-			End repeat 
-			TypeText return
-		else if priority = "3" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 6 times
-				//TypeText upArrow
-				TypeText upArrow
-			End repeat 
-			TypeText return
-		else if priority = "2" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 7 times
-				//TypeText upArrow
-				TypeText upArrow
-			End repeat 
-			TypeText return
-		else if priority = "1" then
-			Click "M3/OIS300/PriorityDropdown"
-			TypeText endKey
-			repeat 8 times
-				//TypeText upArrow
-				TypeText upArrow
-			End repeat 
-			TypeText return
-		else
-			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
+				TypeText return
+			else if priority = "6" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				repeat 3 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else if priority = "5" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				repeat 4 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else if priority = "4" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				repeat 5 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else if priority = "3" then
+				Click "M3/OIS300/PriorityDropdown"
+				
+				TypeText endKey
+				repeat 6 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else if priority = "2" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				repeat 7 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else if priority = "1" then
+				Click "M3/OIS300/PriorityDropdown"
+				TypeText endKey
+				repeat 8 times
+					//TypeText upArrow
+					TypeText upArrow
+				End repeat 
+				TypeText return
+			else
+				throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
+			end if
 		end if
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
 	end if
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
 end submitOIS100E
 
 to enterOIS100E deliveryDate
@@ -275,11 +333,10 @@ to enterOIS100E deliveryDate
 end enterOIS100E
 
 to submitOIS102H
-	(*WaitFor 8.0, "M3/OIS300/OIS102HTitle"*)
-	
-	Click "M3/OIS300/NextButton"
-	MoveTo "Corner"
-	
+	if ImageFound ( 3, "M3/OIS300/OIS102HTitle")
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
+	end if
 end submitOIS102H
 
 to lookupCO coNumber1

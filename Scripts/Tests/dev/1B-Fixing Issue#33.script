@@ -112,51 +112,65 @@ put createDocumentCO(docCount) into docPath
 
 "DataStore".setGlobalsScript1
 //initialize data line counter
-put 11 into dataIndex
-
-//initialize data variables (sets global data variables and logs them)
-DataStore.setDataScript1 dataIndex
---logData
-
-//increment counter
-put dataIndex + 1 into dataIndex
-
-(************** Start flow ****************)
-"Flows/Application".login username, password
-
-(************** Order entry ***************)
-
-//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
-
---"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
-
-
-Log "Enter new order"
-"M3/OIS300".open 
-"M3/OIS300".startNewOrder
-"M3/Application".checkZoomLevel 75
-Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-"M3/OIS300".enterCustomerNumber custNum,"",""
---"M3/OIS300".submitOIS100A 
-"M3/OIS300".enterCustomersPO custPO,TagField,delTem,delMeth
-"M3/OIS300".submitOIS100G
-"M3/OIS300".acceptPOWarning
-"M3/OIS300".submitOIS100F
-"M3/OIS300".submitOIS100H
-"M3/OIS300".submitOIS100E ""
-"M3/OIS300".submitOIS102H
-
-put "Flows/OrderEntry".recordCONumber() into coNum
-
-documentCOgenerated DocPath,coNum
-set COcounter to COcounter+1	
-
---"Flows/OrderEntry".enterProduct style, ConfigCode
-
-(************** Exit *********************)
-"Flows/Application".exitApp
-
+put 9 into dataIndex
+set COcounter to 0
+repeat 4 times
+	//initialize data variables (sets global data variables and logs them)
+	DataStore.setDataScript1 dataIndex
+	--logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
+	
+	(************** Order entry ***************)
+	
+	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+	
+	--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
+	
+	
+	Log "Enter new order"
+	"M3/OIS300".open 
+	(*)
+set custNum to "USEK000001"
+set custPO to"06Y Flagship" 
+set TagField to "Custom" 
+set delTerm to "FRE"
+set delMeth to "COU"
+*)
+	"M3/OIS300".startNewOrder
+	"M3/Application".checkZoomLevel 75
+	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+	"M3/OIS300".enterCustomerNumber custNum,"","" 
+	
+	// if  CO Type is USEK, Panel Sequence to follow for OIS100/* = G>F>E>158
+	// if CO Type = USA, Panel Sequence to follow for OIS100/* = G>F>H>E>158
+	
+	"M3/OIS300".submitOIS100A 
+	
+	"M3/OIS300".enterCustomersPO custPO,TagField,delTerm,delMeth--G
+	"M3/OIS300".acceptPOWarning
+	"M3/OIS300".submitOIS100G
+	"M3/OIS300".enterDeliveryInfo delTerm,delMeth --F
+	"M3/OIS300".submitOIS100F
+	--"M3/OIS300".submitOIS100H
+	"M3/OIS300".submitOIS100E ""
+	"M3/OIS300".submitOIS102H
+	
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	
+	documentCOgenerated DocPath,coNum
+	set COcounter to COcounter+1	
+	
+	--"Flows/OrderEntry".enterProduct style, ConfigCode
+	"M3/OIS101".closeFromOrderLines
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+end repeat
 Log "Total CO created :" & COcounter
 documentTotalCO DocPath, COcounter
 --end doFullRun
