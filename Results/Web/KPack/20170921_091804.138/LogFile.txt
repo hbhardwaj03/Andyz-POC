@@ -1,0 +1,4 @@
+﻿2017-09-21 09:18:04.142 -0400	START		Running Web/KPack.script
+2017-09-21 09:18:06.273 -0400	click	KPack/Login/IELink	at (87, 748)	2	on_web_kpack	Web/KPack.script
+2017-09-21 09:18:08.133 -0400	EndTestCase		(Duration:"3.979", Errors:"1", Exceptions:"0", StartTime:"2017-09-21 09:18:04 -0400", Successes:"0", TestCase:"Web/KPack.script", Warnings:"0")
+2017-09-21 09:18:08.135 -0400	ABORTED		Execution Time 0:00:04 Web/KPack.script
