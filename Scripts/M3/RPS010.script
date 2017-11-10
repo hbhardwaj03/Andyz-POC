@@ -1,0 +1,22 @@
+﻿
+
+To ATPcheck
+	Click "M3/PMS170/OrderLine"
+	wait 2
+	Click "M3/PMS170/Related"
+	wait 2
+	Click "M3/RPS010/CheckMaterialsCTRL12"
+	If ImageFound(10,"M3/RPS010/RPS010B1") then
+		Put ReadText((426,382), (448,391)) into ReqQuan
+		Put ReadText((468,382), (501,391)) into ATPQuan
+		Click "M3/RPS010/XClose"
+		wait 10
+		if ReqQuan < ATPQuan then
+			LogSuccess "Requested Quantity is Available in ATP "
+			return SUCCESS
+		else
+			LogError "Requested Quantity is NOT Available in ATP"
+			return FAIL
+		End If
+	End If
+End ATPcheck

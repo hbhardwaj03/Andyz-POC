@@ -5,14 +5,21 @@
 	(*"M3/OIS300". zoom90prcnt*)
 	"M3/PMS170".lookUp(coNumber)
 	put "M3/PMS170".recordProdNum into prodNum
-	put "M3/PMS170".createScheduleNumber() into scheduleNumber
-	"M3/PMS170".scheduleNew scheduleNumber
-	"M3/PMS170".releaseMO
-	"M3/PMS170".close
-	"M3/PMS100".open
-	"M3/PMS100".lookupSchedule scheduleNumber
-	"M3/PMS100".printShopTraveler scheduleNumber
-	return scheduleNumber
+	if  "M3/RPS010".ATPcheck is SUCCESS then
+		put "M3/PMS170".createScheduleNumber() into scheduleNumber
+		"M3/PMS170".scheduleNew scheduleNumber
+		"M3/PMS170".releaseMO
+		"M3/PMS170".close
+		"M3/PMS100".open
+		"M3/PMS100".lookupSchedule scheduleNumber
+		"M3/PMS100".printShopTraveler scheduleNumber
+		return scheduleNumber
+	else
+		
+		Logerror "Requested Quantity is NOT Available in ATP"
+		"M3/PMS170".close
+		
+	end if
 end doScheduling
 
 to doStatusScheduling coNumber
