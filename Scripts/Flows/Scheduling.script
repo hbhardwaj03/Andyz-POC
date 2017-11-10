@@ -15,8 +15,7 @@
 		"M3/PMS100".printShopTraveler scheduleNumber
 		return scheduleNumber
 	else
-		
-		Logerror "Requested Quantity is NOT Available in ATP"
+		Logerror "Requested Quantity is NOT Available in ATP for the CO# was:- "&coNumber
 		"M3/PMS170".close
 		
 	end if
