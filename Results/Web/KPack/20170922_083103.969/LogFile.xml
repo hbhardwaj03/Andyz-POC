@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<testsuites>
+ <testsuite name="Web/KPack.script" package="eggplant-poc.suite" timestamp="2017-09-22 08:31:03.969 -0400"
+ tests="1" successes="(null)" errors="(null)" time="0.000000">
+  <properties>
+   <property name="RunDate" value="2017-09-22 08:31:03.969 -0400"/>
+   <property name="Status" value="Running"/>
+  </properties>
+  <testcase name="Web/KPack.script" assertions="1" successes="0" errors="1" time="4471.772">
+  </testcase>
+ </testsuite>
+</testsuites>

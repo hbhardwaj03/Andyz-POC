@@ -12,7 +12,7 @@ global username, password, coNum, prodNum
 "Datastore".setLoginVariables 3
 
 // initialize data line counter
-put 2 into dataIndex
+put 5 into dataIndex
 
 (************** Start Test ***************)
 repeat forever
@@ -36,6 +36,7 @@ repeat forever
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	put "M3/PMS100".recordMO() into moNum
+	
 	
 	(************** Picking ******************)
 	"M3/PMS100".pick
