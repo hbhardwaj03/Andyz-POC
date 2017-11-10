@@ -174,7 +174,7 @@ to TagField TagField
 		Click "M3/OIS300/NextButton"
 		MoveTo "Corner"
 		
-		else
+	else
 		if imagefound ("M3/OIS101/TagForHeaderLevel_1") then
 			DoubleClick  "M3/OIS101/TagForHeaderLevel_1"
 			TypeText controlKey, "a"
@@ -205,7 +205,7 @@ To DeliveryMethod DeliveryMethod
 	if imagefound("M3/OIS300/OIS103B") then
 		wait 4
 		Click "M3/OIS300/CloseButton"
-	else
+		else
 		if DeliveryMethod is not empty then
 			//DoubleClick "M3/OIS300/DeliveryMethod"
 			DoubleClick "M3/OIS100/DeliveryMethod"
@@ -213,16 +213,7 @@ To DeliveryMethod DeliveryMethod
 			TypeText deleteKey
 			TypeText DeliveryMethod
 		end if
-		-----------------------------------------------------------------------------
-		if CustomerNumber is A65  then
-		DoubleClick "M3/OIS100/DeliveryMethod"
-		TypeText controlKey, "a"
-		TypeText deleteKey
-		TypeText F00
-		end if
-		
 	end if
-	
 End DeliveryMethod
 
 
@@ -257,17 +248,7 @@ to submitOIS100H
 end submitOIS100H
 
 to submitOIS100E priority
-<<<<<<< HEAD
-	if imageFound(3,"M3/OIS100/100Etitle")
-		if priority is not empty then
-			if priority = "9" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				TypeText return
-			else if priority = "8" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-=======
+	--if imageFound(3,"M3/OIS100/100Etitle") 
 	if priority is not empty then
 		if priority = "9" then
 			Click "M3/OIS300/PriorityDropdown"
@@ -285,7 +266,7 @@ to submitOIS100E priority
 			TypeText upArrow
 			TypeText return
 		else if priority = "6" then
-	Click "M3/OIS300/PriorityDropdown"
+			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 3 times
 				//TypeText upArrow
@@ -313,68 +294,31 @@ to submitOIS100E priority
 			TypeText endKey
 			repeat 6 times
 				//TypeText upArrow
->>>>>>> ac2e966b25c69be0b48d5ba3db0bdf7ecc57dedf
 				TypeText upArrow
-				TypeText return
-			else if priority is "7" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
+			End repeat 
+			TypeText return
+		else if priority = "2" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 7 times
+				//TypeText upArrow
 				TypeText upArrow
+			End repeat 
+			TypeText return
+		else if priority = "1" then
+			Click "M3/OIS300/PriorityDropdown"
+			TypeText endKey
+			repeat 8 times
+				//TypeText upArrow
 				TypeText upArrow
-				TypeText return
-			else if priority = "6" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				repeat 3 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else if priority = "5" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				repeat 4 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else if priority = "4" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				repeat 5 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else if priority = "3" then
-				Click "M3/OIS300/PriorityDropdown"
-				
-				TypeText endKey
-				repeat 6 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else if priority = "2" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				repeat 7 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else if priority = "1" then
-				Click "M3/OIS300/PriorityDropdown"
-				TypeText endKey
-				repeat 8 times
-					//TypeText upArrow
-					TypeText upArrow
-				End repeat 
-				TypeText return
-			else
-				throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
-			end if
+			End repeat 
+			TypeText return
+		else
+			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
 		end if
+	end if
+	
+	if imagefound (3,"M3/OIS100/100Etitle")
 		Click "M3/OIS300/NextButton"
 		MoveTo "Corner"
 	end if
@@ -391,7 +335,7 @@ end enterOIS100E
 
 to submitOIS102H
 	if ImageFound ( 3, "M3/OIS300/OIS102HTitle")
-		Click "M3/OIS300/NextButton"
+	Click "M3/OIS300/NextButton"
 		MoveTo "Corner"
 	end if
 end submitOIS102H
