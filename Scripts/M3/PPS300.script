@@ -70,38 +70,25 @@ End EnterRecivedQuan
 
 to enterRecievingNumberinPPS310 ReciveNumber
 	"M3/PPS310".open
-	if ImageFound(30, "M3/PPS300/PPS310/PPS310A_1") then 
-		
-		click "M3/PPS300/PPS310/Receivingno"
-		TypeText  controlkey, "a"
-		TypeText deleteKey
-		Typetext ReciveNumber
-		//TypeText Return
-		Click "M3/PPS300/Next"
-		Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber
-		wait 4
-	else if Imagefound("M3/PPS300/PPS310/PPS310B1") then
-		Click "M3/PPS300/Actions"
-		Click "M3/PPS300/PPS310/SettingsF13"
-		wait 5
-		Click "M3/PPS300/PPS310/Openingpanel"
-		Typetext upArrow
-		Typetext return
-		Click "M3/PPS300/Next"
-		wait 4
-		click "M3/PPS300/PPS310/Receivingno"
-		TypeText  controlkey, "a"
-		TypeText deleteKey
-		Typetext ReciveNumber
-		//TypeText Return
-		Click "M3/PPS300/Next"
-		wait 4
-		Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber
-	else
-		Logerror "Reciving Number not entered in PPS310"
-		
-	End if
-	
+	repeat 30 times
+		wait 1
+		if Imagefound("M3/PPS300/PPS310/PPS310B1") then
+			Click "M3/PPS300/Actions"
+			Click "M3/PPS300/PPS310/SettingsF13"
+			wait 5
+			Click "M3/PPS300/PPS310/Openingpanel"
+			Typetext upArrow
+			Typetext return
+			Click "M3/PPS300/Next"
+		end if
+		if ImageFound(30, "M3/PPS300/PPS310/PPS310A_1") then exit repeat
+	end repeat
+	click "M3/PPS300/PPS310/Receivingno"
+	TypeText  controlkey, "a"
+	TypeText deleteKey
+	Typetext ReciveNumber
+	Click "M3/PPS300/Next"
+	Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber	
 end enterRecievingNumberinPPS310
 
 to zoomIn x
