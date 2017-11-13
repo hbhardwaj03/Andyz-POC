@@ -6,7 +6,23 @@
 end login
 
 to teardown
-	"M3/Application".tryClose
+	repeat forever
+		try 
+			if ImageFound("M3/Application/ClosePanel") then
+				Click "M3/Application/ClosePanel"
+				throw "Not finished","closed panel"
+			end if
+			if ImageFound("M3/Application/ExitAGSButton") then 
+				Click "M3/Application/ExitAGSButton"
+				log "found"
+				throw "Not finished","closed AGS"
+			end if
+			exit repeat
+		catch anException
+			MoveTo ((0,0))
+			wait 3
+		end try
+	end repeat
 end teardown
 
 to exitApp
