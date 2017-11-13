@@ -87,8 +87,7 @@ to enterRecievingNumberinPPS310 ReciveNumber
 	TypeText  controlkey, "a"
 	TypeText deleteKey
 	Typetext ReciveNumber
-	Click "M3/PPS300/Next"
-	Logsuccess "Reciving Number entered in PPS310 was :- "& ReciveNumber	
+	Click "M3/PPS300/Next"	
 end enterRecievingNumberinPPS310
 
 to zoomIn x

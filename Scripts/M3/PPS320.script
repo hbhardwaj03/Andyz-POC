@@ -21,6 +21,8 @@ to enterrecievingNumber ReciveNumber
 	end repeat
 	WaitFor 45, "M3/PPS320/PPS320A"
 	Click "M3/PPS320/Receivingno_1"
+	TypeText  controlkey, "a"
+	TypeText deleteKey
 	typetext ReciveNumber
 	Click "M3/PPS320/Next"
 end enterrecievingNumber

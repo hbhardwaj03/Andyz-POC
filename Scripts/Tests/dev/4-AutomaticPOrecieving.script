@@ -54,7 +54,6 @@ repeat forever
 			if ImageFound("M3/PPS300/MNS212Title") then Click "M3/PPS300/Confirmoutput"
 			if ImageFound("M3/Application/InforSmartOfficeTitle") then exit repeat
 		end repeat
-		//Click (89,433)
 		(******** To Capture Quantity in PPS310 for the Receving Number ****)
 		"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
 		//put "M3/PPS310".captureQuantity() into quantity
@@ -76,14 +75,14 @@ repeat forever
 			"M3/PPS320".enterStoredQty MPF
 		End If
 		(**************** To Print Variables ***************************)
-		log "PO number was:- "&poNumber
-		log "Ware house number was:-"&WHNumber
-		Log "Item Number was :-"&ItemNumber
-		Log "Remaining Quantity was:- "&RMquanty
-		Log "Recive number was:- "&ReciveNumber
-		Log "Approved Quantity was :- "&quantity
-		Log "Location was :-"&MPF
-		Log "Location for reciveing Number was:-"&INSP
+		log "PO number:" && poNumber
+		log "Warehouse number:" && WHNumber
+		Log "Item Number:" && ItemNumber
+		Log "Remaining Quantity:" && RMquanty
+		Log "Recive number:" && ReciveNumber
+		Log "Approved Quantity:" && quantity
+		Log "Location:" && MPF
+		Log "Location for reciveing Number:" && INSP
 	else
 		logwarning "Failed to find item number" && ItemNumber && "for PO" && poNumber
 		click  "M3/PPS300/XClose"
