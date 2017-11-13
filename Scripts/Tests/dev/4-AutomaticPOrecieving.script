@@ -35,52 +35,57 @@ repeat forever
 	"M3/PPS300".setSortingOrder
 	
 	(************ To Get Remaining Quantity from Line Item **********)
-	"M3/PPS300".searchlineitem ItemNumber
-	put "M3/PPS300".captureremainingquantity() into RMquanty
-	(********** To Enter Recived Quantity and Apply ConfirmUpdate *****)
-	"M3/PPS300".EnterRecivedQuan RMquanty
-	click "M3/PPS300/Actions"
-	click  "M3/PPS300/ConfirmUpdateF"
-	wait 8
-	click "M3/PPS300/previousbutton"
-	(************** To Get Receiving Number **********************)
-	Put "M3/PPS300".recordReceivingNo() into ReciveNumber
-	click  "M3/PPS300/XClose"
-	wait 5
-	Click "M3/PPS300/Confirmoutput"
-	Click "M3/PPS300/Confirmoutput"
-	Click "M3/PPS300/Confirmoutput"
-	wait 4
-	//Click (89,433)
-	(******** To Capture Quantity in PPS310 for the Receving Number ****)
-	"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
-	//put "M3/PPS310".captureQuantity() into quantity
-	(******** Enter Capture Quantity into the Approved Quantity *********)
-	"M3/PPS310".enterApprovedQuantity RMquanty
-	(******** To Record Location in MWS060 ***********************)
-	"M3/MWS060".openMWS060
-	"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
-	put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF 
-	"M3/MWS060".CloseMWS060
-	"M3/MWS060".openMWS060
-	"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
-	Put "M3/MWS060".ReadINSP(ItemNumber) into INSP 
-	"M3/MWS060".CloseMWS060
-	(******** To Enter Location and Quantity in PPS320 ***************)
-	If INSP begins with "INSP-POST" then
-		"M3/PPS320".openPPS320
-		"M3/PPS320".enterrecievingNumber ReciveNumber
-		"M3/PPS320".enterStoredQty MPF
-	End If
-	(**************** To Print Variables ***************************)
-	log "PO number was:- "&poNumber
-	log "Ware house number was:-"&WHNumber
-	Log "Item Number was :-"&ItemNumber
-	Log "Remaining Quantity was:- "&RMquanty
-	Log "Recive number was:- "&ReciveNumber
-	Log "Approved Quantity was :- "&quantity
-	Log "Location was :-"&MPF
-	Log "Location for reciveing Number was:-"&INSP
+	if "M3/PPS300".searchlineitem(ItemNumber) then
+		put "M3/PPS300".captureremainingquantity() into RMquanty
+		(********** To Enter Recived Quantity and Apply ConfirmUpdate *****)
+		"M3/PPS300".EnterRecivedQuan RMquanty
+		click "M3/PPS300/Actions"
+		click  "M3/PPS300/ConfirmUpdateF"
+		wait 8
+		click "M3/PPS300/previousbutton"
+		(************** To Get Receiving Number **********************)
+		Put "M3/PPS300".recordReceivingNo() into ReciveNumber
+		click  "M3/PPS300/XClose"
+		WaitFor 45, "M3/PPS300/MNS212Title"
+		repeat 10 times
+			wait 1
+			if ImageFound("M3/PPS300/MNS212Title") then Click "M3/PPS300/Confirmoutput"
+			if ImageFound("M3/Application/InforSmartOfficeTitle") then exit repeat
+		end repeat
+		//Click (89,433)
+		(******** To Capture Quantity in PPS310 for the Receving Number ****)
+		"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
+		//put "M3/PPS310".captureQuantity() into quantity
+		(******** Enter Capture Quantity into the Approved Quantity *********)
+		"M3/PPS310".enterApprovedQuantity RMquanty
+		(******** To Record Location in MWS060 ***********************)
+		"M3/MWS060".openMWS060
+		"M3/MWS060".enterWHItemLoc WHNumber,ItemNumber
+		put "M3/MWS060".captureMPFLocation(ItemNumber) into MPF 
+		"M3/MWS060".CloseMWS060
+		"M3/MWS060".openMWS060
+		"M3/MWS060".CaptureINSPLoc WHNumber,ItemNumber
+		Put "M3/MWS060".ReadINSP(ItemNumber) into INSP 
+		"M3/MWS060".CloseMWS060
+		(******** To Enter Location and Quantity in PPS320 ***************)
+		If INSP begins with "INSP-POST" then
+			"M3/PPS320".openPPS320
+			"M3/PPS320".enterrecievingNumber ReciveNumber
+			"M3/PPS320".enterStoredQty MPF
+		End If
+		(**************** To Print Variables ***************************)
+		log "PO number was:- "&poNumber
+		log "Ware house number was:-"&WHNumber
+		Log "Item Number was :-"&ItemNumber
+		Log "Remaining Quantity was:- "&RMquanty
+		Log "Recive number was:- "&ReciveNumber
+		Log "Approved Quantity was :- "&quantity
+		Log "Location was :-"&MPF
+		Log "Location for reciveing Number was:-"&INSP
+	else
+		logwarning "Failed to find item number" && ItemNumber && "for PO" && poNumber
+		click  "M3/PPS300/XClose"
+	end if
 end repeat
 
 (******************* To Close the Infor Application ******************)

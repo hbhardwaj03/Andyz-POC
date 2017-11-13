@@ -48,7 +48,8 @@ to searchlineitem ItemNumber
 	Click "M3/PPS300/EnterItemnumber"
 	typetext ItemNumber
 	Click "M3/PPS300/Apply_1"
-	wait 3
+	put ReadText((56,385)) into ReadNumber
+	return ItemNumber = ReadNumber
 end searchlineitem
 
 to captureremainingquantity
