@@ -3,6 +3,12 @@
 	(*DoubleClick "M3/Application/InforPRDShortcut"*)
 end open
 
+to tryClose
+	if ImageFound("M3/Application/ExitAGSButton") then
+		Click "M3/Application/ExitAGSButton"
+	end if
+end tryClose
+
 to close
 	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
 	Click "M3/Application/ExitAGSButton"
