@@ -10,6 +10,7 @@ global password
 put 2 into dataIndex
 
 (****************** Login To Application **********************)
+set the scriptlogging to off
 "Datastore".setLoginVariables 3
 "Flows/Application".login username, password
 
@@ -27,6 +28,7 @@ repeat forever
 	put dataIndex + 1 into dataIndex
 	if poNumber is empty then exit repeat
 	(************ To Enter PO Number in SUT *********************)
+	BeginTestCase "PO Receiving" && poNumber
 	"M3/PPS300".openpoNumber
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
@@ -86,6 +88,7 @@ repeat forever
 		logwarning "Failed to find item number" && ItemNumber && "for PO" && poNumber
 		click  "M3/PPS300/XClose"
 	end if
+	EndTestCase "PO Receiving" && poNumber
 end repeat
 
 (******************* To Close the Infor Application ******************)
