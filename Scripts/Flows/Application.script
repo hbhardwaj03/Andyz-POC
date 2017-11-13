@@ -1,8 +1,13 @@
 ﻿to login username, password
 	Log "Logging in"
+	teardown
 	"M3/Application".open
 	"M3/Login".login username, password
 end login
+
+to teardown
+	"M3/Application".tryClose
+end teardown
 
 to exitApp
 	Log "Exit AGS"
