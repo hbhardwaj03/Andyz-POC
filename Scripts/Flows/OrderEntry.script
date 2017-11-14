@@ -215,3 +215,27 @@ to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMe
 		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
 	end if
 end CreateNewOrder
+
+-->>>>>>>>>Creates New order with DeliveryTerm and  DeliveryMethod
+to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth
+	Log "Enter new order"
+	"M3/OIS300".open 
+	
+	"M3/OIS300".startNewOrder
+	"M3/Application".checkZoomLevel 75
+	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
+	"M3/OIS300".enterCustomerNumber custNum,"","" --, coType, SalesHold
+	// if  CO Type is USEK, Panel Sequence to follow for OIS100/* = G>F>E>158
+	// if CO Type = USA, Panel Sequence to follow for OIS100/* = G>F>H>E>158
+	
+	"M3/OIS300".submitOIS100A 
+	"M3/OIS300".enterCustomersPO custPO,"","","" --TagField,delTerm,delMeth-- OIS100/G
+	"M3/OIS300".acceptPOWarning
+	"M3/OIS300".submitOIS100G
+	"M3/OIS300".enterDeliveryInfo delTerm,delMeth -- OIS100/F
+	if imageFound(3, "M3/OIS100/OIS100Vtitle") then TypeText return
+	"M3/OIS300".submitOIS100F
+	--"M3/OIS300".submitOIS100H
+	"M3/OIS300".submitOIS100E ""--OIS100/E
+	"M3/OIS300".submitOIS102H
+end orderWithDeliveryInfo

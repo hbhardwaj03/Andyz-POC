@@ -119,8 +119,7 @@ repeat 4 times
 	DataStore.setDataScript1 dataIndex
 	--logData
 	
-	//increment counter
-	put dataIndex + 1 into dataIndex
+	
 	
 	(************** Start flow ****************)
 	"Flows/Application".login username, password
@@ -132,16 +131,16 @@ repeat 4 times
 	
 	--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 	
-	
+	(*)	
 	Log "Enter new order"
 	"M3/OIS300".open 
-	(*)
-set custNum to "USEK000001"
-set custPO to"06Y Flagship" 
-set TagField to "Custom" 
-set delTerm to "FRE"
-set delMeth to "COU"
-*)
+	
+	set custNum to "USEK000001"
+	set custPO to"06Y Flagship" 
+	set TagField to "Custom" 
+	set delTerm to "FRE"
+	set delMeth to "COU"
+	
 	"M3/OIS300".startNewOrder
 	"M3/Application".checkZoomLevel 75
 	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
@@ -159,13 +158,16 @@ set delMeth to "COU"
 	"M3/OIS300".submitOIS100F
 	--"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E ""
-	"M3/OIS300".submitOIS102H
-	
+	"M3/OIS300".submitOIS102H *)
+	"Flows/OrderEntry".orderWithDeliveryInfo custNum,custPO,delTerm,delMeth
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
+	"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "A"& dataIndex, coNum
 	documentCOgenerated DocPath,coNum
 	set COcounter to COcounter+1	
-	
+	"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "B"& dataIndex, COcounter& "CO Created"
+	//increment counter
+	put dataIndex + 1 into dataIndex
 	--"Flows/OrderEntry".enterProduct style, ConfigCode
 	"M3/OIS101".closeFromOrderLines
 	(************** Exit *********************)
@@ -173,6 +175,7 @@ set delMeth to "COU"
 end repeat
 Log "Total CO created :" & COcounter
 documentTotalCO DocPath, COcounter
+"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "B"& dataIndex, COcounter& "CO Created"
 --end doFullRun
 
 

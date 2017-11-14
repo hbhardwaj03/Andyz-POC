@@ -20,3 +20,45 @@ To ATPcheck
 		End If
 	End If
 End ATPcheck
+
+
+to inventoryCheck
+	Click "M3/PMS170/OrderLine"
+	TypeText controlKey ,"12"
+	If ImageFound(10,"M3/RPS010/RPS010B1")
+		
+		"M3/Application".checkZoomLevel 110
+		if imageFound (3, "M3/RPS010/ReqdQty") then put rectangleReadWithRefrImage("M3/RPS010/ReqdQty",-26,47,42,63 ) into ReqQuan
+		if ReqQuan is "" then put 0 into ReqQuan
+		if imageFound (3,"M3/RPS010/AtpQty") then put rectangleReadWithRefrImage("M3/RPS010/AtpQty","-6",47,64,63 ) into ATPQuan
+		if ATPQuan is "" then put 0 into ATPQuan
+		"M3/Application".checkZoomLevel 90
+		
+		Click image:"M3/RPS010/XClose",waitFor: 4
+		--wait 4
+		if ReqQuan <= ATPQuan then
+			LogSuccess "Stock Available in Inventory "
+			return SUCCESS
+		else
+			LogWarning "Inventory Shortage - Requested Quantity not Available in ATP"
+			return FAIL
+		End If
+	End If		
+end inventoryCheck
+
+
+--   >>>>> This Function Can be used by passing image and the desired xordinates which needs to be tweaked from that Image location to read from rectangle. >>>>>>>>>
+to rectangleReadWithRefrImage img,x1,y1,x2,y2
+	put ImageLocation(img) into Loc
+	put item 1 of Loc into X
+	put item 2 of Loc into Y
+	set topLeft to ((X+(x1)),(Y+(y1)))
+	set botmRight  to ((X+(x2)),(Y+(y2)))
+	Put ReadText(topLeft,botmRight) into someVar
+	Return someVar
+end rectangleReadWithRefrImage 
+
+
+
+
+

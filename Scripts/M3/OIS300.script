@@ -133,6 +133,7 @@ to enterCustomersPO PO,TagField, DeliveryTerm,DeliveryMethod
 			If DeliveryMethod <> "" 
 				"M3/OIS300".DeliveryMethod DeliveryMethod
 				typeText returnKey
+				if imagFound(3, "M3/OIS100/OIS100Vtitle") then TypeText returnKey
 				if ImageFound (5, "M3/OIS100/OIS100H/paymntMethd")
 					DoubleClick "M3/OIS100/OIS100H/paymntMethd"
 					TypeText controlKey, "a"
@@ -205,7 +206,7 @@ To DeliveryMethod DeliveryMethod
 	if imagefound("M3/OIS300/OIS103B") then
 		wait 4
 		Click "M3/OIS300/CloseButton"
-		else
+	else
 		if DeliveryMethod is not empty then
 			//DoubleClick "M3/OIS300/DeliveryMethod"
 			DoubleClick "M3/OIS100/DeliveryMethod"
@@ -335,7 +336,7 @@ end enterOIS100E
 
 to submitOIS102H
 	if ImageFound ( 3, "M3/OIS300/OIS102HTitle")
-	Click "M3/OIS300/NextButton"
+		Click "M3/OIS300/NextButton"
 		MoveTo "Corner"
 	end if
 end submitOIS102H
