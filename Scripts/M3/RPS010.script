@@ -11,12 +11,17 @@ To ATPcheck
 		Put ReadText((468,382), (501,391)) into ATPQuan
 		Click "M3/RPS010/XClose"
 		wait 10
-		if ReqQuan < ATPQuan then
+		if ReqQuan <= ATPQuan then
 			LogSuccess "Requested Quantity is Available in ATP "
 			return SUCCESS
 		else
 			LogError "Requested Quantity is NOT Available in ATP"
 			return FAIL
 		End If
-	End If
+		If ATPQuan is blank then
+			Put "0" into ATPQuan
+			set ATPQuan to ATPQuan1
+			return ATPQuan1
+		End If
+	End if
 End ATPcheck
