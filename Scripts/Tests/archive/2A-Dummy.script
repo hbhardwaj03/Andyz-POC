@@ -12,7 +12,7 @@ global username, password, coNum, prodNum
 "Datastore".setLoginVariables 4
 
 // initialize data line counter
-put 2 into dataIndex
+put 7 into dataIndex
 
 (************** Start Test ***************)
 "Flows/Application".login username, password
@@ -30,19 +30,20 @@ repeat forever
 	Put coNum into coNumber
 	"M3/PMS170".lookUp(coNumber)
 	put "M3/RPS010".ATPcheck()  into ATPQuan1
-	if ATPQuan1= "0" or "FAIL" then
+	if ATPQuan1= "0" or ATPQuan1= "FAIL" then
+		Logerror "ATP Quqntity was less then the Required Quantity for the  CO# was:-  "&coNumber
 		"M3/PMS170".close
 		Next repeat
 	else
-		Put coNumber into coNum
+		Put coNum into coNumber
 		DoScheduling
 		
 	End if
 end repeat
 "Flows/Application".exitApp
 to DoScheduling
-	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
-	put "Flows/Scheduling".doScheduling(coNum) into schedNum
+	"M3/PMS170".close
+	put "Flows/Scheduling".doScheduling(coNumber) into schedNum
 	put "M3/PMS100".recordMO() into moNum
 	
 	(************** Picking ******************)
@@ -79,7 +80,7 @@ to generateMOCO
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	(*"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"*)
-	
+
 	Log "CONUM:" && coNum
 	
 	Log "Exit AGS"
