@@ -14,12 +14,12 @@ To ATPcheck
 		if ReqQuan <= ATPQuan then
 			LogSuccess "Requested Quantity is Available in ATP "
 			return SUCCESS
-			Put 1 into ReqQuan
+			Put "1" into ReqQuan
 			Return ReqQuan
 		else
 			LogError "Requested Quantity is NOT Available in ATP"
 			return FAIL
-			Put 2 into ATPQuan1
+			Put "2" into ATPQuan1
 			return ATPQuan1
 		End If
 	End If

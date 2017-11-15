@@ -30,11 +30,10 @@ repeat forever
 	Put coNum into coNumber
 	"M3/PMS170".lookUp(coNumber)
 	put "M3/RPS010".ATPcheck()  into ATPQuan1
-	if ATPQuan1= 0 or 2 then
+	if ATPQuan1= "0" or "FAIL" then
 		"M3/PMS170".close
 		Next repeat
 	else
-		
 		Put coNumber into coNum
 		DoScheduling
 		
