@@ -90,6 +90,8 @@ to enterRecievingNumberinPPS310 ReciveNumber
 	Typetext ReciveNumber
 	wait 2
 	Click "M3/PPS300/Next"	
+	wait 4
+ end if
 end enterRecievingNumberinPPS310
 
 to zoomIn x
