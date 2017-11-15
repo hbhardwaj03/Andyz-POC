@@ -14,12 +14,21 @@ To ATPcheck
 		if ReqQuan <= ATPQuan then
 			LogSuccess "Requested Quantity is Available in ATP "
 			return SUCCESS
+			Put 1 into ReqQuan
+			Return ReqQuan
 		else
 			LogError "Requested Quantity is NOT Available in ATP"
 			return FAIL
+			Put 2 into ATPQuan1
+			return ATPQuan1
 		End If
-<<<<<<< HEAD
 	End If
+	
+	If ATPQuan is blank then
+		Put "0" into ATPQuan
+		set ATPQuan to ATPQuan1
+		return ATPQuan1
+End If
 End ATPcheck
 
 
@@ -63,12 +72,5 @@ end rectangleReadWithRefrImage
 
 
 
-=======
-		If ATPQuan is blank then
-			Put "0" into ATPQuan
-			set ATPQuan to ATPQuan1
-			return ATPQuan1
-		End If
-	End if
-End ATPcheck
->>>>>>> 24e12d167403359ba891e521964b1f54e3dba5d9
+
+

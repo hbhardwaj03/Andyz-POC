@@ -9,49 +9,39 @@ global username, password, coNum, prodNum
 
 
 // initialize login variables
-"Datastore".setLoginVariables 3
+"Datastore".setLoginVariables 4
 
 // initialize data line counter
 put 2 into dataIndex
 
 (************** Start Test ***************)
+"Flows/Application".login username, password
 repeat forever
 	
-	(************** Set up data *************)
-	//initialize data variables
 	DataStore.setDataScript2 dataIndex
 	
 	//increment counter
-	//put dataIndex + 1 into dataIndex
+	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
 	if coNum is empty then exit repeat
-	
-	//Log "CO# " & coNum
-	
-	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
-	// log in to application
-	//"Flows/Application".login username, password
 	"M3/PMS170".open
 	(*"M3/OIS300". zoom90prcnt*)
 	Put coNum into coNumber
 	"M3/PMS170".lookUp(coNumber)
 	put "M3/RPS010".ATPcheck()  into ATPQuan1
-	if ATPQuan1= 0 then
+	if ATPQuan1= 0 or 2 then
 		"M3/PMS170".close
-		put (0) into badData //these  are having item code of Accesories
-		repeat while dataIndex is in badData
-			put dataIndex + 1 into dataIndex
-		end repeat
+		Next repeat
+	else
 		
-		
-	else if "M3/RPS010".ATPcheck is SUCCESS then
+		Put coNumber into coNum
 		DoScheduling
-	end if
-end repeat	
+		
+	End if
+end repeat
+"Flows/Application".exitApp
 to DoScheduling
-
-
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	put "M3/PMS100".recordMO() into moNum
@@ -66,7 +56,7 @@ to DoScheduling
 	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
 	(************** Packing ******************)
 	// add KPack here by moving working code from function "doFullRun"
-	"Flows/Application".exitApp
+	//"Flows/Application".exitApp
 	
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end DoScheduling
@@ -95,9 +85,9 @@ to generateMOCO
 	
 	Log "Exit AGS"
 	"M3/Application".close
-	
+
 	//don't continue running the script
-	(*throw "Finished!", "some comment"*)
+(*throw "Finished!", "some comment"*)
 end generateMOCO
 
 to doFullRun
