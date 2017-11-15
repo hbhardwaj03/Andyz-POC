@@ -33,6 +33,10 @@ repeat forever
 	"M3/PPS300".poReceipt poNumber, WHNumber
 	"M3/PPS300".delynoteno poNumber
 	click "M3/PPS300/Next"
+	if imagefound("M3/PPS300/50orhighe") then
+		LogWarning "order status is 50 or higher,entry not permitted"
+		Next repeat
+	end if
 	"M3/Application".MaximizePanel
 	"M3/PPS300".setSortingOrder
 	
@@ -80,7 +84,7 @@ repeat forever
 		Log "Item Number:" && ItemNumber
 		Log "Remaining Quantity:" && RMquanty
 		Log "Recive number:" && ReciveNumber
-		Log "Approved Quantity:" && quantity
+	Log "Approved Quantity:" && quantity
 		Log "Location:" && MPF
 		Log "Location for reciveing Number:" && INSP
 	else
