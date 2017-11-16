@@ -36,10 +36,10 @@ to delynoteno poNumber
 end delynoteno
 
 to recordReceivingNo
-	//zoomIn 5
-	put  ReadText((237,441)) into ReciveNumber
+	zoomIn 5
+	put  ReadText("M3/PPS300/Receivingno") into ReciveNumber
 	Log ReciveNumber
-	//zoomOut 5
+	zoomOut 5
 	return ReciveNumber
 end recordReceivingNo
 
@@ -48,6 +48,7 @@ to searchlineitem ItemNumber
 	Click "M3/PPS300/EnterItemnumber"
 	typetext ItemNumber
 	Click "M3/PPS300/Apply_1"
+	Wait 4
 	put ReadText((56,385)) into ReadNumber
 	return ItemNumber = ReadNumber
 end searchlineitem
@@ -91,7 +92,6 @@ to enterRecievingNumberinPPS310 ReciveNumber
 	wait 2
 	Click "M3/PPS300/Next"	
 	wait 4
- end if
 end enterRecievingNumberinPPS310
 
 to zoomIn x

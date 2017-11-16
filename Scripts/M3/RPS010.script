@@ -33,26 +33,39 @@ End ATPcheck
 
 
 to inventoryCheck
-	Click "M3/PMS170/OrderLine"
-	TypeText controlKey ,"12"
-	If ImageFound(10,"M3/RPS010/RPS010B1")
-		
-		"M3/Application".checkZoomLevel 110
-		if imageFound (3, "M3/RPS010/ReqdQty") then put rectangleReadWithRefrImage("M3/RPS010/ReqdQty",-26,47,42,63 ) into ReqQuan
-		if ReqQuan is "" then put 0 into ReqQuan
-		if imageFound (3,"M3/RPS010/AtpQty") then put rectangleReadWithRefrImage("M3/RPS010/AtpQty","-6",47,64,63 ) into ATPQuan
-		if ATPQuan is "" then put 0 into ATPQuan
-		"M3/Application".checkZoomLevel 90
-		
-		Click image:"M3/RPS010/XClose",waitFor: 4
-		--wait 4
-		if ReqQuan <= ATPQuan then
-			LogSuccess "Stock Available in Inventory "
-			return SUCCESS
-		else
-			LogWarning "Inventory Shortage - Requested Quantity not Available in ATP"
-			return FAIL
-		End If
+	if imageFound (5, "M3/PMS170/PMS170BcoLineHeader")
+		put imageLocation("M3/PMS170/PMS170BcoLineHeader") into loc
+		log loc
+		put ReadText((loc)+(10,54)) into temp
+		Click((loc)+(10,54))
+		wait 1
+		TypeText controlKey ,"12"
+		If ImageFound(10,"M3/RPS010/RPS010B1")
+			
+			"M3/Application".checkZoomLevel 110
+			if imageFound (3, "M3/RPS010/ReqdQty") then put rectangleReadWithRefrImage("M3/RPS010/ReqdQty",-26,47,42,63 ) into ReqQuan
+			log ReqQuan &" : is the Required Quantity for CO : " &coNum
+			if imageFound (3,"M3/RPS010/AtpQty") then put rectangleReadWithRefrImage("M3/RPS010/AtpQty","-6",47,64,63 ) into ATPQuan
+			log ATPQuan &" : is the Inventory Quantity for CO : " &coNum
+			"M3/Application".checkZoomLevel 90
+			
+			Click image:"M3/RPS010/XClose",waitFor: 5
+			
+			if ATPQuan is empty
+				return "noStock"
+				exit handler
+			end if
+			
+			if ReqQuan is less than ATPQuan or if ReqQuan equals ATPQuan
+				LogSuccess "Stock Available in Inventory "
+				return "inStock"
+			else
+				LogWarning "Inventory Shortage - Requested Quantity not Available in ATP"
+				return "noStock"
+			End If
+		end if
+	else
+		Log "Product Line Item not displayed"
 	End If		
 end inventoryCheck
 

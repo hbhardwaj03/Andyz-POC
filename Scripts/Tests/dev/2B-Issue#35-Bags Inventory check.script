@@ -54,29 +54,29 @@ repeat forever
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end repeat
 
+
+generateMOCO
 to generateMOCO
-	//log in to AGS
-	Log "Logging in"
-	"M3/Application".open
-	
 	// declare login variables
 	global username, password
-	
+
 	// initialize login variables
-	"Datastore".setLoginVariables 2
-	"M3/Application".open
-	"M3/Login".login username, password
+	--"Datastore".setLoginVariables 2
+	
+	//log in to AGS
+	--"M3/Application".open
+--"Flows/Application".login username, password
 	
 	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
-	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "Automation Script #2"
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "",""
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
 	(*"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"*)
 	
 	Log "CONUM:" && coNum
 	
-	Log "Exit AGS"
-	"M3/Application".close
+	--Log "Exit AGS"
+	--"M3/Application".close
 	
 	//don't continue running the script
 	(*throw "Finished!", "some comment"*)
@@ -89,14 +89,17 @@ to doFullRun
 	"Datastore".setLoginVariables 2
 	
 	"M3/Application".open
-	"M3/Login".login username, password
+	"Flows/Application".login username, password
 	
 	(*>>>>>>>>>>Order Entry>>>>>>>>>>>>>*)
 	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
 	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
-	
+	set ExcelFile to workbook(ResourcePath("2-data-out-of-stock-sample-bags"))
+	set worksheet to ExcelFile.Worksheet("Sheet2")
+	set  Cell(worksheet, "A2") to coNum
+
 	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
 	put "Flows/Scheduling".doScheduling(coNum) into schedNum
 	if schedNum <>""
@@ -122,9 +125,11 @@ to doFullRun
 		"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	else 
 		LogWarning "Inventory Shortage - Requested Quantity not Available in ATP"
+		
 		"Flows/Application".exitApp
 	end if 
 end doFullRun
+
 
 to isAccessory prodNum
 	if the second character of prodNum is "A" then
@@ -140,19 +145,21 @@ end isAccessory
 *)
 --   >>>>>           >>>>>>>>>    >>>>>>>>> >>>>>>>>>     >>>>>>>>>
 global coNum, docPath,schedNum,coCount, runCount
-put  (3013837827,3012816220,3013990247,3013971923,3013996649,3013747353) into ItemList
+put  (3014010597,3013837827,3014010598,3012816220,3013990247,3013971923,3013996649,3013747353) into ItemList
 set coCount to 0
 set runCount to 1
 put createDocumentCO(runCount) into  docPath
 Repeat with each item coNum of ItemList
+	
 	put doScheduling(coNum) into schedNum
-	if schedNum <> ""
+	if schedNum <> "noStock"
 		LogSuccess "Scheduling Done For this CO"
 	else 
-		LogWarning ""
+		LogWarning " Inventory Out of Stock ! !  "
 	end if
 	documentCOgenerated (docPath,coNum)
 	set coCount to coCount +1
+	
 End Repeat
 documentTotalCO (docPath,coCount)
 --   >>>>>           >>>>>>>>>    >>>>>>>>> >>>>>>>>>     >>>>>>>>>
@@ -161,7 +168,7 @@ to doScheduling coNumber
 	"M3/PMS170".open
 	"M3/PMS170".lookUp coNumber
 	put "M3/PMS170".recordProdNum into prodNum
-	if  "M3/RPS010".inventoryCheck is SUCCESS 
+	if  "M3/RPS010".inventoryCheck() is "inStock"
 		put "M3/PMS170".createScheduleNumber() into scheduleNumber
 		"M3/PMS170".scheduleNew scheduleNumber
 		"M3/PMS170".releaseMO
@@ -172,9 +179,9 @@ to doScheduling coNumber
 		return scheduleNumber
 	else
 		"M3/PMS170".close
-		LogWarning "Requested Quantity is NOT Available in ATP for the CO# was:- "&coNumber
-		return "Inventory Shortage - Requested Quantity not Available in ATP"
-end if
+		LogWarning "Insuuficient Stock in Inventory for CO# :- "&coNumber
+		return "noStock"
+	end if
 end doScheduling
 
 
