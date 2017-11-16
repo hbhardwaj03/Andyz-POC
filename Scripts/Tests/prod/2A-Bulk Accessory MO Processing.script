@@ -1,8 +1,144 @@
-﻿(* 
+﻿
+(* 
 Name: Bulk MO
 Description: 
 Author: Ramya & Ofir
+Modified by :  Siva 
 *)
+
+// declare login variables
+global username, password, coNum, prodNum
+
+
+// initialize login variables
+"Datastore".setLoginVariables 4
+
+// initialize data line counter
+put 7 into dataIndex
+
+(************** Start Test ***************)
+"Flows/Application".login username, password
+repeat forever
+	
+	DataStore.setDataScript2 dataIndex
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	if coNum is empty then exit repeat
+	"M3/PMS170".open
+	(*"M3/OIS300". zoom90prcnt*)
+	Put coNum into coNumber
+	"M3/PMS170".lookUp(coNumber)
+	put "M3/RPS010".ATPcheck()  into ATPQuan1
+	if ATPQuan1= "0" or ATPQuan1= "FAIL" then
+		Logerror "ATP Quqntity was less then the Required Quantity for the  CO# was:-  "&coNumber
+		"M3/PMS170".close
+		Next repeat
+		else
+		//Put coNumber into coNumber
+		DoScheduling coNumber
+		
+	End if
+end repeat
+"Flows/Application".exitApp
+to DoScheduling coNumber
+	"M3/PMS170".close
+	put "Flows/Scheduling".doScheduling(coNumber) into schedNum
+	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	
+	(************** Manufacturing/Packing ******)
+	Log "Do manufacturing"
+	
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+	(************** Packing ******************)
+	// add KPack here by moving working code from function "doFullRun"
+	//"Flows/Application".exitApp
+	
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+end DoScheduling
+
+
+to generateMOCO
+	//log in to AGS
+	Log "Logging in"
+	"M3/Application".open
+	
+	// declare login variables
+	global username, password
+	
+	// initialize login variables
+	"Datastore".setLoginVariables 3
+	
+	"M3/Login".login username, password
+	
+	(*>>>>>>>>Start Order Entry>>>>>>>>>>>>>*)
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "Automation Script #2"
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	(*"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"*)
+	
+	Log "CONUM:" && coNum
+	
+	Log "Exit AGS"
+	"M3/Application".close
+	
+	//don't continue running the script
+	(*throw "Finished!", "some comment"*)
+end generateMOCO
+
+to doFullRun
+	// declare login variables
+	global username, password, prodNum
+	// initialize login variables
+	"Datastore".setLoginVariables 3
+	"M3/Application".open
+	"M3/Login".login username, password
+	(*>>>>>>>>>>Order Entry>>>>>>>>>>>>>*)
+	"Flows/OrderEntry".enterNewOrder "US00025028", "USA", "US-Gear-06"
+	put "Flows/OrderEntry".recordCONumber() into coNum
+	//"Flows/OrderEntry".enterProductAndQuantity "TA5TVBPC", "1"
+	"Flows/OrderEntry".enterProduct "TB7SX14CC", "ConfigB5"
+	(*>>>>>>>>>>>Scheduling>>>>>>>>>>>>*)
+	put "Flows/Scheduling".doScheduling(coNum) into schedNum
+	put "M3/PMS100".recordMO() into moNum
+	(************** Picking ******************)
+	"M3/PMS100".pick
+	"M3/PMS100".close
+	(************** Manufacturing/Packing ******)
+	Log "Do manufacturing"
+	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+	(************** Packing ******************)
+	// add KPack here by moving working code from function "doFullRun"
+	"Flows/Application".exitApp
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+end doFullRun
+
+to isAccessory prodNum
+	if the second character of prodNum is "A" then
+		return TRUE
+	end if
+end isAccessory
+
+to isBag prodNum
+	if the second character of prodNum is "B" then
+		return TRUE
+	end if
+end isAccessory
+
+
+
+//----------------------------------- Below Code is Old one -----------------------------------------------------
+(* 
+Name: Bulk MO
+Description: 
+Author: Ramya & Ofir
+
 
 // declare login variables
 global username, password, coNum, prodNum
@@ -118,3 +254,9 @@ to isBag prodNum
 		return TRUE
 	end if
 end isAccessory
+*)
+
+
+
+
+
