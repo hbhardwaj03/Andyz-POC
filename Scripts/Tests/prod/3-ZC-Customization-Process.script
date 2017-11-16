@@ -11,34 +11,46 @@ global data
 // initialize data line counter
 put 2 into dataIndex
 
+"Flows/Application".login username, password
 (************** Start Test *********************)
 repeat forever
-	
-	(************** Set up data *******************)
-	//initialize data variables
 	Datastore.setSimpleData "3-data.xlsx", "Sheet1", dataIndex
-	
 	//increment counter
 	put dataIndex + 1 into dataIndex
 	
 	//break if no more data
 	if data is empty then exit repeat
+	Put data into coNumber
+	Log "CO# " & coNumber
+	"M3/PMS170".open
+	"M3/PMS170".lookUp(coNumber)
 	
-	put data into coNum
-	Log "CO# " & coNum
-	
-	(************** Start flow **********************)
-	"Flows/Application".login username, password
-	
+	if "M3/RPS010".inventoryCheck() is "noStock" 
+		Logerror "ATP Quqntity was less then the Required Quantity for the  CO# was:-  "&coNumber
+		"M3/PMS170".close
+		Next repeat
+	else
+		
+		"M3/PMS170".close
+		Put data into coNumber
+		DoStatuScheduling coNumber
+		
+	End if
+end repeat
+
+(************** Exit ***************************)
+"Flows/Application".exitApp
+To DoStatuScheduling coNumber
+
 	(************** Scheduling *********************)
-	put "Flows/Scheduling".doStatusScheduling(coNum) into reqNum
+	put "Flows/Scheduling".doStatusScheduling(coNumber) into reqNum
 	
 	(************** Picking, Packing, Shipping *********)
-	put "Flows/Picking".doStatusPicking(reqNum,coNum) into poNum
+	put "Flows/Picking".doStatusPicking(reqNum,coNumber) into poNum
 	
-	(************** Exit ***************************)
-	"Flows/Application".exitApp
-end repeat
+End DoStatuScheduling
+
+
 
 to generateZCOrder
 	// declare login variables

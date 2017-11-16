@@ -5,7 +5,7 @@
 	Click  "M3/Home/SearchSubmit"
 end openMWS060
 
-to enterWHItemLoc WHNumber,ItemNumber
+to enterWHItemLoc WHNumber,ItemNumber,Location
 	wait 5
 	click "M3/MWS060/Whs"
 	typetext controlkey,"a"
@@ -26,11 +26,16 @@ to enterWHItemLoc WHNumber,ItemNumber
 end enterWHItemLoc
 
 to captureMPFLocation ItemNumber
-	put readtext(461,429,560,443) into MPF
-	Log "MPF:" && MPF
+	//put readtext(461,429,560,443) into MPF
+	//Log "MPF:" && MPF
+	If MPF begins with "MPF" then
+		put readtext(("M3/PPS300/LocationLT"),("M3/PPS300/LocationRB")) into Location
+		Log Location
+		Return Location
+	end if
 end captureMPFLocation
 
-to CaptureINSPLoc WHNumber,ItemNumber
+to CaptureINSPLoc WHNumber,ItemNumber,Location
 	click "M3/MWS060/Whs"
 	typetext controlkey,"a"
 	typetext deletekey
@@ -51,13 +56,16 @@ to CaptureINSPLoc WHNumber,ItemNumber
 end CaptureINSPLoc
 
 to ReadINSP ItemNumber
-	put readtext(458,430,550,443) into INSP
-	If INSP begins with "INSP" then
-		Logsuccess "Location for tyhe item was:- "&INSP
+	//put readtext(458,430,550,443) into INSP
+	//If INSP begins with "INSP" then
+	(*Logsuccess "Location for tyhe item was:- "&INSP
 		return INSP
 	else
 		Logwarning "Location was not Captured"
-	End If
+	End If*)
+	put readtext(("M3/PPS300/INSPLocationleft"),("M3/PPS300/INSPLocationRight")) into Location
+	Log Location
+	Return Location
 end ReadINSP
 
 To CloseMWS060
