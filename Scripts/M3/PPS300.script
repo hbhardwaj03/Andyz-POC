@@ -11,6 +11,7 @@ to setSortingOrder
 end setSortingOrder
 
 to poReceipt poNumber, WHNumber
+	WaitFor 45, "M3/PPS300/PPS300Title"
 	Click "M3/PPS300/WarehouseField"
 	TypeText controlKey, "a"
 	TypeText deleteKey
