@@ -4,33 +4,26 @@ Description: Driven by an excel spreadsheet of test scenario values, this script
 Author: Himanshu Bhardwaj & Andy Jenkins
  *)
 
-
------------------------------------------------------------ >>>>Main Script >>>> ---------------------------------------------------------------
-(*
 //declare login variables
 global username, password, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex, custNum, custPO, tag, delTerm,coType
+global coNum, moNum, dataIndex, custNum, custPO, tag, delTerm,coType
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
-
 
 //initialize test variables
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
 put 2 into dataIndex
-(************** Start Test ***************)
 
-"Flows/Application".login username, password
+(************** Start Test ***************)
 repeat forever
 	
 	(************** Set up data *************)
 	
 	//skip known bad entries in test data
 	put (0) into badData //these  are having item code of Accesories
-	// 13 no straps option in config
-	// 23 extra page in CO creation (OIS100V)
 	repeat while dataIndex is in badData
 		put dataIndex + 1 into dataIndex
 	end repeat
@@ -43,11 +36,12 @@ repeat forever
 	//break if no more data
 	if custNum is empty then exit repeat
 	
-	(************** Start flow ***************
-	"Flows/Application".login username, password*)
-	
+	(************** Start flow ****************)
+	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
+	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
+	
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	"Flows/OrderEntry".enterProduct style, ConfigCode
@@ -59,21 +53,45 @@ repeat forever
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
 	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	
+	//end repeat	
+	
+	(************** Scheduling ***************)
+	wait 5
+	"Flows/Application".login username, password
+	"Flows/Scheduling".doScheduling coNum
+	
+	put "M3/PMS100".recordMO() into moNum
+	
+	(************** Picking ******************)
+	"Flows/Picking".doPicking
+	
+	(*
+	(************** Manufacturing *************)
+	wait 5
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
+	"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
+	
+	(************** Packing ******************)
+	(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
+	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	
 	
-	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Input")
-	Put dataIndex - 1 into IndexIn
-	put coNum into Cell(worksheet, "AB" & indexIn)
+(************** Shipping *****************)
+"Flows/Shipping".doShipping delNum
+"Flows/Shipping".validateShipping coNum
+*)	
+	
 	logData
 end repeat
-(************** Exit *********************)
-"Flows/Application".exitApp
 
 
------------------------------------------------------------ >>>>Sand Box>>>> ---------------------------------------------------------------
 to logData
 	global dataIndex
+	global coNum
+	global moNum
 	global custNum
 	global custPO
 	global tag
@@ -81,100 +99,84 @@ to logData
 	global delMeth
 	global style
 	global color
-	Log dataIndex & " " & custNum & " " & custPO & " " & tag & " " & delTerm & " " & delMeth & " " & style & " " & color & " " & configCode
+	Log "1A-Results:" && dataIndex && coNum && moNum && custNum && custPO && tag && delTerm && delMeth && style && color && configCode
 end logData
 
-
-
-*)
-
---to doFullRun
-
-//declare test variables
-global username, password, customerNum, coType, PO
-global itemCode, productQuantity, DCAUser, DCAPswrd
-global runCounter, COcounter
-//declare data variables
-global dataIndex, custNum, custPO, tag, delTerm
-global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority , payMeth
-//initialize test variables
-
-"Datastore".setLoginVariables 2
-
-put "Datastore".readXcelData( "Validation.xlsx", "Sheet2", "G2") into runCounter
-set docCount to runCounter
-
-set runCounter to runCounter+1
-"Datastore".updateXcelData "Validation.xlsx", "Sheet2", "G2", runCounter
-
-put createDocumentCO(docCount) into docPath
-
-
-"DataStore".setGlobalsScript1
-//initialize data line counter
-put 2 into dataIndex
-set COcounter to 0
-repeat 20 times
+to doFullRun
+	//declare test variables
+	global username, password, customerNum, coType, PO
+	global itemCode, productQuantity, DCAUser, DCAPswrd
+	
+	//declare data variables
+	global dataIndex, custNum, custPO, tag, delTerm
+	global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
+	//initialize test variables
+	"DataStore".setGlobalsScript1
+	//initialize data line counter
+	put 2 into dataIndex
+	
 	//initialize data variables (sets global data variables and logs them)
 	DataStore.setDataScript1 dataIndex
-	if  custNum is empty then exit repeat 
+	logData
+	
+	//increment counter
+	put dataIndex + 1 into dataIndex
+	
+	//break if no more data
+	//if custNum is empty then exit repeat
 	
 	(************** Start flow ****************)
 	"Flows/Application".login username, password
 	
 	(************** Order entry ***************)
-	
 	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
-	
+	"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,"","",""
 	--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
-	
-	(*)	
-	Log "Enter new order"
-	"M3/OIS300".open 
-	
-	set custNum to "USEK000001"
-	set custPO to"06Y Flagship" 
-	set TagField to "Custom" 
-	set delTerm to "FRE"
-	set delMeth to "COU"
-	
-	"M3/OIS300".startNewOrder
-	"M3/Application".checkZoomLevel 75
-	Wait while ImageFound("M3/OIS300/CustomerNumberField/CustomerNumberField")
-	"M3/OIS300".enterCustomerNumber custNum,"","" 
-	
-	// if  CO Type is USEK, Panel Sequence to follow for OIS100/* = G>F>E>158
-	// if CO Type = USA, Panel Sequence to follow for OIS100/* = G>F>H>E>158
-	
-	"M3/OIS300".submitOIS100A 
-	
-	"M3/OIS300".enterCustomersPO custPO,TagField,delTerm,delMeth--G
-	"M3/OIS300".acceptPOWarning
-	"M3/OIS300".submitOIS100G
-	"M3/OIS300".enterDeliveryInfo delTerm,delMeth --F
-	"M3/OIS300".submitOIS100F
-	--"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E ""
-	"M3/OIS300".submitOIS102H *)
-	"Flows/OrderEntry".orderWithDeliveryInfo custNum,custPO,delTerm,delMeth, "CSH"
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	
-	"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "A"& dataIndex, coNum
-	documentCOgenerated DocPath,coNum
-	set COcounter to COcounter+1	
-	"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "B"& dataIndex, COcounter& "CO Created"
-	//increment counter
-	put dataIndex + 1 into dataIndex
 	"Flows/OrderEntry".enterProduct style, ConfigCode
+	
 	"M3/OIS101".closeFromOrderLines
+	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
-end repeat
-Log "Total CO created :" & COcounter
-documentTotalCO DocPath, COcounter
-"Datastore".updateXcelData "1-issue-33-test-data-results.xlsx", "Input", "B"& dataIndex, COcounter& "CO Created"
---end doFullRun
+	
+	put doScheduling(coNum) into schedNum
+	if schedNum <> "noStock"
+		LogSuccess "Scheduling Done For this CO"
+	else 
+		LogWarning " Inventory Out of Stock ! !  "
+	end if
+	
+	"M3/OIS101".closeFromOrderLines
+	
+	(************** Exit *********************)
+	"Flows/Application".exitApp
+	(************** Exit *********************)
+	
+end doFullRun
+
+to doScheduling coNumber
+	Log "Do scheduling"
+	"M3/PMS170".open
+	"M3/PMS170".lookUp coNumber
+	put "M3/PMS170".recordProdNum into prodNum
+	if  "M3/RPS010".inventoryCheck() is "inStock"
+		put "M3/PMS170".createScheduleNumber() into scheduleNumber
+		"M3/PMS170".scheduleNew scheduleNumber
+		"M3/PMS170".releaseMO
+		"M3/PMS170".close
+		"M3/PMS100".open
+		"M3/PMS100".lookupSchedule scheduleNumber
+		"M3/PMS100".printShopTraveler scheduleNumber
+		return scheduleNumber
+	else
+		"M3/PMS170".close
+		LogWarning "Insuuficient Stock in Inventory for CO# :- "&coNumber
+		return "noStock"
+	end if
+end doScheduling
+
 
 
 to createDocumentCO runCounter
@@ -183,9 +185,9 @@ to createDocumentCO runCounter
 	put property "LogFile" of tst2 into tst3
 	put tst3 into flPath
 	delete "LogFile.txt" from flPath
-	set flName to "GeneratedCoNum" &runCounter&".txt" 
+	set flName to "InventoryChecked" &runCounter &".txt" 
 	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
-	set fileResult to flPath &flName
+	set fileResult to flPath &flNam
 	create file fileResult
 	open file fileResult for updating 
 	put crlf into temp
@@ -208,6 +210,5 @@ to documentTotalCO fileResult, COcount
 	close file fileResult
 end documentTotalCO
 
-
-
+doFullRun
 

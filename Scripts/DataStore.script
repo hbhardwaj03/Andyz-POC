@@ -56,7 +56,7 @@ to setDataScript1 dataIndex
 	global BlnktAgrmnt
 	global Priority
 	global trnsctnResn
-	set ExcelFile to workbook(ResourcePath("1-issue-33-test-data.xlsx"))
+	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
 	--set worksheet to ExcelFile.Worksheet("Input")
 	set worksheet to ExcelFile.Worksheet("Input")
 	put Cell(worksheet, "A" & dataIndex) into custNum
