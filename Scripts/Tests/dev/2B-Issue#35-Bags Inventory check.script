@@ -155,7 +155,7 @@ Repeat with each item coNum of ItemList
 	if schedNum <> "noStock"
 		LogSuccess "Scheduling Done For this CO"
 	else 
-		LogWarning " Inventory Out of Stock ! !  "
+		next repeat
 	end if
 	documentCOgenerated (docPath,coNum)
 	set coCount to coCount +1

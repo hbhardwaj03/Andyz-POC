@@ -10,9 +10,8 @@ to tryClose
 end tryClose
 
 to close
-	WaitFor 20, "M3/Application/inforSmartOfficeTitle"
-	Click "M3/Application/ExitAGSButton"
-	//Click "M3/Application/ExitConfirmationButton"
+if imageFound(20, "M3/Application/inforSmartOfficeTitle") then Click "M3/Application/ExitAGSButton"
+//Click "M3/Application/ExitConfirmationButton"
 end close
 
 To MaximizePanel

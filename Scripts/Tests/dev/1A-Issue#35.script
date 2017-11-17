@@ -114,45 +114,43 @@ to doFullRun
 	"DataStore".setGlobalsScript1
 	//initialize data line counter
 	put 2 into dataIndex
-	
-	//initialize data variables (sets global data variables and logs them)
-	DataStore.setDataScript1 dataIndex
-	logData
-	
-	//increment counter
-	put dataIndex + 1 into dataIndex
-	
-	//break if no more data
-	//if custNum is empty then exit repeat
-	
-	(************** Start flow ****************)
-	"Flows/Application".login username, password
-	
-	(************** Order entry ***************)
-	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
-	"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,"","",""
-	--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style, ConfigCode
-	
-	"M3/OIS101".closeFromOrderLines
-	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
-	
-	put doScheduling(coNum) into schedNum
-	if schedNum <> "noStock"
-		LogSuccess "Scheduling Done For this CO"
-	else 
-		LogWarning " Inventory Out of Stock ! !  "
-	end if
-	
-	"M3/OIS101".closeFromOrderLines
-	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
-	(************** Exit *********************)
+	repeat for 5 times
+		//initialize data variables (sets global data variables and logs them)
+		DataStore.setDataScript1 dataIndex
+		logData
+		
+		//increment counter
+		put dataIndex + 1 into dataIndex
+		
+		//break if no more data
+		//if custNum is empty then exit repeat
+		
+		(************** Start flow ****************)
+		"Flows/Application".login username, password
+		
+		(************** Order entry ***************)
+		//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
+		--"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
+		"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,"","",""
+		--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
+		put "Flows/OrderEntry".recordCONumber() into coNum
+		"Flows/OrderEntry".enterProduct style, ConfigCode
+		
+		"M3/OIS101".closeFromOrderLines
+		
+		(************** Exit *********************)
+		"Flows/Application".exitApp
+		
+		put doScheduling(coNum) into schedNum
+		if schedNum <> "noStock"
+			LogSuccess "Scheduling Done For this CO"
+		else 
+			next repeat
+		end if
+		
+		(************** Exit *********************)
+		"Flows/Application".exitApp
+	end repeat
 	
 end doFullRun
 
@@ -179,36 +177,12 @@ end doScheduling
 
 
 
-to createDocumentCO runCounter
-	put ScriptResults() into tst
-	put item 1 of tst into tst2
-	put property "LogFile" of tst2 into tst3
-	put tst3 into flPath
-	delete "LogFile.txt" from flPath
-	set flName to "InventoryChecked" &runCounter &".txt" 
-	--set fileResult to filePath&"GeneratedCoNum" &runCounter &".xlsx"
-	set fileResult to flPath &flNam
-	create file fileResult
-	open file fileResult for updating 
-	put crlf into temp
-	write " Run Deatils : " &ctr &temp to file fileResult at eof
-	close file fileResult
-	return fileResult
-end createDocumentCO
-
-to documentCOgenerated fileResult,CreatedCO
-	open file fileResult for updating --update
-	put crlf into temp
-	write  CreatedCO &temp to file fileResult at eof
-	close file fileResult
-end documentCOgenerated
-
-to documentTotalCO fileResult, COcount
-	open file fileResult for updating --update
-	put crlf into temp
-	write  "Total CO Created in this Run : " &COcount &temp to file fileResult at eof
-	close file fileResult
-end documentTotalCO
-
 doFullRun
+
+
+
+
+
+
+
 
