@@ -82,6 +82,7 @@ To change_line_status
 			wait 10*)
 			
 		Else
+			
 			throw "Error","Could not find M3/PMS170/Structuretype image in M3/PMS170 script, function change_line_status"
 		End If        
 	else
@@ -113,9 +114,11 @@ to create_schedule_number scheduleNumber
 	Wait 3
 	Click (Image:"M3/PMS170/CloseScheduleButton", WaitFor:32)
 	Wait 3
-	RightClick "M3/PMS170/OrderLine"
-	Click "M3/PMS170/RelatedOptions"
-	Click "M3/PMS170/AddScheduleNumber"
+	//RightClick "M3/PMS170/OrderLine"
+	//Click "M3/PMS170/RelatedOptions"
+	//Click "M3/PMS170/AddScheduleNumber"
+	Click "M3/PMS170/Related"
+	Click "M3/PMS170/AddScheduleNumber_1"
 	TypeText scheduleNumber
 	TypeText Return
 	Click "M3/PMS170/ScheduleLine"
