@@ -141,6 +141,7 @@ to doFullRun
 		(************** Exit *********************)
 		"Flows/Application".exitApp
 		
+		"Flows/Application".login username, password
 		put doScheduling(coNum) into schedNum
 		if schedNum <> "noStock"
 			LogSuccess "Scheduling Done For this CO"
