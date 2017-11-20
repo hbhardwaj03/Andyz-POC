@@ -47,11 +47,14 @@ repeat forever
 	(************** Order entry ***************)
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style, ConfigCode
+	"Flows/OrderEntry".enterProduct style, ConfigCode, PromoCod
+	(************** To Validate Promocode ******************)
+	"Flows/OrderEntry".GetPromoCodevalue PromoCod
 	
 	(*************** To Apply Blanket  Agreement **********************)
 	put blnktAgrmnt into BlanketAgreement
 	"Flows/OrderEntry".ApplyBlanketAgreement BlanketAgreement
+	
 	
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines

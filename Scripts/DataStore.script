@@ -56,6 +56,7 @@ to setDataScript1 dataIndex
 	global BlnktAgrmnt
 	global Priority
 	global trnsctnResn
+	global PromoCod
 	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
 	--set worksheet to ExcelFile.Worksheet("Input")
 	set worksheet to ExcelFile.Worksheet("Input")
@@ -69,6 +70,7 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "K" & dataIndex) into color
 	put Cell(worksheet, "W" & dataIndex) into ConfigCode
 	put Cell(worksheet, "X" & dataIndex) into blnktAgrmnt
+	Put cell(worksheet, "Y" & dataIndex) into PromoCod
 	put Cell(worksheet, "Z" & dataIndex) into trnsctnResn
 end setDataScript1
 
