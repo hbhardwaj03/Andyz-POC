@@ -23,9 +23,13 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		Exit handler
 	end if
 	
-	if imagefound("M3/OIS300/ChangeAddress")then Click "M3/OIS300/NextButton"
+	if imagefound("M3/OIS300/ChangeAddress")then 
+		Click "M3/OIS300/NextButton"
+	end if
 	
-	if  imagefound("M3/OIS300/OIS166B") then Click "M3/OIS300/NextButton"
+	if  imagefound("M3/OIS300/OIS166B") then
+		Click "M3/OIS300/NextButton"	
+	end if
 	if coType is not empty
 		TypeText coType
 		log coType
@@ -43,6 +47,11 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 			TypeText Return
 		End repeat
 		
+	end if
+	
+	if imageFound (3,"M3/OIS100/OIS100A" ) then
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
 	end if
 	
 	(*	
