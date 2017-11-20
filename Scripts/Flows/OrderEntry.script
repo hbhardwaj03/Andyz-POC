@@ -53,14 +53,19 @@ to recordCONumber
 	return coNumber
 end recordCONumber
 
-to enterProduct itemCode,ConfigurationNo
+to enterProduct colorSKU,ConfigurationNo
+
+	set temp to split (colorSKU,"-")
+	put item 1 of temp into itemCode
+	put item 2 of temp into itemColor
+	
 	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
 	
 	//If ImageFound(20, "M3/OIS101/OIS101B1Title") or ImageFound(20,"M3/OIS101/OIS101B1" ) then
 	
 	Wait 5
 	"M3/OIS101".enterItemCode itemCode	
-	"M3/OIS101".enterItemColor
+	"M3/OIS101".enterItemColor itemColor
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
 	else if  ConfigurationNo="ConfigA2" then
@@ -219,7 +224,7 @@ to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMe
 		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
 	end if
 end CreateNewOrder
- 
+
 -->>>>>>>>>Creates New order with DeliveryTerm and  DeliveryMethod
 to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth,payMeth
 	Log "Enter new order"
@@ -237,7 +242,7 @@ to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth,payMeth
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100G
 	"M3/OIS300".enterDeliveryInfoOIS100_F delTerm,delMeth -- OIS100/F
-"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100F
 	"M3/OIS300".submitOIS100V
 	"M3/OIS300".paymntMethdInOIS100_H payMeth -- CSH for COL, while "FDX" for some other delivery Terms
 	--"M3/OIS300".submitOIS100H
