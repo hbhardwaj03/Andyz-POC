@@ -38,6 +38,7 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100V
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E  priority
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS102H

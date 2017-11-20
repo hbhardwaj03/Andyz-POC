@@ -9,7 +9,7 @@ global username, password, DCAUser, DCAPswrd
 
 //declare data variables
 global dataIndex, custNum, custPO, tag, delTerm,coType
-global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt, PromoCod
 
 
 //initialize test variables
