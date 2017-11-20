@@ -51,7 +51,9 @@ end supplyChain
 to enterItemCode ItemCode
 	WaitFor 30, "M3/OIS101/OIS101B1Title"
 	Click (187,595)
-	wait 8
+	wait 2
+	TypeText controlKey, a
+	TypeText deleteKey
 	TypeText itemCode
 	TypeText Return
 	wait 5
@@ -122,7 +124,6 @@ to BlanketAgreement BlanketAgreement
 end BlanketAgreement
 
 To setPromocode
-
 	Click "M3/OIS101/Actions"
 	Wait 2
 	Click "M3/OIS101/Settinqs"
@@ -167,8 +168,29 @@ To ChangeViewInOis101
 End ChangeViewInOis101
 
 
-to enterItemColor
-	Click (130,300)
+to enterItemColor color
+	set x to 130
+	set y to 273
+	-- we set the Y cordinate just above the color Boxes(273 at 75% zoom), and based on the line, where the desired color is, we get the line No.
+	if color is 0 then set occuranceLine to 1
+	if color is 016 then set occuranceLine to 2
+	if color is 036 then set occuranceLine to 3
+	if color is 41 then set occuranceLine to 4
+	if color is 061 or if color is 046 then set occuranceLine to 5
+	if color is 226 then set occuranceLine to 6
+	if color is 246 then set occuranceLine to 7
+	if color is 264 then set occuranceLine to 8
+	if color is 3 then set occuranceLine to 9
+	if color is 4 then set occuranceLine to 10
+	if color is 423 then set occuranceLine to 11
+	if color is 428 then set occuranceLine to 12
+	if color is 446 then set occuranceLine to 13
+	if color is 440 then set occuranceLine to 14
+	if color is 6 then set occuranceLine to 15
+	if color is 660 then set occuranceLine to 16
+	set a to 15* occuranceLine -- each color line differs with aprox 15 pixels.
+	
+	Click (x,(y+a))
 	TypeText "1"
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 end enterItemColor	
