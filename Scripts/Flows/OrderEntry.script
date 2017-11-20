@@ -38,6 +38,7 @@ to GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, Deliver
 	"M3/OIS300".submitOIS100V
 	"M3/OIS300".acceptPOWarning
 	"M3/OIS300".submitOIS100F
+	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS100E  priority
 	"M3/OIS300".submitOIS100H
 	"M3/OIS300".submitOIS102H
@@ -53,14 +54,27 @@ to recordCONumber
 	return coNumber
 end recordCONumber
 
-to enterProduct itemCode,ConfigurationNo
+<<<<<<< HEAD
+to enterProduct colorSKU,ConfigurationNo
+
+	set temp to split (colorSKU,"-")
+	put item 1 of temp into itemCode
+	put item 2 of temp into itemColor
+	
+=======
+to enterProduct itemCode, ConfigurationNo, PromoCod
+>>>>>>> 9e007e4d698de22e1d590f0c3e0f6ca59d28efce
 	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
 	
 	//If ImageFound(20, "M3/OIS101/OIS101B1Title") or ImageFound(20,"M3/OIS101/OIS101B1" ) then
 	
 	Wait 5
+	if PromoCod <>"" then
+		"M3/OIS101".setPromocode
+		"M3/OIS101".EnterPromoCode PromoCod
+	End if
 	"M3/OIS101".enterItemCode itemCode	
-	"M3/OIS101".enterItemColor
+	"M3/OIS101".enterItemColor itemColor
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
 	else if  ConfigurationNo="ConfigA2" then
@@ -208,9 +222,13 @@ End AddLineItem*)
 
 //                                                                             *****
 (*>>>>>>>>>Creates New order with or without delivery Terms and Method based on the data >>>>>>> *)
-to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement, Priority
-	if DeliveryTerm <> "" and  DeliveryMethod <> ""
+to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement, Priority,payMeth
+	if DeliveryMethod<> "" and  DeliveryTerm <>""
+		orderWithDeliveryInfo customerNumber, PO, DeliveryTerm, DeliveryMethod, payMeth
+	else if BlanketAgreement <> "" and  TranctionResonCode <> ""
+		
 		"Flows/OrderEntry".GenericOrderEntry customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMethod, TranctionResonCode, BlanketAgreement
+		
 	else 
 		"Flows/OrderEntry".enterNewOrder customerNumber, coType, PO, Priority
 	end if

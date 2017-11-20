@@ -43,7 +43,7 @@ repeat forever
 	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style, ConfigCode
+	"Flows/OrderEntry".enterProduct color, ConfigCode
 	
 	(*************** To Apply Blanket  Agreement **********************)
 	put blnktAgrmnt into BlanketAgreement
@@ -133,7 +133,7 @@ to doFullRun
 	
 	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct style, ConfigCode
+	"Flows/OrderEntry".enterProduct color, ConfigCode
 	
 	(************** Exit *********************)
 	"Flows/Application".exitApp
