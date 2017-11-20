@@ -134,7 +134,7 @@ to doFullRun
 		"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,"","","CSH"
 		--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 		put "Flows/OrderEntry".recordCONumber() into coNum
-		"Flows/OrderEntry".enterProduct style, ConfigCode
+		"Flows/OrderEntry".enterProduct color, ConfigCode
 		
 		"M3/OIS101".closeFromOrderLines
 		
@@ -180,9 +180,11 @@ end doScheduling
 
 doFullRun
 
-
-
-
+set ConfigCode to "B2"
+--set itemColor to "061"
+set color to "TB7SS6AC-0"
+--"M3/OIS101".enterItemColor itemColor
+"Flows/OrderEntry".enterProduct color, ConfigCode
 
 
 
