@@ -23,9 +23,13 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 		Exit handler
 	end if
 	
-	if imagefound("M3/OIS300/ChangeAddress")then Click "M3/OIS300/NextButton"
+	if imagefound("M3/OIS300/ChangeAddress")then 
+		Click "M3/OIS300/NextButton"
+	end if
 	
-	if  imagefound("M3/OIS300/OIS166B") then Click "M3/OIS300/NextButton"
+	if  imagefound("M3/OIS300/OIS166B") then
+		Click "M3/OIS300/NextButton"	
+	end if
 	if coType is not empty
 		TypeText coType
 		log coType
@@ -43,6 +47,11 @@ to enterCustomerNumber customerNumber, coType, SalesHold
 			TypeText Return
 		End repeat
 		
+	end if
+	
+	if imageFound (3,"M3/OIS100/OIS100A" ) then
+		Click "M3/OIS300/NextButton"
+		MoveTo "Corner"
 	end if
 	
 	(*	
@@ -275,7 +284,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "4" then
+			else if priority = "4" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 5 times
@@ -283,7 +292,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "3" then
+			else if priority = "3" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 6 times
@@ -291,7 +300,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "2" then
+			else if priority = "2" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 7 times
@@ -299,7 +308,7 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else if priority = "1" then
+			else if priority = "1" then
 			Click "M3/OIS300/PriorityDropdown"
 			TypeText endKey
 			repeat 8 times
@@ -307,12 +316,12 @@ to submitOIS100E priority
 				TypeText upArrow
 			End repeat 
 			TypeText return
-		else
+			else
 			throw "Unsupported Priority","this priority is not supported in M3/OIS300 function submitOIS100E"
 		end if
 	end if
 	
-	if imagefound (3,"M3/OIS100/100Etitle")
+	if imagefound (3, "M3/OIS100/OIS100E") then
 		Click "M3/OIS300/NextButton"
 		MoveTo "Corner"
 	end if
