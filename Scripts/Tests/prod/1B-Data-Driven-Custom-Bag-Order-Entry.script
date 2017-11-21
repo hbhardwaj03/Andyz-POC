@@ -60,12 +60,6 @@ repeat forever
 	(**************** To Close Order entry Screen ****************************)
 	"M3/OIS101".closeFromOrderLines
 	
-	
-	
-	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
-	set worksheet to ExcelFile.Worksheet("Input")
-	Put dataIndex - 1 into IndexIn
-	put coNum into Cell(worksheet, "AB" & indexIn)
 	logData
 end repeat
 (************** Exit *********************)
