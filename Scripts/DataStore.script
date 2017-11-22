@@ -52,6 +52,7 @@ to setDataScript1 dataIndex
 	global delMeth
 	global style
 	global color
+	global quantity
 	global ConfigCode
 	global BlnktAgrmnt
 	global Priority
@@ -68,6 +69,7 @@ to setDataScript1 dataIndex
 	put Cell(worksheet, "I" & dataIndex) into Priority
 	put Cell(worksheet, "J" & dataIndex) into style
 	put Cell(worksheet, "K" & dataIndex) into color
+	put Cell(worksheet, "L" & dataIndex) into quantity
 	put Cell(worksheet, "W" & dataIndex) into ConfigCode
 	put Cell(worksheet, "X" & dataIndex) into blnktAgrmnt
 	Put cell(worksheet, "Y" & dataIndex) into PromoCod

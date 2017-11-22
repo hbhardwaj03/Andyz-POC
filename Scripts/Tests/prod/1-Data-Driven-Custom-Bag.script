@@ -9,7 +9,7 @@ global username, password, DCAUser, DCAPswrd
 
 //declare data variables
 global coNum, moNum, dataIndex, custNum, custPO, tag, delTerm,coType
-global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
+global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt, quantity
 
 //initialize test variables
 "DataStore".setGlobalsScript1
@@ -43,7 +43,7 @@ repeat forever
 	//"Flows/OrderEntry".enterNewOrder custNum, "", custPO
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct color, ConfigCode
+	"Flows/OrderEntry".enterProduct color, "", quantity, ConfigCode
 	
 	(*************** To Apply Blanket  Agreement **********************)
 	put blnktAgrmnt into BlanketAgreement

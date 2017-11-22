@@ -8,7 +8,7 @@ Author: Himanshu Bhardwaj & Andy Jenkins
 global username, password, DCAUser, DCAPswrd
 
 //declare data variables
-global dataIndex, custNum, custPO, tag, delTerm,coType
+global dataIndex, custNum, custPO, tag, delTerm,coType, quantity
 global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt, PromoCod
 
 
@@ -48,7 +48,7 @@ repeat forever
 	"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, trnsctnResn //blnktAgrmnt
 	put "Flows/OrderEntry".recordCONumber() into coNum
 	
-	"Flows/OrderEntry".enterProduct style, ConfigCode, PromoCod
+	"Flows/OrderEntry".enterProduct style, PromoCod, quantity, ConfigCode
 	(************** To Validate Promocode ******************)
 	"Flows/OrderEntry".GetPromoCodevalue PromoCod
 	
