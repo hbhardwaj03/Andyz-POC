@@ -54,21 +54,19 @@ to recordCONumber
 	return coNumber
 end recordCONumber
 
-to enterProduct colorSKU,ConfigurationNo, PromoCod
-
-	set temp to split (colorSKU,"-")
-	put item 1 of temp into itemCode
-	put item 2 of temp into itemColor
-	WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
-	//If ImageFound(20, "M3/OIS101/OIS101B1Title") or ImageFound(20,"M3/OIS101/OIS101B1" ) then
-	
-	Wait 5
-	if PromoCod <>"" then
-		"M3/OIS101".setPromocode
-		"M3/OIS101".EnterPromoCode PromoCod
-	End if
-	"M3/OIS101".enterItemCode itemCode	
-	"M3/OIS101".enterItemColor itemColor
+to enterProduct colorSKU,PromoCod,itemQty,ConfigurationNo
+set temp to split (colorSKU,"-")
+put item 1 of temp into itemCode
+put item 2 of temp into itemColor
+WaitFor 20, Image:"M3/OIS101/OIS101B1Title"
+//If ImageFound(20, "M3/OIS101/OIS101B1Title") or ImageFound(20,"M3/OIS101/OIS101B1" ) then
+if PromoCod <>"" then
+	"M3/OIS101".setPromocode
+	"M3/OIS101".EnterPromoCode PromoCod
+end if
+"M3/OIS101".enterItemCode itemCode	
+if imageFound (WaitFor:5, ImageName:"M3/OIS101/ItemColorField/CRS207Btitle")
+	"M3/OIS101".readColorNenterQty itemColor, itemQty 
 	if ConfigurationNo="ConfigA1" then
 		"M3/Configurations".ConfigA1
 	else if  ConfigurationNo="ConfigA2" then
@@ -83,22 +81,16 @@ to enterProduct colorSKU,ConfigurationNo, PromoCod
 		"M3/Configurations".ConfigB2
 	else if  ConfigurationNo="ConfigB3" then
 		"M3/Configurations".ConfigB3
-	else if  ConfigurationNo="ConfigB4" then
-		"M3/Configurations".ConfigB4
-	else if ConfigurationNo="ConfigB5" then
-		"M3/Configurations".ConfigB5
-	else if ConfigurationNo="ConfigB6" then
-		"M3/Configurations".ConfigB6
-		//else if ItemCode = "TB7SX6CC" or if itemCode = "TB7SX14CC" or if itemCode ="TB7SX6TC" then 
-	(*"M3/OIS101".enterItemQuantity productQuantity*)
-	//"M3/Configurations".config001
-	//	else
-	//"M3/OIS101".configuratorA
-	
-end if
-
-//end if 
-//"M3/OIS101".closeFromOrderLines
+else if  ConfigurationNo="ConfigB4" then
+			"M3/Configurations".ConfigB4
+		else if ConfigurationNo="ConfigB5" then
+			"M3/Configurations".ConfigB5
+		else if ConfigurationNo="ConfigB6" then
+			"M3/Configurations".ConfigB6
+		end if
+	else
+		LogError "Pannel CRS207B Not Found for Color entry !"
+	end if
 end enterProduct
 
 To EnterItemProductQuanConfig itemCode, quantity, ConfigurationNo
@@ -134,7 +126,7 @@ End EnterItemProductQuanConfig
 
 To GetLineStatus
 	Click (Image:"M3/OIS101/selectline", WaitFor:45)
-	Click "M3/OIS101/LineSlat"
+Click "M3/OIS101/LineSlat"
 	put  ImageLocation ("M3/OIS101/LineSlat") into loc
 	Put loc+(-10,-5) into L1
 	Put loc+(55,10) into L2
@@ -229,7 +221,7 @@ to CreateNewOrder customerNumber, coType, PO, TagField, DeliveryTerm, DeliveryMe
 end CreateNewOrder
 
 -->>>>>>>>>Creates New order with DeliveryTerm and  DeliveryMethod
-to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth,payMeth
+to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth,payMeth, priority
 	Log "Enter new order"
 	"M3/OIS300".open 
 	
@@ -249,6 +241,6 @@ to orderWithDeliveryInfo custNum,custPO,delTerm,delMeth,payMeth
 	"M3/OIS300".submitOIS100V
 	"M3/OIS300".paymntMethdInOIS100_H payMeth -- CSH for COL, while "FDX" for some other delivery Terms
 	--"M3/OIS300".submitOIS100H
-	"M3/OIS300".submitOIS100E ""--OIS100/E
+	"M3/OIS300".submitOIS100E priority--OIS100/E
 	"M3/OIS300".submitOIS102H
 end orderWithDeliveryInfo

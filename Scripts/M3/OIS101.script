@@ -205,11 +205,61 @@ to enterQuantityForItemColor itemColor, itemQty
 			Do DoubleClick && foundImageLocation()
 			typeText itemQty
 		end if
-	else
+		else
 		Log "Pannel CRS207B Not Found"
 	end if
 end enterQuantityForItemColor
 
+
+to readColorNenterQty itemColor, itemQty
+	if imageFound(waitFor:5, ImageName: "M3/OIS101/ItemColorField/colorColoumn")
+		set gridHeader to "M3/OIS101/ItemColorField/colorColoumn"
+		do DoubleClick && (foundImageLocation() +(100,16))
+	else 
+		LogError "Not  able to Find Color Grid"
+		exit handler
+	end if
+	put imageRectangle(GridHeader) into myRectangle
+	set imageLeft = left (myRectangle)+ 5
+	set imageRight = right(myRectangle)
+	set imageBottom = bottom(myRectangle) +2
+	set targetBottom = imageBottom +21
+	set colorFound to 0
+	set count to 1
+	Repeat until colorFound is 1
+		set UL = (imageLeft, imageBottom)
+		set BR = (imageRight, targetBottom)
+		set the SearchRectangle to (UL,BR)
+		set myRectangle to searchRectangle
+		set colorLine to readText (searchRectangle())
+		if colorLine contains itemColor &"-"
+			set colorFound to 1
+			do DoubleClick && (BR + ((18), (-9)))
+			typeText itemQty
+			Log "Item Colour Found at : "& count &" Line"
+			
+		else if colorLine contains "Close" 
+			LogError "Bottom of Page Reached"
+			exit Repeat
+		else 
+			TypeText downArrow
+			set  imageBottom to  targetBottom
+			set targetBottom = imageBottom +15
+			set count to count +1
+			wait 1
+		end if
+		
+	End repeat
+	set the searchRectangle to ()
+	--set searchRectangle() to RemoteScreenSize()
+	if colorFound is 1 
+		Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
+	else 
+		LogError "Color could not be Found "	
+	end if
+end readColorNenterQty
+
+---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
 
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"

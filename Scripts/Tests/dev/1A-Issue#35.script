@@ -113,7 +113,7 @@ to doFullRun
 	//initialize test variables
 	"DataStore".setGlobalsScript1
 	//initialize data line counter
-	put 2 into dataIndex
+	put 13 into dataIndex
 	repeat for 5 times
 		//initialize data variables (sets global data variables and logs them)
 		DataStore.setDataScript1 dataIndex
@@ -131,10 +131,10 @@ to doFullRun
 		(************** Order entry ***************)
 		//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
 		--"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
-		"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,"","","CSH"
+		"Flows/OrderEntry".orderWithDeliveryInfo custNum, custPO,delTerm,delMeth,"CSH",Priority // parameterList ( custNum,custPO,delTerm,delMeth,payMeth, priority)
 		--"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
 		put "Flows/OrderEntry".recordCONumber() into coNum
-		"Flows/OrderEntry".enterProduct color, ConfigCode
+		"Flows/OrderEntry".enterProduct color,"", productQuantity,ConfigCode  // Parameters: colorSKU, PromoCod,itemQty, ConfigurationNo
 		
 		"M3/OIS101".closeFromOrderLines
 		
@@ -169,19 +169,68 @@ to doScheduling coNumber
 		"M3/PMS100".lookupSchedule scheduleNumber
 		"M3/PMS100".printShopTraveler scheduleNumber
 		return scheduleNumber
-	else
+		else
 		"M3/PMS170".close
 		LogWarning "Insuuficient Stock in Inventory for CO# :- "&coNumber
 		return "noStock"
 	end if
 end doScheduling
 
+to readColorNenterQty itemColor, itemQty
+	if imageFound(waitFor:5, ImageName: "M3/OIS101/ItemColorField/colorColoumn")
+		set gridHeader to "M3/OIS101/ItemColorField/colorColoumn"
+		do DoubleClick && (foundImageLocation() +(100,16))
+	else 
+		LogError "Not  able to Find Color Grid"
+		exit handler
+	end if
+	put imageRectangle(GridHeader) into myRectangle
+	set imageLeft = left (myRectangle)+ 5
+	set imageRight = right(myRectangle)
+	set imageBottom = bottom(myRectangle) +2
+	set targetBottom = imageBottom +21
+	set colorFound to 0
+	set count to 1
+	Repeat until colorFound is 1
+		set UL = (imageLeft, imageBottom)
+		set BR = (imageRight, targetBottom)
+		set the SearchRectangle to (UL,BR)
+		set myRectangle to searchRectangle
+		set colorLine to readText (searchRectangle())
+		if colorLine contains itemColor &"-"
+			set colorFound to 1
+			do DoubleClick && (BR + ((18), (-9)))
+			typeText itemQty
+			Log "Item Colour Found at : "& count &" Line"
+			
+		else if colorLine contains "Close" 
+			LogError "Bottom of Page Reached"
+			exit Repeat
+		else 
+			TypeText downArrow
+			set  imageBottom to  targetBottom
+			set targetBottom = imageBottom +15
+			set count to count +1
+			wait 1
+		end if
+		
+	End repeat	
+	set the  SearchRectangle to ()
+	
+	if colorFound is 1 
+		Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
+	else 
+		LogError "Color could not be Found "	
+	end if
+end readColorNenterQty
 
+---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
 
 doFullRun
 
+set itemColor to "041"
+set itemQty to "2"
+readColorNenterQty itemColor,itemQty 
 
 
-
-
-
+---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
