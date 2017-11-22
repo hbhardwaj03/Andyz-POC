@@ -196,7 +196,7 @@ to readColorNenterQty itemColor, itemQty
 		set BR = (imageRight, targetBottom)
 		set the SearchRectangle to (UL,BR)
 		set myRectangle to searchRectangle
-		set colorLine to readText (searchRectangle())
+		set colorLine to readText (searchRectangle()) 
 		if colorLine contains itemColor &"-"
 			set colorFound to 1
 			do DoubleClick && (BR + ((18), (-9)))
@@ -228,9 +228,7 @@ end readColorNenterQty
 
 doFullRun
 
-set itemColor to "041"
-set itemQty to "2"
-readColorNenterQty itemColor,itemQty 
+-- for Issue#41
 
 
 ---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
