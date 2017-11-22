@@ -180,11 +180,7 @@ end doScheduling
 
 doFullRun
 
-set ConfigCode to "B2"
---set itemColor to "061"
-set color to "TB7SS6AC-0"
---"M3/OIS101".enterItemColor itemColor
-"Flows/OrderEntry".enterProduct color, ConfigCode
+
 
 
 

@@ -161,7 +161,7 @@ to ConfigB2 // 3 Level of Customization
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
 	TypeText "See Special Color Instruction"
 	Click "M3/OIS101/PersonalizationNextButton"	
-	Click "M3/Configurations/configuration001/StrapType/JST01Single"
+	Click "M3/Configurations/configuration001/StrapType/JST01Single", WaitFor:45
 	wait 5
 end ConfigB2
 

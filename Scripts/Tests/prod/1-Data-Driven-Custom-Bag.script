@@ -15,7 +15,7 @@ global delMeth, style, color, ConfigCode,trnsctnResn,Priority,blnktAgrmnt
 "DataStore".setGlobalsScript1
 
 //initialize data line counter
-put 3 into dataIndex
+put 2 into dataIndex
 
 (************** Start Test ***************)
 repeat forever
@@ -66,25 +66,23 @@ repeat forever
 	(************** Picking ******************)
 	"Flows/Picking".doPicking
 	
-	
+	(*
 	(************** Manufacturing *************)
 	wait 5
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
 	
 	(************** Packing ******************)
-	(*put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum*)
+	put "Flows/ManufacturingPacking".validatePacking(username,password,coNum) into delNum
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	
-	(*
-(************** Shipping *****************)
-"Flows/Shipping".doShipping delNum
-"Flows/Shipping".validateShipping coNum
-*)	
+	(************** Shipping *****************)
+	"Flows/Shipping".doShipping delNum
+	"Flows/Shipping".validateShipping coNum
+	*)
 	
 	logData
 end repeat
-
 
 to logData
 	global dataIndex
@@ -99,45 +97,6 @@ to logData
 	global color
 	Log "1A-Results:" && dataIndex && coNum && moNum && custNum && custPO && tag && delTerm && delMeth && style && color && configCode
 end logData
-
-to doFullRun
-	//declare test variables
-	global username, password, customerNum, coType, PO
-	global itemCode, productQuantity, DCAUser, DCAPswrd
-	
-	//declare data variables
-	global dataIndex, custNum, custPO, tag, delTerm
-	global delMeth, style, color, ConfigCode,BlnktAgrmnt,Priority 
-	//initialize test variables
-	"DataStore".setGlobalsScript1
-	
-	//initialize data line counter
-	put 11 into dataIndex
-	
-	//initialize data variables (sets global data variables and logs them)
-	DataStore.setDataScript1 dataIndex
-	logData
-	
-	//increment counter
-	put dataIndex + 1 into dataIndex
-	
-	//break if no more data
-	//if custNum is empty then exit repeat
-	
-	(************** Start flow ****************)
-	"Flows/Application".login username, password
-	
-	(************** Order entry ***************)
-	//"Flows/OrderEntry".enterNewOrder custNum, coType, custPO
-	//"Flows/OrderEntry".GenericOrderEntry custNum, coType, custPO, tag, delTerm, delMeth, BlnktAgrmnt
-	
-	"Flows/OrderEntry". CreateNewOrder custNum, coType, custPO, tag, delTerm, delMeth,trnsctnResn,BlnktAgrmnt
-	put "Flows/OrderEntry".recordCONumber() into coNum
-	"Flows/OrderEntry".enterProduct color, ConfigCode
-	
-	(************** Exit *********************)
-	"Flows/Application".exitApp
-end doFullRun
 
 
 

@@ -85,9 +85,9 @@ repeat 30 times
 	
 	"M3/OIS101".enterItemCode entryStyle --itemCode
 	wait 1
-	--"M3/OIS101".enterItemQuantity orderQty --quantity
-	Click (130,300)
-	TypeText orderQty -- "1"
+	set temp to split (colorSku,"-")
+	put item 1 of temp into itemColor
+	"M3/OIS101".enterQuantityForItemColor itemColor, orderQty
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 	
 	--to singlLevelCustomize

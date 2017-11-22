@@ -195,6 +195,22 @@ to enterItemColor color
 	Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 end enterItemColor	
 
+to enterQuantityForItemColor itemColor, itemQty
+	if imageFound (WaitFor:5, ImageName:"M3/OIS101/ItemColorField/CRS207Btitle")
+		set path ="M3/OIS101/ItemColorField/"
+		set UL = path &"ItemColorTopLeft"
+		set BR =path &"ItemColorBottomRight"
+		set the SearchRectangle to (UL,BR)
+		If imageFound(waitFor: 10, ImageName:path& itemColor& "/", SearchRectangle:())
+			Do DoubleClick && foundImageLocation()
+			typeText itemQty
+		end if
+	else
+		Log "Pannel CRS207B Not Found"
+	end if
+end enterQuantityForItemColor
+
+
 to enterItemColorNewEra
 	Click "M3/OIS101/NewEraColorField"
 	TypeText "12"
