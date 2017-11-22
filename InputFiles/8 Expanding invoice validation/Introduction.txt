@@ -1,0 +1,41 @@
+This script is an extension of the demo scripts located in the archive folder; US-Gear-06-Validation, US-Gear-90-Validation. You can run them and see how they open MetaViewer, login and search for an invoice number that is currently hardcoded. You may need to add the metaviewer icon either on your desktop or pin it to the desktop bar. The script has four parts. First, it will read from an excel spreadsheet a list of the invoice numbers and corresponding order numbers processed for a certain day. This step will be the last step we implement. Second, the script takes that order number and navigates through M3 reading all the necessary variables required for validating the invoice. I've added the locations of most of the data below and am following up with a BA to get the locations of the rest of the data. Third, with all of the data from M3 saved in to variables, the script opens MetaViewer, and reads all the data on the pdf saving it to a second set of variables. Fourth, the script compares all the sets of variables and outputs a list of values that did not validate.
+
+The first step in development, and what we expect to see progress on in the first few days is the flow that collects all of the data from M3 (so the second step from the above paragraph). We'll leave it to you to organize the flow but expect that you will do the least amount of navigation possible. So don't follow this list literally. It is ordered in the order of items on the Invoice. For example, when you go in to OIS101, make sure to grab all the necessary data there before navigating somewhere else. Don't navigate twice to the same location.
+
+I've included a sample invoice that you can use to navigate through M3. I'd recommend getting the order number off of it (3013686780), looking it up in OIS300, then starting on the various values below.
+
+As we get more information on the "?" values you will be able to add to the flow. This is a very important script as it will save the customer A LOT OF TIME. We should anticipate hitting blockers but I expect you will work around them until they can be resolved. One issue I expect to hit is having difficulty reading certain values from M3/MetaViewer and also having to map between the values in each of the applications. Let me know if you have any questions. Thanks!
+
+Mapping of invoice values to locations in M3:
+
+Invoice # - supplied in excel
+Order # - supplied in excel
+Invoice Date – OIS350 view 3
+Shipment Date- OIS300 highlight order line -> Delivery toolbox -> Depart Date column
+Order Date – OIS300 (1, 01-01) -> Order Date column
+Whs – OIS101 highlight order line -> Supply Chain link -> Whse column for Customer Order
+Delivery No - OIS300 highlight order line -> Delivery toolbox
+Customer’s P.O. – OIS300 highlight order line -> Display icon ->Panel G
+Account No – OIS300->Addresses link
+Sold to – OIS300 -> Addresses link
+Ship to – OIS300 -> Addresses link
+Remit to – ?
+Payment terms – OIS300 highlight order line -> Display icon ->Panel F
+	Or OIS101 sorting order 1, view GBL-01-001-Quant…
+Payment discount - OIS300 highlight order line -> Display icon ->Panel F
+	Or OIS101 sorting order 1, view GBL-01-001-Quant…
+Due Date - ?
+Pers 1-Text:OIS101 highlight order line -> Options/config link
+Pers 1-Lettering: OIS101 highlight order line -> Options/config link
+Pers 1-Color: OIS101 highlight order line -> Options/config link
+Item no: OIS101 sorting order 1, view GBL-01-001-Quant…
+Item Color -?                                           (need it in verbal format)
+Shipped Qty – OIS101 sorting order 1, view GBL-01-001-Quant…(Ord. Qty column)
+U/M - OIS101 sorting order 1, view GBL-01-001-Quant…
+Unit Price - OIS101 sorting order 1, view GBL-01-001-Quant…(Sales Price column)
+CstmChgs - OIS101 sorting order 1, view GBL-01-002-Price&…(Cstm. Charge column)
+Net Price - OIS101 sorting order 1, view GBL-01-002-Price&…(Net Price column)
+Extended - ?
+Net Order Total - ?
+Shipping & Handling Total - ?
+Total Invoice - ?

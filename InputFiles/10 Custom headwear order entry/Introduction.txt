@@ -1,0 +1,5 @@
+"#10 custom headwear order entry" script is only order entry for the part number in the excel file and the associated simple configurations. These configurations must be data-driven. That is to say that the configuration options are selected based on the text input of the data file and not hard-coded like it has been in the past.
+
+Attached is the custom headwear script file which is built slightly different from the bag & accessory file where it is built with the most basic personalization on one order and one logo on the other order.  
+
+Building the one logo script is the priority for order entry only at this time.  

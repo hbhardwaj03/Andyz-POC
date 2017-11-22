@@ -1,0 +1,16 @@
+
+
+
+ZC Time Notes:
+8:00 Enter CO# into PMS170
+12:00 Change structure type
+13:40 Release MO
+15:45 Requisition order created
+16:30 Copy RO
+16:40 Open MMS100
+17:07 Look up RO, double click for delivery toolbox
+17:10 Delivery status must be in 05
+17:15 Click “Release for Pick”
+17:25 Shows “50-Picking Lists Created”
+18:00 How to pack in M3
+18:50 Manual ship

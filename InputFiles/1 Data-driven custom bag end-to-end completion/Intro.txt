@@ -1,0 +1,8 @@
+Introduction: The purpose of this script is to take the demo script and expand the order entry portion to accept various customer and item number combinations, then run them through the rest of the entire flow, all the way through shipping. An excel spreadsheet will be provided, this will need to be read from for the inputs to the script. Generally the rest of the script should be mostly the same, except that it will have to run once, end-to-end, for each individual input on the excel spreadsheet.
+
+"Test Automation Script #1 - Data Driven custom bag end to end Completion (Order to Ship) - 16 Days
+Task #1:  Retrofit demo to handle variation of flows (8 Days)
+Task #2:  Add Document Validation (5 Days)
+Task #3:  Testing & Documentation  (3 Days)"
+
+

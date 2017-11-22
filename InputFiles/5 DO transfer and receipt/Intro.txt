@@ -1,0 +1,14 @@
+This script takes as input a DO number from Juan Alvarez, runs it through the various functions in WM such as wave, pick, pack, and ship. These functions have been recorded on the included video. The final portion, receive and put-away in AGS will be recorded Tuesday Sept. 12th and included in this folder. 
+
+"Script #5 Test Automation:   DO Transfer and Receipt (06B to 06Y Stock Custom Bag DO Transfers - Wave, Pick, Pack, Ship, Receive, Putaway)    Total Work Est 8 Days
+
+Task #1:  Pick, Pack, Ship DOs from WM  (4 Days)
+Task #2:  Receive, Putaway DOs  (2 Days)
+Task #3:  Testing and Documentation (2 Days)
+
+The process of transferring bags between 06B and 06Y is extremely labor intensive since each bag is an individual LPN and the transfer must be done at the LPN Level out of WM.    This automated script should help to move material between the warehouses faster and should reduce the Acushnet Resource requirements during testing cycles for Gear."
+
+Task 1: Read DO numbers from excel spreadsheet
+Task 2: Process each individual DO number through the MW portion of the process
+Task 3: Process each individual DO number through the AGS portion of the process
+Task 4: Test and document
