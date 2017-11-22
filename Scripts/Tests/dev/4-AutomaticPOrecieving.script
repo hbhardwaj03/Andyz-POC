@@ -61,6 +61,12 @@ repeat forever
 		end repeat
 		(******** To Capture Quantity in PPS310 for the Receving Number ****)
 		"M3/PPS300".enterRecievingNumberinPPS310 ReciveNumber
+		if imagefound("M3/PPS300/PPS310/Receivingnumberisinvalid") then
+			LogWarning "Receiving number is invalid-Check your receipt documents"
+			click  "M3/PPS300/XClose"
+			Next repeat
+		end if
+		
 		//put "M3/PPS310".captureQuantity() into quantity
 		(******** Enter Capture Quantity into the Approved Quantity *********)
 		"M3/PPS310".enterApprovedQuantity RMquanty

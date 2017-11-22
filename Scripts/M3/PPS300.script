@@ -58,9 +58,9 @@ to captureremainingquantity
 	(*Click "M3/PPS300/SelectItemnumber"*)
 	//put  ReadText(433,379,475,392)into RMquanty
 	//put readtext (("M3/PPS300/Remainingquant/RemainLB"),("M3/PPS300/Remainrightbot")) into RMquanty
-       put readtext (("M3/PPS300/LeftRemain"), ("M3/PPS300/Rightbottom")) into RMquanty
-       log RMquanty
-      return RMquanty
+	put readtext (("M3/PPS300/LeftRemain"), ("M3/PPS300/Rightbottom")) into RMquanty
+	log RMquanty
+	return RMquanty
 end captureremainingquantity
 
 To EnterRecivedQuan RMquanty
@@ -93,6 +93,11 @@ to enterRecievingNumberinPPS310 ReciveNumber
 	wait 2
 	Click "M3/PPS300/Next"	
 	wait 4
+	if imagefound("M3/PPS300/PPS310/Warningtransactiondate") then
+		LogWarning "Warning-Transaction date is a historical date-confirm"
+		Click "M3/PPS300/Next"	
+		wait 4
+	end if
 end enterRecievingNumberinPPS310
 
 to zoomIn x
