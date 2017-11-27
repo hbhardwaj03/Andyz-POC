@@ -113,7 +113,7 @@ to doFullRun
 	//initialize test variables
 	"DataStore".setGlobalsScript1
 	//initialize data line counter
-	put 13 into dataIndex
+	put 10 into dataIndex
 	repeat for 5 times
 		//initialize data variables (sets global data variables and logs them)
 		DataStore.setDataScript1 dataIndex
@@ -140,7 +140,7 @@ to doFullRun
 		
 		(************** Exit *********************)
 		"Flows/Application".exitApp
-		
+		(*
 		"Flows/Application".login username, password
 		put doScheduling(coNum) into schedNum
 		if schedNum <> "noStock"
@@ -149,11 +149,12 @@ to doFullRun
 			next repeat
 		end if
 		
-		(************** Exit *********************)
-		"Flows/Application".exitApp
-	end repeat
+		(************** Exit ******************** *)
+		"Flows/Application".exitApp   *)
+	end repeat 
 	
 end doFullRun
+
 
 to doScheduling coNumber
 	Log "Do scheduling"
@@ -169,7 +170,7 @@ to doScheduling coNumber
 		"M3/PMS100".lookupSchedule scheduleNumber
 		"M3/PMS100".printShopTraveler scheduleNumber
 		return scheduleNumber
-		else
+	else
 		"M3/PMS170".close
 		LogWarning "Insuuficient Stock in Inventory for CO# :- "&coNumber
 		return "noStock"
@@ -180,6 +181,7 @@ to readColorNenterQty itemColor, itemQty
 	if imageFound(waitFor:5, ImageName: "M3/OIS101/ItemColorField/colorColoumn")
 		set gridHeader to "M3/OIS101/ItemColorField/colorColoumn"
 		do DoubleClick && (foundImageLocation() +(100,16))
+		
 	else 
 		LogError "Not  able to Find Color Grid"
 		exit handler
@@ -187,8 +189,9 @@ to readColorNenterQty itemColor, itemQty
 	put imageRectangle(GridHeader) into myRectangle
 	set imageLeft = left (myRectangle)+ 5
 	set imageRight = right(myRectangle)
-	set imageBottom = bottom(myRectangle) +2
-	set targetBottom = imageBottom +21
+	set imageBottom = bottom(myRectangle) +4
+	set targetBottom = imageBottom +16
+	"M3/Application".checkZoomLevel 110
 	set colorFound to 0
 	set count to 1
 	Repeat until colorFound is 1
@@ -197,38 +200,114 @@ to readColorNenterQty itemColor, itemQty
 		set the SearchRectangle to (UL,BR)
 		set myRectangle to searchRectangle
 		set colorLine to readText (searchRectangle()) 
+		Log colorLine 
 		if colorLine contains itemColor &"-"
 			set colorFound to 1
 			do DoubleClick && (BR + ((18), (-9)))
 			typeText itemQty
-			Log "Item Colour Found at : "& count &" Line"
-			
+			Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"
+
 		else if colorLine contains "Close" 
 			LogError "Bottom of Page Reached"
 			exit Repeat
-		else 
+		else
 			TypeText downArrow
-			set  imageBottom to  targetBottom
-			set targetBottom = imageBottom +15
+			set  imageBottom to  targetBottom+ 1
+			set targetBottom = imageBottom +23
 			set count to count +1
 			wait 1
 		end if
 		
 	End repeat	
 	set the  SearchRectangle to ()
+	"M3/Application".checkZoomLevel 75
+	if colorFound is 1 
+		Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
+	else 
+		LogError "Color could not be Found "	
+end if
+end readColorNenterQty
+
+---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
+
+
+doFullRun
+
+set itemColor to 660
+set  itemQty to 1
+readColorNenterQty1 itemColor, itemQty
+
+-- for Issue#41
+
+
+
+---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
+to readColorNenterQty1 itemColor, itemQty
+	if imageFound(waitFor:5, ImageName: "M3/OIS101/ItemColorField/colorColoumn") then"M3/Application".checkZoomLevel 110
 	
+	if imageFound("M3/OIS101/ItemColorField/colorBlock/") 
+		set gridHeader to "M3/OIS101/ItemColorField/colorBlock/"
+		do DoubleClick && (foundImageLocation() +(100,0))
+		else 
+		LogError "Not  able to Find Color Grid"
+		exit handler
+	end if
+	put imageRectangle(GridHeader) into myRectangle
+	set imageLeft = left (myRectangle)- 114
+	set imageRight = left(myRectangle) - 2
+	set imageBottom = bottom(myRectangle)
+	set imageTop = top(myRectangle) +1
+	set targetBottom = imageBottom +23
+	
+	set colorFound to 0
+	set count to 1
+	Repeat until colorFound is 1
+		set UL = (imageLeft, imageTop)
+		set BR = (imageRight, imageBottom)
+		set the SearchRectangle to (UL,BR)
+		set myRectangle to searchRectangle
+		set colorLine to readText (searchRectangle()) 
+		Log colorLine 
+		if colorLine contains itemColor &"-"
+			set colorFound to 1
+			do DoubleClick && (BR + ((28), (-12)))
+			typeText itemQty
+			Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"
+		else if colorLine contains "Close" 
+			LogError "Bottom of Page Reached"
+			exit Repeat
+		else if count = 10
+			set the  SearchRectangle to ()
+			repeat 14 times
+				TypeText  downArrow
+			end repeat
+			if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
+			--do	DoubleClick && (288,409)
+			if imageFound("M3/OIS101/ItemColorField/colorBlock/") 
+				set gridHeader1 to "M3/OIS101/ItemColorField/colorBlock/"
+				put imageRectangle(GridHeader1) into myRectangle
+				set imageLeft = left (myRectangle)- 114
+				set imageRight = left(myRectangle) - 2
+				set imageBottom = bottom(myRectangle)
+				set imageTop = top(myRectangle) +1
+				set targetBottom = imageBottom +23
+				set count  to count +1
+			end if
+			
+		else --if count is less than 8
+			TypeText downArrow
+			set  imageTop to imageBottom+ 1
+			set imageBottom = imageTop +23
+			set count to count +1
+			wait 1
+		end if
+		
+	End repeat	
+	set the  SearchRectangle to ()
+	"M3/Application".checkZoomLevel 75
 	if colorFound is 1 
 		Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 	else 
 		LogError "Color could not be Found "	
 	end if
-end readColorNenterQty
-
----------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
-
-doFullRun
-
--- for Issue#41
-
-
----------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
+end readColorNenterQty1
