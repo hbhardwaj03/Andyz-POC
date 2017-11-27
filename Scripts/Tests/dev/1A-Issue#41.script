@@ -3,8 +3,6 @@ Name: Data-driven end to end custom bag processing
 Description: Driven by an excel spreadsheet of test scenario values, this script executes and end to end custom bag flow on the scenario. 
 Author: Himanshu Bhardwaj 
  *)
-
-
 //declare test variables
 global username, password, customerNum, coType, PO
 global itemCode, productQuantity, DCAUser, DCAPswrd, COcounter
@@ -110,6 +108,7 @@ to testColor
 	set itemQty to 1
 	"M3/OIS101".readColorNenterQty itemColor, itemQty
 end testColor
+
 
 ---------------------------->>>>>>>>>>> >  >  >  >  >  >--------------------------------------------------------------------
 

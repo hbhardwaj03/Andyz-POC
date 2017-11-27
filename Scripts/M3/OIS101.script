@@ -239,7 +239,10 @@ to readColorNenterQty itemColor, itemQty
 		set myRectangle to searchRectangle
 		set colorLine to readText (searchRectangle()) 
 		Log colorLine 
-		if colorLine contains itemColor &"-"
+		set temp to split(colorLine, "-")
+		put item 1 of temp into colorCode
+		put item 2 of temp into col
+		if itemColor equals colorCode
 			set colorFound to 1
 			do DoubleClick && (BR + ((28), (-12)))
 			typeText itemQty
@@ -252,7 +255,7 @@ to readColorNenterQty itemColor, itemQty
 			repeat 14 times
 				TypeText  downArrow
 			end repeat
-if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
+			if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
 			--do	DoubleClick && (288,409)
 			if imageFound("M3/OIS101/ItemColorField/colorBlock/") 
 				set gridHeader1 to "M3/OIS101/ItemColorField/colorBlock/"
@@ -314,7 +317,7 @@ to configuratorNewEra
 	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
 	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
-Click "M3/OIS101/NewEra/2Customizations"
+	Click "M3/OIS101/NewEra/2Customizations"
 	Click "M3/OIS101/NewEra/Location1Button"
 	Click "M3/OIS101/NewEra/Customization1Button"
 	TypeText Return
