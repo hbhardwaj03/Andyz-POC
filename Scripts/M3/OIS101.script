@@ -240,7 +240,8 @@ to readColorNenterQty itemColor, itemQty
 		set colorLine to readText (searchRectangle()) 
 		Log colorLine 
 		set temp to split(colorLine, "-")
-		put item 1 of temp in colorCode
+		put item 1 of temp into colorCode
+		put item 2 of temp into col
 		if itemColor equals colorCode
 			set colorFound to 1
 			do DoubleClick && (BR + ((28), (-12)))
