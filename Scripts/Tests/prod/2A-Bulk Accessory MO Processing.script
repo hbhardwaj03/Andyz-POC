@@ -37,7 +37,7 @@ repeat forever
 		Logerror "ATP Quqntity was less then the Required Quantity for the  CO# was:-  "&coNumber
 		"M3/PMS170".close
 		Next repeat
-	else
+		else
 		
 		//Put coNumber into coNumber
 		DoScheduling coNumber
@@ -58,9 +58,18 @@ to DoScheduling coNumber
 	Log "Do manufacturing"
 	
 	"Flows/ManufacturingPacking".doManufacturingM3 coNum, moNum
+	"M3/OIS300".open
+	TypeText "3013992656" //coNum
+	TypeText Return
+	Click "M3/OIS300/COOrderLine"
+	Click "M3/OIS300/DeliveryToolbox2"
+	WaitFor 45, "M3/OIS300/MWS410BTitle"
+	Click "M3/OIS300/ReleaseForPickLink"
+	Click "M3/OIS300/CloseButton"
+	Click "M3/OIS300/CloseButton"
 	(************** Packing ******************)
 	// add KPack here by moving working code from function "doFullRun"
-	//"Flows/Application".exitApp
+	"Flows/Application".exitApp
 	
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 end DoScheduling
