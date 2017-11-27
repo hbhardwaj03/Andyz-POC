@@ -239,11 +239,11 @@ to readColorNenterQty itemColor, itemQty
 		set myRectangle to searchRectangle
 		set colorLine to readText (searchRectangle()) 
 		Log colorLine 
-		if colorLine contains itemColor &"-"
-			set colorFound to 1
-			do DoubleClick && (BR + ((28), (-12)))
-			typeText itemQty
-			Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"			
+		if colorLine equals itemColor &"-"
+		set colorFound to 1
+		do DoubleClick && (BR + ((28), (-12)))
+		typeText itemQty
+		Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"			
 		else if colorLine contains "Close" 
 			LogError "Bottom of Page Reached"
 			exit Repeat
@@ -252,7 +252,7 @@ to readColorNenterQty itemColor, itemQty
 			repeat 14 times
 				TypeText  downArrow
 			end repeat
-if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
+			if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
 			--do	DoubleClick && (288,409)
 			if imageFound("M3/OIS101/ItemColorField/colorBlock/") 
 				set gridHeader1 to "M3/OIS101/ItemColorField/colorBlock/"
@@ -314,7 +314,7 @@ to configuratorNewEra
 	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
 	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
-Click "M3/OIS101/NewEra/2Customizations"
+	Click "M3/OIS101/NewEra/2Customizations"
 	Click "M3/OIS101/NewEra/Location1Button"
 	Click "M3/OIS101/NewEra/Customization1Button"
 	TypeText Return
