@@ -205,53 +205,75 @@ to enterQuantityForItemColor itemColor, itemQty
 			Do DoubleClick && foundImageLocation()
 			typeText itemQty
 		end if
-		else
+	else
 		Log "Pannel CRS207B Not Found"
 	end if
 end enterQuantityForItemColor
 
 
 to readColorNenterQty itemColor, itemQty
-	if imageFound(waitFor:5, ImageName: "M3/OIS101/ItemColorField/colorColoumn")
-		set gridHeader to "M3/OIS101/ItemColorField/colorColoumn"
-		do DoubleClick && (foundImageLocation() +(100,16))
-	else 
+	if imageFound(5, ImageName: "M3/OIS101/ItemColorField/colorColoumn") then"M3/Application".checkZoomLevel 110
+	wait 3
+	click (281,405)
+	if imageFound(10, ImageName: "M3/OIS101/ItemColorField/colorBlock/") 
+		set gridHeader to "M3/OIS101/ItemColorField/colorBlock/"
+		do DoubleClick && (foundImageLocation() +(100,0))
+	else
 		LogError "Not  able to Find Color Grid"
+		"M3/Application".checkZoomLevel 75
 		exit handler
 	end if
 	put imageRectangle(GridHeader) into myRectangle
-	set imageLeft = left (myRectangle)+ 5
-	set imageRight = right(myRectangle)
-	set imageBottom = bottom(myRectangle) +2
-	set targetBottom = imageBottom +21
+	set imageLeft = left (myRectangle)- 114
+	set imageRight = left(myRectangle) - 2
+	set imageBottom = bottom(myRectangle)
+	set imageTop = top(myRectangle) +1
+	set targetBottom = imageBottom +23
+	
 	set colorFound to 0
 	set count to 1
 	Repeat until colorFound is 1
-		set UL = (imageLeft, imageBottom)
-		set BR = (imageRight, targetBottom)
+		set UL = (imageLeft, imageTop)
+		set BR = (imageRight, imageBottom)
 		set the SearchRectangle to (UL,BR)
 		set myRectangle to searchRectangle
-		set colorLine to readText (searchRectangle())
+		set colorLine to readText (searchRectangle()) 
+		Log colorLine 
 		if colorLine contains itemColor &"-"
 			set colorFound to 1
-			do DoubleClick && (BR + ((18), (-9)))
+			do DoubleClick && (BR + ((28), (-12)))
 			typeText itemQty
-			Log "Item Colour Found at : "& count &" Line"
-			
+			Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"			
 		else if colorLine contains "Close" 
 			LogError "Bottom of Page Reached"
 			exit Repeat
+		else if count = 10
+			set the  SearchRectangle to ()
+			repeat 14 times
+				TypeText  downArrow
+			end repeat
+if imageFound(10,Text: colorLine) then do DoubleClick && foundImageLocation()
+			--do	DoubleClick && (288,409)
+			if imageFound("M3/OIS101/ItemColorField/colorBlock/") 
+				set gridHeader1 to "M3/OIS101/ItemColorField/colorBlock/"
+				put imageRectangle(GridHeader1) into myRectangle
+				set imageLeft = left (myRectangle)- 114
+				set imageRight = left(myRectangle) - 2
+				set imageBottom = bottom(myRectangle)
+				set imageTop = top(myRectangle) +1
+				set targetBottom = imageBottom +23
+				set count  to count +1
+			end if
 		else 
 			TypeText downArrow
-			set  imageBottom to  targetBottom
-			set targetBottom = imageBottom +15
+			set  imageTop to imageBottom+ 1
+			set imageBottom = imageTop +23
 			set count to count +1
 			wait 1
-		end if
-		
-	End repeat
-	set the searchRectangle to ()
-	--set searchRectangle() to RemoteScreenSize()
+		end if	
+	End repeat	
+	set the  SearchRectangle to ()
+	"M3/Application".checkZoomLevel 75
 	if colorFound is 1 
 		Click Image:"M3/OIS101/ConfiqStyleButton", WaitFor:10
 	else 
@@ -292,7 +314,7 @@ to configuratorNewEra
 	Click "M3/OIS101/NewEra/ColorButton"
 	Click "M3/OIS101/NewEra/OutlineYesButton"
 	Click (Image:"M3/OIS101/NewEra/OutlineColorButton", WaitFor:21)
-	Click "M3/OIS101/NewEra/2Customizations"
+Click "M3/OIS101/NewEra/2Customizations"
 	Click "M3/OIS101/NewEra/Location1Button"
 	Click "M3/OIS101/NewEra/Customization1Button"
 	TypeText Return
