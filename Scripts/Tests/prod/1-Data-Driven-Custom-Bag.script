@@ -67,7 +67,7 @@ repeat forever
 	"Flows/Picking".doPicking
 	
 	(************** Manufacturing *************)
-	wait 5
+	wait 60
 	"Flows/Other".recordRun coNum, moNum, schedNum, delNum
 	"Flows/ManufacturingPacking".doDCAManufacturing DCAUser, DCAPswrd, moNum
 	(*
