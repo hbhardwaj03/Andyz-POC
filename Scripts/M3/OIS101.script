@@ -239,11 +239,13 @@ to readColorNenterQty itemColor, itemQty
 		set myRectangle to searchRectangle
 		set colorLine to readText (searchRectangle()) 
 		Log colorLine 
-		if colorLine equals itemColor &"-"
-		set colorFound to 1
-		do DoubleClick && (BR + ((28), (-12)))
-		typeText itemQty
-		Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"			
+		set temp to split(colorLine, "-")
+		put item 1 of temp in colorCode
+		if itemColor equals colorCode
+			set colorFound to 1
+			do DoubleClick && (BR + ((28), (-12)))
+			typeText itemQty
+			Log "Item Colour: " &colorLine &"; Found at : "& count &" Line"			
 		else if colorLine contains "Close" 
 			LogError "Bottom of Page Reached"
 			exit Repeat
