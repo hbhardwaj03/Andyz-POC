@@ -66,7 +66,7 @@ to ConfigB1
 	Click "M3/Configurations/configuration001/personalizationType/Customization3/JL003Loqo3"
 	TypeText "376309"
 	TypeText Return
-	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
+	if ImageFound(10, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
 		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
 	else
 		Log "Logo ID not accepted"
@@ -76,7 +76,7 @@ to ConfigB1
 	//Customization #4 {Pers}
 	Click "M3/Configurations/configuration001/CustomizationLocation/JL057SpinePocketL2" //Location 4
 	Click "M3/Configurations/configuration001/personalizationType/customization4/JP004Pers4"
-	if ImageFound(3,"M3/Configurations/configuration001/PersonalizationText/PersonalizationTextPers4")
+	if ImageFound(10,"M3/Configurations/configuration001/PersonalizationText/PersonalizationTextPers4")
 		TypeText Return
 	end if
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
@@ -84,7 +84,7 @@ to ConfigB1
 	Click "M3/OIS101/PersonalizationNextButton"
 	Click "M3/Configurations/configuration001/persLettering/JP051Script"
 	Click "M3/Configurations/configuration001/PersColor/JP053Gold"
-	if ImageFound(3,"M3/Configurations/configuration001/SalesType/JP013Personalization")
+	if ImageFound(10,"M3/Configurations/configuration001/SalesType/JP013Personalization")
 		Click "M3/Configurations/configuration001/SalesType/JP013Personalization"
 	end if
 	//Customization #5 {Logo}
