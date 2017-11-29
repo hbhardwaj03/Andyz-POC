@@ -49,9 +49,7 @@ to ConfigB1
 	Click "M3/Configurations/configuration001/logoID/logoField/Logo1ID_Field"
 	TypeText "376309"
 	TypeText Return
-	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")
-		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
-	end if
+	click "M3/Configurations/configuration001/logoID/logoID_OkWindow", WaitFor:20
 	click "M3/Configurations/configuration001/logoID/logoColorUp/JL058ColorCordnat"
 	//Customization#2 {Pers}
 	click "M3/Configurations/configuration001/CustomizationLocation/JL024_ApparelPocket_L2" //  Customization#2 :Location
@@ -95,7 +93,7 @@ to ConfigB1
 	TypeText "376309"
 	TypeText Return
 	if ImageFound(5, "M3/Configurations/configuration001/logoID/logoID_OkWindow")then
-		click "M3/Configurations/configuration001/logoID/logoID_OkWindow"
+		click "M3/Configurations/configuration001/logoID/logoID_OkWindow", WaitFor:20
 	else
 		Log "Logo ID not accepted"
 		Exit handler
