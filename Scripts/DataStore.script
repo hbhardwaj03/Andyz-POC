@@ -60,7 +60,7 @@ to setDataScript1 dataIndex
 	global PromoCod
 	set ExcelFile to workbook(ResourcePath("1-data.xlsx"))
 	--set worksheet to ExcelFile.Worksheet("Input")
-	set worksheet to ExcelFile.Worksheet("Issue41")
+	set worksheet to ExcelFile.Worksheet("Input")
 	put Cell(worksheet, "A" & dataIndex) into custNum
 	put Cell(worksheet, "E" & dataIndex) into custPO
 	put Cell(worksheet, "F" & dataIndex) into tag
