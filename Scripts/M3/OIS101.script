@@ -242,7 +242,8 @@ to readColorNenterQty itemColor, itemQty
 		set temp to split(colorLine, "-")
 		put item 1 of temp into colorCode
 		put item 2 of temp into col
-		if itemColor equals colorCode
+		log "itemColor"&&itemColor&&"colorCode"&&colorCode
+		if itemColor is in colorCode
 			set colorFound to 1
 			do DoubleClick && (BR + ((28), (-12)))
 			typeText itemQty
