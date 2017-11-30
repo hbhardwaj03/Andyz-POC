@@ -2,7 +2,7 @@
 	TypeText 1
 	Click (238,228)
 	(*Click (Image:"M3/Configurations/configuration001/BagColorBlack", WaitFor:10)*)
-	Click ("M3/Configurations/configuration001/NumCustomization", waitFor:10)
+	Click (Image:"M3/Configurations/configuration001/NumCustomization", waitFor:10)
 	Click "M3/Configurations/configuration001/CustomizationLocation"
 	Click (Image:"M3/Configurations/configuration001/Personalization1", WaitFor:10)
 	Click "M3/Configurations/configuration001/PersonalizationText"
@@ -159,7 +159,7 @@ to ConfigB2 // 3 Level of Customization
 	Click "M3/OIS101/PersonalizationField" // Click on Text Area
 	TypeText "See Special Color Instruction"
 	Click "M3/OIS101/PersonalizationNextButton"	
-	Click "M3/Configurations/configuration001/StrapType/JST01Single", WaitFor:45
+	Click Image:"M3/Configurations/configuration001/StrapType/JST01Single", WaitFor:45
 	wait 5
 end ConfigB2
 

@@ -6,6 +6,7 @@
 end login
 
 to teardown
+	wait 5
 	repeat forever
 		try 
 			if ImageFound("M3/Application/ClosePanel") then
@@ -30,6 +31,5 @@ end teardown
 
 to exitApp
 	Log "Exit AGS"
-	teardown
 	"M3/Application".close
 end exitApp
