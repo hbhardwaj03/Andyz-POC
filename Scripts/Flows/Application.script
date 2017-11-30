@@ -6,6 +6,7 @@
 end login
 
 to teardown
+	wait 5
 	repeat forever
 		try 
 			if ImageFound("M3/Application/ClosePanel") then
