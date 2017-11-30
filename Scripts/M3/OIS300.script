@@ -129,7 +129,7 @@ end enterCustomersPO
 
 
 to enterCustomersPO PO,TagField, DeliveryTerm,DeliveryMethod
-	if ImageFound(5, "M3/OIS100/OIS100G/OIS100GTitle")
+	if ImageFound(10, "M3/OIS100/OIS100G/OIS100GTitle")
 		Click "M3/OIS300/CustomersPONumber" 
 		TypeText PO
 		TypeText returnKey
