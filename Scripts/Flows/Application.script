@@ -30,6 +30,5 @@ end teardown
 
 to exitApp
 	Log "Exit AGS"
-	teardown
 	"M3/Application".close
 end exitApp
