@@ -49,7 +49,7 @@ repeat forever
 	Put dataIndex - 1 into IndexIn
 	put coNumber into Cell(worksheet, "V" & indexIn)
 	
-	log coNumber && customerNumber && coType && PO && TagField && DeliveryTerm && DeliveryMethod && TransactionResonCode && itemCode && quantity && PromoCod && WHNumber
+	log "6-Results:" && coNumber && customerNumber && coType && PO && TagField && DeliveryTerm && DeliveryMethod && TransactionResonCode && itemCode && quantity && PromoCod && WHNumber
 end repeat
 
 "Flows/Application".exitApp
