@@ -96,9 +96,3 @@ to logData
 	global color
 	Log "1A-Results:" && dataIndex && coNum && moNum && custNum && custPO && tag && delTerm && delMeth && style && color && configCode
 end logData
-
-
-
-
-
-
